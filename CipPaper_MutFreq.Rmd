@@ -1,7 +1,7 @@
 ---
 title: "Mutation frequencies"
 author: "Iana Amke, Kara Tsang, Kat Holt"
-date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
 output: 
   html_document: 
     df_print: paged
@@ -319,8 +319,8 @@ freq_per_det_byPheno_summary <- freq_per_det_byPheno %>%
   select(-n_gene) %>%
   rename(Determinant=Resistance.mech.type) %>%
   relocate(Total, .after=Determinant) %>%
-  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), NA)) %>%
-  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), NA)) %>%
+  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), "-")) %>%
+  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), "-")) %>%
   select(Determinant, Total, Susceptible, Resistant, R_test, NWT, NWT_test)
 
 ```
@@ -331,8 +331,8 @@ freq_per_det_byPheno_summary %>%
   mutate(Susceptible=if_else(is.na(Susceptible), "0", Susceptible)) %>%
   mutate(NWT=if_else(is.na(NWT), "0", NWT)) %>%
   mutate(Resistant=if_else(is.na(Resistant), "0", Resistant)) %>%
-  mutate(R_test=if_else(is.na(R_test), "-", R_test)) %>%
-  mutate(NWT_test=if_else(is.na(NWT_test), "-", NWT_test)) %>%
+  mutate(R_test=if_else(is.na(R_test),"-",R_test)) %>%
+  mutate(NWT_test=if_else(is.na(NWT_test),"-",NWT_test)) %>%
   rename(`Total (% of genomes)`=Total) %>%
   rename(`Association with Resistance (OR, p-value)`=R_test) %>%
   rename(`Association with NWT (OR, p-value)`=NWT_test) %>%
@@ -732,8 +732,8 @@ freq_per_det_byPheno_summary_aac <- freq_per_det_byPheno_noQRDRqnr %>%
   rename(Total=n_gene) %>% 
   arrange(Resistance.mech.type) %>% # sort by frequency of determinant
   rename(`Solo determinant`=Resistance.mech.type) %>%
-  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), NA)) %>%
-  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), NA)) %>%
+  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), "-")) %>%
+  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), "-")) %>%
   select(`Solo determinant`, Total, Susceptible, NWT, Resistant, R_test, NWT_test)
 ```
 
@@ -744,15 +744,16 @@ freq_per_det_byPheno_summary_aac <- freq_per_det_byPheno_noQRDRqnr %>%
 bind_rows(freq_per_det_byPheno_summary_singleQRDR, 
           freq_per_det_byPheno_summary_singleAcquired, 
           freq_per_det_byPheno_summary_aac) %>% 
-  rename(R_OR=R_test, NWT_OR=NWT_test) %>%
-  relocate(NWT, .before=NWT_OR) %>%
+  relocate(NWT, .before=NWT_test) %>%
   mutate(Susceptible=if_else(is.na(Susceptible), "0", Susceptible)) %>%
   mutate(NWT=if_else(is.na(NWT), "0", NWT)) %>%
   mutate(Resistant=if_else(is.na(Resistant), "0", Resistant)) %>%
+  mutate(R_test=if_else(is.na(R_test), "-", R_test)) %>%
+  mutate(NWT_test=if_else(is.na(NWT_test), "-", NWT_test)) %>%
   rename(`Resistant (PPV)`=Resistant) %>%
   rename(`NWT (PPV)`=NWT) %>%
-  rename(`Association with Resistance (OR, p-value)` = R_OR) %>%
-  rename(`Association with NWT (OR, p-value)` = NWT_OR) %>%
+  rename(`Association with Resistance (OR, p-value)` = R_test) %>%
+  rename(`Association with NWT (OR, p-value)` = NWT_test) %>%
   write_csv(file="tables/Table1_freq_per_det_byPheno_summary_singleDet.csv")
 ```
 

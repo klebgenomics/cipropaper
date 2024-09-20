@@ -122,7 +122,7 @@ summary(as.numeric(QRDR_MIC_GyrA83background_noGenes_dat$Measurement)[QRDR_MIC_G
 
 # disk diffusion
 QRDR_DD_GyrA83background_noGenes_dat <- cipro_antibiogram %>%
-    filter(aac6==0 & acquired_genes==0 & `GyrA-83`==1 & `GyrA-87`==0) %>% 
+  filter(aac6==0 & acquired_genes==0 & `GyrA-83`==1 & `GyrA-87`==0) %>% 
   filter(Laboratory.Typing.Method=="Disk diffusion") %>%
   select(Measurement, Resistance.phenotype, resistant, nonWT_binary, ParC_mutations, `ParC-80`, `ParC-84`)
 
@@ -498,53 +498,237 @@ ggsave("figs/FigS4_QRDR_DD.png", width=9, height=6)
 
 ```
 
+## set up binary variables for common PMQR genes
+``` {r}
 
-# effect of qnr/qep genes, in absence of QRDR and aac6
+# genes in at least 10 genomes
+qnr_genes <- cipro_res_mech %>% 
+  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
+  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
+  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
+  group_by(Resistance.mech.type) %>% 
+  count() %>% filter(startsWith(Resistance.mech.type, "q")) %>% 
+  filter(n>10) %>% pull(Resistance.mech.type)
+
+qnr_presence <- cipro_res_mech %>% 
+  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
+  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
+  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
+  filter(Resistance.mech.type %in% qnr_genes) %>%
+  group_by(strain, Resistance.mech.type) %>% count() %>% pivot_wider(names_from=Resistance.mech.type, values_from=n)
+
+cipro_antibiogram <- left_join(cipro_antibiogram, qnr_presence)
+
+```
+
+
+# Fig S6 panel a - upset plot of qnr genes, absence of aac6 and QRDR, with MIC data
+``` {r}
+upset_qnr_noAac6_MIC <- cipro_antibiogram %>% 
+  filter(aac6==0 & QRDR_mutations==0) %>%
+  filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
+  upset(
+      intersect=qnr_genes, 
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing S/nonS
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+             scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with MIC data
+        'MIC measurement (mg/L)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
+              geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+              scale_color_manual(values = res_colours)+
+              scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
+              theme(legend.position = "none", axis.title=element_text(size=8))  +
+              ggtitle("aac(6')-Ib-cr absent")
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+```
+
+# Fig S6 panel- upset plot of qnr genes, presence of aac6 but no QRDR, with MIC data
+``` {r}
+upset_qnr_aac6_MIC <- cipro_antibiogram %>% 
+  filter(aac6==1 & QRDR_mutations==0) %>%
+  filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
+  upset(
+      intersect=qnr_genes, 
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing S/nonS
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+             scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with MIC data
+        'MIC measurement (mg/L)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
+              geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+                scale_color_manual(values = res_colours)+
+              scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
+              labs(colour = "Phenotype") +
+              theme(axis.title=element_text(size=8)) +
+              ggtitle("aac(6')-Ib-cr present")
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+```
+
+# Fig S7 panel - qnr genes, absence of aac6 and QRDR mutations, with DD data
+``` {r}
+upset_qnr_noAac6_DD <- cipro_antibiogram %>% 
+  filter(aac6==0 & QRDR_mutations==0) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  upset(
+      intersect=qnr_genes, # counts are converted to binary
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing S/nonS
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+               scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with disk diffusion data
+        'Zone diameter (mm)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
+              geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+                scale_color_manual(values = res_colours)+
+              guides(size = "none") +
+              labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
+              ggtitle("Disk diffusion data") +
+              theme(axis.title=element_text(size=8), legend.position="none") + 
+              ggtitle("aac(6')-Ib-cr absent") + ylim(5,50)
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+upset_qnr_noAac6_DD
+
+```
+
+# Fig S7 panel - qnr genes, presence of aac6 but no QRDR mutations, with DD data
+``` {r}
+upset_qnr_aac6_DD <- cipro_antibiogram %>% 
+  filter(aac6==1 & QRDR_mutations==0) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  upset(
+      intersect=qnr_genes, # counts are converted to binary
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing S/nonS
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+               scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with disk diffusion data
+        'Zone diameter (mm)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
+              geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+                scale_color_manual(values = res_colours)+
+              guides(size = "none") +
+              labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
+              ggtitle("aac(6')-Ib-cr present") +
+              theme(axis.title=element_text(size=8)) + ylim(5,50)
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+upset_qnr_aac6_DD
+
+```
+
+# Supp Figs S6 and S7: qnr genes vs pheno (MIC & DD, with/without aac6)
+```{r}
+
+upset_qnr_noAac6_MIC | upset_qnr_aac6_MIC
+
+ggsave("figs/FigS6_qnr_MIC.pdf", width=12, height=6)
+ggsave("figs/FigS6_qnr_MIC.png", width=12, height=6)
+
+
+upset_qnr_noAac6_DD | upset_qnr_aac6_DD
+
+ggsave("figs/FigS7_qnr_DD.pdf", width=12, height=6)
+ggsave("figs/FigS7_qnr_DD.png", width=12, height=6)
+
+```
+
+
+# numbers for text - paragraph 5
 
 ``` {r}
 
-# MIC
+# effect of qnr/qep genes, in absence of QRDR and aac6
+
+# MIC data in absence of QRDR and aac6
 qnr_MIC_nullBG_dat <- mic %>%
     filter(aac6==0 & QRDR_mutations==0) %>% 
   select(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) %>%
   mutate(acquired_bin=if_else(acquired_genes==0, 0, 1))
 
-# MIC vs presence/absence of qnr
-wilcox.test(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat)
-t.test(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat)
-summary(lm(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat))
+# MIC vs presence/absence of qnr, in absence of QRDR and aac6
 summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_bin==1])
 summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_bin==0])
 
-# MIC vs qnr count
-summary(lm(log2(as.numeric(Measurement)) ~ acquired_genes, data=qnr_MIC_nullBG_dat))
-
-summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes==1])
-summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes==2])
-summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes>2])
+wilcox.test(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat)
+summary(lm(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat))
 
 
-# DD
+# DD data in absence of QRDR and aac6
 qnr_DD_noGenes_dat <- cipro_antibiogram %>%
     filter(aac6==0 & QRDR_mutations==0) %>% 
     filter(Laboratory.Typing.Method=="Disk diffusion") %>%
   select(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) %>%
   mutate(acquired_bin=if_else(acquired_genes==0, 0, 1))
 
-# DD vs presence/absence
-wilcox.test(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat)
-t.test(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat)
-summary(lm(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat))
+# DD vs presence/absence of qnr, in absence of QRDR and aac6
+
 summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_bin==1])
 summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_bin==0])
 
-# DD vs qnr count
-summary(lm(as.numeric(Measurement) ~ acquired_genes, data=qnr_DD_noGenes_dat))
-summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes==1])
-summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes==2])
-summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes>2])
-
-
+wilcox.test(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat)
+summary(lm(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat))
 
 # all genomes with no acquired genes (MIC/DD)
 qnr_noGenes_dat <- cipro_antibiogram %>%
@@ -554,12 +738,26 @@ qnr_noGenes_dat <- cipro_antibiogram %>%
 
 dim(qnr_noGenes_dat)
 
-
-# nonS vs presence/absence
+# NWT vs presence/absence of qnr, in absence of QRDR and aac6
 fisher.test(table(qnr_noGenes_dat$nonWT_binary, qnr_noGenes_dat$acquired_bin))
 
-# resistance vs presence/absence
+# resistance vs presence/absence of qnr, in absence of QRDR and aac6
 fisher.test(table(qnr_noGenes_dat$resistant, qnr_noGenes_dat$acquired_bin))
+
+
+
+# MIC vs qnr count
+summary(lm(log2(as.numeric(Measurement)) ~ acquired_genes, data=qnr_MIC_nullBG_dat))
+
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes==1])
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes==2])
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes>2])
+
+# DD vs qnr count
+summary(lm(as.numeric(Measurement) ~ acquired_genes, data=qnr_DD_noGenes_dat))
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes==1])
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes==2])
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes>2])
 
 ```
 
@@ -573,7 +771,7 @@ qnr_MIC_noGenes <- cipro_antibiogram %>%
     mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
     ggplot(aes(x=factor(acquired_genes), y=as.numeric(Measurement))) + 
     geom_violin() + 
-    geom_count(aes(colour = Resistance.phenotype)) + 
+    geom_count(aes(colour = SRnwt)) + 
     geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
     geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
     facet_wrap(vars(aac6_label)) +
@@ -589,7 +787,7 @@ qnr_pheno_noGenes <- cipro_antibiogram %>%
     filter(QRDR_mutations==0) %>% 
     filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
     mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
-    ggplot(aes(x=factor(acquired_genes), fill=Resistance.phenotype)) + 
+    ggplot(aes(x=factor(acquired_genes), fill=SRnwt)) + 
     geom_bar(stat='count', position='fill') + 
     facet_wrap(vars(aac6_label)) +
        scale_fill_manual(values = res_colours) + 
@@ -619,7 +817,7 @@ qnr_DD_noGenes <- cipro_antibiogram %>%
     mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
     ggplot(aes(x=factor(acquired_genes), y=as.numeric(Measurement))) + 
     geom_violin() + 
-    geom_count(aes(colour = Resistance.phenotype)) + 
+    geom_count(aes(colour = SRnwt)) + 
     geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
     geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
     facet_wrap(vars(aac6_label)) +
@@ -634,7 +832,7 @@ qnr_DDpheno_noGenes <- cipro_antibiogram %>%
     filter(QRDR_mutations==0) %>% 
     filter(Laboratory.Typing.Method=="Disk diffusion") %>%
     mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
-    ggplot(aes(x=factor(acquired_genes), fill=Resistance.phenotype)) + 
+    ggplot(aes(x=factor(acquired_genes), fill=SRnwt)) + 
     geom_bar(stat='count', position='fill') + 
     facet_wrap(vars(aac6_label)) +
       scale_fill_manual(values = res_colours) + 
@@ -652,203 +850,10 @@ ggsave("figs/FigS8_numQnr_DD_pheno.pdf", width=6, height=4)
 ggsave("figs/FigS8_numQnr_DD_pheno.png", width=6, height=4)
 ```
 
-## set up binary variables for common genes
-``` {r}
-
-# genes in at least 10 genomes
-qnr_genes <- cipro_res_mech %>% 
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  group_by(Resistance.mech.type) %>% 
-  count() %>% filter(startsWith(Resistance.mech.type, "q")) %>% 
-  filter(n>10) %>% pull(Resistance.mech.type)
-
-qnr_presence <- cipro_res_mech %>% 
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  filter(Resistance.mech.type %in% qnr_genes) %>%
-  group_by(strain, Resistance.mech.type) %>% count() %>% pivot_wider(names_from=Resistance.mech.type, values_from=n)
-
-cipro_antibiogram <- left_join(cipro_antibiogram, qnr_presence)
-
-```
 
 
-# Fig S6 panel - upset plot of qnr genes, absence of aac6 and QRDR, with MIC data
-``` {r}
-upset_qnr_noAac6_MIC <- cipro_antibiogram %>% 
-  filter(aac6==0 & QRDR_mutations==0) %>%
-  filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
-  upset(
-      intersect=qnr_genes, 
-      set_sizes=(upset_set_size() +
-                    theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
-      base_annotations=list( # add stacked barplot showing S/nonS
-        'Percent of genomes'=list(
-        aes=aes(x=intersection, fill=Resistance.phenotype),
-          geom=list(
-            geom_bar(stat='count', position='fill'), 
-            theme(legend.position = "none", axis.title=element_text(size=8)),
-             scale_fill_manual(values = res_colours),
-            scale_y_continuous(labels=scales::percent_format()),
-            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
-        )
-      ), 
-      annotations= list( # add violin plot with MIC data
-        'MIC measurement (mg/L)'=(
-            ggplot(mapping=aes(y=as.numeric(Measurement))) +
-              geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
-              geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
-              geom_violin()+ 
-              geom_count(aes(colour = Resistance.phenotype))+
-              scale_color_manual(values = res_colours)+
-              scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
-              theme(legend.position = "none", axis.title=element_text(size=8))  +
-              ggtitle("aac(6')-Ib-cr absent")
-        )
-      )
-    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
 
-```
-
-# Fig S6 panel- upset plot of qnr genes, presence of aac6 but no QRDR, with MIC data
-``` {r}
-upset_qnr_aac6_MIC <- cipro_antibiogram %>% 
-  filter(aac6==1 & QRDR_mutations==0) %>%
-  filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
-  upset(
-      intersect=qnr_genes, 
-      set_sizes=(upset_set_size() +
-                    theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
-      base_annotations=list( # add stacked barplot showing S/nonS
-        'Percent of genomes'=list(
-        aes=aes(x=intersection, fill=Resistance.phenotype),
-          geom=list(
-            geom_bar(stat='count', position='fill'), 
-            theme(legend.position = "none", axis.title=element_text(size=8)),
-             scale_fill_manual(values = res_colours),
-            scale_y_continuous(labels=scales::percent_format()),
-            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
-        )
-      ), 
-      annotations= list( # add violin plot with MIC data
-        'MIC measurement (mg/L)'=(
-            ggplot(mapping=aes(y=as.numeric(Measurement))) +
-              geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
-              geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
-              geom_violin()+ 
-              geom_count(aes(colour = Resistance.phenotype))+
-                scale_color_manual(values = res_colours)+
-              scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
-              labs(colour = "Phenotype") +
-              theme(axis.title=element_text(size=8)) +
-              ggtitle("aac(6')-Ib-cr present")
-        )
-      )
-    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
-
-```
-
-# Fig S7 panel - qnr genes, absence of aac6 and QRDR mutations, with DD data
-``` {r}
-upset_qnr_noAac6_DD <- cipro_antibiogram %>% 
-  filter(aac6==0 & QRDR_mutations==0) %>%
-  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
-  upset(
-      intersect=qnr_genes, # counts are converted to binary
-      set_sizes=(upset_set_size() +
-                    theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
-      base_annotations=list( # add stacked barplot showing S/nonS
-        'Percent of genomes'=list(
-        aes=aes(x=intersection, fill=Resistance.phenotype),
-          geom=list(
-            geom_bar(stat='count', position='fill'), 
-               scale_fill_manual(values = res_colours),
-            scale_y_continuous(labels=scales::percent_format()),
-            theme(legend.position = "none", axis.title=element_text(size=8)),
-            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
-        )
-      ), 
-      annotations= list( # add violin plot with disk diffusion data
-        'Zone diameter (mm)'=(
-            ggplot(mapping=aes(y=as.numeric(Measurement))) +
-              geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
-              geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
-              geom_violin()+ 
-              geom_count(aes(colour = Resistance.phenotype))+
-                scale_color_manual(values = res_colours)+
-              guides(size = "none") +
-              labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
-              ggtitle("Disk diffusion data") +
-              theme(axis.title=element_text(size=8), legend.position="none") + 
-              ggtitle("aac(6')-Ib-cr absent") + ylim(5,50)
-        )
-      )
-    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
-
-upset_qnr_noAac6_DD
-
-```
-
-# Fig S7 panel - qnr genes, presence of aac6 but no QRDR mutations, with DD data
-``` {r}
-upset_qnr_aac6_DD <- cipro_antibiogram %>% 
-  filter(aac6==1 & QRDR_mutations==0) %>%
-  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
-  upset(
-      intersect=qnr_genes, # counts are converted to binary
-      set_sizes=(upset_set_size() +
-                    theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
-      base_annotations=list( # add stacked barplot showing S/nonS
-        'Percent of genomes'=list(
-        aes=aes(x=intersection, fill=Resistance.phenotype),
-          geom=list(
-            geom_bar(stat='count', position='fill'), 
-               scale_fill_manual(values = res_colours),
-            scale_y_continuous(labels=scales::percent_format()),
-            theme(legend.position = "none", axis.title=element_text(size=8)),
-            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
-        )
-      ), 
-      annotations= list( # add violin plot with disk diffusion data
-        'Zone diameter (mm)'=(
-            ggplot(mapping=aes(y=as.numeric(Measurement))) +
-              geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
-              geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
-              geom_violin()+ 
-              geom_count(aes(colour = Resistance.phenotype))+
-                scale_color_manual(values = res_colours)+
-              guides(size = "none") +
-              labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
-              ggtitle("aac(6')-Ib-cr present") +
-              theme(axis.title=element_text(size=8)) + ylim(5,50)
-        )
-      )
-    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
-
-upset_qnr_aac6_DD
-
-```
-
-# (Fig S6-7) Supp Figs: qnr genes vs pheno (MIC & DD, with/without aac6)
-```{r}
-
-upset_qnr_noAac6_DD | upset_qnr_aac6_DD
-
-ggsave("figs/Fig7_qnr_DD.pdf", width=12, height=6)
-ggsave("figs/Fig7_qnr_DD.png", width=12, height=6)
-
-
-upset_qnr_noAac6_MIC | upset_qnr_aac6_MIC
-
-ggsave("figs/Fig6_qnr_MIC.pdf", width=12, height=6)
-ggsave("figs/Fig6_qnr_MIC.png", width=12, height=6)
-
-```
-
-# Fig3 panel - aac6, QRDR mutations, qnr with DD data
+# Fig3 panel b - aac6, QRDR mutations, qnr with DD data
 ``` {r}
 upset_aac6_simple_DD <- cipro_antibiogram %>% 
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
@@ -862,7 +867,7 @@ upset_aac6_simple_DD <- cipro_antibiogram %>%
   sort_intersections_by='degree',
       base_annotations=list( # add stacked barplot showing S/nonS
         'Percent of genomes'=list(
-        aes=aes(x=intersection, fill=Resistance.phenotype),
+        aes=aes(x=intersection, fill=SRnwt),
           geom=list(
             geom_bar(stat='count', position='fill'), 
              scale_fill_manual(values = res_colours),
@@ -877,7 +882,7 @@ upset_aac6_simple_DD <- cipro_antibiogram %>%
               geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
               geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
               geom_violin()+ 
-              geom_count(aes(colour = Resistance.phenotype))+
+              geom_count(aes(colour = SRnwt))+
               scale_color_manual(values = res_colours)+
               guides(size = "none") +
               labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
@@ -891,7 +896,7 @@ upset_aac6_simple_DD
 
 ```
 
-# Fig3 panel - aac6, QRDR mutations, qnr with MIC data
+# Fig3 panel a - aac6, QRDR mutations, qnr with MIC data
 ``` {r}
 upset_aac6_simple_MIC <- cipro_antibiogram %>% 
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
@@ -905,7 +910,7 @@ upset_aac6_simple_MIC <- cipro_antibiogram %>%
       sort_intersections_by='degree',
       base_annotations=list( # add stacked barplot showing S/nonS
         'Percent of genomes'=list(
-        aes=aes(x=intersection, fill=Resistance.phenotype),
+        aes=aes(x=intersection, fill=SRnwt),
           geom=list(
             geom_bar(stat='count', position='fill'), 
              scale_fill_manual(values = res_colours) ,
@@ -920,7 +925,7 @@ upset_aac6_simple_MIC <- cipro_antibiogram %>%
               geom_hline(aes(yintercept = 1), linetype = 1, alpha = 0.6, color = "black")  +
               geom_hline(aes(yintercept = 0.25), linetype = 2, alpha = 0.6, color = "black")  +
               geom_violin()+ 
-              geom_count(aes(colour = Resistance.phenotype))+
+              geom_count(aes(colour = SRnwt))+
                scale_color_manual(values = res_colours)+
               scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
               labs(colour = "Phenotype") +
@@ -945,7 +950,7 @@ ggsave("figs/Fig3_simple_comb_MIC_DD.png", width=12, height=6)
 
 ```
 
-# effect of aac6 gene, in absence of QRDR and other acquired
+# numbers for text - paragraph 6, effect of aac6 gene, in absence of QRDR and other acquired
 
 ``` {r}
 
