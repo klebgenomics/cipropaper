@@ -1,0 +1,197 @@
+---
+title: "Ciprofloxacin resistance in Klebsiella pneumoniae"
+author: "Iana Amke, Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(countrycode)
+library(pheatmap)
+library(ggpubr)
+library(ggiraphExtra)
+library(ggupset)
+library(scales)
+library(reshape2)
+library(ComplexUpset)
+library(RColorBrewer)
+library(naniar)
+library(grid)
+library(gtsummary)
+library(broom)
+library(patchwork)
+library(ggrepel)
+library(magrittr)
+library(epiR)
+
+# https://krassowski.github.io/complex-upset/articles/Examples_R.html
+```
+
+# load data
+``` {r}
+geno <- read_delim("tables/TableS1_genotypes.tsv")
+
+pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+
+cipro_antibiogram <- full_join(geno,pheno)
+
+```
+
+# Rules-based classifier
+
+``` {r}
+# assign to genotype combinations
+
+cipro_antibiogram <- cipro_antibiogram %>% 
+  mutate(rules_category = if_else(QRDR_mutations==0 & acquired_genes==0 & aac6==0, 1, 0)) %>% 
+  mutate(rules_category = if_else((QRDR_mutations==0 & acquired_genes==0 & aac6==1), 2, rules_category)) %>%
+  mutate(rules_category = if_else((QRDR_mutations==1 & acquired_genes==0), 3, rules_category)) %>%
+  mutate(rules_category = if_else((QRDR_mutations>=2 & acquired_genes==0), 4, rules_category)) %>%
+  mutate(rules_category = if_else((QRDR_mutations==0 & acquired_genes==1 & aac6==0), 5, rules_category)) %>%
+  mutate(rules_category = if_else((QRDR_mutations==0 & acquired_genes==1 & aac6==1), 6, rules_category)) %>%
+  mutate(rules_category = if_else((QRDR_mutations==0 & acquired_genes>=2), 7, rules_category)) %>%
+  mutate(rules_category = if_else((QRDR_mutations>=1 & acquired_genes>=1), 8, rules_category))
+
+# check all are assigned
+table(cipro_antibiogram$rules_category)
+
+cipro_antibiogram <- cipro_antibiogram %>% 
+  mutate(rules_prediction = if_else(rules_category<=2, "S", "R"))
+
+cipro_antibiogram$rules_prediction <- factor(cipro_antibiogram$rules_prediction, levels=c('S', 'R'))
+
+```
+
+# Fig 4 - rules prediction plots
+```{r MIC_DD_distribution_plots}
+
+profile_colours <- c("1" = "#9DDFFE", "2"="#1A83B6", "3"="#FFCF81", "4"="#FFA74F", "5"="#F27C42", "6"="#E34C33", "7"="#BE2222", "8"="#641212")
+
+profile_labels=c("1" = "0 QRDR, 0 PMQR, 0 AAC", "2"="0 QRDR, 0 PMQR, 1 AAC", "3"="1 QRDR, 0 PMQR, ≥0 AAC", "4"="≥2 QRDR, 0 PMQR, ≥0 AAC", "5"="0 QRDR, 1 PMQR, 0 AAC", "6"="0 QRDR, 1 PMQR, 1 AAC", "7"="0 QRDR, ≥2 PMQR, ≥0 AAC","8"="≥1 QRDR, ≥1 PMQR, ≥0 AAC")
+
+# MIC distribution R vs. S
+rules_MIC_distributionRS <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  ggplot(aes(as.factor(round(as.numeric(Measurement), digits=2)), fill = rules_prediction)) + geom_bar() + 
+  labs(title = "A)", y = "Number of genomes", x="Measurement (mg/L)", 
+       linetype = "MIC breakpoints") +
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+       scale_fill_manual(values = res_colours)+
+  theme_minimal()+
+    theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+    theme(legend.position = "none")
+rules_MIC_distributionRS
+
+
+# DD distribution
+rules_DD_distributionRS <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  ggplot(aes(as.numeric(Measurement), fill = rules_prediction)) + geom_bar() + 
+#  geom_vline(aes(xintercept = 21, linetype = "resistant"), color = "black") +
+#  geom_vline(aes(xintercept = 25, linetype = "susceptible"), color = "black") +
+  labs(title = "B)", y = "Number of genomes", x ="Measurement (mm)",
+       linetype = "Disk diffusion \nbreakpoints", fill="Rules prediction") +
+        scale_fill_manual(values = res_colours)+
+  theme_minimal()
+```
+
+``` {r}
+
+# MIC distribution
+rules_MIC_distribution <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), fill = as.factor(rules_category))) + geom_bar() + 
+  labs(x = "Measurement (mg/L)", y = "Number of genomes", 
+       linetype = "MIC breakpoints", title="C)", fill="Rules prediction category") +
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+#  geom_vline(aes(xintercept = 3), color = "grey") +
+#  annotate("text", x=2.75, y=2400, label="ECOFF", angle=90, color="grey", size=2)+
+    geom_vline(aes(xintercept = 5.5), color = "black") +
+    annotate("text", x=5.75, y=2800, label="R", size=2.5)+
+      geom_vline(aes(xintercept = 4.5), color = "black") +
+    annotate("text", x=4.25, y=2800, label="S", size=2.5)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust=1))+
+  theme(legend.position = "none")
+rules_MIC_distribution
+
+```
+
+``` {r}
+# DD distribution
+rules_DD_distribution <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  ggplot(aes(as.numeric(Measurement), fill = as.factor(rules_category))) + geom_bar() + 
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+#  geom_vline(aes(xintercept = 22), color = "grey") +
+#  annotate("text", x=21.5, y=350, label="ECOFF", angle=90, color="grey", size=2)+
+    geom_vline(aes(xintercept = 21.5), color = "black") +
+    annotate("text", x=20.5, y=400, label="R", angle=90, size=2)+
+    geom_vline(aes(xintercept = 24.5), color = "black") +
+    #annotate("text", x=25.5, y=350, label="S (EUCAST)", angle=90, size=2)+
+    geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
+    annotate("text", x=26.5, y=400, label="S", angle=90, size=2)+
+  theme_minimal()+
+  labs(y = "Number of genomes", x="Measurement (mm)", title="D)", fill="Rules prediction category") +
+  theme_minimal()
+
+```
+
+```{r rules_category_SIR plot}
+rules_category_SIR_plot <- cipro_antibiogram %>% 
+  ggplot(aes(x=as.factor(rules_category), fill=factor(Resistance.phenotype, levels = c("S", "I", "R")))) + 
+  geom_bar(position = "fill") + coord_flip() +
+  scale_y_continuous(labels = scales::percent)+
+  labs(title="E)", x="", y="Proportion (%)", fill="Phenotype") +
+  scale_fill_manual(values = res_colours)+
+  scale_x_discrete(limits=rev, labels=profile_labels) +
+  geom_text_repel(aes(label = after_stat(count)), stat = "count", size=2, direction="x", position=position_fill(0.4)) +
+  theme_minimal()
+  rules_category_SIR_plot
+```
+
+
+``` {r}
+(((rules_MIC_distributionRS | rules_DD_distributionRS) / (rules_MIC_distribution | rules_DD_distribution)) / rules_category_SIR_plot)
+
+ggsave(height=10, width=12, file="figs/Fig4_rules_MIC_DD_distributionRS.png")
+
+ggsave(height=10, width=12, file="figs/Fig4_rules_MIC_DD_distributionRS.pdf")
+ 
+```
