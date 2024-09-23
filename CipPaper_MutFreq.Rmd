@@ -152,72 +152,57 @@ R_withAac
 R_withAac/totalR*100
 ```
 
-
-# Table S5 - freq per determinant
-``` {r TableS5}
-freq_per_det <- cipro_res_mech %>% 
-  select(strain, Resistance.mech.type) %>%
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  group_by(Resistance.mech.type) %>% 
-  count() %>% rename(n_gene=n) %>%
-  bind_rows( 
-    cipro_antibiogram %>% 
-    select(`GyrA-83`:`ParC-84`) %>% 
-    apply(2, sum) %>% 
-    as_tibble(rownames="Resistance.mech.type") %>%
-    rename(n_gene=value)
-  )
+# function to cross-tabulate geno-pheno
+``` {r}
+get_phenotype_table <- function(phenotype=phenotype,  strain_list=unique(cipro_antibiogram$strain), freq_per_det=freq_per_det) {
 
 freq_per_pheno <- cipro_antibiogram %>% 
-  group_by(Resistance.phenotype) %>% 
-  count() %>% rename(n_pheno=n)
+  filter(strain %in% strain_list) %>%
+  group_by(get(phenotype)) %>% 
+  count() %>% rename(P1=n)
 
-freq_per_det_byPheno <- cipro_res_mech %>% 
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, Resistance.phenotype) %>% 
-  count() %>% 
+freq_per_det_byPheno <- cipro_res_mech_clean %>%
+  filter(strain %in% strain_list) %>%
+  group_by(Flq.resistance.mech, Resistance.mech.type, get(phenotype)) %>% 
+  count() %>%
   bind_rows( # add `GyrA-83`
     cipro_antibiogram %>% 
+      filter(strain %in% strain_list) %>%
       filter(`GyrA-83`>0) %>%
-      group_by(Resistance.phenotype) %>% 
+      group_by(get(phenotype)) %>% 
       count() %>%
       mutate(Resistance.mech.type="GyrA-83")
   ) %>%
   bind_rows( # add `GyrA-87`
     cipro_antibiogram %>% 
+      filter(strain %in% strain_list) %>%
       filter(`GyrA-87`>0) %>%
-      group_by(Resistance.phenotype) %>% 
+      group_by(get(phenotype)) %>% 
       count() %>%
       mutate(Resistance.mech.type="GyrA-87")
   ) %>%
   bind_rows( # add `ParC-80`
     cipro_antibiogram %>% 
+      filter(strain %in% strain_list) %>%
       filter(`ParC-80`>0) %>%
-      group_by(Resistance.phenotype) %>% 
+      group_by(get(phenotype)) %>% 
       count() %>%
       mutate(Resistance.mech.type="ParC-80")
   ) %>%
   bind_rows( # add `ParC-84`
     cipro_antibiogram %>% 
+      filter(strain %in% strain_list) %>%
       filter(`ParC-84`>0) %>%
-      group_by(Resistance.phenotype) %>% 
+      group_by(get(phenotype)) %>% 
       count() %>%
       mutate(Resistance.mech.type="ParC-84")
   ) %>%
   left_join(freq_per_det) %>% 
   left_join(freq_per_pheno) %>% 
   filter(Resistance.mech.type != "-") %>%
-  mutate(freq_within_phenoGroup = n/n_pheno) %>% 
-#  mutate(prop_test_p = 
-#           prop.test(c(n,n_gene-n), 
-#                     c(n_pheno, nrow(cipro_antibiogram) - n_pheno))$p.value) %>%
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
+  rename(G1P1=n) %>% 
+  mutate(G1P0=G1-G1P1) %>%
+  mutate(G0P1=P1-G1P1) %>%
   mutate(G0P0=nrow(cipro_antibiogram) - G1P1-G1P0-G0P1) %>%
   mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
   mutate(p_val=case_when(
@@ -225,127 +210,98 @@ freq_per_det_byPheno <- cipro_res_mech %>%
     TRUE ~ NA
   )) %>%
   ungroup() %>%
-  select(Resistance.mech.type, Resistance.phenotype, n, freq_within_phenoGroup, OR, p_val) %>%
-  mutate(summary=paste0("n=", n, " (", round(freq_within_phenoGroup*100,2), "%)"))
+  mutate(ppv = G1P1/G1) %>%
+  mutate(freq_within_phenoGroup = G1P1/P1) %>%
+  rename(phenotype=`get(phenotype)`) %>%
+  mutate(summary=paste0("n=", G1P1, " (", round(freq_within_phenoGroup*100,2), "%)"))
+  
+return(table=freq_per_det_byPheno)  
+}
+```
 
-
-freq_per_phenoWT <- cipro_antibiogram %>% 
-  group_by(WT_vs_nonWT) %>% 
-  count() %>% rename(n_pheno=n)
-
-freq_per_det_byWT <- cipro_res_mech %>% 
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, WT_vs_nonWT) %>% 
-  count() %>% 
-  bind_rows( # add `GyrA-83`
-    cipro_antibiogram %>% 
-      filter(`GyrA-83`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="GyrA-83")
-  ) %>%
-  bind_rows( # add `GyrA-87`
-    cipro_antibiogram %>% 
-      filter(`GyrA-87`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="GyrA-87")
-  ) %>%
-  bind_rows( # add `ParC-80`
-    cipro_antibiogram %>% 
-      filter(`ParC-80`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="ParC-80")
-  ) %>%
-  bind_rows( # add `ParC-84`
-    cipro_antibiogram %>% 
-      filter(`ParC-84`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="ParC-84")
-  ) %>%
-  left_join(freq_per_det) %>% 
-  left_join(freq_per_phenoWT) %>% 
-  filter(Resistance.mech.type != "-") %>%
-  mutate(freq_within_phenoGroup = n/n_pheno) %>% 
-#  mutate(prop_test_p = 
-#           prop.test(c(n,n_gene-n), 
-#                     c(n_pheno, nrow(cipro_antibiogram) - n_pheno))$p.value) %>%
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
-  mutate(G0P0=nrow(cipro_antibiogram) - G1P1-G1P0-G0P1) %>%
-  mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
-  mutate(p_val=case_when(
-    OR!="Inf" ~ fisher.test(x=matrix(c(G0P0, G1P0, G0P1, G1P1), ncol=2))$p.value,
-    TRUE ~ NA
-  )) %>%
-  ungroup() %>%
-  select(Resistance.mech.type, WT_vs_nonWT, n, freq_within_phenoGroup, OR, p_val) %>%
-  mutate(summary=paste0("n=", n, " (", round(freq_within_phenoGroup*100,2), "%)"))
+# Table S5 - freq per determinant
+``` {r TableS5}
+# clean up determinants for analysis
+cipro_res_mech_clean <- cipro_res_mech %>% 
+  mutate(Resistance.mech.type=gsub("[\\^\\*]", "", Resistance.mech.type))
 
 ```
 
 ``` {r}
+freq_per_det <- cipro_res_mech_clean %>%
+  group_by(Resistance.mech.type) %>% 
+  count() %>% rename(G1=n) %>%
+  bind_rows( 
+    cipro_antibiogram %>% 
+    select(`GyrA-83`:`ParC-84`) %>% 
+    apply(2, sum) %>% 
+    as_tibble(rownames="Resistance.mech.type") %>%
+    rename(G1=value)
+  )
+
+tableR <- get_phenotype_table(phenotype="Resistance.phenotype", freq_per_det=freq_per_det)
+
+tableNTW <- get_phenotype_table(phenotype="WT_vs_nonWT", freq_per_det=freq_per_det)
+
 # assemble summary table
-freq_per_det_byPheno_summary <- freq_per_det_byPheno %>%
-  filter(Resistance.phenotype=="R") %>% # add resistance columns
-  select(Resistance.mech.type, summary, OR, p_val) %>%
+
+# R columns
+freq_per_det_byPheno_summary <- tableR %>%
+  filter(phenotype=="R") %>% # get R column
   rename(Resistant=summary) %>%
-  rename(R_pval=p_val) %>%
-  rename(R_OR=OR)
+  mutate(R_PPV=paste0(round(ppv*100,2),"%")) %>%
+  mutate(R_OR=if_else(OR!="Inf",paste0(round(OR,2), " (p=",scientific(p_val,2), ")"), "-")) %>%
+  select(Resistance.mech.type, Resistant, R_PPV, R_OR)
 
-freq_per_det_byPheno_summary <- freq_per_det_byWT %>%
-  filter(WT_vs_nonWT=="non-wt (I/R)") %>% # add NWT column
-  select(Resistance.mech.type, summary, OR, p_val) %>%
+# NWT columns
+freq_per_det_byPheno_summary <- tableNTW %>%
+  filter(phenotype=="non-wt (I/R)") %>% # add NWT column
   rename(NWT=summary) %>% 
-  full_join(freq_per_det_byPheno_summary) %>%
-  rename(NWT_pval=p_val) %>%
-  rename(NWT_OR=OR)
+  mutate(NWT_PPV=paste0(round(ppv*100,2),"%")) %>%
+  mutate(NWT_OR=if_else(OR!="Inf",paste0(round(OR,2), " (p=",scientific(p_val,2), ")"), "-")) %>%
+  select(Resistance.mech.type, NWT, NWT_PPV, NWT_OR) %>%
+  full_join(freq_per_det_byPheno_summary) 
 
-freq_per_det_byPheno_summary <- freq_per_det_byPheno %>%
-  filter(Resistance.phenotype=="S") %>% # add susceptible/WT column
-  select(Resistance.mech.type, summary) %>%
+# S columns and Gene, Total
+freq_per_det_byPheno_summary <- tableR %>%
+  filter(phenotype=="S") %>% # add susceptible/WT column
   rename(`Susceptible`=summary) %>% 
   full_join(freq_per_det_byPheno_summary) %>%
-  full_join(freq_per_det) %>% # add totals column
   filter(Resistance.mech.type!="-") %>%
-  mutate(Total=paste0("n=", n_gene, " (", round(n_gene/nrow(cipro_antibiogram)*100,2), "%)")) %>% 
-  #arrange(-n_gene) %>% # sort by frequency of determinant
+  full_join(freq_per_det, by="Resistance.mech.type") %>%
+  mutate(Total=if_else(is.na(G1.y), "0", paste0("n=", G1.y, " (", round(G1.y/nrow(cipro_antibiogram)*100,2), "%)"))) %>% 
+  filter(Resistance.mech.type!="-") %>%
   arrange(Resistance.mech.type) %>% # sort alphabetically
-  select(-n_gene) %>%
+  select(Resistance.mech.type, Total, Susceptible, Resistant, R_PPV, R_OR, NWT, NWT_PPV, NWT_OR) %>%
   rename(Determinant=Resistance.mech.type) %>%
-  relocate(Total, .after=Determinant) %>%
-  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), "-")) %>%
-  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), "-")) %>%
-  select(Determinant, Total, Susceptible, Resistant, R_test, NWT, NWT_test)
-
-```
-
-# write out Table 5
-``` {r}
-freq_per_det_byPheno_summary %>%
   mutate(Susceptible=if_else(is.na(Susceptible), "0", Susceptible)) %>%
   mutate(NWT=if_else(is.na(NWT), "0", NWT)) %>%
   mutate(Resistant=if_else(is.na(Resistant), "0", Resistant)) %>%
-  mutate(R_test=if_else(is.na(R_test),"-",R_test)) %>%
-  mutate(NWT_test=if_else(is.na(NWT_test),"-",NWT_test)) %>%
+  mutate(R_OR=if_else(is.na(R_OR),"-",R_OR)) %>%
+  mutate(NWT_OR=if_else(is.na(NWT_OR),"-",NWT_OR)) %>%
+  mutate(R_PPV=if_else(is.na(R_PPV),"-",R_PPV)) %>%
+  mutate(NWT_PPV=if_else(is.na(NWT_PPV),"-",NWT_PPV))
+```
+
+# write out Table S5
+``` {r}
+# title columns for table
+freq_per_det_byPheno_summary %>%
   rename(`Total (% of genomes)`=Total) %>%
-  rename(`Association with Resistance (OR, p-value)`=R_test) %>%
-  rename(`Association with NWT (OR, p-value)`=NWT_test) %>%
-  rename(`Resistant (% of phenotype)`=Resistant) %>%
-  rename(`Susceptible (% of phenotype)`=Susceptible) %>%
-  rename(`NWT (% of phenotype)`=NWT) %>%
-write_csv(file="tables/TableS5_freq_per_det_byPheno_summary.csv")
+  rename(`Association with Resistance (OR, p-value)`=R_OR) %>%
+  rename(`Association with NWT (OR, p-value)`=NWT_OR) %>%
+  rename(`Resistant (% of phenotype with determinant)`=Resistant) %>%
+  rename(`Susceptible (% of phenotype with determinant)`=Susceptible) %>%
+  rename(`NWT (% of phenotype with determinant)`=NWT) %>%
+  rename(`PPV for Resistant`=R_PPV) %>%
+  rename(`PPV for NWT`=NWT_PPV) %>%
+  write_csv(file="tables/TableS5_freq_per_det_byPheno_summary.csv")
 ```
 
 
 # Table 1
 ## freq stats for single QRDR mutations found in genomes without acquired genes or aac
-``` {r Table1}
+``` {r }
 strains_singleQRDR_noAcquired <- cipro_antibiogram %>%
   filter(QRDR_mutations==1 & aac6==0 & acquired_genes==0) %>%
   pull(strain)
@@ -354,12 +310,12 @@ strains_01QRDR_noAcquired <- cipro_antibiogram %>%
   filter(QRDR_mutations<=1 & aac6==0 & acquired_genes==0) %>%
   pull(strain)
 
-freq_per_det_01QRDR_noAcquired <- cipro_res_mech %>% 
+freq_per_det_01QRDR_noAcquired <- cipro_res_mech_clean %>% 
   filter(strain %in% strains_01QRDR_noAcquired) %>%
   select(strain, Resistance.mech.type) %>%
   group_by(Resistance.mech.type) %>% 
   count() %>% 
-  rename(n_gene=n) %>% 
+  rename(G1=n) %>% 
   filter(Resistance.mech.type!="-") %>%
   bind_rows( 
     cipro_antibiogram %>% 
@@ -367,161 +323,17 @@ freq_per_det_01QRDR_noAcquired <- cipro_res_mech %>%
     select(`GyrA-83`:`ParC-84`) %>% 
     apply(2, sum) %>% 
     as_tibble(rownames="Resistance.mech.type") %>%
-    rename(n_gene=value)
+    rename(G1=value)
   )
 
-freq_per_pheno_singleQRDR_noAcquired <- cipro_antibiogram %>% 
-  filter(strain %in% strains_01QRDR_noAcquired) %>%
-  group_by(Resistance.phenotype) %>% 
-  count() %>% rename(n_pheno=n)
-  
-freq_per_det_byPheno_singleQRDRonly <- cipro_res_mech %>% 
-  filter(strain %in% strains_singleQRDR_noAcquired) %>%
-  filter(Flq.resistance.mech=="Flq_mutations") %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, Resistance.phenotype) %>% 
-  count() %>% 
-  bind_rows( # add `GyrA-83`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`GyrA-83`>0) %>%
-      group_by(Resistance.phenotype) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="GyrA-83")
-  ) %>%
-  bind_rows( # add `GyrA-87`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`GyrA-87`>0) %>%
-      group_by(Resistance.phenotype) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="GyrA-87")
-  ) %>%
-  bind_rows( # add `ParC-80`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`ParC-80`>0) %>%
-      group_by(Resistance.phenotype) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="ParC-80")
-  ) %>%
-  bind_rows( # add `ParC-84`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`ParC-84`>0) %>%
-      group_by(Resistance.phenotype) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="ParC-84")
-  ) %>%
-  left_join(freq_per_det_01QRDR_noAcquired) %>% 
-  left_join(freq_per_pheno_singleQRDR_noAcquired) %>% 
-  filter(Resistance.mech.type != "-") %>%
- # mutate(freq_within_phenoGroup = n/n_pheno) %>% 
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
-  mutate(G0P0=length(strains_01QRDR_noAcquired) - G1P1-G1P0-G0P1) %>%
-  mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
-  mutate(p_val=case_when(
-    OR!="Inf" ~ fisher.test(x=matrix(c(G0P0, G1P0, G0P1, G1P1), ncol=2))$p.value,
-    TRUE ~ NA
-  )) %>%
-  ungroup() %>%
-  mutate(summary=paste0("n=", n, " (", round(n/n_gene*100,2), "%)")) %>%
-  select(Resistance.mech.type, Resistance.phenotype, n, OR, p_val, summary, G0P0, G1P0, G0P1, G1P1) 
+tableR_soloQRDR <- get_phenotype_table(phenotype="Resistance.phenotype", strain_list=strains_01QRDR_noAcquired, freq_per_det=freq_per_det_01QRDR_noAcquired)
 
-# NWT
-freq_per_pheno_singleQRDR_noAcquired_NWT <- cipro_antibiogram %>% 
-  filter(strain %in% strains_01QRDR_noAcquired) %>%
-  group_by(WT_vs_nonWT) %>% 
-  count() %>% rename(n_pheno=n)
-  
-freq_per_det_byPheno_singleQRDRonly_NWT <- cipro_res_mech %>% 
-  filter(strain %in% strains_singleQRDR_noAcquired) %>%
-  filter(Flq.resistance.mech=="Flq_mutations") %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, WT_vs_nonWT) %>% 
-  count() %>% 
-  bind_rows( # add `GyrA-83`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`GyrA-83`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="GyrA-83")
-  ) %>%
-  bind_rows( # add `GyrA-87`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`GyrA-87`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="GyrA-87")
-  ) %>%
-  bind_rows( # add `ParC-80`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`ParC-80`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="ParC-80")
-  ) %>%
-  bind_rows( # add `ParC-84`
-    cipro_antibiogram %>% 
-      filter(strain %in% strains_singleQRDR_noAcquired) %>%
-      filter(`ParC-84`>0) %>%
-      group_by(WT_vs_nonWT) %>% 
-      count() %>%
-      mutate(Resistance.mech.type="ParC-84")
-  ) %>%
-  left_join(freq_per_det_01QRDR_noAcquired) %>% 
-  left_join(freq_per_pheno_singleQRDR_noAcquired_NWT) %>% 
-  filter(Resistance.mech.type != "-") %>%
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
-  mutate(G0P0=length(strains_01QRDR_noAcquired) - G1P1-G1P0-G0P1) %>%
-  mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
-  mutate(p_val=case_when(
-    OR!="Inf" ~ fisher.test(x=matrix(c(G0P0, G1P0, G0P1, G1P1), ncol=2))$p.value,
-    TRUE ~ NA
-  )) %>%
-  ungroup() %>%
-  mutate(summary=paste0("n=", n, " (", round(n/n_gene*100,2), "%)")) %>%
-  select(Resistance.mech.type, WT_vs_nonWT, n, OR, p_val, summary, G0P0, G1P0, G0P1, G1P1) 
-
-# assemble summary table
-freq_per_det_byPheno_summary_singleQRDR <- freq_per_det_byPheno_singleQRDRonly %>%
-  filter(Resistance.phenotype=="R") %>% # add resistance columns
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(Resistant=summary) %>%
-  rename(R_OR=OR) %>%
-  rename(R_pval=p_val)
-
-freq_per_det_byPheno_summary_singleQRDR <- freq_per_det_byPheno_singleQRDRonly_NWT %>%
-  filter(WT_vs_nonWT=="non-wt (I/R)") %>% # add intermediate column
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(NWT=summary) %>% 
-  full_join(freq_per_det_byPheno_summary_singleQRDR)%>%
-  rename(NWT_OR=OR) %>%
-  rename(NWT_pval=p_val)
-
-freq_per_det_byPheno_summary_singleQRDR <- freq_per_det_byPheno_singleQRDRonly %>%
-  filter(Resistance.phenotype=="S") %>% # add susceptible column
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(Susceptible=summary) %>% 
-  full_join(freq_per_det_byPheno_summary_singleQRDR) %>%
-  full_join(freq_per_det_01QRDR_noAcquired) %>% # add totals column
-  filter(Resistance.mech.type!="-") %>%
-  rename(Total=n_gene) %>% 
-  arrange(Resistance.mech.type) %>% # sort by frequency of determinant
-  rename(`Solo determinant`=Resistance.mech.type) %>%
-  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), NA)) %>%
-  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), NA)) %>%
-  select(`Solo determinant`, Total, Susceptible, NWT, Resistant, R_test, NWT_test)
+tableNTW_soloQRDR <- get_phenotype_table(phenotype="WT_vs_nonWT", strain_list=strains_01QRDR_noAcquired, freq_per_det=freq_per_det_01QRDR_noAcquired)
 
 ```
 
 ## freq stats for acquired genes found in genomes without QRDR or aac
-``` {r }
+``` {r}
 strains_single_acquired_gene <- cipro_antibiogram %>%
   filter(QRDR_mutations==0 & aac6==0 & acquired_genes==1) %>%
   pull(strain)
@@ -530,233 +342,200 @@ strains_noQRDR_noAac <- cipro_antibiogram %>%
   filter(QRDR_mutations==0 & aac6==0) %>%
   pull(strain)
 
-freq_per_det_noQRDR_noAac <- cipro_res_mech %>% 
+freq_per_det_noQRDR_noAac <- cipro_res_mech_clean %>% 
   filter(strain %in% strains_noQRDR_noAac) %>%
   select(strain, Resistance.mech.type) %>%
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
   group_by(Resistance.mech.type) %>% 
   count() %>% 
-  rename(n_gene=n) %>% 
+  rename(G1=n) %>% 
   filter(Resistance.mech.type!="-")
 
-freq_per_pheno_noQRDR_noAac <- cipro_antibiogram %>% 
-  filter(strain %in% strains_noQRDR_noAac) %>%
-  group_by(Resistance.phenotype) %>% 
-  count() %>% rename(n_pheno=n)
-  
-freq_per_det_byPheno_acquiredGeneOnly <- cipro_res_mech %>% 
-  filter(strain %in% strains_single_acquired_gene) %>%
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  filter(Flq.resistance.mech=="Flq_acquired") %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, Resistance.phenotype) %>% 
-  count() %>% 
-  left_join(freq_per_det_noQRDR_noAac) %>% 
-  left_join(freq_per_pheno_noQRDR_noAac) %>% 
-  filter(Resistance.mech.type != "-") %>%
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
-  mutate(G0P0=length(strains_noQRDR_noAac) - G1P1-G1P0-G0P1) %>%
-  mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
-  mutate(p_val=case_when(
-    OR!="Inf" ~ fisher.test(x=matrix(c(G0P0, G1P0, G0P1, G1P1), ncol=2))$p.value,
-    TRUE ~ NA
-  )) %>%
-  ungroup() %>%
-  mutate(summary=paste0("n=", n, " (", round(n/n_gene*100,2), "%)")) %>%
-  select(Resistance.mech.type, Resistance.phenotype, n, OR, p_val, summary, G0P0, G1P0, G0P1, G1P1) 
+tableR_soloPMQR <- get_phenotype_table(phenotype="Resistance.phenotype", strain_list=strains_noQRDR_noAac, freq_per_det=freq_per_det_noQRDR_noAac)
 
-
-freq_per_pheno_noQRDR_noAac_NWT <- cipro_antibiogram %>% 
-  filter(strain %in% strains_noQRDR_noAac) %>%
-  group_by(WT_vs_nonWT) %>% 
-  count() %>% rename(n_pheno=n)
-  
-freq_per_det_byPheno_acquiredGeneOnly_NWT <- cipro_res_mech %>% 
-  filter(strain %in% strains_single_acquired_gene) %>%
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  filter(Flq.resistance.mech=="Flq_acquired") %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, WT_vs_nonWT) %>% 
-  count() %>% 
-  left_join(freq_per_det_noQRDR_noAac) %>% 
-  left_join(freq_per_pheno_noQRDR_noAac_NWT) %>% 
-  filter(Resistance.mech.type != "-") %>%
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
-  mutate(G0P0=length(strains_noQRDR_noAac) - G1P1-G1P0-G0P1) %>%
-  mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
-  mutate(p_val=case_when(
-    OR!="Inf" ~ fisher.test(x=matrix(c(G0P0, G1P0, G0P1, G1P1), ncol=2))$p.value,
-    TRUE ~ NA
-  )) %>%
-  ungroup() %>%
-  mutate(summary=paste0("n=", n, " (", round(n/n_gene*100,2), "%)")) %>%
-  select(Resistance.mech.type, WT_vs_nonWT, n, OR, p_val, summary, G0P0, G1P0, G0P1, G1P1) 
-
-# assemble summary table
-freq_per_det_byPheno_summary_singleAcquired <- freq_per_det_byPheno_acquiredGeneOnly %>%
-  filter(Resistance.phenotype=="R") %>% # add resistance columns
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(Resistant=summary) %>%
-  rename(R_OR=OR) %>%
-  rename(R_pval=p_val)
-
-freq_per_det_byPheno_summary_singleAcquired <- freq_per_det_byPheno_acquiredGeneOnly_NWT %>%
-  filter(WT_vs_nonWT=="non-wt (I/R)") %>% # add intermediate column
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(NWT=summary) %>% 
-  rename(NWT_OR=OR) %>%
-  rename(NWT_pval=p_val) %>%
-  full_join(freq_per_det_byPheno_summary_singleAcquired)
-
-freq_per_det_byPheno_summary_singleAcquired <- freq_per_det_byPheno_acquiredGeneOnly %>%
-  filter(Resistance.phenotype=="S") %>% # add susceptible column
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(Susceptible=summary) %>% 
-  full_join(freq_per_det_byPheno_summary_singleAcquired) %>%
-  full_join(freq_per_det_noQRDR_noAac) %>% # add totals column
-  filter(Resistance.mech.type!="-") %>%
-  rename(Total=n_gene) %>% 
-  arrange(Resistance.mech.type) %>% # sort by frequency of determinant
-  rename(`Solo determinant`=Resistance.mech.type) %>%
-  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), NA)) %>%
-  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), NA)) %>%
-  select(`Solo determinant`, Total, Susceptible, NWT, Resistant, R_test, NWT_test)
-
-
+tableNTW_soloPMQR <- get_phenotype_table(phenotype="WT_vs_nonWT", strain_list=strains_noQRDR_noAac, freq_per_det=freq_per_det_noQRDR_noAac)
 
 ```
 
-
 #### aac6 (in absence of QRDR/qnr/qep, compare to denominator of all lacking QRDR/qnr/qep)
-
 ``` {r}
-strains_aac6_noQRDRqnr <- cipro_antibiogram %>%
-  filter(QRDR_mutations==0 & aac6==1 & acquired_genes==0) %>%
-  pull(strain)
 
 strains_noQRDRqnr <- cipro_antibiogram %>%
   filter(QRDR_mutations==0 & acquired_genes==0) %>%
   pull(strain)
 
-freq_per_pheno_noQRDRqnr <- cipro_antibiogram %>% 
-  filter(strain %in% strains_noQRDRqnr) %>%
-  group_by(Resistance.phenotype) %>% 
-  count() %>% rename(n_pheno=n)
-
-freq_per_pheno_noQRDRqnr_NWT <- cipro_antibiogram %>% 
-  filter(strain %in% strains_noQRDRqnr) %>%
-  group_by(WT_vs_nonWT) %>% 
-  count() %>% rename(n_pheno=n)
-
-freq_per_det_noQRDRqnr <- cipro_res_mech %>% 
+freq_per_det_noQRDRqnr <- cipro_res_mech_clean %>% 
   filter(strain %in% strains_noQRDRqnr) %>%
   select(strain, Resistance.mech.type) %>%
   group_by(Resistance.mech.type) %>% 
   count() %>% 
-  rename(n_gene=n) %>% 
+  rename(G1=n) %>% 
   filter(Resistance.mech.type!="-")
-  
-freq_per_det_byPheno_noQRDRqnr <- cipro_res_mech %>% 
-  filter(strain %in% strains_noQRDRqnr) %>%
-  filter(Flq.resistance.mech=="Aac6_gene") %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, Resistance.phenotype) %>% 
-  count() %>%
-  left_join(freq_per_det_noQRDRqnr) %>% 
-  left_join(freq_per_pheno_noQRDRqnr) %>% 
-  filter(Resistance.mech.type != "-") %>%
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
-  mutate(G0P0=length(strains_noQRDR_noAac) - G1P1-G1P0-G0P1) %>%
-  mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
-  mutate(p_val=case_when(
-    OR!="Inf" ~ fisher.test(x=matrix(c(G0P0, G1P0, G0P1, G1P1), ncol=2))$p.value,
-    TRUE ~ NA
-  )) %>%
-  ungroup() %>%
-  mutate(summary=paste0("n=", n, " (", round(n/n_gene*100,2), "%)")) %>%
-  select(Resistance.mech.type, Resistance.phenotype, n, OR, p_val, summary, G0P0, G1P0, G0P1, G1P1) 
 
-freq_per_det_byPheno_noQRDRqnr_NWT <- cipro_res_mech %>% 
-  filter(strain %in% strains_noQRDRqnr) %>%
-  filter(Flq.resistance.mech=="Aac6_gene") %>%
-  group_by(Flq.resistance.mech, Resistance.mech.type, WT_vs_nonWT) %>% 
-  count() %>%
-  left_join(freq_per_det_noQRDRqnr) %>% 
-  left_join(freq_per_pheno_noQRDRqnr_NWT) %>% 
-  filter(Resistance.mech.type != "-") %>%
-  mutate(G1P1=n) %>% 
-  mutate(G1P0=n_gene-n) %>%
-  mutate(G0P1=n_pheno-n) %>%
-  mutate(G0P0=length(strains_noQRDR_noAac) - G1P1-G1P0-G0P1) %>%
-  mutate(OR=(G1P1/G0P1)/(G1P0/G0P0)) %>%
-  mutate(p_val=case_when(
-    OR!="Inf" ~ fisher.test(x=matrix(c(G0P0, G1P0, G0P1, G1P1), ncol=2))$p.value,
-    TRUE ~ NA
-  )) %>%
-  ungroup() %>%
-  mutate(summary=paste0("n=", n, " (", round(n/n_gene*100,2), "%)")) %>%
-  select(Resistance.mech.type, WT_vs_nonWT, n, OR, p_val, summary, G0P0, G1P0, G0P1, G1P1) 
+tableR_soloAac6 <- get_phenotype_table(phenotype="Resistance.phenotype", strain_list=strains_noQRDRqnr, freq_per_det=freq_per_det_noQRDRqnr)
+
+tableNTW_soloAac6 <- get_phenotype_table(phenotype="WT_vs_nonWT", strain_list=strains_noQRDRqnr, freq_per_det=freq_per_det_noQRDRqnr)
+```
 
 # assemble summary table
-freq_per_det_byPheno_summary_aac <- freq_per_det_byPheno_noQRDRqnr %>%
-  filter(Resistance.phenotype=="R") %>% # add resistance columns
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(Resistant=summary) %>%
-  rename(R_OR=OR) %>%
-  rename(R_pval=p_val)
+``` {r}
 
-freq_per_det_byPheno_summary_aac <- freq_per_det_byPheno_noQRDRqnr_NWT %>%
-  filter(WT_vs_nonWT=="non-wt (I/R)") %>% # add intermediate column
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(NWT=summary) %>% 
-  rename(NWT_OR=OR) %>%
-  rename(NWT_pval=p_val) %>%
-  full_join(freq_per_det_byPheno_summary_aac)
+freq_per_det_byPheno_summary_solo <- tableR_soloQRDR %>%
+  bind_rows(tableR_soloPMQR) %>%
+  bind_rows(tableR_soloAac6) %>%
+  filter(phenotype=="R") %>% # add R columns
+  mutate(Resistant=paste0(G1P1," (",round(ppv*100,2),"%)")) %>%
+  mutate(R_OR=if_else(OR!="Inf",paste0(round(OR,2), " (p=",scientific(p_val,2), ")"), "-")) %>%
+  select(Resistance.mech.type, Resistant, R_OR, G1)
 
-freq_per_det_byPheno_summary_aac <- freq_per_det_byPheno_noQRDRqnr %>%
-  filter(Resistance.phenotype=="S") %>% # add susceptible column
-  select(Resistance.mech.type, summary, OR, p_val) %>%
-  rename(Susceptible=summary) %>% 
-  full_join(freq_per_det_byPheno_summary_aac) %>%
-  full_join(freq_per_det_noQRDRqnr) %>% # add totals column
+freq_per_det_byPheno_summary_solo <- tableNTW_soloQRDR %>%
+  bind_rows(tableNTW_soloPMQR) %>%
+  bind_rows(tableNTW_soloAac6) %>%
+  filter(phenotype=="non-wt (I/R)") %>% # add NWT column
+  mutate(NWT=paste0(G1P1," (",round(ppv*100,2),"%)")) %>%
+  mutate(NWT_OR=if_else(OR!="Inf",paste0(round(OR,2), " (p=",scientific(p_val,2), ")"), "-")) %>%
+  select(Resistance.mech.type, NWT, NWT_OR, G1) %>%
+  full_join(freq_per_det_byPheno_summary_solo)
+
+freq_per_det_byPheno_summary_solo <- tableR_soloQRDR %>%
+  bind_rows(tableR_soloPMQR) %>%
+  bind_rows(tableR_soloAac6) %>%
+  filter(phenotype=="S") %>% # add S/NWT column
+  rename(Susceptible=G1P1) %>%
+  full_join(freq_per_det_byPheno_summary_solo) %>%
   filter(Resistance.mech.type!="-") %>%
-  rename(Total=n_gene) %>% 
+  rename(Total=G1) %>% 
   arrange(Resistance.mech.type) %>% # sort by frequency of determinant
   rename(`Solo determinant`=Resistance.mech.type) %>%
-  mutate(R_test=if_else(R_OR!="Inf",paste0(round(R_OR,2), " (p=",scientific(R_pval,2), ")"), "-")) %>%
-  mutate(NWT_test=if_else(NWT_OR!="Inf",paste0(round(NWT_OR,2), " (p=",scientific(NWT_pval,2), ")"), "-")) %>%
-  select(`Solo determinant`, Total, Susceptible, NWT, Resistant, R_test, NWT_test)
+  select(`Solo determinant`, Total, Susceptible, Resistant, R_OR, NWT, NWT_OR)
+
 ```
 
 
 ## write out Table 1 - solo determinants and association with phenotype
 ``` {r}
 
-bind_rows(freq_per_det_byPheno_summary_singleQRDR, 
-          freq_per_det_byPheno_summary_singleAcquired, 
-          freq_per_det_byPheno_summary_aac) %>% 
-  relocate(NWT, .before=NWT_test) %>%
-  mutate(Susceptible=if_else(is.na(Susceptible), "0", Susceptible)) %>%
+freq_per_det_byPheno_summary_solo %>%
+  mutate(Susceptible=if_else(is.na(Susceptible), 0, Susceptible)) %>%
   mutate(NWT=if_else(is.na(NWT), "0", NWT)) %>%
   mutate(Resistant=if_else(is.na(Resistant), "0", Resistant)) %>%
-  mutate(R_test=if_else(is.na(R_test), "-", R_test)) %>%
-  mutate(NWT_test=if_else(is.na(NWT_test), "-", NWT_test)) %>%
+  mutate(R_OR=if_else(is.na(R_OR), "-", R_OR)) %>%
+  mutate(NWT_OR=if_else(is.na(NWT_OR), "-", NWT_OR)) %>%
   rename(`Resistant (PPV)`=Resistant) %>%
   rename(`NWT (PPV)`=NWT) %>%
-  rename(`Association with Resistance (OR, p-value)` = R_test) %>%
-  rename(`Association with NWT (OR, p-value)` = NWT_test) %>%
+  rename(`Association with Resistance (OR, p-value)` = R_OR) %>%
+  rename(`Association with NWT (OR, p-value)` = NWT_OR) %>%
   write_csv(file="tables/Table1_freq_per_det_byPheno_summary_singleDet.csv")
 ```
 
+
+## freq stats for single QRDR mutations found in genomes without acquired genes but with aac
+``` {r Table1}
+strains_singleQRDR_noPMQR_aacPos <- cipro_antibiogram %>%
+  filter(QRDR_mutations==1 & aac6==1 & acquired_genes==0) %>%
+  pull(strain)
+
+strains_01QRDR_noPMQR_aacPos <- cipro_antibiogram %>%
+  filter(QRDR_mutations<=1 & aac6==1 & acquired_genes==0) %>%
+  pull(strain)
+
+freq_per_det_01QRDR_noPMQR_aacPos <- cipro_res_mech_clean %>% 
+  filter(strain %in% strains_01QRDR_noPMQR_aacPos) %>%
+  select(strain, Resistance.mech.type) %>%
+  group_by(Resistance.mech.type) %>% 
+  count() %>% 
+  rename(G1=n) %>% 
+  filter(Resistance.mech.type!="-") %>%
+  bind_rows( 
+    cipro_antibiogram %>% 
+    filter(strain %in% strains_01QRDR_noPMQR_aacPos) %>%
+    select(`GyrA-83`:`ParC-84`) %>% 
+    apply(2, sum) %>% 
+    as_tibble(rownames="Resistance.mech.type") %>%
+    rename(G1=value)
+  )
+
+tableR_soloQRDR_aac6 <- get_phenotype_table(phenotype="Resistance.phenotype", strain_list=strains_01QRDR_noPMQR_aacPos, freq_per_det=freq_per_det_01QRDR_noPMQR_aacPos)
+
+tableNTW_soloQRDR_aac6 <- get_phenotype_table(phenotype="WT_vs_nonWT", strain_list=strains_01QRDR_noPMQR_aacPos, freq_per_det=freq_per_det_01QRDR_noPMQR_aacPos)
+
+```
+
+## freq stats for acquired genes found in genomes without QRDR but with aac6
+``` {r}
+strains_noQRDR_Aac <- cipro_antibiogram %>%
+  filter(QRDR_mutations==0 & aac6==1) %>%
+  pull(strain)
+
+freq_per_det_noQRDR_Aac <- cipro_res_mech_clean %>% 
+  filter(strain %in% strains_noQRDR_Aac) %>%
+  select(strain, Resistance.mech.type) %>%
+  group_by(Resistance.mech.type) %>% 
+  count() %>% 
+  rename(G1=n) %>% 
+  filter(Resistance.mech.type!="-")
+
+tableR_soloPMQR_aac6 <- get_phenotype_table(phenotype="Resistance.phenotype", strain_list=strains_noQRDR_Aac, freq_per_det=freq_per_det_noQRDR_Aac)
+
+tableNTW_soloPMQR_aac6 <- get_phenotype_table(phenotype="WT_vs_nonWT", strain_list=strains_noQRDR_Aac, freq_per_det=freq_per_det_noQRDR_Aac)
+
+```
+
+# assemble summary table - QRDR/PMQR with aac6
+``` {r}
+
+freq_per_det_byPheno_summary_withAcc6 <- tableR_soloQRDR_aac6 %>%
+  bind_rows(tableR_soloPMQR_aac6) %>%
+  filter(phenotype=="R") %>% # add R columns
+  mutate(Resistant=paste0(G1P1," (",round(ppv*100,2),"%)")) %>%
+  mutate(R_OR=if_else(OR!="Inf",paste0(round(OR,2), " (p=",scientific(p_val,2), ")"), "-")) %>%
+  select(Resistance.mech.type, Resistant, R_OR, G1)
+
+freq_per_det_byPheno_summary_withAcc6 <- tableNTW_soloQRDR_aac6 %>%
+  bind_rows(tableNTW_soloPMQR_aac6) %>%
+  filter(phenotype=="non-wt (I/R)") %>% # add NWT column
+  mutate(NWT=paste0(G1P1," (",round(ppv*100,2),"%)")) %>%
+  mutate(NWT_OR=if_else(OR!="Inf",paste0(round(OR,2), " (p=",scientific(p_val,2), ")"), "-")) %>%
+  select(Resistance.mech.type, NWT, NWT_OR, G1) %>%
+  full_join(freq_per_det_byPheno_summary_withAcc6)
+
+freq_per_det_byPheno_summary_withAcc6 <- tableR_soloQRDR_aac6 %>%
+  bind_rows(tableR_soloPMQR_aac6) %>%
+  filter(phenotype=="S") %>% # add S/NWT column
+  rename(Susceptible=G1P1) %>%
+  full_join(freq_per_det_byPheno_summary_withAcc6) %>%
+  filter(Resistance.mech.type!="-") %>%
+  filter(Resistance.mech.type!="aac(6')-Ib-cr") %>%
+  rename(Total=G1) %>% 
+  arrange(Resistance.mech.type) %>% # sort by frequency of determinant
+  rename(`Solo determinant`=Resistance.mech.type) %>%
+  select(`Solo determinant`, Total, Susceptible, Resistant, R_OR, NWT, NWT_OR)
+
+```
+
+
+``` {r}
+freq_per_det_byPheno_summary_solo %>% 
+  left_join(freq_per_det_byPheno_summary_withAcc6, by="Solo determinant") %>%
+  filter(`Solo determinant`!="aac(6')-Ib-cr") %>%
+  mutate(Resistant.x=if_else(is.na(Resistant.x), "0", Resistant.x)) %>%
+  mutate(Resistant.y=if_else(is.na(Resistant.y), "0", Resistant.y)) %>%
+  mutate(NWT.x=if_else(is.na(NWT.x), "0", NWT.x)) %>%
+  mutate(NWT.y=if_else(is.na(NWT.y), "0", NWT.y)) %>%
+  rename(`Solo Total`=Total.x) %>%
+  rename(`Solo S` = Susceptible.x) %>%
+  rename(`Solo R (PPV)`=Resistant.x) %>%
+  rename(`Solo R (OR)`=R_OR.x) %>%
+  rename(`Solo NWT (PPV)`=NWT.x) %>%
+  rename(`Solo NWT (OR)`=NWT_OR.x) %>%
+  rename(`Solo+Aac6 Total`=Total.y) %>%
+  rename(`Solo+Aac6 S` = Susceptible.y) %>%
+  rename(`Solo+Aac6 R (PPV)`=Resistant.y) %>%
+  rename(`Solo+Aac6 R (OR)`=R_OR.y) %>%
+  rename(`Solo+Aac6 NWT (PPV)`=NWT.y) %>%
+  rename(`Solo+Aac6 NWT (OR)`=NWT_OR.y) %>%
+  rename(`Determinant`=`Solo determinant`) %>%
+  write_csv(file="tables/solo_stats_withAndWithoutAAC6.csv")
+```
 
 
 

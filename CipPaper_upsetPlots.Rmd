@@ -702,8 +702,9 @@ ggsave("figs/FigS7_qnr_DD.png", width=12, height=6)
 # effect of qnr/qep genes, in absence of QRDR and aac6
 
 # MIC data in absence of QRDR and aac6
-qnr_MIC_nullBG_dat <- mic %>%
-    filter(aac6==0 & QRDR_mutations==0) %>% 
+qnr_MIC_nullBG_dat <- cipro_antibiogram %>%
+  filter(Laboratory.Typing.Method !="Disk diffusion") %>%
+  filter(aac6==0 & QRDR_mutations==0) %>% 
   select(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) %>%
   mutate(acquired_bin=if_else(acquired_genes==0, 0, 1))
 
@@ -955,14 +956,15 @@ ggsave("figs/Fig3_simple_comb_MIC_DD.png", width=12, height=6)
 ``` {r}
 
 # MIC
-aac_MIC_nullBG_dat <- mic %>%
+aac_MIC_nullBG_dat <- cipro_antibiogram %>%
+  filter(Laboratory.Typing.Method !="Disk diffusion") %>%
     filter(acquired_genes==0 & QRDR_mutations==0) %>% 
   select(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6)
 
 # MIC vs presence/absence of qnr
 wilcox.test(log2(as.numeric(Measurement)) ~ aac6, data=aac_MIC_nullBG_dat)
-t.test(log2(as.numeric(Measurement)) ~ aac6, data=aac_MIC_nullBG_dat)
 summary(lm(log2(as.numeric(Measurement)) ~ aac6, data=aac_MIC_nullBG_dat))
+
 summary(as.numeric(aac_MIC_nullBG_dat$Measurement)[aac_MIC_nullBG_dat$aac6==1])
 summary(as.numeric(aac_MIC_nullBG_dat$Measurement)[aac_MIC_nullBG_dat$aac6==0])
 
@@ -975,8 +977,8 @@ aac_DD_nullBG_dat <- cipro_antibiogram %>%
   select(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6)
 
 wilcox.test(as.numeric(Measurement) ~ aac6, data=aac_DD_nullBG_dat)
-t.test(as.numeric(Measurement) ~ aac6, data=aac_DD_nullBG_dat)
 summary(lm(as.numeric(Measurement) ~ aac6, data=aac_DD_nullBG_dat))
+
 summary(as.numeric(aac_DD_nullBG_dat$Measurement)[aac_DD_nullBG_dat$aac6==1])
 summary(as.numeric(aac_DD_nullBG_dat$Measurement)[aac_DD_nullBG_dat$aac6==0])
 

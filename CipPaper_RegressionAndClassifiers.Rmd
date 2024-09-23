@@ -1,0 +1,578 @@
+---
+title: "Logistic Regression"
+author: "Iana Amke, Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(countrycode)
+library(pheatmap)
+library(ggpubr)
+library(ggiraphExtra)
+library(ggupset)
+library(scales)
+library(reshape2)
+library(ComplexUpset)
+library(RColorBrewer)
+library(naniar)
+library(grid)
+library(gtsummary)
+library(broom)
+library(patchwork)
+library(ggrepel)
+library(magrittr)
+library(epiR)
+
+# https://krassowski.github.io/complex-upset/articles/Examples_R.html
+```
+
+# load data
+``` {r}
+geno <- read_delim("tables/TableS1_genotypes.tsv")
+
+pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+
+cipro_antibiogram <- full_join(geno,pheno)
+
+```
+
+## set colours
+``` {r}
+wt_colours <- c(`non-wt (I/R)`="IndianRed", `wt (S)`= "LightBlue")
+res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
+res_colours2 <- c("I"="black", "R"="IndianRed", "S"="LightBlue", "NWT"="black")
+res_colours3 <- c("NWT I"="#78638a", "NWT R"="IndianRed", "WT S"="LightBlue")
+```
+
+## long form, one row per strain/determinant combination
+``` {r}
+cipro_res_mech <- cipro_antibiogram %>%
+  pivot_longer(c(Flq_mutations,Flq_acquired), names_to = "Flq.resistance.mech", 
+               values_to = "Resistance.mech.type") %>%
+  separate(Resistance.mech.type, into = c("type_A", "type_B", "type_C", "type_D", "type_E", "type_F", "type_G", "type_H", "type_I", "type_J"), sep = "[;]")
+
+cipro_res_mech <- cipro_res_mech %>%
+  pivot_longer(cols = type_A:type_J, values_to = "Resistance.mech.type") %>%
+  drop_na(Resistance.mech.type) %>%
+  select(-name) %>%
+  distinct()
+
+cipro_res_mech <- cipro_res_mech %>% 
+  bind_rows( # add aac6 as its own mechanism
+      cipro_antibiogram %>% 
+        filter(aac6 == 1) %>% 
+        mutate(Flq.resistance.mech = "Aac6_gene", Resistance.mech.type="aac(6')-Ib-cr")
+      ) %>%
+  bind_rows( # add null rows for aac6 as its own mechanism
+      cipro_antibiogram %>% 
+        filter(aac6 == 0) %>% 
+        mutate(Flq.resistance.mech = "Aac6_gene", Resistance.mech.type="-")
+      )
+
+# check that we have the expected number of entries for each mechanism
+cipro_res_mech %>% filter(Flq.resistance.mech=="Flq_mutations") %>% select(strain) %>% unique() %>% nrow()
+cipro_res_mech %>% filter(Flq.resistance.mech=="Flq_acquired") %>% select(strain) %>% unique() %>% nrow()
+cipro_res_mech %>% filter(Flq.resistance.mech=="Aac6_gene") %>% select(strain) %>% unique() %>% nrow()
+
+
+```
+
+# pivot to wide form, one row per strain, one column per determinant, needed for logreg and tables etc
+``` {r}
+
+cipro_res_mech_wide <- cipro_res_mech %>% 
+  select(strain, Resistance.mech.type) %>% 
+ # mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
+  mutate(Resistance.mech.type=gsub("[\\^]", "", Resistance.mech.type)) %>%
+ # mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
+ # mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
+  #filter(Resistance.mech.type!="-") %>% 
+  unique() %>% # keep only one row of Resistance.mech.type!="-" for strains with no determinants
+  mutate(genepresent=1) %>% 
+  pivot_wider(names_from=Resistance.mech.type, id_cols=strain, 
+              values_from=genepresent, values_fill=0) %>%
+  left_join(cipro_antibiogram %>% select(strain, nonWT_binary, resistant, QRDR_mutations, acquired_genes)) # add pheno and QRDR/PMQR counts
+```
+
+
+# Logistic regression models
+
+## Logistic regression at the determinant level - R
+``` {r}
+
+# prepare matrix for modelling
+R_vs_dets <- cipro_res_mech_wide %>% 
+  select(-c(`-`, strain, QRDR_mutations, acquired_genes, nonWT_binary, ends_with('?'), ends_with('*'))) # remove imprecise matches
+
+# exclude genomes with rare variants
+R_vs_dets <- R_vs_dets[,colSums(R_vs_dets) >= 20]
+
+# model R vs all common variants (N>=20) = Model 1a
+model_R_indiv <- glm(resistant ~ ., family=binomial(link="logit"), data=R_vs_dets)
+
+# model R vs all common variants (N>=20), each with aac6 interaction = Model 1b
+model_R_indiv_aac6Interaction <- glm(resistant ~ .*`aac(6')-Ib-cr`, family=binomial(link="logit"), data=R_vs_dets)
+
+```
+
+``` {r}
+
+logreg_model1a <- coef(summary(model_R_indiv)) %>% as_tibble(rownames="Determinant") %>% mutate(Determinant=gsub("`","",Determinant))
+
+logreg_model1b <- coef(summary(model_R_indiv_aac6Interaction)) %>% as_tibble(rownames="Determinant") %>% mutate(Determinant=gsub("`","",Determinant))
+
+```
+
+
+## Logistic regression at the determinant level - NWT
+``` {r}
+
+# prepare matrix for modelling
+NWT_vs_dets <- cipro_res_mech_wide %>% 
+  select(-c(`-`, strain, QRDR_mutations, acquired_genes, resistant, ends_with('?'), ends_with('*'))) # remove imprecise matches
+
+# exclude genomes with rare variants
+NWT_vs_dets <- NWT_vs_dets[,colSums(NWT_vs_dets) >= 20]
+
+# model NWT vs all common variants (N>=20) = Model 3a
+model_NWT_indiv <- glm(nonWT_binary ~ ., family=binomial(link="logit"), data=NWT_vs_dets)
+
+# model NWT vs all common variants (N>=20), each with aac6 interaction = Model 3b
+model_NWT_indiv_aac6Interaction <- glm(nonWT_binary ~ .*`aac(6')-Ib-cr`, family=binomial(link="logit"), data=NWT_vs_dets)
+
+```
+
+``` {r}
+
+logreg_model3a <- coef(summary(model_NWT_indiv)) %>% as_tibble(rownames="Determinant") %>% mutate(Determinant=gsub("`","",Determinant))
+
+logreg_model3b <- coef(summary(model_NWT_indiv_aac6Interaction)) %>% as_tibble(rownames="Determinant") %>% mutate(Determinant=gsub("`","",Determinant))
+
+```
+
+## TableS6 - Compare logistic regression models with single-variable data
+``` {r}
+freq_per_det_byPheno_summary <- read_csv("tables/TableS5_freq_per_det_byPheno_summary.csv")
+freq_per_det_byPheno_summary_solo <- read_csv("tables/solo_stats_withAndWithoutAAC6.csv")
+
+multiVariable_vs_singleVariable <- freq_per_det_byPheno_summary_solo %>%
+  full_join(freq_per_det_byPheno_summary, by="Determinant") %>% 
+  full_join(logreg_model1a %>% setNames(paste0('R Model1a.', names(.))) %>% rename(Determinant='R Model1a.Determinant'), by="Determinant") %>% 
+  full_join(logreg_model1b %>% setNames(paste0('R Model1b.', names(.)))%>% rename(Determinant='R Model1b.Determinant'), by="Determinant") %>% 
+  full_join(logreg_model3a %>% setNames(paste0('NWT Model1a.', names(.))) %>% rename(Determinant='NWT Model1a.Determinant'), by="Determinant") %>% 
+  full_join(logreg_model3b %>% setNames(paste0('NWT Model1b.', names(.)))%>% rename(Determinant='NWT Model1b.Determinant'), by="Determinant")
+
+write_csv(multiVariable_vs_singleVariable, file="tables/TableS6_SoloStats_LogRegExclRareStats.csv")
+```
+
+## functions to calculate PPV and categorical agreement from models
+``` {r}
+
+cat_agree <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return((xtabs[1,1]+xtabs[2,2])/sum(xtabs))
+}
+ppv <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return(xtabs[2,2]/sum(xtabs[2,]))
+}
+
+``` 
+
+## model predictions - individual determinants
+``` {r}
+
+# R models
+model_R_indiv_pred <- predict(model_R_indiv, type="response")
+model_R_indiv_aac6Interaction_pred <- predict(model_R_indiv_aac6Interaction, type="response")
+
+# NWT models
+model_NWT_indiv_pred <- predict(model_NWT_indiv, type="response")
+model_NWT_indiv_aac6Interaction_pred <- predict(model_NWT_indiv_aac6Interaction, type="response")
+
+```
+
+# Logistic regression at the counts level - R, NWT
+``` {r}
+
+# simple R model
+model_R_groups <- glm(resistant ~ QRDR_mutations + acquired_genes + aac6, family=binomial(link="logit"), data=cipro_antibiogram)
+
+summary(model_R_groups)
+
+# R model with aac6 interactions
+model_R_groups_selectInteract <- glm(resistant ~ QRDR_mutations*aac6 + acquired_genes*aac6, family=binomial(link="logit"), data=cipro_antibiogram)
+
+summary(model_R_groups_selectInteract)
+
+# simple NWT model
+model_NWT_groups <- glm(nonWT_binary ~ QRDR_mutations + acquired_genes + aac6, family=binomial(link="logit"), data=cipro_antibiogram)
+
+summary(model_NWT_groups)
+
+# NWT model with aac6 interactions
+model_NWT_groups_selectInteract <- glm(nonWT_binary ~ QRDR_mutations*aac6 + acquired_genes*aac6, family=binomial(link="logit"), data=cipro_antibiogram)
+
+summary(model_NWT_groups_selectInteract)
+
+# R model predictions
+model_R_groups_pred <- predict(model_R_groups, type="response")
+model_R_groups_selectInteract_pred <- predict(model_R_groups_selectInteract, type="response")
+
+# NWT model predictions
+model_NWT_groups_pred <- predict(model_NWT_groups, type="response")
+model_NWT_groups_selectInteract_pred <- predict(model_NWT_groups_selectInteract, type="response")
+
+```
+
+# Table 2 - model summary table
+``` {r}
+
+aic <- AIC(model_R_indiv, model_R_indiv_aac6Interaction, model_R_groups, model_R_groups_selectInteract, model_NWT_indiv, model_NWT_indiv_aac6Interaction, model_NWT_groups, model_NWT_groups_selectInteract)
+
+bic <- BIC(model_R_indiv, model_R_indiv_aac6Interaction, model_R_groups, model_R_groups_selectInteract, model_NWT_indiv, model_NWT_indiv_aac6Interaction, model_NWT_groups, model_NWT_groups_selectInteract)
+
+anova_result <- c(anova(model_R_indiv, model_R_indiv_aac6Interaction)[[5]], anova(model_R_groups, model_R_groups_selectInteract)[[5]], anova(model_NWT_indiv, model_NWT_indiv_aac6Interaction)[[5]],  anova(model_NWT_groups, model_NWT_groups_selectInteract)[[5]])
+
+ppv_results <- c(ppv(model_R_indiv_pred>0.5,R_vs_dets$resistant), ppv(model_R_indiv_aac6Interaction_pred>0.5,R_vs_dets$resistant), ppv(model_R_groups_pred>0.5,cipro_antibiogram$resistant), ppv(model_R_groups_selectInteract_pred>0.5,cipro_antibiogram$resistant), ppv(model_NWT_indiv_pred>0.5,NWT_vs_dets$nonWT_binary), ppv(model_NWT_indiv_aac6Interaction_pred>0.5,NWT_vs_dets$nonWT_binary), ppv(model_NWT_groups_pred>0.5,cipro_antibiogram$nonWT_binary), ppv(model_NWT_groups_selectInteract_pred>0.5,cipro_antibiogram$nonWT_binary))
+
+cat_results <- c(
+  cat_agree(model_R_indiv_pred>0.5,R_vs_dets$resistant), cat_agree(model_R_indiv_aac6Interaction_pred>0.5,R_vs_dets$resistant), cat_agree(model_R_groups_pred>0.5,cipro_antibiogram$resistant), cat_agree(model_R_groups_selectInteract_pred>0.5,cipro_antibiogram$resistant), cat_agree(model_NWT_indiv_pred>0.5,NWT_vs_dets$nonWT_binary), cat_agree(model_NWT_indiv_aac6Interaction_pred>0.5,NWT_vs_dets$nonWT_binary), cat_agree(model_NWT_groups_pred>0.5,cipro_antibiogram$nonWT_binary), cat_agree(model_NWT_groups_selectInteract_pred>0.5,cipro_antibiogram$nonWT_binary)
+)
+
+model_summary_tab <- cbind(aic, bic[,2], anova_result, ppv_results, cat_results) %>% 
+  rename(PPV=`ppv_results`) %>%
+  rename(`Categorical agreement`=`cat_results`) %>%
+  rename(BIC=`bic[, 2]`) %>%
+  rename(`model fit (aac6 interaction)`=anova_result) %>% 
+  as_tibble(rownames="model") %>% 
+  mutate(ModelName=c("Model 1a", "Model 1b", "Model 2a", "Model 2b", "Model 1a", "Model 1b", "Model 2a", "Model 2b")) %>%
+  mutate(response = c(rep("R",4), rep("NWT",4))) %>%
+  mutate(predictors = rep(c("determinants", "determinant*aac6", "QRDR count + PMQR count + aac6","QRDR count*aac6 + PMQR count*aac6"),2))
+
+```
+
+# print logistic regression model summary - Table 2
+``` {r}
+model_summary_tab %>%
+  mutate(PPV=paste0(round(PPV*100,2),"%")) %>%
+  mutate(`Categorical agreement`=paste0(round(`Categorical agreement`*100,2),"%")) %>%
+  select(response, ModelName, predictors, PPV, `Categorical agreement`, df, AIC, BIC, `model fit (aac6 interaction)`) %>%
+  write_csv("tables/Table2_ModelSummary.csv", na="-")
+  
+```
+
+
+# Rules-based classifier
+
+``` {r}
+
+cipro_antibiogram <- cipro_antibiogram %>% 
+  mutate(QRDR_mutations_exclude = str_count(Flq_mutations, "GyrA-87G") + str_count(Flq_mutations, "GyrA-87H")) %>% 
+  mutate(PMQR_exclude = str_count(Flq_acquired, "qnrB1.v1") + str_count(Flq_acquired, "qnrB1.v2")) %>%
+  mutate(rules_category = case_when(
+    QRDR_mutations==0 & acquired_genes==0 & aac6==0 ~ 0, # no determinants -> WT S
+    QRDR_mutations==1 & acquired_genes==0 & aac6==0 & QRDR_mutations_exclude==1 ~ 0, # non-associated QRDR solo -> WT S
+    QRDR_mutations==0 & acquired_genes==0 & aac6==1 ~ 1, # aac6 solo -> WT S
+    QRDR_mutations==0 & acquired_genes==1 & aac6==0 & PMQR_exclude==1 ~ 2, # non-associated PMQR solo -> NWT I
+    QRDR_mutations==1 & acquired_genes==0 & aac6==0 & QRDR_mutations_exclude==0 ~ 3, # 1 QRDR, except those not associated -> NWT R
+    QRDR_mutations==1 & acquired_genes==0 & aac6==1 ~ 4, # 1 QRDR + aac6 -> NWT R
+    QRDR_mutations>=2 & acquired_genes==0 ~ 5, # ≥2 QRDR -> NWT R
+    QRDR_mutations==0 & acquired_genes==1 & aac6==0 & PMQR_exclude==0 ~ 6, # 1 PMQR, except those not associated -> NWT R
+    QRDR_mutations==0 & acquired_genes==1 & aac6==1 ~ 7, # 1 PMQR + aac6
+    QRDR_mutations==0 & acquired_genes>=2 ~ 8, # ≥2 PMQR -> NWT R
+    QRDR_mutations>=1 & acquired_genes>=1 ~ 9, # QRDR + PMQR -> NWT R
+    TRUE ~ NA
+  ))
+
+# check all are assigned
+table(cipro_antibiogram$rules_category)
+table(is.na(cipro_antibiogram$rules_category))
+cipro_antibiogram %>% filter(is.na(rules_category)) %>% select(Flq_mutations, Flq_acquired)
+
+# assign S/R predictions to categories
+cipro_antibiogram <- cipro_antibiogram %>% 
+  mutate(predSIR = if_else(rules_category<=2, "S", "R")) %>%
+  mutate(predSIR = replace(predSIR, rules_category==2, "I")) %>%
+  mutate(predSIR = factor(predSIR, levels=c("S", "I", "R"))) %>%
+  mutate(predR = if_else(rules_category<=2, "S", "R")) %>%
+  mutate(predR = factor(predR, levels=c("S", "R"))) %>%
+  mutate(predNWT = if_else(rules_category<2, "WT", "NWT")) %>%
+  mutate(predNWT = factor(predNWT, levels=c("WT", "NWT")))
+
+table(cipro_antibiogram$rules_category, cipro_antibiogram$predR)
+table(cipro_antibiogram$rules_category, cipro_antibiogram$predSIR)
+table(cipro_antibiogram$rules_category, cipro_antibiogram$predNWT)
+
+```
+
+## numbers for text - classifier overall categorical agreement
+``` {r}
+# compare prediction with SIR phenotype
+table(cipro_antibiogram$Resistance.phenotype, cipro_antibiogram$predSIR)
+
+# categorical agreement
+sum(cipro_antibiogram$Resistance.phenotype==cipro_antibiogram$predSIR)/nrow(cipro_antibiogram)
+
+# compare prediction with R binary pheno
+table(cipro_antibiogram$resistant, cipro_antibiogram$predR)
+
+# categorial agreement - binary R
+sum((cipro_antibiogram$resistant==1 & cipro_antibiogram$predR=="R") | (cipro_antibiogram$resistant==0 & cipro_antibiogram$predR=="S"))/nrow(cipro_antibiogram)
+
+# compare prediction with NWT phenotype
+table(cipro_antibiogram$WT_vs_nonWT, cipro_antibiogram$predNWT)
+
+# categorial agreement - binary NWT
+sum((cipro_antibiogram$WT_vs_nonWT=="wt (S)" & cipro_antibiogram$predNWT=="WT") | (cipro_antibiogram$WT_vs_nonWT=="non-wt (I/R)" & cipro_antibiogram$predNWT=="NWT"))/nrow(cipro_antibiogram)
+```
+
+## numbers for text - classifier overall PPV
+``` {r}
+# PPV 
+predR_summary <- cipro_antibiogram %>% 
+  group_by(predR, resistant) %>% 
+  count() %>% 
+  ungroup() %>%
+  pivot_wider(names_from=resistant, values_from=n, values_fill=0) %>%
+  rename(SI=`0`, R=`1`) %>%
+  mutate(N=SI+R) %>%
+  mutate(PPV = R/N) 
+
+predNWT_summary <- cipro_antibiogram %>% 
+  group_by(predNWT, WT_vs_nonWT) %>% 
+  count() %>% 
+  ungroup() %>%
+  pivot_wider(names_from=WT_vs_nonWT, values_from=n, values_fill=0) %>%
+  mutate(N=`non-wt (I/R)`+`wt (S)`) %>%
+  mutate(PPV = `non-wt (I/R)`/N) 
+
+predR_summary
+predNWT_summary
+
+```
+
+## classifier - per genotype profile PPV
+``` {r}
+category_phenotype_table <- cipro_antibiogram %>% 
+  group_by(rules_category, resistant) %>% 
+  count() %>% 
+  ungroup() %>%
+  pivot_wider(names_from=resistant, values_from=n, values_fill=0) %>%
+  rename(SI=`0`, R=`1`)
+
+category_phenotype_table <- cipro_antibiogram %>% 
+  group_by(rules_category, WT_vs_nonWT) %>% 
+  count() %>% 
+  ungroup() %>%
+  pivot_wider(names_from=WT_vs_nonWT, values_from=n, values_fill=0) %>%
+  rename(NWT=`non-wt (I/R)`, WT=`wt (S)`) %>%
+  full_join(category_phenotype_table)
+
+category_phenotype_table <- category_phenotype_table %>% 
+  mutate(N=NWT+WT) %>%
+  mutate(`R PPV`=paste0(round(R/N*100,2), "% (N=", R,"/",N,")")) %>%
+  mutate(`NWT PPV`=paste0(round(NWT/N*100,2), "% (N=", NWT,"/",N,")"))
+
+category_phenotype_table
+```
+
+## table 3 - summarise classifier
+``` {r}
+category_phenotype_table %>% 
+  mutate(QRDR=c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0")) %>%
+  mutate(PMQR=c("0", "0", "qnrB1", "0", "0", "0", "1^", "1", ">1", ">0")) %>%
+  mutate(aac6=c("0", "1", "0", "0", "1", "*", "0", "1", "*", "*")) %>%
+  mutate(Prediction=c("WT S", "WT S", "NWT I", rep("NWT R", 7))) %>%
+  mutate(N=as.character(N)) %>%
+  select(QRDR, PMQR, aac6, Prediction, N, `R PPV`, `NWT PPV`) %>%
+  bind_rows(c(QRDR="Overall", PMQR="", aac6="", Prediction="-", N=as.character(nrow(cipro_antibiogram)), 
+              `R PPV`=paste0(round(predR_summary[2, "PPV"]*100,2),"% (N=", predR_summary[2,"R"], "/", predR_summary[2,"N"],")"),
+              `NWT PPV`=paste0(round(predNWT_summary[2, "PPV"]*100,2),"% (N=", predNWT_summary[2,"non-wt (I/R)"], "/", predNWT_summary[2,"N"],")")
+              )) %>%
+  write_csv(file="tables/Table3_Classifier.csv")
+
+write(x="\n^=GyrA-87G and GyrA-87H are not included in QRDR count; qnrB1 is excluded from the single-PMQR count. *aac6 presence is not considered", file="tables/Table3_Classifier.csv", append=T)
+```
+
+
+# Fig 4 - rules prediction plots
+```{r }
+
+# MIC distribution R vs. S
+rules_MIC_distributionRS <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  mutate(predSIR_label=case_when(predSIR=="S" ~ "WT S", predSIR=="R" ~ "NWT R", TRUE ~ "NWT I")) %>%
+  mutate(predSIR_label=factor(predSIR_label, levels=c("WT S", "NWT I", "NWT R"))) %>%
+  ggplot(aes(as.factor(round(as.numeric(Measurement), digits=2)), fill = predSIR_label)) + geom_bar() + 
+  labs(title = "A) MIC, by classifer prediction", y = "Number of genomes", x="MIC (mg/L)", 
+       linetype = "MIC breakpoints", fill="Classifier prediction") +
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+  scale_fill_manual(values = res_colours3)+
+  geom_vline(aes(xintercept = 5.5), color = "black") +
+  annotate("text", x=5.75, y=2900, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 4.5), color = "black") +
+  annotate("text", x=4.25, y=2900, label="S", size=2.5)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+
+rules_MIC_distributionRS
+
+
+# DD distribution
+rules_DD_distributionRS <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  mutate(predSIR_label=case_when(predSIR=="S" ~ "WT S", predSIR=="R" ~ "NWT R", TRUE ~ "NWT I")) %>%
+  mutate(predSIR_label=factor(predSIR_label, levels=c("WT S", "NWT I", "NWT R"))) %>%
+  ggplot(aes(as.numeric(Measurement), fill = predSIR_label)) + geom_bar() + 
+  labs(title = "B) Disk zones, by classifer prediction", y = "Number of genomes", x ="Disk zone (mm)",
+       linetype = "Disk diffusion \nbreakpoints") +
+        scale_fill_manual(values = res_colours3)+
+  geom_vline(aes(xintercept = 21.5), color = "black") +
+  annotate("text", x=20.5, y=400, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 24.5), color = "black") +
+  #geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
+  annotate("text", x=25.5, y=400, label="S", size=2.5)+
+  theme_minimal() + 
+  theme(axis.text.x = element_text(size=11))+
+  theme(legend.position = "none")
+
+rules_DD_distributionRS
+```
+
+
+# Figure 4 - classifier predictions vs measurements
+
+``` {r}
+rules_MIC_distributionRS / rules_DD_distributionRS
+
+ggsave(height=5, width=6, file="figs/Fig4_classifierPred_MIC_DD_distribution.png")
+
+ggsave(height=5, width=6, file="figs/Fig4_classifierPred_MIC_DD_distribution.pdf")
+ 
+```
+
+``` {r}
+profile_labels <- paste(
+  paste0(c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0"), rep(" QRDR,", 10)),
+  c("0 PMQR,", "0 PMQR,", "qnrB1,", "0 PMQR,", "0 PMQR,", "0 PMQR", "1 PMQR^,", "1 PMQR,", ">1 PMQR", ">0"),
+  c("aac6-", "aac6+", "aac6-", "aac6-", "aac6+", "", "aac6-", "aac6+", "", "")
+)
+names(profile_labels)<-0:9
+
+profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5", "4"="#ecb16f", "5"="#f17c1b", "6"="#fdc0c0", "7"="#e88f8f", "8"="#b92020", "9"="#59124b")
+
+
+# MIC distribution
+rules_MIC_distribution <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), fill = as.factor(rules_category))) + geom_bar() + 
+  labs(x = "MIC (mg/L)", y = "Number of genomes", 
+       linetype = "MIC breakpoints", title="A) MIC, by genotype profile", fill="Rules prediction category") +
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+  geom_vline(aes(xintercept = 5.5), color = "black") +
+  annotate("text", x=5.75, y=2900, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 4.5), color = "black") +
+  annotate("text", x=4.25, y=2900, label="S", size=2.5)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))+
+  theme(legend.position = "none")
+rules_MIC_distribution
+
+```
+
+``` {r}
+# DD distribution
+rules_DD_distribution <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  ggplot(aes(as.numeric(Measurement), fill = as.factor(rules_category))) + geom_bar() + 
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  geom_vline(aes(xintercept = 21.5), color = "black") +
+  annotate("text", x=20.5, y=400, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 24.5), color = "black", linetype=2) +
+  geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
+  annotate("text", x=26.5, y=400, label="S", size=2.5)+
+  theme_minimal()+
+  labs(y = "Number of genomes", x="Disk zone (mm)", title="B) Disk zones, by genotype profile", fill="Rules prediction category") +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(size=11))
+
+```
+
+
+```{r rules_category_SIR plot}
+rules_category_SIR_plot <- cipro_antibiogram %>% 
+  ggplot(aes(x=as.factor(rules_category), fill=factor(Resistance.phenotype, levels = c("S", "I", "R")))) + 
+  geom_bar(position = "fill") + coord_flip() +
+  scale_y_continuous(labels = scales::percent)+
+  labs(title="C) Observed phenotype distribution, per genotype profile", x="", y="Proportion (%)", fill="Phenotype") +
+  scale_fill_manual(values = res_colours)+
+  scale_x_discrete(limits=rev, labels=profile_labels) +
+  geom_text_repel(aes(label = after_stat(count)), stat = "count", size=3, direction="x", position=position_fill(0.4)) +
+  theme_minimal()
+  rules_category_SIR_plot
+```
+
+
+# Figure S9 - genotype profiles vs measurements
+
+``` {r}
+rules_MIC_distribution / rules_DD_distribution / rules_category_SIR_plot
+
+ggsave(height=10, width=8, file="figs/FigS9_genotypeProfiles_MIC_DD_distribution.png")
+
+ggsave(height=10, width=8, file="figs/FigS9_genotypeProfiles_MIC_DD_distribution.pdf")
+ 
+```
+
+# numbers for text - ATU discrepant isolates
+``` {r}
+dd_atu <- cipro_antibiogram %>% filter(Resistance.phenotype!="R" & predSIR=="R") %>% filter(Laboratory.Typing.Method == "Disk diffusion") %>% filter(as.numeric(Measurement) >21 & as.numeric(Measurement)<24) 
+
+#dd_atu %>% group_by(Flq_acquired, Flq_mutations) %>% count() %>% mutate(pc=n/nrow(dd_atu))
+
+mic_atu <- cipro_antibiogram %>% filter(Resistance.phenotype!="R" & predSIR=="R") %>% filter(Laboratory.Typing.Method != "Disk diffusion") %>% filter(as.numeric(Measurement) ==0.5) 
+
+#mic_atu %>% group_by(Flq_acquired, Flq_mutations) %>% count() %>% mutate(pc=n/nrow(mic_atu))
+
+atu <- bind_rows(mic_atu, mic_atu) 
+
+atu %>% group_by(Flq_acquired, Flq_mutations) %>% count()  %>% mutate(pc=n/nrow(atu))
+```
