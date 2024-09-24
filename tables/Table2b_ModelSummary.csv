@@ -1,3 +1,11 @@
-out,CA,PPV,NPV,ME,VME
-R,95.86%,95.95%,95.76%,4.05%,4.24%
-NWT,94.13%,97.88%,90.06%,1.98%,10.76%
+out,species,CA,PPV,NPV,ME,VME,N
+R,Species complex,95.86%,95.95%,95.76%,4.05%,4.24%,12167
+NWT,Species complex,94.13%,97.88%,90.06%,1.98%,10.76%,12167
+R,Klebsiella pneumoniae,95.77%,96.31%,96.31%,4.66%,3.89%,10640
+R,Klebsiella quasipneumoniae subsp. quasipneumoniae,98.41%,92.59%,92.59%,1.23%,3.85%,189
+R,Klebsiella quasipneumoniae subsp. similipneumoniae,89.86%,77.38%,77.38%,9%,13.33%,286
+R,Klebsiella variicola subsp. variicola,97.88%,92.19%,92.19%,1.1%,9.23%,1038
+NWT,Klebsiella pneumoniae,94.11%,98.04%,98.04%,2.85%,7.86%,10640
+NWT,Klebsiella quasipneumoniae subsp. quasipneumoniae,96.83%,100%,100%,0%,18.18%,189
+NWT,Klebsiella quasipneumoniae subsp. similipneumoniae,92.66%,93.2%,93.2%,3.98%,12.73%,286
+NWT,Klebsiella variicola subsp. variicola,94.22%,93.85%,93.85%,0.93%,29.89%,1038

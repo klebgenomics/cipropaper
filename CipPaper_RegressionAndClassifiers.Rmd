@@ -225,7 +225,7 @@ vme <- function(pred,truth) {
 
 metrics <- function(pred,truth) {
   xtabs <- table(pred,truth)
-  return(list(cat=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),ppv=xtabs[2,2]/sum(xtabs[2,]),npv=xtabs[1,1]/sum(xtabs[1,]),me=xtabs[2,1]/sum(xtabs[,1]),vme=xtabs[1,2]/sum(xtabs[,2]), summary=c("cat"=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),"ppv"=xtabs[2,2]/sum(xtabs[2,]),"npv"=xtabs[1,1]/sum(xtabs[1,]),"me"=xtabs[2,1]/sum(xtabs[,2]),"vme"=xtabs[1,2]/sum(xtabs[,1]))))
+  return(list(cat=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),ppv=xtabs[2,2]/sum(xtabs[2,]),npv=xtabs[1,1]/sum(xtabs[1,]),me=xtabs[2,1]/sum(xtabs[,1]),vme=xtabs[1,2]/sum(xtabs[,2]),n=sum(xtabs), summary=c("cat"=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),"ppv"=xtabs[2,2]/sum(xtabs[2,]),"npv"=xtabs[1,1]/sum(xtabs[1,]),"me"=xtabs[2,1]/sum(xtabs[,2]),"vme"=xtabs[1,2]/sum(xtabs[,1]), "n"=sum(xtabs))))
 }
 
 ``` 
@@ -364,16 +364,45 @@ table(cipro_antibiogram$rules_category, cipro_antibiogram$predNWT)
 
 ```
 
-## numbers for text - classifier overall metrics
+## Table 2b and numbers for text - classifier overall metrics, by species
+
 ``` {r}
 
-bind_rows(c("out"="R",metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), c("out"="NWT",metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)) %>% rename(PPV=ppv, NPV=npv, ME=me, VME=vme, CA=cat) %>%
+species_R <- cipro_antibiogram %>% group_by(species) %>% 
+  filter(species != "Klebsiella variicola subsp. tropica") %>%
+  filter(species != "Klebsiella quasivariicola") %>%
+  summarise(ppv=ppv(predR, resistant), 
+            npv=ppv(predR, resistant), 
+            cat=cat_agree(predR, resistant), 
+            me=me(predR, resistant), 
+            vme=vme(predR, resistant),
+            n=n())%>%
+  mutate(out=rep("R", 4)) %>% 
+  relocate(out, .before=species)
+
+species_NWT <- cipro_antibiogram %>% group_by(species) %>% 
+  filter(species != "Klebsiella variicola subsp. tropica") %>%
+  filter(species != "Klebsiella quasivariicola") %>%
+  summarise(cat=cat_agree(predNWT, nonWT_binary), 
+            ppv=ppv(predNWT, nonWT_binary), 
+            npv=ppv(predNWT, nonWT_binary), 
+            me=me(predNWT, nonWT_binary), 
+            vme=vme(predNWT, nonWT_binary),
+            n=n()) %>%
+  mutate(out=rep("NWT", 4)) %>% 
+  relocate(out, .before=species)
+
+bind_rows(c("out"="R","species"="Species complex", metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), c("out"="NWT","species"="Species complex", metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)) %>%
+  mutate_at(c("cat","ppv","npv","me","vme", "n"), as.double) %>%
+  bind_rows(species_R) %>%
+  bind_rows(species_NWT) %>%
+  rename(PPV=ppv, NPV=npv, ME=me, VME=vme, CA=cat, N=n) %>%
   mutate(PPV=paste0(round(as.numeric(PPV)*100,2),"%")) %>%
   mutate(NPV=paste0(round(as.numeric(NPV)*100,2),"%")) %>%
   mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
   mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
   mutate(CA=paste0(round(as.numeric(CA)*100,2),"%")) %>%
-  select(out, CA, PPV, NPV, ME, VME) %>%
+  select(out, species, CA, PPV, NPV, ME, VME, N) %>%
   write_csv("tables/Table2b_ModelSummary.csv", na="-")
   
 ```
@@ -403,7 +432,7 @@ category_phenotype_table <- category_phenotype_table %>%
 category_phenotype_table
 ```
 
-## table 3 - summarise classifier
+## table 3 - summarise classifier by genotype profile
 ``` {r}
 predR_summary <- cipro_antibiogram %>% 
   group_by(predR, resistant) %>% 
@@ -580,6 +609,7 @@ ggsave(height=10, width=8, file="figs/FigS9_genotypeProfiles_MIC_DD_distribution
 ggsave(height=10, width=8, file="figs/FigS9_genotypeProfiles_MIC_DD_distribution.pdf")
  
 ```
+
 
 # numbers for text - ATU discrepant isolates
 ``` {r}
