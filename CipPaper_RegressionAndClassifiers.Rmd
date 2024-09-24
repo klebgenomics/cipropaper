@@ -485,24 +485,29 @@ ggsave(height=5, width=6, file="figs/Fig4_classifierPred_MIC_DD_distribution.pdf
  
 ```
 
+# Fig S9 MIC/DD distribution by genotype profile
+
+## genotype profile labels and colours
 ``` {r}
 profile_labels <- paste(
   paste0(c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0"), rep(" QRDR,", 10)),
-  c("0 PMQR,", "0 PMQR,", "qnrB1,", "0 PMQR,", "0 PMQR,", "0 PMQR", "1 PMQR^,", "1 PMQR,", ">1 PMQR", ">0"),
+  c("0 PMQR,", "0 PMQR,", "qnrB1,", "0 PMQR,", "0 PMQR,", "0 PMQR", "1 PMQR^,", "1 PMQR,", ">1 PMQR", ">0 PMQR"),
   c("aac6-", "aac6+", "aac6-", "aac6-", "aac6+", "", "aac6-", "aac6+", "", "")
 )
 names(profile_labels)<-0:9
 
 profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5", "4"="#ecb16f", "5"="#f17c1b", "6"="#fdc0c0", "7"="#e88f8f", "8"="#b92020", "9"="#59124b")
 
+```
 
-# MIC distribution
+## MIC distribution
+``` {r}
 rules_MIC_distribution <- cipro_antibiogram %>%
   group_by(Laboratory.Typing.Method) %>%
   filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
   ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), fill = as.factor(rules_category))) + geom_bar() + 
   labs(x = "MIC (mg/L)", y = "Number of genomes", 
-       linetype = "MIC breakpoints", title="A) MIC, by genotype profile", fill="Rules prediction category") +
+       linetype = "MIC breakpoints", title="A) MIC, by genotype profile", fill="Genotype profile") +
   scale_fill_manual(values=profile_colours, labels=profile_labels)+
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
@@ -511,8 +516,8 @@ rules_MIC_distribution <- cipro_antibiogram %>%
   geom_vline(aes(xintercept = 4.5), color = "black") +
   annotate("text", x=4.25, y=2900, label="S", size=2.5)+
   theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))+
-  theme(legend.position = "none")
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+
 rules_MIC_distribution
 
 ```
@@ -530,9 +535,10 @@ rules_DD_distribution <- cipro_antibiogram %>%
   geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
   annotate("text", x=26.5, y=400, label="S", size=2.5)+
   theme_minimal()+
-  labs(y = "Number of genomes", x="Disk zone (mm)", title="B) Disk zones, by genotype profile", fill="Rules prediction category") +
+  labs(y = "Number of genomes", x="Disk zone (mm)", title="B) Disk zones, by genotype profile") +
   theme_minimal() + 
-  theme(axis.text.x = element_text(size=11))
+  theme(axis.text.x = element_text(size=11))+
+  theme(legend.position = "none")
 
 ```
 
@@ -542,7 +548,7 @@ rules_category_SIR_plot <- cipro_antibiogram %>%
   ggplot(aes(x=as.factor(rules_category), fill=factor(Resistance.phenotype, levels = c("S", "I", "R")))) + 
   geom_bar(position = "fill") + coord_flip() +
   scale_y_continuous(labels = scales::percent)+
-  labs(title="C) Observed phenotype distribution, per genotype profile", x="", y="Proportion (%)", fill="Phenotype") +
+  labs(title="C) Observed phenotype distribution, per genotype profile", x="Genotype profile", y="Proportion (%)", fill="Phenotype") +
   scale_fill_manual(values = res_colours)+
   scale_x_discrete(limits=rev, labels=profile_labels) +
   geom_text_repel(aes(label = after_stat(count)), stat = "count", size=3, direction="x", position=position_fill(0.4)) +
@@ -576,3 +582,102 @@ atu <- bind_rows(mic_atu, mic_atu)
 
 atu %>% group_by(Flq_acquired, Flq_mutations) %>% count()  %>% mutate(pc=n/nrow(atu))
 ```
+
+# numbers for text - unexplained resistance
+``` {r}
+# number R with no mutations
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% nrow()
+cipro_antibiogram %>% filter(Resistance.phenotype=="R") %>% nrow()
+
+# assay measures for unexplained R
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% filter(Laboratory.Typing.Method!="Disk diffusion" & Measurement==1) %>% nrow()
+
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% filter(Laboratory.Typing.Method=="Disk diffusion" & Measurement %in% c(20, 21)) %>% nrow()
+
+# STs for unexplained R
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% group_by(ST) %>% count()
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% group_by(ST) %>% count() %>% nrow()
+
+# porin mutations in all genomes without QRDR/PMQR/aac6
+cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0& aac6==0 & Omp_mutations !="-") %>% nrow()
+cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% nrow()
+
+(cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0& aac6==0 & Omp_mutations !="-") %>% nrow()) / (cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% nrow())
+
+cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% group_by(Omp_mutations) %>% count()
+
+cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% filter(grepl('OmpK35', Omp_mutations))%>% nrow()
+
+cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% filter(grepl('OmpK36', Omp_mutations))%>% nrow()
+
+
+# genomes without QRDR/PMQR/aac6
+noResDet <- cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% mutate(ompK35=if_else(grepl('OmpK35', Omp_mutations), 1, 0)) %>% mutate(ompK36=if_else(grepl('OmpK36', Omp_mutations), 1, 0))
+
+fisher.test(noResDet$ompK35, noResDet$resistant)
+prop.test(table(noResDet$ompK35,noResDet$resistant)[2:1,2:1])
+
+fisher.test(noResDet$ompK36, noResDet$resistant)
+prop.test(table(noResDet$ompK36,noResDet$resistant)[2:1,2:1])
+
+
+# porin mutations in unexplained R
+
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & Flq_acquired=="-" & Flq_mutations=="-" & aac6==0) %>% filter(Omp_mutations!="-") %>% nrow()
+
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & Flq_acquired=="-" & Flq_mutations=="-" & aac6==0) %>% filter(Omp_mutations!="-") %>% nrow()/ (cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% nrow())
+
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & Flq_acquired=="-" & Flq_mutations=="-" & aac6==0) %>% group_by(Omp_mutations) %>% count()
+
+# assay measures for unexplained R with porin mutations
+cipro_antibiogram %>% filter(Resistance.phenotype=="R" & Flq_acquired=="-" & Flq_mutations=="-" & aac6==0) %>% group_by(Omp_mutations, Measurement, Measurement.units) %>% count() %>% filter(Omp_mutations!="-") %>% arrange(Measurement)
+
+```
+
+
+# TODO: add gyrA/parC copy number, oqxAB copy number, and oqxAB regulator defects
+
+# checking oqx relative to IS, none are close?-  ignore this
+``` {r}
+oqxab_IS_blast <- read_delim(file = "oqxab_IS_cipro_merged.tsv", delim = "\t")
+
+oqx_coords <- oqxab_IS_blast %>% filter(gene=="oqxa") %>% select(Sample, contig, start, stop)
+
+IS_coords <- oqxab_IS_blast %>% filter(gene!="oqxa") %>% select(Sample, gene, contig, start, stop)
+
+oqx_IS_coords <- right_join(oqx_coords, IS_coords, by=c("Sample", "contig"), multiple="all") %>% 
+  mutate(dist = case_when(
+  (start.x < stop.x) ~ start.x - max(start.y, stop.y),
+  (start.x > stop.x) ~ min(start.y, stop.y) - start.x,
+  TRUE ~ NA
+))
+
+```
+
+
+
+# numbers for text - unexplained S
+``` {r}
+# number S with mutations
+S_mut <- cipro_antibiogram %>% filter(Resistance.phenotype=="S" & ((QRDR_mutations==1 & Flq_mutations!="GyrA-87G"& Flq_mutations!="GyrA-87H") | (acquired_genes==1 & !grepl('qnrB1.', Flq_acquired)))) 
+
+S_mut %>% nrow()
+
+
+# assay measures for unexplained R
+S_mut %>% filter(Laboratory.Typing.Method!="Disk diffusion" & Measurement==0.25) %>% nrow()
+
+S_mut %>% filter(Laboratory.Typing.Method=="Disk diffusion" & Measurement %in% c(25, 26)) %>% nrow()
+
+S_mut %>% group_by(ST) %>% count()
+S_mut %>% group_by(ST) %>% count()%>% nrow()
+
+S_mut %>% group_by(Flq_acquired, Flq_mutations) %>% count()
+
+
+
+# assay measures for unexplained R with porin mutations
+S_mut %>% group_by(Flq_acquired, Flq_mutations, Measurement, Measurement.units) %>% count() %>% arrange(Measurement)
+
+```
+
