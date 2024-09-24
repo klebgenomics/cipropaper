@@ -202,9 +202,30 @@ cat_agree <- function(pred,truth) {
   xtabs <- table(pred,truth)
   return((xtabs[1,1]+xtabs[2,2])/sum(xtabs))
 }
+
 ppv <- function(pred,truth) {
   xtabs <- table(pred,truth)
   return(xtabs[2,2]/sum(xtabs[2,]))
+}
+
+npv <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return(xtabs[1,1]/sum(xtabs[1,]))
+}
+
+me <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return(xtabs[2,1]/sum(xtabs[,1]))
+}
+
+vme <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return(xtabs[1,2]/sum(xtabs[,2]))
+}
+
+metrics <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return(list(cat=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),ppv=xtabs[2,2]/sum(xtabs[2,]),npv=xtabs[1,1]/sum(xtabs[1,]),me=xtabs[2,1]/sum(xtabs[,1]),vme=xtabs[1,2]/sum(xtabs[,2]), summary=c("cat"=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),"ppv"=xtabs[2,2]/sum(xtabs[2,]),"npv"=xtabs[1,1]/sum(xtabs[1,]),"me"=xtabs[2,1]/sum(xtabs[,2]),"vme"=xtabs[1,2]/sum(xtabs[,1]))))
 }
 
 ``` 
@@ -264,15 +285,19 @@ bic <- BIC(model_R_indiv, model_R_indiv_aac6Interaction, model_R_groups, model_R
 
 anova_result <- c(anova(model_R_indiv, model_R_indiv_aac6Interaction)[[5]], anova(model_R_groups, model_R_groups_selectInteract)[[5]], anova(model_NWT_indiv, model_NWT_indiv_aac6Interaction)[[5]],  anova(model_NWT_groups, model_NWT_groups_selectInteract)[[5]])
 
-ppv_results <- c(ppv(model_R_indiv_pred>0.5,R_vs_dets$resistant), ppv(model_R_indiv_aac6Interaction_pred>0.5,R_vs_dets$resistant), ppv(model_R_groups_pred>0.5,cipro_antibiogram$resistant), ppv(model_R_groups_selectInteract_pred>0.5,cipro_antibiogram$resistant), ppv(model_NWT_indiv_pred>0.5,NWT_vs_dets$nonWT_binary), ppv(model_NWT_indiv_aac6Interaction_pred>0.5,NWT_vs_dets$nonWT_binary), ppv(model_NWT_groups_pred>0.5,cipro_antibiogram$nonWT_binary), ppv(model_NWT_groups_selectInteract_pred>0.5,cipro_antibiogram$nonWT_binary))
-
-cat_results <- c(
-  cat_agree(model_R_indiv_pred>0.5,R_vs_dets$resistant), cat_agree(model_R_indiv_aac6Interaction_pred>0.5,R_vs_dets$resistant), cat_agree(model_R_groups_pred>0.5,cipro_antibiogram$resistant), cat_agree(model_R_groups_selectInteract_pred>0.5,cipro_antibiogram$resistant), cat_agree(model_NWT_indiv_pred>0.5,NWT_vs_dets$nonWT_binary), cat_agree(model_NWT_indiv_aac6Interaction_pred>0.5,NWT_vs_dets$nonWT_binary), cat_agree(model_NWT_groups_pred>0.5,cipro_antibiogram$nonWT_binary), cat_agree(model_NWT_groups_selectInteract_pred>0.5,cipro_antibiogram$nonWT_binary)
+metrics_result <- rbind(
+  metrics(model_R_indiv_pred>0.5, R_vs_dets$resistant)$summary,
+  metrics(model_R_indiv_aac6Interaction_pred>0.5, R_vs_dets$resistant)$summary,
+  metrics(model_R_groups_pred>0.5, cipro_antibiogram$resistant)$summary,
+  metrics(model_R_groups_selectInteract_pred>0.5, R_vs_dets$resistant)$summary,
+  metrics(model_NWT_indiv_pred>0.5, NWT_vs_dets$nonWT_binary)$summary,
+  metrics(model_NWT_indiv_aac6Interaction_pred>0.5, NWT_vs_dets$nonWT_binary)$summary,
+  metrics(model_NWT_groups_pred>0.5, cipro_antibiogram$nonWT_binary)$summary,
+  metrics(model_NWT_groups_selectInteract_pred>0.5, cipro_antibiogram$nonWT_binary)$summary
 )
 
-model_summary_tab <- cbind(aic, bic[,2], anova_result, ppv_results, cat_results) %>% 
-  rename(PPV=`ppv_results`) %>%
-  rename(`Categorical agreement`=`cat_results`) %>%
+model_summary_tab <- cbind(aic, bic[,2], anova_result, metrics_result) %>% 
+  rename(PPV=ppv, NPV=npv, ME=me, VME=vme, `Categorical agreement`=cat) %>%
   rename(BIC=`bic[, 2]`) %>%
   rename(`model fit (aac6 interaction)`=anova_result) %>% 
   as_tibble(rownames="model") %>% 
@@ -286,8 +311,11 @@ model_summary_tab <- cbind(aic, bic[,2], anova_result, ppv_results, cat_results)
 ``` {r}
 model_summary_tab %>%
   mutate(PPV=paste0(round(PPV*100,2),"%")) %>%
+  mutate(NPV=paste0(round(NPV*100,2),"%")) %>%
+  mutate(ME=paste0(round(ME*100,2),"%")) %>%
+  mutate(VME=paste0(round(VME*100,2),"%")) %>%
   mutate(`Categorical agreement`=paste0(round(`Categorical agreement`*100,2),"%")) %>%
-  select(response, ModelName, predictors, PPV, `Categorical agreement`, df, AIC, BIC, `model fit (aac6 interaction)`) %>%
+  select(response, ModelName, predictors, `Categorical agreement`, PPV, NPV, ME, VME, df, AIC, BIC, `model fit (aac6 interaction)`) %>%
   write_csv("tables/Table2_ModelSummary.csv", na="-")
   
 ```
