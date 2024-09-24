@@ -364,50 +364,18 @@ table(cipro_antibiogram$rules_category, cipro_antibiogram$predNWT)
 
 ```
 
-## numbers for text - classifier overall categorical agreement
+## numbers for text - classifier overall metrics
 ``` {r}
-# compare prediction with SIR phenotype
-table(cipro_antibiogram$Resistance.phenotype, cipro_antibiogram$predSIR)
 
-# categorical agreement
-sum(cipro_antibiogram$Resistance.phenotype==cipro_antibiogram$predSIR)/nrow(cipro_antibiogram)
-
-# compare prediction with R binary pheno
-table(cipro_antibiogram$resistant, cipro_antibiogram$predR)
-
-# categorial agreement - binary R
-sum((cipro_antibiogram$resistant==1 & cipro_antibiogram$predR=="R") | (cipro_antibiogram$resistant==0 & cipro_antibiogram$predR=="S"))/nrow(cipro_antibiogram)
-
-# compare prediction with NWT phenotype
-table(cipro_antibiogram$WT_vs_nonWT, cipro_antibiogram$predNWT)
-
-# categorial agreement - binary NWT
-sum((cipro_antibiogram$WT_vs_nonWT=="wt (S)" & cipro_antibiogram$predNWT=="WT") | (cipro_antibiogram$WT_vs_nonWT=="non-wt (I/R)" & cipro_antibiogram$predNWT=="NWT"))/nrow(cipro_antibiogram)
-```
-
-## numbers for text - classifier overall PPV
-``` {r}
-# PPV 
-predR_summary <- cipro_antibiogram %>% 
-  group_by(predR, resistant) %>% 
-  count() %>% 
-  ungroup() %>%
-  pivot_wider(names_from=resistant, values_from=n, values_fill=0) %>%
-  rename(SI=`0`, R=`1`) %>%
-  mutate(N=SI+R) %>%
-  mutate(PPV = R/N) 
-
-predNWT_summary <- cipro_antibiogram %>% 
-  group_by(predNWT, WT_vs_nonWT) %>% 
-  count() %>% 
-  ungroup() %>%
-  pivot_wider(names_from=WT_vs_nonWT, values_from=n, values_fill=0) %>%
-  mutate(N=`non-wt (I/R)`+`wt (S)`) %>%
-  mutate(PPV = `non-wt (I/R)`/N) 
-
-predR_summary
-predNWT_summary
-
+bind_rows(c("out"="R",metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), c("out"="NWT",metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)) %>% rename(PPV=ppv, NPV=npv, ME=me, VME=vme, CA=cat) %>%
+  mutate(PPV=paste0(round(as.numeric(PPV)*100,2),"%")) %>%
+  mutate(NPV=paste0(round(as.numeric(NPV)*100,2),"%")) %>%
+  mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
+  mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
+  mutate(CA=paste0(round(as.numeric(CA)*100,2),"%")) %>%
+  select(out, CA, PPV, NPV, ME, VME) %>%
+  write_csv("tables/Table2b_ModelSummary.csv", na="-")
+  
 ```
 
 ## classifier - per genotype profile PPV
@@ -437,6 +405,23 @@ category_phenotype_table
 
 ## table 3 - summarise classifier
 ``` {r}
+predR_summary <- cipro_antibiogram %>% 
+  group_by(predR, resistant) %>% 
+  count() %>% 
+  ungroup() %>%
+  pivot_wider(names_from=resistant, values_from=n, values_fill=0) %>%
+  rename(SI=`0`, R=`1`) %>%
+  mutate(N=SI+R) %>%
+  mutate(PPV = R/N) 
+
+predNWT_summary <- cipro_antibiogram %>% 
+  group_by(predNWT, WT_vs_nonWT) %>% 
+  count() %>% 
+  ungroup() %>%
+  pivot_wider(names_from=WT_vs_nonWT, values_from=n, values_fill=0) %>%
+  mutate(N=`non-wt (I/R)`+`wt (S)`) %>%
+  mutate(PPV = `non-wt (I/R)`/N) 
+
 category_phenotype_table %>% 
   mutate(QRDR=c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0")) %>%
   mutate(PMQR=c("0", "0", "qnrB1", "0", "0", "0", "1^", "1", ">1", ">0")) %>%
