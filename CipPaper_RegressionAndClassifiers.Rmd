@@ -407,6 +407,50 @@ bind_rows(c("out"="R","species"="Species complex", metrics(cipro_antibiogram$pre
   
 ```
 
+
+## Table 2c and numbers for text - classifier overall metrics, by ST
+
+``` {r}
+
+top10_STs <- cipro_antibiogram %>% count(ST, sort=TRUE) %>% slice(1:10)
+
+top10_STs_cipro_antibiogram <- merge(x = cipro_antibiogram, y = top10_STs[ , c("ST")], by.x = c("ST"), by.y = c("ST"))
+
+ST_R <- top10_STs_cipro_antibiogram %>% group_by(ST) %>% 
+  summarise(ppv=ppv(predR, resistant), 
+            npv=ppv(predR, resistant), 
+            cat=cat_agree(predR, resistant), 
+            me=me(predR, resistant), 
+            vme=vme(predR, resistant),
+            n=n())%>%
+  mutate(out=rep("R", 10)) %>% 
+  relocate(out, .before=ST)
+
+ST_NWT <- top10_STs_cipro_antibiogram %>% group_by(ST) %>% 
+  summarise(cat=cat_agree(predNWT, nonWT_binary), 
+            ppv=ppv(predNWT, nonWT_binary), 
+            npv=ppv(predNWT, nonWT_binary), 
+            me=me(predNWT, nonWT_binary), 
+            vme=vme(predNWT, nonWT_binary),
+            n=n()) %>%
+  mutate(out=rep("NWT", 10)) %>% 
+  relocate(out, .before=ST)
+
+bind_rows(c("out"="R","ST"="All STs", metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), c("out"="NWT","ST"="All STs", metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)) %>%
+  mutate_at(c("cat","ppv","npv","me","vme", "n"), as.double) %>%
+  bind_rows(ST_R) %>%
+  bind_rows(ST_NWT) %>%
+  rename(PPV=ppv, NPV=npv, ME=me, VME=vme, CA=cat, N=n) %>%
+  mutate(PPV=paste0(round(as.numeric(PPV)*100,2),"%")) %>%
+  mutate(NPV=paste0(round(as.numeric(NPV)*100,2),"%")) %>%
+  mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
+  mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
+  mutate(CA=paste0(round(as.numeric(CA)*100,2),"%")) %>%
+  select(out, ST, CA, PPV, NPV, ME, VME, N) %>%
+  write_csv("tables/Table2c_ModelSummary.csv", na="-")
+  
+```
+
 ## classifier - per genotype profile PPV
 ``` {r}
 category_phenotype_table <- cipro_antibiogram %>% 
