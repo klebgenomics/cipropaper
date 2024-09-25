@@ -1,6 +1,6 @@
 ---
 title: "Logistic Regression"
-author: "Iana Amke, Kara Tsang, Kat Holt"
+author: "Kara Tsang, Kat Holt"
 date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
 output: 
   html_document: 

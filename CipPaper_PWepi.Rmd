@@ -1,0 +1,282 @@
+---
+title: "Public data analysis"
+author: "Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(countrycode)
+library(pheatmap)
+library(ggpubr)
+library(ggiraphExtra)
+library(ggupset)
+library(scales)
+library(reshape2)
+library(ComplexUpset)
+library(RColorBrewer)
+library(naniar)
+library(grid)
+library(gtsummary)
+library(broom)
+library(patchwork)
+library(ggrepel)
+library(magrittr)
+library(epiR)
+```
+
+## genotype profile labels and colours
+``` {r}
+profile_labels <- paste(
+  paste0(c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0"), rep(" QRDR,", 10)),
+  c("0 PMQR,", "0 PMQR,", "qnrB1,", "0 PMQR,", "0 PMQR,", "0 PMQR", "1 PMQR^,", "1 PMQR,", ">1 PMQR", ">0 PMQR"),
+  c("aac6-", "aac6+", "aac6-", "aac6-", "aac6+", "", "aac6-", "aac6+", "", "")
+)
+names(profile_labels)<-0:9
+
+profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5", "4"="#ecb16f", "5"="#f17c1b", "6"="#fdc0c0", "7"="#e88f8f", "8"="#b92020", "9"="#59124b")
+
+```
+
+``` {r}
+Kp <- read_csv("Klebsiella pneumoniae__kleborate.csv")
+Kp <- read_csv("Klebsiella pneumoniae__metadata.csv") %>% 
+  rename(`Genome ID`="id") %>% full_join(Kp,by="Genome ID")
+
+Kq <- read_csv("Klebsiella quasipneumoniae__kleborate.csv")
+Kq <- read_csv("Klebsiella quasipneumoniae__metadata.csv") %>% 
+  rename(`Genome ID`="id") %>% full_join(Kq,by="Genome ID")
+
+Kv <- read_csv("Klebsiella variicola__kleborate.csv")
+Kv <- read_csv("Klebsiella variicola__metadata.csv") %>% 
+  rename(`Genome ID`="id") %>% full_join(Kv,by="Genome ID")
+
+PW <- bind_rows(Kp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST),
+                Kq %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST),
+                Kv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST)) %>%
+  mutate(Country = gsub("Viet Nam", "Vietnam", Country)) %>%
+  mutate(Country = gsub("UAE", "United Arab Emirates", Country)) %>%
+  mutate(Country = gsub("UK", "United Kingdom", Country)) %>%
+  mutate(Country = gsub("KSA", "Saudi Arabia", Country)) %>%
+  mutate(Country = if_else(grepl("United Kingdom", Country), "United Kingdom", Country)) %>%
+  mutate(aac6 = ifelse(grepl("aac\\(6\\'\\)-Ib-cr", AGly_acquired, ignore.case = T), 1, 0)) %>%
+  mutate(`GyrA-83` = str_count(Flq_mutations, "GyrA-83")) %>%
+  mutate(`GyrA-87` = str_count(Flq_mutations, "GyrA-87")) %>%
+  mutate(`ParC-80` = str_count(Flq_mutations, "ParC-80")) %>% 
+  mutate(`ParC-84` = str_count(Flq_mutations, "ParC-84")) %>%
+  mutate(QRDR_mutations = `GyrA-83`+`GyrA-87`+`ParC-80`+`ParC-84`) %>%
+  mutate(qnr = str_count(Flq_acquired, "qnr")) %>%
+  mutate(qep = str_count(Flq_acquired, "qep")) %>%
+  mutate(acquired_genes = qnr+qep)
+
+PW <- PW %>% 
+  mutate(QRDR_mutations_exclude = str_count(Flq_mutations, "GyrA-87G") + str_count(Flq_mutations, "GyrA-87H")) %>% 
+  mutate(PMQR_exclude = str_count(Flq_acquired, "qnrB1.v")) %>%
+  mutate(rules_category = case_when(
+    QRDR_mutations==0 & acquired_genes==0 & aac6==0 ~ 0, # no determinants -> WT S
+    QRDR_mutations==1 & acquired_genes==0 & aac6==0 & QRDR_mutations_exclude==1 ~ 0, # non-associated QRDR solo -> WT S
+    QRDR_mutations==0 & acquired_genes==0 & aac6==1 ~ 1, # aac6 solo -> WT S
+    QRDR_mutations==0 & acquired_genes==1 & aac6==0 & PMQR_exclude==1 ~ 2, # non-associated PMQR solo -> NWT I
+    QRDR_mutations==1 & acquired_genes==0 & aac6==0 & QRDR_mutations_exclude==0 ~ 3, # 1 QRDR, except those not associated -> NWT R
+    QRDR_mutations==1 & acquired_genes==0 & aac6==1 ~ 4, # 1 QRDR + aac6 -> NWT R
+    QRDR_mutations>=2 & acquired_genes==0 ~ 5, # ≥2 QRDR -> NWT R
+    QRDR_mutations==0 & acquired_genes==1 & aac6==0 & PMQR_exclude==0 ~ 6, # 1 PMQR, except those not associated -> NWT R
+    QRDR_mutations==0 & acquired_genes==1 & aac6==1 ~ 7, # 1 PMQR + aac6
+    QRDR_mutations==0 & acquired_genes>=2 ~ 8, # ≥2 PMQR -> NWT R
+    QRDR_mutations>=1 & acquired_genes>=1 ~ 9, # QRDR + PMQR -> NWT R
+    TRUE ~ NA
+  )) %>%
+  mutate(predR = if_else(rules_category<=2, "S", "R")) %>%
+  mutate(predR = factor(predR, levels=c("S", "R"))) %>%
+  mutate(predNWT = if_else(rules_category<2, "WT", "NWT")) %>%
+  mutate(predNWT = factor(predNWT, levels=c("WT", "NWT")))
+  
+```
+
+# numbers for text
+``` {r}
+# total genomes
+nrow(PW)
+
+# restrict to those with year & Country
+PW <- PW %>% filter(Country !="missing" & Country !="Other (International Space Station)") %>% filter(year>=2000)
+
+# number included
+nrow(PW)
+length(unique(PW$Country))
+
+ST_freq <- PW %>% group_by(ST) %>% summarise(N=n()) %>% arrange(-N)
+
+ST_freq[1:10,]
+
+ST_freq %>% filter(N>=100) %>% pull(N) %>% sum()
+```
+
+# fig - ST vs determinants, with ST freq
+``` {r}
+
+# clean up characters
+PW <- PW %>% 
+  mutate(Flq_acquired = gsub("[\\^\\*\\?]", "", Flq_acquired))
+
+PMQR_freq <- PW %>%
+    select(Flq_acquired) %>%
+    separate_longer_delim(Flq_acquired, delim = ";") %>%
+    filter(Flq_acquired !="") %>%
+    filter(Flq_acquired !="-") %>%
+    group_by(Flq_acquired) %>% 
+    count() %>% arrange(-n)
+
+QRDR_freq <- PW %>%
+    select(Flq_mutations) %>%
+    separate_longer_delim(Flq_mutations, delim = ";") %>%
+    filter(Flq_mutations !="") %>%
+    filter(Flq_mutations !="-") %>%
+    group_by(Flq_mutations) %>% 
+    count() %>% arrange(-n)
+
+# ST vs variant, for STs with N>=100
+PW_dat_variant <- PW %>% 
+  mutate(Flq_acquired_mut=paste(Flq_acquired, Flq_mutations, sep = ";")) %>%
+  mutate(aac6_label=if_else(aac6==1, "aac6", "")) %>%
+  mutate(variant=paste(Flq_acquired_mut, aac6_label, sep = ";")) %>%
+  filter(!is.na(ST)) %>%
+  mutate(variant = gsub(' ', '', variant)) %>%
+  select(ST, variant) %>%
+  separate_longer_delim(variant, delim = ";") %>%
+  filter(variant!="-") %>%
+  filter(variant!="")
+
+PW_dat <- PW_dat_variant %>%
+  filter(ST %in% ST_freq$ST[ST_freq$N>=100]) %>%
+  group_by(ST, variant) %>% count() %>%
+  left_join(ST_freq, by="ST") %>%
+  mutate(pc=n/N)
+
+# order of variants
+variant_order <- c("aac6", 
+                   PMQR_freq$Flq_acquired[PMQR_freq$Flq_acquired %in% PW_dat$variant],
+                   QRDR_freq$Flq_mutations[QRDR_freq$Flq_mutations %in% PW_dat$variant]
+                  )
+```
+
+
+
+``` {r}
+ST_pred <- PW %>% group_by(ST, predR) %>% count() %>% right_join(ST_freq) %>% filter(predR=="R") %>% mutate(pc=n/N)
+
+ST_cat <- PW %>% group_by(ST, rules_category) %>% count() %>% right_join(ST_freq) %>% mutate(pc=n/N)
+
+ST_cat_plot <- ST_cat %>%
+  ggplot(aes(x=ST, y=pc, fill=as.character(rules_category))) +
+  geom_col() + 
+  xlim(ST_freq$ST[ST_freq$N>100]) +
+  theme_bw() + 
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  theme(axis.text.x = element_text(size=7, angle=60, hjust=1),
+        axis.title.x = element_text(size=9),
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt"),
+        legend.position="bottom",
+        legend.text=element_text(size=7), 
+        legend.key.size = unit(3,'mm'),
+        legend.title=element_text(size=9)) + 
+  labs(x="ST", y="Genotype\nprofile", fill="") + 
+  guides(fill = guide_legend(nrow=3))
+```
+
+# variants vs ST heatmap
+``` {r}
+variant_heatmap <- PW_dat %>%
+  ggplot(aes(x=ST, y=variant, fill=pc)) +
+  geom_tile() + 
+  xlim(ST_freq$ST[ST_freq$N>100]) +
+  scale_y_discrete(limits=rev(variant_order)) +
+  theme_bw() + 
+  theme(axis.text.x = element_text(size=7, angle=60, hjust=1), 
+        axis.text.y = element_text(size=7),
+        axis.title.x = element_text(size=9),
+        axis.title.y = element_text(size=9, angle=0),
+        legend.title = element_text(size=9),
+        plot.margin = margin(0, 0, 0, 0, "pt")) + 
+  labs(fill="Variant freq within ST", y="Variant", x="ST") + 
+  scale_fill_gradient(low="#fbe8a5", high="navy") + 
+  theme(legend.position="bottom")
+
+var_freq_plot <- PW_dat_variant %>% 
+  group_by(variant) %>% count() %>% 
+  ggplot(aes(y=variant, x=n)) + 
+  geom_col(fill="navy") + 
+  theme_bw() + 
+  geom_text(aes(y=variant, x=n+100, label=n), size=2.5, adj=00) +
+  theme(axis.text.x = element_text(size=8, angle=60, hjust=1),
+        axis.title.x = element_text(size=9),
+        plot.margin = margin(0, 0, 0, 0, "pt"), 
+        axis.text.y=element_blank()) + 
+  ylim(rev(variant_order)) + 
+  xlim(c(0,35000)) + 
+  labs(x="Variant freq", y="")
+
+ST_freq_plot <- ST_freq %>%
+  ggplot(aes(x=ST, y=N)) +
+  geom_col(fill="navy") + 
+   xlim(ST_freq$ST[ST_freq$N>100]) +
+  theme_bw() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt")) + 
+  labs(x="", y="\nST\nfreq")
+
+ST_predR_plot <- ST_pred %>%
+  ggplot(aes(x=ST, y=pc)) +
+  geom_col(fill="navy") + 
+  xlim(ST_freq$ST[ST_freq$N>100]) +
+  theme_bw() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt")) + 
+  labs(x="", y="Predicted\nR")
+```
+
+# Figure S11 - PW determinants vs ST
+
+``` {r}
+(ST_freq_plot + plot_spacer() + plot_layout(widths=c(6,1))) /
+    (variant_heatmap + var_freq_plot + plot_layout(widths=c(6,1))) /
+    (ST_predR_plot + plot_spacer() + plot_layout(widths=c(6,1))) /
+    (ST_cat_plot + plot_spacer() + plot_layout(widths=c(6,1))) + plot_layout(heights=c(1,8,1,1))
+
+ggsave(height=9, width=7, file="figs/FigS11_PW_geneSTheatmap.png")
+
+ggsave(height=9, width=7, file="figs/FigS11_PW_geneSTheatmap.pdf")
+ 
+```
