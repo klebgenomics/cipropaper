@@ -441,3 +441,134 @@ ggsave(height=9, width=7, file="figs/FigS12_PW_geneSTheatmapNonKp.png")
 ggsave(height=9, width=7, file="figs/FigS12_PW_geneSTheatmapNonKp.pdf")
  
 ```
+
+``` {r}
+# country count
+PW_country_count <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(countryN=n())
+
+kp_profile_year <- PW %>% filter(species=="Klebsiella pneumoniae") %>% 
+  group_by(year, rules_category) %>% count() %>%
+  ggplot(aes(x=year, y=n, fill=as.character(rules_category))) + 
+  geom_bar(stat="identity", position="fill") + 
+ # coord_flip() +
+  scale_fill_manual(values=profile_colours, labels=profile_labels) + 
+  theme_bw() + 
+  scale_y_continuous(labels = scales::percent)+
+  labs(x="Year", y="Percentage of genomes", fill="Genotype\nprofile")
+
+annual_multires <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(year) %>% summarise(Both=mean(rules_category==9), QRDR=mean(QRDR_mutations>0), PMQR=mean(acquired_genes>0)) %>% pivot_longer(cols=Both:PMQR)
+
+annual_multires
+
+annual_multires %>% filter(name=="Both") %>% arrange(-year)
+
+annual_multires_plot <- annual_multires %>% 
+  ggplot(aes(x=year, y=value*100, col=name)) + geom_point() + geom_line() +
+  scale_colour_manual(values=c(QRDR="#ecb16f", PMQR="#b92020", Both="#59124b")) + 
+  theme_bw() + 
+  labs(x="Year", y="Percentage of genomes", col="Determinants")
+
+```
+
+``` {r}
+kp_profile_year / annual_multires_plot +
+  plot_annotation(tag_levels = 'a')
+
+ggsave(height=8, width=8, file="figs/FigS13_profile_year.pdf")
+ggsave(height=8, width=8, file="figs/FigS13_profile_year.png")
+
+```
+
+# Consumption data
+
+``` {r}
+consumption_data <- read.delim(file = "antibiotic_consumption_by_ATC3.csv", header = TRUE, sep = ",") %>%
+  filter(ATC.level.3.class=="J01M-Quinolones") %>% rename(DDD=`Antibiotic.consumption..DDD.1.000.day.`) %>% select(-`ATC.level.3.class`)
+
+```
+
+# country means
+``` {r}
+# predicted R by country
+PW_country_R <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(R=mean(predR=="R"))
+PW_country_NWT <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(NWT=mean(predNWT=="NWT"))
+
+# mean QRDR by country
+PW_country_qrdr <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(`mean QRDR`=mean(QRDR_mutations)) 
+
+# mean PMQR by country
+PW_country_pmqr <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(`mean PMQR`=mean(acquired_genes)) 
+
+# mean DDD by country
+consumption_data_mean <- consumption_data %>% group_by(Location) %>% 
+  summarise(`mean DDD`=mean(DDD)) %>% rename(Country=Location)
+
+country_summary <- full_join(PW_country_R, PW_country_NWT) %>% 
+  full_join(PW_country_qrdr) %>% full_join(PW_country_pmqr) %>% 
+  full_join(PW_country_count) %>%
+  full_join(consumption_data_mean)
+
+```
+
+``` {r}
+# PMQR vs consumption
+pmqr_plot <- country_summary %>% filter(countryN>=100) %>%
+  ggplot(aes(x=`mean DDD`,y=`mean PMQR`))+
+  geom_point()+
+  stat_smooth(method="lm", color="#4781C0")+
+  theme_minimal()+
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")), 
+    label.x = 0, color = "#4781C0", geom = "label") +
+  ylim(0,1.5) +
+  labs(x="Quinolone consumption (mean annual DDD)", y="Mean PMQR gene count")
+
+# QRDR vs consumption
+qrdr_plot <- country_summary %>% filter(countryN>=100) %>%
+  ggplot(aes(x=`mean DDD`,y=`mean QRDR`))+
+  geom_point()+
+  stat_smooth(method="lm", color="#4781C0")+
+  theme_minimal()+
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")), 
+    label.x = 0, color = "#4781C0", geom = "label") +
+  ylim(0,4) +
+  labs(x="Quinolone consumption (mean annual DDD)", y="Mean QRDR mutation count")
+
+# R vs consumption
+R_plot <- country_summary %>% filter(countryN>=100) %>%
+  ggplot(aes(x=`mean DDD`,R))+
+  geom_point()+
+  stat_smooth(method="lm", color="#4781C0")+
+  theme_minimal()+
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")), 
+    label.x = 0, color = "#4781C0", geom = "label") + 
+  ylim(0,1.5) +
+  labs(x="Quinolone consumption (mean annual DDD)", y="Predicted ciprofloxacin R")
+
+```
+
+``` {r}
+R_plot + ggtitle("a) %R (predicted)") +  qrdr_plot + ggtitle("b) QRDR count") + pmqr_plot + ggtitle("c) PMQR count") + plot_layout(axes="collect")
+
+ggsave(height=3, width=8, file="figs/FigS14_consumption.pdf")
+ggsave(height=3, width=8, file="figs/FigS14_consumption.png")
+
+```
+
+
+``` {r}
+
+kp_profile_country <- PW %>% filter(species=="Klebsiella pneumoniae") %>% 
+  group_by(Country, rules_category) %>% count() %>%
+  filter(Country %in% PW_country_count$Country[PW_country_count$countryN>500]) %>%
+  left_join(PW_country_count) %>%
+  ggplot(aes(x=Country, y=n, fill=as.character(rules_category))) + 
+  geom_bar(stat="identity", position="fill") + 
+  coord_flip() +
+  scale_fill_manual(values=profile_colours, labels=profile_labels) + 
+  theme_bw() + 
+  scale_y_continuous(labels = scales::percent)+
+  labs(x="Country", y="Percentage of genomes") + 
+  theme(legend.position="none") +
+  geom_text(aes(y=1.05, label = paste0("N=", countryN)))
+
+```
