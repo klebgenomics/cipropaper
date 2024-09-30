@@ -52,6 +52,7 @@ library(patchwork)
 library(ggrepel)
 library(magrittr)
 library(epiR)
+library(jtools)
 
 # https://krassowski.github.io/complex-upset/articles/Examples_R.html
 ```
@@ -74,56 +75,6 @@ res_colours2 <- c("I"="black", "R"="IndianRed", "S"="LightBlue", "NWT"="black")
 res_colours3 <- c("NWT I"="#78638a", "NWT R"="IndianRed", "WT S"="LightBlue")
 ```
 
-## long form, one row per strain/determinant combination
-``` {r}
-cipro_res_mech <- cipro_antibiogram %>%
-  pivot_longer(c(Flq_mutations,Flq_acquired), names_to = "Flq.resistance.mech", 
-               values_to = "Resistance.mech.type") %>%
-  separate(Resistance.mech.type, into = c("type_A", "type_B", "type_C", "type_D", "type_E", "type_F", "type_G", "type_H", "type_I", "type_J"), sep = "[;]")
-
-cipro_res_mech <- cipro_res_mech %>%
-  pivot_longer(cols = type_A:type_J, values_to = "Resistance.mech.type") %>%
-  drop_na(Resistance.mech.type) %>%
-  select(-name) %>%
-  distinct()
-
-cipro_res_mech <- cipro_res_mech %>% 
-  bind_rows( # add aac6 as its own mechanism
-      cipro_antibiogram %>% 
-        filter(aac6 == 1) %>% 
-        mutate(Flq.resistance.mech = "Aac6_gene", Resistance.mech.type="aac(6')-Ib-cr")
-      ) %>%
-  bind_rows( # add null rows for aac6 as its own mechanism
-      cipro_antibiogram %>% 
-        filter(aac6 == 0) %>% 
-        mutate(Flq.resistance.mech = "Aac6_gene", Resistance.mech.type="-")
-      )
-
-# check that we have the expected number of entries for each mechanism
-cipro_res_mech %>% filter(Flq.resistance.mech=="Flq_mutations") %>% select(strain) %>% unique() %>% nrow()
-cipro_res_mech %>% filter(Flq.resistance.mech=="Flq_acquired") %>% select(strain) %>% unique() %>% nrow()
-cipro_res_mech %>% filter(Flq.resistance.mech=="Aac6_gene") %>% select(strain) %>% unique() %>% nrow()
-
-
-```
-
-# pivot to wide form, one row per strain, one column per determinant, needed for logreg and tables etc
-``` {r}
-
-cipro_res_mech_wide <- cipro_res_mech %>% 
-  select(strain, Resistance.mech.type) %>% 
- # mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub("[\\^]", "", Resistance.mech.type)) %>%
- # mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
- # mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  #filter(Resistance.mech.type!="-") %>% 
-  unique() %>% # keep only one row of Resistance.mech.type!="-" for strains with no determinants
-  mutate(genepresent=1) %>% 
-  pivot_wider(names_from=Resistance.mech.type, id_cols=strain, 
-              values_from=genepresent, values_fill=0) %>%
-  left_join(cipro_antibiogram %>% select(strain, nonWT_binary, resistant, QRDR_mutations, acquired_genes)) # add pheno and QRDR/PMQR counts
-```
-
 
 # Logistic regression models
 
@@ -131,8 +82,10 @@ cipro_res_mech_wide <- cipro_res_mech %>%
 ``` {r}
 
 # prepare matrix for modelling
-R_vs_dets <- cipro_res_mech_wide %>% 
-  select(-c(`-`, strain, QRDR_mutations, acquired_genes, nonWT_binary, ends_with('?'), ends_with('*'))) # remove imprecise matches
+R_vs_dets <- cipro_antibiogram %>% 
+  select(qnrS1:qnrA3, aac6, resistant) %>%
+  rename(`aac(6')-Ib-cr`=aac6) %>%
+  select(-c(ends_with('?'), ends_with('*'))) # remove imprecise matches
 
 # exclude genomes with rare variants
 R_vs_dets <- R_vs_dets[,colSums(R_vs_dets) >= 20]
@@ -140,9 +93,16 @@ R_vs_dets <- R_vs_dets[,colSums(R_vs_dets) >= 20]
 # model R vs all common variants (N>=20) = Model 1a
 model_R_indiv <- glm(resistant ~ ., family=binomial(link="logit"), data=R_vs_dets)
 
+model_R_indiv_logistf <- logistf(resistant ~ ., data=R_vs_dets)
+
 # model R vs all common variants (N>=20), each with aac6 interaction = Model 1b
 model_R_indiv_aac6Interaction <- glm(resistant ~ .*`aac(6')-Ib-cr`, family=binomial(link="logit"), data=R_vs_dets)
 
+
+plot_summs(model_R_indiv, inner_ci_level = .9, omit.coefs=c("(Intercept)", "qnrB17"))
+plot_summs(model_R_indiv_aac6Interaction, inner_ci_level = .9, omit.coefs=c("(Intercept)", "qnrB17"))
+
+summ(model_R_indiv, exp = TRUE, omit.coefs=c("(Intercept)", "qnrB17"))
 ```
 
 ``` {r}

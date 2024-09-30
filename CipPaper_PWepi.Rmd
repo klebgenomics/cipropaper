@@ -549,8 +549,8 @@ R_plot <- country_summary %>% filter(countryN>=100) %>%
 ``` {r}
 R_plot + ggtitle("a) %R (predicted)") +  qrdr_plot + ggtitle("b) QRDR count") + pmqr_plot + ggtitle("c) PMQR count") + plot_layout(axes="collect")
 
-ggsave(height=3, width=8, file="figs/FigS14_consumption.pdf")
-ggsave(height=3, width=8, file="figs/FigS14_consumption.png")
+ggsave(height=3, width=8, file="figs/Fig7_consumption.pdf")
+ggsave(height=3, width=8, file="figs/Fig7_consumption.png")
 
 ```
 

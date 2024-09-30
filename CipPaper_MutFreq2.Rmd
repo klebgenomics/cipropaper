@@ -1,0 +1,189 @@
+---
+title: "Mutation frequencies"
+author: "Iana Amke, Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(countrycode)
+library(pheatmap)
+library(ggpubr)
+library(ggiraphExtra)
+library(ggupset)
+library(scales)
+library(reshape2)
+library(ComplexUpset)
+library(RColorBrewer)
+library(naniar)
+library(grid)
+library(gtsummary)
+library(broom)
+library(patchwork)
+library(ggrepel)
+library(magrittr)
+library(epiR)
+
+# https://krassowski.github.io/complex-upset/articles/Examples_R.html
+```
+
+# load data
+``` {r}
+geno <- read_delim("tables/TableS1_genotypes.tsv")
+
+pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+
+cipro_antibiogram <- full_join(geno,pheno)
+
+```
+
+## long form, one row per strain/determinant combination
+``` {r}
+cipro_res_mech <- cipro_antibiogram %>%
+  mutate(Aac6_gene=if_else(aac6 == 1, "aac(6')-Ib-cr", "-")) %>%
+  pivot_longer(c(Flq_mutations,Flq_acquired, Aac6_gene), names_to = "marker.type", 
+               values_to = "marker") %>%
+  separate_longer_delim(cols=marker, delim=";")
+```
+
+# Summarise mutations - Table 1, Table S5
+
+# Numbers for text - para 2
+``` {r}
+# total isolates
+totalN <- nrow(cipro_antibiogram)
+
+# number/freq of isolates with each type of mutation
+cipro_antibiogram %>% summarise(pc=mean(QRDR_mutations!=0)*100, N=sum(QRDR_mutations!=0))
+cipro_antibiogram %>% summarise(pc=mean(acquired_genes!=0)*100, N=sum(acquired_genes!=0))
+cipro_antibiogram %>% summarise(pc=mean(aac6!=0)*100, N=sum(aac6!=0))
+
+# by S/I/R
+cipro_antibiogram %>% summarise(pc=mean(QRDR_mutations!=0)*100, N=sum(QRDR_mutations!=0))
+cipro_antibiogram %>% summarise(pc=mean(acquired_genes!=0)*100, N=sum(acquired_genes!=0))
+cipro_antibiogram %>% summarise(pc=mean(aac6!=0)*100, N=sum(aac6!=0))
+
+cipro_antibiogram %>% group_by(Resistance.phenotype) %>%summarise(pc=mean(QRDR_mutations!=0)*100, N=sum(QRDR_mutations!=0))
+cipro_antibiogram %>% group_by(Resistance.phenotype) %>%summarise(pc=mean(acquired_genes!=0)*100, N=sum(acquired_genes!=0))
+cipro_antibiogram %>% group_by(Resistance.phenotype) %>%summarise(pc=mean(aac6!=0)*100, N=sum(aac6!=0))
+
+```
+
+
+# Table 1 - solo mutation stats
+
+``` {r}
+qrdr <- cipro_antibiogram %>% filter(QRDR_mutations==1 & aac6==0 & acquired_genes==0) %>% 
+  group_by(Flq_mutations) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Determinant=Flq_mutations)
+
+pmqr <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==1) %>% 
+  mutate(Flq_acquired=gsub("[\\^]", "", Flq_acquired)) %>%
+  group_by(Flq_acquired) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Determinant=Flq_acquired)
+
+aac6 <- cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0) %>% 
+  mutate(aac6_label=if_else(aac6==0, "-", "aac(6')-Ib-cr")) %>%
+  group_by(aac6_label) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  filter(aac6_label!="-") %>%
+  rename(Determinant=aac6_label)
+
+solo_ppv <- aac6 %>% bind_rows(qrdr) %>% bind_rows(pmqr)
+```
+
+
+## write out Table 1 - solo determinants and association with phenotype
+``` {r}
+
+solo_ppv %>%
+  mutate(R_PPV=paste0(round(R_PPV*100,2),"%")) %>%
+  mutate(NWT_PPV=paste0(round(NWT_PPV*100,2),"%")) %>%
+  rename(`PPV (R)`=R_PPV) %>%
+  rename(`PPV (NWT)`=NWT_PPV) %>%
+  write_csv(file="tables/Table1_freq_per_det_byPheno_summary_singleDet.csv")
+```
+
+
+# Solo mutation stats in aac6+ background
+
+``` {r}
+qrdr_aac6 <- cipro_antibiogram %>% filter(QRDR_mutations==1 & aac6==1 & acquired_genes==0) %>% 
+  group_by(Flq_mutations) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Determinant=Flq_mutations)
+
+pmqr_aac6 <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==1 & acquired_genes==1) %>% 
+  mutate(Flq_acquired=gsub("[\\^]", "", Flq_acquired)) %>%
+  group_by(Flq_acquired) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Determinant=Flq_acquired)
+
+solo_ppv_aac6 <- qrdr_aac6 %>% bind_rows(pmqr_aac6)
+```
+
+
+# Table 5 - mutation stats
+
+``` {r}
+qrdr_all <- cipro_res_mech %>% filter(marker.type=="Flq_mutations") %>%
+  group_by(marker) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  filter(marker!="-") %>%
+  rename(Determinant=marker)
+
+pmqr_all <- cipro_res_mech %>% filter(marker.type=="Flq_acquired") %>%
+  mutate(marker=gsub("[\\^]", "", marker)) %>%
+  group_by(marker) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  filter(marker!="-") %>%
+  rename(Determinant=marker)
+
+aac6_all <- cipro_res_mech %>% filter(marker.type=="Aac6_gene") %>%
+  mutate(aac6_label=if_else(aac6==0, "-", "aac(6')-Ib-cr")) %>%
+  group_by(aac6_label) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  filter(aac6_label!="-") %>%
+  rename(Determinant=aac6_label)
+
+ppv_all <- aac6_all %>% bind_rows(qrdr_all) %>% bind_rows(pmqr_all)
+```
+
+# write out Table S5 - solo stats, overall stats
+``` {r}
+# title columns for table
+solo_ppv %>% full_join(solo_ppv_aac6, by="Determinant", suffix=c(".solo", ".soloAac6")) %>% 
+  full_join(ppv_all, by="Determinant") %>%
+  write_csv(file="tables/TableS5_determinantStats.csv")
+```
