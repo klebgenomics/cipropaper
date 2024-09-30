@@ -1,6 +1,6 @@
 ---
 title: "Ciprofloxacin resistance in Klebsiella pneumoniae"
-author: "Iana Amke, Kara Tsang, Kat Holt"
+author: "Kara Tsang, Kat Holt"
 date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
 output: 
   html_document: 
@@ -35,33 +35,16 @@ knitr::opts_knit$set(root.dir = getwd())
 # Data wrangling
 library(tidyverse)
 library(dplyr)
-library(countrycode)
-library(pheatmap)
-library(ggpubr)
-library(ggiraphExtra)
-library(ggupset)
-library(scales)
 library(reshape2)
 library(ComplexUpset)
-library(RColorBrewer)
-library(naniar)
-library(grid)
-library(gtsummary)
-library(broom)
 library(patchwork)
-library(ggrepel)
-library(magrittr)
-library(epiR)
-
-# https://krassowski.github.io/complex-upset/articles/Examples_R.html
+library(scales)
 ```
 
 # load data
 ``` {r}
 geno <- read_delim("tables/TableS1_genotypes.tsv")
-
 pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
-
 cipro_antibiogram <- full_join(geno,pheno) %>%
   mutate(SRnwt = if_else(Resistance.phenotype=="I", "NWT", Resistance.phenotype)) %>%
   mutate(SRnwt = factor(SRnwt, levels=c("S","NWT","R")))
@@ -77,32 +60,10 @@ res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
 ## long form, one row per strain/determinant combination
 ``` {r}
 cipro_res_mech <- cipro_antibiogram %>%
-  pivot_longer(c(Flq_mutations,Flq_acquired), names_to = "Flq.resistance.mech", 
-               values_to = "Resistance.mech.type") %>%
-  separate(Resistance.mech.type, into = c("type_A", "type_B", "type_C", "type_D", "type_E", "type_F", "type_G", "type_H", "type_I", "type_J"), sep = "[;]")
-
-cipro_res_mech <- cipro_res_mech %>%
-  pivot_longer(cols = type_A:type_J, values_to = "Resistance.mech.type") %>%
-  drop_na(Resistance.mech.type) %>%
-  select(-name) %>%
-  distinct()
-
-cipro_res_mech <- cipro_res_mech %>% 
-  bind_rows( # add aac6 as its own mechanism
-      cipro_antibiogram %>% 
-        filter(aac6 == 1) %>% 
-        mutate(Flq.resistance.mech = "Aac6_gene", Resistance.mech.type="aac(6')-Ib-cr")
-      ) %>%
-  bind_rows( # add null rows for aac6 as its own mechanism
-      cipro_antibiogram %>% 
-        filter(aac6 == 0) %>% 
-        mutate(Flq.resistance.mech = "Aac6_gene", Resistance.mech.type="-")
-      )
-
-# check that we have the expected number of entries for each mechanism
-cipro_res_mech %>% filter(Flq.resistance.mech=="Flq_mutations") %>% select(strain) %>% unique() %>% nrow()
-cipro_res_mech %>% filter(Flq.resistance.mech=="Flq_acquired") %>% select(strain) %>% unique() %>% nrow()
-cipro_res_mech %>% filter(Flq.resistance.mech=="Aac6_gene") %>% select(strain) %>% unique() %>% nrow()
+  mutate(Aac6_gene=if_else(aac6 == 1, "aac(6')-Ib-cr", "-")) %>%
+  pivot_longer(c(Flq_mutations,Flq_acquired, Aac6_gene), names_to = "marker.type", 
+               values_to = "marker") %>%
+  separate_longer_delim(cols=marker, delim=";")
 ```
 
 # Numbers reported in text - para 3
@@ -150,7 +111,6 @@ fisher.test(table(QRDR_noGenes_dat$resistant, QRDR_noGenes_dat$qrdr_bin))
 # Numbers reported in text - para 4
 
 ## effect of presence/absence of any QRDR, in absence of any acquired genes
-
 ``` {r}
 
 # total strains without PMQR or aac6
@@ -208,7 +168,6 @@ summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_0_1_2), data=QRDR_MIC_noG
 summary(lm(log2(as.numeric(Measurement)) ~ QRDR_mutations, data=QRDR_MIC_noGenes_dat))
 
 
-
 # DD vs QRDR count
 QRDR_DD_noGenes_dat <- QRDR_DD_noGenes_dat %>%
   mutate(QRDR_0_1_2 = if_else(QRDR_mutations>2, 2, QRDR_mutations)) %>%
@@ -226,7 +185,6 @@ summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_0_1_2), data=QRDR_DD_noGe
 summary(lm(log2(as.numeric(Measurement)) ~ QRDR_mutations, data=QRDR_DD_noGenes_dat))
 
 ```
-
 
 
 ## Fig1 - number of QRDR vs MIC, facet aac6 yes/no (no other genes)
@@ -279,7 +237,7 @@ ggsave("figs/Fig1_numQRDR_MIC_pheno.pdf", width=6, height=5)
 ggsave("figs/Fig1_numQRDR_MIC_pheno.png", width=6, height=5)
 ```
 
-# Supp Fig 5 - number of QRDR vs DD, facet aac6 yes/no (no other genes)
+# Fig S5 - number of QRDR vs DD, facet aac6 yes/no (no other genes)
 ``` {r}
 
 # DD distribution for # QRDR, in absence of genes
@@ -300,7 +258,6 @@ QRDR_DD_noGenes <- cipro_antibiogram %>%
          title="No. QRDR mutations vs phenotype",
          subtitle="(in absence of PMQR genes)")
 
-
 QRDR_DDpheno_noGenes <- cipro_antibiogram %>%
     filter(acquired_genes==0) %>% 
     filter(Laboratory.Typing.Method=="Disk diffusion") %>%
@@ -309,7 +266,7 @@ QRDR_DDpheno_noGenes <- cipro_antibiogram %>%
     ggplot(aes(x=factor(QRDR_mutations), fill=SRnwt)) + 
     geom_bar(stat='count', position='fill') + 
     facet_wrap(vars(aac6_label)) +
-     scale_fill_manual(values = res_colours) +  
+    scale_fill_manual(values = res_colours) +  
     scale_y_continuous(labels=scales::percent_format()) +
     geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), size=2) +
     theme_light() + 
@@ -325,7 +282,7 @@ ggsave("figs/FigS5_numQRDR_DD_pheno.pdf", width=6, height=4)
 ggsave("figs/FigS5_numQRDR_DD_pheno.png", width=6, height=4)
 ```
 
-# Supp Fig 3 panel a - upset plot of QRDR positions, absence of aac6/acquired genes, with MIC data
+# Fig S3 panel a - upset plot of QRDR positions, absence of aac6/acquired genes, with MIC data
 ``` {r}
 upset_QRDR_noAac6_MIC <- cipro_antibiogram %>% 
   filter(aac6==0 & acquired_genes==0) %>%
@@ -363,7 +320,7 @@ upset_QRDR_noAac6_MIC <- cipro_antibiogram %>%
 ```
 
 
-# Supp Fig 3 panel b - upset plot of QRDR positions, presence of aac6 but no other acquired genes, with MIC data
+# Fig S3 panel b - upset plot of QRDR positions, presence of aac6 but no other acquired genes, with MIC data
 ``` {r}
 upset_QRDR_aac6_MIC <- cipro_antibiogram %>% 
   filter(aac6==1 & acquired_genes==0) %>%
@@ -401,7 +358,7 @@ upset_QRDR_aac6_MIC <- cipro_antibiogram %>%
 
 ```
 
-# Supp Fig 4 panel a - QRDR positions, absence of aac6/acquired genes, with DD data
+# Fig S4 panel a - QRDR positions, absence of aac6/acquired genes, with DD data
 ``` {r}
 upset_QRDR_noAac6_DD <- cipro_antibiogram %>% 
   filter(aac6==0 & acquired_genes==0) %>%
@@ -442,7 +399,7 @@ upset_QRDR_noAac6_DD
 
 ```
 
-# Supp Fig 4 panel b - QRDR positions, presence of aac6 but no other acquired genes, with DD data
+# Fig S4 panel b - QRDR positions, presence of aac6 but no other acquired genes, with DD data
 ``` {r}
 upset_QRDR_aac6_DD <- cipro_antibiogram %>% 
   filter(aac6==1 & acquired_genes==0) %>%
@@ -503,19 +460,19 @@ ggsave("figs/FigS4_QRDR_DD.png", width=9, height=6)
 
 # genes in at least 10 genomes
 qnr_genes <- cipro_res_mech %>% 
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  group_by(Resistance.mech.type) %>% 
-  count() %>% filter(startsWith(Resistance.mech.type, "q")) %>% 
-  filter(n>10) %>% pull(Resistance.mech.type)
+  mutate(marker=gsub("[\\^\\*\\?]", "", marker)) %>%
+  mutate(marker=gsub(".v1", "", marker)) %>%
+  mutate(marker=gsub(".v2", "", marker)) %>%
+  group_by(marker) %>% 
+  count() %>% filter(startsWith(marker, "q")) %>% 
+  filter(n>10) %>% pull(marker)
 
 qnr_presence <- cipro_res_mech %>% 
-  mutate(Resistance.mech.type=gsub("[\\^\\*\\?]", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v1", "", Resistance.mech.type)) %>%
-  mutate(Resistance.mech.type=gsub(".v2", "", Resistance.mech.type)) %>%
-  filter(Resistance.mech.type %in% qnr_genes) %>%
-  group_by(strain, Resistance.mech.type) %>% count() %>% pivot_wider(names_from=Resistance.mech.type, values_from=n)
+  mutate(marker=gsub("[\\^\\*\\?]", "", marker)) %>%
+  mutate(marker=gsub(".v1", "", marker)) %>%
+  mutate(marker=gsub(".v2", "", marker)) %>%
+  filter(marker %in% qnr_genes) %>%
+  group_by(strain, marker) %>% count() %>% pivot_wider(names_from=marker, values_from=n)
 
 cipro_antibiogram <- left_join(cipro_antibiogram, qnr_presence)
 
@@ -696,7 +653,6 @@ ggsave("figs/FigS7_qnr_DD.png", width=12, height=6)
 
 
 # numbers for text - paragraph 5
-
 ``` {r}
 
 # effect of qnr/qep genes, in absence of QRDR and aac6
@@ -744,7 +700,6 @@ fisher.test(table(qnr_noGenes_dat$nonWT_binary, qnr_noGenes_dat$acquired_bin))
 
 # resistance vs presence/absence of qnr, in absence of QRDR and aac6
 fisher.test(table(qnr_noGenes_dat$resistant, qnr_noGenes_dat$acquired_bin))
-
 
 
 # MIC vs qnr count
@@ -808,7 +763,7 @@ ggsave("figs/Fig2_numQnr_MIC_pheno.png", width=6, height=5)
 
 ```
 
-# (Fig S8) - number of qnr vs DD, facet aac6 yes/no (no QRDR)
+# Fig S8 - number of qnr vs DD, facet aac6 yes/no (no QRDR)
 ``` {r}
 
 # DD distribution for # qnr, in absence of genes
@@ -850,8 +805,6 @@ qnr_DD_noGenes / qnr_DDpheno_noGenes + plot_layout(heights=c(2,1))
 ggsave("figs/FigS8_numQnr_DD_pheno.pdf", width=6, height=4)
 ggsave("figs/FigS8_numQnr_DD_pheno.png", width=6, height=4)
 ```
-
-
 
 
 # Fig3 panel b - aac6, QRDR mutations, qnr with DD data
@@ -952,7 +905,6 @@ ggsave("figs/Fig3_simple_comb_MIC_DD.png", width=12, height=6)
 ```
 
 # numbers for text - paragraph 6, effect of aac6 gene, in absence of QRDR and other acquired
-
 ``` {r}
 
 # MIC
@@ -968,7 +920,7 @@ summary(lm(log2(as.numeric(Measurement)) ~ aac6, data=aac_MIC_nullBG_dat))
 summary(as.numeric(aac_MIC_nullBG_dat$Measurement)[aac_MIC_nullBG_dat$aac6==1])
 summary(as.numeric(aac_MIC_nullBG_dat$Measurement)[aac_MIC_nullBG_dat$aac6==0])
 
-table(aac_MIC_nullBG_dat$aac6, aac_MIC_nullBG_dat$Resistance.phenotype)/rowSums(table(aac_MIC_nullBG_dat$aac6, aac_MIC_nullBG_dat$Resistance.phenotype))
+aac_MIC_nullBG_dat %>% group_by(aac6) %>% summarise(S=mean(Resistance.phenotype=="S"), I=mean(Resistance.phenotype=="I"), R=mean(Resistance.phenotype=="R"))
 
 # DD
 aac_DD_nullBG_dat <- cipro_antibiogram %>%
@@ -982,8 +934,7 @@ summary(lm(as.numeric(Measurement) ~ aac6, data=aac_DD_nullBG_dat))
 summary(as.numeric(aac_DD_nullBG_dat$Measurement)[aac_DD_nullBG_dat$aac6==1])
 summary(as.numeric(aac_DD_nullBG_dat$Measurement)[aac_DD_nullBG_dat$aac6==0])
 
-
-table(aac_DD_nullBG_dat$aac6, aac_DD_nullBG_dat$Resistance.phenotype)/rowSums(table(aac_DD_nullBG_dat$aac6, aac_DD_nullBG_dat$Resistance.phenotype))
+aac_DD_nullBG_dat %>% group_by(aac6) %>% summarise(S=mean(Resistance.phenotype=="S"), I=mean(Resistance.phenotype=="I"), R=mean(Resistance.phenotype=="R"))
 
 
 # all genomes with no acquired genes (MIC/DD)

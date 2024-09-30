@@ -139,7 +139,7 @@ metrics <- function(pred,truth) {
 
 # prepare matrix for modelling
 R_vs_dets <- cipro_antibiogram %>% 
-  select(qnrS1:qnrA3, aac6, resistant) %>%
+  select(`GyrA-83F`:`qnrVC6`, aac6, resistant) %>%
   rename(`aac(6')-Ib-cr`=aac6) %>%
   select(-c(ends_with('?'), ends_with('*'))) # remove imprecise matches
 
@@ -188,7 +188,7 @@ log_reg_R_plot
 
 # prepare matrix for modelling
 NWT_vs_dets <- cipro_antibiogram %>% 
-  select(qnrS1:qnrA3, aac6, nonWT_binary) %>%
+  select(`GyrA-83F`:`qnrVC6`, aac6, nonWT_binary) %>%
   rename(`aac(6')-Ib-cr`=aac6) %>%
   select(-c(ends_with('?'), ends_with('*'))) # remove imprecise matches
 
@@ -219,7 +219,7 @@ logreg_model3b <- logreg_details(model_NWT_indiv_aac6Interaction) %>%
 # get count per marker to label on the right
 marker_count <- cipro_antibiogram %>% 
   rename(`aac(6')-Ib-cr`=aac6) %>%
-  select(qnrS1:qnrA3, `aac(6')-Ib-cr`) %>%
+  select(`GyrA-83F`:`qnrVC6`, `aac(6')-Ib-cr`) %>%
   colSums()
 
 marker_count_order <- logreg_model3a %>% bind_rows(logreg_model3b) %>%
@@ -811,7 +811,7 @@ S_mut %>% group_by(Flq_acquired, Flq_mutations, Measurement, Measurement.units) 
 
 MIC_vs_dets <- cipro_antibiogram %>% 
   filter(Laboratory.Typing.Method!="Disk diffusion") %>%
-  select(qnrS1:qnrA3, aac6, Measurement) %>%
+  select(`GyrA-83F`:`qnrVC6`, aac6, Measurement) %>%
   rename(`aac(6')-Ib-cr`=aac6) %>%
   select(-c(ends_with('?'), ends_with('*'))) # remove imprecise matches
 
@@ -861,7 +861,7 @@ lin_reg_MIC_plot
 
 DD_vs_dets <- cipro_antibiogram %>% 
   filter(Laboratory.Typing.Method=="Disk diffusion") %>%
-  select(qnrS1:qnrA3, aac6, Measurement) %>%
+  select(`GyrA-83F`:`qnrVC6`, aac6, Measurement) %>%
   rename(`aac(6')-Ib-cr`=aac6) %>%
   select(-c(ends_with('?'), ends_with('*'))) # remove imprecise matches
 
