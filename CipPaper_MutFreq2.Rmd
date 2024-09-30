@@ -1,6 +1,6 @@
 ---
 title: "Mutation frequencies"
-author: "Iana Amke, Kara Tsang, Kat Holt"
+author: "Kara Tsang, Kat Holt"
 date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
 output: 
   html_document: 
@@ -35,33 +35,12 @@ knitr::opts_knit$set(root.dir = getwd())
 # Data wrangling
 library(tidyverse)
 library(dplyr)
-library(countrycode)
-library(pheatmap)
-library(ggpubr)
-library(ggiraphExtra)
-library(ggupset)
-library(scales)
-library(reshape2)
-library(ComplexUpset)
-library(RColorBrewer)
-library(naniar)
-library(grid)
-library(gtsummary)
-library(broom)
-library(patchwork)
-library(ggrepel)
-library(magrittr)
-library(epiR)
-
-# https://krassowski.github.io/complex-upset/articles/Examples_R.html
 ```
 
 # load data
 ``` {r}
 geno <- read_delim("tables/TableS1_genotypes.tsv")
-
 pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
-
 cipro_antibiogram <- full_join(geno,pheno)
 
 ```
@@ -74,8 +53,6 @@ cipro_res_mech <- cipro_antibiogram %>%
                values_to = "marker") %>%
   separate_longer_delim(cols=marker, delim=";")
 ```
-
-# Summarise mutations - Table 1, Table S5
 
 # Numbers for text - para 2
 ``` {r}
@@ -98,9 +75,7 @@ cipro_antibiogram %>% group_by(Resistance.phenotype) %>%summarise(pc=mean(aac6!=
 
 ```
 
-
 # Table 1 - solo mutation stats
-
 ``` {r}
 qrdr <- cipro_antibiogram %>% filter(QRDR_mutations==1 & aac6==0 & acquired_genes==0) %>% 
   group_by(Flq_mutations) %>% 
@@ -123,21 +98,7 @@ aac6 <- cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0) %>%
 solo_ppv <- aac6 %>% bind_rows(qrdr) %>% bind_rows(pmqr)
 ```
 
-
-## write out Table 1 - solo determinants and association with phenotype
-``` {r}
-
-solo_ppv %>%
-  mutate(R_PPV=paste0(round(R_PPV*100,2),"%")) %>%
-  mutate(NWT_PPV=paste0(round(NWT_PPV*100,2),"%")) %>%
-  rename(`PPV (R)`=R_PPV) %>%
-  rename(`PPV (NWT)`=NWT_PPV) %>%
-  write_csv(file="tables/Table1_freq_per_det_byPheno_summary_singleDet.csv")
-```
-
-
 # Solo mutation stats in aac6+ background
-
 ``` {r}
 qrdr_aac6 <- cipro_antibiogram %>% filter(QRDR_mutations==1 & aac6==1 & acquired_genes==0) %>% 
   group_by(Flq_mutations) %>% 
@@ -155,7 +116,6 @@ solo_ppv_aac6 <- qrdr_aac6 %>% bind_rows(pmqr_aac6)
 
 
 # Table 5 - mutation stats
-
 ``` {r}
 qrdr_all <- cipro_res_mech %>% filter(marker.type=="Flq_mutations") %>%
   group_by(marker) %>% 
