@@ -295,10 +295,10 @@ ppvNWT_plot <- ppvNWT %>%
 # Figure 1 - PPV and regression model coefficients, for individual determinants
 ``` {r fig1}
 
-(ppvR_plot + ggtitle(label="a) PPV for solo marker", subtitle="R") + ppvNWT_plot + ggtitle(label="", subtitle="NWT") + plot_layout(guides="collect", axes="collect")) / (log_reg_R_plot + ggtitle(label="b) Logistic regression models", subtitle="R") + log_reg_NWT_plot + ggtitle(label="", subtitle="NWT") + plot_layout(guides="collect", axes="collect"))
+(ppvR_plot + ggtitle(label="a) PPV for solo marker", subtitle="R") + ppvNWT_plot + ggtitle(label="", subtitle="NWT") + plot_layout(guides="collect", axes="collect")) / (log_reg_R_plot + ggtitle(label="b) Logistic regression", subtitle="R") + log_reg_NWT_plot + ggtitle(label="", subtitle="NWT") + plot_layout(guides="collect", axes="collect"))
 
-ggsave(width=8, height=9, file="figs/Fig1_regressionModels.pdf")
-ggsave(width=8, height=9, file="figs/Fig1_regressionModels.png")
+ggsave(width=8, height=9, file="figs/Fig1_individual_variable_stats.pdf")
+ggsave(width=8, height=9, file="figs/Fig1_individual_variable_stats.png")
 
 ```
 

@@ -75,7 +75,7 @@ cipro_antibiogram %>% group_by(Resistance.phenotype) %>%summarise(pc=mean(aac6!=
 
 ```
 
-# Table 1 - solo mutation stats
+# Table 5 / Fig 1 - solo mutation stats
 ``` {r}
 qrdr <- cipro_antibiogram %>% filter(QRDR_mutations==1 & aac6==0 & acquired_genes==0) %>% 
   group_by(Flq_mutations) %>% 
@@ -88,12 +88,19 @@ pmqr <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_gene
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
   rename(Determinant=Flq_acquired)
 
+# treating all aac6 hits as one (not used, so we can see evidence per variant)
 aac6 <- cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0) %>% 
   mutate(aac6_label=if_else(aac6==0, "-", "aac(6')-Ib-cr")) %>%
   group_by(aac6_label) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
   filter(aac6_label!="-") %>%
   rename(Determinant=aac6_label)
+
+aac6 <- cipro_antibiogram %>% filter(QRDR_mutations==0 & acquired_genes==0 & aac6==1) %>% 
+  group_by(aac6_allele) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  filter(aac6_allele!="-") %>%
+  rename(Determinant=aac6_allele)
 
 solo_ppv <- aac6 %>% bind_rows(qrdr) %>% bind_rows(pmqr)
 ```
@@ -130,12 +137,20 @@ pmqr_all <- cipro_res_mech %>% filter(marker.type=="Flq_acquired") %>%
   filter(marker!="-") %>%
   rename(Determinant=marker)
 
+# treating all aac6 hits as one (not used, so we can see evidence per variant)
 aac6_all <- cipro_res_mech %>% filter(marker.type=="Aac6_gene") %>%
   mutate(aac6_label=if_else(aac6==0, "-", "aac(6')-Ib-cr")) %>%
   group_by(aac6_label) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
   filter(aac6_label!="-") %>%
   rename(Determinant=aac6_label)
+
+# using aac6 variants
+aac6_all <- cipro_antibiogram %>%
+  group_by(aac6_allele) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  filter(aac6_allele!="-") %>%
+  rename(Determinant=aac6_allele)
 
 ppv_all <- aac6_all %>% bind_rows(qrdr_all) %>% bind_rows(pmqr_all)
 ```
