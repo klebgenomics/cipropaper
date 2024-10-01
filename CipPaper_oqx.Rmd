@@ -1,0 +1,85 @@
+---
+title: "Ciprofloxacin resistance in Klebsiella pneumoniae"
+author: "Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(reshape2)
+library(ComplexUpset)
+library(patchwork)
+library(scales)
+```
+
+# load data
+``` {r}
+geno <- read_delim("tables/TableS1_genotypes.tsv")
+pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+oqxR_coverage <- read_delim("tables/oqxR_coverage.tsv")
+
+cipro_antibiogram <- full_join(geno,pheno) %>%
+  mutate(SRnwt = if_else(Resistance.phenotype=="I", "NWT", Resistance.phenotype)) %>%
+  mutate(SRnwt = factor(SRnwt, levels=c("S","NWT","R")))
+
+```
+
+## set colours
+``` {r}
+wt_colours <- c(`non-wt (I/R)`="IndianRed", `wt (S)`= "LightBlue")
+res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
+```
+
+## oqxR data formatting
+``` {r}
+
+# oqxR truncation is defined as a genome with all oqxR copies with < 90% acid sequence coverage
+
+oqxR_truncation <- oqxR_coverage %>% 
+  mutate(oqxR_truncation=ifelse(oqxR_coverage < 90, "Y", "N")) %>% 
+  subset(select = -c(oqxR_coverage)) %>%
+  # consider any genome with at least one complete oqxR as no oqxR truncation
+  arrange(strain, match(oqxR_truncation, c("N", "Y"))) %>%
+  distinct(strain, .keep_all = TRUE)
+
+# oqxR not identified in nucleotide BLAST search (i.e., oqxR deletion) considered to be truncation
+geno_oqxR_truncation <- full_join(geno,oqxR_truncation) %>%
+   mutate(oqxR_truncation=replace_na(oqxR_truncation, "Y"))
+
+# oqxR truncation vs. nonWT_binary phenotype (in genomes with no Flq res determinants)
+geno_oqxR_truncation %>% filter(QRDR_mutations==0, acquired_genes==0, aac6==0)%>% group_by(oqxR_truncation, nonWT_binary) %>% count(sort=TRUE)
+
+# oqxR truncation vs. resistant phenotype (in genomes with no Flq res determinants)
+geno_oqxR_truncation %>% filter(QRDR_mutations==0, acquired_genes==0, aac6==0)%>% group_by(oqxR_truncation, resistant) %>% count(sort=TRUE)
+```
+
+
