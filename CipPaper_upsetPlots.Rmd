@@ -206,7 +206,7 @@ QRDR_MIC_noGenes <- cipro_antibiogram %>%
     scale_color_manual(values = res_colours) + 
     theme_light() + 
     labs(y="MIC (mg/L)", x="", col="Phenotype", 
-         title="No. QRDR mutations vs phenotype",
+         title="a) No. QRDR mutations vs phenotype",
          subtitle="(in absence of PMQR genes)")
 
 QRDR_MIC_noGenes
@@ -228,13 +228,6 @@ QRDR_pheno_noGenes <- cipro_antibiogram %>%
     theme_light() + 
     labs(y="% Phenotype", x="Number of QRDR mutations") + 
     theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
-```
-
-``` {r}
-QRDR_MIC_noGenes / QRDR_pheno_noGenes + plot_layout(heights=c(3,1))
-
-ggsave("figs/Fig1_numQRDR_MIC_pheno.pdf", width=6, height=5)
-ggsave("figs/Fig1_numQRDR_MIC_pheno.png", width=6, height=5)
 ```
 
 # Fig S5 - number of QRDR vs DD, facet aac6 yes/no (no other genes)
@@ -735,7 +728,7 @@ qnr_MIC_noGenes <- cipro_antibiogram %>%
     scale_color_manual(values = res_colours) + 
     theme_light() + 
     labs(y="MIC (mg/L)", x="", col="Phenotype", 
-         title="No. PMQR genes vs phenotype",
+         title="b) No. PMQR genes vs phenotype",
          subtitle="(in absence of QRDR mutations)")
 
 
@@ -755,11 +748,12 @@ qnr_pheno_noGenes <- cipro_antibiogram %>%
 
 ```
 
+# Fig 2
 ``` {r}
-qnr_MIC_noGenes / qnr_pheno_noGenes + plot_layout(heights=c(3,1))
+QRDR_MIC_noGenes / QRDR_pheno_noGenes / qnr_MIC_noGenes / qnr_pheno_noGenes + plot_layout(heights=c(3,1, 3, 1))
 
-ggsave("figs/Fig2_numQnr_MIC_pheno.pdf", width=6, height=5)
-ggsave("figs/Fig2_numQnr_MIC_pheno.png", width=6, height=5)
+ggsave("figs/Fig2_numQnr_numPMQR_MIC_pheno.pdf", width=6, height=10)
+ggsave("figs/Fig2_numQnr_numPMQR_MIC_pheno.png", width=6, height=10)
 
 ```
 
