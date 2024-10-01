@@ -1,0 +1,126 @@
+---
+title: "Assay distributions"
+author: "Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+```
+
+# load data
+``` {r}
+geno <- read_delim("tables/TableS1_genotypes.tsv")
+pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+cipro_antibiogram <- full_join(geno,pheno)
+
+```
+
+## colours
+``` {r}
+
+c25 <- c(
+  "dodgerblue2", "#E31A1C", # red
+  "green4",
+  "#6A3D9A", # purple
+  "#FF7F00", # orange
+  "black", "gold1",
+  "skyblue2", "#FB9A99", # lt pink
+  "palegreen2",
+  "#CAB2D6", # lt purple
+  "#FDBF6F", # lt orange
+  "gray70", "khaki2",
+  "maroon", "orchid1", "deeppink1", "blue1", "steelblue4",
+  "darkturquoise", "green1", "yellow4", "yellow3",
+  "darkorange4", "brown"
+)
+```
+
+# MIC
+``` {r}
+MIC_dist <- cipro_antibiogram %>%
+  filter(Laboratory.Typing.Method!="Disk diffusion") %>%
+  mutate(Measurement=replace(Measurement, Measurement==0.032, 0.03)) %>%
+  mutate(Measurement=replace(Measurement, Measurement==0.064, 0.06)) %>%
+  mutate(Measurement=replace(Measurement, Measurement==0.12, 0.125)) %>%
+  group_by(Measurement, index) %>% count() %>%
+  ggplot(aes(x=factor(Measurement), y=n, fill=index)) + 
+  geom_bar(position="stack", stat="identity") +
+  theme_bw() +
+  labs(x="MIC (mg/L)", y="Number of genomes", fill="Dataset") +
+  scale_fill_manual(values=c25[1:22]) +
+  geom_vline(xintercept=4.5, linetype=2) +
+  annotate("text",x=4.25, y=2900, label="S") +
+  geom_vline(xintercept=5.5, linetype=2) +
+  annotate("text",x=5.75, y=2900, label="R")
+
+```
+
+# Figure S1 - MIC distribution
+``` {r figs1}
+
+MIC_dist
+
+ggsave(width=9, height=4, file="figs/FigS1_MIC_distribution.pdf")
+ggsave(width=9, height=4, file="figs/FigS1_MIC_distribution.png")
+
+```
+
+
+
+# Disk diffusion
+``` {r}
+DD_dist <- cipro_antibiogram %>%
+  filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+  group_by(Measurement, index) %>% count() %>%
+  ggplot(aes(x=factor(Measurement), y=n, fill=index)) + 
+  geom_bar(position="stack", stat="identity") +
+  theme_bw() +
+  labs(x="MIC (mg/L)", y="Number of genomes", fill="Dataset") +
+  scale_fill_manual(values=c25[1:6]) +
+  geom_vline(xintercept=16.5, linetype=2) +
+  annotate("text",x=16, y=400, label="R") +
+  geom_vline(xintercept=19.5, linetype=2) +
+  annotate("text",x=20, y=400, label="S") + 
+  scale_x_discrete(breaks=seq(5,45,5))
+
+```
+
+# Figure S2 - DD distribution
+``` {r figs2}
+
+DD_dist
+
+ggsave(width=9, height=4, file="figs/FigS2_DD_distribution.pdf")
+ggsave(width=9, height=4, file="figs/FigS2_DD_distribution.png")
+
+```
