@@ -106,7 +106,7 @@ DD_dist <- cipro_antibiogram %>%
   geom_bar(position="stack", stat="identity") +
   theme_bw() +
   labs(x="MIC (mg/L)", y="Number of genomes", fill="Dataset") +
-  scale_fill_manual(values=c25[1:6]) +
+  scale_fill_manual(values=c25[10:15]) +
   geom_vline(xintercept=16.5, linetype=2) +
   annotate("text",x=16, y=400, label="R") +
   geom_vline(xintercept=19.5, linetype=2) +

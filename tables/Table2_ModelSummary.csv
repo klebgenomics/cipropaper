@@ -1,9 +1,0 @@
-response,ModelName,predictors,Categorical agreement,PPV,NPV,ME,VME,AIC,model fit (aac6 interaction)
-R,Model 1a,determinants,95.5%,94.75%,96.31%,5.34%,3.62%,13207.8174996225,-
-R,Model 1b,determinant*aac6,95.67%,95.93%,95.4%,4.05%,4.62%,13268.9581073795,0.094908098498953
-R,Model 2a,QRDR count + PMQR count + aac6,95.17%,94.89%,95.46%,5.15%,4.51%,13141.6820654791,-
-R,Model 2b,QRDR count*aac6 + PMQR count*aac6,95.17%,94.89%,95.46%,5.15%,4.51%,13170.6346638618,1.22138025693275e-07
-NWT,Model 1a,determinants,93.96%,97.88%,89.74%,1.98%,11.15%,11676.2334697971,-
-NWT,Model 1b,determinant*aac6,93.96%,97.88%,89.74%,1.98%,11.15%,11702.766222206,0.0046537982652114
-NWT,Model 2a,QRDR count + PMQR count + aac6,94.07%,97.79%,90.02%,2.07%,10.8%,11599.1941363839,-
-NWT,Model 2b,QRDR count*aac6 + PMQR count*aac6,94.07%,97.79%,90.02%,2.07%,10.8%,11624.0180682853,9.62994981090759e-07

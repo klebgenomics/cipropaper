@@ -101,6 +101,16 @@ npv <- function(pred,truth) {
   return(xtabs[1,1]/sum(xtabs[1,]))
 }
 
+sens <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return(xtabs[2,2]/(sum(xtabs[,2])))
+}
+
+spec <- function(pred,truth) {
+  xtabs <- table(pred,truth)
+  return(xtabs[1,1]/(sum(xtabs[,1])))
+}
+
 me <- function(pred,truth) {
   xtabs <- table(pred,truth)
   return(xtabs[2,1]/sum(xtabs[,1]))
@@ -113,19 +123,21 @@ vme <- function(pred,truth) {
 
 metrics <- function(pred,truth) {
   xtabs <- table(pred,truth)
-  return(list(cat=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),
-              ppv=xtabs[2,2]/sum(xtabs[2,]),
-              npv=xtabs[1,1]/sum(xtabs[1,]),
-              me=xtabs[2,1]/sum(xtabs[,1]),
-              vme=xtabs[1,2]/sum(xtabs[,2]),
+  return(list(cat=cat_agree(pred,truth),
+              ppv=ppv(pred,truth),
+              npv=npv(pred,truth),
+              sens=sens(pred,truth),
+              spec=spec(pred,truth),
+              me=me(pred,truth),
+              vme=vme(pred,truth),
               n=sum(xtabs), 
-          summary=c("cat"=(xtabs[1,1]+xtabs[2,2])/sum(xtabs),
-                    "ppv"=xtabs[2,2]/sum(xtabs[2,]),
-                    "npv"=xtabs[1,1]/sum(xtabs[1,]),
-                    "me"=xtabs[2,1]/sum(xtabs[,2]),
-                    "vme"=xtabs[1,2]/sum(xtabs[,1]), 
+              summary=c("cat"=cat_agree(pred,truth),
+                    "sens"=sens(pred,truth),
+                    "spec"=spec(pred,truth),
+                    "me"=me(pred,truth),
+                    "vme"=vme(pred,truth),
                     "n"=sum(xtabs)
-                    )
+              )
           )
     )
 }
@@ -326,8 +338,19 @@ model_NWT_groups_selectInteract_pred <- predict(model_NWT_groups_selectInteract,
 
 ```
 
-# Table 2 - model summary table
-``` {r table2}
+``` {r}
+count_model_summary <- logreg_details(model_R_groups) %>% mutate(Model="2a", response="R") %>%
+  bind_rows(logreg_details(model_R_groups_selectInteract) %>% mutate(Model="2b", response="R")) %>% 
+  bind_rows(logreg_details(model_NWT_groups) %>% mutate(Model="2a", response="NWT")) %>%
+  bind_rows(logreg_details(model_NWT_groups_selectInteract) %>% mutate(Model="2b", response="NWT")) %>%
+  relocate(Model, .before=Determinant) %>% relocate(response, .before=Model) %>%
+  write_csv(file="tables/TableS7_CountLogRegCoef.csv")
+
+
+```
+
+# Table 1 - model summary table
+``` {r table1}
 
 aic <- c(extractAIC(model_R_indiv)[2], 
          extractAIC(model_R_indiv_aac6Interaction)[2], 
@@ -355,7 +378,7 @@ metrics_result <- rbind(
 )
 
 model_summary_tab <- cbind(aic, anova_result, metrics_result) %>% as_tibble() %>%
-  rename(PPV=ppv, NPV=npv, ME=me, VME=vme, `Categorical agreement`=cat) %>%
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat) %>%
   rename(`model fit (aac6 interaction)`=anova_result) %>% 
   rename(AIC=aic) %>%
   mutate(ModelName=c("Model 1a", "Model 1b", "Model 2a", "Model 2b", "Model 1a", "Model 1b", "Model 2a", "Model 2b")) %>%
@@ -364,16 +387,16 @@ model_summary_tab <- cbind(aic, anova_result, metrics_result) %>% as_tibble() %>
 
 ```
 
-# print logistic regression model summary - Table 2
-``` {r table2_print}
+# print logistic regression model summary - Table 1a
+``` {r table1_print}
 model_summary_tab %>%
-  mutate(PPV=paste0(round(as.numeric(PPV)*100,2),"%")) %>%
-  mutate(NPV=paste0(round(as.numeric(NPV)*100,2),"%")) %>%
+  mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
+  mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
   mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
   mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
   mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%
-  select(response, ModelName, predictors, `Categorical agreement`, PPV, NPV, ME, VME, AIC, `model fit (aac6 interaction)`) %>%
-  write_csv("tables/Table2_ModelSummary.csv", na="-")
+  select(response, ModelName, predictors, `Categorical agreement`, Sensitivity, Specificity, ME, VME, AIC, `model fit (aac6 interaction)`) %>%
+  write_csv("tables/Table1a_ModelSummary.csv", na="-")
   
 ```
 
@@ -421,16 +444,16 @@ table(cipro_antibiogram$rules_category, cipro_antibiogram$predNWT)
 
 ```
 
-## Table 2b and numbers for text - classifier overall metrics, by species
+## Table 1b and numbers for text - classifier overall metrics, by species
 
 ``` {r species_performance}
 
 species_R <- cipro_antibiogram %>% group_by(species) %>% 
   filter(species != "Klebsiella variicola subsp. tropica") %>%
   filter(species != "Klebsiella quasivariicola") %>%
-  summarise(ppv=ppv(predR, resistant), 
-            npv=ppv(predR, resistant), 
-            cat=cat_agree(predR, resistant), 
+  summarise(cat=cat_agree(predR, resistant), 
+            sens=sens(predR, resistant), 
+            spec=spec(predR, resistant), 
             me=me(predR, resistant), 
             vme=vme(predR, resistant),
             n=n())%>%
@@ -441,31 +464,35 @@ species_NWT <- cipro_antibiogram %>% group_by(species) %>%
   filter(species != "Klebsiella variicola subsp. tropica") %>%
   filter(species != "Klebsiella quasivariicola") %>%
   summarise(cat=cat_agree(predNWT, nonWT_binary), 
-            ppv=ppv(predNWT, nonWT_binary), 
-            npv=ppv(predNWT, nonWT_binary), 
+            sens=sens(predNWT, nonWT_binary), 
+            spec=spec(predNWT, nonWT_binary), 
             me=me(predNWT, nonWT_binary), 
             vme=vme(predNWT, nonWT_binary),
             n=n()) %>%
   mutate(out=rep("NWT", 4)) %>% 
   relocate(out, .before=species)
 
-bind_rows(c("out"="R","species"="Species complex", metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), c("out"="NWT","species"="Species complex", metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)) %>%
-  mutate_at(c("cat","ppv","npv","me","vme", "n"), as.double) %>%
+bind_rows(c("out"="R","species"="Species complex", 
+            metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), 
+          c("out"="NWT","species"="Species complex",
+            metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)
+          ) %>%
+  mutate_at(c("cat","sens","spec","me","vme", "n"), as.double) %>%
   bind_rows(species_R) %>%
   bind_rows(species_NWT) %>%
-  rename(PPV=ppv, NPV=npv, ME=me, VME=vme, CA=cat, N=n) %>%
-  mutate(PPV=paste0(round(as.numeric(PPV)*100,2),"%")) %>%
-  mutate(NPV=paste0(round(as.numeric(NPV)*100,2),"%")) %>%
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n) %>%
+  mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
+  mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
   mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
   mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
-  mutate(CA=paste0(round(as.numeric(CA)*100,2),"%")) %>%
-  select(out, species, CA, PPV, NPV, ME, VME, N) %>%
-  write_csv("tables/Table2b_ModelSummary.csv", na="-")
+  mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%
+  select(out, species, `Categorical agreement`, Sensitivity, Specificity, ME, VME, N) %>%
+  write_csv("tables/Table1b_ModelSummary.csv", na="-")
   
 ```
 
 
-## Table 2c and numbers for text - classifier overall metrics, by ST
+## Table X - classifier overall metrics, by ST
 
 ``` {r st_performance}
 
@@ -474,8 +501,8 @@ top10_STs <- cipro_antibiogram %>% count(ST, sort=TRUE) %>% slice(1:10)
 top10_STs_cipro_antibiogram <- merge(x = cipro_antibiogram, y = top10_STs[ , c("ST")], by.x = c("ST"), by.y = c("ST"))
 
 ST_R <- top10_STs_cipro_antibiogram %>% group_by(ST) %>% 
-  summarise(ppv=ppv(predR, resistant), 
-            npv=ppv(predR, resistant), 
+  summarise(sens=sens(predR, resistant), 
+            spec=spec(predR, resistant), 
             cat=cat_agree(predR, resistant), 
             me=me(predR, resistant), 
             vme=vme(predR, resistant),
@@ -485,8 +512,8 @@ ST_R <- top10_STs_cipro_antibiogram %>% group_by(ST) %>%
 
 ST_NWT <- top10_STs_cipro_antibiogram %>% group_by(ST) %>% 
   summarise(cat=cat_agree(predNWT, nonWT_binary), 
-            ppv=ppv(predNWT, nonWT_binary), 
-            npv=ppv(predNWT, nonWT_binary), 
+            sens=sens(predNWT, nonWT_binary), 
+            spec=spec(predNWT, nonWT_binary), 
             me=me(predNWT, nonWT_binary), 
             vme=vme(predNWT, nonWT_binary),
             n=n()) %>%
@@ -494,17 +521,17 @@ ST_NWT <- top10_STs_cipro_antibiogram %>% group_by(ST) %>%
   relocate(out, .before=ST)
 
 bind_rows(c("out"="R","ST"="All STs", metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), c("out"="NWT","ST"="All STs", metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)) %>%
-  mutate_at(c("cat","ppv","npv","me","vme", "n"), as.double) %>%
+  mutate_at(c("cat","sens","spec","me","vme", "n"), as.double) %>%
   bind_rows(ST_R) %>%
   bind_rows(ST_NWT) %>%
-  rename(PPV=ppv, NPV=npv, ME=me, VME=vme, CA=cat, N=n) %>%
-  mutate(PPV=paste0(round(as.numeric(PPV)*100,2),"%")) %>%
-  mutate(NPV=paste0(round(as.numeric(NPV)*100,2),"%")) %>%
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n) %>%
+  mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
+  mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
   mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
   mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
-  mutate(CA=paste0(round(as.numeric(CA)*100,2),"%")) %>%
-  select(out, ST, CA, PPV, NPV, ME, VME, N) %>%
-  write_csv("tables/Table2c_ModelSummary.csv", na="-")
+  mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%
+  select(out, ST, `Categorical agreement`, Sensitivity, Specificity, ME, VME, N) %>%
+  write_csv("tables/TableX_ModelSummaryTop10ST.csv", na="-")
   
 ```
 
@@ -533,7 +560,7 @@ category_phenotype_table <- category_phenotype_table %>%
 category_phenotype_table
 ```
 
-## Table 3 - summarise classifier by genotype profile
+## Table 2 - summarise classifier by genotype profile
 ``` {r table3}
 predR_summary <- cipro_antibiogram %>% 
   group_by(predR, resistant) %>% 
@@ -563,9 +590,9 @@ category_phenotype_table %>%
               `R PPV`=paste0(round(predR_summary[2, "PPV"]*100,2),"% (N=", predR_summary[2,"R"], "/", predR_summary[2,"N"],")"),
               `NWT PPV`=paste0(round(predNWT_summary[2, "PPV"]*100,2),"% (N=", predNWT_summary[2,"non-wt (I/R)"], "/", predNWT_summary[2,"N"],")")
               )) %>%
-  write_csv(file="tables/Table3_Classifier.csv")
+  write_csv(file="tables/Table2_Classifier.csv")
 
-write(x="\n^=GyrA-87G and GyrA-87H are not included in QRDR count; qnrB1 is excluded from the single-PMQR count. *aac6 presence is not considered", file="tables/Table3_Classifier.csv", append=T)
+write(x="\n^=GyrA-87G and GyrA-87H are not included in QRDR count; qnrB1 is excluded from the single-PMQR count. *aac6 presence is not considered", file="tables/Table2_Classifier.csv", append=T)
 ```
 
 
