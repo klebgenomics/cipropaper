@@ -87,7 +87,7 @@ linreg_details <- function(model) {
 ``` {r model_performance_functions}
 
 cat_agree <- function(pred,truth) {
-  xtabs <- table(pred,truth)
+  xtabs <- table(pred,factor(truth, levels = 0:1))
   return((xtabs[1,1]+xtabs[2,2])/sum(xtabs))
 }
 
@@ -101,8 +101,13 @@ npv <- function(pred,truth) {
   return(xtabs[1,1]/sum(xtabs[1,]))
 }
 
+#sens <- function(pred,truth) {
+#  xtabs <- table(pred,truth)
+#  return(xtabs[2,2]/(sum(xtabs[,2])))
+#}
+
 sens <- function(pred,truth) {
-  xtabs <- table(pred,truth)
+  xtabs <- table(pred,factor(truth, levels = 0:1))
   return(xtabs[2,2]/(sum(xtabs[,2])))
 }
 
@@ -117,7 +122,7 @@ me <- function(pred,truth) {
 }
 
 vme <- function(pred,truth) {
-  xtabs <- table(pred,truth)
+  xtabs <- table(pred,factor(truth, levels = 0:1))
   return(xtabs[1,2]/sum(xtabs[,2]))
 }
 
@@ -492,48 +497,110 @@ bind_rows(c("out"="R","species"="Species complex",
 ```
 
 
-## Table X - classifier overall metrics, by ST
+## Figure 5 - classifier overall metrics, by ST, Country, Source Type, Infection status
 
 ``` {r st_performance}
 
-top10_STs <- cipro_antibiogram %>% count(ST, sort=TRUE) %>% slice(1:10)
-
-top10_STs_cipro_antibiogram <- merge(x = cipro_antibiogram, y = top10_STs[ , c("ST")], by.x = c("ST"), by.y = c("ST"))
-
-ST_R <- top10_STs_cipro_antibiogram %>% group_by(ST) %>% 
-  summarise(sens=sens(predR, resistant), 
-            spec=spec(predR, resistant), 
-            cat=cat_agree(predR, resistant), 
-            me=me(predR, resistant), 
-            vme=vme(predR, resistant),
-            n=n())%>%
-  mutate(out=rep("R", 10)) %>% 
-  relocate(out, .before=ST)
-
-ST_NWT <- top10_STs_cipro_antibiogram %>% group_by(ST) %>% 
-  summarise(cat=cat_agree(predNWT, nonWT_binary), 
-            sens=sens(predNWT, nonWT_binary), 
-            spec=spec(predNWT, nonWT_binary), 
-            me=me(predNWT, nonWT_binary), 
-            vme=vme(predNWT, nonWT_binary),
-            n=n()) %>%
-  mutate(out=rep("NWT", 10)) %>% 
-  relocate(out, .before=ST)
-
-bind_rows(c("out"="R","ST"="All STs", metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), c("out"="NWT","ST"="All STs", metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)) %>%
-  mutate_at(c("cat","sens","spec","me","vme", "n"), as.double) %>%
-  bind_rows(ST_R) %>%
-  bind_rows(ST_NWT) %>%
-  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n) %>%
-  mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
-  mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
-  mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
-  mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
-  mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%
-  select(out, ST, `Categorical agreement`, Sensitivity, Specificity, ME, VME, N) %>%
-  write_csv("tables/TableX_ModelSummaryTop10ST.csv", na="-")
-  
+ST_R <- cipro_antibiogram %>% group_by(ST) %>% 
+  summarise(sens=sens(predR, resistant)*100, 
+            spec=spec(predR, resistant)*100, 
+            cat=cat_agree(predR, resistant)*100, 
+            me=me(predR, resistant)*100, 
+            vme=vme(predR, resistant)*100, 
+            n=n(),
+            percent_R=(sum(resistant))/n*100) %>%
+  mutate(out=rep("R", 1967)) %>% 
+  mutate(category=rep("ST", 1967)) %>% 
+  relocate(out, category, .before=ST)%>%
+  rename(category_name=ST)
 ```
+
+``` {r country_performance}
+
+Country_R <- cipro_antibiogram %>% group_by(Country) %>% 
+  summarise(sens=sens(predR, resistant)*100, 
+            spec=spec(predR, resistant)*100, 
+            cat=cat_agree(predR, resistant)*100, 
+            me=me(predR, resistant)*100, 
+            vme=vme(predR, resistant)*100, 
+            n=n(),
+            percent_R=(sum(resistant))/n*100) %>%
+  mutate(out=rep("R", 28)) %>% 
+  mutate(category=rep("Country", 28)) %>%   
+  relocate(out, category, .before=Country)%>%
+  rename(category_name=Country)
+
+```
+
+```{r sourcetype_performance}
+SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>% 
+  summarise(sens=sens(predR, resistant)*100, 
+            spec=spec(predR, resistant)*100, 
+            cat=cat_agree(predR, resistant)*100, 
+            me=me(predR, resistant)*100, 
+            vme=vme(predR, resistant)*100, 
+            n=n(),
+            percent_R=(sum(resistant))/n*100) %>%
+  mutate(out=rep("R", 7)) %>% 
+  mutate(category=rep("Source", 7)) %>%  
+  relocate(out, category, .before=Source.Type)%>%
+  rename(category_name=Source.Type)
+
+```
+
+```{r infectionstatus_performance}
+
+cipro_antibiogram$Infection.status <- cipro_antibiogram$Infection.status %>% replace_na("Unknown")
+
+InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>% 
+  summarise(sens=sens(predR, resistant)*100, 
+            spec=spec(predR, resistant)*100, 
+            cat=cat_agree(predR, resistant)*100, 
+            me=me(predR, resistant)*100, 
+            vme=vme(predR, resistant)*100, 
+            n=n(),
+            percent_R=(sum(resistant))/n*100) %>%
+  mutate(out=rep("R", 3)) %>% 
+  mutate(category=rep("Inf Status", 3)) %>% 
+  relocate(out, category, .before=Infection.status) %>%
+  rename(category_name=Infection.status)
+```
+
+```{r Fig5_classifier_performance_plot}
+
+Combined_R <- bind_rows(ST_R, Country_R, SourceType_R, InfectionStatus_R)
+
+Combined_R <- Combined_R %>%
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) %>%
+  write_csv("tables/TableSX_ModelSummary_Combined.csv", na="-")
+
+#filter for categories of genomes with >99 genomes
+Combined_R_100 <- Combined_R %>% 
+  filter(N>99) %>%
+  mutate(Category_label=paste(`Category Name`, " (n=", N, ")", sep = "")) %>%
+  select(Category, Category_label, N, Sensitivity, Specificity, `Resistant`)
+
+# convert table from wide to long for plotting 
+Combined_R_100_long<-gather(Combined_R_100, `Evaluation metric`, value, Sensitivity:`Resistant`)
+Combined_R_100_long <- Combined_R_100_long[order(Combined_R_100_long$N, decreasing = TRUE),]
+
+
+Combined_R_100_plot <-ggplot(Combined_R_100_long, aes(as.numeric(value),fct_inorder(as.factor(Category_label)), colour=`Evaluation metric`)) +
+  geom_point(aes(shape = `Evaluation metric`), alpha=0.5, size=4) +
+  scale_colour_manual(values=c(Sensitivity="#c698ea", Specificity="#9a98ea", `Resistant`="IndianRed")) +
+  scale_y_discrete(limits=rev)+
+  facet_grid(Category~., scales = "free", space='free')+ 
+  labs(y="", x = "%", colour="", shape="") + 
+  theme_bw()
+
+Combined_R_100_plot
+
+ggsave(height=7, width=6, file="figs/Fig5_classifierPerformance_category.png")
+ggsave(height=7, width=6, file="figs/Fig5_classifierPerformance_category.pdf")
+```
+
+
+
 
 ## classifier - per genotype profile PPV
 ``` {r classifier_ppv_table}
