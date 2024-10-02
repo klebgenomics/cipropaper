@@ -45,11 +45,14 @@ library(scales)
 ``` {r}
 geno <- read_delim("tables/TableS1_genotypes.tsv")
 pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
-oqxR_coverage <- read_delim("tables/oqxR_coverage.tsv")
-
-cipro_antibiogram <- full_join(geno,pheno) %>%
-  mutate(SRnwt = if_else(Resistance.phenotype=="I", "NWT", Resistance.phenotype)) %>%
-  mutate(SRnwt = factor(SRnwt, levels=c("S","NWT","R")))
+oqxR_coverage <- read_delim("tables/oqxAB_operon_defects/oqxR_coverage.tsv")
+oqxA_coverage <- read_delim("tables/oqxAB_operon_defects/oqxA_coverage.tsv")
+oqxB_coverage <- read_delim("tables/oqxAB_operon_defects/oqxB_coverage.tsv")
+norB_coverage <- read_delim("tables/oqxAB_operon_defects/norB_coverage.tsv")
+rarA_coverage <- read_delim("tables/oqxAB_operon_defects/rarA_coverage.tsv")
+rob_coverage <- read_delim("tables/oqxAB_operon_defects/rob_coverage.tsv")
+hypo_coverage <- read_delim("tables/oqxAB_operon_defects/hypo_coverage.tsv")
+oqxR_mutation <- read_delim("tables/oqxAB_operon_defects/oqxR_amrfinder.txt")
 
 ```
 
@@ -59,27 +62,283 @@ wt_colours <- c(`non-wt (I/R)`="IndianRed", `wt (S)`= "LightBlue")
 res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
 ```
 
-## oqxR data formatting
-``` {r}
+## Data formatting
+
+``` {r oqxA truncation}
+
+# oqxA truncation is defined as a genome with all oqxA copies with < 90% acid sequence coverage
+
+oqxA_truncation <- oqxA_coverage %>% 
+  mutate(oqxA_truncation=ifelse(oqxA_coverage < 90, 1, 0)) %>% 
+  subset(select = -c(oqxA_coverage)) %>%
+  # consider any genome with at least one complete oqxA as no oqxA truncation
+  arrange(strain, match(oqxA_truncation, c(0, 1))) %>%
+  distinct(strain, .keep_all = TRUE)
+
+# oqxA not identified in nucleotide BLAST search (i.e., oqxA deletion) considered to be truncation
+geno_oqxA_truncation <- full_join(geno,oqxA_truncation) %>%
+   mutate(oqxA_truncation=replace_na(oqxA_truncation, 1))
+
+```
+
+``` {r oqxB truncation}
+
+# oqxB truncation is defined as a genome with all oqxB copies with < 90% acid sequence coverage
+
+oqxB_truncation <- oqxB_coverage %>% 
+  mutate(oqxB_truncation=ifelse(oqxB_coverage < 90, 1, 0)) %>% 
+  subset(select = -c(oqxB_coverage)) %>%
+  # consider any genome with at least one complete oqxB as no oqxB truncation
+  arrange(strain, match(oqxB_truncation, c(0, 1))) %>%
+  distinct(strain, .keep_all = TRUE)
+
+# oqxB not identified in nucleotide BLAST search (i.e., oqxB deletion) considered to be truncation
+geno_oqxB_truncation <- full_join(geno,oqxB_truncation) %>%
+   mutate(oqxB_truncation=replace_na(oqxB_truncation, 1))
+
+```
+
+``` {r norB truncation}
+# norB truncation is defined as a genome with all norB copies with < 90% acid sequence coverage
+
+norB_truncation <- norB_coverage %>% 
+  mutate(norB_truncation=ifelse(norB_coverage < 90, 1, 0)) %>% 
+  subset(select = -c(norB_coverage)) %>%
+  # consider any genome with at least one complete norB as no norB truncation
+  arrange(strain, match(norB_truncation, c(0, 1))) %>%
+  distinct(strain, .keep_all = TRUE)
+
+# norB not identified in nucleotide BLAST search (i.e., norB deletion) considered to be truncation
+geno_norB_truncation <- full_join(geno,norB_truncation) %>%
+   mutate(norB_truncation=replace_na(norB_truncation, 1))
+
+```
+
+
+``` {r rarA truncation}
+
+# rarA truncation is defined as a genome with all rarA copies with < 90% acid sequence coverage
+
+rarA_truncation <- rarA_coverage %>% 
+  mutate(rarA_truncation=ifelse(rarA_coverage < 90, 1, 0)) %>% 
+  subset(select = -c(rarA_coverage)) %>%
+  # consider any genome with at least one complete rarA as no rarA truncation
+  arrange(strain, match(rarA_truncation, c(0, 1))) %>%
+  distinct(strain, .keep_all = TRUE)
+
+# rarA not identified in nucleotide BLAST search (i.e., rarA deletion) considered to be truncation
+geno_rarA_truncation <- full_join(geno,rarA_truncation) %>%
+   mutate(rarA_truncation=replace_na(rarA_truncation, 1))
+
+
+```
+
+
+``` {r rob truncation}
+
+# rob truncation is defined as a genome with all rob copies with < 90% acid sequence coverage
+
+rob_truncation <- rob_coverage %>% 
+  mutate(rob_truncation=ifelse(rob_coverage < 90, 1, 0)) %>% 
+  subset(select = -c(rob_coverage)) %>%
+  # consider any genome with at least one complete rob as no rob truncation
+  arrange(strain, match(rob_truncation, c(0, 1))) %>%
+  distinct(strain, .keep_all = TRUE)
+
+# rob not identified in nucleotide BLAST search (i.e., rob deletion) considered to be truncation
+geno_rob_truncation <- full_join(geno,rob_truncation) %>%
+   mutate(rob_truncation=replace_na(rob_truncation, 1))
+
+```
+
+``` {r hypo truncation}
+
+# hypo truncation is defined as a genome with all hypo copies with < 90% acid sequence coverage
+
+hypo_truncation <- hypo_coverage %>% 
+  mutate(hypo_truncation=ifelse(hypo_coverage < 90, 1, 0)) %>% 
+  subset(select = -c(hypo_coverage)) %>%
+  # consider any genome with at least one complete hypo as no hypo truncation
+  arrange(strain, match(hypo_truncation, c(0, 1))) %>%
+  distinct(strain, .keep_all = TRUE)
+
+# hypo not identified in nucleotide BLAST search (i.e., hypo deletion) considered to be truncation
+geno_hypo_truncation <- full_join(geno,hypo_truncation) %>%
+   mutate(hypo_truncation=replace_na(hypo_truncation, 1))
+
+```
+
+``` {r oqxR truncation}
 
 # oqxR truncation is defined as a genome with all oqxR copies with < 90% acid sequence coverage
 
 oqxR_truncation <- oqxR_coverage %>% 
-  mutate(oqxR_truncation=ifelse(oqxR_coverage < 90, "Y", "N")) %>% 
+  mutate(oqxR_truncation=ifelse(oqxR_coverage < 90, 1, 0)) %>% 
   subset(select = -c(oqxR_coverage)) %>%
   # consider any genome with at least one complete oqxR as no oqxR truncation
-  arrange(strain, match(oqxR_truncation, c("N", "Y"))) %>%
+  arrange(strain, match(oqxR_truncation, c(0, 1))) %>%
   distinct(strain, .keep_all = TRUE)
 
 # oqxR not identified in nucleotide BLAST search (i.e., oqxR deletion) considered to be truncation
 geno_oqxR_truncation <- full_join(geno,oqxR_truncation) %>%
-   mutate(oqxR_truncation=replace_na(oqxR_truncation, "Y"))
+   mutate(oqxR_truncation=replace_na(oqxR_truncation, 1))
 
-# oqxR truncation vs. nonWT_binary phenotype (in genomes with no Flq res determinants)
-geno_oqxR_truncation %>% filter(QRDR_mutations==0, acquired_genes==0, aac6==0)%>% group_by(oqxR_truncation, nonWT_binary) %>% count(sort=TRUE)
-
-# oqxR truncation vs. resistant phenotype (in genomes with no Flq res determinants)
-geno_oqxR_truncation %>% filter(QRDR_mutations==0, acquired_genes==0, aac6==0)%>% group_by(oqxR_truncation, resistant) %>% count(sort=TRUE)
 ```
 
 
+
+
+```{r combine geno+pheno}
+#combining truncation from all oqxAB operon genes
+geno_oqxABoperon_truncation <-Reduce(function(x,y) merge(x,y,by="strain",all=TRUE) ,list(geno_oqxA_truncation, geno_oqxB_truncation[, c("strain","oqxB_truncation")], geno_oqxR_truncation[, c("strain","oqxR_truncation")], geno_norB_truncation[, c("strain","norB_truncation")] ,geno_rarA_truncation[, c("strain","rarA_truncation")],geno_rob_truncation[, c("strain","rob_truncation")], geno_hypo_truncation[, c("strain","hypo_truncation")]))
+
+cipro_antibiogram <- full_join(geno_oqxABoperon_truncation,pheno) %>%
+  mutate(SRnwt = if_else(Resistance.phenotype=="I", "NWT", Resistance.phenotype)) %>%
+  mutate(SRnwt = factor(SRnwt, levels=c("S","NWT","R")))
+```
+
+#Solo contribution
+```{r table with PPVs}
+
+# Contribution of truncation on cipro susceptibility in genomes with no Flq resistance determinants
+
+oqxA_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(oqxA_truncation) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Truncation=oqxA_truncation)%>%
+  mutate(Gene=c(rep("oqxA",2)))%>%
+  relocate(Gene, .before=Truncation)
+
+oqxB_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(oqxB_truncation) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Truncation=oqxB_truncation)%>%
+  mutate(Gene=c(rep("oqxB",2)))%>%
+  relocate(Gene, .before=Truncation)
+
+oqxR_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(oqxR_truncation) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Truncation=oqxR_truncation)%>%
+  mutate(Gene=c(rep("oqxR",2)))%>%
+  relocate(Gene, .before=Truncation)
+
+norB_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(norB_truncation) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Truncation=norB_truncation)%>%
+  mutate(Gene=c(rep("norB",2)))%>%
+  relocate(Gene, .before=Truncation)
+
+rarA_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(rarA_truncation) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Truncation=rarA_truncation)%>%
+  mutate(Gene=c(rep("rarA",2)))%>%
+  relocate(Gene, .before=Truncation)
+
+rob_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(rob_truncation) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Truncation=rob_truncation)%>%
+  mutate(Gene=c(rep("rob",2)))%>%
+  relocate(Gene, .before=Truncation)
+
+hypo_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(hypo_truncation) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Truncation=hypo_truncation)%>%
+  mutate(Gene=c(rep("hypo",2)))%>%
+  relocate(Gene, .before=Truncation)
+
+# Table - Contribution of solo truncations
+
+oqxAB_operon_truncation_solo <- 
+rbind(oqxA_truncation_solo, oqxB_truncation_solo, oqxR_truncation_solo, norB_truncation_solo, rarA_truncation_solo, rob_truncation_solo, hypo_truncation_solo)
+
+oqxAB_operon_truncation_solo
+```
+
+```{r upset_plot MIC}
+
+# Contribution of truncation on cipro susceptibility in genomes with no Flq resistance determinants
+
+oqx_truncation_MIC <- cipro_antibiogram %>% 
+  filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+  filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
+  upset(
+      intersect=c("oqxA_truncation","oqxB_truncation", "oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation"), # counts are converted to binary
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing WT/nonWT
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+                 scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with MIC data
+        'MIC measurement (mg/L)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
+              geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+               scale_colour_manual(values = res_colours) + 
+              scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:9), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^9)) +
+              theme(legend.position = "none", axis.title=element_text(size=8))  +
+              ggtitle("Genomes with no Flq resistance determinants - MIC")
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+oqx_truncation_MIC
+ggsave("figs/FigSX_oqxAB_truncation_MIC.pdf", width=8, height=7)
+ggsave("figs/FigSX_oqxAB_truncation_MIC.png", width=8, height=7)
+```
+
+```{r upset_plot DD}
+oqx_truncation_DD <- cipro_antibiogram %>% 
+  filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  upset(
+      intersect=c("oqxA_truncation","oqxB_truncation", "oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation"), # counts are converted to binary
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing S/nonS
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+               scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with disk diffusion data
+        'Zone diameter (mm)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
+              geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+               scale_color_manual(values = c("I"="grey", "R"="IndianRed", "S"="LightBlue")) + 
+              guides(size = "none") +
+              labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
+              ggtitle("Genomes with no Flq resistance determinants - \n
+                      Disk diffusion") +
+              theme(axis.title=element_text(size=8)) + ylim(5,50)
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+oqx_truncation_DD
+
+ggsave("figs/FigSX_oqxAB_truncation_DD.pdf", width=8, height=7)
+ggsave("figs/FigSX_oqxAB_truncation_DD.png", width=8, height=7)
+```
