@@ -168,7 +168,7 @@ geno_hypo_truncation <- full_join(geno,hypo_truncation) %>%
 
 ```
 
-``` {r oqxR truncation}
+``` {r oqxR truncation + mutations (amrfinder)}
 
 # oqxR truncation is defined as a genome with all oqxR copies with < 90% acid sequence coverage
 
@@ -183,14 +183,24 @@ oqxR_truncation <- oqxR_coverage %>%
 geno_oqxR_truncation <- full_join(geno,oqxR_truncation) %>%
    mutate(oqxR_truncation=replace_na(oqxR_truncation, 1))
 
-```
+oqxR_mutation <- oqxR_mutation %>% 
+  select(strain,`Gene symbol`) %>% 
+  mutate(value = 1)  %>% 
+  spread(`Gene symbol`, value,  fill = 0 ) 
 
+# oqxR mutations not identified 
+geno_oqxR_truncation_mutation <- full_join(geno_oqxR_truncation,oqxR_mutation) %>%
+   mutate(oqxR_D95E=replace_na(oqxR_D95E, 0)) %>%
+  mutate(oqxR_Q11L=replace_na(oqxR_Q11L, 0)) %>%
+  mutate(oqxR_V113I=replace_na(oqxR_V113I, 0))
+
+```
 
 
 
 ```{r combine geno+pheno}
 #combining truncation from all oqxAB operon genes
-geno_oqxABoperon_truncation <-Reduce(function(x,y) merge(x,y,by="strain",all=TRUE) ,list(geno_oqxA_truncation, geno_oqxB_truncation[, c("strain","oqxB_truncation")], geno_oqxR_truncation[, c("strain","oqxR_truncation")], geno_norB_truncation[, c("strain","norB_truncation")] ,geno_rarA_truncation[, c("strain","rarA_truncation")],geno_rob_truncation[, c("strain","rob_truncation")], geno_hypo_truncation[, c("strain","hypo_truncation")]))
+geno_oqxABoperon_truncation <-Reduce(function(x,y) merge(x,y,by="strain",all=TRUE) ,list(geno_oqxA_truncation, geno_oqxB_truncation[, c("strain","oqxB_truncation")], geno_oqxR_truncation_mutation[, c("strain","oqxR_truncation", "oqxR_D95E", "oqxR_Q11L", "oqxR_V113I")], geno_norB_truncation[, c("strain","norB_truncation")] ,geno_rarA_truncation[, c("strain","rarA_truncation")],geno_rob_truncation[, c("strain","rob_truncation")], geno_hypo_truncation[, c("strain","hypo_truncation")]))
 
 cipro_antibiogram <- full_join(geno_oqxABoperon_truncation,pheno) %>%
   mutate(SRnwt = if_else(Resistance.phenotype=="I", "NWT", Resistance.phenotype)) %>%
@@ -198,7 +208,7 @@ cipro_antibiogram <- full_join(geno_oqxABoperon_truncation,pheno) %>%
 ```
 
 #Solo contribution
-```{r table with PPVs}
+```{r truncations - table with PPVs}
 
 # Contribution of truncation on cipro susceptibility in genomes with no Flq resistance determinants
 
@@ -259,6 +269,28 @@ rbind(oqxA_truncation_solo, oqxB_truncation_solo, oqxR_truncation_solo, norB_tru
 oqxAB_operon_truncation_solo
 ```
 
+```{r solo oqxR mutations}
+# oqxR_Q11L not found in genomes with no other Flq resistance determinants 
+
+oqxR_D95E_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(oqxR_D95E) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Mutation=oqxR_D95E)%>%
+  mutate(Gene=c(rep("oqxR_D95E",2)))%>%
+  relocate(Gene, .before=Mutation)
+
+oqxR_V113I_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(oqxR_V113I) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  rename(Mutation=oqxR_V113I)%>%
+  mutate(Gene=c(rep("oqxR_V113I",2)))%>%
+  relocate(Gene, .before=Mutation)
+
+# Table - Contribution of solo oqxR mutations
+oqxR_mutations_solo <- 
+rbind(oqxR_D95E_solo, oqxR_V113I_solo)
+```
+
 ```{r upset_plot MIC}
 
 # Contribution of truncation on cipro susceptibility in genomes with no Flq resistance determinants
@@ -267,7 +299,7 @@ oqx_truncation_MIC <- cipro_antibiogram %>%
   filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
   upset(
-      intersect=c("oqxA_truncation","oqxB_truncation", "oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation"), # counts are converted to binary
+      intersect=c("oqxA_truncation","oqxB_truncation", "oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation", "oqxR_D95E", "oqxR_V113I"), # counts are converted to binary
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing WT/nonWT
@@ -306,7 +338,7 @@ oqx_truncation_DD <- cipro_antibiogram %>%
   filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   upset(
-      intersect=c("oqxA_truncation","oqxB_truncation", "oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation"), # counts are converted to binary
+      intersect=c("oqxA_truncation","oqxB_truncation", "oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation","oqxR_D95E", "oqxR_V113I"), # counts are converted to binary
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
