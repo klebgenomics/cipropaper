@@ -456,6 +456,7 @@ table(cipro_antibiogram$rules_category, cipro_antibiogram$predNWT)
 species_R <- cipro_antibiogram %>% group_by(species) %>% 
   filter(species != "Klebsiella variicola subsp. tropica") %>%
   filter(species != "Klebsiella quasivariicola") %>%
+  filter(species != "Klebsiella africana") %>%
   summarise(cat=cat_agree(predR, resistant), 
             sens=sens(predR, resistant), 
             spec=spec(predR, resistant), 
@@ -468,6 +469,7 @@ species_R <- cipro_antibiogram %>% group_by(species) %>%
 species_NWT <- cipro_antibiogram %>% group_by(species) %>% 
   filter(species != "Klebsiella variicola subsp. tropica") %>%
   filter(species != "Klebsiella quasivariicola") %>%
+  filter(species != "Klebsiella africana") %>%
   summarise(cat=cat_agree(predNWT, nonWT_binary), 
             sens=sens(predNWT, nonWT_binary), 
             spec=spec(predNWT, nonWT_binary), 
@@ -509,8 +511,8 @@ ST_R <- cipro_antibiogram %>% group_by(ST) %>%
             vme=vme(predR, resistant)*100, 
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
-  mutate(out=rep("R", 1967)) %>% 
-  mutate(category=rep("ST", 1967)) %>% 
+  mutate(out=rep("R", 1992)) %>% 
+  mutate(category=rep("ST", 1992)) %>% 
   relocate(out, category, .before=ST)%>%
   rename(category_name=ST)
 ```
@@ -576,7 +578,8 @@ Combined_R <- Combined_R %>%
 
 #filter for categories of genomes with >99 genomes
 Combined_R_100 <- Combined_R %>% 
-  filter(N>99) %>%
+  filter(Resistant<100) %>%
+  filter(N>40) %>%
   mutate(Category_label=paste(`Category Name`, " (n=", N, ")", sep = "")) %>%
   select(Category, Category_label, N, Sensitivity, Specificity, `Resistant`)
 
@@ -585,13 +588,16 @@ Combined_R_100_long<-gather(Combined_R_100, `Evaluation metric`, value, Sensitiv
 Combined_R_100_long <- Combined_R_100_long[order(Combined_R_100_long$N, decreasing = TRUE),]
 
 
-Combined_R_100_plot <-ggplot(Combined_R_100_long, aes(as.numeric(value),fct_inorder(as.factor(Category_label)), colour=`Evaluation metric`)) +
-  geom_point(aes(shape = `Evaluation metric`), alpha=0.5, size=4) +
-  scale_colour_manual(values=c(Sensitivity="#c698ea", Specificity="#9a98ea", `Resistant`="IndianRed")) +
+Combined_R_100_plot <-ggplot(Combined_R_100_long, aes(as.numeric(value),fct_inorder(as.factor(Category_label)))) +
+  geom_point(aes(shape = `Evaluation metric`, size=`Evaluation metric`, colour=`Evaluation metric`), alpha=0.5) +
+  scale_shape_manual(values = c(Sensitivity=15, Specificity=18, Resistant=3)) +
+  scale_size_manual(values = c(Sensitivity=3, Specificity=3, Resistant=1)) +
+  scale_colour_manual(values=c(Sensitivity="#8eb567", Specificity="#9a98ea", Resistant="IndianRed")) +
   scale_y_discrete(limits=rev)+
   facet_grid(Category~., scales = "free", space='free')+ 
-  labs(y="", x = "%", colour="", shape="") + 
-  theme_bw()
+  labs(y="", x = "%") + 
+  theme_bw()+
+  theme(legend.title=element_blank())
 
 Combined_R_100_plot
 
