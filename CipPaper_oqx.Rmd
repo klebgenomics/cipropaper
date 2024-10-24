@@ -207,56 +207,56 @@ cipro_antibiogram <- full_join(geno_oqxABoperon_truncation,pheno) %>%
   mutate(SRnwt = factor(SRnwt, levels=c("S","NWT","R")))
 ```
 
-#Solo contribution
+#Individual contribution
 ```{r truncations - table with PPVs}
 
 # Contribution of truncation on cipro susceptibility in genomes with no Flq resistance determinants
 
 oqxA_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxA_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Truncation=oqxA_truncation)%>%
   mutate(Gene=c(rep("oqxA",2)))%>%
   relocate(Gene, .before=Truncation)
 
 oqxB_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxB_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Truncation=oqxB_truncation)%>%
   mutate(Gene=c(rep("oqxB",2)))%>%
   relocate(Gene, .before=Truncation)
 
 oqxR_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Truncation=oqxR_truncation)%>%
   mutate(Gene=c(rep("oqxR",2)))%>%
   relocate(Gene, .before=Truncation)
 
 norB_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(norB_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Truncation=norB_truncation)%>%
   mutate(Gene=c(rep("norB",2)))%>%
   relocate(Gene, .before=Truncation)
 
 rarA_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(rarA_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Truncation=rarA_truncation)%>%
   mutate(Gene=c(rep("rarA",2)))%>%
   relocate(Gene, .before=Truncation)
 
 rob_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(rob_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Truncation=rob_truncation)%>%
   mutate(Gene=c(rep("rob",2)))%>%
   relocate(Gene, .before=Truncation)
 
 hypo_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(hypo_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Truncation=hypo_truncation)%>%
   mutate(Gene=c(rep("hypo",2)))%>%
   relocate(Gene, .before=Truncation)
@@ -267,6 +267,9 @@ oqxAB_operon_truncation_solo <-
 rbind(oqxA_truncation_solo, oqxB_truncation_solo, oqxR_truncation_solo, norB_truncation_solo, rarA_truncation_solo, rob_truncation_solo, hypo_truncation_solo)
 
 oqxAB_operon_truncation_solo
+
+
+#write.table(oqxAB_operon_truncation_solo, "oqx_solo_contribution_PPV.tsv", row.names=FALSE, sep="\t")
 ```
 
 ```{r solo oqxR mutations}
@@ -274,14 +277,14 @@ oqxAB_operon_truncation_solo
 
 oqxR_D95E_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_D95E) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Mutation=oqxR_D95E)%>%
   mutate(Gene=c(rep("oqxR_D95E",2)))%>%
   relocate(Gene, .before=Mutation)
 
 oqxR_V113I_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_V113I) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant), NWT_PPV=mean(nonWT_binary)) %>%
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
   rename(Mutation=oqxR_V113I)%>%
   mutate(Gene=c(rep("oqxR_V113I",2)))%>%
   relocate(Gene, .before=Mutation)
@@ -289,6 +292,9 @@ oqxR_V113I_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & ac
 # Table - Contribution of solo oqxR mutations
 oqxR_mutations_solo <- 
 rbind(oqxR_D95E_solo, oqxR_V113I_solo)
+
+#write.table(oqxR_mutations_solo, "oqxR_mutations_solo_PPV.tsv", row.names=FALSE, sep="\t")
+
 ```
 
 ```{r upset_plot MIC}
@@ -373,4 +379,255 @@ oqx_truncation_DD
 
 ggsave("figs/FigSX_oqxAB_truncation_DD.pdf", width=8, height=7)
 ggsave("figs/FigSX_oqxAB_truncation_DD.png", width=8, height=7)
+```
+#Copy number
+
+
+```{r oqxA_MIC}
+oqxA_MIC_noGenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>% 
+    ggplot(aes(x=factor(oqxA_copy), y=as.numeric(Measurement))) + 
+    geom_violin() + 
+    geom_count(aes(colour = SRnwt)) + 
+    geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
+    geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
+    scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:9), labels = function(x) round(as.numeric(x), digits = 3)) +
+    scale_color_manual(values = res_colours) + 
+    theme_light() + 
+    labs(y="MIC (mg/L)", x="", col="Phenotype", 
+         title="oqxA copy number vs phenotype",
+         subtitle="(in absence of other Flq res determinants)")
+
+
+
+oqxA_MICpheno_noGenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
+    ggplot(aes(x=factor(oqxA_copy), fill=SRnwt)) + 
+    geom_bar(stat='count', position='fill') + 
+    scale_fill_manual(values = res_colours) + 
+    scale_y_continuous(labels=scales::percent_format()) +
+    geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), size=2) +
+    theme_light() + 
+    labs(y="% Phenotype", x="oqxA copy number") + 
+    theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
+
+oqxA_MIC_noGenes / oqxA_MICpheno_noGenes + plot_layout(heights=c(2,1))
+ggsave("figs/FigSX_oqxA_copy_MIC_pheno.pdf", width=6, height=4)
+ggsave("figs/FigSX_oqxA_copy_MIC_pheno.png", width=6, height=4)
+```
+
+``` {r oqxA_DD}
+
+# DD distribution for copy number, in absence of genes
+oqxA_DD_nogenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(Laboratory.Typing.Method=="Disk diffusion") %>% 
+    ggplot(aes(x=factor(oqxA_copy), y=as.numeric(Measurement))) + 
+    geom_violin() + 
+    geom_count(aes(colour = SRnwt)) + 
+    geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
+    geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
+    scale_colour_manual(values = res_colours) + 
+    theme_light() + 
+    labs(y="Disk zone (mm)", x="", col="Phenotype",
+         title="oqxA copy number vs phenotype",
+         subtitle="(in absence of other Flq res determinants)")
+
+oqxA_DDpheno_nogenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+    ggplot(aes(x=factor(oqxA_copy), fill=SRnwt)) + 
+    geom_bar(stat='count', position='fill') + 
+    scale_fill_manual(values = res_colours) +  
+    scale_y_continuous(labels=scales::percent_format()) +
+    geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), size=2) +
+    theme_light() + 
+    labs(y="% Phenotype", x="oqxA copy number") + 
+    theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
+
+oqxA_DD_nogenes / oqxA_DDpheno_nogenes + plot_layout(heights=c(2,1))
+
+ggsave("figs/FigSX_oqxA_copy_DD_pheno.pdf", width=6, height=4)
+ggsave("figs/FigSX_oqxA_copy_DD_pheno.png", width=6, height=4)
+```
+
+
+
+```{r oqxB_MIC}
+oqxB_MIC_noGenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>% 
+    ggplot(aes(x=factor(oqxB_copy), y=as.numeric(Measurement))) + 
+    geom_violin() + 
+    geom_count(aes(colour = SRnwt)) + 
+    geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
+    geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
+    scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:9), labels = function(x) round(as.numeric(x), digits = 3)) +
+    scale_color_manual(values = res_colours) + 
+    theme_light() + 
+    labs(y="MIC (mg/L)", x="", col="Phenotype", 
+         title="oqxB copy number vs phenotype",
+         subtitle="(in absence of other Flq res determinants)")
+
+
+
+oqxB_MICpheno_noGenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
+    ggplot(aes(x=factor(oqxB_copy), fill=SRnwt)) + 
+    geom_bar(stat='count', position='fill') + 
+    scale_fill_manual(values = res_colours) + 
+    scale_y_continuous(labels=scales::percent_format()) +
+    geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), size=2) +
+    theme_light() + 
+    labs(y="% Phenotype", x="oqxB copy number") + 
+    theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
+
+oqxB_MIC_noGenes / oqxB_MICpheno_noGenes + plot_layout(heights=c(2,1))
+ggsave("figs/FigSX_oqxB_copy_MIC_pheno.pdf", width=6, height=4)
+ggsave("figs/FigSX_oqxB_copy_MIC_pheno.png", width=6, height=4)
+```
+
+``` {r oqxB_DD}
+
+# DD distribution for copy number, in absence of genes
+oqxB_DD_nogenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(Laboratory.Typing.Method=="Disk diffusion") %>% 
+    ggplot(aes(x=factor(oqxB_copy), y=as.numeric(Measurement))) + 
+    geom_violin() + 
+    geom_count(aes(colour = SRnwt)) + 
+    geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
+    geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
+    scale_colour_manual(values = res_colours) + 
+    theme_light() + 
+    labs(y="Disk zone (mm)", x="", col="Phenotype",
+         title="oqxB copy number vs phenotype",
+         subtitle="(in absence of other Flq res determinants)")
+
+oqxB_DDpheno_nogenes <- cipro_antibiogram %>%
+    filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+    filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+    ggplot(aes(x=factor(oqxB_copy), fill=SRnwt)) + 
+    geom_bar(stat='count', position='fill') + 
+    scale_fill_manual(values = res_colours) +  
+    scale_y_continuous(labels=scales::percent_format()) +
+    geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), size=2) +
+    theme_light() + 
+    labs(y="% Phenotype", x="oqxB copy number") + 
+    theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
+
+oqxB_DD_nogenes / oqxB_DDpheno_nogenes + plot_layout(heights=c(2,1))
+
+ggsave("figs/FigSX_oqxB_copy_DD_pheno.pdf", width=6, height=4)
+ggsave("figs/FigSX_oqxB_copy_DD_pheno.png", width=6, height=4)
+```
+
+```{r oqxab_copy preparing upset plot data}
+cipro_antibiogram <- cipro_antibiogram %>%
+    mutate(oqxA_0 = if_else((oqxA_copy==0), 1, 0))%>%  
+    mutate(oqxA_1 = if_else((oqxA_copy==1), 1, 0))%>%
+    mutate(oqxA_2 = if_else((oqxA_copy>1), 1, 0))%>%
+    mutate(oqxB_0 = if_else((oqxB_copy==0), 1, 0))%>%  
+    mutate(oqxB_1 = if_else((oqxB_copy==1), 1, 0))%>%
+    mutate(oqxB_2 = if_else((oqxB_copy>1), 1, 0))
+```
+
+
+```{r oqxab_copy_upset_plot MIC}
+
+oqx_truncation_MIC <- cipro_antibiogram %>% 
+  filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+  filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
+  upset(
+      intersect=c("oqxA_0","oqxA_1", "oqxA_2","oqxB_0", "oqxB_1", "oqxB_2"), # counts are converted to binary
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing WT/nonWT
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+                 scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with MIC data
+        'MIC measurement (mg/L)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 1), linetype = 2, alpha = 0.6, color = "black")  +
+              geom_hline(aes(yintercept = 0.25), linetype = 1, alpha = 0.6, color = "black")  +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+               scale_colour_manual(values = res_colours) + 
+              scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:9), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^9)) +
+              theme(legend.position = "none", axis.title=element_text(size=8))  +
+              ggtitle("Genomes with no Flq resistance determinants - MIC")
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+oqx_truncation_MIC
+ggsave("figs/FigSX_oqxAB_copy_MIC.pdf", width=8, height=7)
+ggsave("figs/FigSX_oqxAB_copy_MIC.png", width=8, height=7)
+```
+
+```{r oqxab_copy_upset_plot DD}
+oqxAB_copy_DD <- cipro_antibiogram %>% 
+  filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  upset(
+      intersect=c("oqxA_0","oqxA_1", "oqxA_2","oqxB_0", "oqxB_1", "oqxB_2"), # counts are converted to binary
+      set_sizes=(upset_set_size() +
+                    theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
+      base_annotations=list( # add stacked barplot showing S/nonS
+        'Percent of genomes'=list(
+        aes=aes(x=intersection, fill=SRnwt),
+          geom=list(
+            geom_bar(stat='count', position='fill'), 
+               scale_fill_manual(values = res_colours),
+            scale_y_continuous(labels=scales::percent_format()),
+            theme(legend.position = "none", axis.title=element_text(size=8)),
+            geom_text(aes(label=..count..), stat="count", position=position_fill(vjust = .5), angle = 45, size=2))
+        )
+      ), 
+      annotations= list( # add violin plot with disk diffusion data
+        'Zone diameter (mm)'=(
+            ggplot(mapping=aes(y=as.numeric(Measurement))) +
+              geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
+              geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
+              geom_violin()+ 
+              geom_count(aes(colour = SRnwt))+
+               scale_color_manual(values = c("I"="grey", "R"="IndianRed", "S"="LightBlue")) + 
+              guides(size = "none") +
+              labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
+              ggtitle("Genomes with no Flq resistance determinants - \n
+                      Disk diffusion") +
+              theme(axis.title=element_text(size=8)) + ylim(5,50)
+        )
+      )
+    ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
+
+oqxAB_copy_DD
+
+ggsave("figs/FigSX_oqxAB_copy_DD.pdf", width=8, height=7)
+ggsave("figs/FigSX_oqxAB_copy_DD.png", width=8, height=7)
+```
+
+```{r PPV_table}
+oqxA_copy_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(oqxA_copy) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) 
+
+#write.table(oqxA_copy_solo, "oqxA_copy_solo_PPV.tsv", row.names=FALSE, sep="\t")
+
+oqxB_copy_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  group_by(oqxB_copy) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) 
+
+#write.table(oqxB_copy_solo, "oqxB_copy_solo_PPV.tsv", row.names=FALSE, sep="\t")
 ```
