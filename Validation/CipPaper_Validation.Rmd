@@ -1,0 +1,259 @@
+---
+title: "Ciprofloxacin resistance in Klebsiella pneumoniae"
+author: "Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(ggrepel)
+
+```
+
+# load data
+``` {r}
+
+#read in kleborate v3 file
+kleborate <- read_delim("klebsiella_pneumo_complex_output_v3_test.txt")
+
+#read in the AST file - AST file must have 'strain' as the identifier header
+pheno <- read_delim("TableS2_phenotypes_metadata_test.tsv")
+
+```
+
+# set colours and labels
+```{r}
+res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
+res_colours3 <- c("NWT I"="#78638a", "NWT R"="IndianRed", "WT S"="LightBlue")
+profile_labels <- paste(
+  paste0(c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0"), rep(" QRDR,", 10)),
+  c("0 PMQR,", "0 PMQR,", "qnrB1,", "0 PMQR,", "0 PMQR,", "0 PMQR", "1 PMQR^,", "1 PMQR,", ">1 PMQR", ">0 PMQR"),
+  c("aac6-", "aac6+", "aac6-", "aac6-", "aac6+", "", "aac6-", "aac6+", "", "")
+)
+names(profile_labels)<-0:9
+
+profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5", "4"="#ecb16f", "5"="#f17c1b", "6"="#fdc0c0", "7"="#e88f8f", "8"="#b92020", "9"="#59124b")
+
+
+```
+
+# Kleborate + AST merging
+``` {r}
+# filter for relevant Kleborate columns
+kleborate <- kleborate %>% select(strain, species, cipro_prediction, cipro_prediction_group)
+
+# merge Kleborate and AST
+cipro_antibiogram <- full_join(kleborate,pheno)
+
+# filter for Kpn (CHANGE FOR OTHER SPECIES)
+cipro_antibiogram <- cipro_antibiogram %>% filter(species=="Klebsiella pneumoniae")
+```
+
+# Interpret ciprofloxacin phenotypes -> SIR
+```{r}
+
+cipro_antibiogram <- cipro_antibiogram %>%
+  filter(Antibiotic %in% c("ciprofloxacin", "Ciprofloxacin")) %>%
+  mutate(Resistance.phenotype = case_when(
+    grepl('MIC.*$', Laboratory.Typing.Method) & as.numeric(Measurement) <= 0.25 ~ "S",
+    grepl('MIC.*$', Laboratory.Typing.Method) & Testing.standard == "EUCAST" & as.numeric(Measurement) > 0.5 ~ "R",
+    grepl('MIC.*$', Laboratory.Typing.Method) & Testing.standard == "CLSI" & as.numeric(Measurement) >= 1 ~ "R",
+    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "EUCAST" & as.numeric(Measurement) >= 25 ~ "S",
+    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "EUCAST" & as.numeric(Measurement) <= 21 ~ "R",
+    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "CLSI" & as.numeric(Measurement) >= 26 ~ "S",
+    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "CLSI" & as.numeric(Measurement) <= 21 ~ "R",
+    TRUE ~ "I")) %>%
+  mutate(Resistance.phenotype = factor(Resistance.phenotype, levels=c("S", "I", "R"))) %>%
+  mutate(nonWT_binary = if_else(Resistance.phenotype=="S", 0, 1)) %>% 
+  mutate(resistant = if_else(Resistance.phenotype=="R", 1, 0)) %>% 
+  distinct() # remove duplicates
+  
+```
+
+# Assign genotype groups and prediction outcome columns
+
+```{r}
+cipro_antibiogram <- cipro_antibiogram %>% 
+  mutate(rules_category = case_when(
+    cipro_prediction_group=="0^ QRDR, 0 PMQR, 0 aac6" ~ 0, # no determinants -> WT S
+    cipro_prediction_group=="0 QRDR, 0 PMQR, 1 aac6" ~ 1, # aac6 solo -> WT S
+    cipro_prediction_group=="0 QRDR, qnrB1, 0 aac6" ~ 2, # non-associated PMQR solo -> NWT I
+    cipro_prediction_group=="1 QRDR, 0 PMQR, 0 aac6" ~ 3, # 1 QRDR, except those not associated -> NWT R
+    cipro_prediction_group=="1 QRDR, 0 PMQR, 1 aac6" ~ 4, # 1 QRDR + aac6 -> NWT R
+    cipro_prediction_group==">1 QRDR, 0 PMQR, * aac6" ~ 5, # ≥2 QRDR -> NWT R
+    cipro_prediction_group=="0 QRDR, 1^ PMQR, 0 aac6" ~ 6, # 1 PMQR, except those not associated -> NWT R
+    cipro_prediction_group=="0 QRDR, 1 PMQR, 1 aac6" ~ 7, # 1 PMQR + aac6
+    cipro_prediction_group=="0 QRDR, >1 PMQR, * aac6" ~ 8, # ≥2 PMQR -> NWT R
+    cipro_prediction_group==">0 QRDR, >0 PMQR, * aac6" ~ 9, # QRDR + PMQR -> NWT R
+    TRUE ~ NA
+  )) %>%
+  mutate(cipro_prediction_group = factor(cipro_prediction_group, levels=c("0^ QRDR, 0 PMQR, 0 aac6", "0 QRDR, 0 PMQR, 1 aac6","0 QRDR, qnrB1, 0 aac6","1 QRDR, 0 PMQR, 0 aac6","1 QRDR, 0 PMQR, 1 aac6",">1 QRDR, 0 PMQR, * aac6","0 QRDR, 1^ PMQR, 0 aac6","0 QRDR, 1 PMQR, 1 aac6","0 QRDR, >1 PMQR, * aac6",">0 QRDR, >0 PMQR, * aac6")))
+
+# assign S/R predictions to categories
+cipro_antibiogram <- cipro_antibiogram %>% 
+  mutate(predSIR = if_else(rules_category<=2, "pred_S", "pred_R")) %>%
+  mutate(predSIR = replace(predSIR, rules_category==2, "pred_I")) %>%
+  mutate(predSIR = factor(predSIR, levels=c("pred_S", "pred_I", "pred_R"))) %>%
+  mutate(predR = if_else(rules_category<=2, "pred_S", "pred_R")) %>%
+  mutate(predR = factor(predR, levels=c("pred_S", "pred_R"))) %>%
+  mutate(predNWT = if_else(rules_category<2, "pred_WT", "pred_NWT")) %>%
+  mutate(predNWT = factor(predNWT, levels=c("pred_WT", "pred_NWT")))
+```
+
+# Table - Prediction vs. Phenotype and Cipro_prediction_group vs. Phenotype 
+```{r}
+#Prediction vs. Phenotype
+pred_pheno <- table(cipro_antibiogram$predSIR, cipro_antibiogram$Resistance.phenotype)
+
+#Cipro_prediction_group vs. Phenotype 
+pred_group_pheno <- table(cipro_antibiogram$cipro_prediction_group, cipro_antibiogram$Resistance.phenotype)
+
+prediction_output <- rbind(pred_pheno, pred_group_pheno)
+
+write.csv(data.frame(prediction_output), file="ValidationOutput/Prediction_Pheno_summary.csv", row.names = TRUE)
+
+```
+
+# MIC/disk distribution bar plot, coloured by cipro_prediction column
+```{r }
+
+# MIC distribution 
+rules_MIC_distributionRS <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  mutate(cipro_prediction=factor(cipro_prediction, levels=c("WT S", "NWT I", "NWT R"))) %>%
+  ggplot(aes(as.factor(round(as.numeric(Measurement), digits=2)), fill = cipro_prediction)) + geom_bar() + 
+  labs(title = "A) MIC, by classifer prediction", y = "Number of genomes", x="MIC (mg/L)", 
+       linetype = "MIC breakpoints", fill="Classifier prediction") +
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+  scale_fill_manual(values = res_colours3)+
+  geom_vline(aes(xintercept = 5.5), color = "black") +
+  #annotate("text", x=5.75, y=2900, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 4.5), color = "black") +
+  #annotate("text", x=4.25, y=2900, label="S", size=2.5)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+
+rules_MIC_distributionRS
+
+ggsave(width=8, height=9, file="ValidationOutput/MIC_PredRIS.pdf")
+ggsave(width=8, height=9, file="ValidationOutput/MIC_PredRIS.png")
+
+
+# DD distribution
+rules_DD_distributionRS <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  mutate(cipro_prediction=factor(cipro_prediction, levels=c("WT S", "NWT I", "NWT R"))) %>%
+  ggplot(aes(as.numeric(Measurement), fill = cipro_prediction)) + geom_bar() + 
+  labs(title = "B) Disk zones, by classifer prediction", y = "Number of genomes", x ="Disk zone (mm)",
+       linetype = "Disk diffusion \nbreakpoints") +
+        scale_fill_manual(values = res_colours3)+
+  geom_vline(aes(xintercept = 21.5), color = "black") +
+  #annotate("text", x=20.5, y=400, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 24.5), color = "black") +
+  #geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
+  #annotate("text", x=25.5, y=400, label="S", size=2.5)+
+  theme_minimal() + 
+  theme(axis.text.x = element_text(size=11))+
+  theme(legend.position = "none")
+
+rules_DD_distributionRS
+
+ggsave(width=8, height=9, file="ValidationOutput/DD_PredRIS.pdf")
+ggsave(width=8, height=9, file="ValidationOutput/DD_PredRIS.png")
+```
+
+# MIC/disk distribution bar plot, coloured by cipro_prediction_group column
+```{r }
+
+# MIC distribution
+rules_MIC_distribution <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), fill = as.factor(rules_category))) + geom_bar() + 
+  labs(x = "MIC (mg/L)", y = "Number of genomes", 
+       linetype = "MIC breakpoints", title="A) MIC, by genotype profile", fill="Genotype profile") +
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+  geom_vline(aes(xintercept = 5.5), color = "black") +
+  #annotate("text", x=5.75, y=2900, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 4.5), color = "black") +
+  #annotate("text", x=4.25, y=2900, label="S", size=2.5)+
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+
+rules_MIC_distribution
+
+ggsave(width=8, height=9, file="ValidationOutput/MIC_PredGroup.pdf")
+ggsave(width=8, height=9, file="ValidationOutput/MIC_PredGroup.png")
+
+# DD distribution
+rules_DD_distribution <- cipro_antibiogram %>%
+  group_by(Laboratory.Typing.Method) %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  ggplot(aes(as.numeric(Measurement), fill = as.factor(rules_category))) + geom_bar() + 
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  geom_vline(aes(xintercept = 21.5), color = "black") +
+  #annotate("text", x=20.5, y=400, label="R", size=2.5)+
+  geom_vline(aes(xintercept = 24.5), color = "black", linetype=2) +
+  geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
+  #annotate("text", x=26.5, y=400, label="S", size=2.5)+
+  theme_minimal()+
+  labs(y = "Number of genomes", x="Disk zone (mm)", title="B) Disk zones, by genotype profile") +
+  theme_minimal() + 
+  theme(axis.text.x = element_text(size=11))+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+rules_DD_distribution
+
+ggsave(width=8, height=9, file="ValidationOutput/DD_PredGroup.pdf")
+ggsave(width=8, height=9, file="ValidationOutput/DD_PredGroup.png")
+```
+
+# Stacked bar plot - cipro_prediction_group vs. phenotype
+```{r}
+rules_category_SIR_plot <- cipro_antibiogram %>% 
+  ggplot(aes(x=as.factor(rules_category), fill=factor(Resistance.phenotype, levels = c("S", "I", "R")))) + 
+  geom_bar(position = "fill") + coord_flip() +
+  scale_y_continuous(labels = scales::percent)+
+  labs(title="Observed phenotype distribution, per genotype profile", x="Genotype profile", y="Proportion (%)", fill="Phenotype") +
+  scale_fill_manual(values = res_colours)+
+  scale_x_discrete(limits=rev, labels=profile_labels) +
+  geom_text_repel(aes(label = after_stat(count)), stat = "count", size=3, direction="x", position=position_fill(0.4)) +
+  theme_minimal()
+  rules_category_SIR_plot
+  
+ggsave(width=8, height=9, file="ValidationOutput/StackedBar_PredGroup_SIR.pdf")
+ggsave(width=8, height=9, file="ValidationOutput/StackedBar_PredGroup_SIR.png")
+```
