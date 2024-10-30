@@ -45,6 +45,11 @@ cipro_antibiogram <- full_join(geno,pheno)
 
 ```
 
+## species info
+```{r}
+cipro_antibiogram %>% count(species)
+```
+
 ## long form, one row per strain/determinant combination
 ``` {r}
 cipro_res_mech <- cipro_antibiogram %>%
@@ -64,10 +69,10 @@ cipro_antibiogram %>% summarise(pc=mean(QRDR_mutations!=0)*100, N=sum(QRDR_mutat
 cipro_antibiogram %>% summarise(pc=mean(acquired_genes!=0)*100, N=sum(acquired_genes!=0))
 cipro_antibiogram %>% summarise(pc=mean(aac6!=0)*100, N=sum(aac6!=0))
 
+# number of isolates without any flq determinants
+cipro_antibiogram %>% summarise(pc=mean(QRDR_mutations==0 & acquired_genes==0 &aac6==0)*100, N=sum(QRDR_mutations==0 & acquired_genes==0 &aac6==0))
+
 # by S/I/R
-cipro_antibiogram %>% summarise(pc=mean(QRDR_mutations!=0)*100, N=sum(QRDR_mutations!=0))
-cipro_antibiogram %>% summarise(pc=mean(acquired_genes!=0)*100, N=sum(acquired_genes!=0))
-cipro_antibiogram %>% summarise(pc=mean(aac6!=0)*100, N=sum(aac6!=0))
 
 cipro_antibiogram %>% group_by(Resistance.phenotype) %>%summarise(pc=mean(QRDR_mutations!=0)*100, N=sum(QRDR_mutations!=0))
 cipro_antibiogram %>% group_by(Resistance.phenotype) %>%summarise(pc=mean(acquired_genes!=0)*100, N=sum(acquired_genes!=0))
