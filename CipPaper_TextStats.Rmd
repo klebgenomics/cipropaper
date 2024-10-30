@@ -1,0 +1,301 @@
+---
+title: "Ciprofloxacin resistance in Klebsiella pneumoniae"
+author: "Iana Amke, Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+
+```
+
+# load data
+``` {r}
+geno <- read_delim("tables/TableS1_genotypes.tsv")
+
+pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+
+cipro_antibiogram <- full_join(geno,pheno)
+
+```
+
+## species info
+```{r}
+cipro_antibiogram %>% count(species)
+```
+
+# Numbers for text - para 1
+``` {r}
+# total isolates
+totalN <- cipro_antibiogram %>% select(strain) %>% unique() %>% nrow()
+totalN
+
+# total by AST data type
+table(cipro_antibiogram$Laboratory.Typing.Method)
+table(cipro_antibiogram$Laboratory.Typing.Method)/totalN*100
+table(cipro_antibiogram$Laboratory.Typing.Method!="Disk diffusion")
+table(cipro_antibiogram$Laboratory.Typing.Method!="Disk diffusion")/totalN*100
+
+table(cipro_antibiogram$Laboratory.Typing.Platform)
+table(cipro_antibiogram$Laboratory.Typing.Platform!="Manual")
+```
+
+
+## test effect of QRDR, in absence of any acquired genes
+
+``` {r}
+mic <- cipro_antibiogram %>%
+  filter(grepl('MIC.*$', Laboratory.Typing.Method))
+
+# MIC
+QRDR_MIC_noGenes_dat <- mic %>%
+    filter(aac6==0 & acquired_genes==0) %>% 
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, QRDR_mutations, `GyrA-83`, `ParC-80`) %>%
+  mutate(qrdr_bin=if_else(QRDR_mutations==0, 0, 1))
+
+# MIC vs presence/absence
+wilcox.test(log2(as.numeric(Measurement)) ~ qrdr_bin, data=QRDR_MIC_noGenes_dat)
+t.test(log2(as.numeric(Measurement)) ~ qrdr_bin, data=QRDR_MIC_noGenes_dat)
+summary(lm(log2(as.numeric(Measurement)) ~ qrdr_bin, data=QRDR_MIC_noGenes_dat))
+summary(as.numeric(QRDR_MIC_noGenes_dat$Measurement)[QRDR_MIC_noGenes_dat$qrdr_bin==1])
+summary(as.numeric(QRDR_MIC_noGenes_dat$Measurement)[QRDR_MIC_noGenes_dat$qrdr_bin==0])
+
+# MIC vs QRDR count
+QRDR_MIC_noGenes_dat <- QRDR_MIC_noGenes_dat %>%
+  mutate(QRDR_0_1_2 = if_else(QRDR_mutations>2, 2, QRDR_mutations)) %>%
+  mutate(QRDR_0_1_2_3 = if_else(QRDR_mutations>3, 3, QRDR_mutations)) %>%
+  mutate(QRDR_1_2 = if_else(QRDR_0_1_2==0, NA, QRDR_0_1_2)) %>%
+  mutate(QRDR_2_3 = if_else(QRDR_0_1_2<2, NA, QRDR_0_1_2_3))
+
+summary(lm(log2(as.numeric(Measurement)) ~ QRDR_mutations, data=QRDR_MIC_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_mutations), data=QRDR_MIC_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_0_1_2), data=QRDR_MIC_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_1_2), data=QRDR_MIC_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_2_3), data=QRDR_MIC_noGenes_dat))
+
+summary(as.numeric(QRDR_MIC_noGenes_dat$Measurement)[QRDR_MIC_noGenes_dat$QRDR_mutations==0])
+summary(as.numeric(QRDR_MIC_noGenes_dat$Measurement)[QRDR_MIC_noGenes_dat$QRDR_mutations==1])
+summary(as.numeric(QRDR_MIC_noGenes_dat$Measurement)[QRDR_MIC_noGenes_dat$QRDR_mutations==2])
+summary(as.numeric(QRDR_MIC_noGenes_dat$Measurement)[QRDR_MIC_noGenes_dat$QRDR_mutations>2])
+
+# effect of ParC when added to GyrA83 background (absence of any genes or GyrA87)
+QRDR_MIC_GyrA83background_noGenes_dat <- mic %>%
+    filter(aac6==0 & acquired_genes==0 & `GyrA-83`==1 & `GyrA-87`==0) %>% 
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, ParC_mutations, `ParC-80`, `ParC-84`)
+
+wilcox.test(log2(as.numeric(Measurement)) ~ `ParC-80`, data=QRDR_MIC_GyrA83background_noGenes_dat)
+t.test(log2(as.numeric(Measurement)) ~ `ParC-80`, data=QRDR_MIC_GyrA83background_noGenes_dat)
+summary(lm(log2(as.numeric(Measurement)) ~ `ParC-80`, data=QRDR_MIC_GyrA83background_noGenes_dat))
+summary(as.numeric(QRDR_MIC_GyrA83background_noGenes_dat$Measurement)[QRDR_MIC_GyrA83background_noGenes_dat$`ParC-80`==1])
+summary(as.numeric(QRDR_MIC_GyrA83background_noGenes_dat$Measurement)[QRDR_MIC_GyrA83background_noGenes_dat$`ParC-80`==0])
+
+
+
+# DD
+QRDR_DD_noGenes_dat <- cipro_antibiogram %>%
+    filter(aac6==0 & acquired_genes==0) %>% 
+    filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, QRDR_mutations) %>%
+  mutate(qrdr_bin=if_else(QRDR_mutations==0, 0, 1))
+
+QRDR_DD_noGenes_dat <- QRDR_DD_noGenes_dat %>%
+  mutate(QRDR_0_1_2 = if_else(QRDR_mutations>2, 2, QRDR_mutations)) %>%
+  mutate(QRDR_0_1_2_3 = if_else(QRDR_mutations>3, 3, QRDR_mutations)) %>%
+  mutate(QRDR_1_2 = if_else(QRDR_0_1_2==0, NA, QRDR_0_1_2)) %>%
+  mutate(QRDR_2_3 = if_else(QRDR_0_1_2<2, NA, QRDR_0_1_2_3))
+
+# DD vs presence/absence
+wilcox.test(as.numeric(Measurement) ~ qrdr_bin, data=QRDR_DD_noGenes_dat)
+t.test(as.numeric(Measurement) ~ qrdr_bin, data=QRDR_DD_noGenes_dat)
+summary(lm(as.numeric(Measurement) ~ qrdr_bin, data=QRDR_DD_noGenes_dat))
+summary(as.numeric(QRDR_DD_noGenes_dat$Measurement)[QRDR_DD_noGenes_dat$qrdr_bin==1])
+summary(as.numeric(QRDR_DD_noGenes_dat$Measurement)[QRDR_DD_noGenes_dat$qrdr_bin==0])
+
+# DD vs QRDR count
+summary(lm(as.numeric(Measurement) ~ QRDR_mutations, data=QRDR_DD_noGenes_dat))
+summary(as.numeric(QRDR_DD_noGenes_dat$Measurement)[QRDR_DD_noGenes_dat$QRDR_mutations==0])
+summary(as.numeric(QRDR_DD_noGenes_dat$Measurement)[QRDR_DD_noGenes_dat$QRDR_mutations==1])
+summary(as.numeric(QRDR_DD_noGenes_dat$Measurement)[QRDR_DD_noGenes_dat$QRDR_mutations==2])
+summary(as.numeric(QRDR_DD_noGenes_dat$Measurement)[QRDR_DD_noGenes_dat$QRDR_mutations>2])
+
+summary(lm(log2(as.numeric(Measurement)) ~ QRDR_mutations, data=QRDR_DD_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_mutations), data=QRDR_DD_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_0_1_2), data=QRDR_DD_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_1_2), data=QRDR_DD_noGenes_dat))
+summary(lm(log2(as.numeric(Measurement)) ~ factor(QRDR_2_3), data=QRDR_DD_noGenes_dat))
+
+# effect of ParC when added to GyrA83 background (absence of any genes or GyrA87)
+QRDR_DD_GyrA83background_noGenes_dat <- cipro_antibiogram %>%
+    filter(aac6==0 & acquired_genes==0 & `GyrA-83`==1 & `GyrA-87`==0) %>% 
+  filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, ParC_mutations, `ParC-80`, `ParC-84`)
+
+wilcox.test(as.numeric(Measurement) ~ `ParC-80`, data=QRDR_DD_GyrA83background_noGenes_dat)
+t.test(as.numeric(Measurement) ~ `ParC-80`, data=QRDR_DD_GyrA83background_noGenes_dat)
+summary(lm(as.numeric(Measurement) ~ `ParC-80`, data=QRDR_DD_GyrA83background_noGenes_dat))
+summary(as.numeric(QRDR_DD_GyrA83background_noGenes_dat$Measurement)[QRDR_DD_GyrA83background_noGenes_dat$`ParC-80`==1])
+summary(as.numeric(QRDR_DD_GyrA83background_noGenes_dat$Measurement)[QRDR_DD_GyrA83background_noGenes_dat$`ParC-80`==0])
+
+
+
+# all genomes with no acquired genes (MIC/DD)
+QRDR_noGenes_dat <- cipro_antibiogram %>%
+    filter(aac6==0 & acquired_genes==0) %>% 
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, QRDR_mutations) %>%
+  mutate(qrdr_bin=if_else(QRDR_mutations==0, 0, 1))
+
+dim(QRDR_noGenes_dat)
+
+
+# nonWT vs presence/absence
+fisher.test(table(QRDR_noGenes_dat$nonWT_binary, QRDR_noGenes_dat$qrdr_bin))
+
+# resistance vs presence/absence
+fisher.test(table(QRDR_noGenes_dat$resistant, QRDR_noGenes_dat$qrdr_bin))
+
+
+```
+
+# effect of qnr/qep genes, in absence of QRDR and aac6
+
+``` {r}
+
+# MIC
+qnr_MIC_nullBG_dat <- mic %>%
+    filter(aac6==0 & QRDR_mutations==0) %>% 
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) %>%
+  mutate(acquired_bin=if_else(acquired_genes==0, 0, 1))
+
+# MIC vs presence/absence of qnr
+wilcox.test(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat)
+t.test(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat)
+summary(lm(log2(as.numeric(Measurement)) ~ acquired_bin, data=qnr_MIC_nullBG_dat))
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_bin==1])
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_bin==0])
+
+# MIC vs qnr count
+summary(lm(log2(as.numeric(Measurement)) ~ acquired_genes, data=qnr_MIC_nullBG_dat))
+
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes==0])
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes==1])
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes==2])
+summary(as.numeric(qnr_MIC_nullBG_dat$Measurement)[qnr_MIC_nullBG_dat$acquired_genes>2])
+
+
+# DD
+qnr_DD_noGenes_dat <- cipro_antibiogram %>%
+    filter(aac6==0 & QRDR_mutations==0) %>% 
+    filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) %>%
+  mutate(acquired_bin=if_else(acquired_genes==0, 0, 1))
+
+# DD vs presence/absence
+wilcox.test(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat)
+t.test(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat)
+summary(lm(as.numeric(Measurement) ~ acquired_bin, data=qnr_DD_noGenes_dat))
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_bin==1])
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_bin==0])
+
+# DD vs qnr count
+summary(lm(as.numeric(Measurement) ~ acquired_genes, data=qnr_DD_noGenes_dat))
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes==0])
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes==1])
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes==2])
+summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_genes>2])
+
+
+
+# all genomes with no acquired genes (MIC/DD)
+qnr_noGenes_dat <- cipro_antibiogram %>%
+    filter(aac6==0 & QRDR_mutations==0) %>% 
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) %>%
+  mutate(acquired_bin=if_else(acquired_genes==0, 0, 1))
+
+dim(qnr_noGenes_dat)
+
+
+# nonS vs presence/absence
+fisher.test(table(qnr_noGenes_dat$nonWT_binary, qnr_noGenes_dat$acquired_bin))
+
+# resistance vs presence/absence
+fisher.test(table(qnr_noGenes_dat$resistant, qnr_noGenes_dat$acquired_bin))
+
+```
+
+
+
+# effect of aac6 genes, in absence of QRDR and PMQR
+
+``` {r}
+
+# MIC
+aac6_MIC_nullBG_dat <- mic %>%
+    filter(acquired_genes==0 & QRDR_mutations==0) %>% 
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6) 
+
+# MIC vs presence/absence of aac6
+wilcox.test(log2(as.numeric(Measurement)) ~ aac6, data=aac6_MIC_nullBG_dat)
+t.test(log2(as.numeric(Measurement)) ~ aac6, data=aac6_MIC_nullBG_dat)
+summary(lm(log2(as.numeric(Measurement)) ~ aac6, data=aac6_MIC_nullBG_dat))
+summary(as.numeric(aac6_MIC_nullBG_dat$Measurement)[aac6_MIC_nullBG_dat$aac6==1])
+summary(as.numeric(aac6_MIC_nullBG_dat$Measurement)[aac6_MIC_nullBG_dat$aac6==0])
+
+
+# DD
+aac6_DD_noGenes_dat <- cipro_antibiogram %>%
+    filter(acquired_genes==0 & QRDR_mutations==0) %>% 
+    filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6) 
+
+# DD vs presence/absence aac6
+wilcox.test(as.numeric(Measurement) ~ aac6, data=aac6_DD_noGenes_dat)
+t.test(as.numeric(Measurement) ~ aac6, data=aac6_DD_noGenes_dat)
+summary(lm(as.numeric(Measurement) ~ aac6, data=aac6_DD_noGenes_dat))
+summary(as.numeric(aac6_DD_noGenes_dat$Measurement)[aac6_DD_noGenes_dat$aac6==1])
+summary(as.numeric(aac6_DD_noGenes_dat$Measurement)[aac6_DD_noGenes_dat$aac6==0])
+
+
+# all genomes with no QRDR mutations and PMQR genes (MIC/DD)
+aac6_noGenes_dat <- cipro_antibiogram %>%
+    filter(acquired_genes==0 & QRDR_mutations==0) %>% 
+  select(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6) 
+
+dim(aac6_noGenes_dat)
+
+
+# nonS vs presence/absence
+fisher.test(table(aac6_noGenes_dat$nonWT_binary, aac6_noGenes_dat$aac6))
+
+# resistance vs presence/absence
+fisher.test(table(aac6_noGenes_dat$resistant, aac6_noGenes_dat$aac6))
+
+```

@@ -45,10 +45,6 @@ cipro_antibiogram <- full_join(geno,pheno)
 
 ```
 
-## species info
-```{r}
-cipro_antibiogram %>% count(species)
-```
 
 ## long form, one row per strain/determinant combination
 ``` {r}

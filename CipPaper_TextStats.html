@@ -9,10 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Kara Tsang, Kat Holt" />
+<meta name="author" content="Iana Amke, Kara Tsang, Kat Holt" />
 
 
-<title>Mutation frequencies</title>
+<title>Ciprofloxacin resistance in Klebsiella pneumoniae</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -2037,8 +2037,9 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Mutation frequencies</h1>
-<h4 class="author">Kara Tsang, Kat Holt</h4>
+<h1 class="title toc-ignore">Ciprofloxacin resistance in Klebsiella
+pneumoniae</h1>
+<h4 class="author">Iana Amke, Kara Tsang, Kat Holt</h4>
 <h4 class="date">Last compiled on 30/10/24</h4>
 
 </div>
@@ -2054,151 +2055,908 @@ margin-right: auto;
 <div id="load-data" class="section level1">
 <h1>load data</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a>geno <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;tables/TableS1_genotypes.tsv&quot;</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>pheno <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;tables/TableS2_phenotypes_metadata.tsv&quot;</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>cipro_antibiogram <span class="ot">&lt;-</span> <span class="fu">full_join</span>(geno,pheno)</span></code></pre></div>
-<div id="long-form-one-row-per-straindeterminant-combination" class="section level2">
-<h2>long form, one row per strain/determinant combination</h2>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>cipro_res_mech <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Aac6_gene=</span><span class="fu">if_else</span>(aac6 <span class="sc">==</span> <span class="dv">1</span>, <span class="st">&quot;aac(6&#39;)-Ib-cr&quot;</span>, <span class="st">&quot;-&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">c</span>(Flq_mutations,Flq_acquired, Aac6_gene), <span class="at">names_to =</span> <span class="st">&quot;marker.type&quot;</span>, </span>
-<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>               <span class="at">values_to =</span> <span class="st">&quot;marker&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>  <span class="fu">separate_longer_delim</span>(<span class="at">cols=</span>marker, <span class="at">delim=</span><span class="st">&quot;;&quot;</span>)</span></code></pre></div>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a>pheno <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">&quot;tables/TableS2_phenotypes_metadata.tsv&quot;</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a>cipro_antibiogram <span class="ot">&lt;-</span> <span class="fu">full_join</span>(geno,pheno)</span></code></pre></div>
+<div id="species-info" class="section level2">
+<h2>species info</h2>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">count</span>(species)</span></code></pre></div>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["species"],"name":[1],"type":["chr"],"align":["left"]},{"label":["n"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"Klebsiella africana","2":"1"},{"1":"Klebsiella pneumoniae","2":"10634"},{"1":"Klebsiella quasipneumoniae subsp. quasipneumoniae","2":"189"},{"1":"Klebsiella quasipneumoniae subsp. similipneumoniae","2":"286"},{"1":"Klebsiella quasivariicola","2":"9"},{"1":"Klebsiella variicola subsp. tropica","2":"11"},{"1":"Klebsiella variicola subsp. variicola","2":"1037"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
 </div>
 </div>
-<div id="numbers-for-text---para-2" class="section level1">
-<h1>Numbers for text - para 2</h1>
+</div>
+<div id="numbers-for-text---para-1" class="section level1">
+<h1>Numbers for text - para 1</h1>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="co"># total isolates</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>totalN <span class="ot">&lt;-</span> <span class="fu">nrow</span>(cipro_antibiogram)</span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="co"># number/freq of isolates with each type of mutation</span></span>
-<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pc=</span><span class="fu">mean</span>(QRDR_mutations<span class="sc">!=</span><span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span>, <span class="at">N=</span><span class="fu">sum</span>(QRDR_mutations<span class="sc">!=</span><span class="dv">0</span>))</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["pc"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["N"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"38.97427","2":"4742"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>totalN <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">select</span>(strain) <span class="sc">%&gt;%</span> <span class="fu">unique</span>() <span class="sc">%&gt;%</span> <span class="fu">nrow</span>()</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>totalN</span></code></pre></div>
+<pre><code>## [1] 12167</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="co"># total by AST data type</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Method)</span></code></pre></div>
+<pre><code>## 
+##                  Disk diffusion             MIC (agar dilution) 
+##                            3073                             498 
+##            MIC (broth dilution) MIC (E-test gradient diffusion) 
+##                            8592                               4</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Method)<span class="sc">/</span>totalN<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## 
+##                  Disk diffusion             MIC (agar dilution) 
+##                     25.25684228                      4.09303855 
+##            MIC (broth dilution) MIC (E-test gradient diffusion) 
+##                     70.61724336                      0.03287581</code></pre>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Method<span class="sc">!=</span><span class="st">&quot;Disk diffusion&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##  3073  9094</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Method<span class="sc">!=</span><span class="st">&quot;Disk diffusion&quot;</span>)<span class="sc">/</span>totalN<span class="sc">*</span><span class="dv">100</span></span></code></pre></div>
+<pre><code>## 
+##    FALSE     TRUE 
+## 25.25684 74.74316</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Platform)</span></code></pre></div>
+<pre><code>## 
+##     Manual    Phoenix Sensititre      Vitek 
+##        589       3551        234       4129</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Platform<span class="sc">!=</span><span class="st">&quot;Manual&quot;</span>)</span></code></pre></div>
+<pre><code>## 
+## FALSE  TRUE 
+##   589  7914</code></pre>
+<div id="test-effect-of-qrdr-in-absence-of-any-acquired-genes" class="section level2">
+<h2>test effect of QRDR, in absence of any acquired genes</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>mic <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="fu">grepl</span>(<span class="st">&#39;MIC.*$&#39;</span>, Laboratory.Typing.Method))</span>
+<span id="cb17-3"><a href="#cb17-3" tabindex="-1"></a></span>
+<span id="cb17-4"><a href="#cb17-4" tabindex="-1"></a><span class="co"># MIC</span></span>
+<span id="cb17-5"><a href="#cb17-5" tabindex="-1"></a>QRDR_MIC_noGenes_dat <span class="ot">&lt;-</span> mic <span class="sc">%&gt;%</span></span>
+<span id="cb17-6"><a href="#cb17-6" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-7"><a href="#cb17-7" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, QRDR_mutations, <span class="st">`</span><span class="at">GyrA-83</span><span class="st">`</span>, <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb17-8"><a href="#cb17-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">qrdr_bin=</span><span class="fu">if_else</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb17-9"><a href="#cb17-9" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" tabindex="-1"></a><span class="co"># MIC vs presence/absence</span></span>
+<span id="cb17-11"><a href="#cb17-11" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> qrdr_bin, <span class="at">data=</span>QRDR_MIC_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  log2(as.numeric(Measurement)) by qrdr_bin
+## W = 98162, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> qrdr_bin, <span class="at">data=</span>QRDR_MIC_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  log2(as.numeric(Measurement)) by qrdr_bin
+## t = -104.84, df = 2775.7, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  -3.200289 -3.082779
+## sample estimates:
+## mean in group 0 mean in group 1 
+##       -1.958563        1.182971</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> qrdr_bin, <span class="at">data=</span>QRDR_MIC_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ qrdr_bin, data = QRDR_MIC_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.1830 -0.1830 -0.0414 -0.0414  7.9586 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -1.95856    0.01638  -119.6   &lt;2e-16 ***
+## qrdr_bin     3.14153    0.02793   112.5   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9207 on 4814 degrees of freedom
+## Multiple R-squared:  0.7243, Adjusted R-squared:  0.7243 
+## F-statistic: 1.265e+04 on 1 and 4814 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_noGenes_dat<span class="sc">$</span>qrdr_bin<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.250   2.000   2.000   5.536   2.000 512.000</code></pre>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_noGenes_dat<span class="sc">$</span>qrdr_bin<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0300  0.2500  0.2500  0.3421  0.2500 64.0000</code></pre>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="co"># MIC vs QRDR count</span></span>
+<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a>QRDR_MIC_noGenes_dat <span class="ot">&lt;-</span> QRDR_MIC_noGenes_dat <span class="sc">%&gt;%</span></span>
+<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_0_1_2 =</span> <span class="fu">if_else</span>(QRDR_mutations<span class="sc">&gt;</span><span class="dv">2</span>, <span class="dv">2</span>, QRDR_mutations)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_0_1_2_3 =</span> <span class="fu">if_else</span>(QRDR_mutations<span class="sc">&gt;</span><span class="dv">3</span>, <span class="dv">3</span>, QRDR_mutations)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_1_2 =</span> <span class="fu">if_else</span>(QRDR_0_1_2<span class="sc">==</span><span class="dv">0</span>, <span class="cn">NA</span>, QRDR_0_1_2)) <span class="sc">%&gt;%</span></span>
+<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_2_3 =</span> <span class="fu">if_else</span>(QRDR_0_1_2<span class="sc">&lt;</span><span class="dv">2</span>, <span class="cn">NA</span>, QRDR_0_1_2_3))</span>
+<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a></span>
+<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> QRDR_mutations, <span class="at">data=</span>QRDR_MIC_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ QRDR_mutations, 
+##     data = QRDR_MIC_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.5764 -0.1041 -0.1041 -0.1041  8.5810 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    -1.89590    0.01706  -111.1   &lt;2e-16 ***
+## QRDR_mutations  1.15743    0.01110   104.3   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9712 on 4814 degrees of freedom
+## Multiple R-squared:  0.6933, Adjusted R-squared:  0.6932 
+## F-statistic: 1.088e+04 on 1 and 4814 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_mutations), <span class="at">data=</span>QRDR_MIC_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_mutations), 
+##     data = QRDR_MIC_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.2785 -0.0946 -0.0414 -0.0414  7.9586 
+## 
+## Coefficients:
+##                         Estimate Std. Error  t value Pr(&gt;|t|)    
+## (Intercept)             -1.95856    0.01630 -120.133  &lt; 2e-16 ***
+## factor(QRDR_mutations)1  2.54190    0.10923   23.271  &lt; 2e-16 ***
+## factor(QRDR_mutations)2  3.05316    0.04104   74.388  &lt; 2e-16 ***
+## factor(QRDR_mutations)3  3.23707    0.03337   97.015  &lt; 2e-16 ***
+## factor(QRDR_mutations)5  3.95856    0.91662    4.319  1.6e-05 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9165 on 4811 degrees of freedom
+## Multiple R-squared:  0.7271, Adjusted R-squared:  0.7268 
+## F-statistic:  3204 on 4 and 4811 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_0_1_2), <span class="at">data=</span>QRDR_MIC_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_0_1_2), 
+##     data = QRDR_MIC_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.2102 -0.2102 -0.0414 -0.0414  7.9586 
+## 
+## Coefficients:
+##                     Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)         -1.95856    0.01633 -119.96   &lt;2e-16 ***
+## factor(QRDR_0_1_2)1  2.54190    0.10939   23.24   &lt;2e-16 ***
+## factor(QRDR_0_1_2)2  3.16879    0.02825  112.15   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9178 on 4813 degrees of freedom
+## Multiple R-squared:  0.7262, Adjusted R-squared:  0.7261 
+## F-statistic:  6382 on 2 and 4813 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_1_2), <span class="at">data=</span>QRDR_MIC_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_1_2), 
+##     data = QRDR_MIC_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.2102 -0.2102 -0.2102 -0.2102  7.7898 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)         0.5833     0.1236   4.718 2.58e-06 ***
+## factor(QRDR_1_2)2   0.6269     0.1264   4.959 7.82e-07 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.049 on 1654 degrees of freedom
+##   (3160 observations deleted due to missingness)
+## Multiple R-squared:  0.01465,    Adjusted R-squared:  0.01405 
+## F-statistic: 24.59 on 1 and 1654 DF,  p-value: 7.82e-07</code></pre>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_2_3), <span class="at">data=</span>QRDR_MIC_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_2_3), 
+##     data = QRDR_MIC_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.2792 -0.2792 -0.2792 -0.0946  7.9054 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        1.09459    0.04216  25.965  &lt; 2e-16 ***
+## factor(QRDR_2_3)3  0.18464    0.05327   3.466 0.000542 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.026 on 1582 degrees of freedom
+##   (3232 observations deleted due to missingness)
+## Multiple R-squared:  0.007537,   Adjusted R-squared:  0.00691 
+## F-statistic: 12.01 on 1 and 1582 DF,  p-value: 0.0005421</code></pre>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0300  0.2500  0.2500  0.3421  0.2500 64.0000</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.250   1.000   1.000   2.597   2.000  16.000</code></pre>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">==</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    0.25    2.00    2.00    4.69    2.00  512.00</code></pre>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">&gt;</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.250   2.000   2.000   6.255   2.000 512.000</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="co"># effect of ParC when added to GyrA83 background (absence of any genes or GyrA87)</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a>QRDR_MIC_GyrA83background_noGenes_dat <span class="ot">&lt;-</span> mic <span class="sc">%&gt;%</span></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">GyrA-83</span><span class="st">`</span><span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">GyrA-87</span><span class="st">`</span><span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, ParC_mutations, <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="st">`</span><span class="at">ParC-84</span><span class="st">`</span>)</span>
+<span id="cb45-5"><a href="#cb45-5" tabindex="-1"></a></span>
+<span id="cb45-6"><a href="#cb45-6" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="at">data=</span>QRDR_MIC_GyrA83background_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  log2(as.numeric(Measurement)) by ParC-80
+## W = 13750, p-value = 0.001641
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="at">data=</span>QRDR_MIC_GyrA83background_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  log2(as.numeric(Measurement)) by ParC-80
+## t = -1.1971, df = 63.661, p-value = 0.2357
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  -0.6755311  0.1693164
+## sample estimates:
+## mean in group 0 mean in group 1 
+##       0.8333333       1.0864407</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="at">data=</span>QRDR_MIC_GyrA83background_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ `ParC-80`, data = QRDR_MIC_GyrA83background_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.0864 -0.0864 -0.0864  0.1667  7.9136 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   0.8333     0.1373   6.069 2.18e-09 ***
+## `ParC-80`     0.2531     0.1441   1.756   0.0795 .  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.064 on 648 degrees of freedom
+## Multiple R-squared:  0.004738,   Adjusted R-squared:  0.003202 
+## F-statistic: 3.085 on 1 and 648 DF,  p-value: 0.0795</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_GyrA83background_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_GyrA83background_noGenes_dat<span class="sc">$</span><span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span><span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.250   2.000   2.000   4.487   2.000 512.000</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_MIC_GyrA83background_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_MIC_GyrA83background_noGenes_dat<span class="sc">$</span><span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span><span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.250   1.000   1.000   4.954   4.000 128.000</code></pre>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" tabindex="-1"></a><span class="co"># DD</span></span>
+<span id="cb55-2"><a href="#cb55-2" tabindex="-1"></a>QRDR_DD_noGenes_dat <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb55-3"><a href="#cb55-3" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb55-4"><a href="#cb55-4" tabindex="-1"></a>    <span class="fu">filter</span>(Laboratory.Typing.Method<span class="sc">==</span><span class="st">&quot;Disk diffusion&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb55-5"><a href="#cb55-5" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, QRDR_mutations) <span class="sc">%&gt;%</span></span>
+<span id="cb55-6"><a href="#cb55-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">qrdr_bin=</span><span class="fu">if_else</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb55-7"><a href="#cb55-7" tabindex="-1"></a></span>
+<span id="cb55-8"><a href="#cb55-8" tabindex="-1"></a>QRDR_DD_noGenes_dat <span class="ot">&lt;-</span> QRDR_DD_noGenes_dat <span class="sc">%&gt;%</span></span>
+<span id="cb55-9"><a href="#cb55-9" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_0_1_2 =</span> <span class="fu">if_else</span>(QRDR_mutations<span class="sc">&gt;</span><span class="dv">2</span>, <span class="dv">2</span>, QRDR_mutations)) <span class="sc">%&gt;%</span></span>
+<span id="cb55-10"><a href="#cb55-10" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_0_1_2_3 =</span> <span class="fu">if_else</span>(QRDR_mutations<span class="sc">&gt;</span><span class="dv">3</span>, <span class="dv">3</span>, QRDR_mutations)) <span class="sc">%&gt;%</span></span>
+<span id="cb55-11"><a href="#cb55-11" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_1_2 =</span> <span class="fu">if_else</span>(QRDR_0_1_2<span class="sc">==</span><span class="dv">0</span>, <span class="cn">NA</span>, QRDR_0_1_2)) <span class="sc">%&gt;%</span></span>
+<span id="cb55-12"><a href="#cb55-12" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">QRDR_2_3 =</span> <span class="fu">if_else</span>(QRDR_0_1_2<span class="sc">&lt;</span><span class="dv">2</span>, <span class="cn">NA</span>, QRDR_0_1_2_3))</span>
+<span id="cb55-13"><a href="#cb55-13" tabindex="-1"></a></span>
+<span id="cb55-14"><a href="#cb55-14" tabindex="-1"></a><span class="co"># DD vs presence/absence</span></span>
+<span id="cb55-15"><a href="#cb55-15" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> qrdr_bin, <span class="at">data=</span>QRDR_DD_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  as.numeric(Measurement) by qrdr_bin
+## W = 320646, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> qrdr_bin, <span class="at">data=</span>QRDR_DD_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  as.numeric(Measurement) by qrdr_bin
+## t = 28.219, df = 131.45, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  15.60486 17.95765
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        28.66587        11.88462</code></pre>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> qrdr_bin, <span class="at">data=</span>QRDR_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.numeric(Measurement) ~ qrdr_bin, data = QRDR_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.6659  -1.6659   0.3341   1.3341  18.1154 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  28.66587    0.06349  451.51   &lt;2e-16 ***
+## qrdr_bin    -16.78125    0.28616  -58.64   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.181 on 2639 degrees of freedom
+## Multiple R-squared:  0.5658, Adjusted R-squared:  0.5656 
+## F-statistic:  3439 on 1 and 2639 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_noGenes_dat<span class="sc">$</span>qrdr_bin<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00    6.00    9.00   11.88   17.00   30.00</code></pre>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_noGenes_dat<span class="sc">$</span>qrdr_bin<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00   27.00   29.00   28.67   30.00   44.00</code></pre>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" tabindex="-1"></a><span class="co"># DD vs QRDR count</span></span>
+<span id="cb65-2"><a href="#cb65-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> QRDR_mutations, <span class="at">data=</span>QRDR_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.numeric(Measurement) ~ QRDR_mutations, data = QRDR_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.6378  -1.6378   0.3622   1.3622  17.6985 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     28.6378     0.0596  480.52   &lt;2e-16 ***
+## QRDR_mutations  -8.1682     0.1259  -64.89   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.997 on 2639 degrees of freedom
+## Multiple R-squared:  0.6147, Adjusted R-squared:  0.6146 
+## F-statistic:  4211 on 1 and 2639 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00   27.00   29.00   28.67   30.00   44.00</code></pre>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   11.00   17.00   20.50   19.75   22.25   29.00</code></pre>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">==</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   6.000   6.000   6.000   9.585  13.000  30.000</code></pre>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_noGenes_dat<span class="sc">$</span>QRDR_mutations<span class="sc">&gt;</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   6.000   6.000   6.000   6.676   6.000  12.000</code></pre>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> QRDR_mutations, <span class="at">data=</span>QRDR_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ QRDR_mutations, 
+##     data = QRDR_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.24831 -0.07839  0.02471  0.07362  1.57431 
+## 
+## Coefficients:
+##                 Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)     4.833275   0.003884 1244.46   &lt;2e-16 ***
+## QRDR_mutations -0.750349   0.008203  -91.47   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1953 on 2639 degrees of freedom
+## Multiple R-squared:  0.7602, Adjusted R-squared:  0.7601 
+## F-statistic:  8367 on 1 and 2639 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_mutations), <span class="at">data=</span>QRDR_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_mutations), 
+##     data = QRDR_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.24805 -0.07812  0.02497  0.07388  1.80245 
+## 
+## Coefficients:
+##                          Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)              4.833011   0.003796 1273.23   &lt;2e-16 ***
+## factor(QRDR_mutations)1 -0.564658   0.030313  -18.63   &lt;2e-16 ***
+## factor(QRDR_mutations)2 -1.728573   0.026402  -65.47   &lt;2e-16 ***
+## factor(QRDR_mutations)3 -2.123440   0.031928  -66.51   &lt;2e-16 ***
+## factor(QRDR_mutations)4 -2.248048   0.190248  -11.82   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1902 on 2636 degrees of freedom
+## Multiple R-squared:  0.7728, Adjusted R-squared:  0.7725 
+## F-statistic:  2242 on 4 and 2636 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_0_1_2), <span class="at">data=</span>QRDR_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_0_1_2), 
+##     data = QRDR_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -2.24805 -0.07812  0.02497  0.07388  1.96617 
+## 
+## Coefficients:
+##                      Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)          4.833011   0.003863 1251.15   &lt;2e-16 ***
+## factor(QRDR_0_1_2)1 -0.564658   0.030848  -18.30   &lt;2e-16 ***
+## factor(QRDR_0_1_2)2 -1.892292   0.020766  -91.12   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.1936 on 2638 degrees of freedom
+## Multiple R-squared:  0.7645, Adjusted R-squared:  0.7644 
+## F-statistic:  4283 on 2 and 2638 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_1_2), <span class="at">data=</span>QRDR_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_1_2), 
+##     data = QRDR_DD_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.8089 -0.3558 -0.3558  0.2552  1.9662 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        4.26835    0.07968   53.57   &lt;2e-16 ***
+## factor(QRDR_1_2)2 -1.32763    0.09576  -13.86   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5039 on 128 degrees of freedom
+##   (2511 observations deleted due to missingness)
+## Multiple R-squared:  0.6003, Adjusted R-squared:  0.5972 
+## F-statistic: 192.2 on 1 and 128 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> <span class="fu">factor</span>(QRDR_2_3), <span class="at">data=</span>QRDR_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ factor(QRDR_2_3), 
+##     data = QRDR_DD_noGenes_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -0.5195 -0.5195 -0.1212  0.2747  1.8025 
+## 
+## Coefficients:
+##                   Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)        3.10444    0.07281  42.637  &lt; 2e-16 ***
+## factor(QRDR_2_3)3 -0.39824    0.11356  -3.507 0.000716 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.5301 on 88 degrees of freedom
+##   (2551 observations deleted due to missingness)
+## Multiple R-squared:  0.1226, Adjusted R-squared:  0.1126 
+## F-statistic:  12.3 on 1 and 88 DF,  p-value: 0.0007162</code></pre>
+<div class="sourceCode" id="cb85"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb85-1"><a href="#cb85-1" tabindex="-1"></a><span class="co"># effect of ParC when added to GyrA83 background (absence of any genes or GyrA87)</span></span>
+<span id="cb85-2"><a href="#cb85-2" tabindex="-1"></a>QRDR_DD_GyrA83background_noGenes_dat <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb85-3"><a href="#cb85-3" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">GyrA-83</span><span class="st">`</span><span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> <span class="st">`</span><span class="at">GyrA-87</span><span class="st">`</span><span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb85-4"><a href="#cb85-4" tabindex="-1"></a>  <span class="fu">filter</span>(Laboratory.Typing.Method<span class="sc">==</span><span class="st">&quot;Disk diffusion&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb85-5"><a href="#cb85-5" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, ParC_mutations, <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="st">`</span><span class="at">ParC-84</span><span class="st">`</span>)</span>
+<span id="cb85-6"><a href="#cb85-6" tabindex="-1"></a></span>
+<span id="cb85-7"><a href="#cb85-7" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="at">data=</span>QRDR_DD_GyrA83background_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  as.numeric(Measurement) by ParC-80
+## W = 1112.5, p-value = 5.475e-09
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb87"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb87-1"><a href="#cb87-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="at">data=</span>QRDR_DD_GyrA83background_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  as.numeric(Measurement) by ParC-80
+## t = 8.2252, df = 48.933, p-value = 8.753e-11
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##   7.016151 11.553169
+## sample estimates:
+## mean in group 0 mean in group 1 
+##       18.869565        9.584906</code></pre>
+<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="#cb89-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> <span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span>, <span class="at">data=</span>QRDR_DD_GyrA83background_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.numeric(Measurement) ~ `ParC-80`, data = QRDR_DD_GyrA83background_noGenes_dat)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -7.870 -3.585 -1.727  3.202 20.415 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   18.870      1.006   18.76  &lt; 2e-16 ***
+## `ParC-80`     -9.285      1.204   -7.71 4.58e-11 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 4.823 on 74 degrees of freedom
+## Multiple R-squared:  0.4454, Adjusted R-squared:  0.4379 
+## F-statistic: 59.44 on 1 and 74 DF,  p-value: 4.582e-11</code></pre>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_GyrA83background_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_GyrA83background_noGenes_dat<span class="sc">$</span><span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span><span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   6.000   6.000   6.000   9.585  13.000  30.000</code></pre>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="#cb93-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(QRDR_DD_GyrA83background_noGenes_dat<span class="sc">$</span>Measurement)[QRDR_DD_GyrA83background_noGenes_dat<span class="sc">$</span><span class="st">`</span><span class="at">ParC-80</span><span class="st">`</span><span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   11.00   16.00   20.00   18.87   22.00   25.00</code></pre>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="#cb95-1" tabindex="-1"></a><span class="co"># all genomes with no acquired genes (MIC/DD)</span></span>
+<span id="cb95-2"><a href="#cb95-2" tabindex="-1"></a>QRDR_noGenes_dat <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb95-3"><a href="#cb95-3" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb95-4"><a href="#cb95-4" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, QRDR_mutations) <span class="sc">%&gt;%</span></span>
+<span id="cb95-5"><a href="#cb95-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">qrdr_bin=</span><span class="fu">if_else</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb95-6"><a href="#cb95-6" tabindex="-1"></a></span>
+<span id="cb95-7"><a href="#cb95-7" tabindex="-1"></a><span class="fu">dim</span>(QRDR_noGenes_dat)</span></code></pre></div>
+<pre><code>## [1] 7457    6</code></pre>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="#cb97-1" tabindex="-1"></a><span class="co"># nonWT vs presence/absence</span></span>
+<span id="cb97-2"><a href="#cb97-2" tabindex="-1"></a><span class="fu">fisher.test</span>(<span class="fu">table</span>(QRDR_noGenes_dat<span class="sc">$</span>nonWT_binary, QRDR_noGenes_dat<span class="sc">$</span>qrdr_bin))</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(QRDR_noGenes_dat$nonWT_binary, QRDR_noGenes_dat$qrdr_bin)
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   525.1282 1264.3917
+## sample estimates:
+## odds ratio 
+##   826.9416</code></pre>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" tabindex="-1"></a><span class="co"># resistance vs presence/absence</span></span>
+<span id="cb99-2"><a href="#cb99-2" tabindex="-1"></a><span class="fu">fisher.test</span>(<span class="fu">table</span>(QRDR_noGenes_dat<span class="sc">$</span>resistant, QRDR_noGenes_dat<span class="sc">$</span>qrdr_bin))</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(QRDR_noGenes_dat$resistant, QRDR_noGenes_dat$qrdr_bin)
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  1050.256 2419.794
+## sample estimates:
+## odds ratio 
+##   1521.631</code></pre>
 </div>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pc=</span><span class="fu">mean</span>(acquired_genes<span class="sc">!=</span><span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span>, <span class="at">N=</span><span class="fu">sum</span>(acquired_genes<span class="sc">!=</span><span class="dv">0</span>))</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["pc"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["N"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"33.14704","2":"4033"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
 </div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pc=</span><span class="fu">mean</span>(aac6<span class="sc">!=</span><span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span>, <span class="at">N=</span><span class="fu">sum</span>(aac6<span class="sc">!=</span><span class="dv">0</span>))</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["pc"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["N"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"24.03222","2":"2924"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<div id="effect-of-qnrqep-genes-in-absence-of-qrdr-and-aac6" class="section level1">
+<h1>effect of qnr/qep genes, in absence of QRDR and aac6</h1>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="#cb101-1" tabindex="-1"></a><span class="co"># MIC</span></span>
+<span id="cb101-2"><a href="#cb101-2" tabindex="-1"></a>qnr_MIC_nullBG_dat <span class="ot">&lt;-</span> mic <span class="sc">%&gt;%</span></span>
+<span id="cb101-3"><a href="#cb101-3" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> QRDR_mutations<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb101-4"><a href="#cb101-4" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) <span class="sc">%&gt;%</span></span>
+<span id="cb101-5"><a href="#cb101-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">acquired_bin=</span><span class="fu">if_else</span>(acquired_genes<span class="sc">==</span><span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb101-6"><a href="#cb101-6" tabindex="-1"></a></span>
+<span id="cb101-7"><a href="#cb101-7" tabindex="-1"></a><span class="co"># MIC vs presence/absence of qnr</span></span>
+<span id="cb101-8"><a href="#cb101-8" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> acquired_bin, <span class="at">data=</span>qnr_MIC_nullBG_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  log2(as.numeric(Measurement)) by acquired_bin
+## W = 140287, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="#cb103-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> acquired_bin, <span class="at">data=</span>qnr_MIC_nullBG_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  log2(as.numeric(Measurement)) by acquired_bin
+## t = -43.298, df = 765.09, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  -2.240271 -2.045941
+## sample estimates:
+## mean in group 0 mean in group 1 
+##      -1.9585633       0.1845426</code></pre>
+<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="#cb105-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> acquired_bin, <span class="at">data=</span>qnr_MIC_nullBG_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ acquired_bin, data = qnr_MIC_nullBG_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.1845 -0.0414 -0.0414 -0.0414  7.9586 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  -1.95856    0.01615 -121.24   &lt;2e-16 ***
+## acquired_bin  2.14311    0.03952   54.23   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9081 on 3792 degrees of freedom
+## Multiple R-squared:  0.4368, Adjusted R-squared:  0.4367 
+## F-statistic:  2941 on 1 and 3792 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="#cb107-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_MIC_nullBG_dat<span class="sc">$</span>Measurement)[qnr_MIC_nullBG_dat<span class="sc">$</span>acquired_bin<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.125   0.500   1.000   1.575   2.000   8.000</code></pre>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="#cb109-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_MIC_nullBG_dat<span class="sc">$</span>Measurement)[qnr_MIC_nullBG_dat<span class="sc">$</span>acquired_bin<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0300  0.2500  0.2500  0.3421  0.2500 64.0000</code></pre>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="#cb111-1" tabindex="-1"></a><span class="co"># MIC vs qnr count</span></span>
+<span id="cb111-2"><a href="#cb111-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> acquired_genes, <span class="at">data=</span>qnr_MIC_nullBG_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ acquired_genes, 
+##     data = qnr_MIC_nullBG_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.1339 -0.0479 -0.0479 -0.0479  7.9521 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    -1.95206    0.01614 -120.96   &lt;2e-16 ***
+## acquired_genes  2.04298    0.03781   54.03   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.9096 on 3792 degrees of freedom
+## Multiple R-squared:  0.435,  Adjusted R-squared:  0.4348 
+## F-statistic:  2919 on 1 and 3792 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="#cb113-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_MIC_nullBG_dat<span class="sc">$</span>Measurement)[qnr_MIC_nullBG_dat<span class="sc">$</span>acquired_genes<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0300  0.2500  0.2500  0.3421  0.2500 64.0000</code></pre>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="#cb115-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_MIC_nullBG_dat<span class="sc">$</span>Measurement)[qnr_MIC_nullBG_dat<span class="sc">$</span>acquired_genes<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   0.125   0.500   1.000   1.546   2.000   8.000</code></pre>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="#cb117-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_MIC_nullBG_dat<span class="sc">$</span>Measurement)[qnr_MIC_nullBG_dat<span class="sc">$</span>acquired_genes<span class="sc">==</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     0.5     1.0     2.0     2.5     4.0     4.0</code></pre>
+<div class="sourceCode" id="cb119"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb119-1"><a href="#cb119-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_MIC_nullBG_dat<span class="sc">$</span>Measurement)[qnr_MIC_nullBG_dat<span class="sc">$</span>acquired_genes<span class="sc">&gt;</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## </code></pre>
+<div class="sourceCode" id="cb121"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb121-1"><a href="#cb121-1" tabindex="-1"></a><span class="co"># DD</span></span>
+<span id="cb121-2"><a href="#cb121-2" tabindex="-1"></a>qnr_DD_noGenes_dat <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb121-3"><a href="#cb121-3" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> QRDR_mutations<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb121-4"><a href="#cb121-4" tabindex="-1"></a>    <span class="fu">filter</span>(Laboratory.Typing.Method<span class="sc">==</span><span class="st">&quot;Disk diffusion&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb121-5"><a href="#cb121-5" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) <span class="sc">%&gt;%</span></span>
+<span id="cb121-6"><a href="#cb121-6" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">acquired_bin=</span><span class="fu">if_else</span>(acquired_genes<span class="sc">==</span><span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb121-7"><a href="#cb121-7" tabindex="-1"></a></span>
+<span id="cb121-8"><a href="#cb121-8" tabindex="-1"></a><span class="co"># DD vs presence/absence</span></span>
+<span id="cb121-9"><a href="#cb121-9" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> acquired_bin, <span class="at">data=</span>qnr_DD_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  as.numeric(Measurement) by acquired_bin
+## W = 230345, p-value &lt; 2.2e-16
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb123"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb123-1"><a href="#cb123-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> acquired_bin, <span class="at">data=</span>qnr_DD_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  as.numeric(Measurement) by acquired_bin
+## t = 17.206, df = 97.257, p-value &lt; 2.2e-16
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##   8.09942 10.21149
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        28.66587        19.51042</code></pre>
+<div class="sourceCode" id="cb125"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb125-1"><a href="#cb125-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> acquired_bin, <span class="at">data=</span>qnr_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.numeric(Measurement) ~ acquired_bin, data = qnr_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.6659  -1.6659   0.3341   1.3341  15.3341 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)  28.66587    0.05979  479.41   &lt;2e-16 ***
+## acquired_bin -9.15545    0.31160  -29.38   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.996 on 2605 degrees of freedom
+## Multiple R-squared:  0.2489, Adjusted R-squared:  0.2486 
+## F-statistic: 863.3 on 1 and 2605 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb127"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb127-1"><a href="#cb127-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_DD_noGenes_dat<span class="sc">$</span>Measurement)[qnr_DD_noGenes_dat<span class="sc">$</span>acquired_bin<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00   17.00   21.00   19.51   22.00   31.00</code></pre>
+<div class="sourceCode" id="cb129"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb129-1"><a href="#cb129-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_DD_noGenes_dat<span class="sc">$</span>Measurement)[qnr_DD_noGenes_dat<span class="sc">$</span>acquired_bin<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00   27.00   29.00   28.67   30.00   44.00</code></pre>
+<div class="sourceCode" id="cb131"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb131-1"><a href="#cb131-1" tabindex="-1"></a><span class="co"># DD vs qnr count</span></span>
+<span id="cb131-2"><a href="#cb131-2" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> acquired_genes, <span class="at">data=</span>qnr_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.numeric(Measurement) ~ acquired_genes, data = qnr_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.6642  -1.6642   0.3358   1.3358  15.3358 
+## 
+## Coefficients:
+##                Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)    28.66417    0.05939  482.65   &lt;2e-16 ***
+## acquired_genes -8.65839    0.28782  -30.08   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.978 on 2605 degrees of freedom
+## Multiple R-squared:  0.2578, Adjusted R-squared:  0.2575 
+## F-statistic:   905 on 1 and 2605 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb133"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb133-1"><a href="#cb133-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_DD_noGenes_dat<span class="sc">$</span>Measurement)[qnr_DD_noGenes_dat<span class="sc">$</span>acquired_genes<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00   27.00   29.00   28.67   30.00   44.00</code></pre>
+<div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb135-1"><a href="#cb135-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_DD_noGenes_dat<span class="sc">$</span>Measurement)[qnr_DD_noGenes_dat<span class="sc">$</span>acquired_genes<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00   18.00   21.00   19.91   22.50   31.00</code></pre>
+<div class="sourceCode" id="cb137"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb137-1"><a href="#cb137-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_DD_noGenes_dat<span class="sc">$</span>Measurement)[qnr_DD_noGenes_dat<span class="sc">$</span>acquired_genes<span class="sc">==</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##     6.0     6.0    10.0    12.2    17.0    22.0</code></pre>
+<div class="sourceCode" id="cb139"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb139-1"><a href="#cb139-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(qnr_DD_noGenes_dat<span class="sc">$</span>Measurement)[qnr_DD_noGenes_dat<span class="sc">$</span>acquired_genes<span class="sc">&gt;</span><span class="dv">2</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+## </code></pre>
+<div class="sourceCode" id="cb141"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb141-1"><a href="#cb141-1" tabindex="-1"></a><span class="co"># all genomes with no acquired genes (MIC/DD)</span></span>
+<span id="cb141-2"><a href="#cb141-2" tabindex="-1"></a>qnr_noGenes_dat <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb141-3"><a href="#cb141-3" tabindex="-1"></a>    <span class="fu">filter</span>(aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> QRDR_mutations<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb141-4"><a href="#cb141-4" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, acquired_genes) <span class="sc">%&gt;%</span></span>
+<span id="cb141-5"><a href="#cb141-5" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">acquired_bin=</span><span class="fu">if_else</span>(acquired_genes<span class="sc">==</span><span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>))</span>
+<span id="cb141-6"><a href="#cb141-6" tabindex="-1"></a></span>
+<span id="cb141-7"><a href="#cb141-7" tabindex="-1"></a><span class="fu">dim</span>(qnr_noGenes_dat)</span></code></pre></div>
+<pre><code>## [1] 6401    6</code></pre>
+<div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb143-1"><a href="#cb143-1" tabindex="-1"></a><span class="co"># nonS vs presence/absence</span></span>
+<span id="cb143-2"><a href="#cb143-2" tabindex="-1"></a><span class="fu">fisher.test</span>(<span class="fu">table</span>(qnr_noGenes_dat<span class="sc">$</span>nonWT_binary, qnr_noGenes_dat<span class="sc">$</span>acquired_bin))</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(qnr_noGenes_dat$nonWT_binary, qnr_noGenes_dat$acquired_bin)
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   86.53681 155.63478
+## sample estimates:
+## odds ratio 
+##   115.5569</code></pre>
+<div class="sourceCode" id="cb145"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb145-1"><a href="#cb145-1" tabindex="-1"></a><span class="co"># resistance vs presence/absence</span></span>
+<span id="cb145-2"><a href="#cb145-2" tabindex="-1"></a><span class="fu">fisher.test</span>(<span class="fu">table</span>(qnr_noGenes_dat<span class="sc">$</span>resistant, qnr_noGenes_dat<span class="sc">$</span>acquired_bin))</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(qnr_noGenes_dat$resistant, qnr_noGenes_dat$acquired_bin)
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   74.21361 119.59424
+## sample estimates:
+## odds ratio 
+##   93.70919</code></pre>
 </div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="co"># number of isolates without any flq determinants</span></span>
-<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">summarise</span>(<span class="at">pc=</span><span class="fu">mean</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span>aac6<span class="sc">==</span><span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span>, <span class="at">N=</span><span class="fu">sum</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span>aac6<span class="sc">==</span><span class="dv">0</span>))</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["pc"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["N"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"46.60968","2":"5671"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="co"># by S/I/R</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Resistance.phenotype) <span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">pc=</span><span class="fu">mean</span>(QRDR_mutations<span class="sc">!=</span><span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span>, <span class="at">N=</span><span class="fu">sum</span>(QRDR_mutations<span class="sc">!=</span><span class="dv">0</span>))</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Resistance.phenotype"],"name":[1],"type":["chr"],"align":["left"]},{"label":["pc"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["N"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"I","2":"4.4850498","3":"27"},{"1":"R","2":"75.6677999","3":"4674"},{"1":"S","2":"0.7609503","3":"41"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Resistance.phenotype) <span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">pc=</span><span class="fu">mean</span>(acquired_genes<span class="sc">!=</span><span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span>, <span class="at">N=</span><span class="fu">sum</span>(acquired_genes<span class="sc">!=</span><span class="dv">0</span>))</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Resistance.phenotype"],"name":[1],"type":["chr"],"align":["left"]},{"label":["pc"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["N"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"I","2":"30.232558","3":"182"},{"1":"R","2":"60.773838","3":"3754"},{"1":"S","2":"1.800297","3":"97"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a>cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Resistance.phenotype) <span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">pc=</span><span class="fu">mean</span>(aac6<span class="sc">!=</span><span class="dv">0</span>)<span class="sc">*</span><span class="dv">100</span>, <span class="at">N=</span><span class="fu">sum</span>(aac6<span class="sc">!=</span><span class="dv">0</span>))</span></code></pre></div>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["Resistance.phenotype"],"name":[1],"type":["chr"],"align":["left"]},{"label":["pc"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["N"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"I","2":"8.471761","3":"51"},{"1":"R","2":"44.341914","3":"2739"},{"1":"S","2":"2.487008","3":"134"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
-</div>
-</div>
-<div id="table-5-fig-1---solo-mutation-stats" class="section level1">
-<h1>Table 5 / Fig 1 - solo mutation stats</h1>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a>qrdr <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">filter</span>(QRDR_mutations<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Flq_mutations) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>Flq_mutations)</span>
-<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a></span>
-<span id="cb10-6"><a href="#cb10-6" tabindex="-1"></a>pmqr <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">filter</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> aac6<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-7"><a href="#cb10-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Flq_acquired=</span><span class="fu">gsub</span>(<span class="st">&quot;[</span><span class="sc">\\</span><span class="st">^]&quot;</span>, <span class="st">&quot;&quot;</span>, Flq_acquired)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-8"><a href="#cb10-8" tabindex="-1"></a>  <span class="fu">group_by</span>(Flq_acquired) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-9"><a href="#cb10-9" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-10"><a href="#cb10-10" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>Flq_acquired)</span>
-<span id="cb10-11"><a href="#cb10-11" tabindex="-1"></a></span>
-<span id="cb10-12"><a href="#cb10-12" tabindex="-1"></a><span class="co"># treating all aac6 hits as one (not used, so we can see evidence per variant)</span></span>
-<span id="cb10-13"><a href="#cb10-13" tabindex="-1"></a>aac6 <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">filter</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-14"><a href="#cb10-14" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">aac6_label=</span><span class="fu">if_else</span>(aac6<span class="sc">==</span><span class="dv">0</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;aac(6&#39;)-Ib-cr&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-15"><a href="#cb10-15" tabindex="-1"></a>  <span class="fu">group_by</span>(aac6_label) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-16"><a href="#cb10-16" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-17"><a href="#cb10-17" tabindex="-1"></a>  <span class="fu">filter</span>(aac6_label<span class="sc">!=</span><span class="st">&quot;-&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-18"><a href="#cb10-18" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>aac6_label)</span>
-<span id="cb10-19"><a href="#cb10-19" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" tabindex="-1"></a>aac6 <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">filter</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> aac6<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-21"><a href="#cb10-21" tabindex="-1"></a>  <span class="fu">group_by</span>(aac6_allele) <span class="sc">%&gt;%</span> </span>
-<span id="cb10-22"><a href="#cb10-22" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb10-23"><a href="#cb10-23" tabindex="-1"></a>  <span class="fu">filter</span>(aac6_allele<span class="sc">!=</span><span class="st">&quot;-&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb10-24"><a href="#cb10-24" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>aac6_allele)</span>
-<span id="cb10-25"><a href="#cb10-25" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" tabindex="-1"></a>solo_ppv <span class="ot">&lt;-</span> aac6 <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(qrdr) <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(pmqr)</span></code></pre></div>
-</div>
-<div id="solo-mutation-stats-in-aac6-background" class="section level1">
-<h1>Solo mutation stats in aac6+ background</h1>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a>qrdr_aac6 <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">filter</span>(QRDR_mutations<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> aac6<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a href="#cb11-2" tabindex="-1"></a>  <span class="fu">group_by</span>(Flq_mutations) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a href="#cb11-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-4"><a href="#cb11-4" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>Flq_mutations)</span>
-<span id="cb11-5"><a href="#cb11-5" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" tabindex="-1"></a>pmqr_aac6 <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span> <span class="fu">filter</span>(QRDR_mutations<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> aac6<span class="sc">==</span><span class="dv">1</span> <span class="sc">&amp;</span> acquired_genes<span class="sc">==</span><span class="dv">1</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-7"><a href="#cb11-7" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Flq_acquired=</span><span class="fu">gsub</span>(<span class="st">&quot;[</span><span class="sc">\\</span><span class="st">^]&quot;</span>, <span class="st">&quot;&quot;</span>, Flq_acquired)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-8"><a href="#cb11-8" tabindex="-1"></a>  <span class="fu">group_by</span>(Flq_acquired) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-9"><a href="#cb11-9" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb11-10"><a href="#cb11-10" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>Flq_acquired)</span>
-<span id="cb11-11"><a href="#cb11-11" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" tabindex="-1"></a>solo_ppv_aac6 <span class="ot">&lt;-</span> qrdr_aac6 <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(pmqr_aac6)</span></code></pre></div>
-</div>
-<div id="table-5---mutation-stats" class="section level1">
-<h1>Table 5 - mutation stats</h1>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>qrdr_all <span class="ot">&lt;-</span> cipro_res_mech <span class="sc">%&gt;%</span> <span class="fu">filter</span>(marker.type<span class="sc">==</span><span class="st">&quot;Flq_mutations&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">group_by</span>(marker) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a>  <span class="fu">filter</span>(marker<span class="sc">!=</span><span class="st">&quot;-&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>marker)</span>
-<span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a></span>
-<span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>pmqr_all <span class="ot">&lt;-</span> cipro_res_mech <span class="sc">%&gt;%</span> <span class="fu">filter</span>(marker.type<span class="sc">==</span><span class="st">&quot;Flq_acquired&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">marker=</span><span class="fu">gsub</span>(<span class="st">&quot;[</span><span class="sc">\\</span><span class="st">^]&quot;</span>, <span class="st">&quot;&quot;</span>, marker)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="fu">group_by</span>(marker) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a>  <span class="fu">filter</span>(marker<span class="sc">!=</span><span class="st">&quot;-&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>marker)</span>
-<span id="cb12-13"><a href="#cb12-13" tabindex="-1"></a></span>
-<span id="cb12-14"><a href="#cb12-14" tabindex="-1"></a><span class="co"># treating all aac6 hits as one (not used, so we can see evidence per variant)</span></span>
-<span id="cb12-15"><a href="#cb12-15" tabindex="-1"></a>aac6_all <span class="ot">&lt;-</span> cipro_res_mech <span class="sc">%&gt;%</span> <span class="fu">filter</span>(marker.type<span class="sc">==</span><span class="st">&quot;Aac6_gene&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-16"><a href="#cb12-16" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">aac6_label=</span><span class="fu">if_else</span>(aac6<span class="sc">==</span><span class="dv">0</span>, <span class="st">&quot;-&quot;</span>, <span class="st">&quot;aac(6&#39;)-Ib-cr&quot;</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-17"><a href="#cb12-17" tabindex="-1"></a>  <span class="fu">group_by</span>(aac6_label) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-18"><a href="#cb12-18" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-19"><a href="#cb12-19" tabindex="-1"></a>  <span class="fu">filter</span>(aac6_label<span class="sc">!=</span><span class="st">&quot;-&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-20"><a href="#cb12-20" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>aac6_label)</span>
-<span id="cb12-21"><a href="#cb12-21" tabindex="-1"></a></span>
-<span id="cb12-22"><a href="#cb12-22" tabindex="-1"></a><span class="co"># using aac6 variants</span></span>
-<span id="cb12-23"><a href="#cb12-23" tabindex="-1"></a>aac6_all <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
-<span id="cb12-24"><a href="#cb12-24" tabindex="-1"></a>  <span class="fu">group_by</span>(aac6_allele) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-25"><a href="#cb12-25" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">N=</span><span class="fu">n</span>(), <span class="at">S=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;S&quot;</span>), <span class="at">I=</span><span class="fu">sum</span>(Resistance.phenotype<span class="sc">==</span><span class="st">&quot;I&quot;</span>), <span class="at">R=</span><span class="fu">sum</span>(resistant), <span class="at">NWT=</span><span class="fu">sum</span>(nonWT_binary), <span class="at">R_PPV=</span><span class="fu">mean</span>(resistant), <span class="at">NWT_PPV=</span><span class="fu">mean</span>(nonWT_binary)) <span class="sc">%&gt;%</span></span>
-<span id="cb12-26"><a href="#cb12-26" tabindex="-1"></a>  <span class="fu">filter</span>(aac6_allele<span class="sc">!=</span><span class="st">&quot;-&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-27"><a href="#cb12-27" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Determinant=</span>aac6_allele)</span>
-<span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a></span>
-<span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a>ppv_all <span class="ot">&lt;-</span> aac6_all <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(qrdr_all) <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(pmqr_all)</span></code></pre></div>
-</div>
-<div id="write-out-table-s5---solo-stats-overall-stats" class="section level1">
-<h1>write out Table S5 - solo stats, overall stats</h1>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># title columns for table</span></span>
-<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>solo_ppv <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(solo_ppv_aac6, <span class="at">by=</span><span class="st">&quot;Determinant&quot;</span>, <span class="at">suffix=</span><span class="fu">c</span>(<span class="st">&quot;.solo&quot;</span>, <span class="st">&quot;.soloAac6&quot;</span>)) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">full_join</span>(ppv_all, <span class="at">by=</span><span class="st">&quot;Determinant&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="at">file=</span><span class="st">&quot;tables/TableS5_determinantStats.csv&quot;</span>)</span></code></pre></div>
+<div id="effect-of-aac6-genes-in-absence-of-qrdr-and-pmqr" class="section level1">
+<h1>effect of aac6 genes, in absence of QRDR and PMQR</h1>
+<div class="sourceCode" id="cb147"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb147-1"><a href="#cb147-1" tabindex="-1"></a><span class="co"># MIC</span></span>
+<span id="cb147-2"><a href="#cb147-2" tabindex="-1"></a>aac6_MIC_nullBG_dat <span class="ot">&lt;-</span> mic <span class="sc">%&gt;%</span></span>
+<span id="cb147-3"><a href="#cb147-3" tabindex="-1"></a>    <span class="fu">filter</span>(acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> QRDR_mutations<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb147-4"><a href="#cb147-4" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6) </span>
+<span id="cb147-5"><a href="#cb147-5" tabindex="-1"></a></span>
+<span id="cb147-6"><a href="#cb147-6" tabindex="-1"></a><span class="co"># MIC vs presence/absence of aac6</span></span>
+<span id="cb147-7"><a href="#cb147-7" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> aac6, <span class="at">data=</span>aac6_MIC_nullBG_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  log2(as.numeric(Measurement)) by aac6
+## W = 175387, p-value = 7.223e-14
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb149"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb149-1"><a href="#cb149-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> aac6, <span class="at">data=</span>aac6_MIC_nullBG_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  log2(as.numeric(Measurement)) by aac6
+## t = -6.3375, df = 155.11, p-value = 2.417e-09
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  -0.8161394 -0.4282653
+## sample estimates:
+## mean in group 0 mean in group 1 
+##       -1.958563       -1.336361</code></pre>
+<div class="sourceCode" id="cb151"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb151-1"><a href="#cb151-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">log2</span>(<span class="fu">as.numeric</span>(Measurement)) <span class="sc">~</span> aac6, <span class="at">data=</span>aac6_MIC_nullBG_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = log2(as.numeric(Measurement)) ~ aac6, data = aac6_MIC_nullBG_dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -3.1003 -0.0414 -0.0414 -0.0414  7.9586 
+## 
+## Coefficients:
+##             Estimate Std. Error  t value Pr(&gt;|t|)    
+## (Intercept) -1.95856    0.01528 -128.145   &lt;2e-16 ***
+## aac6         0.62220    0.07203    8.639   &lt;2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 0.8592 on 3307 degrees of freedom
+## Multiple R-squared:  0.02207,    Adjusted R-squared:  0.02177 
+## F-statistic: 74.62 on 1 and 3307 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb153-1"><a href="#cb153-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(aac6_MIC_nullBG_dat<span class="sc">$</span>Measurement)[aac6_MIC_nullBG_dat<span class="sc">$</span>aac6<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.1200  0.2500  0.2500  0.6249  0.5000  4.0000</code></pre>
+<div class="sourceCode" id="cb155"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb155-1"><a href="#cb155-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(aac6_MIC_nullBG_dat<span class="sc">$</span>Measurement)[aac6_MIC_nullBG_dat<span class="sc">$</span>aac6<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0300  0.2500  0.2500  0.3421  0.2500 64.0000</code></pre>
+<div class="sourceCode" id="cb157"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb157-1"><a href="#cb157-1" tabindex="-1"></a><span class="co"># DD</span></span>
+<span id="cb157-2"><a href="#cb157-2" tabindex="-1"></a>aac6_DD_noGenes_dat <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb157-3"><a href="#cb157-3" tabindex="-1"></a>    <span class="fu">filter</span>(acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> QRDR_mutations<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb157-4"><a href="#cb157-4" tabindex="-1"></a>    <span class="fu">filter</span>(Laboratory.Typing.Method<span class="sc">==</span><span class="st">&quot;Disk diffusion&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb157-5"><a href="#cb157-5" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6) </span>
+<span id="cb157-6"><a href="#cb157-6" tabindex="-1"></a></span>
+<span id="cb157-7"><a href="#cb157-7" tabindex="-1"></a><span class="co"># DD vs presence/absence aac6</span></span>
+<span id="cb157-8"><a href="#cb157-8" tabindex="-1"></a><span class="fu">wilcox.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> aac6, <span class="at">data=</span>aac6_DD_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  as.numeric(Measurement) by aac6
+## W = 25156, p-value = 5.356e-05
+## alternative hypothesis: true location shift is not equal to 0</code></pre>
+<div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" tabindex="-1"></a><span class="fu">t.test</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> aac6, <span class="at">data=</span>aac6_DD_noGenes_dat)</span></code></pre></div>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  as.numeric(Measurement) by aac6
+## t = 4.0358, df = 11.046, p-value = 0.001946
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  2.312094 7.852979
+## sample estimates:
+## mean in group 0 mean in group 1 
+##        28.66587        23.58333</code></pre>
+<div class="sourceCode" id="cb161"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb161-1"><a href="#cb161-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">lm</span>(<span class="fu">as.numeric</span>(Measurement) <span class="sc">~</span> aac6, <span class="at">data=</span>aac6_DD_noGenes_dat))</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = as.numeric(Measurement) ~ aac6, data = aac6_DD_noGenes_dat)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -22.6659  -1.6659   0.3341   1.3341  15.3341 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 28.66587    0.05766 497.182  &lt; 2e-16 ***
+## aac6        -5.08254    0.83602  -6.079 1.39e-09 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 2.889 on 2521 degrees of freedom
+## Multiple R-squared:  0.01445,    Adjusted R-squared:  0.01406 
+## F-statistic: 36.96 on 1 and 2521 DF,  p-value: 1.389e-09</code></pre>
+<div class="sourceCode" id="cb163"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb163-1"><a href="#cb163-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(aac6_DD_noGenes_dat<span class="sc">$</span>Measurement)[aac6_DD_noGenes_dat<span class="sc">$</span>aac6<span class="sc">==</span><span class="dv">1</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##   16.00   21.00   23.50   23.58   27.25   29.00</code></pre>
+<div class="sourceCode" id="cb165"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb165-1"><a href="#cb165-1" tabindex="-1"></a><span class="fu">summary</span>(<span class="fu">as.numeric</span>(aac6_DD_noGenes_dat<span class="sc">$</span>Measurement)[aac6_DD_noGenes_dat<span class="sc">$</span>aac6<span class="sc">==</span><span class="dv">0</span>])</span></code></pre></div>
+<pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    6.00   27.00   29.00   28.67   30.00   44.00</code></pre>
+<div class="sourceCode" id="cb167"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb167-1"><a href="#cb167-1" tabindex="-1"></a><span class="co"># all genomes with no QRDR mutations and PMQR genes (MIC/DD)</span></span>
+<span id="cb167-2"><a href="#cb167-2" tabindex="-1"></a>aac6_noGenes_dat <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>
+<span id="cb167-3"><a href="#cb167-3" tabindex="-1"></a>    <span class="fu">filter</span>(acquired_genes<span class="sc">==</span><span class="dv">0</span> <span class="sc">&amp;</span> QRDR_mutations<span class="sc">==</span><span class="dv">0</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb167-4"><a href="#cb167-4" tabindex="-1"></a>  <span class="fu">select</span>(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6) </span>
+<span id="cb167-5"><a href="#cb167-5" tabindex="-1"></a></span>
+<span id="cb167-6"><a href="#cb167-6" tabindex="-1"></a><span class="fu">dim</span>(aac6_noGenes_dat)</span></code></pre></div>
+<pre><code>## [1] 5832    5</code></pre>
+<div class="sourceCode" id="cb169"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb169-1"><a href="#cb169-1" tabindex="-1"></a><span class="co"># nonS vs presence/absence</span></span>
+<span id="cb169-2"><a href="#cb169-2" tabindex="-1"></a><span class="fu">fisher.test</span>(<span class="fu">table</span>(aac6_noGenes_dat<span class="sc">$</span>nonWT_binary, aac6_noGenes_dat<span class="sc">$</span>aac6))</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(aac6_noGenes_dat$nonWT_binary, aac6_noGenes_dat$aac6)
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##  3.786655 7.651032
+## sample estimates:
+## odds ratio 
+##   5.406607</code></pre>
+<div class="sourceCode" id="cb171"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb171-1"><a href="#cb171-1" tabindex="-1"></a><span class="co"># resistance vs presence/absence</span></span>
+<span id="cb171-2"><a href="#cb171-2" tabindex="-1"></a><span class="fu">fisher.test</span>(<span class="fu">table</span>(aac6_noGenes_dat<span class="sc">$</span>resistant, aac6_noGenes_dat<span class="sc">$</span>aac6))</span></code></pre></div>
+<pre><code>## 
+##  Fisher&#39;s Exact Test for Count Data
+## 
+## data:  table(aac6_noGenes_dat$resistant, aac6_noGenes_dat$aac6)
+## p-value &lt; 2.2e-16
+## alternative hypothesis: true odds ratio is not equal to 1
+## 95 percent confidence interval:
+##   5.66575 14.07434
+## sample estimates:
+## odds ratio 
+##   9.038363</code></pre>
 </div>
 
 
