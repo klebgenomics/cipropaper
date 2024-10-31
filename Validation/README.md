@@ -1,12 +1,29 @@
 # Ciprofloxacin resistance paper - Validation instructions
 
 ## Run Kleborate v3 (cipro_prediction branch: https://github.com/klebgenomics/Kleborate/tree/cipro_prediction)
+
+Make sure you have all dependencies installed (https://kleborate.readthedocs.io/en/latest/Installation.html)
+
+- A great option is to create a conda environment:
+
+```
+conda create -n klebsiella_analysis -c bioconda python=3.9 minimap2 mash -y
+conda activate klebsiella_analysis
+```
+
+As the ciprofloxacin classifier is on a separate git branch, please do the following: 
+
 ```
 git clone https://github.com/klebgenomics/Kleborate.git
 cd Kleborate
 git checkout cipro_prediction
-python /path_to/Kleborate/kleborate-runner.py -a /path_to_assemblies/*.fasta -o /path_to_output/kleborate_v3_cipropred -p kpsc --trim_headers
+python /path_to/Kleborate/kleborate-runner.py -a /path_to_assemblies/*.fasta -o /path_to_output/ -p kpsc --trim_headers
 ```
+
+The expected output is a txt file `klebsiella_pneumo_complex_output.txt` in the output folder indicated in the command above. 
+
+This file has all Kleborate v3 columns with three additional columns at the end of the text file named `cipro_prediction`, `cipro_prediction_group`, `cipro_prediction_support`.
+
 
 ## Share outputs
 
