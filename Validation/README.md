@@ -46,7 +46,7 @@ Ensure that the kleborate and antibiogram file are in the same directory as the 
 - The antibiogram file should be in the in the same format as the NCBI's BioSample Antibiogram Format (see Download antibiogram template: https://www.ncbi.nlm.nih.gov/biosample/docs/antibiogram/)
 The strain identifier column header is `strain`. If your antibiogram file is **not** in this format, please contact Kara (kara.tsang@lshtm.ac.uk) with the headers in your antibiogram file and a sample entry so that a CipPaper_Validation.Rmd file specific to your antibiogram data can be sent to you.
 
-- CipPaper_Validation.Rmd assumes that you have both MIC and disk diffusion data - if you only have one form of data you can delete the plotting code under each relevant section ** MIC distribution ** or ** DD distribution **
+- CipPaper_Validation.Rmd assumes that you have both MIC and disk diffusion data - if you only have one form of data you can delete the plotting code under each relevant section **MIC distribution** or **DD distribution**
 
 - CipPaper_Validation.Rmd filters for only ***Klebsiella pneumoniae*** - if you have other KpSC species, please change the species in the following part of the code: 
 
