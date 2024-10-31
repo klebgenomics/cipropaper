@@ -83,15 +83,6 @@ cipro_antibiogram <- cipro_antibiogram %>% filter(species=="Klebsiella pneumonia
 
 cipro_antibiogram <- cipro_antibiogram %>%
   filter(Antibiotic %in% c("ciprofloxacin", "Ciprofloxacin")) %>%
-  mutate(Resistance.phenotype = case_when(
-    grepl('MIC.*$', Laboratory.Typing.Method) & as.numeric(Measurement) <= 0.25 ~ "S",
-    grepl('MIC.*$', Laboratory.Typing.Method) & Testing.standard == "EUCAST" & as.numeric(Measurement) > 0.5 ~ "R",
-    grepl('MIC.*$', Laboratory.Typing.Method) & Testing.standard == "CLSI" & as.numeric(Measurement) >= 1 ~ "R",
-    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "EUCAST" & as.numeric(Measurement) >= 25 ~ "S",
-    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "EUCAST" & as.numeric(Measurement) <= 21 ~ "R",
-    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "CLSI" & as.numeric(Measurement) >= 26 ~ "S",
-    Laboratory.Typing.Method == "Disk diffusion" & Testing.standard == "CLSI" & as.numeric(Measurement) <= 21 ~ "R",
-    TRUE ~ "I")) %>%
   mutate(Resistance.phenotype = factor(Resistance.phenotype, levels=c("S", "I", "R"))) %>%
   mutate(nonWT_binary = if_else(Resistance.phenotype=="S", 0, 1)) %>% 
   mutate(resistant = if_else(Resistance.phenotype=="R", 1, 0)) %>% 
