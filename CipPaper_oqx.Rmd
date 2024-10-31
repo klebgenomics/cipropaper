@@ -45,13 +45,12 @@ library(scales)
 ``` {r}
 geno <- read_delim("tables/TableS1_genotypes.tsv")
 pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
-oqxR_coverage <- read_delim("tables/oqxAB_operon_defects/oqxR_coverage.tsv")
 oqxA_coverage <- read_delim("tables/oqxAB_operon_defects/oqxA_coverage.tsv")
 oqxB_coverage <- read_delim("tables/oqxAB_operon_defects/oqxB_coverage.tsv")
+oqxR_coverage <- read_delim("tables/oqxAB_operon_defects/oqxR_coverage.tsv")
 norB_coverage <- read_delim("tables/oqxAB_operon_defects/norB_coverage.tsv")
 rarA_coverage <- read_delim("tables/oqxAB_operon_defects/rarA_coverage.tsv")
 rob_coverage <- read_delim("tables/oqxAB_operon_defects/rob_coverage.tsv")
-hypo_coverage <- read_delim("tables/oqxAB_operon_defects/hypo_coverage.tsv")
 oqxR_mutation <- read_delim("tables/oqxAB_operon_defects/oqxR_amrfinder.txt")
 
 oqxab_IS_cipro <- read_delim("tables/oqxAB_operon_defects/oqxA_isfinder_filtered.tsv")
@@ -64,40 +63,6 @@ res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
 ```
 
 ## Data formatting
-
-``` {r oqxA truncation}
-
-# oqxA truncation is defined as a genome with all oqxA copies with < 90% acid sequence coverage
-
-oqxA_truncation <- oqxA_coverage %>% 
-  mutate(oqxA_truncation=ifelse(oqxA_coverage < 90, 1, 0)) %>% 
-  subset(select = -c(oqxA_coverage)) %>%
-  # consider any genome with at least one complete oqxA as no oqxA truncation
-  arrange(strain, match(oqxA_truncation, c(0, 1))) %>%
-  distinct(strain, .keep_all = TRUE)
-
-# oqxA not identified in nucleotide BLAST search (i.e., oqxA deletion) considered to be truncation
-geno_oqxA_truncation <- full_join(geno,oqxA_truncation) %>%
-   mutate(oqxA_truncation=replace_na(oqxA_truncation, 1))
-
-```
-
-``` {r oqxB truncation}
-
-# oqxB truncation is defined as a genome with all oqxB copies with < 90% acid sequence coverage
-
-oqxB_truncation <- oqxB_coverage %>% 
-  mutate(oqxB_truncation=ifelse(oqxB_coverage < 90, 1, 0)) %>% 
-  subset(select = -c(oqxB_coverage)) %>%
-  # consider any genome with at least one complete oqxB as no oqxB truncation
-  arrange(strain, match(oqxB_truncation, c(0, 1))) %>%
-  distinct(strain, .keep_all = TRUE)
-
-# oqxB not identified in nucleotide BLAST search (i.e., oqxB deletion) considered to be truncation
-geno_oqxB_truncation <- full_join(geno,oqxB_truncation) %>%
-   mutate(oqxB_truncation=replace_na(oqxB_truncation, 1))
-
-```
 
 ``` {r norB truncation}
 # norB truncation is defined as a genome with all norB copies with < 90% acid sequence coverage
@@ -152,22 +117,6 @@ geno_rob_truncation <- full_join(geno,rob_truncation) %>%
 
 ```
 
-``` {r hypo truncation}
-
-# hypo truncation is defined as a genome with all hypo copies with < 90% acid sequence coverage
-
-hypo_truncation <- hypo_coverage %>% 
-  mutate(hypo_truncation=ifelse(hypo_coverage < 90, 1, 0)) %>% 
-  subset(select = -c(hypo_coverage)) %>%
-  # consider any genome with at least one complete hypo as no hypo truncation
-  arrange(strain, match(hypo_truncation, c(0, 1))) %>%
-  distinct(strain, .keep_all = TRUE)
-
-# hypo not identified in nucleotide BLAST search (i.e., hypo deletion) considered to be truncation
-geno_hypo_truncation <- full_join(geno,hypo_truncation) %>%
-   mutate(hypo_truncation=replace_na(hypo_truncation, 1))
-
-```
 
 ``` {r oqxR truncation + mutations (amrfinder)}
 
@@ -201,102 +150,121 @@ geno_oqxR_truncation_mutation <- full_join(geno_oqxR_truncation,oqxR_mutation) %
 
 ```{r combine geno+pheno}
 #combining truncation from all oqxAB operon genes
-geno_oqxABoperon_truncation <-Reduce(function(x,y) merge(x,y,by="strain",all=TRUE) ,list(geno_oqxA_truncation, geno_oqxB_truncation[, c("strain","oqxB_truncation")], geno_oqxR_truncation_mutation[, c("strain","oqxR_truncation", "oqxR_D95E", "oqxR_Q11L", "oqxR_V113I")], geno_norB_truncation[, c("strain","norB_truncation")] ,geno_rarA_truncation[, c("strain","rarA_truncation")],geno_rob_truncation[, c("strain","rob_truncation")], geno_hypo_truncation[, c("strain","hypo_truncation")]))
+geno_oqxABoperon_truncation <-Reduce(function(x,y) merge(x,y,by="strain",all=TRUE) ,list( geno_oqxR_truncation_mutation, geno_norB_truncation[, c("strain","norB_truncation")] ,geno_rarA_truncation[, c("strain","rarA_truncation")],geno_rob_truncation[, c("strain","rob_truncation")]))
 
 cipro_antibiogram <- full_join(geno_oqxABoperon_truncation,pheno) %>%
   mutate(SRnwt = if_else(Resistance.phenotype=="I", "NWT", Resistance.phenotype)) %>%
   mutate(SRnwt = factor(SRnwt, levels=c("S","NWT","R")))
+
 ```
 
-#Individual contribution
+#Individual contribution of oqxAB negative regulator truncations/loss and oqxR mutations
 ```{r truncations - table with PPVs}
 
 # Contribution of truncation on cipro susceptibility in genomes with no Flq resistance determinants
 
-oqxA_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
-  group_by(oqxA_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Truncation=oqxA_truncation)%>%
-  mutate(Gene=c(rep("oqxA",2)))%>%
-  relocate(Gene, .before=Truncation)
-
-oqxB_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
-  group_by(oqxB_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Truncation=oqxB_truncation)%>%
-  mutate(Gene=c(rep("oqxB",2)))%>%
-  relocate(Gene, .before=Truncation)
-
 oqxR_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Truncation=oqxR_truncation)%>%
+  rename(`Truncation/Mutation`=oqxR_truncation)%>%
   mutate(Gene=c(rep("oqxR",2)))%>%
-  relocate(Gene, .before=Truncation)
+  relocate(Gene, .before=`Truncation/Mutation`)
 
 norB_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(norB_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Truncation=norB_truncation)%>%
+  rename(`Truncation/Mutation`=norB_truncation)%>%
   mutate(Gene=c(rep("norB",2)))%>%
-  relocate(Gene, .before=Truncation)
+  relocate(Gene, .before=`Truncation/Mutation`)
 
 rarA_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(rarA_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Truncation=rarA_truncation)%>%
+  rename(`Truncation/Mutation`=rarA_truncation)%>%
   mutate(Gene=c(rep("rarA",2)))%>%
-  relocate(Gene, .before=Truncation)
+  relocate(Gene, .before=`Truncation/Mutation`)
 
 rob_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(rob_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Truncation=rob_truncation)%>%
+  rename(`Truncation/Mutation`=rob_truncation)%>%
   mutate(Gene=c(rep("rob",2)))%>%
-  relocate(Gene, .before=Truncation)
+  relocate(Gene, .before=`Truncation/Mutation`)
 
-hypo_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
-  group_by(hypo_truncation) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Truncation=hypo_truncation)%>%
-  mutate(Gene=c(rep("hypo",2)))%>%
-  relocate(Gene, .before=Truncation)
-
-# Table - Contribution of solo truncations
-
-oqxAB_operon_truncation_solo <- 
-rbind(oqxA_truncation_solo, oqxB_truncation_solo, oqxR_truncation_solo, norB_truncation_solo, rarA_truncation_solo, rob_truncation_solo, hypo_truncation_solo)
-
-oqxAB_operon_truncation_solo
-
-
-#write.table(oqxAB_operon_truncation_solo, "oqx_solo_contribution_PPV.tsv", row.names=FALSE, sep="\t")
-```
-
-```{r solo oqxR mutations}
-# oqxR_Q11L not found in genomes with no other Flq resistance determinants 
 
 oqxR_D95E_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_D95E) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Mutation=oqxR_D95E)%>%
+  rename(`Truncation/Mutation`=oqxR_D95E)%>%
   mutate(Gene=c(rep("oqxR_D95E",2)))%>%
-  relocate(Gene, .before=Mutation)
+  relocate(Gene, .before=`Truncation/Mutation`)
 
 oqxR_V113I_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_V113I) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(Mutation=oqxR_V113I)%>%
+  rename(`Truncation/Mutation`=oqxR_V113I)%>%
   mutate(Gene=c(rep("oqxR_V113I",2)))%>%
-  relocate(Gene, .before=Mutation)
+  relocate(Gene, .before=`Truncation/Mutation`)
 
-# Table - Contribution of solo oqxR mutations
-oqxR_mutations_solo <- 
-rbind(oqxR_D95E_solo, oqxR_V113I_solo)
+# Table - Contribution of solo truncations/mutations
 
-#write.table(oqxR_mutations_solo, "oqxR_mutations_solo_PPV.tsv", row.names=FALSE, sep="\t")
+oqxAB_operon_truncation_solo <- 
+rbind(oqxR_truncation_solo, norB_truncation_solo, rarA_truncation_solo, rob_truncation_solo, oqxR_D95E_solo, oqxR_V113I_solo)
+
+oqxAB_operon_truncation_solo
+
+write.table(oqxAB_operon_truncation_solo, "tables/TableSX_oqx_neg_reg_contribution_PPV.tsv", row.names=FALSE, sep="\t")
 
 ```
+# Odds ratios, p-values, prop tests for each oqxAB neg reg defect
+```{r}
+noResDet <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0)
+
+# Fishers test for oqxR_truncation copy vs. R phenotype
+fisher.test(noResDet$oqxR_truncation, noResDet$resistant)
+prop.test(table(noResDet$oqxR_truncation,noResDet$resistant)[2:1,2:1])
+
+# Fishers test for norB_truncation copy vs. R phenotype
+fisher.test(noResDet$norB_truncation, noResDet$resistant)
+prop.test(table(noResDet$norB_truncation,noResDet$resistant)[2:1,2:1])
+
+# Fishers test for rarA_truncation copy vs. R phenotype
+fisher.test(noResDet$rarA_truncation, noResDet$resistant)
+prop.test(table(noResDet$rarA_truncation,noResDet$resistant)[2:1,2:1])
+
+# Fishers test for rob_truncation copy vs. R phenotype
+fisher.test(noResDet$rob_truncation, noResDet$resistant)
+prop.test(table(noResDet$rob_truncation,noResDet$resistant)[2:1,2:1])
+
+# Fishers test for oqxR_D95E  vs. R phenotype
+fisher.test(noResDet$oqxR_D95E, noResDet$resistant)
+prop.test(table(noResDet$oqxR_D95E,noResDet$resistant)[2:1,2:1])
+
+# Fishers test for oqxR_V113I  vs. R phenotype
+fisher.test(noResDet$oqxR_V113I, noResDet$resistant)
+prop.test(table(noResDet$oqxR_V113I,noResDet$resistant)[2:1,2:1])
+
+```
+#Summary contribution of oqxAB negative regulator truncations/loss and oqxR mutations
+```{r}
+# Any oqxAB negative regulator truncations/loss and oqxR mutations counted as the same
+
+cipro_antibiogram <- cipro_antibiogram %>% 
+  rowwise() %>%
+mutate(oqxAB_neg_reg_loss = sum(oqxR_truncation, norB_truncation, rarA_truncation, rob_truncation, oqxR_D95E, oqxR_Q11L, oqxR_V113I, na.rm = T)) %>%
+  mutate(oqxAB_neg_sum = if_else((oqxAB_neg_reg_loss>0), 1, 0))
+
+noResDet <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0)
+
+noResDet %>% filter(oqxAB_neg_sum==1) %>% nrow()
+
+# Fishers test for >1 oqxB copy vs. R phenotype
+fisher.test(noResDet$oqxAB_neg_sum, noResDet$resistant)
+prop.test(table(noResDet$oqxAB_neg_sum,noResDet$resistant)[2:1,2:1])
+
+```
+
+
 
 ```{r upset_plot MIC}
 
@@ -306,7 +274,7 @@ oqx_truncation_MIC <- cipro_antibiogram %>%
   filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
   upset(
-      intersect=c("oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation", "oqxR_D95E", "oqxR_V113I"), # counts are converted to binary
+      intersect=c("oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "oqxR_D95E", "oqxR_V113I"), # counts are converted to binary
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing WT/nonWT
@@ -336,8 +304,8 @@ oqx_truncation_MIC <- cipro_antibiogram %>%
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
 
 oqx_truncation_MIC
-ggsave("figs/FigSX_oqxAB_truncation_MIC.pdf", width=8, height=7)
-ggsave("figs/FigSX_oqxAB_truncation_MIC.png", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_truncation_MIC.pdf", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_truncation_MIC.png", width=8, height=7)
 ```
 
 ```{r upset_plot DD}
@@ -345,7 +313,7 @@ oqx_truncation_DD <- cipro_antibiogram %>%
   filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   upset(
-      intersect=c("oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation", "hypo_truncation","oqxR_D95E", "oqxR_V113I"), # counts are converted to binary
+      intersect=c("oqxR_truncation","norB_truncation", "rarA_truncation", "rob_truncation","oqxR_D95E", "oqxR_V113I"), # counts are converted to binary
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
@@ -378,11 +346,11 @@ oqx_truncation_DD <- cipro_antibiogram %>%
 
 oqx_truncation_DD
 
-ggsave("figs/FigSX_oqxAB_truncation_DD.pdf", width=8, height=7)
-ggsave("figs/FigSX_oqxAB_truncation_DD.png", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_truncation_DD.pdf", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_truncation_DD.png", width=8, height=7)
 ```
-#Copy number
 
+# Copy number
 
 ```{r oqxA_MIC}
 oqxA_MIC_noGenes <- cipro_antibiogram %>%
@@ -415,8 +383,8 @@ oqxA_MICpheno_noGenes <- cipro_antibiogram %>%
     theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
 
 oqxA_MIC_noGenes / oqxA_MICpheno_noGenes + plot_layout(heights=c(2,1))
-ggsave("figs/FigSX_oqxA_copy_MIC_pheno.pdf", width=6, height=4)
-ggsave("figs/FigSX_oqxA_copy_MIC_pheno.png", width=6, height=4)
+#ggsave("figs/FigSX_oqxA_copy_MIC_pheno.pdf", width=6, height=4)
+#ggsave("figs/FigSX_oqxA_copy_MIC_pheno.png", width=6, height=4)
 ```
 
 ``` {r oqxA_DD}
@@ -450,8 +418,8 @@ oqxA_DDpheno_nogenes <- cipro_antibiogram %>%
 
 oqxA_DD_nogenes / oqxA_DDpheno_nogenes + plot_layout(heights=c(2,1))
 
-ggsave("figs/FigSX_oqxA_copy_DD_pheno.pdf", width=6, height=4)
-ggsave("figs/FigSX_oqxA_copy_DD_pheno.png", width=6, height=4)
+#ggsave("figs/FigSX_oqxA_copy_DD_pheno.pdf", width=6, height=4)
+#ggsave("figs/FigSX_oqxA_copy_DD_pheno.png", width=6, height=4)
 ```
 
 
@@ -487,8 +455,8 @@ oqxB_MICpheno_noGenes <- cipro_antibiogram %>%
     theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
 
 oqxB_MIC_noGenes / oqxB_MICpheno_noGenes + plot_layout(heights=c(2,1))
-ggsave("figs/FigSX_oqxB_copy_MIC_pheno.pdf", width=6, height=4)
-ggsave("figs/FigSX_oqxB_copy_MIC_pheno.png", width=6, height=4)
+#ggsave("figs/FigSX_oqxB_copy_MIC_pheno.pdf", width=6, height=4)
+#ggsave("figs/FigSX_oqxB_copy_MIC_pheno.png", width=6, height=4)
 ```
 
 ``` {r oqxB_DD}
@@ -522,8 +490,8 @@ oqxB_DDpheno_nogenes <- cipro_antibiogram %>%
 
 oqxB_DD_nogenes / oqxB_DDpheno_nogenes + plot_layout(heights=c(2,1))
 
-ggsave("figs/FigSX_oqxB_copy_DD_pheno.pdf", width=6, height=4)
-ggsave("figs/FigSX_oqxB_copy_DD_pheno.png", width=6, height=4)
+#ggsave("figs/FigSX_oqxB_copy_DD_pheno.pdf", width=6, height=4)
+#ggsave("figs/FigSX_oqxB_copy_DD_pheno.png", width=6, height=4)
 ```
 
 ```{r oqxab_copy preparing upset plot data}
@@ -573,8 +541,8 @@ oqx_truncation_MIC <- cipro_antibiogram %>%
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
 
 oqx_truncation_MIC
-ggsave("figs/FigSX_oqxAB_copy_MIC.pdf", width=8, height=7)
-ggsave("figs/FigSX_oqxAB_copy_MIC.png", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_copy_MIC.pdf", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_copy_MIC.png", width=8, height=7)
 ```
 
 ```{r oqxab_copy_upset_plot DD}
@@ -615,8 +583,8 @@ oqxAB_copy_DD <- cipro_antibiogram %>%
 
 oqxAB_copy_DD
 
-ggsave("figs/FigSX_oqxAB_copy_DD.pdf", width=8, height=7)
-ggsave("figs/FigSX_oqxAB_copy_DD.png", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_copy_DD.pdf", width=8, height=7)
+#ggsave("figs/FigSX_oqxAB_copy_DD.png", width=8, height=7)
 ```
 
 ```{r PPV_table}
@@ -624,11 +592,20 @@ oqxA_copy_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acq
   group_by(oqxA_copy) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) 
 
+noResDet <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0)
+# Fishers test for >1 oqxA copy vs. R phenotype
+fisher.test(noResDet$oqxA_2, noResDet$resistant)
+prop.test(table(noResDet$oqxA_2,noResDet$resistant)[2:1,2:1])
+
 #write.table(oqxA_copy_solo, "oqxA_copy_solo_PPV.tsv", row.names=FALSE, sep="\t")
 
 oqxB_copy_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxB_copy) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) 
+
+# Fishers test for >1 oqxB copy vs. R phenotype
+fisher.test(noResDet$oqxB_2, noResDet$resistant)
+prop.test(table(noResDet$oqxB_2,noResDet$resistant)[2:1,2:1])
 
 #write.table(oqxB_copy_solo, "oqxB_copy_solo_PPV.tsv", row.names=FALSE, sep="\t")
 ```
@@ -647,5 +624,50 @@ oqxa_IS_solo <- cipro_antibiogram_IS %>% filter(QRDR_mutations==0 & aac6==0 & ac
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) 
 
 #write.table(oqxa_IS_solo, "oqxa_IS_solo_PPV.tsv", row.names=FALSE, sep="\t")
+
+noResDet <- cipro_antibiogram_IS %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0)
+
+noResDet %>% filter(oqxa_IS==1) %>% nrow()
+
+# Fishers test for >1 oqxB copy vs. R phenotype
+fisher.test(noResDet$oqxa_IS, noResDet$resistant)
+prop.test(table(noResDet$oqxa_IS,noResDet$resistant)[2:1,2:1])
+
+```
+
+# Unexplained resistance
+
+```{r}
+# number R with no res determinants
+noResDet_R <- cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0)
+
+noResDet_R %>% filter(grepl('OmpK35', Omp_mutations))%>% nrow()
+
+noResDet_R %>% filter(grepl('OmpK36', Omp_mutations))%>% nrow()
+
+noResDet_R %>% filter(oqxA_2==1)%>% nrow()
+
+noResDet_R %>% filter(oqxB_2==1)%>% nrow()
+
+noResDet_R %>% filter(oqxAB_neg_sum==1)%>% nrow()
+
+#no porin, multiple copies of oqxAB, or any oqxAB neg reg truncation/loss 
+noResDet_R %>% filter(Omp_mutations=="-" & oqxA_2==0 & oqxB_2==0 & oqxAB_neg_sum==0)%>% nrow()
+
+```
+
+# Unexplained susceptibility
+
+```{r}
+# number S with mutations
+S_mut <- cipro_antibiogram %>% filter(Resistance.phenotype=="S" & ((QRDR_mutations==1 & Flq_mutations!="GyrA-87G"& Flq_mutations!="GyrA-87H") | (acquired_genes==1 & !grepl('qnrB1.', Flq_acquired)))) 
+
+# num with loss of oqxAB
+S_mut %>% filter(oqxA_0==1 & oqxB_0==1) %>% nrow()
+
+S_mut %>% filter(oqxA_0==1) %>% nrow()
+
+S_mut %>% filter(oqxB_0==1) %>% nrow()
+
 
 ```

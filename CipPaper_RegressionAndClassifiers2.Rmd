@@ -825,7 +825,7 @@ atu %>% group_by(Flq_acquired, Flq_mutations) %>% count()  %>% mutate(pc=n/nrow(
 
 # numbers for text - unexplained resistance
 ``` {r unexplained_res}
-# number R with no mutations
+# number R with no res determinants
 cipro_antibiogram %>% filter(Resistance.phenotype=="R" & QRDR_mutations==0 & acquired_genes==0 & aac6==0) %>% nrow()
 cipro_antibiogram %>% filter(Resistance.phenotype=="R") %>% nrow()
 
@@ -873,10 +873,6 @@ cipro_antibiogram %>% filter(Resistance.phenotype=="R" & Flq_acquired=="-" & Flq
 cipro_antibiogram %>% filter(Resistance.phenotype=="R" & Flq_acquired=="-" & Flq_mutations=="-" & aac6==0) %>% group_by(Omp_mutations, Measurement, Measurement.units) %>% count() %>% filter(Omp_mutations!="-") %>% arrange(Measurement)
 
 ```
-
-
-# TODO: add gyrA/parC copy number, oqxAB copy number, and oqxAB regulator defects
-
 
 # numbers for text - unexplained S
 ``` {r unexplained_s}
