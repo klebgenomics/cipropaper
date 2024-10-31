@@ -31,7 +31,7 @@ This file has all Kleborate v3 columns with three additional columns at the end 
 
 Send us:
 1. Kleborate v3 (cipro_prediction branch) columns: **strain, species, cipro_prediction, cipro_prediction_group**
-2. Antibiogram data: MIC / disk diffusion measurements and S/I/R interpretation for each strain
+2. Antibiogram data: MIC / disk diffusion measurements for each strain
 
 ### Second best option:
 
@@ -41,22 +41,37 @@ Replace **klebsiella_pneumo_complex_output_v3_test.txt** and **TableS2_phenotype
 
 Ensure that the kleborate and antibiogram file are in the same directory as the CipPaper_Validation.Rmd file. 
 
-#### Assumptions
+#### CipPaper_Validation.Rmd Details
 
 - The antibiogram file should be in the in the same format as the NCBI's BioSample Antibiogram Format (see Download antibiogram template: https://www.ncbi.nlm.nih.gov/biosample/docs/antibiogram/)
-If your antibiogram file is **not** in this format, please contact Kara (kara.tsang@lshtm.ac.uk).
+The strain identifier column header is `strain`. If your antibiogram file is **not** in this format, please contact Kara (kara.tsang@lshtm.ac.uk) with the headers in your antibiogram file and a sample entry so that a CipPaper_Validation.Rmd file specific to your antibiogram data can be sent to you.
 
 - CipPaper_Validation.Rmd assumes that you have both MIC and disk diffusion data - if you only have one form of data you can delete the plotting code under each relevant section ** MIC distribution ** or ** DD distribution **
 
-- The CipPaper_Validation.Rmd filters for only ***Klebsiella pneumoniae*** - if you have other KpSC species, please change the species in the following part of the code: 
+- CipPaper_Validation.Rmd filters for only ***Klebsiella pneumoniae*** - if you have other KpSC species, please change the species in the following part of the code: 
 
 ```
 cipro_antibiogram <- cipro_antibiogram %>% filter(species=="Klebsiella pneumoniae")
 ```
 
-Before re-rerunning CipPaper_Validation.Rmd for the next species, please ensure that previous outputs (in the ValidationOutput folder) are renamed so that they are not overwritten.
+Before re-rerunning CipPaper_Validation.Rmd again for the next species, please ensure that previous outputs (in the ValidationOutput folder) are renamed so that they are not overwritten.
 
-Send us: ValidationOutput folder
 
+#### CipPaper_Validation.Rmd Expected Outputs
+
+Expected outputs can be visualized by viewing the CipPaper_Validation.html file. 
+
+- The expected output of running CipPaper_Validation.Rmd is a folder called ValidationOutput with the following files:
+
+  - Prediction_Pheno_summary.csv: reports numbers for S/I/R phenotypes vs. S/I/R predictions and phenotype groups. Includes S/I/R phenotypes as column headers and S/I/R predictions + cipro_prediction_groups as row headers.
+
+  - StackedBar_PredGroup_SIR.png / StackedBar_PredGroup_SIR.pdf: stacked bar plot showing S/I/R phenotype vs. cipro_prediction_group
+
+  - MIC_PredRIS.png / MIC_PredGroup.pdf - MIC distribution vs. S/I/R predictions (only expected if you have MIC data)
+  - MIC_PredGroup.png / MIC_PredGroup.pdf - MIC distribution vs. cipro_prediction_group (only expected if you have MIC data)
+
+  - DD_PredRIS.png / DD_PredGroup.pdf - Disk diffusion distribution vs. S/I/R predictions (only expected if you have DD data)
+  - DD_PredGroup.png / DD_PredGroup.pdf - Disk diffusion distribution vs. cipro_prediction_group (only expected if you have DD data)
+  
 ### Third best option:
-If above options are not possible, the **minimum** we require is to cross-tabulate the cipro_prediction_group column vs S/I/R calls.
+If above options are not possible, the **minimum** we require is for you to independently to cross-tabulate the cipro_prediction_group column vs. S/I/R calls.
