@@ -1,0 +1,291 @@
+---
+title: "Metadata"
+author: "Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(patchwork)
+```
+
+# load data
+``` {r}
+pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+
+```
+
+## colours
+``` {r}
+
+c25 <- c(
+  "dodgerblue2", "#E31A1C", # red
+  "green4",
+  "#6A3D9A", # purple
+  "#FF7F00", # orange
+  "black", "steelblue4",
+  "#CAB2D6", "palegreen", # lt pink
+  "#FB9A99",
+  "gold1",
+  "#FDBF6F", # lt orange
+  "gray70", "khaki2",
+  "maroon", "orchid1", "deeppink1", "#FF7F00", "gray35",
+  "darkturquoise", "green1", "yellow4", "yellow3",
+  "darkorange4", "brown"
+)
+```
+
+
+# preparing data
+
+```{r preparing data for plotting}
+
+# Source details column
+pheno$Source.details <- tolower(pheno$Source.details)
+pheno$Source.details <- str_to_title(pheno$Source.details)
+pheno$Source.details <- sub("faeces", "Feces", pheno$Source.details)
+pheno$Source.details <- sub("Faecal", "Feces", pheno$Source.details)
+pheno$Source.details <- sub("Faeces", "Feces", pheno$Source.details)
+pheno$Source.details <- sub("^$", "Unknown", pheno$Source.details)
+pheno$Source.details <- sub("Rectum", "Rectal Swab", pheno$Source.details)
+pheno$Source.details <- sub("Resp", "Respiratory", pheno$Source.details)
+pheno$Source.details <- sub("Stool", "Feces", pheno$Source.details)
+pheno$Source.details[is.na(pheno$Source.details)] <- "Unknown"
+pheno %>% count(Source.details, sort=TRUE)
+
+pheno$Source.Type <- sub("Feed", "Food", pheno$Source.Type)
+pheno$Source.Type <- sub("Food", "Food/Feed", pheno$Source.Type)
+```
+# Source Type
+```{r}
+
+
+# Source type column
+pheno[c("Source.Type")][is.na(pheno[c("Source.Type")])] <- "Human"
+source_type <- pheno %>% count(Source.Type) %>% arrange(n) %>% mutate(Source.Type = fct_reorder(Source.Type, n))
+
+source_type$Source.Type <- paste0(source_type$Source.Type, " (N=", source_type$n, ")") 
+
+source_type_plot <- ggplot(source_type, aes(fill=factor(Source.Type, Source.Type), y=n, x=1)) + 
+    geom_bar(stat="identity", color="white", position="fill") +
+  coord_flip() +
+  labs(title="Source type", x="", y="Proportion (%)", fill="Source Type") +
+scale_y_continuous(labels = scales::percent)+
+  theme_minimal()+
+      theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())+
+  scale_fill_brewer(palette="Set2", guide = guide_legend(reverse = TRUE))
+source_type_plot
+```
+# Human - source details
+```{r}
+
+human <- pheno %>% group_by(Source.Type, Source.details) %>%
+  filter(Source.Type=="Human" & !is.na(Source.details)) %>% 
+  summarize(count = n())
+
+human_sort<-group_by(human, Source.details) %>%
+  tally(count, sort = TRUE) %>%
+  group_by(Source.details = factor(c(Source.details[1:9], rep("Other", n() - 9)),
+                            levels = c(Source.details[1:9], "Other"))) %>%
+  tally(n) 
+
+human_plot <- human_sort %>% mutate(Source.details = fct_reorder(Source.details, n)) %>% 
+  ggplot(aes(x=Source.details,y=n))  + 
+  geom_bar(stat = "identity", fill="#a6d854") +
+  coord_flip()+
+  labs(title="Human - Source details", x="Number of isolates", y="")+
+  theme_minimal()
+human_plot
+```
+
+# Human - Infection status
+
+```{r}
+
+# If Source type = human, colonization vs. infection
+pheno$Infection.status <- sub("^$", "Unknown", pheno$Infection.status)
+pheno[c("Infection.status")][is.na(pheno[c("Infection.status")])] <- "Unknown"
+
+human_inf_status <- pheno %>% group_by(Source.Type, Infection.status) %>%
+  filter(Source.Type=="Human" & !is.na(Source.details)) %>% 
+  summarize(count = n())
+
+human_inf_status$Infection.status <- paste0(human_inf_status$Infection.status, " (N=", human_inf_status$count, ")") 
+
+
+human_inf_st <- ggplot(human_inf_status, aes(fill=Infection.status, y=count, x=1)) + 
+    geom_bar(position="fill", stat="identity") +
+  scale_y_continuous(labels = scales::percent)+
+   labs ( y = "Percentage (%)", x="") +
+  coord_flip() + 
+  theme_minimal() +
+        theme(axis.title.y=element_blank(),
+        axis.text.y=element_blank(),
+        axis.ticks.y=element_blank())
+```
+
+# Env - source type
+
+```{r}
+# If Source type = Environment, source details
+pheno %>% group_by(Source.Type, Source.details) %>% filter(Source.Type=="Environment")  %>% summarize(count = n())
+
+environmemt <- pheno %>% group_by(Source.Type, Source.details) %>%
+  filter(Source.Type=="Environment") %>% 
+  summarize(count = n())
+
+
+environment_plot <- environmemt %>%mutate(Source.details = fct_reorder(Source.details, count)) %>% 
+  ggplot(aes(x=Source.details,y=count))  + 
+  geom_bar(stat = "identity", fill="#8da0cb") +
+  coord_flip()+
+  labs(title="Environment - Source details", x="Number of isolates", y="")+
+  theme_minimal()
+environment_plot
+```
+
+# Animal 
+
+```{r}
+
+# If Source type = Animal, host and infection status
+pheno$Host <- tolower(pheno$Host)
+pheno$Host <- str_to_title(pheno$Host)
+pheno[c("Host")][is.na(pheno[c("Host")])] <- "Unknown"
+
+pheno$Host <- sub("Fallow Deer", "Deer", pheno$Host)
+pheno$Host <- sub("European Roe Deer", "Deer", pheno$Host)
+
+animal <- pheno %>% group_by(Host) %>% filter(Source.Type=="Animal")  %>% summarize(animal_count = n())
+
+animal_details <- pheno %>% group_by(Source.Type, Host, Source.details) %>% filter(Source.Type=="Animal")  %>% summarize(detail_count = n()) 
+
+animal_join <- left_join(animal, animal_details, by="Host") %>% filter(animal_count>10) %>% arrange(animal_count)
+
+
+
+animal_join$Host <- paste0(animal_join$Host, " (N=", animal_join$animal_count, ")") 
+
+animal_join$Host <- factor(animal_join$Host, levels = unique(animal_join$Host))
+
+# shows diversity of the source details
+ggplot(animal_join, aes(fill=Source.details, y=detail_count, x=as.factor(Host))) + 
+    geom_bar(position="fill", stat="identity") +
+  scale_y_continuous(labels = scales::percent)+
+  scale_fill_manual(values=c25[8:23]) +
+   labs ( y = "Percentage (%)", x="") +
+  coord_flip() + 
+  theme_minimal()
+
+animal_plot <- animal %>% arrange(desc(animal_count)) %>% mutate(Host = fct_reorder(Host, animal_count)) %>% filter(animal_count>10) %>%ggplot(aes(x=Host,y=animal_count))  + 
+  geom_bar(stat = "identity", fill="#e78ac3") +
+  coord_flip()+
+  labs(title="Animal - Source details", x="Number of isolates", y="")+
+  theme_minimal()
+
+animal_plot
+
+
+```
+# Food / Feed
+```{r}
+
+food <- pheno %>% 
+    group_by(Source.Type, Source.details) %>% 
+    filter(Source.Type=="Food/Feed")  %>% 
+    summarize(count = n()) %>% arrange(desc(count)) %>% mutate(Source.details = fct_reorder(Source.details, count))
+
+
+food_plot <- food %>%ggplot(aes(x=Source.details,y=count))  + 
+  geom_bar(stat = "identity", fill="#66c2a5") +
+  coord_flip()+
+  labs(title="Food/Feed - Source details", x="Number of isolates", y="")+
+  theme_minimal()
+food_plot
+```
+
+# Country
+
+```{r}
+
+# Countries
+
+world_map <- map_data("world")
+world_map <- subset(world_map, region != "Antarctica")
+
+# Countries
+#pheno[c("Country")][is.na(pheno[c("Country")])] <- "Australia"
+pheno %>% count(Country) 
+
+country_plot <-ggplot(pheno %>% count(Country)) + 
+  geom_map(dat = world_map, map = world_map, aes(map_id = region),
+    fill = "lightgray", color = "white", size = 0.25) +
+  geom_map(map = world_map, aes(map_id = Country, fill = n), size = 0.25) +
+  scale_fill_gradient(low = "#fff7bc", high = "#cc4c02", name = "Number of isolates") +
+  expand_limits(x = world_map$long, y = world_map$lat)+ 
+  labs(title="Country", x="", y="")+
+  theme(panel.background = element_blank())
+country_plot
+```
+
+
+# Year
+```{r}
+# Year
+pheno$Collection.Year <- sub("^$", NA, pheno$Collection.Year)
+pheno$Collection.Year <- sub("\\.\\d+$", "", pheno$Collection.Year)
+pheno %>% count(Collection.Year, sort=TRUE)
+
+pheno[c("Collection.Year")][is.na(pheno[c("Collection.Year")])] <- "Unknown"
+year_plot <-ggplot(pheno %>% count(Collection.Year), aes(y=n, x=Collection.Year)) + 
+    geom_bar(stat="identity", fill="#ACB8E0") + 
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle =45, hjust=1)) +
+  ylab("Number of isolates") +
+  xlab("Collection Year") +
+  labs(title="Collection Year")
+year_plot
+
+```
+
+# Combining plots into one figure
+```{r}
+
+country_plot/ year_plot /source_type_plot / (human_plot + animal_plot) /
+(environment_plot + food_plot)
+
+ggsave("figs/FigS1_metadata.png", height = 12, width = 8, units = "in", dpi = 300)
+ggsave("figs/FigS1_metadata.pdf", height = 12, width = 8, units = "in", dpi = 300)
+
+```
