@@ -85,13 +85,13 @@ MIC_dist <- cipro_antibiogram %>%
 
 ```
 
-# Figure S1 - MIC distribution
-``` {r figs1}
+# Figure S2 - MIC distribution
+``` {r figs2}
 
 MIC_dist
 
-ggsave(width=9, height=4, file="figs/FigS1_MIC_distribution.pdf")
-ggsave(width=9, height=4, file="figs/FigS1_MIC_distribution.png")
+ggsave(width=9, height=4, file="figs/FigS2_MIC_distribution.pdf")
+ggsave(width=9, height=4, file="figs/FigS2_MIC_distribution.png")
 
 ```
 
@@ -115,12 +115,12 @@ DD_dist <- cipro_antibiogram %>%
 
 ```
 
-# Figure S2 - DD distribution
-``` {r figs2}
+# Figure S3 - DD distribution
+``` {r figs3}
 
 DD_dist
 
-ggsave(width=9, height=4, file="figs/FigS2_DD_distribution.pdf")
-ggsave(width=9, height=4, file="figs/FigS2_DD_distribution.png")
+ggsave(width=9, height=4, file="figs/FigS3_DD_distribution.pdf")
+ggsave(width=9, height=4, file="figs/FigS3_DD_distribution.png")
 
 ```

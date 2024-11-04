@@ -230,7 +230,7 @@ QRDR_pheno_noGenes <- cipro_antibiogram %>%
     theme(legend.position="none", strip.background = element_blank(), strip.text = element_blank())
 ```
 
-# Fig S5 - number of QRDR vs DD, facet aac6 yes/no (no other genes)
+# Fig S6 - number of QRDR vs DD, facet aac6 yes/no (no other genes)
 ``` {r}
 
 # DD distribution for # QRDR, in absence of genes
@@ -271,8 +271,8 @@ QRDR_DDpheno_noGenes <- cipro_antibiogram %>%
 ``` {r}
 QRDR_DD_noGenes / QRDR_DDpheno_noGenes + plot_layout(heights=c(2,1))
 
-ggsave("figs/FigS5_numQRDR_DD_pheno.pdf", width=6, height=4)
-ggsave("figs/FigS5_numQRDR_DD_pheno.png", width=6, height=4)
+ggsave("figs/FigS6_numQRDR_DD_pheno.pdf", width=6, height=4)
+ggsave("figs/FigS6_numQRDR_DD_pheno.png", width=6, height=4)
 ```
 
 # Fig S3 panel a - upset plot of QRDR positions, absence of aac6/acquired genes, with MIC data
@@ -432,19 +432,19 @@ upset_QRDR_aac6_DD
 
 ```
 
-## Supp Figs 3 and 4: QRDR sites vs pheno (MIC & DD, with/without aac6)
+## Supp Figs 4 and 5: QRDR sites vs pheno (MIC & DD, with/without aac6)
 ```{r}
 
 upset_QRDR_noAac6_MIC | upset_QRDR_aac6_MIC
 
-ggsave("figs/FigS3_QRDR_MIC.pdf", width=9, height=6)
-ggsave("figs/FigS3_QRDR_MIC.png", width=9, height=6)
+ggsave("figs/FigS4_QRDR_MIC.pdf", width=9, height=6)
+ggsave("figs/FigS4_QRDR_MIC.png", width=9, height=6)
 
 
 upset_QRDR_noAac6_DD | upset_QRDR_aac6_DD
 
-ggsave("figs/FigS4_QRDR_DD.pdf", width=9, height=6)
-ggsave("figs/FigS4_QRDR_DD.png", width=9, height=6)
+ggsave("figs/FigS5_QRDR_DD.pdf", width=9, height=6)
+ggsave("figs/FigS5_QRDR_DD.png", width=9, height=6)
 
 ```
 
@@ -628,19 +628,19 @@ upset_qnr_aac6_DD
 
 ```
 
-# Supp Figs S6 and S7: qnr genes vs pheno (MIC & DD, with/without aac6)
+# Supp Figs S7 and S8: qnr genes vs pheno (MIC & DD, with/without aac6)
 ```{r}
 
 upset_qnr_noAac6_MIC | upset_qnr_aac6_MIC
 
-ggsave("figs/FigS6_qnr_MIC.pdf", width=12, height=6)
-ggsave("figs/FigS6_qnr_MIC.png", width=12, height=6)
+ggsave("figs/FigS7_qnr_MIC.pdf", width=12, height=6)
+ggsave("figs/FigS7_qnr_MIC.png", width=12, height=6)
 
 
 upset_qnr_noAac6_DD | upset_qnr_aac6_DD
 
-ggsave("figs/FigS7_qnr_DD.pdf", width=12, height=6)
-ggsave("figs/FigS7_qnr_DD.png", width=12, height=6)
+ggsave("figs/FigS8_qnr_DD.pdf", width=12, height=6)
+ggsave("figs/FigS8_qnr_DD.png", width=12, height=6)
 
 ```
 
@@ -757,7 +757,7 @@ ggsave("figs/Fig2_numQnr_numPMQR_MIC_pheno.png", width=6, height=10)
 
 ```
 
-# Fig S8 - number of qnr vs DD, facet aac6 yes/no (no QRDR)
+# Fig S9 - number of qnr vs DD, facet aac6 yes/no (no QRDR)
 ``` {r}
 
 # DD distribution for # qnr, in absence of genes
@@ -796,8 +796,8 @@ qnr_DDpheno_noGenes <- cipro_antibiogram %>%
 ``` {r}
 qnr_DD_noGenes / qnr_DDpheno_noGenes + plot_layout(heights=c(2,1))
 
-ggsave("figs/FigS8_numQnr_DD_pheno.pdf", width=6, height=4)
-ggsave("figs/FigS8_numQnr_DD_pheno.png", width=6, height=4)
+ggsave("figs/FigS9_numQnr_DD_pheno.pdf", width=6, height=4)
+ggsave("figs/FigS9_numQnr_DD_pheno.png", width=6, height=4)
 ```
 
 

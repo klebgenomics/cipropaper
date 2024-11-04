@@ -527,8 +527,8 @@ Country_R <- cipro_antibiogram %>% group_by(Country) %>%
             vme=vme(predR, resistant)*100, 
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
-  mutate(out=rep("R", 28)) %>% 
-  mutate(category=rep("Country", 28)) %>%   
+  mutate(out=rep("R", 27)) %>% 
+  mutate(category=rep("Country", 27)) %>%   
   relocate(out, category, .before=Country)%>%
   rename(category_name=Country)
 
@@ -543,8 +543,8 @@ SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>%
             vme=vme(predR, resistant)*100, 
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
-  mutate(out=rep("R", 7)) %>% 
-  mutate(category=rep("Source", 7)) %>%  
+  mutate(out=rep("R", 6)) %>% 
+  mutate(category=rep("Source", 6)) %>%  
   relocate(out, category, .before=Source.Type)%>%
   rename(category_name=Source.Type)
 
@@ -800,14 +800,14 @@ rules_category_SIR_plot <- cipro_antibiogram %>%
 ```
 
 
-# Figure S9 - genotype profiles vs measurements
+# Figure S10 - genotype profiles vs measurements
 
 ``` {r fig9}
 rules_MIC_distribution / rules_DD_distribution / rules_category_SIR_plot
 
-ggsave(height=10, width=8, file="figs/FigS9_genotypeProfiles_MIC_DD_distribution.png")
+ggsave(height=10, width=8, file="figs/FigS10_genotypeProfiles_MIC_DD_distribution.png")
 
-ggsave(height=10, width=8, file="figs/FigS9_genotypeProfiles_MIC_DD_distribution.pdf")
+ggsave(height=10, width=8, file="figs/FigS10_genotypeProfiles_MIC_DD_distribution.pdf")
  
 ```
 
