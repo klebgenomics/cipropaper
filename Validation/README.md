@@ -32,6 +32,7 @@ This file has all Kleborate v3 columns with three additional columns at the end 
 Send us:
 1. Kleborate v3 (cipro_prediction branch) columns: **strain, species, cipro_prediction, cipro_prediction_group**
 2. Antibiogram data: MIC / disk diffusion measurements and S/I/R interpretations for each strain
+3. NOTE no genome identifiers or metadata are needed, just the genotype output and AST measures.
 
 ### Second best option:
 
@@ -43,7 +44,7 @@ Ensure that the kleborate and antibiogram file are in the same directory as the 
 
 #### CipPaper_Validation.Rmd Details
 
-- The antibiogram file should be in the in the same format as the NCBI's BioSample Antibiogram Format (see Download antibiogram template: https://www.ncbi.nlm.nih.gov/biosample/docs/antibiogram/).
+- The antibiogram file should be in the same format as the NCBI's BioSample Antibiogram Format (see Download antibiogram template: https://www.ncbi.nlm.nih.gov/biosample/docs/antibiogram/).
 If your antibiogram file is **not** in this format, please contact Kara (kara.tsang@lshtm.ac.uk) with the headers in your antibiogram file and a sample entry so that a CipPaper_Validation.Rmd file specific to your antibiogram data can be sent to you.
 
 - The antibiogram file's strain identifier column header is `strain`. 
@@ -76,4 +77,4 @@ Expected outputs can be visualized by viewing the CipPaper_Validation.html file.
   - DD_PredGroup.png / DD_PredGroup.pdf - Disk diffusion distribution vs. cipro_prediction_group (only expected if you have DD data)
   
 ### Third best option:
-If above options are not possible, the **minimum** we require is for you to independently to cross-tabulate the cipro_prediction_group column vs. S/I/R interpretations.
+If above options are not possible, the **minimum** we require is for you to independently cross-tabulate the cipro_prediction_group column vs. S/I/R interpretations.
