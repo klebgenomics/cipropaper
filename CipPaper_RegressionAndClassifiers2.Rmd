@@ -160,7 +160,7 @@ R_vs_dets <- cipro_antibiogram %>%
   rename(`aac(6')-Ib-cr`=aac6) %>%
   select(-c(ends_with('?'), ends_with('*'))) # remove imprecise matches
 
-# exclude genomes with rare variants
+# exclude rare variants
 R_vs_dets <- R_vs_dets[,colSums(R_vs_dets) >= 20]
 
 # model R vs all common variants (N>=20) = Model 1a
@@ -511,8 +511,8 @@ ST_R <- cipro_antibiogram %>% group_by(ST) %>%
             vme=vme(predR, resistant)*100, 
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
-  mutate(out=rep("R", 1992)) %>% 
-  mutate(category=rep("ST", 1992)) %>% 
+  mutate(out="R") %>% 
+  mutate(category="ST") %>% 
   relocate(out, category, .before=ST)%>%
   rename(category_name=ST)
 ```
@@ -527,8 +527,8 @@ Country_R <- cipro_antibiogram %>% group_by(Country) %>%
             vme=vme(predR, resistant)*100, 
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
-  mutate(out=rep("R", 27)) %>% 
-  mutate(category=rep("Country", 27)) %>%   
+  mutate(out="R") %>% 
+  mutate(category="Country") %>%   
   relocate(out, category, .before=Country)%>%
   rename(category_name=Country)
 
@@ -543,8 +543,8 @@ SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>%
             vme=vme(predR, resistant)*100, 
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
-  mutate(out=rep("R", 6)) %>% 
-  mutate(category=rep("Source", 6)) %>%  
+  mutate(out="R") %>% 
+  mutate(category="Source") %>%  
   relocate(out, category, .before=Source.Type)%>%
   rename(category_name=Source.Type)
 
@@ -562,8 +562,8 @@ InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>%
             vme=vme(predR, resistant)*100, 
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
-  mutate(out=rep("R", 3)) %>% 
-  mutate(category=rep("Inf Status", 3)) %>% 
+  mutate(out="R") %>% 
+  mutate(category="Inf Status") %>% 
   relocate(out, category, .before=Infection.status) %>%
   rename(category_name=Infection.status)
 ```
@@ -746,7 +746,6 @@ profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5
 ## MIC distribution
 ``` {r classifier_MIC}
 rules_MIC_distribution <- cipro_antibiogram %>%
-  group_by(Laboratory.Typing.Method) %>%
   filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
   ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), fill = as.factor(rules_category))) + geom_bar() + 
   labs(x = "MIC (mg/L)", y = "Number of genomes", 
@@ -1007,5 +1006,121 @@ lin_reg_MIC_plot + ggtitle("MIC model") + lin_reg_DD_plot + ggtitle("Disk diffus
 
 ggsave(width=8, height=5, file="figs/FigX_regressionMIC_DD_Models.pdf")
 ggsave(width=8, height=5, file="figs/FigX_regressionMIC_DD_Models.png")
+
+```
+
+``` {r}
+cipro_antibiogram %>% filter(Laboratory.Typing.Method!="Disk diffusion") %>% ggplot(aes(x=factor(rules_category),y=Measurement)) + geom_boxplot() + scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:9), labels = function(x) round(as.numeric(x), digits = 3))
+```
+
+## MIC distribution - classifier profiles
+``` {r classifier_MIC_sep}
+rules_MIC_distribution_separate <- cipro_antibiogram %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  mutate(profiles=case_when(rules_category==0 ~ profile_labels["0"],
+                                  rules_category==1 ~ profile_labels["1"],
+                                  rules_category==2 ~ profile_labels["2"],
+                                  rules_category==3 ~ profile_labels["3"],
+                                  rules_category==4 ~ profile_labels["4"],
+                                  rules_category==5 ~ profile_labels["5"],
+                                  rules_category==6 ~ profile_labels["6"],
+                                  rules_category==7 ~ profile_labels["7"],
+                                  rules_category==8 ~ profile_labels["8"],
+                                  rules_category==9 ~ profile_labels["9"],
+                                  TRUE ~ NA
+                                  )) %>%
+  mutate(profiles=fct_relevel(profiles, profile_labels)) %>%
+  ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), 
+             fill = profiles)) + 
+  geom_bar() + 
+  labs(x = "MIC (mg/L)", y = "Number of genomes", 
+       linetype = "MIC breakpoints", 
+       title="MIC, by genotype profile", 
+       fill="Genotype profile") +
+  scale_fill_manual(values=unname(profile_colours))+
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+  geom_vline(aes(xintercept = 5.5), color = "black") +
+  geom_vline(aes(xintercept = 4.5), color = "black") +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=10), 
+        legend.position="none") + 
+  facet_wrap(~profiles, scales="free_y", ncol=2)
+
+rules_MIC_distribution_separate
+
+```
+
+``` {r fig_mic_dd_regression_plots}
+
+rules_MIC_distribution_separate
+
+ggsave(width=6, height=6, file="figs/FigX_MICdist_byProfile.pdf")
+ggsave(width=6, height=6, file="figs/FigX_MICdist_byProfile.png")
+
+```
+
+
+# expected MIC value per category
+``` {r}
+discrete_quantile <- function(x, p) {
+  sort(log2(x))[length(x)*p]
+}
+
+
+MIC_pred <- cipro_antibiogram %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  group_by(rules_category) %>% 
+  summarise(median=median(Measurement), 
+            lower5=discrete_quantile(as.numeric(Measurement), p=0.05), 
+            upper5=discrete_quantile(as.numeric(Measurement), p=0.95), 
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>%
+  mutate(ci90=paste0(median, " [", 2^lower5, "-", 2^upper5, "]")) %>%
+  mutate(IQR=paste0(median, " [", 2^lower25, "-", 2^upper25, "]"))
+
+MIC_pred
+
+```
+
+``` {r}
+write_tsv(MIC_pred, file="tables/TableSX_classifier_MICpred.tsv")
+```
+
+
+## disk zone distribution - classifier profiles
+``` {r classifier_DD_sep, eval=F}
+rules_DD_distribution_separate <- cipro_antibiogram %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>% 
+  mutate(profiles=case_when(rules_category==0 ~ profile_labels["0"],
+                                  rules_category==1 ~ profile_labels["1"],
+                                  rules_category==2 ~ profile_labels["2"],
+                                  rules_category==3 ~ profile_labels["3"],
+                                  rules_category==4 ~ profile_labels["4"],
+                                  rules_category==5 ~ profile_labels["5"],
+                                  rules_category==6 ~ profile_labels["6"],
+                                  rules_category==7 ~ profile_labels["7"],
+                                  rules_category==8 ~ profile_labels["8"],
+                                  rules_category==9 ~ profile_labels["9"],
+                                  TRUE ~ NA
+                                  )) %>%
+  mutate(profiles=fct_relevel(profiles, profile_labels)) %>%
+  ggplot(aes(x = as.numeric(Measurement), fill = profiles)) + 
+  geom_bar() + 
+  labs(y = "Number of genomes", 
+       x="Disk zone (mm)", 
+       title="B) Disk zones, by genotype profile") +
+  scale_fill_manual(values=unname(profile_colours))+
+  # round off x-axis labels to 2dp
+  scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
+  geom_vline(aes(xintercept = 21.5), color = "black") +
+  geom_vline(aes(xintercept = 24.5), color = "black", linetype=2) +
+  geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
+  theme_minimal()+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=10), 
+        legend.position="none") + 
+  facet_wrap(~profiles, scales="free_y", ncol=2)
+
+rules_DD_distribution_separate
 
 ```
