@@ -513,6 +513,7 @@ ST_R <- cipro_antibiogram %>% group_by(ST) %>%
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
+            resistant=sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="ST") %>% 
@@ -531,6 +532,7 @@ Country_R <- cipro_antibiogram %>% group_by(Country) %>%
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
+            resistant=sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="Country") %>%   
@@ -549,6 +551,7 @@ SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>%
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
+            resistant=sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="Source") %>%  
@@ -570,6 +573,7 @@ InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>%
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
+            resistant=sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="Inf") %>% 
@@ -598,6 +602,7 @@ platform_R <- cipro_antibiogram %>%
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
+            resistant=sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="Plat") %>% 
@@ -622,7 +627,7 @@ Combined_R_100 <- Combined_R %>%
   filter(susceptible>10) %>%
   filter(N>25) %>%
   filter(n_dataset >=3) %>%
-  mutate(Category_label=paste(`Category Name`, " (n=", N,", S ", susceptible, ")", sep = "")) %>%
+  mutate(Category_label=paste(`Category Name`, " (n=", N,", S=", susceptible, ")", sep = "")) %>%
   select(Category, Category_label, N, Sensitivity, Specificity, `Resistant`)
 
 # convert table from wide to long for plotting 
@@ -665,7 +670,7 @@ Study_R <- cipro_antibiogram %>% group_by(index) %>%
 ```
 
 # performance by MIC platform
-``` {r platform_performance}
+``` {r platform_performance_MIC}
 
 platform_R <- cipro_antibiogram %>% 
   filter(Laboratory.Typing.Method!="Disk diffusion") %>%
@@ -690,7 +695,7 @@ cipro_antibiogram %>%
 ```
 
 # performance for DD
-``` {r platform_performance}
+``` {r platform_performance_DD}
 
 method_R <- cipro_antibiogram %>% 
   group_by(Laboratory.Typing.Method) %>% 
@@ -932,6 +937,11 @@ mic_atu <- cipro_antibiogram %>% filter(Resistance.phenotype!="R" & predSIR=="R"
 atu <- bind_rows(mic_atu, mic_atu) 
 
 atu %>% group_by(Flq_acquired, Flq_mutations) %>% count()  %>% mutate(pc=n/nrow(atu))
+
+unique(atu$index)
+atu %>% group_by(index) %>% count()
+unique(atu$species)
+atu %>% group_by(species) %>% count()
 ```
 
 # numbers for text - unexplained resistance
