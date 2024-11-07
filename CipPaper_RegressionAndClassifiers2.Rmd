@@ -511,6 +511,7 @@ ST_R <- cipro_antibiogram %>% group_by(ST) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="ST") %>% 
@@ -527,6 +528,7 @@ Country_R <- cipro_antibiogram %>% group_by(Country) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="Country") %>%   
@@ -543,6 +545,7 @@ SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
   mutate(category="Source") %>%  
@@ -562,25 +565,57 @@ InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
-  mutate(category="Inf Status") %>% 
+  mutate(category="Inf") %>% 
   relocate(out, category, .before=Infection.status) %>%
   rename(category_name=Infection.status)
 ```
 
-```{r Fig5_classifier_performance_plot}
+```{r platform_performance}
 
-Combined_R <- bind_rows(ST_R, Country_R, SourceType_R, InfectionStatus_R)
+cipro_antibiogram <- cipro_antibiogram %>%
+  mutate(platform_type=case_when(
+    Laboratory.Typing.Platform=="Sensititre" ~ "Auto",
+    Laboratory.Typing.Platform=="Phoenix" ~ "Auto",
+    Laboratory.Typing.Platform=="Vitek" ~ "Auto",
+    Laboratory.Typing.Platform=="Manual" ~ "Manual",
+    TRUE ~ "Unknown"
+  ))
+
+platform_R <- cipro_antibiogram %>% 
+  group_by(platform_type) %>% 
+  summarise(sens=sens(predR, resistant)*100, 
+            spec=spec(predR, resistant)*100, 
+            cat=cat_agree(predR, resistant)*100, 
+            me=me(predR, resistant)*100, 
+            vme=vme(predR, resistant)*100, 
+            n=n(),
+            susceptible=n-sum(resistant),
+            percent_R=(sum(resistant))/n*100) %>%
+  mutate(out="R") %>% 
+  mutate(category="Plat") %>% 
+  relocate(out, category, .before=platform_type)%>%
+  rename(category_name=platform_type)
+
+platform_R
+
+```
+
+
+```{r Fig6_classifier_performance_plot}
+
+Combined_R <- bind_rows(ST_R, Country_R, SourceType_R, InfectionStatus_R, platform_R)
 
 Combined_R <- Combined_R %>%
   rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) %>%
   write_csv("tables/TableSX_ModelSummary_Combined.csv", na="-")
 
-#filter for categories of genomes with >99 genomes
+#filter for categories: susceptible genomes >10 and more than 25 genomes
 Combined_R_100 <- Combined_R %>% 
-  filter(Resistant<100) %>%
-  filter(N>40) %>%
+  filter(susceptible>10) %>%
+  filter(N>25) %>%
   mutate(Category_label=paste(`Category Name`, " (n=", N, ")", sep = "")) %>%
   select(Category, Category_label, N, Sensitivity, Specificity, `Resistant`)
 
@@ -602,8 +637,8 @@ Combined_R_100_plot <-ggplot(Combined_R_100_long, aes(as.numeric(value),fct_inor
 
 Combined_R_100_plot
 
-ggsave(height=7, width=6, file="figs/Fig5_classifierPerformance_category.png")
-ggsave(height=7, width=6, file="figs/Fig5_classifierPerformance_category.pdf")
+ggsave(height=8, width=6, file="figs/Fig6_classifierPerformance_category.png")
+ggsave(height=8, width=6, file="figs/Fig6_classifierPerformance_category.pdf")
 ```
 
 # performance by study
@@ -1158,7 +1193,7 @@ write_tsv(MIC_pred, file="tables/TableSX_classifier_MICpred.tsv")
 ```
 
 
-## FIGURE - MIC distribution - classifier profiles
+## FIGURE 5 - MIC distribution - classifier profiles
 ``` {r classifier_MIC_sep_simpleCols}
 rules_MIC_distribution_separate <- cipro_antibiogram %>%
   filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
@@ -1199,8 +1234,8 @@ rules_MIC_distribution_separate
 
 rules_MIC_distribution_separate
 
-ggsave(width=5, height=7, file="figs/FigX_MICdist_byProfile.pdf")
-ggsave(width=5, height=7, file="figs/FigX_MICdist_byProfile.png")
+ggsave(width=5, height=7, file="figs/Fig5_MICdist_byProfile.pdf")
+ggsave(width=5, height=7, file="figs/Fig5_MICdist_byProfile.png")
 
 ```
 
