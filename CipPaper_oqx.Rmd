@@ -166,56 +166,52 @@ cipro_antibiogram <- full_join(geno_oqxABoperon_truncation,pheno) %>%
 oqxR_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(`Truncation/Mutation`=oqxR_truncation)%>%
-  mutate(Gene=c(rep("oqxR",2)))%>%
-  relocate(Gene, .before=`Truncation/Mutation`)
+  rename(`Presence/absence`=oqxR_truncation)%>%
+  mutate(Gene=c(rep("oqxR_truncation_loss",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
 
 norB_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(norB_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(`Truncation/Mutation`=norB_truncation)%>%
-  mutate(Gene=c(rep("norB",2)))%>%
-  relocate(Gene, .before=`Truncation/Mutation`)
+  rename(`Presence/absence`=norB_truncation)%>%
+  mutate(Gene=c(rep("norB_truncation_loss",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
 
 rarA_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(rarA_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(`Truncation/Mutation`=rarA_truncation)%>%
-  mutate(Gene=c(rep("rarA",2)))%>%
-  relocate(Gene, .before=`Truncation/Mutation`)
+  rename(`Presence/absence`=rarA_truncation)%>%
+  mutate(Gene=c(rep("rarA_truncation_loss",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
 
 rob_truncation_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(rob_truncation) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(`Truncation/Mutation`=rob_truncation)%>%
-  mutate(Gene=c(rep("rob",2)))%>%
-  relocate(Gene, .before=`Truncation/Mutation`)
+  rename(`Presence/absence`=rob_truncation)%>%
+  mutate(Gene=c(rep("rob_truncation_loss",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
 
 
 oqxR_D95E_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_D95E) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(`Truncation/Mutation`=oqxR_D95E)%>%
+  rename(`Presence/absence`=oqxR_D95E)%>%
   mutate(Gene=c(rep("oqxR_D95E",2)))%>%
-  relocate(Gene, .before=`Truncation/Mutation`)
+  relocate(Gene, .before=`Presence/absence`)
 
 oqxR_V113I_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
   group_by(oqxR_V113I) %>% 
   summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
-  rename(`Truncation/Mutation`=oqxR_V113I)%>%
+  rename(`Presence/absence`=oqxR_V113I)%>%
   mutate(Gene=c(rep("oqxR_V113I",2)))%>%
-  relocate(Gene, .before=`Truncation/Mutation`)
+  relocate(Gene, .before=`Presence/absence`)
 
-# Table - Contribution of solo truncations/mutations
 
-oqxAB_operon_truncation_solo <- 
-rbind(oqxR_truncation_solo, norB_truncation_solo, rarA_truncation_solo, rob_truncation_solo, oqxR_D95E_solo, oqxR_V113I_solo)
-
-oqxAB_operon_truncation_solo
-
-write.table(oqxAB_operon_truncation_solo, "tables/TableSX_oqx_neg_reg_contribution_PPV.tsv", row.names=FALSE, sep="\t")
 
 ```
+
+
+
 # Odds ratios, p-values, prop tests for each oqxAB neg reg defect
 ```{r}
 noResDet <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0)
@@ -587,10 +583,14 @@ oqxAB_copy_DD
 #ggsave("figs/FigSX_oqxAB_copy_DD.png", width=8, height=7)
 ```
 
-```{r PPV_table}
+```{r extra_copy_oqxAB_PPV_table}
 oqxA_copy_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
-  group_by(oqxA_copy) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) 
+  filter(oqxA_1 ==1 | oqxA_2 ==1)%>% 
+  group_by(oqxA_2) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
+    rename(`Presence/absence`=oqxA_2)%>%
+  mutate(Gene=c(rep("extra_oqxA_copy",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
 
 noResDet <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0)
 # Fishers test for >1 oqxA copy vs. R phenotype
@@ -600,8 +600,12 @@ prop.test(table(noResDet$oqxA_2,noResDet$resistant)[2:1,2:1])
 #write.table(oqxA_copy_solo, "oqxA_copy_solo_PPV.tsv", row.names=FALSE, sep="\t")
 
 oqxB_copy_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
-  group_by(oqxB_copy) %>% 
-  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) 
+    filter(oqxB_1 ==1 | oqxB_2 ==1)%>% 
+  group_by(oqxB_2) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
+    rename(`Presence/absence`=oqxB_2)%>%
+  mutate(Gene=c(rep("extra_oqxB_copy",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
 
 # Fishers test for >1 oqxB copy vs. R phenotype
 fisher.test(noResDet$oqxB_2, noResDet$resistant)
@@ -609,6 +613,49 @@ prop.test(table(noResDet$oqxB_2,noResDet$resistant)[2:1,2:1])
 
 #write.table(oqxB_copy_solo, "oqxB_copy_solo_PPV.tsv", row.names=FALSE, sep="\t")
 ```
+
+```{r loss_oqxAB_PPV_table}
+oqxA_loss_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+  filter(oqxA_1 ==1 | oqxA_0 ==1)%>% 
+  group_by(oqxA_0) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
+    rename(`Presence/absence`=oqxA_0)%>%
+  mutate(Gene=c(rep("oqxA_loss",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
+
+noResDet <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0)
+# Fishers test for >1 oqxA copy vs. R phenotype
+fisher.test(noResDet$oqxA_2, noResDet$resistant)
+prop.test(table(noResDet$oqxA_2,noResDet$resistant)[2:1,2:1])
+
+oqxB_loss_solo <- cipro_antibiogram %>% filter(QRDR_mutations==0 & aac6==0 & acquired_genes==0) %>% 
+    filter(oqxB_1 ==1 | oqxB_0 ==1)%>% 
+  group_by(oqxB_0) %>% 
+  summarise(N=n(), S=sum(Resistance.phenotype=="S"), I=sum(Resistance.phenotype=="I"), R=sum(resistant), NWT=sum(nonWT_binary), R_PPV=mean(resistant)*100, NWT_PPV=mean(nonWT_binary)*100) %>%
+    rename(`Presence/absence`=oqxB_0)%>%
+  mutate(Gene=c(rep("oqxB_loss",2)))%>%
+  relocate(Gene, .before=`Presence/absence`)
+
+# Fishers test for >1 oqxB copy vs. R phenotype
+fisher.test(noResDet$oqxB_2, noResDet$resistant)
+prop.test(table(noResDet$oqxB_2,noResDet$resistant)[2:1,2:1])
+
+
+```
+
+#Table S8
+```{r}
+# Table S8- Contribution of solo truncations/mutations
+
+oqxAB_operon_truncation_solo <- 
+rbind(oqxR_truncation_solo, norB_truncation_solo, rarA_truncation_solo, rob_truncation_solo, oqxR_D95E_solo, oqxR_V113I_solo, oqxA_copy_solo, oqxB_copy_solo, oqxA_loss_solo, oqxB_loss_solo)
+
+oqxAB_operon_truncation_solo
+
+write.table(oqxAB_operon_truncation_solo, "tables/TableS8_oqxAB_contribution_PPV.tsv", row.names=FALSE, sep="\t")
+```
+
+
 
 #Insertion sequences
 ```{r}
@@ -653,6 +700,14 @@ noResDet_R %>% filter(oqxAB_neg_sum==1)%>% nrow()
 
 #no porin, multiple copies of oqxAB, or any oqxAB neg reg truncation/loss 
 noResDet_R %>% filter(Omp_mutations=="-" & oqxA_2==0 & oqxB_2==0 & oqxAB_neg_sum==0)%>% nrow()
+
+noResDet_R_nooqx_porin_defect <- noResDet_R %>% filter(Omp_mutations=="-" & oqxA_2==0 & oqxB_2==0 & oqxAB_neg_sum==0)
+
+dd_atu <- noResDet_R_nooqx_porin_defect %>% filter(Resistance.phenotype!="R") %>% filter(Laboratory.Typing.Method == "Disk diffusion") %>% filter(as.numeric(Measurement) >21 & as.numeric(Measurement)<24) 
+
+mic_atu <- noResDet_R_nooqx_porin_defect %>% filter(Resistance.phenotype!="R") %>% filter(Laboratory.Typing.Method != "Disk diffusion") %>% filter(as.numeric(Measurement) ==0.5) 
+
+atu <- bind_rows(mic_atu, mic_atu) 
 
 ```
 
