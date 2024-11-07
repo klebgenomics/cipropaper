@@ -500,7 +500,7 @@ bind_rows(c("out"="R","species"="Species complex",
 ```
 
 
-## Figure 5 - classifier overall metrics, by ST, Country, Source Type, Infection status
+## Figure 6 - classifier overall metrics, by ST, Country, Source Type, Infection status
 
 ``` {r st_performance}
 
@@ -511,6 +511,7 @@ ST_R <- cipro_antibiogram %>% group_by(ST) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
@@ -528,6 +529,7 @@ Country_R <- cipro_antibiogram %>% group_by(Country) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
@@ -545,6 +547,7 @@ SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
@@ -565,6 +568,7 @@ InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
@@ -592,6 +596,7 @@ platform_R <- cipro_antibiogram %>%
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
             n=n(),
+            n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
@@ -612,11 +617,12 @@ Combined_R <- Combined_R %>%
   rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) %>%
   write_csv("tables/TableSX_ModelSummary_Combined.csv", na="-")
 
-#filter for categories: susceptible genomes >10 and more than 25 genomes
+#filter for categories: susceptible genomes >10, more than 25 genomes, more than 2 datasets
 Combined_R_100 <- Combined_R %>% 
   filter(susceptible>10) %>%
   filter(N>25) %>%
-  mutate(Category_label=paste(`Category Name`, " (n=", N, ")", sep = "")) %>%
+  filter(n_dataset >=3) %>%
+  mutate(Category_label=paste(`Category Name`, " (n=", N,", S ", susceptible, ")", sep = "")) %>%
   select(Category, Category_label, N, Sensitivity, Specificity, `Resistant`)
 
 # convert table from wide to long for plotting 
