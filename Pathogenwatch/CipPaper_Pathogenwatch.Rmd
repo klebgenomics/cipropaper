@@ -166,7 +166,8 @@ ST_pathogenwatch_plot <- ST_pathogenwatch  %>%
     theme_minimal()+
   scale_y_continuous(labels = scales::percent)+
   coord_flip()+
-  labs(title="A) Most prevalent STs (N=40)")
+  labs(title="A) Most prevalent STs (N=40)")+
+  theme(legend.position="none")
 ST_pathogenwatch_plot
 ```
 
@@ -252,7 +253,8 @@ pathogenwatch_country_plot <- pathogenwatch_country_total  %>%
     theme_minimal()+
   scale_y_continuous(labels = scales::percent)+
   labs(title="A) Country (>=100 genomes)")+
-   coord_flip()
+   coord_flip()+
+  theme(legend.position="none")
 
 pathogenwatch_country_plot
 
@@ -285,7 +287,7 @@ country_pathogenwatch_res_rate_plot <- country_pathogenwatch_res_rate  %>%
     scale_fill_manual(values=profile_colours, labels=profile_labels)+
     theme_minimal()+
   scale_y_continuous(labels = scales::percent)+
-  labs(title="B) Country (>100 genomes) sorted by predicted resistance rate")+
+  labs(title="B) Country (>=100 genomes) sorted by predicted resistance rate")+
    coord_flip()
 country_pathogenwatch_res_rate_plot
 
