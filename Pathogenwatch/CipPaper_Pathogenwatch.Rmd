@@ -37,6 +37,9 @@ library(tidyverse)
 library(dplyr)
 library(patchwork)
 library(countrycode)
+library(ggpubr)
+library(ggrepel)
+library(pheatmap)
 ```
 
 # load data
@@ -63,7 +66,7 @@ kpn_metadata_pathogenwatch <- read.delim(file = "Klebsiella pneumoniae__metadata
 #kv_kleborate_pathogenwatch <- read.delim(file = "Klebsiella variicola__kleborate.csv.gz", header = TRUE, sep = ",")
 #kv_metadata_pathogenwatch <- read.delim(file = "Klebsiella variicola__metadata.csv.gz", header = TRUE, sep = ",")
 
-pathogenwatch <- left_join(kpn_kleborate_pathogenwatch, kpn_metadata_pathogenwatch, by = c("Genome.ID" = "id")) %>% distinct()
+pathogenwatch <- left_join(kpn_kleborate_pathogenwatch, kpn_metadata_pathogenwatch, by = c("Genome.ID" = "id")) %>% distinct() %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species)
 ```
 # genotype labels and colours
 ```{r labels_colours}
@@ -138,294 +141,321 @@ table(pathogenwatch$rules_category, pathogenwatch$predR)
 table(pathogenwatch$rules_category, pathogenwatch$predSIR)
 table(pathogenwatch$rules_category, pathogenwatch$predNWT)
 
-```
-# ST
-```{r ST_top40}
-
-# ST - order by top 40 most prevalent STs
-ST_pathogenwatch <- pathogenwatch %>% 
-  filter(!is.na(ST))%>%
-  count(ST, rules_category, sort = TRUE)
-
-totals<- pathogenwatch %>%
-    filter(!is.na(ST))%>%
-  count(ST,sort = TRUE) %>%
-  slice(1:40)
-
-ST_pathogenwatch <- merge(ST_pathogenwatch, totals, by.x = "ST", by.y = "ST") %>% rename(total_rules_category=n.x) %>% rename(total_ST = n.y) %>%
-  mutate(ST=paste0(ST, " (N=", total_ST, ")" )) %>% 
-  arrange(total_ST)
-
-ST_pathogenwatch$ST <- factor(ST_pathogenwatch$ST, levels = unique(ST_pathogenwatch$ST))
-
-ST_pathogenwatch_plot <- ST_pathogenwatch  %>%  
-  ggplot(aes(fill=as.factor(rules_category),y=total_rules_category, x=ST)) + 
-  #scale_x_discrete(limits = rev(totals$ST))+
-    geom_bar(position="fill", stat="identity")+
-    scale_fill_manual(values=profile_colours, labels=profile_labels)+
-    theme_minimal()+
-  scale_y_continuous(labels = scales::percent)+
-  coord_flip()+
-  labs(title="A) Most prevalent STs (N=40)")+
-  theme(legend.position="none")
-ST_pathogenwatch_plot
-```
-
-```{r ST_by_res_rate}
-
-# ST - order previous plot by most %R
- 
-ST_pathogenwatch_predSIR <- pathogenwatch %>% 
-  filter(!is.na(ST))%>%
-  count(ST, predSIR,sort = TRUE)
-
-ST_pathogenwatch_res <- merge(ST_pathogenwatch_predSIR, totals, by.x = "ST", by.y = "ST") %>% 
-  rename(total_SIR=n.x)%>% 
-  rename(total_ST=n.y)%>% 
-  filter(predSIR=="R") %>%
-  mutate(percent=(total_SIR/total_ST*100)) %>%
-  mutate(ST=paste0(ST, " (N=", total_ST, ")" ))%>%
-  select(ST, percent) 
-  
-ST_pathogenwatch_res_rate <- merge(ST_pathogenwatch, ST_pathogenwatch_res) %>%
-  arrange(percent, total_ST)
-
-ST_pathogenwatch_res_rate$ST <- factor(ST_pathogenwatch_res_rate$ST, levels = unique(ST_pathogenwatch_res_rate$ST))
-
-
-ST_pathogenwatch_res_rate_plot <- ST_pathogenwatch_res_rate  %>%  
-  ggplot(aes(fill=as.factor(rules_category), y=total_rules_category, x=ST)) + 
-    geom_bar(position="fill", stat="identity")+
-    scale_fill_manual(values=profile_colours, labels=profile_labels)+
-    theme_minimal()+
-  scale_y_continuous(labels = scales::percent)+
-    labs(title="B) Most prevalent STs (N=40) sorted by predicted resistance rate")+
-   coord_flip()
-ST_pathogenwatch_res_rate_plot
-
-```
-
-```{r ST_plot}
-
-ggsave((ST_pathogenwatch_plot|ST_pathogenwatch_res_rate_plot), file="ST_pathogenwatch.png",width = 20, height = 10, dpi = 300)
-
-ggsave((ST_pathogenwatch_plot|ST_pathogenwatch_res_rate_plot), file="ST_pathogenwatch.pdf",width = 20, height = 10, dpi = 300)
-
-```
-
-# Country 
-
-```{r country_100_genomes}
-
-# Country - 100 genomes
-
-pathogenwatch<- pathogenwatch %>% 
-  mutate(Country = gsub("Viet Nam", "Vietnam", Country))
-pathogenwatch<- pathogenwatch %>% 
-  mutate(Country = gsub("UAE", "United Arab Emirates", Country))
-pathogenwatch<- pathogenwatch %>% 
-  mutate(Country = gsub("UK", "United Kingdom", Country))
-pathogenwatch$Country[grepl("United Kingdom", pathogenwatch$Country)] <- "United Kingdom"
-
-pathogenwatch_country <- pathogenwatch[-which(pathogenwatch$Country == ""), ]
-
-pathogenwatch_country <- pathogenwatch_country %>% 
-  filter(!is.na(Country))%>%
-  count(Country, rules_category, sort = TRUE)
- 
-totals<- pathogenwatch %>%
-    filter(!is.na(Country))%>%
-  count(Country,sort = TRUE) %>%
-  filter(n>=100)
-
-pathogenwatch_country_total <- merge(pathogenwatch_country, totals, by.x = "Country", by.y = "Country") %>%
-    rename(total_rules_category=n.x)%>% 
-  rename(total_country=n.y)%>% 
-    mutate(Country=paste0(Country, " (N=", total_country, ")" )) %>%
-  arrange(total_country)
-
-pathogenwatch_country_total$Country <- factor(pathogenwatch_country_total$Country, levels = unique(pathogenwatch_country_total$Country))
-
-pathogenwatch_country_plot <- pathogenwatch_country_total  %>%  
-  ggplot(aes(fill=as.factor(rules_category), y=total_rules_category, x=Country)) + 
-    geom_bar(position="fill", stat="identity")+
-    scale_fill_manual(values=profile_colours, labels=profile_labels)+
-    theme_minimal()+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title="A) Country (>=100 genomes)")+
-   coord_flip()+
-  theme(legend.position="none")
-
-pathogenwatch_country_plot
+PW <- pathogenwatch
 
 ```
 
 
+# numbers for text
+``` {r}
+# total genomes
+nrow(PW)
+
+# restrict to those with year & Country
+PW <- PW %>% filter(Country !="missing" & Country !="Other (International Space Station)") %>% filter(year>=2000)
+
+# number included
+nrow(PW)
+length(unique(PW$Country))
+
+ST_freq <- PW %>% group_by(ST, species) %>% summarise(N=n()) %>% arrange(-N)
+
+ST_freq[1:10,]
+
+ST_freq %>% filter(N>=100) %>% pull(N) %>% sum()
+
+# check species - these are all Kp
+table(ST_freq$species[ST_freq$N>=100])
+
+# Kp R%
+spp_count <- PW %>% group_by(species) %>% summarise(Nspp=n())
+PW %>% group_by(species, predR) %>% count() %>% right_join(spp_count) %>% mutate(pc=n/Nspp)
+PW %>% group_by(species, predNWT) %>% count() %>% right_join(spp_count) %>% mutate(pc=n/Nspp)
+
+# species vs variant
+PW %>% group_by(species, QRDR_mutations) %>% count()%>% right_join(spp_count) %>% mutate(pc=n/Nspp) %>% mutate(pc_inv=1-pc)
+PW %>% group_by(species, acquired_genes) %>% count()%>% right_join(spp_count) %>% mutate(pc=n/Nspp) %>% mutate(pc_inv=1-pc)
+PW %>% group_by(species, aac6) %>% count()%>% right_join(spp_count) %>% mutate(pc=n/Nspp) %>% mutate(pc_inv=1-pc)
+
+PW %>% group_by(ST, species, predR) %>% count() %>% right_join(ST_freq) %>% mutate(pc=n/N) %>% filter(ST=="ST347")
+PW %>% group_by(ST, species, rules_category) %>% count() %>% right_join(ST_freq) %>% mutate(pc=n/N) %>% filter(ST=="ST347")
+
+PW %>% group_by(ST, species, rules_category) %>% count() %>% right_join(ST_freq) %>% mutate(pc=n/N) %>% filter(rules_category==0) %>% arrange(-N)
+```
+
+# fig - ST vs determinants, with ST freq
+``` {r}
+
+# clean up characters
+PW <- PW %>% 
+  mutate(Flq_acquired = gsub("[\\^\\*\\?]", "", Flq_acquired))
+
+ST_pred <- PW %>% group_by(ST, predR) %>% count() %>% right_join(ST_freq) %>% filter(predR=="R") %>% mutate(pc=n/N)
+
+ST_cat <- PW %>% group_by(ST, rules_category) %>% count() %>% right_join(ST_freq) %>% mutate(pc=n/N)
+
+``` 
+
+
+# kp plot
 ```{r}
-# Country - order previous plot by most %R
+PMQR_freq_kp <- PW %>%
+    filter(species=="Klebsiella pneumoniae") %>%
+    select(Flq_acquired) %>%
+    separate_longer_delim(Flq_acquired, delim = ";") %>%
+    filter(Flq_acquired !="") %>%
+    filter(Flq_acquired !="-") %>%
+    group_by(Flq_acquired) %>% 
+    count() %>% arrange(-n)
 
-country_pathogenwatch_predSIR <- pathogenwatch %>% 
-  filter(!is.na(Country))%>%
-  count(Country, predSIR,sort = TRUE)
-
-country_pathogenwatch_res <- merge(country_pathogenwatch_predSIR, totals, by.x = "Country", by.y = "Country") %>% 
-  rename(total_SIR=n.x)%>% 
-  rename(total_country=n.y)%>% 
-  filter(predSIR=="R") %>%
-  mutate(percent=(total_SIR/total_country*100)) %>%
-  mutate(Country=paste0(Country, " (N=", total_country, ")" ))%>%
-  select(Country, percent) 
-  
-country_pathogenwatch_res_rate <- merge(pathogenwatch_country_total, country_pathogenwatch_res) %>%
-  arrange(percent, total_country)
-
-country_pathogenwatch_res_rate$Country <- factor(country_pathogenwatch_res_rate$Country, levels = unique(country_pathogenwatch_res_rate$Country))
-
-country_pathogenwatch_res_rate_plot <- country_pathogenwatch_res_rate  %>%  
-  ggplot(aes(fill=as.factor(rules_category), y=total_rules_category, x=Country)) + 
-    geom_bar(position="fill", stat="identity")+
-    scale_fill_manual(values=profile_colours, labels=profile_labels)+
-    theme_minimal()+
-  scale_y_continuous(labels = scales::percent)+
-  labs(title="B) Country (>=100 genomes) sorted by predicted resistance rate")+
-   coord_flip()
-country_pathogenwatch_res_rate_plot
+QRDR_freq_kp <- PW %>%
+    filter(species=="Klebsiella pneumoniae") %>%
+    select(Flq_mutations) %>%
+    separate_longer_delim(Flq_mutations, delim = ";") %>%
+    filter(Flq_mutations !="") %>%
+    filter(Flq_mutations !="-") %>%
+    group_by(Flq_mutations) %>% 
+    count() %>% arrange(-n)
 
 
+PW_dat_variant_kp <- PW %>% 
+  filter(species=="Klebsiella pneumoniae") %>%
+  mutate(Flq_acquired_mut=paste(Flq_acquired, Flq_mutations, sep = ";")) %>%
+  mutate(aac6_label=if_else(aac6==1, "aac6", "")) %>%
+  mutate(variant=paste(Flq_acquired_mut, aac6_label, sep = ";")) %>%
+  filter(!is.na(ST)) %>%
+  mutate(variant = gsub(' ', '', variant)) %>%
+  select(ST, variant) %>%
+  separate_longer_delim(variant, delim = ";") %>%
+  filter(variant!="-") %>%
+  filter(variant!="")
 
+# ST vs variant, for STs with N>=100 (Kp)
+PW_dat_kp <- PW_dat_variant_kp %>%
+  filter(ST %in% ST_freq$ST[ST_freq$N>=100]) %>%
+  group_by(ST, variant) %>% count() %>%
+  left_join(ST_freq, by="ST") %>%
+  mutate(pc=n/N)
+
+# order of variants
+variant_order_kp <- c("aac6", 
+                   PMQR_freq_kp$Flq_acquired[PMQR_freq_kp$Flq_acquired %in% PW_dat_kp$variant],
+                   QRDR_freq_kp$Flq_mutations[QRDR_freq_kp$Flq_mutations %in% PW_dat_kp$variant]
+                  )
 ```
 
-```{r country_plot}
-ggsave((pathogenwatch_country_plot|country_pathogenwatch_res_rate_plot), file="country_pathogenwatch.png",width = 20, height = 10, dpi = 300)
-ggsave((pathogenwatch_country_plot|country_pathogenwatch_res_rate_plot), file="country_pathogenwatch.pdf",width = 20, height = 10, dpi = 300)
+# variants vs ST heatmap
+``` {r}
+ST_cat_plot_kp <- ST_cat %>%
+  ggplot(aes(x=ST, y=pc, fill=as.character(rules_category))) +
+  geom_col() + 
+  xlim(ST_freq$ST[ST_freq$N>100]) +
+  theme_bw() + 
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  theme(axis.text.x = element_text(size=7, angle=60, hjust=1),
+        axis.title.x = element_text(size=9),
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt"),
+        legend.position="bottom",
+        legend.text=element_text(size=7), 
+        legend.key.size = unit(3,'mm'),
+        legend.title=element_text(size=9)) + 
+  labs(x="ST", y="Genotype\nprofile", fill="") + 
+  guides(fill = guide_legend(nrow=3))
+
+variant_heatmap_kp <- PW_dat_kp %>%
+  ggplot(aes(x=ST, y=variant, fill=pc)) +
+  geom_tile() + 
+  xlim(ST_freq$ST[ST_freq$N>100]) +
+  scale_y_discrete(limits=rev(variant_order_kp)) +
+  theme_bw() + 
+  theme(axis.text.x = element_text(size=7, angle=60, hjust=1), 
+        axis.text.y = element_text(size=7),
+        axis.title.x = element_text(size=9),
+        axis.title.y = element_text(size=9, angle=0),
+        legend.title = element_text(size=9),
+        plot.margin = margin(0, 0, 0, 0, "pt")) + 
+  labs(fill="Variant freq within ST", y="Variant", x="ST") + 
+  scale_fill_gradient(low="#fbe8a5", high="navy") + 
+  theme(legend.position="bottom")
+
+var_freq_plot_kp <- PW_dat_variant_kp %>% 
+  group_by(variant) %>% count() %>% 
+  ggplot(aes(y=variant, x=n)) + 
+  geom_col(fill="navy") + 
+  theme_bw() + 
+  geom_text(aes(y=variant, x=n+100, label=n), size=2.5, adj=00) +
+  theme(axis.text.x = element_text(size=8, angle=60, hjust=1),
+        axis.title.x = element_text(size=9),
+        plot.margin = margin(0, 0, 0, 0, "pt"), 
+        axis.text.y=element_blank()) + 
+  ylim(rev(variant_order_kp)) + 
+  xlim(c(0,35000)) + 
+  labs(x="Variant freq", y="")
+
+ST_freq_plot_kp <- ST_freq %>%
+  ggplot(aes(x=ST, y=N)) +
+  geom_col(fill="navy") + 
+   xlim(ST_freq$ST[ST_freq$N>100]) +
+  theme_bw() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt")) + 
+  labs(x="", y="\nST\nfreq")
+
+ST_predR_plot_kp <- ST_pred %>%
+  ggplot(aes(x=ST, y=pc)) +
+  geom_col(fill="navy") + 
+  xlim(ST_freq$ST[ST_freq$N>100]) +
+  theme_bw() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt")) + 
+  labs(x="", y="Predicted\nR")
 ```
 
-```{r}
-#Country - order by world region - incl all countries >9 genomes
+# Figure S11 - PW determinants vs ST
 
+``` {r}
+(ST_freq_plot_kp + plot_spacer() + plot_layout(widths=c(6,1))) /
+    (variant_heatmap_kp + var_freq_plot_kp + plot_layout(widths=c(6,1))) /
+    (ST_predR_plot_kp + plot_spacer() + plot_layout(widths=c(6,1))) /
+    (ST_cat_plot_kp + plot_spacer() + plot_layout(widths=c(6,1))) + plot_layout(heights=c(1,8,1,1))
 
-pathogenwatch_country <- pathogenwatch_country %>% 
-  filter(!is.na(Country))%>%
-  count(Country, rules_category, sort = TRUE)
+ggsave(height=9, width=7, file="PW_geneSTheatmapKp.png")
+
+ggsave(height=9, width=7, file="PW_geneSTheatmapKp.pdf")
  
-totals<- pathogenwatch %>%
-    filter(!is.na(Country))%>%
-  filter(Country!="missing")%>%
-  count(Country,sort = TRUE)%>%
-  filter(n>9)
-
-pathogenwatch_country_total <- merge(pathogenwatch_country, totals, by.x = "Country", by.y = "Country") %>%
-    rename(total_rules_category=n.x)%>% 
-  rename(total_country=n.y)%>% 
-    mutate(Country=paste0(Country, " (N=", total_country, ")" )) %>%
-  arrange(total_country)
-  
-pathogenwatch_country_total$region <- countrycode(sourcevar = pathogenwatch_country_total[, "Country"],origin = "country.name",destination = "continent")
-
-pathogenwatch_country_total$Country <- factor(pathogenwatch_country_total$Country, levels = unique(pathogenwatch_country_total$Country))
+```
 
 
-country_pathogenwatch_res_rate_region_plot <- pathogenwatch_country_total  %>%  
-  ggplot(aes(fill=as.factor(rules_category), y=total_rules_category, x=Country)) + 
-    geom_bar(position="fill", stat="identity")+
-    scale_fill_manual(values=profile_colours, labels=profile_labels)+
+``` {r}
+# country count
+PW_country_count <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(countryN=n())
+
+kp_profile_year <- PW %>% filter(species=="Klebsiella pneumoniae") %>% 
+  group_by(year, rules_category) %>% count() %>%
+  ggplot(aes(x=year, y=n, fill=as.character(rules_category))) + 
+  geom_bar(stat="identity", position="fill") + 
+ # coord_flip() +
+  scale_fill_manual(values=profile_colours, labels=profile_labels) + 
+  theme_bw() + 
   scale_y_continuous(labels = scales::percent)+
-    coord_flip()+
+  labs(x="Year", y="Percentage of genomes", fill="Genotype\nprofile")
+
+annual_multires <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(year) %>% summarise(Both=mean(rules_category==9), QRDR=mean(QRDR_mutations>0), PMQR=mean(acquired_genes>0)) %>% pivot_longer(cols=Both:PMQR)
+
+annual_multires
+
+annual_multires %>% filter(name=="Both") %>% arrange(-year)
+
+annual_multires_plot <- annual_multires %>% 
+  ggplot(aes(x=year, y=value*100, col=name)) + geom_point() + geom_line() +
+  scale_colour_manual(values=c(QRDR="#ecb16f", PMQR="#b92020", Both="#59124b")) + 
+  theme_bw() + 
+  labs(x="Year", y="Percentage of genomes", col="Determinants")
+
+```
+
+``` {r}
+kp_profile_year / annual_multires_plot +
+  plot_annotation(tag_levels = 'a')
+
+ggsave(height=8, width=8, file="profile_year.pdf")
+ggsave(height=8, width=8, file="profile_year.png")
+
+```
+
+# Consumption data
+
+``` {r}
+consumption_data <- read.delim(file = "antibiotic_consumption_by_ATC3.csv", header = TRUE, sep = ",") %>%
+  filter(ATC.level.3.class=="J01M-Quinolones") %>% rename(DDD=`Antibiotic.consumption..DDD.1.000.day.`) %>% select(-`ATC.level.3.class`)
+
+```
+
+# country means
+``` {r}
+# predicted R by country
+PW_country_R <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(R=mean(predR=="R"))
+PW_country_NWT <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(NWT=mean(predNWT=="NWT"))
+
+# mean QRDR by country
+PW_country_qrdr <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(`mean QRDR`=mean(QRDR_mutations)) 
+
+# mean PMQR by country
+PW_country_pmqr <- PW %>% filter(species=="Klebsiella pneumoniae") %>% group_by(Country) %>% summarise(`mean PMQR`=mean(acquired_genes)) 
+
+# mean DDD by country
+consumption_data_mean <- consumption_data %>% group_by(Location) %>% 
+  summarise(`mean DDD`=mean(DDD)) %>% rename(Country=Location)
+
+country_summary <- full_join(PW_country_R, PW_country_NWT) %>% 
+  full_join(PW_country_qrdr) %>% full_join(PW_country_pmqr) %>% 
+  full_join(PW_country_count) %>%
+  full_join(consumption_data_mean)
+
+```
+
+``` {r}
+# PMQR vs consumption
+pmqr_plot <- country_summary %>% filter(countryN>=100) %>%
+  ggplot(aes(x=`mean DDD`,y=`mean PMQR`))+
+  geom_point()+
+  stat_smooth(method="lm", color="#4781C0")+
   theme_minimal()+
-  facet_grid(region~.,space="free",scales="free", drop=TRUE)+
-labs(title="Country (>9 genomes)")
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")), 
+    label.x = 0, color = "#4781C0", geom = "label") +
+  ylim(0,1.5) +
+  labs(x="Quinolone consumption (mean annual DDD)", y="Mean PMQR gene count")
 
-country_pathogenwatch_res_rate_region_plot
+# QRDR vs consumption
+qrdr_plot <- country_summary %>% filter(countryN>=100) %>%
+  ggplot(aes(x=`mean DDD`,y=`mean QRDR`))+
+  geom_point()+
+  stat_smooth(method="lm", color="#4781C0")+
+  theme_minimal()+
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")), 
+    label.x = 0, color = "#4781C0", geom = "label") +
+  ylim(0,4) +
+  labs(x="Quinolone consumption (mean annual DDD)", y="Mean QRDR mutation count")
 
-
-ggsave(country_pathogenwatch_res_rate_region_plot, file="country_pathogenwatch_region.pdf",width = 10, height = 10, dpi = 300, device=cairo_pdf)
-ggsave(country_pathogenwatch_res_rate_region_plot, file="country_pathogenwatch_region.png",width = 10, height = 10, dpi = 300)
-```
-# Year
-
-```{r year}
-# Year
-
-year_pathogenwatch <- pathogenwatch %>% 
-  filter(!is.na(year))%>%
-  count(year, rules_category)
- 
-totals<- pathogenwatch %>%
-    filter(!is.na(year))%>%
-  filter(year >2000)%>%
-  count(year)
-
-year_pathogenwatch_total <- merge(year_pathogenwatch, totals, by.x = "year", by.y = "year") %>%
-  rename(total_rules_category=n.x)%>% 
-  rename(total_year=n.y)%>% 
-  arrange(year)%>%
-    mutate(year=paste0(year, " (N=", total_year, ")" ))
-
-year_pathogenwatch_total$year <- factor(year_pathogenwatch_total$year, levels = unique(year_pathogenwatch_total$year))
-
-year_pathogenwatch_plot <- year_pathogenwatch_total  %>%  
-  ggplot(aes(fill=as.factor(rules_category), y=total_rules_category, x=year)) + 
-    geom_bar(position="fill", stat="identity")+
-    scale_fill_manual(values=profile_colours, labels=profile_labels)+
-    theme_minimal()+
-  scale_y_continuous(labels = scales::percent)+
-   coord_flip()
-
-year_pathogenwatch_plot
-
-ggsave(year_pathogenwatch_plot, file="year_pathogenwatch.pdf",width = 10, height = 10, dpi = 300)
-ggsave(year_pathogenwatch_plot, file="year_pathogenwatch.png",width = 10, height = 10, dpi = 300)
+# R vs consumption
+R_plot <- country_summary %>% filter(countryN>=100) %>%
+  ggplot(aes(x=`mean DDD`,R))+
+  geom_point()+
+  stat_smooth(method="lm", color="#4781C0")+
+  theme_minimal()+
+  stat_cor(aes(label = paste(..rr.label.., ..p.label.., sep = "~`,`~")), 
+    label.x = 0, color = "#4781C0", geom = "label") + 
+  ylim(0,1.5) +
+  labs(x="Quinolone consumption (mean annual DDD)", y="Predicted ciprofloxacin R")
 
 ```
 
-# MIC prediction vs. year
-```{r MIC_year}
+``` {r}
+R_plot + ggtitle("a) %R (predicted)") +  qrdr_plot + ggtitle("b) QRDR count") + pmqr_plot + ggtitle("c) PMQR count") + plot_layout(axes="collect")
 
-MIC_profile_colours <- c("<=0.25 [0.25-0.25] mg/L" = "#add8e6", "0.25 [0.25-0.5] mg/L"="#72bcd4", "0.5 [0.5-1] mg/L"="#78638a", "1 [1-2] mg/L"="#fadbd8", "2 [1-2] mg/L"="#f1948a", "2 [2-4] mg/L"="#C64343", ">=4 [4-4] mg/L"="#943126")
+ggsave(height=3, width=8, file="consumption.pdf")
+ggsave(height=3, width=8, file="consumption.png")
 
-MIC_pathogenwatch <- pathogenwatch %>% mutate(MIC_prediction=case_when(rules_category==0 ~ "<=0.25 [0.25-0.25] mg/L",
-                                  rules_category==1 ~ "0.25 [0.25-0.5] mg/L",
-                                  rules_category==2 ~ "0.5 [0.5-1] mg/L",
-                                  rules_category==3 ~ "1 [1-2] mg/L",
-                                  rules_category==4 ~ "2 [1-2] mg/L",
-                                  rules_category==5 ~ "2 [2-4] mg/L",
-                                  rules_category==6 ~ "1 [1-2] mg/L",
-                                  rules_category==7 ~ "2 [1-2] mg/L",
-                                  rules_category==8 ~ "2 [2-4] mg/L",
-                                  rules_category==9 ~ ">=4 [4-4] mg/L",
-                                  TRUE ~ NA
-                                  ))
-
-MIC_year_pathogenwatch <- MIC_pathogenwatch %>% 
-  filter(!is.na(year))%>%
-  count(year, MIC_prediction)
- 
-totals<- MIC_pathogenwatch %>%
-    filter(!is.na(year))%>%
-  filter(year >2000)%>%
-  count(year)
-
-MIC_year_pathogenwatch_total <- merge(MIC_year_pathogenwatch, totals, by.x = "year", by.y = "year") %>%
-  rename(total_MIC_pred=n.x)%>% 
-  rename(total_year=n.y)%>% 
-  arrange(year)%>%
-    mutate(year=paste0(year, " (N=", total_year, ")" ))
+```
 
 
-MIC_year_pathogenwatch_total$MIC_prediction <- factor(MIC_year_pathogenwatch_total$MIC_prediction, levels=c("<=0.25 [0.25-0.25] mg/L", "0.25 [0.25-0.5] mg/L", "0.5 [0.5-1] mg/L", "1 [1-2] mg/L", "2 [1-2] mg/L", "2 [2-4] mg/L",">=4 [4-4] mg/L"))
+``` {r}
 
-MIC_year_pathogenwatch_plot <- MIC_year_pathogenwatch_total  %>%  
-  ggplot(aes(fill=as.factor(MIC_prediction), y=total_MIC_pred, x=year)) + 
-    geom_bar(position="fill", stat="identity")+
-    scale_fill_manual(values=MIC_profile_colours)+
-    theme_minimal()+
+kp_profile_country <- PW %>% filter(species=="Klebsiella pneumoniae") %>% 
+  group_by(Country, rules_category) %>% count() %>%
+  filter(Country %in% PW_country_count$Country[PW_country_count$countryN>500]) %>%
+  left_join(PW_country_count) %>%
+  ggplot(aes(x=Country, y=n, fill=as.character(rules_category))) + 
+  geom_bar(stat="identity", position="fill") + 
+  coord_flip() +
+  scale_fill_manual(values=profile_colours, labels=profile_labels) + 
+  theme_bw() + 
   scale_y_continuous(labels = scales::percent)+
-   coord_flip()
-
-MIC_year_pathogenwatch_plot
-
-ggsave(MIC_year_pathogenwatch_plot, file="MIC_year_pathogenwatch.pdf",width = 10, height = 10, dpi = 300)
-ggsave(MIC_year_pathogenwatch_plot, file="MIC_year_pathogenwatch.png",width = 10, height = 10, dpi = 300)
-
+  labs(x="Country", y="Percentage of genomes") + 
+  theme(legend.position="none") +
+  geom_text(aes(y=1.05, label = paste0("N=", countryN)))
 
 ```
