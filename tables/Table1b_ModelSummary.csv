@@ -1,6 +1,6 @@
 out,species,Categorical agreement,Sensitivity,Specificity,ME,VME,N
-R,Species complex,96.11%,96.08%,96.14%,3.86%,3.92%,12167
-NWT,Species complex,94.39%,91.62%,97.87%,2.13%,8.38%,12167
+R,Klebsiella pneumoniae species complex,96.11%,96.08%,96.14%,3.86%,3.92%,12167
+NWT,Klebsiella pneumoniae species complex,94.39%,91.62%,97.87%,2.13%,8.38%,12167
 R,Klebsiella pneumoniae,96.02%,96.27%,95.71%,4.29%,3.73%,10634
 R,Klebsiella quasipneumoniae subsp. quasipneumoniae,98.41%,96.15%,98.77%,1.23%,3.85%,189
 R,Klebsiella quasipneumoniae subsp. similipneumoniae,90.21%,87.84%,91.04%,8.96%,12.16%,286

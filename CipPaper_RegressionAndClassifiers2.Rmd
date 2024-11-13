@@ -39,6 +39,10 @@ library(ggrepel)
 library(patchwork)
 library(logistf)
 library(scales)
+library(ggh4x)
+library(ggtext)
+library(facetious)
+
 ```
 
 # load data
@@ -406,6 +410,59 @@ model_summary_tab %>%
   
 ```
 
+# logistic regression model summary - facet plot
+```{r}
+
+model_summary_tab_facet <- model_summary_tab
+model_summary_tab_facet <- model_summary_tab_facet %>% 
+    mutate(Sensitivity=round(as.numeric(Sensitivity)*100,2)) %>%
+  mutate(Specificity=round(as.numeric(Specificity)*100,2)) %>%
+  mutate(ME=round(as.numeric(ME)*100,2)) %>%
+  mutate(VME=round(as.numeric(VME)*100,2)) %>%
+  mutate(`Categorical agreement`=round(as.numeric(`Categorical agreement`)*100,2)) %>%
+    mutate(AIC=round(as.numeric(AIC),0)) %>%
+  mutate(Label=paste0(ModelName, ": ", predictors)) %>%
+  rename(Prediction=response)%>%
+  select(Label, Prediction, `Categorical agreement`, Sensitivity, Specificity, ME, VME, AIC) %>%
+  rename(`Major error`=ME, `Very major error`=VME)
+
+model_summary_tab_long <- model_summary_tab_facet %>%
+  pivot_longer(
+   `Categorical agreement`:`AIC`, 
+    names_to = "Evaluation metric",
+    values_to = "value"
+)
+
+
+model_summary_tab_long <- model_summary_tab_long%>%
+  mutate(`Evaluation metric` = factor(`Evaluation metric`, levels=c("Categorical agreement", "Sensitivity", "Specificity", "Major error", "Very major error", "AIC"))) 
+  
+model_summary_tab_long <- model_summary_tab_long%>%
+  mutate(Label = factor(Label, levels=c("Model 1a: determinants", "Model 1b: determinant*aac6", "Model 2a: QRDR count + PMQR count + aac6", "Model 2b: QRDR count*aac6 + PMQR count*aac6"))) 
+  
+
+model_summary_plot <-
+model_summary_tab_long %>% ggplot(aes(x=(as.numeric(value)), y=fct_rev(Label)))+
+  geom_point(aes(colour=Prediction), position=pd) +
+  geom_text_repel(aes(label=paste0(as.numeric(value)), colour=Prediction), size=3,position=pd)+
+  scale_color_manual(values=c("R"="IndianRed", "NWT"="#78638a")) +
+ facet_wrap(~ `Evaluation metric`, ncol = 6, scales="free_x")+
+  theme_linedraw() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank())+
+  facetted_pos_scales(
+    x = list(`Evaluation metric` == "Categorical agreement" ~ scale_x_continuous(breaks = c(80,100), limits = c(70, 100)),
+             `Evaluation metric` == "Sensitivity" ~ scale_x_continuous(breaks = c(80,100), limits = c(70, 100)),
+             `Evaluation metric` == "Specificity" ~ scale_x_continuous(breaks = c(80, 100), limits = c(70, 100)),
+             `Evaluation metric` == "Major error" ~ scale_x_continuous(breaks = c(0,10), limits = c(0,10)),
+             `Evaluation metric` == "Very major error"~ scale_x_continuous(breaks = c(10,20), limits = c(0, 30)),
+             `Evaluation metric` == "AIC"~ scale_x_continuous()
+  ))
+
+model_summary_plot
+
+```
 
 # Rules-based classifier
 
@@ -480,9 +537,10 @@ species_NWT <- cipro_antibiogram %>% group_by(species) %>%
   mutate(out=rep("NWT", 4)) %>% 
   relocate(out, .before=species)
 
-bind_rows(c("out"="R","species"="Species complex", 
+species_summary_table <- 
+bind_rows(c("out"="R","species"="Klebsiella pneumoniae species complex", 
             metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), 
-          c("out"="NWT","species"="Species complex",
+          c("out"="NWT","species"="Klebsiella pneumoniae species complex",
             metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)
           ) %>%
   mutate_at(c("cat","sens","spec","me","vme", "n"), as.double) %>%
@@ -494,11 +552,145 @@ bind_rows(c("out"="R","species"="Species complex",
   mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
   mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
   mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%
-  select(out, species, `Categorical agreement`, Sensitivity, Specificity, ME, VME, N) %>%
-  write_csv("tables/Table1b_ModelSummary.csv", na="-")
+  select(out, species, `Categorical agreement`, Sensitivity, Specificity, ME, VME, N)
+  
+
+write_csv(species_summary_table, "tables/Table1b_ModelSummary.csv", na="-")
   
 ```
+# rules-based classifier species summary - facet plot
+```{r}
+species_summary_table <- 
+bind_rows(c("out"="R","species"="Klebsiella pneumoniae species complex", 
+            metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), 
+          c("out"="NWT","species"="Klebsiella pneumoniae species complex",
+            metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)
+          ) %>%
+  mutate_at(c("cat","sens","spec","me","vme", "n"), as.double) %>%
+  bind_rows(species_R) %>%
+  bind_rows(species_NWT) %>%
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n) %>%
+  mutate(Sensitivity=round(as.numeric(Sensitivity)*100,2)) %>%
+  mutate(Specificity=round(as.numeric(Specificity)*100,2)) %>%
+  mutate(ME=round(as.numeric(ME)*100,2)) %>%
+  mutate(VME=round(as.numeric(VME)*100,2)) %>%
+  mutate(`Categorical agreement`=round(as.numeric(`Categorical agreement`)*100,2)) %>%
+  rename(Prediction=out)%>%
+  mutate(species=gsub("Klebsiella quasipneumoniae subsp. quasipneumoniae","Kq subsp. quasipneumoniae",species)) %>%
+    mutate(species=gsub("Klebsiella quasipneumoniae subsp. similipneumoniae","Kq subsp. similipneumoniae",species)) %>%
+    mutate(species=gsub("Klebsiella variicola subsp. variicola","Klebsiella variicola",species)) %>%
+  select(species, Prediction, `Categorical agreement`, Sensitivity, Specificity, ME, VME) %>%
+  rename(`Major error`=ME, `Very major error`=VME, Label=species)
 
+species_summary_table_long <- species_summary_table %>%
+  pivot_longer(
+   `Categorical agreement`:`Very major error`, 
+    names_to = "Evaluation metric",
+    values_to = "value"
+)
+
+
+species_summary_table_long <- species_summary_table_long%>%
+  mutate(`Evaluation metric` = factor(`Evaluation metric`, levels=c("Categorical agreement", "Sensitivity", "Specificity", "Major error", "Very major error"))) 
+  
+species.labels=c("<br>*Klebsiella pnemoniae* species complex (N=12,167)",
+                 "<br>*Klebsiella pneumoniae* (N=10,634)",
+                 "<br>*Kq* subsp. <br>*quasipneumoniae* (N=189)",
+                 "<br>*Kq* subsp. <br>*similipneumoniae* (N=286)",
+                 "<br>*Klebsiella variicola* (N=1,037)")
+
+species_summary_table_long <- species_summary_table_long%>%
+  mutate(Label = factor(Label, levels=c("Klebsiella pneumoniae species complex", "Klebsiella pneumoniae", "Kq subsp. quasipneumoniae", "Kq subsp. similipneumoniae", "Klebsiella variicola"))) 
+
+
+rules_species_summary_plot <-
+species_summary_table_long %>% ggplot(aes(x=(as.numeric(value)), y=fct_rev(Label)))+
+  geom_point(aes(colour=Prediction), position=pd) +
+  geom_text_repel(aes(label=as.numeric(value), colour=Prediction), size=3,position=pd)+
+  scale_color_manual(values=c("R"="IndianRed", "NWT"="#78638a")) +
+   scale_y_discrete(labels=rev(species.labels)) +
+ facet_wrap(~ `Evaluation metric`, ncol = 5, scales="free_x")+
+  theme_linedraw() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_markdown())+
+  facetted_pos_scales(
+    x = list(`Evaluation metric` == "Categorical agreement" ~ scale_x_continuous(breaks = c(80,100), limits = c(70, 100)),
+             `Evaluation metric` == "Sensitivity" ~ scale_x_continuous(breaks = c(80,100), limits = c(70, 100)),
+             `Evaluation metric` == "Specificity" ~ scale_x_continuous(breaks = c(80, 100), limits = c(70, 100)),
+             `Evaluation metric` == "Major error" ~ scale_x_continuous(breaks = c(0,10), limits = c(0,10)),
+             `Evaluation metric` == "Very major error"~ scale_x_continuous(breaks = c(10,20), limits = c(0, 30))
+  ))
+ 
+rules_species_summary_plot
+
+```
+
+# NOT ALGINED facet plot - combined LR models + rules-based classifier
+```{r}
+
+((model_summary_plot + ggtitle(label="a) Logistic regression models")) / (rules_species_summary_plot + ggtitle(label="b) Rules-based classifiers")) + plot_layout(guides="collect", axes="collect"))
+
+ggsave(height=8, width=12, file="figs/LRmodel_classifier_performance.png")
+ggsave(height=8, width=12, file="figs/LRmodel_classifier_performance.pdf")
+
+
+```
+
+# ALGINED facet plot - combined LR models + rules-based classifier
+```{r}
+species_summary_table_long$Category <- "Rules-based classifiers"
+model_summary_tab_long$Category <- "Logistic regression models"
+
+
+performance_summary <- rbind(species_summary_table_long, model_summary_tab_long)
+
+performance_summary <- performance_summary%>%
+  mutate(`Evaluation metric` = factor(`Evaluation metric`, levels=c("Categorical agreement", "Sensitivity", "Specificity", "Major error", "Very major error", "AIC"))) 
+  
+performance_summary <- performance_summary%>%
+  mutate(Label = factor(Label, levels=c("Model 1a: determinants", 
+           "Model 1b: determinant*aac6", 
+           "Model 2a: QRDR count + PMQR count + aac6", 
+           "Model 2b: QRDR count*aac6 + PMQR count*aac6","Klebsiella pneumoniae species complex", "Klebsiella pneumoniae", "Kq subsp. quasipneumoniae", "Kq subsp. similipneumoniae", "Klebsiella variicola"))) 
+
+performance_summary <- performance_summary%>%
+  mutate(Category = factor(Category, levels=c("Logistic regression models", "Rules-based classifiers"))) 
+
+y_labels=c("Model 1a: determinants"="Model 1a: determinants", 
+           "Model 1b: determinant*aac6"="Model 1b: determinant*aac6", 
+           "Model 2a: QRDR count + PMQR count + aac6" ="Model 2a: QRDR count + PMQR count + aac6",
+           "Model 2b: QRDR count*aac6 + PMQR count*aac6"="Model 2b: QRDR count*aac6 + PMQR count*aac6",
+           "Klebsiella pneumoniae species complex"="<br>*Klebsiella pnemoniae* species complex (N=12,167)",
+                 "Klebsiella pneumoniae"="<br>*Klebsiella pneumoniae* (N=10,634)",
+                 "Kq subsp. quasipneumoniae"="<br>*Kq* subsp. <br>*quasipneumoniae* (N=189)",
+                 "Kq subsp. similipneumoniae"="<br>*Kq* subsp. <br>*similipneumoniae* (N=286)",
+                 "Klebsiella variicola"="<br>*Klebsiella variicola* (N=1,037)")
+
+performance_summary_plot <-
+performance_summary %>% ggplot(aes(x=(as.numeric(value)), y=fct_rev(Label)))+
+  geom_point(aes(colour=Prediction), position=pd) +
+    geom_text_repel(aes(label=as.numeric(value), colour=Prediction), size=3,position=pd)+
+  scale_color_manual(values=c("R"="IndianRed", "NWT"="#78638a")) +
+facet_grid(rows=vars(Category), cols=vars(`Evaluation metric`), scales="free", drop=FALSE)+
+   scale_y_discrete(labels=(y_labels)) +
+  theme_linedraw() +
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank(),
+    axis.text.y = element_markdown())+
+  facetted_pos_scales(
+    x = list(`Evaluation metric` == "Categorical agreement" ~ scale_x_continuous(breaks = c(80,100), limits = c(70, 100)),
+             `Evaluation metric` == "Sensitivity" ~ scale_x_continuous(breaks = c(80,100), limits = c(70, 100)),
+             `Evaluation metric` == "Specificity" ~ scale_x_continuous(breaks = c(80, 100), limits = c(70, 100)),
+             `Evaluation metric` == "Major error" ~ scale_x_continuous(breaks = c(0,10), limits = c(0,10)),
+             `Evaluation metric` == "Very major error"~ scale_x_continuous(breaks = c(10,20), limits = c(0, 30))
+  ))
+
+ggsave(height=8, width=12, file="figs/LRmodel_classifier_performance_aligned.png")
+ggsave(height=8, width=12, file="figs/LRmodel_classifier_performance_aligned.pdf")
+```
 
 ## Figure 6 - classifier overall metrics, by ST, Country, Source Type, Infection status
 
