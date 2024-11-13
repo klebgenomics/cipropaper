@@ -357,12 +357,51 @@ annual_multires_plot <- annual_multires %>%
 
 ```
 
+
+# MIC prediction vs. year
+```{r MIC_year}
+
+MIC_profile_colours <- c("<=0.25 [0.25-0.25] mg/L" = "#add8e6", "0.25 [0.25-0.5] mg/L"="#72bcd4", "0.5 [0.5-1] mg/L"="#78638a", "1 [1-2] mg/L"="#fadbd8", "2 [1-2] mg/L"="#f1948a", "2 [2-4] mg/L"="#C64343", ">=4 [4-4] mg/L"="#4A0404")
+
+MIC_pathogenwatch <- PW %>% mutate(MIC_prediction=case_when(rules_category==0 ~ "<=0.25 [0.25-0.25] mg/L",
+                                  rules_category==1 ~ "0.25 [0.25-0.5] mg/L",
+                                  rules_category==2 ~ "0.5 [0.5-1] mg/L",
+                                  rules_category==3 ~ "1 [1-2] mg/L",
+                                  rules_category==4 ~ "2 [1-2] mg/L",
+                                  rules_category==5 ~ "2 [2-4] mg/L",
+                                  rules_category==6 ~ "1 [1-2] mg/L",
+                                  rules_category==7 ~ "2 [1-2] mg/L",
+                                  rules_category==8 ~ "2 [2-4] mg/L",
+                                  rules_category==9 ~ ">=4 [4-4] mg/L",
+                                  TRUE ~ NA
+                                  ))
+
+
+
+MIC_pathogenwatch$MIC_prediction <- factor(MIC_pathogenwatch$MIC_prediction, levels=c("<=0.25 [0.25-0.25] mg/L", "0.25 [0.25-0.5] mg/L", "0.5 [0.5-1] mg/L", "1 [1-2] mg/L", "2 [1-2] mg/L", "2 [2-4] mg/L",">=4 [4-4] mg/L"))
+
+
+MIC_year_pathogenwatch_plot <- MIC_pathogenwatch  %>% 
+  filter(species=="Klebsiella pneumoniae")  %>% 
+   group_by(year, MIC_prediction) %>% count() %>%
+  ggplot(aes(fill=as.factor(MIC_prediction), y=n, x=year)) + 
+    geom_bar(position="fill", stat="identity")+
+    scale_fill_manual(values=MIC_profile_colours)+
+    theme_minimal()+
+  scale_y_continuous(labels = scales::percent)+
+  labs(x="Year", y="Percentage of genomes", fill="MIC\nprediction")
+
+MIC_year_pathogenwatch_plot
+
+
+```
+
 ``` {r}
-kp_profile_year / annual_multires_plot +
+kp_profile_year / annual_multires_plot /MIC_year_pathogenwatch_plot+
   plot_annotation(tag_levels = 'a')
 
-ggsave(height=8, width=8, file="profile_year.pdf")
-ggsave(height=8, width=8, file="profile_year.png")
+ggsave(height=10, width=8, file="profile_year.pdf")
+ggsave(height=10, width=8, file="profile_year.png")
 
 ```
 
@@ -457,5 +496,8 @@ kp_profile_country <- PW %>% filter(species=="Klebsiella pneumoniae") %>%
   labs(x="Country", y="Percentage of genomes") + 
   theme(legend.position="none") +
   geom_text(aes(y=1.05, label = paste0("N=", countryN)))
+
+```
+
 
 ```
