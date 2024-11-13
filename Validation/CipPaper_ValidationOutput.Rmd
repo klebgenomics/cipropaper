@@ -1,0 +1,260 @@
+---
+title: "Validation"
+author: "Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(janitor)
+library(ggrepel)
+```
+
+# load data
+``` {r load_data}
+MBIRA <- read_delim("HowdenGorrie_ValidationOutput/Prediction_Pheno_summary.csv")
+HowdenGorrie <- read_delim("MBIRA_ValidationOutput/Prediction_Pheno_summary.csv")
+
+```
+
+## set colours
+``` {r set_colours}
+wt_colours <- c(`non-wt (I/R)`="IndianRed", `wt (S)`= "LightBlue")
+res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
+res_colours2 <- c("I"="black", "R"="IndianRed", "S"="LightBlue", "NWT"="black")
+res_colours3 <- c("NWT I"="#78638a", "NWT R"="IndianRed", "WT S"="LightBlue")
+```
+
+``` {r}
+# position dodge for coefficient plots
+pd <- position_dodge(width=0.8)
+```
+
+
+## functions to calculate PPV and categorical agreement from models
+``` {r model_performance_functions}
+
+cat_agree <- function(xtabs) {
+  return((xtabs[1,1]+xtabs[2,2])/sum(xtabs))
+}
+
+ppv <- function(xtabs) {
+  return(xtabs[2,2]/sum(xtabs[2,]))
+}
+
+npv <- function(xtabs) {
+  return(xtabs[1,1]/sum(xtabs[1,]))
+}
+
+#sens <- function(pred,truth) {
+#  xtabs <- table(pred,truth)
+#  return(xtabs[2,2]/(sum(xtabs[,2])))
+#}
+
+sens <- function(xtabs) {
+  return(xtabs[2,2]/(sum(xtabs[,2])))
+}
+
+spec <- function(xtabs) {
+  return(xtabs[1,1]/(sum(xtabs[,1])))
+}
+
+me <- function(xtabs) {
+  return(xtabs[2,1]/sum(xtabs[,1]))
+}
+
+vme <- function(xtabs) {
+  return(xtabs[1,2]/sum(xtabs[,2]))
+}
+
+metrics <- function(xtabs) {
+  return(list(cat=cat_agree(xtabs),
+              ppv=ppv(xtabs),
+              npv=npv(xtabs),
+              sens=sens(xtabs),
+              spec=spec(xtabs),
+              me=me(xtabs),
+              vme=vme(xtabs),
+              n=sum(xtabs), 
+              summary=c("cat"=cat_agree(xtabs),
+                    "sens"=sens(xtabs),
+                    "spec"=spec(xtabs),
+                    "me"=me(xtabs),
+                    "vme"=vme(xtabs),
+                    "n"=sum(xtabs)
+              )
+          )
+    )
+}
+
+``` 
+
+
+
+```{r}
+
+MBIRA_SI <- MBIRA %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+MBIRA_R <- MBIRA %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+MBIRA_SIR <- rbind(MBIRA_SI, MBIRA_R) %>% distinct()
+
+subset(MBIRA_SIR, Group == "pred_S_I")$S_I
+table(MBIRA_SIR$S_I)
+
+MBIRA_R_prediction <- matrix(c(subset(MBIRA_SIR, Group == "pred_S_I")$S_I, 
+                subset(MBIRA_SIR, Group == "pred_S_I")$R,
+                subset(MBIRA_SIR, Group == "pred_R")$S_I,
+                subset(MBIRA_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(MBIRA_R_prediction) <- c('S_I','R')
+rownames(MBIRA_R_prediction) <- c('pred_S_I','pred_R')
+MBIRA_R_prediction_summary<-metrics(MBIRA_R_prediction)
+
+MBIRA_NWT_prediction <- matrix(c(subset(MBIRA_SIR, Group == "pred_S")$S, 
+                subset(MBIRA_SIR, Group == "pred_S")$I_R,
+                subset(MBIRA_SIR, Group == "pred_I_R")$S,
+                subset(MBIRA_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(MBIRA_NWT_prediction) <- c('S','I_R')
+rownames(MBIRA_NWT_prediction) <- c('pred_S','pred_I_R')
+MBIRA_NWT_prediction_summary<-metrics(MBIRA_NWT_prediction)
+```
+
+```{r}
+
+HowdenGorrie_SI <- HowdenGorrie %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+HowdenGorrie_R <- HowdenGorrie %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+HowdenGorrie_SIR <- rbind(HowdenGorrie_SI, HowdenGorrie_R) %>% distinct()
+
+subset(HowdenGorrie_SIR, Group == "pred_S_I")$S_I
+table(HowdenGorrie_SIR$S_I)
+
+HowdenGorrie_R_prediction <- matrix(c(subset(HowdenGorrie_SIR, Group == "pred_S_I")$S_I, 
+                subset(HowdenGorrie_SIR, Group == "pred_S_I")$R,
+                subset(HowdenGorrie_SIR, Group == "pred_R")$S_I,
+                subset(HowdenGorrie_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(HowdenGorrie_R_prediction) <- c('S_I','R')
+rownames(HowdenGorrie_R_prediction) <- c('pred_S_I','pred_R')
+HowdenGorrie_R_prediction_summary<-metrics(HowdenGorrie_R_prediction)
+
+HowdenGorrie_NWT_prediction <- matrix(c(subset(HowdenGorrie_SIR, Group == "pred_S")$S, 
+                subset(HowdenGorrie_SIR, Group == "pred_S")$I_R,
+                subset(HowdenGorrie_SIR, Group == "pred_I_R")$S,
+                subset(HowdenGorrie_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(HowdenGorrie_NWT_prediction) <- c('S','I_R')
+rownames(HowdenGorrie_NWT_prediction) <- c('pred_S','pred_I_R')
+HowdenGorrie_NWT_prediction_summary<-metrics(HowdenGorrie_NWT_prediction)
+```
+
+```{r combine}
+validation_summary <- rbind(MBIRA_R_prediction_summary$summary,
+                            MBIRA_NWT_prediction_summary$summary, 
+                            HowdenGorrie_R_prediction_summary$summary, 
+                            HowdenGorrie_NWT_prediction_summary$summary)
+
+
+validation_summary <- as_tibble(validation_summary) %>%
+  rename(Sensitivity=sens, Specificity=spec, `Major error`=me, `Very major error`=vme, `Categorical agreement`=cat) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT"))%>%
+  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie")) %>%
+  mutate(Dataset_label=c(paste0(Dataset, " (N=", n, ")")))
+
+  
+#  mutate(Dataset=c((paste0("MBIRA", " (N=", n, ")")), 
+ #                  (paste0("MBIRA", " (N=", n, ")")),
+  #                 (paste0("HowdenGorrie", " (N=", n, ")")),
+   #                (paste0("HowdenGorrie", " (N=", n, ")"))))
+
+validation_summary_long <- validation_summary %>% 
+  pivot_longer(
+    cols = `Categorical agreement`:`Very major error`, 
+    names_to = "Evaluation metric",
+    values_to = "value"
+)
+
+
+validation_summary_long <- validation_summary_long%>%
+  mutate(`Evaluation metric` = factor(`Evaluation metric`, levels=c("Categorical agreement", "Sensitivity", "Specificity", "Major error", "Very major error"))) 
+  
+
+validation_plot <-
+validation_summary_long %>% ggplot(aes(x=value, y=Dataset_label))+
+  geom_point(aes(colour=Prediction)) +
+  geom_text_repel(aes(label=paste0(round(value*100, 0), "%"), colour=Prediction), size=4)+
+  scale_color_manual(values=c("R"="IndianRed", "NWT"="#78638a")) +
+ facet_wrap(~ `Evaluation metric`, ncol = 5)+
+  theme_linedraw() +
+  scale_x_continuous(labels = scales::percent, breaks = c(0.4,0.8))+
+  theme(
+    axis.title.x = element_blank(),
+    axis.title.y = element_blank())
+validation_plot
+ggsave(height=3, width=10, file="../figs/Fig7_extValidation.png")
+ggsave(height=3, width=10, file="../figs/Fig7_extValidation.pdf")
+
+
+```
