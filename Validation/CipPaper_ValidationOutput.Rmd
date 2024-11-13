@@ -41,8 +41,8 @@ library(ggrepel)
 
 # load data
 ``` {r load_data}
-MBIRA <- read_delim("HowdenGorrie_ValidationOutput/Prediction_Pheno_summary.csv")
-HowdenGorrie <- read_delim("MBIRA_ValidationOutput/Prediction_Pheno_summary.csv")
+MBIRA <- read_delim("MBIRA_ValidationOutput/Prediction_Pheno_summary.csv")
+HowdenGorrie <- read_delim("HowdenGorrie_ValidationOutput/Prediction_Pheno_summary.csv")
 
 ```
 
@@ -243,8 +243,8 @@ validation_summary_long <- validation_summary_long%>%
 
 validation_plot <-
 validation_summary_long %>% ggplot(aes(x=value, y=Dataset_label))+
-  geom_point(aes(colour=Prediction)) +
-  geom_text_repel(aes(label=paste0(round(value*100, 0), "%"), colour=Prediction), size=4)+
+  geom_point(aes(colour=Prediction), position=pd) +
+  geom_text_repel(aes(label=paste0(round(value*100, 0), "%"), colour=Prediction), size=3,position=pd)+
   scale_color_manual(values=c("R"="IndianRed", "NWT"="#78638a")) +
  facet_wrap(~ `Evaluation metric`, ncol = 5)+
   theme_linedraw() +
