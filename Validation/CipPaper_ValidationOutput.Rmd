@@ -262,7 +262,7 @@ HowdenGorrie_MIC <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredRIS.png", nat
 MBIRA_MIC <- readPNG("MBIRA_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 MBIRA_DD <- readPNG("MBIRA_ValidationOutput/DD_PredRIS.png", native=TRUE)
 
-patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=88)")+ wrap_elements(MBIRA_DD) + ggtitle("C) MBIRA Disk Diffusion (N=160)"))/wrap_elements(validation_plot) + ggtitle("D) Evaluation metrics")
+patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=86)")+ wrap_elements(MBIRA_DD) + ggtitle("C) MBIRA Disk Diffusion (N=159)"))/wrap_elements(validation_plot) + ggtitle("D) Evaluation metrics")
 
 ggsave(height=9, width=10, file="../figs/Fig7_extValidation.png")
 ggsave(height=9, width=10, file="../figs/Fig7_extValidation.pdf")
