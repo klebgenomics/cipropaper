@@ -1,0 +1,5 @@
+Prediction,Dataset,Categorical agreement,Sensitivity,Specificity,ME,VME,N
+R,MBIRA,60%,86.24%,38.97%,61.03%,13.76%,245
+NWT,MBIRA,68.57%,90.58%,40.19%,59.81%,9.42%,245
+R,HowdenGorrie,90.09%,96.08%,74.58%,25.42%,3.92%,212
+NWT,HowdenGorrie,82.08%,83.51%,66.67%,33.33%,16.49%,212

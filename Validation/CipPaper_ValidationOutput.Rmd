@@ -120,8 +120,8 @@ metrics <- function(xtabs) {
 ``` 
 
 
-
-```{r}
+# data wrangling MBIRA
+```{r MBIRA}
 
 MBIRA_SI <- MBIRA %>% 
   rename(Group=...1) %>% 
@@ -165,7 +165,7 @@ colnames(MBIRA_NWT_prediction) <- c('S','I_R')
 rownames(MBIRA_NWT_prediction) <- c('pred_S','pred_I_R')
 MBIRA_NWT_prediction_summary<-metrics(MBIRA_NWT_prediction)
 ```
-
+# data wrangling HowdenGorrie
 ```{r}
 
 HowdenGorrie_SI <- HowdenGorrie %>% 
@@ -210,7 +210,7 @@ colnames(HowdenGorrie_NWT_prediction) <- c('S','I_R')
 rownames(HowdenGorrie_NWT_prediction) <- c('pred_S','pred_I_R')
 HowdenGorrie_NWT_prediction_summary<-metrics(HowdenGorrie_NWT_prediction)
 ```
-
+# Combining validation sets
 ```{r combine}
 validation_summary <- rbind(MBIRA_R_prediction_summary$summary,
                             MBIRA_NWT_prediction_summary$summary, 
@@ -218,17 +218,27 @@ validation_summary <- rbind(MBIRA_R_prediction_summary$summary,
                             HowdenGorrie_NWT_prediction_summary$summary)
 
 
+validation_summary_table <- as_tibble(validation_summary) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT"))%>%
+  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie")) %>%
+    rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, N=n) %>%
+  mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
+  mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
+  mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
+  mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
+  mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%  select(Prediction, Dataset, `Categorical agreement`, Sensitivity, Specificity, ME, VME, N)
+write_csv(validation_summary_table, "../tables/Table3_extValidation_evalMetrics.csv", na="-")
+ 
+```
+# NOT USED - Validation summary plot 
+```{r validation_plot, eval=FALSE}
+
+  
 validation_summary <- as_tibble(validation_summary) %>%
   rename(Sensitivity=sens, Specificity=spec, `Major error`=me, `Very major error`=vme, `Categorical agreement`=cat) %>%
   mutate(Prediction=c("R", "NWT","R", "NWT"))%>%
   mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie")) %>%
   mutate(Dataset_label=c(paste0(Dataset, " (N=", n, ")")))
-
-  
-#  mutate(Dataset=c((paste0("MBIRA", " (N=", n, ")")), 
- #                  (paste0("MBIRA", " (N=", n, ")")),
-  #                 (paste0("HowdenGorrie", " (N=", n, ")")),
-   #                (paste0("HowdenGorrie", " (N=", n, ")"))))
 
 validation_summary_long <- validation_summary %>% 
   pivot_longer(
@@ -255,16 +265,37 @@ validation_summary_long %>% ggplot(aes(x=value, y=Dataset_label))+
     axis.title.y = element_blank())
 validation_plot
 
-
 ```
+
+# Figure 7 - external validation
 ```{r}
 HowdenGorrie_MIC <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 MBIRA_MIC <- readPNG("MBIRA_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 MBIRA_DD <- readPNG("MBIRA_ValidationOutput/DD_PredRIS.png", native=TRUE)
 
-patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=86)")+ wrap_elements(MBIRA_DD) + ggtitle("C) MBIRA Disk Diffusion (N=159)"))/wrap_elements(validation_plot) + ggtitle("D) Evaluation metrics")
+patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=86)")+ wrap_elements(MBIRA_DD) + ggtitle("C) MBIRA Disk Diffusion (N=159)"))
 
-ggsave(height=9, width=10, file="../figs/Fig7_extValidation.png")
-ggsave(height=9, width=10, file="../figs/Fig7_extValidation.pdf")
+ggsave(height=5, width=10, file="../figs/Fig7_extValidation.png")
+ggsave(height=5, width=10, file="../figs/Fig7_extValidation.pdf")
+
+```
+
+
+
+
+# Figure S11 - external validation (supplementary - distribution vs. genotype profile and phenotype vs. genotype profile)
+```{r}
+HowdenGorrie_dist <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+HowdenGorrie_profile <- readPNG("HowdenGorrie_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+MBIRA_MIC_dist <- readPNG("MBIRA_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+MBIRA_DD_dist <- readPNG("MBIRA_ValidationOutput/DD_PredGroup.png", native=TRUE)
+MBIRA_profile <- readPNG("MBIRA_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+(wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile ")+ wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=86) - MIC distribution vs.\n genotype profile")) /  ((wrap_elements(MBIRA_DD_dist) +ggtitle("D) MBIRA (N=159) - Disk diffusion distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("E) MBIRA (N=245) - observed phenotype vs.\n genotype profile ")))
+                                                                                                                                                  
+
+ggsave(height=9, width=15, file="../figs/FigS11_extValidation_genoprofiles.png")
+ggsave(height=9, width=15, file="../figs/FigS11_extValidation_genoprofiles.pdf")
 
 ```
