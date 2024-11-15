@@ -45,28 +45,41 @@ library(pheatmap)
 # load data
 ``` {r}
 
-#Pathogenwatch data downloaded Nov 7, 2024
+#Pathogenwatch data downloaded Nov 15, 2024
 
-kpn_kleborate_pathogenwatch <- read.delim(file = "Klebsiella pneumoniae__kleborate.csv.gz", header = TRUE, sep = ",")
-kpn_metadata_pathogenwatch <- read.delim(file = "Klebsiella pneumoniae__metadata.csv.gz", header = TRUE, sep = ",")
+Kp <- read.delim(file = "Klebsiella pneumoniae__kleborate.csv.gz", header = TRUE, sep = ",")
+Kp <- read.delim(file = "Klebsiella pneumoniae__metadata.csv.gz", header = TRUE, sep = ",") %>% 
+  rename(`Genome.ID`="id") %>% full_join(Kp,by="Genome.ID")
 
-# K. africana doesn't have kleborate results
-#ka_kleborate_pathogenwatch <- read.delim(file = "Klebsiella africana__kleborate.csv.gz", header = TRUE, sep = ",")
-#ka_metadata_pathogenwatch <- read.delim(file = "Klebsiella africana__metadata.csv.gz", header = TRUE, sep = ",")
 
-# K quasipneumoniae doesn't have kleborate results
-#kqp_kleborate_pathogenwatch <- read.delim(file = "Klebsiella quasipneumoniae__kleborate.csv.gz", header = TRUE, sep = ",")
-#kq_metadata_pathogenwatch <- read.delim(file = "Klebsiella quasipneumoniae__metadata.csv.gz", header = TRUE, sep = ",")
+Ka <- read.delim(file = "Klebsiella africana__kleborate.csv.gz", header = TRUE, sep = ",")
+Ka <- read.delim(file = "Klebsiella africana__metadata.csv.gz", header = TRUE, sep = ",") %>% 
+  rename(`Genome.ID`="id") %>% full_join(Ka,by="Genome.ID")
 
-# K quasivariicola doesn't have kleborate results
-#kqv_kleborate_pathogenwatch <- read.delim(file = "Klebsiella quasivariicola__kleborate.csv.gz", header = TRUE, sep = ",")
-#kqv_metadata_pathogenwatch <- read.delim(file = "Klebsiella quasivariicola__metadata.csv.gz", header = TRUE, sep = ",")
 
-# K variicola doesn't have kleborate results
-#kv_kleborate_pathogenwatch <- read.delim(file = "Klebsiella variicola__kleborate.csv.gz", header = TRUE, sep = ",")
-#kv_metadata_pathogenwatch <- read.delim(file = "Klebsiella variicola__metadata.csv.gz", header = TRUE, sep = ",")
+Kqp <- read.delim(file = "Klebsiella quasipneumoniae__kleborate.csv.gz", header = TRUE, sep = ",")
+Kqp <- read.delim(file = "Klebsiella quasipneumoniae__metadata.csv.gz", header = TRUE, sep = ",")%>% 
+  rename(`Genome.ID`="id") %>% full_join(Kqp,by="Genome.ID")
 
-pathogenwatch <- left_join(kpn_kleborate_pathogenwatch, kpn_metadata_pathogenwatch, by = c("Genome.ID" = "id")) %>% distinct() %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species)
+
+
+Kqv <- read.delim(file = "Klebsiella quasivariicola__kleborate.csv.gz", header = TRUE, sep = ",")
+Kqv <- read.delim(file = "Klebsiella quasivariicola__metadata.csv.gz", header = TRUE, sep = ",")%>% 
+  rename(`Genome.ID`="id") %>% full_join(Kqv,by="Genome.ID")
+
+
+Kv <- read.delim(file = "Klebsiella variicola__kleborate.csv.gz", header = TRUE, sep = ",")
+Kv <- read.delim(file = "Klebsiella variicola__metadata.csv.gz", header = TRUE, sep = ",")%>% 
+  rename(`Genome.ID`="id") %>% full_join(Kv,by="Genome.ID")
+
+
+pathogenwatch <- bind_rows(Kp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
+                Ka %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
+                Kqv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
+                Kv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
+                Kqp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species))
+
+
 ```
 # genotype labels and colours
 ```{r labels_colours}
@@ -83,18 +96,20 @@ profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5
 ``` {r}
 
 pathogenwatch <- pathogenwatch %>%
+  mutate(Country = gsub("Viet Nam", "Vietnam", Country)) %>%
+  mutate(Country = gsub("UAE", "United Arab Emirates", Country)) %>%
+  mutate(Country = gsub("UK", "United Kingdom", Country)) %>%
+  mutate(Country = gsub("KSA", "Saudi Arabia", Country)) %>%
+  mutate(Country = if_else(grepl("United Kingdom", Country), "United Kingdom", Country)) %>%
   mutate(aac6 = ifelse(grepl("aac\\(6\\'\\)-Ib-cr", AGly_acquired, ignore.case = T), 1, 0)) %>%
-  mutate(GyrA_mutations = str_count(Flq_mutations, "GyrA")) %>%
-  mutate(ParC_mutations = str_count(Flq_mutations, "ParC")) %>% 
-  mutate(QRDR_mutations = GyrA_mutations+ParC_mutations) %>%
-  mutate(qnr = str_count(Flq_acquired, "qnr")) %>%
-  mutate(qep = str_count(Flq_acquired, "qep")) %>%
-  mutate(acquired_genes = qnr+qep) %>%
   mutate(`GyrA-83` = str_count(Flq_mutations, "GyrA-83")) %>%
   mutate(`GyrA-87` = str_count(Flq_mutations, "GyrA-87")) %>%
   mutate(`ParC-80` = str_count(Flq_mutations, "ParC-80")) %>% 
   mutate(`ParC-84` = str_count(Flq_mutations, "ParC-84")) %>%
-  mutate(wt_QRDR = if_else(QRDR_mutations==0, 1, 0)) 
+  mutate(QRDR_mutations = `GyrA-83`+`GyrA-87`+`ParC-80`+`ParC-84`) %>%
+  mutate(qnr = str_count(Flq_acquired, "qnr")) %>%
+  mutate(qep = str_count(Flq_acquired, "qep")) %>%
+  mutate(acquired_genes = qnr+qep)
 
 ```
 
@@ -106,7 +121,7 @@ pathogenwatch <- pathogenwatch %>%
 
 pathogenwatch <- pathogenwatch %>% 
   mutate(QRDR_mutations_exclude = str_count(Flq_mutations, "GyrA-87G") + str_count(Flq_mutations, "GyrA-87H")) %>% 
-  mutate(PMQR_exclude = str_count(Flq_acquired, "qnrB1.v1") + str_count(Flq_acquired, "qnrB1.v2")) %>%
+  mutate(PMQR_exclude = str_count(Flq_acquired, "qnrB1.v")) %>%
   mutate(rules_category = case_when(
     QRDR_mutations==0 & acquired_genes==0 & aac6==0 ~ 0, # no determinants -> WT S
     QRDR_mutations==1 & acquired_genes==0 & aac6==0 & QRDR_mutations_exclude==1 ~ 0, # non-associated QRDR solo -> WT S
@@ -120,26 +135,12 @@ pathogenwatch <- pathogenwatch %>%
     QRDR_mutations==0 & acquired_genes>=2 ~ 8, # ≥2 PMQR -> NWT R
     QRDR_mutations>=1 & acquired_genes>=1 ~ 9, # QRDR + PMQR -> NWT R
     TRUE ~ NA
-  ))
-
-# check all are assigned
-table(pathogenwatch$rules_category)
-table(is.na(pathogenwatch$rules_category))
-pathogenwatch %>% filter(is.na(rules_category)) %>% select(Flq_mutations, Flq_acquired)
-
-# assign S/R predictions to categories
-pathogenwatch <- pathogenwatch %>% 
-  mutate(predSIR = if_else(rules_category<=2, "S", "R")) %>%
-  mutate(predSIR = replace(predSIR, rules_category==2, "I")) %>%
-  mutate(predSIR = factor(predSIR, levels=c("S", "I", "R"))) %>%
+  )) %>%
   mutate(predR = if_else(rules_category<=2, "S", "R")) %>%
   mutate(predR = factor(predR, levels=c("S", "R"))) %>%
   mutate(predNWT = if_else(rules_category<2, "WT", "NWT")) %>%
   mutate(predNWT = factor(predNWT, levels=c("WT", "NWT")))
-
-table(pathogenwatch$rules_category, pathogenwatch$predR)
-table(pathogenwatch$rules_category, pathogenwatch$predSIR)
-table(pathogenwatch$rules_category, pathogenwatch$predNWT)
+  
 
 PW <- pathogenwatch
 
@@ -181,6 +182,8 @@ PW %>% group_by(ST, species, predR) %>% count() %>% right_join(ST_freq) %>% muta
 PW %>% group_by(ST, species, rules_category) %>% count() %>% right_join(ST_freq) %>% mutate(pc=n/N) %>% filter(ST=="ST347")
 
 PW %>% group_by(ST, species, rules_category) %>% count() %>% right_join(ST_freq) %>% mutate(pc=n/N) %>% filter(rules_category==0) %>% arrange(-N)
+
+PW %>% filter(ST=="ST347") %>% group_by(rules_category) %>% count()
 ```
 
 # fig - ST vs determinants, with ST freq
@@ -499,5 +502,150 @@ kp_profile_country <- PW %>% filter(species=="Klebsiella pneumoniae") %>%
 
 ```
 
+
+
+#Non-Kp KpSC
+
+
+# nkp plot
+```{r}
+PMQR_freq_nkp <- PW %>%
+    filter(species!="Klebsiella pneumoniae") %>%
+    select(Flq_acquired) %>%
+    separate_longer_delim(Flq_acquired, delim = ";") %>%
+    filter(Flq_acquired !="") %>%
+    filter(Flq_acquired !="-") %>%
+    group_by(Flq_acquired) %>% 
+    count() %>% arrange(-n)
+
+QRDR_freq_nkp <- PW %>%
+    filter(species!="Klebsiella pneumoniae") %>%
+    select(Flq_mutations) %>%
+    separate_longer_delim(Flq_mutations, delim = ";") %>%
+    filter(Flq_mutations !="") %>%
+    filter(Flq_mutations !="-") %>%
+    group_by(Flq_mutations) %>% 
+    count() %>% arrange(-n)
+
+
+PW_dat_variant_nkp <- PW %>% 
+  filter(species!="Klebsiella pneumoniae") %>%
+  mutate(Flq_acquired_mut=paste(Flq_acquired, Flq_mutations, sep = ";")) %>%
+  mutate(aac6_label=if_else(aac6==1, "aac6", "")) %>%
+  mutate(variant=paste(Flq_acquired_mut, aac6_label, sep = ";")) %>%
+  filter(!is.na(ST)) %>%
+  mutate(variant = gsub(' ', '', variant)) %>%
+  select(ST, variant) %>%
+  separate_longer_delim(variant, delim = ";") %>%
+  filter(variant!="-") %>%
+  filter(variant!="")
+
+# ST vs variant, for STs with N>=100 (nkp)
+PW_dat_nkp <- PW_dat_variant_nkp %>%
+  filter(ST %in% ST_freq$ST[ST_freq$species!="Klebsiella pneumoniae" & ST_freq$N>=20]) %>%
+  group_by(ST, variant) %>% count() %>%
+  left_join(ST_freq, by="ST") %>%
+  mutate(pc=n/N)
+
+# order of variants
+variant_order_nkp <- c("aac6", 
+                   PMQR_freq_nkp$Flq_acquired[PMQR_freq_nkp$Flq_acquired %in% PW_dat_nkp$variant],
+                   QRDR_freq_nkp$Flq_mutations[QRDR_freq_nkp$Flq_mutations %in% PW_dat_nkp$variant]
+                  )
+
+nkp_st_order <- c(ST_freq %>% filter(species=="Klebsiella variicola subsp. variicola") %>% filter(N>=20) %>% pull(ST), ST_freq %>% filter(grepl("subsp. quasi", species)) %>% filter(N>=20) %>% pull(ST), ST_freq %>% filter(grepl("subsp. simili", species)) %>% filter(N>=20) %>% pull(ST))
+
+spp_cols <- c("Klebsiella pneumoniae"="black","Klebsiella quasipneumoniae subsp. quasipneumoniae"="navy","Klebsiella quasipneumoniae subsp. similipneumoniae"="maroon","Klebsiella variicola subsp. variicola"="orange",
+            "Klebsiella quasivariicola"="khaki3","Klebsiella africana"="navajowhite4")
+
+
+```
+
+# variants vs ST heatmap
+``` {r}
+ST_cat_plot_nkp <- ST_cat %>%
+  ggplot(aes(x=ST, y=pc, fill=as.character(rules_category))) +
+  geom_col() + 
+  xlim(nkp_st_order) +
+  theme_bw() + 
+  scale_fill_manual(values=profile_colours, labels=profile_labels)+
+  theme(axis.text.x = element_text(size=7, angle=60, hjust=1),
+        axis.title.x = element_text(size=9),
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt"),
+        legend.position="bottom",
+        legend.text=element_text(size=7), 
+        legend.key.size = unit(3,'mm'),
+        legend.title=element_text(size=9)) + 
+  labs(x="ST", y="Genotype\nprofile", fill="") + 
+  guides(fill = guide_legend(nrow=3))
+
+variant_heatmap_nkp <- PW_dat_nkp %>%
+  ggplot(aes(x=ST, y=variant, fill=pc)) +
+  geom_tile() + 
+  xlim(nkp_st_order) +
+  scale_y_discrete(limits=rev(variant_order_nkp)) +
+  theme_bw() + 
+  theme(axis.text.x = element_text(size=7, angle=60, hjust=1), 
+        axis.text.y = element_text(size=7),
+        axis.title.x = element_text(size=9),
+        axis.title.y = element_text(size=9, angle=0),
+        legend.title = element_text(size=9),
+        plot.margin = margin(0, 0, 0, 0, "pt")) + 
+  labs(fill="Variant freq within ST", y="Variant", x="ST") + 
+  scale_fill_gradient(low="#fbe8a5", high="navy") + 
+  theme(legend.position="bottom")
+
+var_freq_plot_nkp <- PW_dat_variant_nkp %>% 
+  group_by(variant) %>% count() %>% 
+  ggplot(aes(y=variant, x=n)) + 
+  geom_col(fill="navy") + 
+  theme_bw() + 
+  geom_text(aes(y=variant, x=n+5, label=n), size=2.5, adj=00) +
+  theme(axis.text.x = element_text(size=8, angle=60, hjust=1),
+        axis.title.x = element_text(size=9),
+        plot.margin = margin(0, 0, 0, 0, "pt"), 
+        axis.text.y=element_blank()) + 
+  ylim(rev(variant_order_nkp)) + 
+  xlim(c(0,600)) + 
+  labs(x="Variant freq", y="")
+
+ST_freq_plot_nkp <- ST_freq %>%
+  ggplot(aes(x=ST, y=N)) +
+  geom_col(aes(fill=species))  + 
+  scale_fill_manual(values=spp_cols) + 
+  xlim(nkp_st_order) +
+  theme_bw() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt"), legend.position="none") + 
+  labs(x="", y="\nST\nfreq")
+
+ST_predR_plot_nkp <- ST_pred %>%
+  ggplot(aes(x=ST, y=pc)) +
+  geom_col(aes(fill=species)) + 
+  scale_fill_manual(values=spp_cols) +
+  xlim(nkp_st_order) +
+  theme_bw() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.y = element_text(angle=0, size=9),
+        plot.margin = margin(0, 10, 0, 0, "pt"),
+        legend.position="none") + 
+  labs(x="", y="Predicted\nR")
+```
+
+# Figure S12 - PW determinants vs ST (non-Kp)
+
+``` {r}
+(ST_freq_plot_nkp + plot_spacer() + plot_layout(widths=c(6,1))) /
+    (variant_heatmap_nkp + var_freq_plot_nkp + plot_layout(widths=c(6,1))) /
+    (ST_predR_plot_nkp + plot_spacer() + plot_layout(widths=c(6,1))) /
+    (ST_cat_plot_nkp + plot_spacer() + plot_layout(widths=c(6,1))) + plot_layout(heights=c(1,6,1,1))
+
+ggsave(height=9, width=7, file="PW_geneSTheatmapNonKp.png")
+
+ggsave(height=9, width=7, file="PW_geneSTheatmapNonKp.pdf")
+ 
+```
 
 ```
