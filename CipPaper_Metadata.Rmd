@@ -41,7 +41,7 @@ library(patchwork)
 # load data
 ``` {r}
 pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
-
+pheno[pheno == "-"] <- NA
 ```
 
 ## colours
@@ -65,26 +65,6 @@ c25 <- c(
 ```
 
 
-# preparing data
-
-```{r preparing data for plotting}
-
-# Source details column
-pheno$Source.details <- tolower(pheno$Source.details)
-pheno$Source.details <- str_to_title(pheno$Source.details)
-pheno$Source.details <- sub("faeces", "Feces", pheno$Source.details)
-pheno$Source.details <- sub("Faecal", "Feces", pheno$Source.details)
-pheno$Source.details <- sub("Faeces", "Feces", pheno$Source.details)
-pheno$Source.details <- sub("^$", "Unknown", pheno$Source.details)
-pheno$Source.details <- sub("Rectum", "Rectal Swab", pheno$Source.details)
-pheno$Source.details <- sub("Resp", "Respiratory", pheno$Source.details)
-pheno$Source.details <- sub("Stool", "Feces", pheno$Source.details)
-pheno$Source.details[is.na(pheno$Source.details)] <- "Unknown"
-pheno %>% count(Source.details, sort=TRUE)
-
-pheno$Source.Type <- sub("Feed", "Food", pheno$Source.Type)
-pheno$Source.Type <- sub("Food", "Food/Feed", pheno$Source.Type)
-```
 # Source Type
 ```{r}
 
