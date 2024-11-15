@@ -271,9 +271,8 @@ validation_plot
 ```{r}
 HowdenGorrie_MIC <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 MBIRA_MIC <- readPNG("MBIRA_ValidationOutput/MIC_PredRIS.png", native=TRUE)
-MBIRA_DD <- readPNG("MBIRA_ValidationOutput/DD_PredRIS.png", native=TRUE)
 
-patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=57)")+ wrap_elements(MBIRA_DD) + ggtitle("C) MBIRA Disk Diffusion (N=96)"))
+patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=228)"))
 
 ggsave(height=5, width=10, file="../figs/Fig7_extValidation.png")
 ggsave(height=5, width=10, file="../figs/Fig7_extValidation.pdf")
@@ -289,10 +288,9 @@ HowdenGorrie_dist <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredGroup.png", 
 HowdenGorrie_profile <- readPNG("HowdenGorrie_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
 
 MBIRA_MIC_dist <- readPNG("MBIRA_ValidationOutput/MIC_PredGroup.png", native=TRUE)
-MBIRA_DD_dist <- readPNG("MBIRA_ValidationOutput/DD_PredGroup.png", native=TRUE)
 MBIRA_profile <- readPNG("MBIRA_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
 
-(wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile ")+ wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=57) - MIC distribution vs.\n genotype profile")) /  ((wrap_elements(MBIRA_DD_dist) +ggtitle("D) MBIRA (N=96) - Disk diffusion distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("E) MBIRA (N=153) - observed phenotype vs.\n genotype profile ")))
+(wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile "))/ (wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=228) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("D) MBIRA (N=228) - observed phenotype vs.\n genotype profile"))
                                                                                                                                                   
 
 ggsave(height=9, width=15, file="../figs/FigS11_extValidation_genoprofiles.png")
