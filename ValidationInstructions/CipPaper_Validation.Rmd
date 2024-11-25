@@ -68,6 +68,13 @@ profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5
 
 # Kleborate + AST merging
 ``` {r}
+
+# Quality control 
+kleborate<-kleborate%>%
+  filter(species_match=="strong") %>%
+  filter(contig_count<=500)%>% 
+  filter(total_size<=6132846 & total_size>=4969898)
+
 # filter for relevant Kleborate columns
 kleborate <- kleborate %>% select(strain, species, cipro_prediction, cipro_prediction_group)
 
@@ -148,12 +155,15 @@ rules_MIC_distributionRS <- cipro_antibiogram %>%
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
   scale_fill_manual(values = res_colours3)+
-  geom_vline(aes(xintercept = 5.5), color = "black") +
+  #geom_vline(aes(xintercept = 5.5), color = "black") +
   #annotate("text", x=5.75, y=2900, label="R", size=2.5)+
-  geom_vline(aes(xintercept = 4.5), color = "black") +
+  #geom_vline(aes(xintercept = 4.5), color = "black") +
   #annotate("text", x=4.25, y=2900, label="S", size=2.5)+
   theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=20),
+        axis.text.y = element_text(size=20),
+        axis.title.y = element_text(size=20),
+        axis.title.x = element_text(size=20))
 
 rules_MIC_distributionRS
 
@@ -170,13 +180,16 @@ rules_DD_distributionRS <- cipro_antibiogram %>%
   labs(title = "B) Disk zones, by classifer prediction", y = "Number of genomes", x ="Disk zone (mm)",
        linetype = "Disk diffusion \nbreakpoints") +
         scale_fill_manual(values = res_colours3)+
-  geom_vline(aes(xintercept = 21.5), color = "black") +
+  #geom_vline(aes(xintercept = 21.5), color = "black") +
   #annotate("text", x=20.5, y=400, label="R", size=2.5)+
-  geom_vline(aes(xintercept = 24.5), color = "black") +
+  #geom_vline(aes(xintercept = 24.5), color = "black") +
   #geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
   #annotate("text", x=25.5, y=400, label="S", size=2.5)+
   theme_minimal() + 
-  theme(axis.text.x = element_text(size=11))+
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=20),
+        axis.text.y = element_text(size=20),
+        axis.title.y = element_text(size=20),
+        axis.title.x = element_text(size=20))+
   theme(legend.position = "none")
 
 rules_DD_distributionRS
@@ -198,12 +211,15 @@ rules_MIC_distribution <- cipro_antibiogram %>%
   scale_fill_manual(values=profile_colours, labels=profile_labels)+
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
-  geom_vline(aes(xintercept = 5.5), color = "black") +
+  #geom_vline(aes(xintercept = 5.5), color = "black") +
   #annotate("text", x=5.75, y=2900, label="R", size=2.5)+
-  geom_vline(aes(xintercept = 4.5), color = "black") +
+  #geom_vline(aes(xintercept = 4.5), color = "black") +
   #annotate("text", x=4.25, y=2900, label="S", size=2.5)+
   theme_minimal()+
-  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=20),
+        axis.text.y = element_text(size=20),
+        axis.title.y = element_text(size=20),
+        axis.title.x = element_text(size=20))
 
 rules_MIC_distribution
 
@@ -216,16 +232,18 @@ rules_DD_distribution <- cipro_antibiogram %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   ggplot(aes(as.numeric(Measurement), fill = as.factor(rules_category))) + geom_bar() + 
   scale_fill_manual(values=profile_colours, labels=profile_labels)+
-  geom_vline(aes(xintercept = 21.5), color = "black") +
+ # geom_vline(aes(xintercept = 21.5), color = "black") +
   #annotate("text", x=20.5, y=400, label="R", size=2.5)+
-  geom_vline(aes(xintercept = 24.5), color = "black", linetype=2) +
-  geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
+  #geom_vline(aes(xintercept = 24.5), color = "black", linetype=2) +
+  #geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
   #annotate("text", x=26.5, y=400, label="S", size=2.5)+
   theme_minimal()+
   labs(y = "Number of genomes", x="Disk zone (mm)", title="B) Disk zones, by genotype profile") +
   theme_minimal() + 
-  theme(axis.text.x = element_text(size=11))+
-  theme(axis.text.x = element_text(angle = 45, hjust=1, size=11))
+  theme(axis.text.x = element_text(angle = 45, hjust=1, size=20),
+        axis.text.y = element_text(size=20),
+        axis.title.y = element_text(size=20),
+        axis.title.x = element_text(size=20))
 rules_DD_distribution
 
 ggsave(width=8, height=9, file="ValidationOutput/DD_PredGroup.pdf")
