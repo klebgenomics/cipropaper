@@ -293,7 +293,7 @@ MBIRA_profile <- readPNG("MBIRA_ValidationOutput/StackedBar_PredGroup_SIR.png", 
 (wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile "))/ (wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=228) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("D) MBIRA (N=228) - observed phenotype vs.\n genotype profile"))
                                                                                                                                                   
 
-ggsave(height=9, width=15, file="../figs/FigS11_extValidation_genoprofiles.png")
-ggsave(height=9, width=15, file="../figs/FigS11_extValidation_genoprofiles.pdf")
+ggsave(height=9, width=11, file="../figs/FigS11_extValidation_genoprofiles.png")
+ggsave(height=9, width=11, file="../figs/FigS11_extValidation_genoprofiles.pdf")
 
 ```
