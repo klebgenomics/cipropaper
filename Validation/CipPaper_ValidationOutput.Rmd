@@ -44,6 +44,7 @@ library(patchwork)
 ``` {r load_data}
 MBIRA <- read_delim("MBIRA_ValidationOutput/Prediction_Pheno_summary.csv")
 HowdenGorrie <- read_delim("HowdenGorrie_ValidationOutput/Prediction_Pheno_summary.csv")
+AGAR <- read_delim("AGAR_ValidationOutput/Prediction_Pheno_summary.csv")
 
 ```
 
@@ -210,17 +211,67 @@ colnames(HowdenGorrie_NWT_prediction) <- c('S','I_R')
 rownames(HowdenGorrie_NWT_prediction) <- c('pred_S','pred_I_R')
 HowdenGorrie_NWT_prediction_summary<-metrics(HowdenGorrie_NWT_prediction)
 ```
+
+# data wrangling AGAR
+```{r}
+
+AGAR_SI <- AGAR %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+
+AGAR_R <- AGAR %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+AGAR_SIR <- rbind(AGAR_SI, AGAR_R) %>% distinct()
+
+subset(AGAR_SIR, Group == "pred_S_I")$S_I
+table(AGAR_SIR$S_I)
+
+AGAR_R_prediction <- matrix(c(subset(AGAR_SIR, Group == "pred_S_I")$S_I, 
+                subset(AGAR_SIR, Group == "pred_S_I")$R,
+                subset(AGAR_SIR, Group == "pred_R")$S_I,
+                subset(AGAR_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(AGAR_R_prediction) <- c('S_I','R')
+rownames(AGAR_R_prediction) <- c('pred_S_I','pred_R')
+AGAR_R_prediction_summary<-metrics(AGAR_R_prediction)
+
+AGAR_NWT_prediction <- matrix(c(subset(AGAR_SIR, Group == "pred_S")$S, 
+                subset(AGAR_SIR, Group == "pred_S")$I_R,
+                subset(AGAR_SIR, Group == "pred_I_R")$S,
+                subset(AGAR_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(AGAR_NWT_prediction) <- c('S','I_R')
+rownames(AGAR_NWT_prediction) <- c('pred_S','pred_I_R')
+AGAR_NWT_prediction_summary<-metrics(AGAR_NWT_prediction)
+```
+
 # Combining validation sets
 ```{r combine}
 validation_summary <- rbind(MBIRA_R_prediction_summary$summary,
                             MBIRA_NWT_prediction_summary$summary, 
                             HowdenGorrie_R_prediction_summary$summary, 
-                            HowdenGorrie_NWT_prediction_summary$summary)
+                            HowdenGorrie_NWT_prediction_summary$summary,
+                            AGAR_R_prediction_summary$summary, 
+                            AGAR_NWT_prediction_summary$summary)
 
 
 validation_summary_table <- as_tibble(validation_summary) %>%
-  mutate(Prediction=c("R", "NWT","R", "NWT"))%>%
-  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie")) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT"))%>%
+  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie", "AGAR", "AGAR")) %>%
     rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
@@ -236,8 +287,8 @@ write_csv(validation_summary_table, "../tables/Table3_extValidation_evalMetrics.
   
 validation_summary <- as_tibble(validation_summary) %>%
   rename(Sensitivity=sens, Specificity=spec, `Major error`=me, `Very major error`=vme, `Categorical agreement`=cat) %>%
-  mutate(Prediction=c("R", "NWT","R", "NWT"))%>%
-  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie")) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT"))%>%
+  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie", "AGAR", "AGAR")) %>%
   mutate(Dataset_label=c(paste0(Dataset, " (N=", n, ")")))
 
 validation_summary_long <- validation_summary %>% 
@@ -271,8 +322,9 @@ validation_plot
 ```{r}
 HowdenGorrie_MIC <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 MBIRA_MIC <- readPNG("MBIRA_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+AGAR_MIC <- readPNG("AGAR_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 
-patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=228)"))
+patch <- (wrap_elements(HowdenGorrie_MIC) +ggtitle("A) HowdenGorrie MIC (N=212)") + wrap_elements(MBIRA_MIC) + ggtitle("B) MBIRA MIC (N=228)")+ wrap_elements(AGAR_MIC) + ggtitle("C) AGAR MIC (N=485)"))
 
 ggsave(height=5, width=10, file="../figs/Fig7_extValidation.png")
 ggsave(height=5, width=10, file="../figs/Fig7_extValidation.pdf")
@@ -290,7 +342,10 @@ HowdenGorrie_profile <- readPNG("HowdenGorrie_ValidationOutput/StackedBar_PredGr
 MBIRA_MIC_dist <- readPNG("MBIRA_ValidationOutput/MIC_PredGroup.png", native=TRUE)
 MBIRA_profile <- readPNG("MBIRA_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
 
-(wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile "))/ (wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=228) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("D) MBIRA (N=228) - observed phenotype vs.\n genotype profile"))
+AGAR_dist <- readPNG("AGAR_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+AGAR_profile <- readPNG("AGAR_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+(wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile "))/ (wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=228) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("D) MBIRA (N=228) - observed phenotype vs.\n genotype profile")) / (wrap_elements(AGAR_dist) +ggtitle("C) AGAR (N=485) - MIC distribution vs.\n genotype profile") + wrap_elements(AGAR_profile) + ggtitle("D) AGAR (N=485) - observed phenotype vs.\n genotype profile"))
                                                                                                                                                   
 
 ggsave(height=9, width=11, file="../figs/FigS11_extValidation_genoprofiles.png")
