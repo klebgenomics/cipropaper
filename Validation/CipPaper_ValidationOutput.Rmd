@@ -345,7 +345,7 @@ MBIRA_profile <- readPNG("MBIRA_ValidationOutput/StackedBar_PredGroup_SIR.png", 
 AGAR_dist <- readPNG("AGAR_ValidationOutput/MIC_PredGroup.png", native=TRUE)
 AGAR_profile <- readPNG("AGAR_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
 
-(wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile "))/ (wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=228) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("D) MBIRA (N=228) - observed phenotype vs.\n genotype profile")) / (wrap_elements(AGAR_dist) +ggtitle("C) AGAR (N=485) - MIC distribution vs.\n genotype profile") + wrap_elements(AGAR_profile) + ggtitle("D) AGAR (N=485) - observed phenotype vs.\n genotype profile"))
+(wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile "))/ (wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=228) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("D) MBIRA (N=228) - observed phenotype vs.\n genotype profile")) / (wrap_elements(AGAR_dist) +ggtitle("E) AGAR (N=485) - MIC distribution vs.\n genotype profile") + wrap_elements(AGAR_profile) + ggtitle("F) AGAR (N=485) - observed phenotype vs.\n genotype profile"))
                                                                                                                                                   
 
 ggsave(height=9, width=11, file="../figs/FigS11_extValidation_genoprofiles.png")
