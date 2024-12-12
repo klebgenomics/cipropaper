@@ -150,7 +150,7 @@ rules_MIC_distributionRS <- cipro_antibiogram %>%
   filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
   mutate(cipro_prediction=factor(cipro_prediction, levels=c("WT S", "NWT I", "NWT R"))) %>%
   ggplot(aes(as.factor(round(as.numeric(Measurement), digits=2)), fill = cipro_prediction)) + geom_bar() + 
-  labs(title = "A) MIC, by classifer prediction", y = "Number of genomes", x="MIC (mg/L)", 
+  labs(title = "", y = "Number of genomes", x="MIC (mg/L)", 
        linetype = "MIC breakpoints", fill="Classifier prediction") +
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
@@ -177,7 +177,7 @@ rules_DD_distributionRS <- cipro_antibiogram %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   mutate(cipro_prediction=factor(cipro_prediction, levels=c("WT S", "NWT I", "NWT R"))) %>%
   ggplot(aes(as.numeric(Measurement), fill = cipro_prediction)) + geom_bar() + 
-  labs(title = "B) Disk zones, by classifer prediction", y = "Number of genomes", x ="Disk zone (mm)",
+  labs(title = "", y = "Number of genomes", x ="Disk zone (mm)",
        linetype = "Disk diffusion \nbreakpoints") +
         scale_fill_manual(values = res_colours3)+
   #geom_vline(aes(xintercept = 21.5), color = "black") +
@@ -207,7 +207,7 @@ rules_MIC_distribution <- cipro_antibiogram %>%
   filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
   ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), fill = as.factor(rules_category))) + geom_bar() + 
   labs(x = "MIC (mg/L)", y = "Number of genomes", 
-       linetype = "MIC breakpoints", title="A) MIC, by genotype profile", fill="Genotype profile") +
+       linetype = "MIC breakpoints", title="", fill="Genotype profile") +
   scale_fill_manual(values=profile_colours, labels=profile_labels)+
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
@@ -238,7 +238,7 @@ rules_DD_distribution <- cipro_antibiogram %>%
   #geom_vline(aes(xintercept = 25.5), color = "black", linetype=2) +
   #annotate("text", x=26.5, y=400, label="S", size=2.5)+
   theme_minimal()+
-  labs(y = "Number of genomes", x="Disk zone (mm)", title="B) Disk zones, by genotype profile") +
+  labs(y = "Number of genomes", x="Disk zone (mm)", title="") +
   theme_minimal() + 
   theme(axis.text.x = element_text(angle = 45, hjust=1, size=20),
         axis.text.y = element_text(size=20),
