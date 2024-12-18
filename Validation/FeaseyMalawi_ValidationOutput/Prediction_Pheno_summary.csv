@@ -1,0 +1,14 @@
+"","S","I","R"
+"pred_S",192,114,56
+"pred_I",0,5,31
+"pred_R",4,11,324
+"0^ QRDR, 0 PMQR, 0 aac6",166,31,19
+"0 QRDR, 0 PMQR, 1 aac6",26,83,37
+"0 QRDR, qnrB1, 0 aac6",0,5,31
+"1 QRDR, 0 PMQR, 0 aac6",0,0,2
+"1 QRDR, 0 PMQR, 1 aac6",0,2,3
+">1 QRDR, 0 PMQR, * aac6",1,0,33
+"0 QRDR, 1^ PMQR, 0 aac6",0,2,39
+"0 QRDR, 1 PMQR, 1 aac6",1,5,171
+"0 QRDR, >1 PMQR, * aac6",0,0,0
+">0 QRDR, >0 PMQR, * aac6",2,2,76
