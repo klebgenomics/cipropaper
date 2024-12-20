@@ -49,7 +49,7 @@ Milan <- read_delim("MilanSanRafaelle_ValidationOutput/Prediction_Pheno_summary.
 HailuEthiopia <- read_delim("HailuEthiopia_ValidationOutput/Prediction_Pheno_summary.csv")
 FeaseyMalawi <- read_delim("FeaseyMalawi_ValidationOutput/Prediction_Pheno_summary.csv")
 KayamaJapan <- read_delim("KayamaJapan_ValidationOutput/Prediction_Pheno_summary.csv")
-
+EUSCAPE_EURECA <- read_delim("EURECA_EUSCAPE_ValidationOutput/Prediction_Pheno_summary.csv")
 ```
 
 ## set colours
@@ -453,6 +453,54 @@ rownames(FeaseyMalawi_NWT_prediction) <- c('pred_S','pred_I_R')
 FeaseyMalawi_NWT_prediction_summary<-metrics(FeaseyMalawi_NWT_prediction)
 ```
 
+
+# data wrangling EUSCAPE_EURECA
+```{r}
+
+EUSCAPE_EURECA_SI <- EUSCAPE_EURECA %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+
+EUSCAPE_EURECA_R <- EUSCAPE_EURECA %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+EUSCAPE_EURECA_SIR <- rbind(EUSCAPE_EURECA_SI, EUSCAPE_EURECA_R) %>% distinct()
+
+subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$S_I
+table(EUSCAPE_EURECA_SIR$S_I)
+
+EUSCAPE_EURECA_R_prediction <- matrix(c(subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$S_I, 
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$R,
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$S_I,
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(EUSCAPE_EURECA_R_prediction) <- c('S_I','R')
+rownames(EUSCAPE_EURECA_R_prediction) <- c('pred_S_I','pred_R')
+EUSCAPE_EURECA_R_prediction_summary<-metrics(EUSCAPE_EURECA_R_prediction)
+
+EUSCAPE_EURECA_NWT_prediction <- matrix(c(subset(EUSCAPE_EURECA_SIR, Group == "pred_S")$S, 
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_S")$I_R,
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_I_R")$S,
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(EUSCAPE_EURECA_NWT_prediction) <- c('S','I_R')
+rownames(EUSCAPE_EURECA_NWT_prediction) <- c('pred_S','pred_I_R')
+EUSCAPE_EURECA_NWT_prediction_summary<-metrics(EUSCAPE_EURECA_NWT_prediction)
+```
+
 # Combining validation sets
 ```{r combine}
 validation_summary <- rbind(MBIRA_R_prediction_summary$summary,
@@ -468,13 +516,16 @@ validation_summary <- rbind(MBIRA_R_prediction_summary$summary,
                             KayamaJapan_R_prediction_summary$summary, 
                             KayamaJapan_NWT_prediction_summary$summary,
                             FeaseyMalawi_R_prediction_summary$summary, 
-                            FeaseyMalawi_NWT_prediction_summary$summary 
+                            FeaseyMalawi_NWT_prediction_summary$summary, 
+                            EUSCAPE_EURECA_R_prediction_summary$summary,
+                            EUSCAPE_EURECA_NWT_prediction_summary$summary
+                            
                             )
 
 
 validation_summary_table <- as_tibble(validation_summary) %>%
-  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT"))%>%
-  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie", "AGAR", "AGAR", "MilanSanRafaelle", "MilanSanRafaelle", "HailuEthiopia", "HailuEthiopia", "KayamaJapan", "KayamaJapan", "FeaseyMalawi", "FeaseyMalawi")) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT","R", "NWT"))%>%
+  mutate(Dataset=c("MBIRA", "MBIRA", "HowdenGorrie", "HowdenGorrie", "AGAR", "AGAR", "MilanSanRafaelle", "MilanSanRafaelle", "HailuEthiopia", "HailuEthiopia", "KayamaJapan", "KayamaJapan", "FeaseyMalawi", "FeaseyMalawi", "EUSCAPE_EURECA", "EUSCAPE_EURECA")) %>%
     rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
@@ -534,6 +585,8 @@ HailuEthiopia_DD <- readPNG("HailuEthiopia_ValidationOutput/DD_PredRIS.png", nat
 KayamaJapan_MIC <- readPNG("KayamaJapan_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 FeaseyMalawi_DD <- readPNG("FeaseyMalawi_ValidationOutput/DD_PredRIS.png", native=TRUE)
 
+EUSCAPE_EURECA_MIC <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+
 patch <- (wrap_elements(HowdenGorrie_MIC) +
             ggtitle("A) HowdenGorrie MIC (N=212)") +
             wrap_elements(MBIRA_MIC) + 
@@ -547,12 +600,14 @@ patch <- (wrap_elements(HowdenGorrie_MIC) +
              wrap_elements(KayamaJapan_MIC) +
             ggtitle("F) Kayama Japan MIC (N=834)")+
             wrap_elements(FeaseyMalawi_DD) +
-            ggtitle("G) Feasey Malawi DD (N=737)")   
+            ggtitle("G) Feasey Malawi DD (N=737)") +
+            wrap_elements(EUSCAPE_EURECA_MIC) +
+            ggtitle("H) EUSCAPE & EURECA MIC (N=2133)")  
           )+
   plot_layout(ncol = 3)
 
-ggsave(height=10, width=10, file="../figs/Fig7_extValidation.png")
-ggsave(height=10, width=10, file="../figs/Fig7_extValidation.pdf")
+ggsave(height=10, width=13, file="../figs/Fig7_extValidation.png")
+ggsave(height=10, width=13, file="../figs/Fig7_extValidation.pdf")
 
 ```
 
@@ -583,7 +638,9 @@ Kayama_profile <- readPNG("KayamaJapan_ValidationOutput/StackedBar_PredGroup_SIR
 
 Feasey_dist <- readPNG("FeaseyMalawi_ValidationOutput/DD_PredGroup.png", native=TRUE)
 Feasey_profile <- readPNG("FeaseyMalawi_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
-                        
+         
+EUSCAPE_EURECA_dist <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+EUSCAPE_EURECA_profile <- readPNG("EURECA_EUSCAPE_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)               
 
 (wrap_elements(HowdenGorrie_dist) +ggtitle("A) HowdenGorrie (N=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("B) HowdenGorrie (N=212) - observed phenotype vs.\n genotype profile")) /
 (wrap_elements(MBIRA_MIC_dist) +ggtitle("C) MBIRA (N=228) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_profile) + ggtitle("D) MBIRA (N=228) - observed phenotype vs.\n genotype profile")) /
@@ -591,8 +648,8 @@ Feasey_profile <- readPNG("FeaseyMalawi_ValidationOutput/StackedBar_PredGroup_SI
 (wrap_elements(Milan_dist) +ggtitle("G) Milan SanRafaelle (N=198) - MIC distribution vs.\n genotype profile") + wrap_elements(Milan_profile) + ggtitle("H) Milan SanRafaelle (N=198) - observed phenotype vs.\n genotype profile")) /
 (wrap_elements(Hailu_dist) +ggtitle("I) Hailu Ethiopia (N=70) - DD distribution vs.\n genotype profile") + wrap_elements(Hailu_profile) + ggtitle("J) Hailu Ethiopia (N=70) - observed phenotype vs.\n genotype profile")) /
 (wrap_elements(Kayama_dist) +ggtitle("K) Kayama Japan (N=834) - MIC distribution vs.\n genotype profile") + wrap_elements(Kayama_profile) + ggtitle("L) Kayama Japan (N=834) - observed phenotype vs.\n genotype profile")) /
-  (wrap_elements(Feasey_dist) +ggtitle("M) Feasey Malawi (N=737) - MIC distribution vs.\n genotype profile") + wrap_elements(Feasey_profile) + ggtitle("N) Feasey Malawi (N=737) - observed phenotype vs.\n genotype profile")) 
-                                                                                                                                                  
+  (wrap_elements(Feasey_dist) +ggtitle("M) Feasey Malawi (N=737) - MIC distribution vs.\n genotype profile") + wrap_elements(Feasey_profile) + ggtitle("N) Feasey Malawi (N=737) - observed phenotype vs.\n genotype profile")) /
+  (wrap_elements(EUSCAPE_EURECA_dist) +ggtitle("O) EURECA & EUSCAPE (N=2133) - MIC distribution vs.\n genotype profile") + wrap_elements(EUSCAPE_EURECA_profile) + ggtitle("P) EURECA & EUSCAPE (N=2133) - observed phenotype vs.\n genotype profile"))                                                                                                                                  
 
 ggsave(height=22, width=11, file="../figs/FigS11_extValidation_genoprofiles.png")
 ggsave(height=22, width=11, file="../figs/FigS11_extValidation_genoprofiles.pdf")
