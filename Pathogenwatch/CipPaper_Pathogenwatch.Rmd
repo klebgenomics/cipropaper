@@ -45,42 +45,44 @@ library(pheatmap)
 # load data
 ``` {r}
 
-#Pathogenwatch data downloaded Nov 15, 2024
+#Pathogenwatch data downloaded Feb 3, 2025
 
 Kp <- read.delim(file = "Klebsiella pneumoniae__kleborate.csv.gz", header = TRUE, sep = ",")
 Kp <- read.delim(file = "Klebsiella pneumoniae__metadata.csv.gz", header = TRUE, sep = ",") %>% 
   rename(`Genome.ID`="id") %>% full_join(Kp,by="Genome.ID")
-
+Kp <- read.delim(file = "Klebsiella pneumoniae__klebsiella-lincodes.csv.gz", header = TRUE, sep = ",") %>%  full_join(Kp,by="Genome.ID")
 
 Ka <- read.delim(file = "Klebsiella africana__kleborate.csv.gz", header = TRUE, sep = ",")
 Ka <- read.delim(file = "Klebsiella africana__metadata.csv.gz", header = TRUE, sep = ",") %>% 
   rename(`Genome.ID`="id") %>% full_join(Ka,by="Genome.ID")
-
+Ka <- read.delim(file = "Klebsiella africana__klebsiella-lincodes.csv.gz", header = TRUE, sep = ",") %>%  full_join(Ka,by="Genome.ID")
 
 Kqp <- read.delim(file = "Klebsiella quasipneumoniae__kleborate.csv.gz", header = TRUE, sep = ",")
 Kqp <- read.delim(file = "Klebsiella quasipneumoniae__metadata.csv.gz", header = TRUE, sep = ",")%>% 
   rename(`Genome.ID`="id") %>% full_join(Kqp,by="Genome.ID")
-
+Kqp <- read.delim(file = "Klebsiella quasipneumoniae__klebsiella-lincodes.csv.gz", header = TRUE, sep = ",") %>%  full_join(Kqp,by="Genome.ID")
 
 
 Kqv <- read.delim(file = "Klebsiella quasivariicola__kleborate.csv.gz", header = TRUE, sep = ",")
 Kqv <- read.delim(file = "Klebsiella quasivariicola__metadata.csv.gz", header = TRUE, sep = ",")%>% 
   rename(`Genome.ID`="id") %>% full_join(Kqv,by="Genome.ID")
-
+Kqv <- read.delim(file = "Klebsiella quasivariicola__klebsiella-lincodes.csv.gz", header = TRUE, sep = ",") %>%  full_join(Kqv,by="Genome.ID")
 
 Kv <- read.delim(file = "Klebsiella variicola__kleborate.csv.gz", header = TRUE, sep = ",")
 Kv <- read.delim(file = "Klebsiella variicola__metadata.csv.gz", header = TRUE, sep = ",")%>% 
   rename(`Genome.ID`="id") %>% full_join(Kv,by="Genome.ID")
+Kv <- read.delim(file = "Klebsiella variicola__klebsiella-lincodes.csv.gz", header = TRUE, sep = ",") %>%  full_join(Kv,by="Genome.ID")
 
-
-pathogenwatch <- bind_rows(Kp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
-                Ka %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
-                Kqv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
-                Kv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species),
-                Kqp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species))
-
+pathogenwatch <- bind_rows(Kp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
+                Ka %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
+                Kqv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
+                Kv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
+                Kqp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code))
 
 ```
+
+
+
 # genotype labels and colours
 ```{r labels_colours}
 profile_labels <- paste(
@@ -94,6 +96,8 @@ profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5
 ```
 ## count mutations and genes
 ``` {r}
+
+
 
 pathogenwatch <- pathogenwatch %>%
   mutate(Country = gsub("Viet Nam", "Vietnam", Country)) %>%
@@ -142,18 +146,43 @@ pathogenwatch <- pathogenwatch %>%
   mutate(predNWT = factor(predNWT, levels=c("WT", "NWT")))
   
 
-PW <- pathogenwatch
 
 ```
 
+# removing redundancy
+```{r}
 
-# numbers for text
-``` {r}
-# total genomes
-nrow(PW)
+# total genomes before filtering
+nrow(pathogenwatch)
+
+PW <- pathogenwatch
+
+# exclude LIN code = NA, country=NA
+PW <- PW[!(is.na(PW$LIN.code) | PW$LIN.code==""), ]
+PW <- PW[!(is.na(PW$Country)| PW$Country==""), ]
+PW <- PW[!(is.na(PW$Study.accession)| PW$Study.accession==""), ]
 
 # restrict to those with year & Country
 PW <- PW %>% filter(Country !="missing" & Country !="Other (International Space Station)") %>% filter(year>=2000)
+
+# total genomes after filtering 
+nrow(PW)
+
+# remove redundancy by study accession, country, year, LIN.code
+
+PW_lin<-PW[!duplicated(PW[,c('Study.accession','Country', 'year', 'LIN.code' )]),]
+
+PW_lin_rules<-PW[!duplicated(PW[,c('Study.accession','Country', 'year', 'LIN.code','rules_category' )]),]
+
+PW_lin_num<-PW[!duplicated(PW[,c('Study.accession','Country', 'year', 'LIN.code','aac6', 'QRDR_mutations','acquired_genes' )]),]
+
+PW_lin_mut<-PW[!duplicated(PW[,c('Study.accession','Country', 'year', 'LIN.code','aac6', 'Flq_mutations','Flq_acquired' )]),]
+
+```
+
+# numbers for text
+``` {r}
+
 
 # number included
 nrow(PW)
@@ -185,6 +214,9 @@ PW %>% group_by(ST, species, rules_category) %>% count() %>% right_join(ST_freq)
 
 PW %>% filter(ST=="ST347") %>% group_by(rules_category) %>% count()
 ```
+
+
+
 
 # fig - ST vs determinants, with ST freq
 ``` {r}
