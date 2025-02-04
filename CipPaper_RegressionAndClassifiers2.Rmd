@@ -1067,7 +1067,7 @@ rules_category_SIR_plot <- cipro_antibiogram %>%
   ggplot(aes(x=as.factor(rules_category), fill=factor(Resistance.phenotype, levels = c("S", "I", "R")))) + 
   geom_bar(position = "fill") + coord_flip() +
   scale_y_continuous(labels = scales::percent)+
-  labs(title="C) Observed phenotype distribution, per genotype profile", x="Genotype profile", y="Proportion (%)", fill="Phenotype") +
+  labs(title="C) Observed phenotype distribution, per genotype profile", x="Genotype profile", y="Proportion (%)", fill="Observed phenotype") +
   scale_fill_manual(values = res_colours)+
   scale_x_discrete(limits=rev, labels=profile_labels) +
   geom_text_repel(aes(label = after_stat(count)), stat = "count", size=3, direction="x", position=position_fill(0.4)) +
