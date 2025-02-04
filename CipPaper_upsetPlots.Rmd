@@ -806,13 +806,22 @@ ggsave("figs/FigS9_numQnr_DD_pheno.png", width=6, height=4)
 upset_aac6_simple_DD <- cipro_antibiogram %>% 
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   upset(
-      intersect=c("aac6", "QRDR_mutations","acquired_genes"),  # counts are converted to binary
-          labeller=ggplot2::as_labeller(c(
+      intersect=c("aac6","acquired_genes", "QRDR_mutations"),# counts are converted to binary
+      sort_sets=FALSE,
+      intersections=list(
+        'Outside of known sets',
+        "aac6",
+        "acquired_genes",
+        'QRDR_mutations',
+        c("aac6","acquired_genes"),
+        c("aac6","QRDR_mutations"),
+        c("acquired_genes","QRDR_mutations"),
+        c("aac6","acquired_genes","QRDR_mutations")),
+            sort_intersections=FALSE,
+        labeller=ggplot2::as_labeller(c(
         'QRDR_mutations'='QRDR mutations',
         'acquired_genes'='PMQR genes', 
-        'aac6'="aac(6')-Ib-cr")),      
-      set_sizes=F,
-  sort_intersections_by='degree',
+        'aac6'="aac(6`)-Ib-cr")),
       base_annotations=list( # add stacked barplot showing S/nonS
         'Percent of genomes'=list(
         aes=aes(x=intersection, fill=SRnwt),
@@ -849,13 +858,22 @@ upset_aac6_simple_DD
 upset_aac6_simple_MIC <- cipro_antibiogram %>% 
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
   upset(
-      intersect=c("aac6", "QRDR_mutations","acquired_genes"),  # counts are converted to binary
-          labeller=ggplot2::as_labeller(c(
+      intersect=c("aac6","acquired_genes", "QRDR_mutations"),# counts are converted to binary
+      sort_sets=FALSE,
+      intersections=list(
+        'Outside of known sets',
+        "aac6",
+        "acquired_genes",
+        'QRDR_mutations',
+        c("aac6","acquired_genes"),
+        c("aac6","QRDR_mutations"),
+        c("acquired_genes","QRDR_mutations"),
+        c("aac6","acquired_genes","QRDR_mutations")),
+        labeller=ggplot2::as_labeller(c(
         'QRDR_mutations'='QRDR mutations',
         'acquired_genes'='PMQR genes', 
-        'aac6'="aac(6')-Ib-cr")),      
-      set_sizes=F,
-      sort_intersections_by='degree',
+        'aac6'="aac(6`)-Ib-cr")),   
+      sort_intersections=FALSE,
       base_annotations=list( # add stacked barplot showing S/nonS
         'Percent of genomes'=list(
         aes=aes(x=intersection, fill=SRnwt),
