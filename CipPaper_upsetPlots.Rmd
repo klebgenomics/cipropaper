@@ -275,13 +275,23 @@ ggsave("figs/FigS6_numQRDR_DD_pheno.pdf", width=6, height=4)
 ggsave("figs/FigS6_numQRDR_DD_pheno.png", width=6, height=4)
 ```
 
-# Fig S3 panel a - upset plot of QRDR positions, absence of aac6/acquired genes, with MIC data
+# Fig S4 panel a - upset plot of QRDR positions, absence of aac6/acquired genes, with MIC data
 ``` {r}
 upset_QRDR_noAac6_MIC <- cipro_antibiogram %>% 
   filter(aac6==0 & acquired_genes==0) %>%
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
   upset(
-      intersect=c("GyrA-83","GyrA-87", "ParC-80","ParC-84","wt_QRDR"), # counts are converted to binary
+      intersect=c("ParC-84","ParC-80","GyrA-87","GyrA-83","wt_QRDR"), # counts are converted to binary
+        sort_sets=FALSE,
+      intersections=list(
+        'wt_QRDR',
+        "GyrA-83",
+        "GyrA-87",
+        c("GyrA-83","ParC-80"),
+        c("GyrA-83","ParC-84"),
+        c("GyrA-83","GyrA-87","ParC-80"),
+        c("GyrA-83","GyrA-87","ParC-84")),  
+        sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing WT/nonWT
@@ -310,16 +320,27 @@ upset_QRDR_noAac6_MIC <- cipro_antibiogram %>%
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
 
+upset_QRDR_noAac6_MIC
 ```
 
 
-# Fig S3 panel b - upset plot of QRDR positions, presence of aac6 but no other acquired genes, with MIC data
+# Fig S4 panel b - upset plot of QRDR positions, presence of aac6 but no other acquired genes, with MIC data
 ``` {r}
 upset_QRDR_aac6_MIC <- cipro_antibiogram %>% 
   filter(aac6==1 & acquired_genes==0) %>%
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
   upset(
-      intersect=c("GyrA-83","GyrA-87", "ParC-80","ParC-84","wt_QRDR"), # counts are converted to binary
+      intersect=c("ParC-84","ParC-80","GyrA-87","GyrA-83","wt_QRDR"), # counts are converted to binary
+        sort_sets=FALSE,
+      intersections=list(
+        'wt_QRDR',
+        "GyrA-83",
+        "GyrA-87",
+        c("GyrA-83","ParC-80"),
+        c("GyrA-83","ParC-84"),
+        c("GyrA-83","GyrA-87","ParC-80"),
+        c("GyrA-83","GyrA-87","ParC-84")),  
+        sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing WT/nonWT
@@ -348,16 +369,26 @@ upset_QRDR_aac6_MIC <- cipro_antibiogram %>%
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
-
+upset_QRDR_aac6_MIC
 ```
 
-# Fig S4 panel a - QRDR positions, absence of aac6/acquired genes, with DD data
+# Fig S5 panel a - QRDR positions, absence of aac6/acquired genes, with DD data
 ``` {r}
 upset_QRDR_noAac6_DD <- cipro_antibiogram %>% 
   filter(aac6==0 & acquired_genes==0) %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   upset(
-      intersect=c("GyrA-83","GyrA-87", "ParC-80","ParC-84","wt_QRDR"), # counts are converted to binary
+      intersect=c("ParC-84","ParC-80","GyrA-87","GyrA-83","wt_QRDR"), # counts are converted to binary
+        sort_sets=FALSE,
+      intersections=list(
+        'wt_QRDR',
+        "GyrA-83",
+        "GyrA-87",
+        c("GyrA-83","ParC-80"),
+        c("GyrA-83","ParC-84"),
+        c("GyrA-83","GyrA-87","ParC-80"),
+        c("GyrA-83","GyrA-87","ParC-84")),  
+        sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
@@ -392,14 +423,23 @@ upset_QRDR_noAac6_DD
 
 ```
 
-# Fig S4 panel b - QRDR positions, presence of aac6 but no other acquired genes, with DD data
+# Fig S5 panel b - QRDR positions, presence of aac6 but no other acquired genes, with DD data
 ``` {r}
 upset_QRDR_aac6_DD <- cipro_antibiogram %>% 
   filter(aac6==1 & acquired_genes==0) %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   upset(
-      intersect=c("GyrA-83","GyrA-87", "ParC-80","ParC-84","wt_QRDR"), # counts are converted to binary
-      set_sizes=(upset_set_size() +
+      intersect=c("ParC-84","ParC-80","GyrA-87","GyrA-83","wt_QRDR"), # counts are converted to binary
+        sort_sets=FALSE,
+      intersections=list(
+        'wt_QRDR',
+        "GyrA-83",
+        "GyrA-87",
+        c("GyrA-83","ParC-80"),
+        c("GyrA-83","ParC-84"),
+        c("GyrA-83","GyrA-87","ParC-80"),
+        c("GyrA-83","GyrA-87","ParC-84")),  
+        sort_intersections=FALSE,      set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
         'Percent of genomes'=list(
