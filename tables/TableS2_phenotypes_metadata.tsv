@@ -1207,7 +1207,7 @@ NK_H16_003	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	V
 NK_H16_004	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578378	SAMEA113605621	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2017
 NK_H16_005	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578379	SAMEA113605622	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2017
 NK_H16_006	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578380	SAMEA113605623	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
-NK_H16_007	ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	2023 v13.0	Vitek	-	-	ERR11578381	SAMEA113605624	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2017
+NK_H16_007	ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	2023 v13.0	-	-	-	ERR11578381	SAMEA113605624	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2017
 NK_H16_008	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578382	SAMEA113605625	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
 NK_H16_009	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578383	SAMEA113605626	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
 NK_H16_010	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578384	SAMEA113605627	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2017
@@ -1356,7 +1356,7 @@ NK_H2_019	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vi
 NK_H2_020	ciprofloxacin	R	==	2	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578548	SAMEA113605085	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
 NK_H2_021	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578549	SAMEA113605086	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
 NK_H2_022	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578550	SAMEA113605087	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
-NK_H2_023	ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	2023 v13.0	Vitek	-	-	ERR11578551	SAMEA113605088	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
+NK_H2_023	ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	2023 v13.0	-	-	-	ERR11578551	SAMEA113605088	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
 NK_H2_024	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578552	SAMEA113605089	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
 NK_H2_025	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578553	SAMEA113605090	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
 NK_H2_026	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	2023 v13.0	Vitek	-	-	ERR11578554	SAMEA113605091	PRJEB48268	Not_submitted	Iren Høyland Löhr	Human	human	Blood	Infection	Norway	-	2018
@@ -2708,58 +2708,58 @@ KGMAR-2020-717	ciprofloxacin	S	==	31	mm	Disk diffusion	EUCAST	2023 v13.0	-	-	-	S
 KGMAR-2020-725	ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	2023 v13.0	-	-	-	SRR18543837	SAMN17766517	PRJNA591480	35398801	Bjørn Tore Lunestad	Marine	Mytilus edulis	Unknown	Unknown	Norway	-	2020
 KGMAR-2020-749	ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	2023 v13.0	-	-	-	SRR18543836	SAMN17766518	PRJNA591480	35398801	Bjørn Tore Lunestad	Marine	Mytilus edulis	Unknown	Unknown	Norway	-	2020
 KGMAR-2020-763	ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	2023 v13.0	-	-	-	SRR18543835	SAMN17766519	PRJNA591480	35398801	Bjørn Tore Lunestad	Marine	Mytilus edulis	Unknown	Unknown	Norway	-	2020
-KV_05	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569507	SAMN09266806	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_11	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569508	SAMN09266812	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_28	ciprofloxacin	I	-	25	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569509	SAMN09266829	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_16	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569510	SAMN09266817	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_13	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569511	SAMN09266814	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_97	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569513	SAMN09266898	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_09	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569515	SAMN09266810	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_53	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569516	SAMN09266854	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_51	ciprofloxacin	S	-	27	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569518	SAMN09266852	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_49	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569519	SAMN09266850	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_12	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569520	SAMN09266813	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_42	ciprofloxacin	S	-	36	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569524	SAMN09266843	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_47	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569525	SAMN09266848	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_41	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569526	SAMN09266842	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_38	ciprofloxacin	S	-	28	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569528	SAMN09266839	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_34	ciprofloxacin	S	-	28	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569529	SAMN09266835	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_30	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569530	SAMN09266831	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_29	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569531	SAMN09266830	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_35	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569533	SAMN09266836	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_43	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569534	SAMN09266844	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_27	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569535	SAMN09266828	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_24	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569536	SAMN09266825	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_23	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569537	SAMN09266824	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_21	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569538	SAMN09266822	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_19	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569539	SAMN09266820	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_18	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569540	SAMN09266819	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_25	ciprofloxacin	S	-	40	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569541	SAMN09266826	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_17	ciprofloxacin	S	-	34	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569542	SAMN09266818	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_10	ciprofloxacin	S	-	27	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569544	SAMN09266811	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_08	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569545	SAMN09266809	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_07	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569546	SAMN09266808	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_82	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569547	SAMN09266883	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_52	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569548	SAMN09266853	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_48	ciprofloxacin	S	-	36	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569549	SAMN09266849	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_44	ciprofloxacin	S	-	26	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569550	SAMN09266845	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_45	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569551	SAMN09266846	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_39	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569552	SAMN09266840	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_46	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569553	SAMN09266847	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_02	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569555	SAMN09266803	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_01	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569556	SAMN09266802	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_03	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569557	SAMN09266804	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_111	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569608	SAMN09266912	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_50	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569609	SAMN09266851	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_54	ciprofloxacin	I	-	24	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569611	SAMN09266855	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_04	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569612	SAMN09266805	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_33	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569613	SAMN09266834	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_37	ciprofloxacin	S	-	26	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569614	SAMN09266838	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_32	ciprofloxacin	I	-	25	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569615	SAMN09266833	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_36	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569616	SAMN09266837	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_31	ciprofloxacin	I	-	25	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569617	SAMN09266832	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_26	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569618	SAMN09266827	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
-KV_22	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	Manual	-	-	SRR15569619	SAMN09266823	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_05	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569507	SAMN09266806	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_11	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569508	SAMN09266812	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_28	ciprofloxacin	I	-	25	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569509	SAMN09266829	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_16	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569510	SAMN09266817	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_13	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569511	SAMN09266814	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_97	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569513	SAMN09266898	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_09	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569515	SAMN09266810	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_53	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569516	SAMN09266854	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_51	ciprofloxacin	S	-	27	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569518	SAMN09266852	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_49	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569519	SAMN09266850	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_12	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569520	SAMN09266813	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_42	ciprofloxacin	S	-	36	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569524	SAMN09266843	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_47	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569525	SAMN09266848	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_41	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569526	SAMN09266842	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_38	ciprofloxacin	S	-	28	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569528	SAMN09266839	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_34	ciprofloxacin	S	-	28	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569529	SAMN09266835	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_30	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569530	SAMN09266831	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_29	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569531	SAMN09266830	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_35	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569533	SAMN09266836	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_43	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569534	SAMN09266844	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_27	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569535	SAMN09266828	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_24	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569536	SAMN09266825	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_23	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569537	SAMN09266824	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_21	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569538	SAMN09266822	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_19	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569539	SAMN09266820	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_18	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569540	SAMN09266819	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_25	ciprofloxacin	S	-	40	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569541	SAMN09266826	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_17	ciprofloxacin	S	-	34	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569542	SAMN09266818	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_10	ciprofloxacin	S	-	27	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569544	SAMN09266811	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_08	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569545	SAMN09266809	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_07	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569546	SAMN09266808	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_82	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569547	SAMN09266883	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_52	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569548	SAMN09266853	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_48	ciprofloxacin	S	-	36	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569549	SAMN09266849	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_44	ciprofloxacin	S	-	26	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569550	SAMN09266845	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_45	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569551	SAMN09266846	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_39	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569552	SAMN09266840	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_46	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569553	SAMN09266847	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_02	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569555	SAMN09266803	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_01	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569556	SAMN09266802	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_03	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569557	SAMN09266804	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_111	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569608	SAMN09266912	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_50	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569609	SAMN09266851	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_54	ciprofloxacin	I	-	24	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569611	SAMN09266855	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_04	ciprofloxacin	S	-	32	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569612	SAMN09266805	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_33	ciprofloxacin	S	-	30	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569613	SAMN09266834	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_37	ciprofloxacin	S	-	26	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569614	SAMN09266838	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_32	ciprofloxacin	I	-	25	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569615	SAMN09266833	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_36	ciprofloxacin	S	-	33	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569616	SAMN09266837	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_31	ciprofloxacin	I	-	25	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569617	SAMN09266832	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_26	ciprofloxacin	S	-	35	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569618	SAMN09266827	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
+KV_22	ciprofloxacin	S	-	31	mm	Disk diffusion	CLSI	-	-	-	-	SRR15569619	SAMN09266823	PRJNA473122	30563902	Gautam Dantas	Human	Human	Unknown	Infection	USA	St. Louis	2016-2017
 G20250036	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomerieux	-	ERR4785642	SAMEA6626874	PRJEB29740	39037209	KL Ravikumar	Human	human	Urine	Infection	India	Patna	2018
 G18250048	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomerieux	-	ERR4635712	SAMEA5818237	PRJEB29740	39037209	KL Ravikumar	Human	human	Urine	Infection	India	Jodhpur	2017
 G18250088	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomerieux	-	ERR4635715	SAMEA5818238	PRJEB29740	39037209	KL Ravikumar	Human	human	Urine	Infection	India	Jodhpur	2017
@@ -3981,15 +3981,15 @@ Kp_1_HUC	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	v11.0 	-	-	-	ERR10031053	S
 2999	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	v11.0 	-	-	-	ERR10030888	SAMEA110371453	PRJEB38289	33753763	Taane Clark	Human	Human	Unknown	Infection	Portugal	Lisbon	2011-2016
 2955	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	v11.0 	-	-	-	ERR10030882	SAMEA110371447	PRJEB38289	33753763	Taane Clark	Human	Human	Unknown	Infection	Portugal	Lisbon	2011-2016
 2954	ciprofloxacin	R	-	21	mm	Disk diffusion	EUCAST	v11.0 	-	-	-	ERR10030881	SAMEA110371446	PRJEB38289	33753763	Taane Clark	Human	Human	Unknown	Infection	Portugal	Lisbon	2011-2016
-ERR4635099	ciprofloxacin	R	-	19	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635099	SAMEA5758636	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
+ERR4635099	ciprofloxacin	R	-	19	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635099	SAMEA5758636	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
 ERR4635101	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635101	SAMEA5758538	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
 ERR4635102	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635102	SAMEA5758442	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2015
 ERR4635103	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635103	SAMEA5758637	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
-ERR4635105	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635105	SAMEA5758539	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
+ERR4635105	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635105	SAMEA5758539	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
 ERR4635106	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635106	SAMEA5758443	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2015
 ERR4635107	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635107	SAMEA5758444	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2015
 ERR4635108	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635108	SAMEA5758639	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
-ERR4635110	ciprofloxacin	R	-	21	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635110	SAMEA5758540	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
+ERR4635110	ciprofloxacin	R	-	21	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635110	SAMEA5758540	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
 ERR4635111	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635111	SAMEA5758445	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Quezon City	2015
 ERR4635112	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635112	SAMEA5758640	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
 ERR4635114	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635114	SAMEA5758541	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
@@ -4000,7 +4000,7 @@ ERR4635119	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635119
 ERR4635120	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635120	SAMEA5758643	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
 ERR4635122	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635122	SAMEA5758543	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2016
 ERR4635123	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635123	SAMEA5758448	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2015
-ERR4635124	ciprofloxacin	R	-	14	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635124	SAMEA5758644	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
+ERR4635124	ciprofloxacin	R	-	14	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635124	SAMEA5758644	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
 ERR4635126	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635126	SAMEA5758544	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2016
 ERR4635127	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635127	SAMEA5758449	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2015
 ERR4635128	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635128	SAMEA5758645	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2017
@@ -4009,7 +4009,7 @@ ERR4635131	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR463513
 ERR4635132	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635132	SAMEA5758450	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2015
 ERR4635133	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635133	SAMEA5758646	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2017
 ERR4635135	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635135	SAMEA5758547	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2016
-ERR4635136	ciprofloxacin	R	-	16	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635136	SAMEA5758451	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2015
+ERR4635136	ciprofloxacin	R	-	16	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635136	SAMEA5758451	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2015
 ERR4635137	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635137	SAMEA5758647	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2017
 ERR4635139	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635139	SAMEA5758548	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
 ERR4635140	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635140	SAMEA5758452	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2015
@@ -4019,7 +4019,7 @@ ERR4635144	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR463
 ERR4635145	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635145	SAMEA5758649	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Quezon City	2017
 ERR4635147	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635147	SAMEA5758550	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
 ERR4635148	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635148	SAMEA5758454	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Batac City	2015
-ERR4635149	ciprofloxacin	R	-	21	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635149	SAMEA5758650	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Quezon City	2017
+ERR4635149	ciprofloxacin	R	-	21	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635149	SAMEA5758650	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Quezon City	2017
 ERR4635151	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635151	SAMEA5758551	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
 ERR4635152	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635152	SAMEA5758455	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Batac City	2015
 ERR4635153	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635153	SAMEA5758651	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2017
@@ -4028,10 +4028,10 @@ ERR4635156	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR463515
 ERR4635157	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635157	SAMEA5758652	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2017
 ERR4635159	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635159	SAMEA5758655	PRJEB29738	34850834	Sonia Sia	Human	Human	Cerebrospinal Fluid	Infection	Philippines	Cagayan de Oro City	2017
 ERR4635161	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635161	SAMEA5758553	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
-ERR4635162	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635162	SAMEA5758457	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2015
+ERR4635162	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635162	SAMEA5758457	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2015
 ERR4635163	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635163	SAMEA5758657	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2017
 ERR4635165	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635165	SAMEA5758554	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
-ERR4635166	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635166	SAMEA5758458	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2015
+ERR4635166	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635166	SAMEA5758458	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2015
 ERR4635167	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635167	SAMEA5758658	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2017
 ERR4635169	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635169	SAMEA5758555	PRJEB29738	34850834	Sonia Sia	Human	Human	Cerebrospinal Fluid	Infection	Philippines	Cebu City	2016
 ERR4635170	ciprofloxacin	I		0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635170	SAMEA5758459	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2015
@@ -4046,14 +4046,14 @@ ERR4635181	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR463
 ERR4635182	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635182	SAMEA5758462	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2015
 ERR4635183	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635183	SAMEA5758662	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2017
 ERR4635185	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635185	SAMEA5758559	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
-ERR4635186	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635186	SAMEA5758463	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Quezon City	2015
+ERR4635186	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635186	SAMEA5758463	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Quezon City	2015
 ERR4635187	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635187	SAMEA5758464	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Quezon City	2015
 ERR4635188	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635188	SAMEA5758665	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2017
 ERR4635190	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635190	SAMEA5758560	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
 ERR4635191	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635191	SAMEA5758465	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2015
 ERR4635192	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635192	SAMEA5758666	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2017
 ERR4635194	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635194	SAMEA5758561	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
-ERR4635196	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635196	SAMEA5758667	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2017
+ERR4635196	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635196	SAMEA5758667	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Manila	2017
 ERR4635198	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635198	SAMEA5758562	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2016
 ERR4635199	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635199	SAMEA5758467	PRJEB29738	34850834	Sonia Sia	Human	Human	Cerebrospinal Fluid	Infection	Philippines	Cagayan de Oro City	2015
 ERR4635200	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635200	SAMEA5758668	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2017
@@ -4080,9 +4080,9 @@ ERR4635229	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR46352
 ERR4635231	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635231	SAMEA5758571	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Zamboanga City	2016
 ERR4635232	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635232	SAMEA5758475	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2015
 ERR4635233	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635233	SAMEA5758680	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2017
-ERR4635235	ciprofloxacin	S	-	26	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635235	SAMEA5758572	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Zamboanga City	2016
+ERR4635235	ciprofloxacin	S	-	26	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635235	SAMEA5758572	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Zamboanga City	2016
 ERR4635236	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635236	SAMEA5758476	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2015
-ERR4635237	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635237	SAMEA5758681	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2017
+ERR4635237	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635237	SAMEA5758681	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2017
 ERR4635239	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635239	SAMEA5758573	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Zamboanga City	2016
 ERR4635240	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635240	SAMEA5758477	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2015
 ERR4635245	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635245	SAMEA5758574	PRJEB29738	34850834	Sonia Sia	Human	Human	Cerebrospinal Fluid	Infection	Philippines	Baguio City	2017
@@ -4095,10 +4095,10 @@ ERR4635257	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR46352
 ERR4635258	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635258	SAMEA5758481	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2016
 ERR4635261	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635261	SAMEA5758578	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Baguio City	2017
 ERR4635262	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635262	SAMEA5758482	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2016
-ERR4635264	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635264	SAMEA5758579	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Baguio City	2017
+ERR4635264	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635264	SAMEA5758579	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Baguio City	2017
 ERR4635265	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635265	SAMEA5758483	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2016
 ERR4635268	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635268	SAMEA5758580	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Legazpi City	2017
-ERR4635269	ciprofloxacin	I	-	22	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635269	SAMEA5758484	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2016
+ERR4635269	ciprofloxacin	I	-	22	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635269	SAMEA5758484	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2016
 ERR4635271	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635271	SAMEA5758485	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
 ERR4635273	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635273	SAMEA5758581	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Legazpi City	2017
 ERR4635275	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635275	SAMEA5758486	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
@@ -4121,11 +4121,11 @@ ERR4635309	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR463530
 ERR4635311	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635311	SAMEA5758594	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
 ERR4635312	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635312	SAMEA5758495	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
 ERR4635316	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635316	SAMEA5758595	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
-ERR4635317	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635317	SAMEA5758496	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
+ERR4635317	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635317	SAMEA5758496	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
 ERR4635319	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635319	SAMEA5758596	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
-ERR4635320	ciprofloxacin	R	-	18	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635320	SAMEA5758497	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
+ERR4635320	ciprofloxacin	R	-	18	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635320	SAMEA5758497	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
 ERR4635324	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635324	SAMEA5758597	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
-ERR4635325	ciprofloxacin	R	-	18	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635325	SAMEA5758498	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
+ERR4635325	ciprofloxacin	R	-	18	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635325	SAMEA5758498	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2016
 ERR4635328	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635328	SAMEA5758598	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
 ERR4635329	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635329	SAMEA5758499	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Davao City	2016
 ERR4635332	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635332	SAMEA5758599	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
@@ -4135,7 +4135,7 @@ ERR4635337	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635337
 ERR4635340	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635340	SAMEA5758601	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
 ERR4635341	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635341	SAMEA5758502	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Davao City	2016
 ERR4635345	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635345	SAMEA5758602	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
-ERR4635346	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635346	SAMEA5758503	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2016
+ERR4635346	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635346	SAMEA5758503	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2016
 ERR4635348	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635348	SAMEA5758603	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
 ERR4635349	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635349	SAMEA5758504	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2016
 ERR4635351	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635351	SAMEA5758505	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2016
@@ -4151,22 +4151,22 @@ ERR4635369	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR46353
 ERR4635372	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635372	SAMEA5758510	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tagbilaran City	2016
 ERR4635374	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635374	SAMEA5758584	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
 ERR4635375	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635375	SAMEA5758511	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tagbilaran City	2016
-ERR4635380	ciprofloxacin	R	-	18	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635380	SAMEA5758608	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
+ERR4635380	ciprofloxacin	R	-	18	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635380	SAMEA5758608	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
 ERR4635381	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635381	SAMEA5758512	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tagbilaran City	2016
 ERR4635383	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635383	SAMEA5758609	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
 ERR4635384	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635384	SAMEA5758513	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tagbilaran City	2016
 ERR4635387	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635387	SAMEA5758610	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
 ERR4635388	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635388	SAMEA5758514	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tagbilaran City	2016
 ERR4635391	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635391	SAMEA5758611	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
-ERR4635392	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635392	SAMEA5758515	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
+ERR4635392	ciprofloxacin	R	-	6	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635392	SAMEA5758515	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635395	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635395	SAMEA5758612	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
-ERR4635396	ciprofloxacin	R	-	20	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635396	SAMEA5758516	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
+ERR4635396	ciprofloxacin	R	-	20	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635396	SAMEA5758516	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635399	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635399	SAMEA5758613	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
-ERR4635400	ciprofloxacin	R	-	14	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635400	SAMEA5758517	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
+ERR4635400	ciprofloxacin	R	-	14	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635400	SAMEA5758517	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635403	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635403	SAMEA5758614	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
-ERR4635404	ciprofloxacin	R	-	14	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635404	SAMEA5758518	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
+ERR4635404	ciprofloxacin	R	-	14	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635404	SAMEA5758518	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635409	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635409	SAMEA5758615	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
-ERR4635410	ciprofloxacin	R	-	15	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635410	SAMEA5758519	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
+ERR4635410	ciprofloxacin	R	-	15	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635410	SAMEA5758519	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635412	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635412	SAMEA5758616	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2017
 ERR4635413	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635413	SAMEA5758520	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635417	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635417	SAMEA5758521	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
@@ -4177,7 +4177,7 @@ ERR4635425	ciprofloxacin	I		0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR46354
 ERR4635428	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635428	SAMEA5758621	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2017
 ERR4635429	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635429	SAMEA5758524	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635432	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635432	SAMEA5758622	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2017
-ERR4635433	ciprofloxacin	R	-	16	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635433	SAMEA5758525	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
+ERR4635433	ciprofloxacin	R	-	16	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635433	SAMEA5758525	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635438	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635438	SAMEA5758623	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2017
 ERR4635439	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635439	SAMEA5758527	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2016
 ERR4635441	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635441	SAMEA5758624	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2017
@@ -4189,7 +4189,7 @@ ERR4635451	ciprofloxacin	S	<	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635
 ERR4635452	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635452	SAMEA5758434	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Baguio City	2015
 ERR4635453	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635453	SAMEA5758628	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tacloban City	2017
 ERR4635455	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635455	SAMEA5758531	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2016
-ERR4635456	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635456	SAMEA5758435	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Batangas City	2015
+ERR4635456	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635456	SAMEA5758435	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Batangas City	2015
 ERR4635459	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635459	SAMEA5758532	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2016
 ERR4635460	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635460	SAMEA5758436	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Batangas City	2015
 ERR4635461	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635461	SAMEA5758630	PRJEB29738	34850834	Sonia Sia	Human	Human	Cerebrospinal Fluid	Infection	Philippines	San Fernando City	2017
@@ -4201,7 +4201,7 @@ ERR4635469	ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR463
 ERR4635472	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635472	SAMEA5758633	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
 ERR4635473	ciprofloxacin	I		0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635473	SAMEA5758535	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2016
 ERR4635474	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635474	SAMEA5758439	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Tuguegarao City	2015
-ERR4635475	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4635475	SAMEA5758634	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
+ERR4635475	ciprofloxacin	R	-	17	mm	Disk diffusion	CLSI	-	-	-	-	ERR4635475	SAMEA5758634	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
 ERR4635476	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635476	SAMEA5758536	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2016
 ERR4635477	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635477	SAMEA5758440	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Davao City	2015
 ERR4635479	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4635479	SAMEA5758635	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	San Fernando City	2017
@@ -4220,7 +4220,7 @@ ERR4661753	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4661753
 ERR4661754	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4661754	SAMEA5758677	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cebu City	2017
 ERR4661755	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4661755	SAMEA5758679	PRJEB29738	34850834	Sonia Sia	Human	Human	Cerebrospinal Fluid	Infection	Philippines	Cebu City	2017
 ERR4781809	ciprofloxacin	R	-	2	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4781809	SAMEA5936795	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
-ERR4781810	ciprofloxacin	R	-	15	mm	Disk diffusion	CLSI	-	Manual	-	-	ERR4781810	SAMEA5936796	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
+ERR4781810	ciprofloxacin	R	-	15	mm	Disk diffusion	CLSI	-	-	-	-	ERR4781810	SAMEA5936796	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
 ERR4781811	ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4781811	SAMEA5936797	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cagayan de Oro City	2016
 ERR4781812	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4781812	SAMEA5936798	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Cotabato City	2017
 ERR4781813	ciprofloxacin	I	-	0.5	mg/L	MIC (broth dilution)	CLSI	-	-	-	-	ERR4781813	SAMEA5936801	PRJEB29738	34850834	Sonia Sia	Human	Human	Blood	Infection	Philippines	Bacolod City	2017
@@ -11904,265 +11904,265 @@ SRR19095623	ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Sensititre	
 SRR19095634	ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Sensititre	-	-	SRR19095634	SAMN26976267	PRJNA789565	35915063	Michael Bachman	Human	Human	Urine	Infection	USA	Michigan	2017-2018
 SRR19095636	ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	CLSI	-	Sensititre	-	-	SRR19095636	SAMN26976179	PRJNA789565	35915063	Michael Bachman	Human	Human	Respiratory	Infection	USA	Michigan	2017-2018
 SRR19095641	ciprofloxacin	S	-	0.12	mg/L	MIC (broth dilution)	CLSI	-	Sensititre	-	-	SRR19095641	SAMN26976200	PRJNA789565	35915063	Michael Bachman	Human	Human	Respiratory	Infection	USA	Michigan	2017-2018
-SB5387	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR2835893	SAMEA4969311	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5439	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR2835894	SAMEA4969312	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5531	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR2835895	SAMEA4969313	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5544	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR2835896	SAMEA4969314	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5610	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR2835897	SAMEA4969315	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5372	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415922	SAMEA5753490	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5373	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415923	SAMEA5753491	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5374	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415924	SAMEA5753340	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5375	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415925	SAMEA5753492	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5376	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415926	SAMEA5753493	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5377	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415927	SAMEA5753494	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5378	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415928	SAMEA5753495	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5379	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415929	SAMEA5753416	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5380	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415930	SAMEA5753496	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5381	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415931	SAMEA5753497	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5382	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415932	SAMEA5753498	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5383	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415933	SAMEA5753499	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5384	ciprofloxacin	S	-	33	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415934	SAMEA5753500	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5385	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415935	SAMEA5753501	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5386	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415936	SAMEA5753502	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5388	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415937	SAMEA5753417	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5389	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415938	SAMEA5753503	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5390	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415939	SAMEA5753428	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5391	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415940	SAMEA5753429	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5392	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415941	SAMEA5753504	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5393	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415942	SAMEA5753505	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5395	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415943	SAMEA5753506	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5396	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415944	SAMEA5753507	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5397	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415945	SAMEA5753335	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5398	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415946	SAMEA5753372	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5399	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415947	SAMEA5753395	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5400	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415948	SAMEA5753508	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5402	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415950	SAMEA5753510	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5403	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415951	SAMEA5753357	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5404	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415952	SAMEA5753511	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5405	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415953	SAMEA5753373	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5406	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415954	SAMEA5753512	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5407	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415955	SAMEA5753513	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5408	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415956	SAMEA5753514	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5409	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415957	SAMEA5753515	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5410	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415958	SAMEA5753516	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5411	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415959	SAMEA5753374	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5412	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415960	SAMEA5753396	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5413	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415961	SAMEA5753517	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5414	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415962	SAMEA5753518	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5415	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415963	SAMEA5753519	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5416	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415964	SAMEA5753520	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5417	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415965	SAMEA5753375	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5418	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415966	SAMEA5753376	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5419	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415967	SAMEA5753418	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5420	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415968	SAMEA5753521	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5421	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415969	SAMEA5753452	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5422	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415970	SAMEA5753358	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5423	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415971	SAMEA5753397	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5424	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415972	SAMEA5753522	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5425	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415973	SAMEA5753523	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5426	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415974	SAMEA5753524	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5427	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415975	SAMEA5753465	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5428	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415976	SAMEA5753525	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5429	ciprofloxacin	R	-	18	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415977	SAMEA5753472	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5430	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415978	SAMEA5753526	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5432	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415980	SAMEA5753528	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5433	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415981	SAMEA5753377	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5434	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415982	SAMEA5753359	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5435	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415983	SAMEA5753318	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5436	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415984	SAMEA5753529	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5437	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415985	SAMEA5753530	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5438	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415986	SAMEA5753531	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5440	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415987	SAMEA5753532	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5441	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415988	SAMEA5753533	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5442	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415989	SAMEA5753378	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5443	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415990	SAMEA5753319	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5444	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415991	SAMEA5753534	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5445	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415992	SAMEA5753535	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5446	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415993	SAMEA5753536	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5447	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415994	SAMEA5753537	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5449	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415995	SAMEA5753538	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5450	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415996	SAMEA5753539	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5451	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415997	SAMEA5753540	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5452	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415998	SAMEA5753541	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5453	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3415999	SAMEA5753542	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5454	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416000	SAMEA5753543	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5455	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416001	SAMEA5753544	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5456	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416002	SAMEA5753379	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5460	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416003	SAMEA5753545	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5461	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416004	SAMEA5753546	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5462	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416005	SAMEA5753547	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5463	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416006	SAMEA5753548	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5465	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416008	SAMEA5753419	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5466	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416009	SAMEA5753549	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5467	ciprofloxacin	S	-	36	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416010	SAMEA5753342	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5468	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416011	SAMEA5753550	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5470	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416012	SAMEA5753430	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5471	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416013	SAMEA5753551	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5472	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416014	SAMEA5753380	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5473	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416015	SAMEA5753552	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5477	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416016	SAMEA5753343	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5478	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416017	SAMEA5753553	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5479	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416018	SAMEA5753381	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5480	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416019	SAMEA5753479	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5481	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416020	SAMEA5753330	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5482	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416021	SAMEA5753431	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5483	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416022	SAMEA5753382	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5485	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416023	SAMEA5753554	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5487	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416025	SAMEA5753556	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5488	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416026	SAMEA5753557	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5489	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416027	SAMEA5753558	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5491	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416028	SAMEA5753559	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5492	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416029	SAMEA5753560	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5493	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416030	SAMEA5753561	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5494	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416031	SAMEA5753398	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5495	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416032	SAMEA5753562	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5496	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416033	SAMEA5753563	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5498	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416035	SAMEA5753565	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5500	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416036	SAMEA5753566	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5501	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416037	SAMEA5753689	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5502	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416038	SAMEA5753567	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5504	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416039	SAMEA5753399	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5505	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416040	SAMEA5753568	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5506	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416041	SAMEA5753569	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5507	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416042	SAMEA5753570	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5508	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416043	SAMEA5753571	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5509	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416044	SAMEA5753480	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5510	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416045	SAMEA5753572	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5511	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416046	SAMEA5753573	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5512	ciprofloxacin	S	-	38	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416047	SAMEA5753574	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5513	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416048	SAMEA5753400	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5514	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416049	SAMEA5753575	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5515	ciprofloxacin	S	-	33	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416050	SAMEA5753394	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5516	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416051	SAMEA5753383	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5517	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416052	SAMEA5753576	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5518	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416053	SAMEA5753344	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5520	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416054	SAMEA5753401	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5521	ciprofloxacin	R	-	14	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416055	SAMEA5753384	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5522	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416056	SAMEA5753577	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5523	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416057	SAMEA5753578	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5524	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416058	SAMEA5753579	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5525	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416059	SAMEA5753481	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5526	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416060	SAMEA5753580	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5527	ciprofloxacin	R	-	15	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416061	SAMEA5753440	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5528	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416062	SAMEA5753402	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5529	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416063	SAMEA5753420	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5532	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416065	SAMEA5753581	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5533	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416066	SAMEA5753385	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5534	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416067	SAMEA5753582	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5535	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416068	SAMEA5753336	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5536	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416069	SAMEA5753583	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5537	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416070	SAMEA5753320	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5538	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416071	SAMEA5753584	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5540	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416072	SAMEA5753337	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5542	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416073	SAMEA5753585	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5543	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416074	SAMEA5753586	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5545	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416075	SAMEA5753587	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5546	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416076	SAMEA5753466	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5547	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416077	SAMEA5753588	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5548	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416078	SAMEA5753589	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5549	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416079	SAMEA5753590	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5550	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416080	SAMEA5753591	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5552	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416082	SAMEA5753593	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5555	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416084	SAMEA5753360	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5556	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416085	SAMEA5753386	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5557	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416086	SAMEA5753595	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5558	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416087	SAMEA5753453	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5559	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416088	SAMEA5753467	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5560	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416089	SAMEA5753432	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5561	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416090	SAMEA5753596	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5562	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416091	SAMEA5753468	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5563	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416092	SAMEA5753469	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5564	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416093	SAMEA5753361	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5565	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416094	SAMEA5753362	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5566	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416095	SAMEA5753597	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5567	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416096	SAMEA5753421	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5568	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416097	SAMEA5753598	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5569	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416098	SAMEA5753338	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5570	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416099	SAMEA5753482	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5572	ciprofloxacin	S	-	33	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416101	SAMEA5753433	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5573	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416102	SAMEA5753600	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5574	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416103	SAMEA5753601	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5576	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416105	SAMEA5753483	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5577	ciprofloxacin	R	-	21	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416106	SAMEA5753444	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5578	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416107	SAMEA5753603	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5579	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416108	SAMEA5753604	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5580	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416109	SAMEA5753605	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5581	ciprofloxacin	R	-	19	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416110	SAMEA5753449	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5582	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416111	SAMEA5753363	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5583	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416112	SAMEA5753606	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5584	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416113	SAMEA5753607	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5585	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416114	SAMEA5753434	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5586	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416115	SAMEA5753608	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5587	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416116	SAMEA5753403	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5588	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416117	SAMEA5753609	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5589	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416118	SAMEA5753404	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5590	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416119	SAMEA5753321	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5592	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416121	SAMEA5753406	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5593	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416122	SAMEA5753331	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5594	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416123	SAMEA5753454	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5595	ciprofloxacin	I	-	22	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416124	SAMEA5753455	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5596	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416125	SAMEA5753407	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5597	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416126	SAMEA5753470	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5599	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416128	SAMEA5753435	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5600	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416129	SAMEA5753611	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5601	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416130	SAMEA5753408	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5602	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416131	SAMEA5753612	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5603	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416132	SAMEA5753613	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5604	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416133	SAMEA5753614	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5605	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416134	SAMEA5753615	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5606	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416135	SAMEA5753616	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5607	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416136	SAMEA5753617	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5608	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416137	SAMEA5753422	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5609	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416138	SAMEA5753618	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5611	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416139	SAMEA5753423	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5612	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416140	SAMEA5753424	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5613	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416141	SAMEA5753619	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5614	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416142	SAMEA5753620	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5616	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416144	SAMEA5753622	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5617	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416145	SAMEA5753623	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5618	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416146	SAMEA5753339	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5619	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416147	SAMEA5753624	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5621	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416149	SAMEA5753387	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5622	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416150	SAMEA5753625	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5623	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416151	SAMEA5753626	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5626	ciprofloxacin	R	-	14	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416154	SAMEA5753471	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5648	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416175	SAMEA5753409	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5652	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416179	SAMEA5753473	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5653	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416180	SAMEA5753474	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5662	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416189	SAMEA5753461	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5663	ciprofloxacin	R	-	21	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416190	SAMEA5753445	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5688	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416214	SAMEA5753670	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5702	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416227	SAMEA5753450	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5703	ciprofloxacin	I	-	22	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416228	SAMEA5753451	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5705	ciprofloxacin	I	-	24	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416229	SAMEA5753460	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5707	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416231	SAMEA5753475	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5708	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416232	SAMEA5753476	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5713	ciprofloxacin	R	-	18	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416237	SAMEA5753477	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5723	ciprofloxacin	R	-	17	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416246	SAMEA5753458	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5724	ciprofloxacin	I	-	22	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416247	SAMEA5753411	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
-SB5950	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416367	SAMEA5753690	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5951	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416368	SAMEA5753691	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5952	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416369	SAMEA5753692	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5953	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416370	SAMEA5753693	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5954	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416371	SAMEA5753694	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5955	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416372	SAMEA5753365	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5956	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416373	SAMEA5753695	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5958	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416375	SAMEA5753348	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5959	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416376	SAMEA5753349	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5960	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416377	SAMEA5753697	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5961	ciprofloxacin	R	-	19	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416378	SAMEA5753463	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5962	ciprofloxacin	R	-	19	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416379	SAMEA5753464	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5963	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416380	SAMEA5753366	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5964	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416381	SAMEA5753350	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5965	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416382	SAMEA5753698	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5966	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416383	SAMEA5753699	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5967	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416384	SAMEA5753446	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5968	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416385	SAMEA5753412	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5969	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416386	SAMEA5753367	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5970	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416387	SAMEA5753368	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5971	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416388	SAMEA5753447	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5972	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416389	SAMEA5753426	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5973	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416390	SAMEA5753413	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5974	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3416391	SAMEA5753333	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5499	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3417382	SAMEA5753391	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
-SB5519	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	Manual	-	-	ERR3417383	SAMEA5753700	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5387	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR2835893	SAMEA4969311	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5439	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR2835894	SAMEA4969312	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5531	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR2835895	SAMEA4969313	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5544	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR2835896	SAMEA4969314	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5610	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR2835897	SAMEA4969315	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5372	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415922	SAMEA5753490	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5373	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415923	SAMEA5753491	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5374	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415924	SAMEA5753340	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5375	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415925	SAMEA5753492	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5376	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415926	SAMEA5753493	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5377	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415927	SAMEA5753494	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5378	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415928	SAMEA5753495	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5379	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415929	SAMEA5753416	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5380	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415930	SAMEA5753496	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5381	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415931	SAMEA5753497	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5382	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415932	SAMEA5753498	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5383	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415933	SAMEA5753499	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5384	ciprofloxacin	S	-	33	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415934	SAMEA5753500	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5385	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415935	SAMEA5753501	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5386	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415936	SAMEA5753502	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5388	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415937	SAMEA5753417	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5389	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415938	SAMEA5753503	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5390	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415939	SAMEA5753428	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5391	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415940	SAMEA5753429	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5392	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415941	SAMEA5753504	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5393	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415942	SAMEA5753505	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5395	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415943	SAMEA5753506	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5396	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415944	SAMEA5753507	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5397	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415945	SAMEA5753335	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5398	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415946	SAMEA5753372	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5399	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415947	SAMEA5753395	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5400	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415948	SAMEA5753508	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5402	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415950	SAMEA5753510	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5403	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415951	SAMEA5753357	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5404	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415952	SAMEA5753511	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5405	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415953	SAMEA5753373	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5406	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415954	SAMEA5753512	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5407	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415955	SAMEA5753513	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5408	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415956	SAMEA5753514	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5409	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415957	SAMEA5753515	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5410	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415958	SAMEA5753516	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5411	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415959	SAMEA5753374	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5412	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415960	SAMEA5753396	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5413	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415961	SAMEA5753517	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5414	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415962	SAMEA5753518	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5415	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415963	SAMEA5753519	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5416	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415964	SAMEA5753520	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5417	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415965	SAMEA5753375	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5418	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415966	SAMEA5753376	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5419	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415967	SAMEA5753418	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5420	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415968	SAMEA5753521	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5421	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415969	SAMEA5753452	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5422	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415970	SAMEA5753358	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5423	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415971	SAMEA5753397	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5424	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415972	SAMEA5753522	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5425	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415973	SAMEA5753523	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5426	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415974	SAMEA5753524	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5427	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415975	SAMEA5753465	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5428	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415976	SAMEA5753525	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5429	ciprofloxacin	R	-	18	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415977	SAMEA5753472	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5430	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415978	SAMEA5753526	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5432	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415980	SAMEA5753528	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5433	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415981	SAMEA5753377	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5434	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415982	SAMEA5753359	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5435	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415983	SAMEA5753318	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5436	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415984	SAMEA5753529	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5437	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415985	SAMEA5753530	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5438	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415986	SAMEA5753531	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5440	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415987	SAMEA5753532	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5441	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415988	SAMEA5753533	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5442	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415989	SAMEA5753378	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5443	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415990	SAMEA5753319	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5444	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415991	SAMEA5753534	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5445	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415992	SAMEA5753535	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5446	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415993	SAMEA5753536	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5447	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415994	SAMEA5753537	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5449	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415995	SAMEA5753538	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5450	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415996	SAMEA5753539	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5451	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415997	SAMEA5753540	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5452	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415998	SAMEA5753541	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5453	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3415999	SAMEA5753542	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5454	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416000	SAMEA5753543	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5455	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416001	SAMEA5753544	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5456	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416002	SAMEA5753379	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5460	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416003	SAMEA5753545	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5461	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416004	SAMEA5753546	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5462	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416005	SAMEA5753547	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5463	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416006	SAMEA5753548	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5465	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416008	SAMEA5753419	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5466	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416009	SAMEA5753549	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5467	ciprofloxacin	S	-	36	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416010	SAMEA5753342	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5468	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416011	SAMEA5753550	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5470	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416012	SAMEA5753430	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5471	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416013	SAMEA5753551	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5472	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416014	SAMEA5753380	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5473	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416015	SAMEA5753552	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5477	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416016	SAMEA5753343	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5478	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416017	SAMEA5753553	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5479	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416018	SAMEA5753381	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5480	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416019	SAMEA5753479	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5481	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416020	SAMEA5753330	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5482	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416021	SAMEA5753431	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5483	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416022	SAMEA5753382	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5485	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416023	SAMEA5753554	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5487	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416025	SAMEA5753556	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5488	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416026	SAMEA5753557	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5489	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416027	SAMEA5753558	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5491	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416028	SAMEA5753559	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5492	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416029	SAMEA5753560	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5493	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416030	SAMEA5753561	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5494	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416031	SAMEA5753398	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5495	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416032	SAMEA5753562	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5496	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416033	SAMEA5753563	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5498	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416035	SAMEA5753565	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5500	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416036	SAMEA5753566	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5501	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416037	SAMEA5753689	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5502	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416038	SAMEA5753567	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5504	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416039	SAMEA5753399	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5505	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416040	SAMEA5753568	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5506	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416041	SAMEA5753569	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5507	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416042	SAMEA5753570	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5508	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416043	SAMEA5753571	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5509	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416044	SAMEA5753480	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5510	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416045	SAMEA5753572	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5511	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416046	SAMEA5753573	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5512	ciprofloxacin	S	-	38	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416047	SAMEA5753574	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5513	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416048	SAMEA5753400	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5514	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416049	SAMEA5753575	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5515	ciprofloxacin	S	-	33	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416050	SAMEA5753394	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5516	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416051	SAMEA5753383	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5517	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416052	SAMEA5753576	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5518	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416053	SAMEA5753344	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5520	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416054	SAMEA5753401	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5521	ciprofloxacin	R	-	14	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416055	SAMEA5753384	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5522	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416056	SAMEA5753577	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5523	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416057	SAMEA5753578	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5524	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416058	SAMEA5753579	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5525	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416059	SAMEA5753481	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5526	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416060	SAMEA5753580	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5527	ciprofloxacin	R	-	15	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416061	SAMEA5753440	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5528	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416062	SAMEA5753402	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5529	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416063	SAMEA5753420	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5532	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416065	SAMEA5753581	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5533	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416066	SAMEA5753385	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5534	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416067	SAMEA5753582	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5535	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416068	SAMEA5753336	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5536	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416069	SAMEA5753583	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5537	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416070	SAMEA5753320	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5538	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416071	SAMEA5753584	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5540	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416072	SAMEA5753337	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5542	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416073	SAMEA5753585	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5543	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416074	SAMEA5753586	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5545	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416075	SAMEA5753587	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5546	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416076	SAMEA5753466	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5547	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416077	SAMEA5753588	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5548	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416078	SAMEA5753589	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5549	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416079	SAMEA5753590	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5550	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416080	SAMEA5753591	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5552	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416082	SAMEA5753593	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5555	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416084	SAMEA5753360	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5556	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416085	SAMEA5753386	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5557	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416086	SAMEA5753595	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5558	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416087	SAMEA5753453	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5559	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416088	SAMEA5753467	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5560	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416089	SAMEA5753432	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5561	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416090	SAMEA5753596	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5562	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416091	SAMEA5753468	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5563	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416092	SAMEA5753469	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5564	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416093	SAMEA5753361	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5565	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416094	SAMEA5753362	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5566	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416095	SAMEA5753597	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5567	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416096	SAMEA5753421	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5568	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416097	SAMEA5753598	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5569	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416098	SAMEA5753338	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5570	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416099	SAMEA5753482	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5572	ciprofloxacin	S	-	33	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416101	SAMEA5753433	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5573	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416102	SAMEA5753600	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5574	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416103	SAMEA5753601	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5576	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416105	SAMEA5753483	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5577	ciprofloxacin	R	-	21	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416106	SAMEA5753444	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5578	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416107	SAMEA5753603	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5579	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416108	SAMEA5753604	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5580	ciprofloxacin	S	-	34	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416109	SAMEA5753605	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5581	ciprofloxacin	R	-	19	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416110	SAMEA5753449	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5582	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416111	SAMEA5753363	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5583	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416112	SAMEA5753606	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5584	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416113	SAMEA5753607	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5585	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416114	SAMEA5753434	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5586	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416115	SAMEA5753608	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5587	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416116	SAMEA5753403	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5588	ciprofloxacin	S	-	31	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416117	SAMEA5753609	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5589	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416118	SAMEA5753404	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5590	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416119	SAMEA5753321	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5592	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416121	SAMEA5753406	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5593	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416122	SAMEA5753331	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5594	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416123	SAMEA5753454	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5595	ciprofloxacin	I	-	22	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416124	SAMEA5753455	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5596	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416125	SAMEA5753407	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5597	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416126	SAMEA5753470	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5599	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416128	SAMEA5753435	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5600	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416129	SAMEA5753611	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5601	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416130	SAMEA5753408	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5602	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416131	SAMEA5753612	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5603	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416132	SAMEA5753613	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5604	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416133	SAMEA5753614	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5605	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416134	SAMEA5753615	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5606	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416135	SAMEA5753616	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5607	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416136	SAMEA5753617	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5608	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416137	SAMEA5753422	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5609	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416138	SAMEA5753618	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5611	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416139	SAMEA5753423	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5612	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416140	SAMEA5753424	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5613	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416141	SAMEA5753619	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5614	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416142	SAMEA5753620	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5616	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416144	SAMEA5753622	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5617	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416145	SAMEA5753623	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5618	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416146	SAMEA5753339	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5619	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416147	SAMEA5753624	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5621	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416149	SAMEA5753387	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5622	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416150	SAMEA5753625	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5623	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416151	SAMEA5753626	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5626	ciprofloxacin	R	-	14	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416154	SAMEA5753471	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5648	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416175	SAMEA5753409	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5652	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416179	SAMEA5753473	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5653	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416180	SAMEA5753474	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5662	ciprofloxacin	R	-	16	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416189	SAMEA5753461	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5663	ciprofloxacin	R	-	21	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416190	SAMEA5753445	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5688	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416214	SAMEA5753670	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5702	ciprofloxacin	I	-	23	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416227	SAMEA5753450	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5703	ciprofloxacin	I	-	22	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416228	SAMEA5753451	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5705	ciprofloxacin	I	-	24	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416229	SAMEA5753460	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5707	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416231	SAMEA5753475	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5708	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416232	SAMEA5753476	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5713	ciprofloxacin	R	-	18	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416237	SAMEA5753477	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5723	ciprofloxacin	R	-	17	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416246	SAMEA5753458	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5724	ciprofloxacin	I	-	22	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416247	SAMEA5753411	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Cambodia	-	2016
+SB5950	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416367	SAMEA5753690	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5951	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416368	SAMEA5753691	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5952	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416369	SAMEA5753692	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5953	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416370	SAMEA5753693	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5954	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416371	SAMEA5753694	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5955	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416372	SAMEA5753365	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5956	ciprofloxacin	S	-	26	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416373	SAMEA5753695	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5958	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416375	SAMEA5753348	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5959	ciprofloxacin	S	-	32	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416376	SAMEA5753349	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5960	ciprofloxacin	S	-	30	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416377	SAMEA5753697	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5961	ciprofloxacin	R	-	19	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416378	SAMEA5753463	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5962	ciprofloxacin	R	-	19	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416379	SAMEA5753464	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5963	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416380	SAMEA5753366	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5964	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416381	SAMEA5753350	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5965	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416382	SAMEA5753698	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5966	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416383	SAMEA5753699	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5967	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416384	SAMEA5753446	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5968	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416385	SAMEA5753412	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5969	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416386	SAMEA5753367	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5970	ciprofloxacin	S	-	29	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416387	SAMEA5753368	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5971	ciprofloxacin	S	-	35	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416388	SAMEA5753447	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5972	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416389	SAMEA5753426	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5973	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416390	SAMEA5753413	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5974	ciprofloxacin	S	-	27	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3416391	SAMEA5753333	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5499	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3417382	SAMEA5753391	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016
+SB5519	ciprofloxacin	S	-	28	mm	Disk diffusion	EUCAST	2015	-	-	-	ERR3417383	SAMEA5753700	PRJEB29143	32404021	Sylvain Brisse	Human	Human	Gut	Colonisation	Madagascar	-	2015-2016

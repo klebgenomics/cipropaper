@@ -907,6 +907,27 @@ platform_R
 cipro_antibiogram %>% 
   filter(Laboratory.Typing.Method!="Disk diffusion") %>%
   group_by(Laboratory.Typing.Platform) %>% summarise(studies=length(unique(index)))
+
+
+platform_disk <- cipro_antibiogram %>% 
+  filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+  group_by(Laboratory.Typing.Platform) %>% 
+  summarise(sens=sens(predR, resistant)*100, 
+            spec=spec(predR, resistant)*100, 
+            cat=cat_agree(predR, resistant)*100, 
+            me=me(predR, resistant)*100, 
+            vme=vme(predR, resistant)*100, 
+            n=n(),
+            percent_R=(sum(resistant))/n*100) %>%
+  mutate(out="R") %>% 
+  mutate(category="Laboratory.Typing.Platform") %>% 
+  relocate(out, category, .before=Laboratory.Typing.Platform)%>%
+  rename(category_name=Laboratory.Typing.Platform)
+
+cipro_antibiogram %>% 
+  filter(Laboratory.Typing.Method=="Disk diffusion") %>%
+  group_by(Laboratory.Typing.Platform) %>% summarise(studies=length(unique(index)))
+
 ```
 
 # performance for DD
