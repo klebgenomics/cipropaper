@@ -385,9 +385,9 @@ upset_QRDR_noAac6_DD <- cipro_antibiogram %>%
         "GyrA-83",
         "GyrA-87",
         c("GyrA-83","ParC-80"),
-        c("GyrA-83","ParC-84"),
         c("GyrA-83","GyrA-87","ParC-80"),
-        c("GyrA-83","GyrA-87","ParC-84")),  
+        c("GyrA-83","GyrA-87","ParC-84"),
+        c("GyrA-83","GyrA-87","ParC-80","ParC-84")),  
         sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
@@ -436,9 +436,9 @@ upset_QRDR_aac6_DD <- cipro_antibiogram %>%
         "GyrA-83",
         "GyrA-87",
         c("GyrA-83","ParC-80"),
-        c("GyrA-83","ParC-84"),
         c("GyrA-83","GyrA-87","ParC-80"),
-        c("GyrA-83","GyrA-87","ParC-84")),  
+        c("GyrA-83","GyrA-87","ParC-84"),
+        c("GyrA-83","GyrA-87","ParC-80","ParC-84")),  
         sort_intersections=FALSE,      set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
@@ -512,13 +512,26 @@ cipro_antibiogram <- left_join(cipro_antibiogram, qnr_presence)
 ```
 
 
-# Fig S6 panel a - upset plot of qnr genes, absence of aac6 and QRDR, with MIC data
+# Fig S7 panel a - upset plot of qnr genes, absence of aac6 and QRDR, with MIC data
 ``` {r}
 upset_qnr_noAac6_MIC <- cipro_antibiogram %>% 
   filter(aac6==0 & QRDR_mutations==0) %>%
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
   upset(
-      intersect=qnr_genes, 
+      intersect=rev(qnr_genes), 
+      sort_sets=FALSE,
+        intersections=list(
+        'Outside of known sets',
+        "qnrA1",
+        "qnrB17",
+        "qnrB19",
+        "qnrB4",
+        "qnrB6",
+        "qnrS1",
+        c("qnrB4","qnrS1"),
+        c("qnrB6","qnrS1"),
+        c("qnrB6","qnrB19")),  
+        sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
@@ -546,16 +559,29 @@ upset_qnr_noAac6_MIC <- cipro_antibiogram %>%
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
-
+upset_qnr_noAac6_MIC
 ```
 
-# Fig S6 panel- upset plot of qnr genes, presence of aac6 but no QRDR, with MIC data
+# Fig S7 panel- upset plot of qnr genes, presence of aac6 but no QRDR, with MIC data
 ``` {r}
 upset_qnr_aac6_MIC <- cipro_antibiogram %>% 
   filter(aac6==1 & QRDR_mutations==0) %>%
   filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
   upset(
-      intersect=qnr_genes, 
+      intersect=rev(qnr_genes), 
+      sort_sets=FALSE,
+        intersections=list(
+        'Outside of known sets',
+        "qnrA1",
+        "qnrB17",
+        "qnrB19",
+        "qnrB4",
+        "qnrB6",
+        "qnrS1",
+        c("qnrB4","qnrS1"),
+        c("qnrB6","qnrS1"),
+        c("qnrB6","qnrB19")),  
+        sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45),axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
@@ -584,16 +610,29 @@ upset_qnr_aac6_MIC <- cipro_antibiogram %>%
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
-
+upset_qnr_aac6_MIC
 ```
 
-# Fig S7 panel - qnr genes, absence of aac6 and QRDR mutations, with DD data
+# Fig S8 panel - qnr genes, absence of aac6 and QRDR mutations, with DD data
 ``` {r}
 upset_qnr_noAac6_DD <- cipro_antibiogram %>% 
   filter(aac6==0 & QRDR_mutations==0) %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   upset(
-      intersect=qnr_genes, # counts are converted to binary
+      intersect=rev(qnr_genes), 
+      sort_sets=FALSE,
+        intersections=list(
+        'Outside of known sets',
+        "qnrA1",
+        "qnrB17",
+        "qnrB19",
+        "qnrB4",
+        "qnrB6",
+        "qnrS1",
+        c("qnrB4","qnrS1"),
+        c("qnrB6","qnrS1"),
+        c("qnrB6","qnrB19")),  
+        sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
@@ -628,13 +667,26 @@ upset_qnr_noAac6_DD
 
 ```
 
-# Fig S7 panel - qnr genes, presence of aac6 but no QRDR mutations, with DD data
+# Fig S8 panel - qnr genes, presence of aac6 but no QRDR mutations, with DD data
 ``` {r}
 upset_qnr_aac6_DD <- cipro_antibiogram %>% 
   filter(aac6==1 & QRDR_mutations==0) %>%
   filter(Laboratory.Typing.Method == "Disk diffusion") %>%
   upset(
-      intersect=qnr_genes, # counts are converted to binary
+      intersect=rev(qnr_genes), 
+      sort_sets=FALSE,
+        intersections=list(
+        'Outside of known sets',
+        "qnrA1",
+        "qnrB17",
+        "qnrB19",
+        "qnrB4",
+        "qnrB6",
+        "qnrS1",
+        c("qnrB4","qnrS1"),
+        c("qnrB6","qnrS1"),
+        c("qnrB6","qnrB19")),  
+        sort_intersections=FALSE,
       set_sizes=(upset_set_size() +
                     theme(axis.text.x=element_text(angle=45), axis.ticks.x=element_line())),
       base_annotations=list( # add stacked barplot showing S/nonS
