@@ -60,7 +60,7 @@ res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
 ## long form, one row per strain/determinant combination
 ``` {r}
 cipro_res_mech <- cipro_antibiogram %>%
-  mutate(Aac6_gene=if_else(aac6 == 1, "aac(6')-Ib-cr", "-")) %>%
+  mutate(Aac6_gene=if_else(aac6 == 1, "aac(6`)-Ib-cr", "-")) %>%
   pivot_longer(c(Flq_mutations,Flq_acquired, Aac6_gene), names_to = "marker.type", 
                values_to = "marker") %>%
   separate_longer_delim(cols=marker, delim=";")
@@ -194,7 +194,7 @@ summary(lm(log2(as.numeric(Measurement)) ~ QRDR_mutations, data=QRDR_DD_noGenes_
 QRDR_MIC_noGenes <- cipro_antibiogram %>%
     filter(acquired_genes==0) %>% 
     filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>% 
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     mutate(QRDR_mutations=if_else(QRDR_mutations==4, 3, QRDR_mutations)) %>% # single isolate with 4 QRDR
     ggplot(aes(x=factor(QRDR_mutations), y=as.numeric(Measurement))) + 
     geom_violin() + 
@@ -217,7 +217,7 @@ QRDR_MIC_noGenes
 QRDR_pheno_noGenes <- cipro_antibiogram %>%
     filter(acquired_genes==0) %>% 
     filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     mutate(QRDR_mutations=if_else(QRDR_mutations==4, 3, QRDR_mutations)) %>% # single isolate with 4 QRDR
     ggplot(aes(x=factor(QRDR_mutations), fill=SRnwt)) + 
     geom_bar(stat='count', position='fill') + 
@@ -237,7 +237,7 @@ QRDR_pheno_noGenes <- cipro_antibiogram %>%
 QRDR_DD_noGenes <- cipro_antibiogram %>%
     filter(acquired_genes==0) %>% 
     filter(Laboratory.Typing.Method=="Disk diffusion") %>% 
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     mutate(QRDR_mutations=if_else(QRDR_mutations==4, 3, QRDR_mutations)) %>% # single isolate with 4 QRDR
     ggplot(aes(x=factor(QRDR_mutations), y=as.numeric(Measurement))) + 
     geom_violin() + 
@@ -254,7 +254,7 @@ QRDR_DD_noGenes <- cipro_antibiogram %>%
 QRDR_DDpheno_noGenes <- cipro_antibiogram %>%
     filter(acquired_genes==0) %>% 
     filter(Laboratory.Typing.Method=="Disk diffusion") %>%
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     mutate(QRDR_mutations=if_else(QRDR_mutations==4, 3, QRDR_mutations)) %>% # single isolate with 4 QRDR
     ggplot(aes(x=factor(QRDR_mutations), fill=SRnwt)) + 
     geom_bar(stat='count', position='fill') + 
@@ -305,7 +305,7 @@ upset_QRDR_noAac6_MIC <- cipro_antibiogram %>%
                scale_colour_manual(values = res_colours) + 
               scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:9), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^9)) +
               theme(legend.position = "none", axis.title=element_text(size=8))  +
-              ggtitle("aac(6')-Ib-cr absent")
+              ggtitle("aac(6`)-Ib-cr absent")
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
@@ -344,7 +344,7 @@ upset_QRDR_aac6_MIC <- cipro_antibiogram %>%
               scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:9), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^9)) +
               labs(colour = "Phenotype") +
               theme(axis.title=element_text(size=8)) +
-              ggtitle("aac(6')-Ib-cr present")
+              ggtitle("aac(6`)-Ib-cr present")
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
@@ -383,7 +383,7 @@ upset_QRDR_noAac6_DD <- cipro_antibiogram %>%
               labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
               ggtitle("Disk diffusion data") +
               theme(axis.title=element_text(size=8), legend.position="none") + 
-              ggtitle("aac(6')-Ib-cr absent") + ylim(5,50)
+              ggtitle("aac(6`)-Ib-cr absent") + ylim(5,50)
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
@@ -422,7 +422,7 @@ upset_QRDR_aac6_DD <- cipro_antibiogram %>%
                scale_color_manual(values = c("I"="grey", "R"="IndianRed", "S"="LightBlue")) + 
               guides(size = "none") +
               labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
-              ggtitle("aac(6')-Ib-cr present") +
+              ggtitle("aac(6`)-Ib-cr present") +
               theme(axis.title=element_text(size=8)) + ylim(5,50)
         )
       )
@@ -502,7 +502,7 @@ upset_qnr_noAac6_MIC <- cipro_antibiogram %>%
               scale_color_manual(values = res_colours)+
               scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
               theme(legend.position = "none", axis.title=element_text(size=8))  +
-              ggtitle("aac(6')-Ib-cr absent")
+              ggtitle("aac(6`)-Ib-cr absent")
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
@@ -540,7 +540,7 @@ upset_qnr_aac6_MIC <- cipro_antibiogram %>%
               scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
               labs(colour = "Phenotype") +
               theme(axis.title=element_text(size=8)) +
-              ggtitle("aac(6')-Ib-cr present")
+              ggtitle("aac(6`)-Ib-cr present")
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
@@ -579,7 +579,7 @@ upset_qnr_noAac6_DD <- cipro_antibiogram %>%
               labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
               ggtitle("Disk diffusion data") +
               theme(axis.title=element_text(size=8), legend.position="none") + 
-              ggtitle("aac(6')-Ib-cr absent") + ylim(5,50)
+              ggtitle("aac(6`)-Ib-cr absent") + ylim(5,50)
         )
       )
     ) + patchwork::plot_layout(heights=c(3,1,1)) # relative heights of plotting areas
@@ -618,7 +618,7 @@ upset_qnr_aac6_DD <- cipro_antibiogram %>%
                 scale_color_manual(values = res_colours)+
               guides(size = "none") +
               labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
-              ggtitle("aac(6')-Ib-cr present") +
+              ggtitle("aac(6`)-Ib-cr present") +
               theme(axis.title=element_text(size=8)) + ylim(5,50)
         )
       )
@@ -717,7 +717,7 @@ summary(as.numeric(qnr_DD_noGenes_dat$Measurement)[qnr_DD_noGenes_dat$acquired_g
 qnr_MIC_noGenes <- cipro_antibiogram %>%
     filter(QRDR_mutations==0) %>% 
     filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>% 
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     ggplot(aes(x=factor(acquired_genes), y=as.numeric(Measurement))) + 
     geom_violin() + 
     geom_count(aes(colour = SRnwt)) + 
@@ -735,7 +735,7 @@ qnr_MIC_noGenes <- cipro_antibiogram %>%
 qnr_pheno_noGenes <- cipro_antibiogram %>%
     filter(QRDR_mutations==0) %>% 
     filter(grepl('MIC.*$', Laboratory.Typing.Method)) %>%
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     ggplot(aes(x=factor(acquired_genes), fill=SRnwt)) + 
     geom_bar(stat='count', position='fill') + 
     facet_wrap(vars(aac6_label)) +
@@ -764,7 +764,7 @@ ggsave("figs/Fig2_numQnr_numPMQR_MIC_pheno.png", width=6, height=10)
 qnr_DD_noGenes <- cipro_antibiogram %>%
     filter(QRDR_mutations==0) %>% 
     filter(Laboratory.Typing.Method=="Disk diffusion") %>% 
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     ggplot(aes(x=factor(acquired_genes), y=as.numeric(Measurement))) + 
     geom_violin() + 
     geom_count(aes(colour = SRnwt)) + 
@@ -781,7 +781,7 @@ qnr_DD_noGenes <- cipro_antibiogram %>%
 qnr_DDpheno_noGenes <- cipro_antibiogram %>%
     filter(QRDR_mutations==0) %>% 
     filter(Laboratory.Typing.Method=="Disk diffusion") %>%
-    mutate(aac6_label=if_else(aac6==0, "aac(6')-Ib-cr absent", "aac(6')-Ib-cr present")) %>%
+    mutate(aac6_label=if_else(aac6==0, "aac(6`)-Ib-cr absent", "aac(6`)-Ib-cr present")) %>%
     ggplot(aes(x=factor(acquired_genes), fill=SRnwt)) + 
     geom_bar(stat='count', position='fill') + 
     facet_wrap(vars(aac6_label)) +
