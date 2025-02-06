@@ -1,17 +1,25 @@
-Prediction,Dataset,Categorical agreement,Sensitivity,Specificity,ME,VME,N
-R,MBIRA,69.74%,89.57%,49.56%,50.44%,10.43%,228
-NWT,MBIRA,72.81%,95.31%,44%,56%,4.69%,228
-R,HowdenGorrie,90.09%,96.08%,74.58%,25.42%,3.92%,212
-NWT,HowdenGorrie,82.08%,83.51%,66.67%,33.33%,16.49%,212
-R,AGAR,82.27%,86.67%,77.39%,22.61%,13.33%,485
-NWT,AGAR,87.22%,87.7%,86.31%,13.69%,12.3%,485
-R,MilanSanRafaelle,98.48%,99.47%,81.82%,18.18%,0.53%,198
-NWT,MilanSanRafaelle,98.48%,98.94%,88.89%,11.11%,1.06%,198
-R,HailuEthiopia,100%,100%,100%,0%,0%,70
-NWT,HailuEthiopia,92.86%,84.85%,100%,0%,15.15%,70
-R,KayamaJapan,78.54%,94.88%,59.48%,40.52%,5.12%,834
-NWT,KayamaJapan,94.48%,96.24%,89.64%,10.36%,3.76%,834
-R,FeaseyMalawi,86.16%,78.83%,95.4%,4.6%,21.17%,737
-NWT,FeaseyMalawi,76.39%,68.58%,97.96%,2.04%,31.42%,737
-R,EUSCAPE_EURECA,96.95%,97.1%,96.41%,3.59%,2.9%,2133
-NWT,EUSCAPE_EURECA,91.37%,90.23%,98.63%,1.37%,9.77%,2133
+Prediction,Dataset,Country,Categorical agreement,Sensitivity,Specificity,ME,VME,N
+R,EUSCAPE & EURECA,Various European countries,96.95%,97.1%,96.41%,3.59%,2.9%,2133
+NWT,EUSCAPE & EURECA,Various European countries,91.37%,90.23%,98.63%,1.37%,9.77%,2133
+R,JARBS-GNR,Japan,78.54%,94.88%,59.48%,40.52%,5.12%,834
+NWT,JARBS-GNR,Japan,94.48%,96.24%,89.64%,10.36%,3.76%,834
+R,India GHRU,India,93.84%,98.19%,73.68%,26.32%,1.81%,536
+NWT,India GHRU,India,95.71%,98.89%,78.57%,21.43%,1.11%,536
+R,AGAR GnSOP,Australia,82.27%,86.67%,77.39%,22.61%,13.33%,485
+NWT,AGAR GnSOP,Australia,87.22%,87.7%,86.31%,13.69%,12.3%,485
+R,MBIRA,"Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",69.74%,89.57%,49.56%,50.44%,10.43%,228
+NWT,MBIRA,"Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",72.81%,95.31%,44%,56%,4.69%,228
+R,Controlling Superbugs study & Victorian CPE program,Australia,90.09%,96.08%,74.58%,25.42%,3.92%,212
+NWT,Controlling Superbugs study & Victorian CPE program,Australia,82.08%,83.51%,66.67%,33.33%,16.49%,212
+R,IRCCS Ospedale San Raffaele,Italy,98.48%,99.47%,81.82%,18.18%,0.53%,198
+NWT,IRCCS Ospedale San Raffaele,Italy,98.48%,98.94%,88.89%,11.11%,1.06%,198
+R,HRYC & CIBERINFEC,Spain,82.08%,89.73%,40.74%,59.26%,10.27%,173
+NWT,HRYC & CIBERINFEC,Spain,84.97%,90.85%,40%,60%,9.15%,173
+R,SCHARKI,Germany,94.64%,100%,94.44%,5.56%,0%,56
+NWT,SCHARKI,Germany,92.86%,60%,96.08%,3.92%,40%,56
+R,Queen Elizabeth Central Hospital,Malawi,86.16%,78.83%,95.4%,4.6%,21.17%,737
+NWT,Queen Elizabeth Central Hospital,Malawi,76.39%,68.58%,97.96%,2.04%,31.42%,737
+R,University of Zurich,Switzerland,91.67%,100%,68.42%,31.58%,0%,72
+NWT,University of Zurich,Switzerland,93.06%,95.08%,81.82%,18.18%,4.92%,72
+R,Addis Ababa University,Ethiopia,100%,100%,100%,0%,0%,70
+NWT,Addis Ababa University,Ethiopia,92.86%,84.85%,100%,0%,15.15%,70
