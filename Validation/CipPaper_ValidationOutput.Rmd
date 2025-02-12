@@ -54,6 +54,9 @@ EgliSwitzerland <- read_delim("EgliSwitzerland_2025_ValidationOutput/Prediction_
 HRYC_Spain <- read_delim("HRYC_Spain_ValidationOutput/Prediction_Pheno_summary.csv")
 IndiaGHRU <- read_delim("IndiaGHRU_2025_ValidationOutput/Prediction_Pheno_summary.csv")
 NeumannGermany <- read_delim("NeumannGermany_ValidationOutput/Prediction_Pheno_summary.csv")
+Whitelaw_CHAMPS <- read_delim("Whitelaw_Stellenbosch_ValidationOutput/Prediction_Pheno_summary_DD.csv")
+Whitelaw_MBIRA <- read_delim("Whitelaw_Stellenbosch_ValidationOutput/Prediction_Pheno_summary_MIC.csv")
+
 ```
 
 ## set colours
@@ -693,6 +696,100 @@ rownames(NeumannGermany_NWT_prediction) <- c('pred_S','pred_I_R')
 NeumannGermany_NWT_prediction_summary<-metrics(NeumannGermany_NWT_prediction)
 ```
 
+# data wrangling Whitelaw_CHAMPS
+```{r Whitelaw_CHAMPS}
+
+Whitelaw_CHAMPS_SI <- Whitelaw_CHAMPS %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+Whitelaw_CHAMPS_R <- Whitelaw_CHAMPS %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+Whitelaw_CHAMPS_SIR <- rbind(Whitelaw_CHAMPS_SI, Whitelaw_CHAMPS_R) %>% distinct()
+
+subset(Whitelaw_CHAMPS_SIR, Group == "pred_S_I")$S_I
+table(Whitelaw_CHAMPS_SIR$S_I)
+
+Whitelaw_CHAMPS_R_prediction <- matrix(c(subset(Whitelaw_CHAMPS_SIR, Group == "pred_S_I")$S_I, 
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_S_I")$R,
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_R")$S_I,
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(Whitelaw_CHAMPS_R_prediction) <- c('S_I','R')
+rownames(Whitelaw_CHAMPS_R_prediction) <- c('pred_S_I','pred_R')
+Whitelaw_CHAMPS_R_prediction_summary<-metrics(Whitelaw_CHAMPS_R_prediction)
+
+Whitelaw_CHAMPS_NWT_prediction <- matrix(c(subset(Whitelaw_CHAMPS_SIR, Group == "pred_S")$S, 
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_S")$I_R,
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_I_R")$S,
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(Whitelaw_CHAMPS_NWT_prediction) <- c('S','I_R')
+rownames(Whitelaw_CHAMPS_NWT_prediction) <- c('pred_S','pred_I_R')
+Whitelaw_CHAMPS_NWT_prediction_summary<-metrics(Whitelaw_CHAMPS_NWT_prediction)
+```
+
+
+# data wrangling Whitelaw_MBIRA
+```{r Whitelaw_MBIRA}
+
+Whitelaw_MBIRA_SI <- Whitelaw_MBIRA %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+Whitelaw_MBIRA_R <- Whitelaw_MBIRA %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+Whitelaw_MBIRA_SIR <- rbind(Whitelaw_MBIRA_SI, Whitelaw_MBIRA_R) %>% distinct()
+
+subset(Whitelaw_MBIRA_SIR, Group == "pred_S_I")$S_I
+table(Whitelaw_MBIRA_SIR$S_I)
+
+Whitelaw_MBIRA_R_prediction <- matrix(c(subset(Whitelaw_MBIRA_SIR, Group == "pred_S_I")$S_I, 
+                subset(Whitelaw_MBIRA_SIR, Group == "pred_S_I")$R,
+                subset(Whitelaw_MBIRA_SIR, Group == "pred_R")$S_I,
+                subset(Whitelaw_MBIRA_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(Whitelaw_MBIRA_R_prediction) <- c('S_I','R')
+rownames(Whitelaw_MBIRA_R_prediction) <- c('pred_S_I','pred_R')
+Whitelaw_MBIRA_R_prediction_summary<-metrics(Whitelaw_MBIRA_R_prediction)
+
+Whitelaw_MBIRA_NWT_prediction <- matrix(c(subset(Whitelaw_MBIRA_SIR, Group == "pred_S")$S, 
+                subset(Whitelaw_MBIRA_SIR, Group == "pred_S")$I_R,
+                subset(Whitelaw_MBIRA_SIR, Group == "pred_I_R")$S,
+                subset(Whitelaw_MBIRA_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(Whitelaw_MBIRA_NWT_prediction) <- c('S','I_R')
+rownames(Whitelaw_MBIRA_NWT_prediction) <- c('pred_S','pred_I_R')
+Whitelaw_MBIRA_NWT_prediction_summary<-metrics(Whitelaw_MBIRA_NWT_prediction)
+```
+
+
 # Combining validation sets
 ```{r combine}
 validation_summary <- rbind(EUSCAPE_EURECA_R_prediction_summary$summary,
@@ -713,18 +810,22 @@ validation_summary <- rbind(EUSCAPE_EURECA_R_prediction_summary$summary,
                             HRYC_Spain_NWT_prediction_summary$summary,
                             NeumannGermany_R_prediction_summary$summary,
                             NeumannGermany_NWT_prediction_summary$summary,
+                            Whitelaw_MBIRA_R_prediction_summary$summary, 
+                            Whitelaw_MBIRA_NWT_prediction_summary$summary,                            
                             FeaseyMalawi_R_prediction_summary$summary, 
                             FeaseyMalawi_NWT_prediction_summary$summary,
                             EgliSwitzerland_R_prediction_summary$summary,
                             EgliSwitzerland_NWT_prediction_summary$summary,
                             HailuEthiopia_R_prediction_summary$summary, 
-                            HailuEthiopia_NWT_prediction_summary$summary)
+                            HailuEthiopia_NWT_prediction_summary$summary, 
+                            Whitelaw_CHAMPS_R_prediction_summary$summary, 
+                            Whitelaw_CHAMPS_NWT_prediction_summary$summary)
 
 
 validation_summary_table <- as_tibble(validation_summary) %>%
-  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT"))%>%
-  mutate(Dataset=c("EUSCAPE & EURECA", "EUSCAPE & EURECA","JARBS-GNR", "JARBS-GNR", "India GHRU", "India GHRU", "AGAR GnSOP", "AGAR GnSOP","MBIRA", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "Controlling Superbugs study & Victorian CPE program",  "IRCCS Ospedale San Raffaele", "IRCCS Ospedale San Raffaele",  "HRYC & CIBERINFEC", "HRYC & CIBERINFEC", "SCHARKI", "SCHARKI", "Queen Elizabeth Central Hospital", "Queen Elizabeth Central Hospital","University of Zurich", "University of Zurich", "Addis Ababa University", "Addis Ababa University")) %>%
-    mutate(Country=c("Various European countries", "Various European countries","Japan", "Japan", "India", "India", "Australia", "Australia","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Australia",  "Italy", "Italy",  "Spain", "Spain", "Germany", "Germany", "Malawi", "Malawi","Switzerland", "Switzerland", "Ethiopia", "Ethiopia")) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT"))%>%
+  mutate(Dataset=c("EUSCAPE & EURECA", "EUSCAPE & EURECA","JARBS-GNR", "JARBS-GNR", "India GHRU", "India GHRU", "AGAR GnSOP", "AGAR GnSOP","MBIRA", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "Controlling Superbugs study & Victorian CPE program",  "IRCCS Ospedale San Raffaele", "IRCCS Ospedale San Raffaele",  "HURYC & CIBERINFEC", "HURYC & CIBERINFEC", "SCHARKI", "SCHARKI","MBRIA","MBIRA", "Queen Elizabeth Central Hospital", "Queen Elizabeth Central Hospital","University of Zurich", "University of Zurich", "Addis Ababa University", "Addis Ababa University", "CHAMPS", "CHAMPS")) %>%
+    mutate(Country=c("Various European countries", "Various European countries","Japan", "Japan", "India", "India", "Australia", "Australia","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Australia",  "Italy", "Italy",  "Spain", "Spain", "Germany", "Germany","South Africa","South Africa", "Malawi", "Malawi","Switzerland", "Switzerland", "Ethiopia", "Ethiopia", "South Africa", "South Africa")) %>%
     rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
@@ -789,8 +890,9 @@ HRYC_Spain_MIC <- readPNG("HRYC_Spain_ValidationOutput/MIC_PredRIS.png", native=
 IndiaGHRU_MIC <- readPNG("IndiaGHRU_2025_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 NeumannGermany_MIC <- readPNG("NeumannGermany_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 
-
-
+Whitelaw_MBIRA_MIC <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+Whitelaw_CHAMPS_DD <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/DD_PredRIS.png", native=TRUE)
+  
 patch <- (wrap_elements(EUSCAPE_EURECA_MIC) +
             ggtitle("A) EUSCAPE & EURECA MIC (n=2133)")  +
             wrap_elements(KayamaJapan_MIC) +
@@ -806,15 +908,19 @@ patch <- (wrap_elements(EUSCAPE_EURECA_MIC) +
             wrap_elements(Milan_MIC) +
             ggtitle("G) IRCCS Ospedale San Raffaele MIC (n=198)")+
             wrap_elements(HRYC_Spain_MIC) +
-            ggtitle("H) HRYC & CIBERINFEC MIC (n=173)")+
+            ggtitle("H) HURYC & CIBERINFEC MIC (n=173)")+
             wrap_elements(NeumannGermany_MIC) +
             ggtitle("I) SCHARKI MIC (n=56)")+  
+             wrap_elements(Whitelaw_MBIRA_MIC) +
+            ggtitle("J) MBIRA (South Africa) MIC (n=56)")+             
             wrap_elements(FeaseyMalawi_DD) +
-            ggtitle("J) Queen Elizabeth Central Hospital \n(Malawi) DD (n=737)") +
+            ggtitle("K) Queen Elizabeth Central Hospital \n(Malawi) DD (n=737)") +
             wrap_elements(EgliSwitzerland_DD) +
-            ggtitle("K) University of Zurich DD (n=72)")+
+            ggtitle("L) University of Zurich DD (n=72)")+
             wrap_elements(HailuEthiopia_DD) +
-            ggtitle("L) Addis Ababa University \n(Ethiopia) DD (n=70)")
+            ggtitle("M) Addis Ababa University \n(Ethiopia) DD (n=70)")+
+            wrap_elements(Whitelaw_CHAMPS_DD) +
+            ggtitle("N) CHAMPS DD (n=40)")
           )+
   plot_layout(ncol = 3)
 
@@ -863,6 +969,12 @@ IndiaGHRU_profile <- readPNG("IndiaGHRU_2025_ValidationOutput/StackedBar_PredGro
 NeumannGermany_dist <- readPNG("NeumannGermany_ValidationOutput/MIC_PredGroup.png", native=TRUE)
 NeumannGermany_profile <- readPNG("NeumannGermany_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)           
 
+WhitelawCHAMPS_dist <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/DD_PredGroup.png", native=TRUE)
+WhitelawCHAMPS_profile <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/StackedBar_PredGroup_SIR_DD.png", native=TRUE)    
+
+WhitelawMBIRA_dist <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+WhitelawMBIRA_profile <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/StackedBar_PredGroup_SIR_MIC.png", native=TRUE)    
+
 
   (wrap_elements(EUSCAPE_EURECA_dist) +ggtitle("A) EURECA & EUSCAPE (n=2133) - MIC distribution vs.\n genotype profile") + wrap_elements(EUSCAPE_EURECA_profile) + ggtitle("B) EURECA & EUSCAPE (n=2133) - observed phenotype vs.\n genotype profile"))/
   
@@ -882,22 +994,30 @@ ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_1.pd
   
 (wrap_elements(Milan_dist) +ggtitle("M) IRCCS Ospedale San Raffaele (n=198) - MIC distribution vs.\n genotype profile") + wrap_elements(Milan_profile) + ggtitle("N) IRCCS Ospedale San Raffaele (n=198) \n - observed phenotype vs. genotype profile")) /
   
-  (wrap_elements(HRYC_Spain_dist) +ggtitle("O) HRYC & CIBERINFEC (n=173) - MIC distribution vs.\n genotype profile") + wrap_elements(HRYC_Spain_profile) + ggtitle("P) HRYC & CIBERINFEC (n=173) \n - observed phenotype vs. genotype profile")) /
+  (wrap_elements(HRYC_Spain_dist) +ggtitle("O) HURYC & CIBERINFEC (n=173) - MIC distribution vs.\n genotype profile") + wrap_elements(HRYC_Spain_profile) + ggtitle("P) HURYC & CIBERINFEC (n=173) \n - observed phenotype vs. genotype profile")) 
 
-    (wrap_elements(NeumannGermany_dist) +ggtitle("Q) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("R) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) 
 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_2.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_2.pdf")
 
+    (wrap_elements(NeumannGermany_dist) +ggtitle("Q) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("R) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) /
 
-(wrap_elements(Feasey_dist) +ggtitle("S) Queen Elizabeth Central Hospital Malawi (n=737) \n - DD distribution vs. genotype profile") + wrap_elements(Feasey_profile) + ggtitle("T) Queen Elizabeth Central Hospital Malawi (n=737) \n - observed phenotype vs. genotype profile")) /
-  
-  (wrap_elements(EgliSwitzerland_dist) +ggtitle("U) University of Zurich (n=72) - DD distribution vs.\n genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("V) University of Zurich (n=2) - observed phenotype vs.\n genotype profile")) /
-  
-(wrap_elements(Hailu_dist) +ggtitle("W) Addis Ababa University (n=70) - DD distribution vs.\n genotype profile") + wrap_elements(Hailu_profile) + ggtitle("X) Addis Ababa University (n=70) - observed phenotype vs.\n genotype profile")) 
+    (wrap_elements(WhitelawMBIRA_dist) +ggtitle("S) MBIRA (South Africa) (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(WhitelawMBIRA_profile) + ggtitle("T) MBIRA (South Africa) (n=56) - observed phenotype vs.\n genotype profile")) /
 
+
+(wrap_elements(Feasey_dist) +ggtitle("U) Queen Elizabeth Central Hospital Malawi (n=737) \n - DD distribution vs. genotype profile") + wrap_elements(Feasey_profile) + ggtitle("V) Queen Elizabeth Central Hospital Malawi (n=737) \n - observed phenotype vs. genotype profile")) /
+  
+  (wrap_elements(EgliSwitzerland_dist) +ggtitle("W) University of Zurich (n=72) - DD distribution vs.\n genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("X) University of Zurich (n=72) - observed phenotype vs.\n genotype profile")) 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_3.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_3.pdf")
+
+
+  
+(wrap_elements(Hailu_dist) +ggtitle("Y) Addis Ababa University (n=70) - DD distribution vs.\n genotype profile") + wrap_elements(Hailu_profile) + ggtitle("Z) Addis Ababa University (n=70) - observed phenotype vs.\n genotype profile")) /
+
+(wrap_elements(WhitelawCHAMPS_dist) +ggtitle("AA) CHAMPS (n=40) - DD distribution vs.\n genotype profile") + wrap_elements(WhitelawCHAMPS_profile) + ggtitle("BB) CHAMPS (n=40) - observed phenotype vs.\n genotype profile")) 
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_4.png")
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_4.pdf")
 
 
 ```
