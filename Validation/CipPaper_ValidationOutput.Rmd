@@ -964,9 +964,9 @@ patch <- (wrap_elements(EUSCAPE_EURECA_MIC) +
             wrap_elements(HRYC_Spain_MIC) +
             ggtitle("I) HURYC & CIBERINFEC MIC (n=173)")+
             wrap_elements(IZSAM_Italy_MIC) +
-            ggtitle("J) HURYC & CIBERINFEC MIC (n=161)")+
+            ggtitle("J) IZSAM MIC (n=161)")+
             wrap_elements(Oxfordshire_Kvv_MIC) +
-            ggtitle("K) Oxfordshire* MIC (n=71)")+
+            ggtitle("K) Oxfordshire* MIC (n=72)")+
             wrap_elements(NeumannGermany_MIC) +
             ggtitle("L) SCHARKI MIC (n=56)")+  
             wrap_elements(FeaseyMalawi_DD) +
@@ -1067,7 +1067,7 @@ ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_2.pd
 
 (wrap_elements(IZSAM_Italy_dist) +ggtitle("S) IZSAM (n=161) - MIC distribution vs.\n genotype profile") + wrap_elements(IZSAM_Italy_profile) + ggtitle("T) IZSAM (n=161) - observed phenotype vs.\n genotype profile")) /
   
-(wrap_elements(Oxfordshire_Kvv_dist) +ggtitle("U) Oxfordshire* (n=71) - MIC distribution vs.\n genotype profile") + wrap_elements(Oxfordshire_Kvv_profile) + ggtitle("V) Oxfordshire* (n=71) - observed phenotype vs.\n genotype profile")) /
+(wrap_elements(Oxfordshire_Kvv_dist) +ggtitle("U) Oxfordshire* (n=72) - MIC distribution vs.\n genotype profile") + wrap_elements(Oxfordshire_Kvv_profile) + ggtitle("V) Oxfordshire* (n=72) - observed phenotype vs.\n genotype profile")) /
 
 (wrap_elements(NeumannGermany_dist) +ggtitle("W) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("X) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) 
 
