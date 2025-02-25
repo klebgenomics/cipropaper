@@ -1854,234 +1854,6 @@ ERR14098039	Klebsiella pneumoniae	strong	148	188095	509125	5705772	no	-	ST2096	a
 21GNB-0329	Klebsiella pneumoniae	strong	96	141451	303996	5543426	no	-	ST29	aadA*	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
 21GNB-0108	Klebsiella pneumoniae	strong	119	117793	351142	5434929	no	-	ST268	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
 23GNB-1384	Klebsiella pneumoniae	strong	102	181831	326840	5507848	no	-	ST36	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	0
-FF31_01-0003-00.1	Klebsiella pneumoniae	strong	176	83917	319303	5726823	no	-	ST36	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
-FF31_01-0024-00.1	Klebsiella pneumoniae	strong	91	192620	719480	5264326	no	-	ST29	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
-FF31_01-0032-00-B.1	Klebsiella pneumoniae	strong	103	161341	374706	5611931	no	-	ST39	aac(3)-IIa.v1;strA.v1*;strB.v1*	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF31_01-0051-00.1	Klebsiella pneumoniae	strong	86	201004	455711	5337263	no	-	ST13	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF31_01-0057-00.1	Klebsiella pneumoniae	strong	112	178375	460644	5450411	no	-	ST29	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
-FF31_01-0062-00.1	Klebsiella pneumoniae	strong	86	203974	663664	5270554	no	-	ST29	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
-FF31_01-0070-00.1	Klebsiella pneumoniae	strong	61	300093	630979	5483071	no	-	ST225	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
-FF31_01-0078-00.1	Klebsiella pneumoniae	strong	111	134008	350902	5323221	no	-	ST1119	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
-FF31_01-0087-00.1	Klebsiella pneumoniae	strong	94	224196	474364	5629829	no	-	ST711	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	1	1
-FF31_01-0108-00.1	Klebsiella pneumoniae	strong	95	146974	294357	5279327	no	-	ST15	-	GyrA-83F;GyrA-87A;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	0	0
-FF31_01-0119-00.1	Klebsiella pneumoniae	strong	109	177487	291240	5098203	no	-	ST200	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF31_01-0124-00.1	Klebsiella pneumoniae	strong	75	224044	555294	5280212	no	-	ST48	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strB.v1	GyrA-83Y	-	NWT R	"1 QRDR, 0 PMQR, 1 aac6"	0	0
-FF31_01-0125-00.1	Klebsiella pneumoniae	strong	74	250826	494522	5433843	no	-	ST433	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
-FF31_01-0126-00.1	Klebsiella pneumoniae	strong	161	171735	505499	5702816	no	-	ST1927	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	0
-FF32_04-0023-00	Klebsiella pneumoniae	strong	157	84899	234671	5616830	no	-	ST101	aac(3)-IId^;strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
-FF32_04-0032-00	Klebsiella pneumoniae	strong	181	84068	514739	5720153	no	-	ST20	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;aph(3')-VI;armA	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0039-00	Klebsiella pneumoniae	strong	132	86490	263501	5584772	no	-	ST530	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrB2.v1^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0046-00	Klebsiella pneumoniae	strong	111	95774	318051	5546711	no	-	ST22	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0059-00	Klebsiella pneumoniae	strong	121	103132	277180	5345128	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0067-00.1	Klebsiella pneumoniae	strong	264	121412	256717	5706481	no	-	ST14	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0072-00.1	Klebsiella pneumoniae	strong	89	157708	461063	5309945	no	-	ST1741	-	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
-FF32_04-0086-00	Klebsiella pneumoniae	strong	136	95577	321978	5516249	no	-	ST17	aac(6')-Ib-cr.v2	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0115-00.1	Klebsiella pneumoniae	strong	74	242755	804635	5504585	no	-	ST21-2LV	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0126-00	Klebsiella pneumoniae	strong	136	97776	322066	5518883	no	-	ST17	aac(6')-Ib-cr.v2	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0136-00	Klebsiella pneumoniae	strong	166	99630	251008	6076458	no	-	ST147	aac(6')-Ib-cr.v2;aac(6')-Ib7*;aadA2^;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF32_04-0137-00	Klebsiella pneumoniae	strong	120	104136	362054	5508262	no	-	ST17	aac(6')-Ib-cr.v2	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0148-00.1	Klebsiella pneumoniae	strong	109	136854	316683	5324207	no	-	ST4083	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0151-00	Klebsiella pneumoniae	strong	171	64706	260590	5670384	no	-	ST14	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF32_04-0152-00	Klebsiella pneumoniae	strong	172	115400	398202	5570373	no	-	ST17	aac(6')-Ib-cr.v2;aadA2^	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0002-00	Klebsiella pneumoniae	strong	109	104470	307780	5665654	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0003-00	Klebsiella pneumoniae	strong	79	123542	368475	5218210	no	-	ST4860	aadA^;strA.v1*;strB.v1*	-	qnrB2.v1^	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FF33_06-0013-00	Klebsiella pneumoniae	strong	113	113020	357461	5644984	no	-	ST39	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0026-00	Klebsiella pneumoniae	strong	152	90125	200030	5632684	no	-	ST14	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0027-00-B	Klebsiella pneumoniae	strong	143	68059	266574	5634731	no	-	ST39	aac(3)-IIa.v1;aadA16*;strA.v1*;strB.v1*	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF33_06-0029-00	Klebsiella pneumoniae	strong	121	96711	500736	5609491	no	-	ST13	aac(3)-IIa.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF33_06-0032-00	Klebsiella pneumoniae	strong	76	125613	324765	5450920	no	-	ST147	aac(6')-Ib-cr.v2;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0035-00	Klebsiella pneumoniae	strong	157	77721	258216	5806885	no	-	ST307	aadA2;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0039-00	Klebsiella pneumoniae	strong	78	161931	545392	5476809	no	-	ST307	-	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0045-00	Klebsiella pneumoniae	strong	79	124615	312305	5230351	no	-	ST161	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF33_06-0046-00	Klebsiella pneumoniae	strong	120	89744	280843	5711419	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0047-00	Klebsiella pneumoniae	strong	123	96236	295360	5710860	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0048-00-A	Klebsiella pneumoniae	strong	104	112285	375681	5715904	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0048-00-A	Klebsiella pneumoniae	strong	104	112285	375681	5715904	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	0	0
-FF33_06-0056-00	Klebsiella pneumoniae	strong	126	86564	307790	5666859	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0058-00	Klebsiella pneumoniae	strong	88	139755	363915	5593271	no	-	ST4	aac(3)-IIa.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF33_06-0063-00	Klebsiella pneumoniae	strong	244	45850	198661	5495571	no	-	ST15	aac(3)-IIa.v1^;aadA*	GyrA-83F;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0071-00	Klebsiella pneumoniae	strong	201	53901	256468	5536288	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF33_06-0075-00-A	Klebsiella pneumoniae	strong	65	150383	313546	5278438	no	-	ST323	aadA*;sat-2	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF33_06-0077-00	Klebsiella pneumoniae	strong	256	41963	158695	5468016	no	-	ST967	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	1	1
-FF33_06-0078-00	Klebsiella pneumoniae	strong	106	108869	381858	5548767	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF33_06-0080-00-B	Klebsiella pneumoniae	strong	163	67945	214629	5506288	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
-FF33_06-0080-00-B	Klebsiella pneumoniae	strong	163	67945	214629	5506288	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0081-00-B	Klebsiella pneumoniae	strong	152	88953	185466	5517913	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0081-00-B	Klebsiella pneumoniae	strong	152	88953	185466	5517913	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0083-00	Klebsiella pneumoniae	strong	105	112467	381775	5549206	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF33_06-0084-00	Klebsiella pneumoniae	strong	114	95559	165139	5542266	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF33_06-0085-00	Klebsiella pneumoniae	strong	122	108490	333357	5694837	no	-	ST39	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;aph3-Ia.v1^;strA.v1*;strB.v1*	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
-FF33_06-0088-00	Klebsiella pneumoniae	strong	123	161476	362456	5412673	no	-	ST834-1LV	aac(6')-Ib-cr.v2;aadA^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0091-00	Klebsiella pneumoniae	strong	70	163699	742859	5368142	no	-	ST587	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF33_06-0096-00	Klebsiella pneumoniae	strong	128	77800	272543	5540566	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF33_06-0097-00	Klebsiella pneumoniae	strong	66	218508	364784	5279019	no	-	ST323	aadA*;sat-2	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF33_06-0098-00	Klebsiella pneumoniae	strong	128	104778	324432	5707444	no	-	ST147	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0100-00	Klebsiella pneumoniae	strong	115	131696	374260	5713287	no	-	ST147	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0102-00	Klebsiella pneumoniae	strong	106	117009	261445	5459403	no	-	ST711	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0103-00	Klebsiella pneumoniae	strong	95	142405	364931	5591157	no	-	ST394	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0115-00	Klebsiella pneumoniae	strong	88	145813	452810	5673434	no	-	ST307	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrB1.v2^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0117-00	Klebsiella pneumoniae	strong	104	112142	325730	5402693	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA16*;aph3-Ia.v1^;strA.v1^;strB.v1	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0122-00	Klebsiella pneumoniae	strong	98	146178	309778	5318857	no	-	ST17	-	-	qnrB4	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FF33_06-0124-00	Klebsiella pneumoniae	strong	57	149929	388911	5093764	no	-	ST22	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF33_06-0126-00	Klebsiella pneumoniae	strong	85	114640	302534	5687599	no	-	ST985	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0130-00	Klebsiella pneumoniae	strong	152	73144	253275	5566668	no	-	ST13	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0131-00-A	Klebsiella pneumoniae	strong	116	105742	266672	5422387	no	-	ST530	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0131-00-B	Klebsiella pneumoniae	strong	104	131706	326752	5425619	no	-	ST530	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF33_06-0132-00	Klebsiella pneumoniae	strong	136	86594	249550	5534324	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	0
-FF33_06-0133-00	Klebsiella pneumoniae	strong	167	103734	381193	5584815	no	-	ST147	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB2.v1^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF33_06-0134-00	Klebsiella pneumoniae	strong	156	105935	381383	5586332	no	-	ST147	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB2.v1^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF34_10-0012-00	Klebsiella pneumoniae	strong	112	149081	368929	5404513	no	-	ST1119	aac(3)-IIa.v1;aadA^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF34_10-0014-00	Klebsiella pneumoniae	strong	134	99476	274281	5480449	no	-	ST340	aac(3)-IId^;aadA2;aph3-Ia.v1^;strA.v1^;strB.v1	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF34_10-0015-00	Klebsiella pneumoniae	strong	123	108328	479666	5463168	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0019-00	Klebsiella pneumoniae	strong	127	105345	281017	5398542	no	-	ST1119	aac(3)-IIa.v1;aadA^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF34_10-0029-00	Klebsiella pneumoniae	strong	155	72812	273139	5443763	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0033-00	Klebsiella pneumoniae	strong	97	135855	350973	5365499	no	-	ST268	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
-FF34_10-0034-00	Klebsiella pneumoniae	strong	128	118356	240133	5464338	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0036-00	Klebsiella pneumoniae	strong	201	73485	168095	5687377	no	-	ST20	aac(3)-IIa.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
-FF34_10-0037-00	Klebsiella pneumoniae	strong	134	107919	239934	5462776	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0046-00	Klebsiella pneumoniae	strong	252	46618	200513	5527102	no	-	ST101	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF34_10-0048-00	Klebsiella pneumoniae	strong	158	109285	389692	5725686	no	-	ST20	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;aph(3')-VI;armA	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF34_10-0051-00	Klebsiella pneumoniae	strong	172	70914	312306	5534653	no	-	ST5946	strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0057-00	Klebsiella pneumoniae	strong	118	98427	269830	5501772	no	-	ST874	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strB.v1	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF34_10-0060-00-A	Klebsiella pneumoniae	strong	147	104623	381653	5611885	no	-	ST3719	aac(3)-IIa.v1;aadA^;strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0061-00	Klebsiella pneumoniae	strong	461	23609	86887	5610636	no	-	ST45	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF34_10-0063-00	Klebsiella pneumoniae	strong	440	22729	75758	5489022	no	-	ST1121	strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0065-00	Klebsiella pneumoniae	strong	166	86909	198707	5670516	no	-	ST45	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF34_10-0067-00	Klebsiella pneumoniae	strong	229	45582	128694	5536790	no	-	ST252	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF34_10-0072-00-A	Klebsiella pneumoniae	strong	117	94071	257360	5384813	no	-	ST3661-3LV	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF34_10-0072-00-B	Klebsiella pneumoniae	strong	76	191163	573436	5347318	no	-	ST4083	aadA2^;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FF34_10-0085-00	Klebsiella pneumoniae	strong	122	94417	250574	5531845	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF34_10-0088-00	Klebsiella pneumoniae	strong	88	130738	292136	5562678	no	-	ST39	strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF34_10-0093-00	Klebsiella pneumoniae	strong	99	124172	317431	5561547	no	-	ST101	aac(3)-IIa.v1^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF34_10-0096-00	Klebsiella pneumoniae	strong	108	98154	289847	5480956	no	-	ST432	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
-FF34_10-0102-00	Klebsiella pneumoniae	strong	195	58086	261067	5654907	no	-	ST337	aac(6')-Ib-cr.v2;aadA2^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF34_10-0105-00	Klebsiella pneumoniae	strong	142	99869	416350	5623936	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
-FF34_10-0110-00	Klebsiella pneumoniae	strong	306	36670	120308	5569524	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
-FF34_10-0113-00	Klebsiella pneumoniae	strong	136	95908	237009	5636916	no	-	ST397-1LV	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
-FF34_10-0115-00	Klebsiella pneumoniae	strong	116	112656	301738	5565507	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF34_10-0116-00	Klebsiella pneumoniae	strong	124	101276	316637	5464440	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF34_10-0116-00	Klebsiella pneumoniae	strong	124	101276	316637	5464440	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FF34_10-0118-00	Klebsiella pneumoniae	strong	121	115704	338715	5542839	no	-	ST11	aac(6')-Ib;aadA2^;aph3-Ia.v1^;rmtF	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF34_10-0122-00	Klebsiella pneumoniae	strong	495	18756	98713	5521056	no	-	ST101	aac(3)-IIa.v1^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF34_10-0128-00	Klebsiella pneumoniae	strong	156	70412	250925	5550348	no	-	ST307	-	GyrA-83I;ParC-80I	qnrB6^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF35_08-0016-00-B	Klebsiella pneumoniae	strong	206	58629	193805	5531109	no	-	ST37	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF35_08-0024-00	Klebsiella pneumoniae	strong	127	78117	257142	5232984	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0030-00	Klebsiella pneumoniae	strong	79	232344	393756	5672374	no	-	ST664	aadA1.v1^;strA.v1^;strB.v1*?	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF35_08-0031-00	Klebsiella pneumoniae	strong	201	48798	198605	5541922	no	-	ST45	strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF35_08-0046-00	Klebsiella pneumoniae	strong	173	60520	192636	5369949	no	-	ST1530	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF35_08-0047-00	Klebsiella pneumoniae	strong	255	41151	183318	5572321	no	-	ST15	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1*;strB.v1*	GyrA-83F;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF35_08-0065-00	Klebsiella pneumoniae	strong	105	111232	332093	5535747	no	-	ST45	aac(3)-IIa.v1;strA.v1*;strB.v1*	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF35_08-0074-00	Klebsiella pneumoniae	strong	143	95416	285048	5641567	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
-FF35_08-0078-00	Klebsiella pneumoniae	strong	53	281614	752428	5241002	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0091-00	Klebsiella pneumoniae	strong	461	23559	115341	5456110	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
-FF35_08-0096-00	Klebsiella pneumoniae	strong	101	151957	475442	5537703	no	-	ST29	aac(3)-IIa.v1;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
-FF35_08-0098-00	Klebsiella pneumoniae	strong	244	45750	163713	5474906	no	-	ST152	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0101-00	Klebsiella pneumoniae	strong	155	84966	182512	5530794	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
-FF35_08-0103-00	Klebsiella pneumoniae	strong	423	25348	109719	5412156	no	-	ST5731	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF35_08-0112-00-A	Klebsiella pneumoniae	strong	105	112054	273776	5444326	no	-	ST505	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF35_08-0124-00	Klebsiella pneumoniae	strong	365	27722	114870	5412854	no	-	ST29	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
-FF35_08-0125-00	Klebsiella pneumoniae	strong	388	26792	99944	5204773	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0137-00	Klebsiella pneumoniae	strong	95	147497	467813	5446259	no	-	ST29	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
-FF35_08-0140-00	Klebsiella pneumoniae	strong	143	67316	242632	5437483	no	-	ST985-1LV	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
-FF35_08-0140-00	Klebsiella pneumoniae	strong	143	67316	242632	5437483	no	-	ST985-1LV	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
-FF35_08-0141-00	Klebsiella pneumoniae	strong	254	46541	131971	5625547	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
-FF35_08-0142-00	Klebsiella pneumoniae	strong	89	144161	387255	5443264	no	-	ST29	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
-FF35_08-0145-00	Klebsiella pneumoniae	strong	89	95672	278717	5238617	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0146-00	Klebsiella pneumoniae	strong	51	258771	752428	5238627	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
-FF35_08-0156-00	Klebsiella pneumoniae	strong	54	210512	687484	5239415	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0159-00	Klebsiella pneumoniae	strong	63	172559	752428	5236405	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0165-00	Klebsiella pneumoniae	strong	52	258771	407346	5240099	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0166-00	Klebsiella pneumoniae	strong	48	277140	952353	5241768	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
-FF35_08-0169-00	Klebsiella pneumoniae	strong	150	70225	223519	5229269	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0170-00	Klebsiella pneumoniae	strong	151	70183	162878	5227929	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0171-00	Klebsiella pneumoniae	strong	85	127813	269880	5237356	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0172-00	Klebsiella pneumoniae	strong	52	263145	752428	5237453	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0174-00	Klebsiella pneumoniae	strong	163	54130	189176	5225064	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0178-00	Klebsiella pneumoniae	strong	58	162912	431322	5238239	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF35_08-0180-00	Klebsiella pneumoniae	strong	310	35231	115530	5507262	no	-	ST45	strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF36_11-0001-00	Klebsiella pneumoniae	strong	99	110677	319673	5396106	no	-	ST48	aac(3)-IIa.v1;aadA2^;aph3-Ia.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0007-00	Klebsiella pneumoniae	strong	297	30356	105960	5545499	no	-	ST45	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0008-00	Klebsiella pneumoniae	strong	171	68084	211622	5590909	no	-	ST45	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0009-00	Klebsiella pneumoniae	strong	117	78387	255826	5484932	no	-	ST307	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF36_11-0016-00	Klebsiella pneumoniae	strong	140	84614	257014	5496288	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0018-00	Klebsiella pneumoniae	strong	131	78819	216318	5518796	no	-	ST39	aac(3)-IIa.v1^;aph3-Ia.v1^;strA.v1^;strB.v1?	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0019-00	Klebsiella pneumoniae	strong	128	91317	207125	5521219	no	-	ST39	aac(3)-IIa.v1^;aph3-Ia.v1^;strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0021-00	Klebsiella pneumoniae	strong	146	87490	234123	5598504	no	-	ST45	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0030-00	Klebsiella pneumoniae	strong	154	78813	288517	5464469	no	-	ST39	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0043-00	Klebsiella pneumoniae	strong	153	78964	211141	5521295	no	-	ST307	aac(6')-Ib-cr.v2;aadA16*	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
-FF36_11-0056-00	Klebsiella pneumoniae	strong	145	89417	295962	5458262	no	-	ST73	aac(3)-IIa.v1;aadA^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0063-00	Klebsiella pneumoniae	strong	106	112081	324594	5273413	no	-	ST147	aac(3)-IId^;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	GyrA-83F;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FF36_11-0066-00-A	Klebsiella pneumoniae	strong	208	51411	146225	5443216	no	-	ST6838	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0068-00	Klebsiella pneumoniae	strong	151	72958	272956	5620040	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
-FF36_11-0076-00	Klebsiella pneumoniae	strong	142	69721	203425	5458186	no	-	ST101	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FF36_11-0089-00	Klebsiella pneumoniae	strong	464	26244	99708	5762967	no	-	ST391	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
-FF36_11-0092-00	Klebsiella pneumoniae	strong	141	99295	311269	5470238	no	-	ST39	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0093-00	Klebsiella pneumoniae	strong	171	73484	237038	5462898	no	-	ST6701	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0099-00	Klebsiella pneumoniae	strong	162	86239	241921	5470321	no	-	ST39	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0103-00	Klebsiella pneumoniae	strong	192	53083	129119	5405177	no	-	ST39	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0114-00-A	Klebsiella pneumoniae	strong	92	122217	270475	5514662	no	-	ST985	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0119-00	Klebsiella pneumoniae	strong	230	49932	165482	5518200	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0120-00	Klebsiella pneumoniae	strong	183	78963	218809	5612865	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0121-00	Klebsiella pneumoniae	strong	123	101100	223152	5491728	no	-	ST261	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FF36_11-0136-00	Klebsiella pneumoniae	strong	186	47621	190198	5434889	no	-	ST73	aac(3)-IIa.v1;aadA^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0137-00	Klebsiella pneumoniae	strong	146	77587	277943	5521283	no	-	ST29	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1^	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
-FF36_11-0145-00	Klebsiella pneumoniae	strong	196	47105	237429	5328519	no	-	ST25	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0153-00	Klebsiella pneumoniae	strong	178	56306	147201	5487466	no	-	ST39	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0154-00	Klebsiella pneumoniae	strong	147	88341	298275	5542213	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0157-00	Klebsiella pneumoniae	strong	137	89535	208990	5481896	no	-	ST268	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
-FF36_11-0160-00	Klebsiella pneumoniae	strong	99	103420	250231	5554744	no	-	ST985	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0161-00	Klebsiella pneumoniae	strong	188	59686	230143	5578686	no	-	ST39	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
-FF36_11-0166-00	Klebsiella pneumoniae	strong	89	104311	259293	5293834	no	-	ST17	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FF36_11-0171-00	Klebsiella pneumoniae	strong	145	75864	248528	5575617	no	-	ST25	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	1	1
-FFKC_002KP.1	Klebsiella pneumoniae	strong	401	30701	114048	5395283	no	-	ST6516	aac(3)-IId^;strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
-FFKC_004KP.1	Klebsiella pneumoniae	strong	99	108628	258563	5326942	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_005KP.1	Klebsiella pneumoniae	strong	98	119032	382096	5509032	no	-	ST101	strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FFKC_007KP.1	Klebsiella pneumoniae	strong	112	90616	291688	5324718	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_009KP.1	Klebsiella pneumoniae	strong	162	74279	275141	5346708	no	-	ST111	aph3-Ia.v1^;strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FFKC_012KP.1	Klebsiella pneumoniae	strong	123	79452	267690	5708422	no	-	ST23-1LV	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FFKC_013KP.1	Klebsiella pneumoniae	strong	153	90195	259520	5546550	no	-	ST391	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FFKC_014KP.1	Klebsiella pneumoniae	strong	321	38255	145604	5404532	no	-	ST1109	strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FFKC_017KP.1	Klebsiella pneumoniae	strong	277	36935	136617	5296716	no	-	ST1741-1LV	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_018KP.1	Klebsiella pneumoniae	strong	183	58392	216423	5306720	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_022KP.1	Klebsiella pneumoniae	strong	103	106924	278998	5327443	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_037KP.1	Klebsiella pneumoniae	strong	212	53180	220574	5317338	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_101KP.1	Klebsiella pneumoniae	strong	314	32542	220586	5286580	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_102KP.1	Klebsiella pneumoniae	strong	417	28205	178949	5255977	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_106KP.1	Klebsiella pneumoniae	strong	489	23137	178947	5244670	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_19KP.1	Klebsiella pneumoniae	strong	116	92388	230498	5320600	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_28KP.1	Klebsiella pneumoniae	strong	120	91260	230501	5322814	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_29KP.1	Klebsiella pneumoniae	strong	259	44767	119312	5599395	no	-	ST567-1LV	aac(3)-IIa.v1^;aadA16*	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
-FFKC_30KP.1	Klebsiella pneumoniae	strong	115	87641	258563	5327149	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_32KP.1	Klebsiella pneumoniae	strong	175	66868	254305	5309104	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_33KP.1	Klebsiella pneumoniae	strong	145	72900	230481	5322244	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_34KP.1	Klebsiella pneumoniae	strong	123	100987	230498	5311686	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_38KP.1	Klebsiella pneumoniae	strong	332	39610	162847	5408110	no	-	ST348	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
-FFKC_43KP.1	Klebsiella pneumoniae	strong	157	66853	254296	5319980	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_44KP.1	Klebsiella pneumoniae	strong	181	59596	230498	5315090	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_47KP.1	Klebsiella pneumoniae	strong	329	38052	178960	5282042	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_48KP.1	Klebsiella pneumoniae	strong	358	32569	106327	5262236	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_53KP.1	Klebsiella pneumoniae	strong	105	118996	258600	5327132	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_54KP.1	Klebsiella pneumoniae	strong	157	70280	230490	5322368	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
-FFKC_55KP.1	Klebsiella pneumoniae	strong	408	30547	214283	5269300	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_56KP.1	Klebsiella pneumoniae	strong	246	47180	220586	5302344	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_57KP.1	Klebsiella pneumoniae	strong	139	67503	280181	5321869	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_61KP.1	Klebsiella pneumoniae	strong	431	29666	183509	5268918	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_64KP.1	Klebsiella pneumoniae	strong	125	92274	254296	5320157	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_65KP.1	Klebsiella pneumoniae	strong	130	86643	230498	5322820	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_66KP.1	Klebsiella pneumoniae	strong	105	105733	256351	5328451	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_67KP.1	Klebsiella pneumoniae	strong	102	114515	279191	5324349	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
-FFKC_68KP.1	Klebsiella pneumoniae	strong	109	105733	258553	5324573	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_73KP.1	Klebsiella pneumoniae	strong	106	98351	349455	5317864	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_74KP.1	Klebsiella pneumoniae	strong	118	85925	279069	5311577	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_82KP.1	Klebsiella pneumoniae	strong	288	39302	178975	5296382	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_83KP.1	Klebsiella pneumoniae	strong	344	38843	218854	5287635	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_84KP.1	Klebsiella pneumoniae	strong	361	33011	178972	5280452	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_85KP.1	Klebsiella pneumoniae	strong	208	59398	207218	5694584	no	-	ST307	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^	GyrA-83I;ParC-80I	qnrB1.v2^;qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
-FFKC_88KP.1	Klebsiella pneumoniae	strong	422	30176	178894	5271055	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_93KP.1	Klebsiella pneumoniae	strong	386	32843	178958	5276484	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_96KP.1	Klebsiella pneumoniae	strong	452	29275	201724	5268840	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_97KP.1	Klebsiella pneumoniae	strong	127	80062	254296	5317640	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
-FFKC_98KP.1	Klebsiella pneumoniae	strong	208	55156	230507	5308880	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
 AUSMDU00002965	Klebsiella pneumoniae	strong	145	203669	641504	5700928	no	-	ST258	aac(6')-Ib'.v1;aadA2^;aph3-Ia.v1^	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
 AUSMDU00002966	Klebsiella pneumoniae	strong	114	281074	804006	5634955	no	-	ST258	aac(6')-Ib'.v1;aadA2^;aph3-Ia.v1^	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
 AUSMDU00004987	Klebsiella pneumoniae	strong	182	210275	397212	5850602	no	-	ST1122	aac(3)-IId^;aadA2;ant(2'')-Ia	-	qnrA1^	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
@@ -3803,3 +3575,350 @@ a43a8dc5-87f5-445c-8a69-03ee6068bd1d	Klebsiella variicola subsp. variicola	stron
 b0a67141-8827-4e8a-b7d3-9ded75e15b72	Klebsiella variicola subsp. variicola	strong	67	477520	841056	5547210	no	-	ST1407	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
 66820ded-699b-4380-9230-edbe678a98c8	Klebsiella variicola subsp. variicola	strong	125	651604	1032550	5651152	no	-	ST3964	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
 088aa985-85d6-4ca5-bf44-7a73007981b1	Klebsiella variicola subsp. variicola	strong	137	323733	647329	5838977	no	-	ST1250	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF31_01-0003-00.1	Klebsiella pneumoniae	strong	176	83917	319303	5726823	no	-	ST36	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+FF31_01-0024-00.1	Klebsiella pneumoniae	strong	91	192620	719480	5264326	no	-	ST29	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
+FF31_01-0032-00-B.1	Klebsiella pneumoniae	strong	103	161341	374706	5611931	no	-	ST39	aac(3)-IIa.v1;strA.v1*;strB.v1*	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF31_01-0051-00.1	Klebsiella pneumoniae	strong	86	201004	455711	5337263	no	-	ST13	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF31_01-0057-00.1	Klebsiella pneumoniae	strong	112	178375	460644	5450411	no	-	ST29	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
+FF31_01-0062-00.1	Klebsiella pneumoniae	strong	86	203974	663664	5270554	no	-	ST29	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
+FF31_01-0070-00.1	Klebsiella pneumoniae	strong	61	300093	630979	5483071	no	-	ST225	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
+FF31_01-0078-00.1	Klebsiella pneumoniae	strong	111	134008	350902	5323221	no	-	ST1119	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
+FF31_01-0087-00.1	Klebsiella pneumoniae	strong	94	224196	474364	5629829	no	-	ST711	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	1	1
+FF31_01-0108-00.1	Klebsiella pneumoniae	strong	95	146974	294357	5279327	no	-	ST15	-	GyrA-83F;GyrA-87A;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	0	0
+FF31_01-0119-00.1	Klebsiella pneumoniae	strong	109	177487	291240	5098203	no	-	ST200	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF31_01-0124-00.1	Klebsiella pneumoniae	strong	75	224044	555294	5280212	no	-	ST48	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strB.v1	GyrA-83Y	-	NWT R	"1 QRDR, 0 PMQR, 1 aac6"	0	0
+FF31_01-0125-00.1	Klebsiella pneumoniae	strong	74	250826	494522	5433843	no	-	ST433	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
+FF31_01-0126-00.1	Klebsiella pneumoniae	strong	161	171735	505499	5702816	no	-	ST1927	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	0
+FF32_04-0023-00	Klebsiella pneumoniae	strong	157	84899	234671	5616830	no	-	ST101	aac(3)-IId^;strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
+FF32_04-0032-00	Klebsiella pneumoniae	strong	181	84068	514739	5720153	no	-	ST20	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;aph(3')-VI;armA	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0039-00	Klebsiella pneumoniae	strong	132	86490	263501	5584772	no	-	ST530	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrB2.v1^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0046-00	Klebsiella pneumoniae	strong	111	95774	318051	5546711	no	-	ST22	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0059-00	Klebsiella pneumoniae	strong	121	103132	277180	5345128	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0067-00.1	Klebsiella pneumoniae	strong	264	121412	256717	5706481	no	-	ST14	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0072-00.1	Klebsiella pneumoniae	strong	89	157708	461063	5309945	no	-	ST1741	-	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
+FF32_04-0086-00	Klebsiella pneumoniae	strong	136	95577	321978	5516249	no	-	ST17	aac(6')-Ib-cr.v2	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0115-00.1	Klebsiella pneumoniae	strong	74	242755	804635	5504585	no	-	ST21-2LV	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0126-00	Klebsiella pneumoniae	strong	136	97776	322066	5518883	no	-	ST17	aac(6')-Ib-cr.v2	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0136-00	Klebsiella pneumoniae	strong	166	99630	251008	6076458	no	-	ST147	aac(6')-Ib-cr.v2;aac(6')-Ib7*;aadA2^;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF32_04-0137-00	Klebsiella pneumoniae	strong	120	104136	362054	5508262	no	-	ST17	aac(6')-Ib-cr.v2	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0148-00.1	Klebsiella pneumoniae	strong	109	136854	316683	5324207	no	-	ST4083	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0151-00	Klebsiella pneumoniae	strong	171	64706	260590	5670384	no	-	ST14	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF32_04-0152-00	Klebsiella pneumoniae	strong	172	115400	398202	5570373	no	-	ST17	aac(6')-Ib-cr.v2;aadA2^	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0002-00	Klebsiella pneumoniae	strong	109	104470	307780	5665654	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0003-00	Klebsiella pneumoniae	strong	79	123542	368475	5218210	no	-	ST4860	aadA^;strA.v1*;strB.v1*	-	qnrB2.v1^	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FF33_06-0013-00	Klebsiella pneumoniae	strong	113	113020	357461	5644984	no	-	ST39	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0026-00	Klebsiella pneumoniae	strong	152	90125	200030	5632684	no	-	ST14	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0027-00-B	Klebsiella pneumoniae	strong	143	68059	266574	5634731	no	-	ST39	aac(3)-IIa.v1;aadA16*;strA.v1*;strB.v1*	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF33_06-0029-00	Klebsiella pneumoniae	strong	121	96711	500736	5609491	no	-	ST13	aac(3)-IIa.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF33_06-0032-00	Klebsiella pneumoniae	strong	76	125613	324765	5450920	no	-	ST147	aac(6')-Ib-cr.v2;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0035-00	Klebsiella pneumoniae	strong	157	77721	258216	5806885	no	-	ST307	aadA2;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0039-00	Klebsiella pneumoniae	strong	78	161931	545392	5476809	no	-	ST307	-	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0045-00	Klebsiella pneumoniae	strong	79	124615	312305	5230351	no	-	ST161	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF33_06-0046-00	Klebsiella pneumoniae	strong	120	89744	280843	5711419	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0047-00	Klebsiella pneumoniae	strong	123	96236	295360	5710860	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0048-00-A	Klebsiella pneumoniae	strong	104	112285	375681	5715904	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0048-00-A	Klebsiella pneumoniae	strong	104	112285	375681	5715904	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	0	0
+FF33_06-0056-00	Klebsiella pneumoniae	strong	126	86564	307790	5666859	no	-	ST307	aac(3)-IId^;aadA2;aph3-Ia.v1;rmtB;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0058-00	Klebsiella pneumoniae	strong	88	139755	363915	5593271	no	-	ST4	aac(3)-IIa.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF33_06-0063-00	Klebsiella pneumoniae	strong	244	45850	198661	5495571	no	-	ST15	aac(3)-IIa.v1^;aadA*	GyrA-83F;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0071-00	Klebsiella pneumoniae	strong	201	53901	256468	5536288	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF33_06-0075-00-A	Klebsiella pneumoniae	strong	65	150383	313546	5278438	no	-	ST323	aadA*;sat-2	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF33_06-0077-00	Klebsiella pneumoniae	strong	256	41963	158695	5468016	no	-	ST967	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	1	1
+FF33_06-0078-00	Klebsiella pneumoniae	strong	106	108869	381858	5548767	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF33_06-0080-00-B	Klebsiella pneumoniae	strong	163	67945	214629	5506288	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
+FF33_06-0080-00-B	Klebsiella pneumoniae	strong	163	67945	214629	5506288	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0081-00-B	Klebsiella pneumoniae	strong	152	88953	185466	5517913	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0081-00-B	Klebsiella pneumoniae	strong	152	88953	185466	5517913	no	-	ST815	aac(6')-Ib-cr.v2^;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrB4	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0083-00	Klebsiella pneumoniae	strong	105	112467	381775	5549206	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF33_06-0084-00	Klebsiella pneumoniae	strong	114	95559	165139	5542266	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF33_06-0085-00	Klebsiella pneumoniae	strong	122	108490	333357	5694837	no	-	ST39	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;aph3-Ia.v1^;strA.v1*;strB.v1*	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+FF33_06-0088-00	Klebsiella pneumoniae	strong	123	161476	362456	5412673	no	-	ST834-1LV	aac(6')-Ib-cr.v2;aadA^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0091-00	Klebsiella pneumoniae	strong	70	163699	742859	5368142	no	-	ST587	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF33_06-0096-00	Klebsiella pneumoniae	strong	128	77800	272543	5540566	no	-	ST101	aac(6')-Ib-cr.v2	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF33_06-0097-00	Klebsiella pneumoniae	strong	66	218508	364784	5279019	no	-	ST323	aadA*;sat-2	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF33_06-0098-00	Klebsiella pneumoniae	strong	128	104778	324432	5707444	no	-	ST147	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0100-00	Klebsiella pneumoniae	strong	115	131696	374260	5713287	no	-	ST147	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1;strB.v1	GyrA-83I;ParC-80I	qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0102-00	Klebsiella pneumoniae	strong	106	117009	261445	5459403	no	-	ST711	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0103-00	Klebsiella pneumoniae	strong	95	142405	364931	5591157	no	-	ST394	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0115-00	Klebsiella pneumoniae	strong	88	145813	452810	5673434	no	-	ST307	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	GyrA-83I;ParC-80I	qnrB1.v2^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0117-00	Klebsiella pneumoniae	strong	104	112142	325730	5402693	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA16*;aph3-Ia.v1^;strA.v1^;strB.v1	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0122-00	Klebsiella pneumoniae	strong	98	146178	309778	5318857	no	-	ST17	-	-	qnrB4	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FF33_06-0124-00	Klebsiella pneumoniae	strong	57	149929	388911	5093764	no	-	ST22	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF33_06-0126-00	Klebsiella pneumoniae	strong	85	114640	302534	5687599	no	-	ST985	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0130-00	Klebsiella pneumoniae	strong	152	73144	253275	5566668	no	-	ST13	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0131-00-A	Klebsiella pneumoniae	strong	116	105742	266672	5422387	no	-	ST530	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0131-00-B	Klebsiella pneumoniae	strong	104	131706	326752	5425619	no	-	ST530	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF33_06-0132-00	Klebsiella pneumoniae	strong	136	86594	249550	5534324	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	0
+FF33_06-0133-00	Klebsiella pneumoniae	strong	167	103734	381193	5584815	no	-	ST147	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB2.v1^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF33_06-0134-00	Klebsiella pneumoniae	strong	156	105935	381383	5586332	no	-	ST147	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB2.v1^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF34_10-0012-00	Klebsiella pneumoniae	strong	112	149081	368929	5404513	no	-	ST1119	aac(3)-IIa.v1;aadA^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF34_10-0014-00	Klebsiella pneumoniae	strong	134	99476	274281	5480449	no	-	ST340	aac(3)-IId^;aadA2;aph3-Ia.v1^;strA.v1^;strB.v1	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF34_10-0015-00	Klebsiella pneumoniae	strong	123	108328	479666	5463168	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0019-00	Klebsiella pneumoniae	strong	127	105345	281017	5398542	no	-	ST1119	aac(3)-IIa.v1;aadA^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF34_10-0029-00	Klebsiella pneumoniae	strong	155	72812	273139	5443763	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0033-00	Klebsiella pneumoniae	strong	97	135855	350973	5365499	no	-	ST268	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
+FF34_10-0034-00	Klebsiella pneumoniae	strong	128	118356	240133	5464338	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0036-00	Klebsiella pneumoniae	strong	201	73485	168095	5687377	no	-	ST20	aac(3)-IIa.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
+FF34_10-0037-00	Klebsiella pneumoniae	strong	134	107919	239934	5462776	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0046-00	Klebsiella pneumoniae	strong	252	46618	200513	5527102	no	-	ST101	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF34_10-0048-00	Klebsiella pneumoniae	strong	158	109285	389692	5725686	no	-	ST20	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;aph(3')-VI;armA	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF34_10-0051-00	Klebsiella pneumoniae	strong	172	70914	312306	5534653	no	-	ST5946	strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0057-00	Klebsiella pneumoniae	strong	118	98427	269830	5501772	no	-	ST874	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strB.v1	GyrA-83Y;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF34_10-0060-00-A	Klebsiella pneumoniae	strong	147	104623	381653	5611885	no	-	ST3719	aac(3)-IIa.v1;aadA^;strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0061-00	Klebsiella pneumoniae	strong	461	23609	86887	5610636	no	-	ST45	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF34_10-0063-00	Klebsiella pneumoniae	strong	440	22729	75758	5489022	no	-	ST1121	strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0065-00	Klebsiella pneumoniae	strong	166	86909	198707	5670516	no	-	ST45	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF34_10-0067-00	Klebsiella pneumoniae	strong	229	45582	128694	5536790	no	-	ST252	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF34_10-0072-00-A	Klebsiella pneumoniae	strong	117	94071	257360	5384813	no	-	ST3661-3LV	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF34_10-0072-00-B	Klebsiella pneumoniae	strong	76	191163	573436	5347318	no	-	ST4083	aadA2^;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FF34_10-0085-00	Klebsiella pneumoniae	strong	122	94417	250574	5531845	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF34_10-0088-00	Klebsiella pneumoniae	strong	88	130738	292136	5562678	no	-	ST39	strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF34_10-0093-00	Klebsiella pneumoniae	strong	99	124172	317431	5561547	no	-	ST101	aac(3)-IIa.v1^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF34_10-0096-00	Klebsiella pneumoniae	strong	108	98154	289847	5480956	no	-	ST432	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
+FF34_10-0102-00	Klebsiella pneumoniae	strong	195	58086	261067	5654907	no	-	ST337	aac(6')-Ib-cr.v2;aadA2^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF34_10-0105-00	Klebsiella pneumoniae	strong	142	99869	416350	5623936	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+FF34_10-0110-00	Klebsiella pneumoniae	strong	306	36670	120308	5569524	no	-	ST17	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+FF34_10-0113-00	Klebsiella pneumoniae	strong	136	95908	237009	5636916	no	-	ST397-1LV	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
+FF34_10-0115-00	Klebsiella pneumoniae	strong	116	112656	301738	5565507	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF34_10-0116-00	Klebsiella pneumoniae	strong	124	101276	316637	5464440	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF34_10-0116-00	Klebsiella pneumoniae	strong	124	101276	316637	5464440	no	-	ST5856	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FF34_10-0118-00	Klebsiella pneumoniae	strong	121	115704	338715	5542839	no	-	ST11	aac(6')-Ib;aadA2^;aph3-Ia.v1^;rmtF	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF34_10-0122-00	Klebsiella pneumoniae	strong	495	18756	98713	5521056	no	-	ST101	aac(3)-IIa.v1^;strA.v1*;strB.v1*	GyrA-83Y;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF34_10-0128-00	Klebsiella pneumoniae	strong	156	70412	250925	5550348	no	-	ST307	-	GyrA-83I;ParC-80I	qnrB6^	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF35_08-0016-00-B	Klebsiella pneumoniae	strong	206	58629	193805	5531109	no	-	ST37	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0024-00	Klebsiella pneumoniae	strong	127	78117	257142	5232984	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0030-00	Klebsiella pneumoniae	strong	79	232344	393756	5672374	no	-	ST664	aadA1.v1^;strA.v1^;strB.v1*?	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0031-00	Klebsiella pneumoniae	strong	201	48798	198605	5541922	no	-	ST45	strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0046-00	Klebsiella pneumoniae	strong	173	60520	192636	5369949	no	-	ST1530	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0047-00	Klebsiella pneumoniae	strong	255	41151	183318	5572321	no	-	ST15	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^;strA.v1*;strB.v1*	GyrA-83F;GyrA-87A;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF35_08-0065-00	Klebsiella pneumoniae	strong	105	111232	332093	5535747	no	-	ST45	aac(3)-IIa.v1;strA.v1*;strB.v1*	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0074-00	Klebsiella pneumoniae	strong	143	95416	285048	5641567	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
+FF35_08-0078-00	Klebsiella pneumoniae	strong	53	281614	752428	5241002	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0091-00	Klebsiella pneumoniae	strong	461	23559	115341	5456110	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
+FF35_08-0096-00	Klebsiella pneumoniae	strong	101	151957	475442	5537703	no	-	ST29	aac(3)-IIa.v1;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
+FF35_08-0098-00	Klebsiella pneumoniae	strong	244	45750	163713	5474906	no	-	ST152	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0101-00	Klebsiella pneumoniae	strong	155	84966	182512	5530794	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
+FF35_08-0103-00	Klebsiella pneumoniae	strong	423	25348	109719	5412156	no	-	ST5731	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0112-00-A	Klebsiella pneumoniae	strong	105	112054	273776	5444326	no	-	ST505	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0124-00	Klebsiella pneumoniae	strong	365	27722	114870	5412854	no	-	ST29	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
+FF35_08-0125-00	Klebsiella pneumoniae	strong	388	26792	99944	5204773	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0137-00	Klebsiella pneumoniae	strong	95	147497	467813	5446259	no	-	ST29	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
+FF35_08-0140-00	Klebsiella pneumoniae	strong	143	67316	242632	5437483	no	-	ST985-1LV	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
+FF35_08-0140-00	Klebsiella pneumoniae	strong	143	67316	242632	5437483	no	-	ST985-1LV	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	0	0
+FF35_08-0141-00	Klebsiella pneumoniae	strong	254	46541	131971	5625547	no	-	ST29	aac(3)-IIa.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
+FF35_08-0142-00	Klebsiella pneumoniae	strong	89	144161	387255	5443264	no	-	ST29	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
+FF35_08-0145-00	Klebsiella pneumoniae	strong	89	95672	278717	5238617	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0146-00	Klebsiella pneumoniae	strong	51	258771	752428	5238627	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
+FF35_08-0156-00	Klebsiella pneumoniae	strong	54	210512	687484	5239415	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0159-00	Klebsiella pneumoniae	strong	63	172559	752428	5236405	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0165-00	Klebsiella pneumoniae	strong	52	258771	407346	5240099	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0166-00	Klebsiella pneumoniae	strong	48	277140	952353	5241768	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
+FF35_08-0169-00	Klebsiella pneumoniae	strong	150	70225	223519	5229269	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0170-00	Klebsiella pneumoniae	strong	151	70183	162878	5227929	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0171-00	Klebsiella pneumoniae	strong	85	127813	269880	5237356	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0172-00	Klebsiella pneumoniae	strong	52	263145	752428	5237453	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0174-00	Klebsiella pneumoniae	strong	163	54130	189176	5225064	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0178-00	Klebsiella pneumoniae	strong	58	162912	431322	5238239	no	-	ST20	aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF35_08-0180-00	Klebsiella pneumoniae	strong	310	35231	115530	5507262	no	-	ST45	strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF36_11-0001-00	Klebsiella pneumoniae	strong	99	110677	319673	5396106	no	-	ST48	aac(3)-IIa.v1;aadA2^;aph3-Ia.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0007-00	Klebsiella pneumoniae	strong	297	30356	105960	5545499	no	-	ST45	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0008-00	Klebsiella pneumoniae	strong	171	68084	211622	5590909	no	-	ST45	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0009-00	Klebsiella pneumoniae	strong	117	78387	255826	5484932	no	-	ST307	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF36_11-0016-00	Klebsiella pneumoniae	strong	140	84614	257014	5496288	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0018-00	Klebsiella pneumoniae	strong	131	78819	216318	5518796	no	-	ST39	aac(3)-IIa.v1^;aph3-Ia.v1^;strA.v1^;strB.v1?	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0019-00	Klebsiella pneumoniae	strong	128	91317	207125	5521219	no	-	ST39	aac(3)-IIa.v1^;aph3-Ia.v1^;strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0021-00	Klebsiella pneumoniae	strong	146	87490	234123	5598504	no	-	ST45	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0030-00	Klebsiella pneumoniae	strong	154	78813	288517	5464469	no	-	ST39	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0043-00	Klebsiella pneumoniae	strong	153	78964	211141	5521295	no	-	ST307	aac(6')-Ib-cr.v2;aadA16*	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+FF36_11-0056-00	Klebsiella pneumoniae	strong	145	89417	295962	5458262	no	-	ST73	aac(3)-IIa.v1;aadA^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0063-00	Klebsiella pneumoniae	strong	106	112081	324594	5273413	no	-	ST147	aac(3)-IId^;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	GyrA-83F;GyrA-87A;ParC-80I	qnrB1.v1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FF36_11-0066-00-A	Klebsiella pneumoniae	strong	208	51411	146225	5443216	no	-	ST6838	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*;strA.v1*;strB.v1*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0068-00	Klebsiella pneumoniae	strong	151	72958	272956	5620040	no	-	ST607	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+FF36_11-0076-00	Klebsiella pneumoniae	strong	142	69721	203425	5458186	no	-	ST101	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF36_11-0089-00	Klebsiella pneumoniae	strong	464	26244	99708	5762967	no	-	ST391	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	0	0
+FF36_11-0092-00	Klebsiella pneumoniae	strong	141	99295	311269	5470238	no	-	ST39	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0093-00	Klebsiella pneumoniae	strong	171	73484	237038	5462898	no	-	ST6701	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0099-00	Klebsiella pneumoniae	strong	162	86239	241921	5470321	no	-	ST39	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0103-00	Klebsiella pneumoniae	strong	192	53083	129119	5405177	no	-	ST39	aac(3)-IIa.v1^;strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0114-00-A	Klebsiella pneumoniae	strong	92	122217	270475	5514662	no	-	ST985	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0119-00	Klebsiella pneumoniae	strong	230	49932	165482	5518200	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0120-00	Klebsiella pneumoniae	strong	183	78963	218809	5612865	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0121-00	Klebsiella pneumoniae	strong	123	101100	223152	5491728	no	-	ST261	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FF36_11-0136-00	Klebsiella pneumoniae	strong	186	47621	190198	5434889	no	-	ST73	aac(3)-IIa.v1;aadA^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0137-00	Klebsiella pneumoniae	strong	146	77587	277943	5521283	no	-	ST29	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1^	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+FF36_11-0145-00	Klebsiella pneumoniae	strong	196	47105	237429	5328519	no	-	ST25	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0153-00	Klebsiella pneumoniae	strong	178	56306	147201	5487466	no	-	ST39	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0154-00	Klebsiella pneumoniae	strong	147	88341	298275	5542213	no	-	ST25	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aph3-Ia.v1^;strA.v1;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0157-00	Klebsiella pneumoniae	strong	137	89535	208990	5481896	no	-	ST268	aac(3)-IId^;strA.v1*;strB.v1*	-	qnrB1.v1	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	0
+FF36_11-0160-00	Klebsiella pneumoniae	strong	99	103420	250231	5554744	no	-	ST985	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0161-00	Klebsiella pneumoniae	strong	188	59686	230143	5578686	no	-	ST39	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	-	qnrB6^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+FF36_11-0166-00	Klebsiella pneumoniae	strong	89	104311	259293	5293834	no	-	ST17	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF36_11-0171-00	Klebsiella pneumoniae	strong	145	75864	248528	5575617	no	-	ST25	aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	1	1
+FFKC_002KP.1	Klebsiella pneumoniae	strong	401	30701	114048	5395283	no	-	ST6516	aac(3)-IId^;strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
+FFKC_004KP.1	Klebsiella pneumoniae	strong	99	108628	258563	5326942	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_005KP.1	Klebsiella pneumoniae	strong	98	119032	382096	5509032	no	-	ST101	strA.v1^;strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FFKC_007KP.1	Klebsiella pneumoniae	strong	112	90616	291688	5324718	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_009KP.1	Klebsiella pneumoniae	strong	162	74279	275141	5346708	no	-	ST111	aph3-Ia.v1^;strA.v1^;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FFKC_012KP.1	Klebsiella pneumoniae	strong	123	79452	267690	5708422	no	-	ST23-1LV	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FFKC_013KP.1	Klebsiella pneumoniae	strong	153	90195	259520	5546550	no	-	ST391	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FFKC_014KP.1	Klebsiella pneumoniae	strong	321	38255	145604	5404532	no	-	ST1109	strB.v1	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FFKC_017KP.1	Klebsiella pneumoniae	strong	277	36935	136617	5296716	no	-	ST1741-1LV	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_018KP.1	Klebsiella pneumoniae	strong	183	58392	216423	5306720	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_022KP.1	Klebsiella pneumoniae	strong	103	106924	278998	5327443	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_037KP.1	Klebsiella pneumoniae	strong	212	53180	220574	5317338	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_101KP.1	Klebsiella pneumoniae	strong	314	32542	220586	5286580	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_102KP.1	Klebsiella pneumoniae	strong	417	28205	178949	5255977	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_106KP.1	Klebsiella pneumoniae	strong	489	23137	178947	5244670	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_19KP.1	Klebsiella pneumoniae	strong	116	92388	230498	5320600	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_28KP.1	Klebsiella pneumoniae	strong	120	91260	230501	5322814	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_29KP.1	Klebsiella pneumoniae	strong	259	44767	119312	5599395	no	-	ST567-1LV	aac(3)-IIa.v1^;aadA16*	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FFKC_30KP.1	Klebsiella pneumoniae	strong	115	87641	258563	5327149	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_32KP.1	Klebsiella pneumoniae	strong	175	66868	254305	5309104	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_33KP.1	Klebsiella pneumoniae	strong	145	72900	230481	5322244	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_34KP.1	Klebsiella pneumoniae	strong	123	100987	230498	5311686	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_38KP.1	Klebsiella pneumoniae	strong	332	39610	162847	5408110	no	-	ST348	aac(3)-IId^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FFKC_43KP.1	Klebsiella pneumoniae	strong	157	66853	254296	5319980	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_44KP.1	Klebsiella pneumoniae	strong	181	59596	230498	5315090	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_47KP.1	Klebsiella pneumoniae	strong	329	38052	178960	5282042	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_48KP.1	Klebsiella pneumoniae	strong	358	32569	106327	5262236	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_53KP.1	Klebsiella pneumoniae	strong	105	118996	258600	5327132	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_54KP.1	Klebsiella pneumoniae	strong	157	70280	230490	5322368	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
+FFKC_55KP.1	Klebsiella pneumoniae	strong	408	30547	214283	5269300	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_56KP.1	Klebsiella pneumoniae	strong	246	47180	220586	5302344	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_57KP.1	Klebsiella pneumoniae	strong	139	67503	280181	5321869	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_61KP.1	Klebsiella pneumoniae	strong	431	29666	183509	5268918	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_64KP.1	Klebsiella pneumoniae	strong	125	92274	254296	5320157	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_65KP.1	Klebsiella pneumoniae	strong	130	86643	230498	5322820	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_66KP.1	Klebsiella pneumoniae	strong	105	105733	256351	5328451	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_67KP.1	Klebsiella pneumoniae	strong	102	114515	279191	5324349	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	0
+FFKC_68KP.1	Klebsiella pneumoniae	strong	109	105733	258553	5324573	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_73KP.1	Klebsiella pneumoniae	strong	106	98351	349455	5317864	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_74KP.1	Klebsiella pneumoniae	strong	118	85925	279069	5311577	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_82KP.1	Klebsiella pneumoniae	strong	288	39302	178975	5296382	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_83KP.1	Klebsiella pneumoniae	strong	344	38843	218854	5287635	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_84KP.1	Klebsiella pneumoniae	strong	361	33011	178972	5280452	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_85KP.1	Klebsiella pneumoniae	strong	208	59398	207218	5694584	no	-	ST307	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA2^	GyrA-83I;ParC-80I	qnrB1.v2^;qnrS1	NWT R	">0 QRDR, >0 PMQR, * aac6"	1	1
+FFKC_88KP.1	Klebsiella pneumoniae	strong	422	30176	178894	5271055	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_93KP.1	Klebsiella pneumoniae	strong	386	32843	178958	5276484	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_96KP.1	Klebsiella pneumoniae	strong	452	29275	201724	5268840	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_97KP.1	Klebsiella pneumoniae	strong	127	80062	254296	5317640	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+FFKC_98KP.1	Klebsiella pneumoniae	strong	208	55156	230507	5308880	no	-	ST1741	aac(3)-IId^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	0	0
+Kpn01691	Klebsiella pneumoniae	strong	237	136447	299078	5417401	no	-	ST1414	aac(6')-Ib-cr.v2*;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01693	Klebsiella pneumoniae	strong	76	356695	996297	5466658	no	-	ST252	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01694	Klebsiella pneumoniae	strong	155	346107	736664	5620622	no	-	ST307	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA16*	GyrA-83I;ParC-80I	-	NWT R	">1 QRDR, 0 PMQR, * aac6"	1	1
+Kpn01695	Klebsiella pneumoniae	strong	107	233515	818658	5659421	no	-	ST322	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01696	Klebsiella pneumoniae	strong	120	287340	711535	5324370	no	-	ST37	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01697	Klebsiella pneumoniae	strong	199	150735	532647	5640239	no	-	ST348	aac(3)-IIa.v1^;aac(6')-Ib-cr.v2;aadA16*;strA.v1^;strB.v1	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+Kpn01698	Klebsiella pneumoniae	strong	161	205986	402778	5587379	no	-	ST66	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01699	Klebsiella pneumoniae	strong	220	163340	343176	5700583	no	-	ST29	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^;strA.v1^;strB.v1	-	qnrB1.v2^;qnrS1	NWT R	"0 QRDR, >1 PMQR, * aac6"	1	1
+Kpn01701	Klebsiella pneumoniae	strong	156	343191	857796	5675491	no	-	ST29	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01703	Klebsiella pneumoniae	strong	91	362464	755165	5425523	no	-	ST247	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01705	Klebsiella pneumoniae	strong	126	346257	805819	5481154	no	-	ST29	strA.v1^;strB.v1	-	qnrB1.v2^	NWT I	"0 QRDR, qnrB1, 0 aac6"	1	1
+Kpn01706	Klebsiella pneumoniae	strong	100	312028	506988	5436469	no	-	ST247	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01713	Klebsiella pneumoniae	strong	135	278401	805821	5731678	no	-	ST29	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01714	Klebsiella pneumoniae	strong	249	150495	714852	5637404	no	-	ST26	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01715	Klebsiella pneumoniae	strong	61	416378	709833	5484122	no	-	ST17	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01716	Klebsiella pneumoniae	strong	159	136905	366014	5379926	no	-	ST34	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01717	Klebsiella pneumoniae	strong	140	210088	348587	5540890	no	-	ST37	aac(3)-IIa.v1;aadA5	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01720	Klebsiella pneumoniae	strong	223	186362	355067	5762972	no	-	ST643	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	-	WT S	"0 QRDR, 0 PMQR, 1 aac6"	0	0
+Kpn01721	Klebsiella pneumoniae	strong	104	322665	795997	5629728	no	-	ST29	aac(3)-IId^;aac(6')-Ib-cr.v2;aadA*;strA.v1^;strB.v1	-	qnrB1.v2^	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01722	Klebsiella pneumoniae	strong	262	301021	688789	5716732	no	-	ST29	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01723	Klebsiella pneumoniae	strong	139	300752	535811	5578312	no	-	ST225	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01724	Klebsiella pneumoniae	strong	212	360743	741638	5626027	no	-	ST163	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01727	Klebsiella pneumoniae	strong	255	301021	807692	5742123	no	-	ST29	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	0
+Kpn01729	Klebsiella pneumoniae	strong	140	215185	390501	5452102	no	-	ST348	aadA1.v1^	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01730	Klebsiella pneumoniae	strong	128	99774	461516	5345891	no	-	ST17	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01731	Klebsiella pneumoniae	strong	221	335637	806425	5754367	no	-	ST29	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^;strA.v1^;strB.v1	-	qnrB1.v2^;qnrS1	NWT R	"0 QRDR, >1 PMQR, * aac6"	1	1
+Kpn01783	Klebsiella pneumoniae	strong	304	189483	592380	5723436	no	-	ST29	aac(3)-IIa.v1;aac(6')-Ib-cr.v2;aadA^	-	qnrS1	NWT R	"0 QRDR, 1 PMQR, 1 aac6"	1	1
+Kpn01835	Klebsiella pneumoniae	strong	139	265527	1025513	5582844	no	-	ST915	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF34_10-0127-00	Klebsiella variicola subsp. variicola	strong	149	83250	178082	5663706	no	-	ST347	aadA2^	-	qnrS1	NWT R	"0 QRDR, 1^ PMQR, 0 aac6"	1	1
+FF35_08-0001-00	Klebsiella variicola subsp. variicola	strong	196	57417	173307	5848954	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0002-00	Klebsiella variicola subsp. variicola	strong	261	44668	144378	5835922	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0006-00	Klebsiella variicola subsp. variicola	strong	98	183205	557824	5861938	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0007-00	Klebsiella variicola subsp. variicola	strong	196	81948	194296	5845000	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0008-00	Klebsiella variicola subsp. variicola	strong	178	62514	166246	5845773	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0009-00	Klebsiella variicola subsp. variicola	strong	89	207418	557917	5840785	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0010-00	Klebsiella variicola subsp. variicola	strong	125	101175	262426	5853266	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0011-00	Klebsiella variicola subsp. variicola	strong	108	146916	557989	5859605	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0012-00	Klebsiella variicola subsp. variicola	strong	96	206635	557989	5863390	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0013-00	Klebsiella variicola subsp. variicola	strong	202	59539	235906	5843691	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0014-00	Klebsiella variicola subsp. variicola	strong	233	51827	168413	5844476	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0015-00-B	Klebsiella variicola subsp. variicola	strong	212	61506	194296	5846802	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0015-00-B	Klebsiella variicola subsp. variicola	strong	212	61506	194296	5846802	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
+FF35_08-0017-00	Klebsiella variicola subsp. variicola	strong	114	121654	298692	5856886	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0018-00	Klebsiella variicola subsp. variicola	strong	299	41493	136684	5803729	no	-	ST3296	strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0019-00	Klebsiella variicola subsp. variicola	strong	199	62528	235906	5846000	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0020-00	Klebsiella variicola subsp. variicola	strong	187	71412	252571	5852431	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0027-00	Klebsiella variicola subsp. variicola	strong	214	54562	194296	5841771	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0033-00	Klebsiella variicola subsp. variicola	strong	139	102181	557827	5854870	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0034-00	Klebsiella variicola subsp. variicola	strong	236	61505	294985	5841858	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0036-00-B	Klebsiella variicola subsp. variicola	strong	220	52928	181256	5842946	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0038-00	Klebsiella variicola subsp. variicola	strong	96	176669	314464	5860865	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0039-00	Klebsiella variicola subsp. variicola	strong	219	54796	203949	5841805	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
+FF35_08-0040-00	Klebsiella variicola subsp. variicola	strong	210	60265	258893	5843558	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0041-00	Klebsiella variicola subsp. variicola	strong	101	137330	558016	5856733	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0042-00	Klebsiella variicola subsp. variicola	strong	102	208166	558100	5857985	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0043-00	Klebsiella variicola subsp. variicola	strong	208	58285	243012	5852844	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0044-00-B	Klebsiella variicola subsp. variicola	strong	260	42737	208426	5842716	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0045-00	Klebsiella variicola subsp. variicola	strong	279	43454	125461	5835495	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0050-00	Klebsiella variicola subsp. variicola	strong	201	65873	297869	5847703	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0051-00	Klebsiella variicola subsp. variicola	strong	195	61703	157433	5849900	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0052-00	Klebsiella variicola subsp. variicola	strong	106	131815	385041	5862491	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0053-00A	Klebsiella variicola subsp. variicola	strong	103	207424	557979	5860277	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0054-00	Klebsiella variicola subsp. variicola	strong	258	48243	151493	5835427	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0055-00	Klebsiella variicola subsp. variicola	strong	97	160003	342550	5834612	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0056-00	Klebsiella variicola subsp. variicola	strong	287	43764	145709	5834991	no	-	ST3296-1LV	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0057-00	Klebsiella variicola subsp. variicola	strong	236	53240	237418	5839782	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0061-00	Klebsiella variicola subsp. variicola	strong	108	138993	353076	5855376	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0062-00	Klebsiella variicola subsp. variicola	strong	100	118296	557967	5836033	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0063-00	Klebsiella variicola subsp. variicola	strong	106	190767	385414	5860071	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0064-00	Klebsiella variicola subsp. variicola	strong	191	77787	262335	5847565	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0067-00-A	Klebsiella variicola subsp. variicola	strong	312	39060	194296	5834406	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0068-00	Klebsiella variicola subsp. variicola	strong	94	207214	557997	5861753	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0069-00-A	Klebsiella variicola subsp. variicola	strong	216	59743	203951	5847299	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0070-00	Klebsiella variicola subsp. variicola	strong	191	77619	262295	5848117	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0071-00	Klebsiella variicola subsp. variicola	strong	98	139756	557989	5834633	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0072-00	Klebsiella variicola subsp. variicola	strong	209	49449	225687	5814126	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
+FF35_08-0073-00	Klebsiella variicola subsp. variicola	strong	125	105329	262301	5849782	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0075-00-B	Klebsiella variicola subsp. variicola	strong	100	145340	605824	5858638	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0080-00	Klebsiella variicola subsp. variicola	strong	100	118152	557824	5852157	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0081-00	Klebsiella variicola subsp. variicola	strong	197	77616	242997	5849070	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0083-00-A	Klebsiella variicola subsp. variicola	strong	175	77612	213662	5829073	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0085-00	Klebsiella variicola subsp. variicola	strong	112	113360	342107	5853507	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0086-00	Klebsiella variicola subsp. variicola	strong	103	162745	557989	5869953	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0087-00-A	Klebsiella variicola subsp. variicola	strong	204	57420	168433	5821954	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0088-00	Klebsiella variicola subsp. variicola	strong	99	207136	557982	5858435	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0089-00B	Klebsiella variicola subsp. variicola	strong	73	116438	445573	5598145	no	-	ST1562	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0090-00	Klebsiella variicola subsp. variicola	strong	215	58194	235906	5842080	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0100-00	Klebsiella variicola subsp. variicola	strong	223	50669	172525	5841446	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0102-00	Klebsiella variicola subsp. variicola	strong	183	84521	258893	5853017	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0105-00	Klebsiella variicola subsp. variicola	strong	214	55228	191513	5846548	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0106-00	Klebsiella variicola subsp. variicola	strong	136	90310	258893	5843163	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0109-00	Klebsiella variicola subsp. variicola	strong	98	232646	557788	5860235	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0110-00-B	Klebsiella variicola subsp. variicola	strong	92	118296	392038	5673040	no	-	ST3296	aadA*;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0115-00-A	Klebsiella variicola subsp. variicola	strong	384	27981	92101	5822677	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0116-00-A	Klebsiella variicola subsp. variicola	strong	89	207424	557883	5859452	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0118-00-A	Klebsiella variicola subsp. variicola	strong	102	161605	557799	5861502	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0120-00	Klebsiella variicola subsp. variicola	strong	217	54921	166251	5840345	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0121-00-A	Klebsiella variicola subsp. variicola	strong	211	61568	168434	5846308	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0123-00	Klebsiella variicola subsp. variicola	strong	103	206296	558007	5859470	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0126-00	Klebsiella variicola subsp. variicola	strong	105	146930	355162	5856454	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0130-00A	Klebsiella variicola subsp. variicola	strong	97	216123	606276	5860059	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0138-00	Klebsiella variicola subsp. variicola	strong	158	91092	447005	5852840	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0148-00	Klebsiella variicola subsp. variicola	strong	105	158829	557989	5860730	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0150-00	Klebsiella variicola subsp. variicola	strong	198	70498	277259	5849161	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	1	1
+FF35_08-0151-00	Klebsiella variicola subsp. variicola	strong	247	51137	194296	5840857	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0153-00	Klebsiella variicola subsp. variicola	strong	106	146942	557802	5860060	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0154-00	Klebsiella variicola subsp. variicola	strong	424	26850	139854	5821268	no	-	ST3296-1LV	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0162-00	Klebsiella variicola subsp. variicola	strong	211	60077	242985	5843894	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0163-00	Klebsiella variicola subsp. variicola	strong	235	51848	236030	5841318	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0164-00	Klebsiella variicola subsp. variicola	strong	244	59555	242985	5840719	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0167-00	Klebsiella variicola subsp. variicola	strong	109	122668	557919	5859234	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0168-00	Klebsiella variicola subsp. variicola	strong	155	77689	249954	5835153	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0175-00	Klebsiella variicola subsp. variicola	strong	146	101454	341660	5858168	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FF35_08-0177-00	Klebsiella variicola subsp. variicola	strong	184	88487	314753	5848172	no	-	ST3296	aac(3)-IIa.v1;aadA2^;strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FFKC_003KP.1	Klebsiella variicola subsp. variicola	strong	71	189756	360810	5769258	no	-	ST2645	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FFKC_118KP.1	Klebsiella variicola subsp. variicola	strong	406	29086	177071	5512826	no	-	ST919	strA.v1;strB.v1	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+FFKC_69KP.1	Klebsiella variicola subsp. variicola	strong	98	105097	379764	5606027	no	-	ST2462	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01700	Klebsiella variicola subsp. variicola	strong	84	501341	955651	5666375	no	-	ST347	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0
+Kpn01704	Klebsiella variicola subsp. variicola	strong	164	258307	574987	5887011	no	-	ST641	-	-	-	WT S	"0^ QRDR, 0 PMQR, 0 aac6"	0	0

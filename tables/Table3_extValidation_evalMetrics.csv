@@ -11,8 +11,8 @@ R,Oxfordshire,United Kingdom,95.25%,78.38%,97.67%,2.33%,21.62%,12.54%,295
 NWT,Oxfordshire,United Kingdom,94.58%,75.47%,98.76%,1.24%,24.53%,17.97%,295
 R,IZSAM,Italy,97.88%,98.9%,70%,30%,1.1%,96.47%,283
 NWT,IZSAM,Italy,98.23%,98.55%,85.71%,14.29%,1.45%,97.53%,283
-R,MBIRA,"Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",73%,90.23%,55.38%,44.62%,9.77%,50.57%,263
-NWT,MBIRA,"Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",76.43%,95.92%,51.72%,48.28%,4.08%,55.89%,263
+R,MBIRA,"Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",72.27%,89.92%,54.33%,45.67%,10.08%,50.39%,256
+NWT,MBIRA,"Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",75.78%,95.8%,50.44%,49.56%,4.2%,55.86%,256
 R,Controlling Superbugs study & Victorian CPE program,Australia,90.09%,96.08%,74.58%,25.42%,3.92%,72.17%,212
 NWT,Controlling Superbugs study & Victorian CPE program,Australia,82.08%,83.51%,66.67%,33.33%,16.49%,91.51%,212
 R,IRCCS Ospedale San Raffaele,Italy,98.48%,99.47%,81.82%,18.18%,0.53%,94.44%,198
@@ -21,8 +21,8 @@ R,HURYC & CIBERINFEC,"Spain, Portugal",82.08%,89.73%,40.74%,59.26%,10.27%,84.39%
 NWT,HURYC & CIBERINFEC,"Spain, Portugal",84.97%,90.85%,40%,60%,9.15%,88.44%,173
 R,HULP,Spain,97.3%,97.79%,91.67%,8.33%,2.21%,91.89%,148
 NWT,HULP,Spain,97.3%,97.81%,90.91%,9.09%,2.19%,92.57%,148
-R,MBIRA*,"Ethiopia, South Africa, Tanzania",95.65%,20%,100%,0%,80%,5.43%,92
-NWT,MBIRA*,"Ethiopia, South Africa, Tanzania",95.65%,20%,100%,0%,80%,5.43%,92
+R,MBIRA*,"Ethiopia, South Africa, Tanzania",95.6%,20%,100%,0%,80%,5.49%,91
+NWT,MBIRA*,"Ethiopia, South Africa, Tanzania",95.6%,20%,100%,0%,80%,5.49%,91
 R,Oxfordshire*,United Kingdom,98.48%,NaN%,98.48%,1.52%,NaN%,0%,66
 NWT,Oxfordshire*,United Kingdom,95.45%,0%,98.44%,1.56%,100%,3.03%,66
 R,SCHARKI,Germany,94.64%,100%,94.44%,5.56%,0%,3.57%,56
