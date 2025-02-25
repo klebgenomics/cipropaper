@@ -3922,3 +3922,434 @@ FFKC_118KP.1	Ciprofloxacin	S	==	0.25	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biom
 FFKC_69KP.1	Ciprofloxacin	S	==	0.25	mg/L	MIC (broth dilution)	CLSI	-	Vitek	BiomŽrieux	-	-	Unicycler v0.4.8	-	-	-	Alex Aiken	Human	Human	-	Infection	Tanzania	-	2021	MBIRA*
 Kpn01700	Ciprofloxacin	S	==	0.032	mg/L	MIC (E-test gradient diffusion)	CLSI	2019	Manual 	BiomŽrieux	E-Test	ERR6384949	Unicycler v0.4.8	SAMEA8997894	PRJEB46655	35283332	Andrew Whitelaw	Human	Human	Blood	Infection	South Africa	Cape Town	2017	MBIRA*
 Kpn01704	Ciprofloxacin	S	==	0.064	mg/L	MIC (E-test gradient diffusion)	CLSI	2019	Manual 	BiomŽrieux	E-Test	ERR6384952	Unicycler v0.4.8	SAMEA8997897	PRJEB46655	35283332	Andrew Whitelaw	Human	Human	Blood	Infection	South Africa	Cape Town	2017	MBIRA*
+2023.TE.2732.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.2733.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.2734.1.2	Ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.2743.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.2744.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.4500.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.4501.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.4503.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.4505.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.4523.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.4524.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.4526.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchoaspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.5961.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.5962.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.5963.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.5964.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.5965.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.5967.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Surgical wound	-	Italy	Teramo	2023	IZSAM
+2023.TE.6262.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.6263.1.3	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.7539.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.7528.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.7527.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.7524.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.7529.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.7531.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.7533.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial-alveolar lavage	-	Italy	Teramo	2023	IZSAM
+2023.TE.7532.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bledder catheter	-	Italy	Teramo	2023	IZSAM
+2023.TE.7538.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.7537.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.7536.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.8150.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tracheal aspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.8153.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.8154.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	 Surgical wound	-	Italy	Teramo	2023	IZSAM
+2023.TE.8155.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Ascitic fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.8156.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.8158.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.10292.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tissue	-	Italy	Teramo	2023	IZSAM
+2023.TE.10293.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.10298.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.10301.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.10302.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.10318.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.10319.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.10322.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Peritoneal fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.10324.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.10326.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.10327.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.10329.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.10335.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.10337.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Peritoneal fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.10338.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.10339.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.10342.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.10344.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.10346.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.10349.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial-alveolar lavage	-	Italy	Teramo	2023	IZSAM
+2023.TE.10824.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.10832.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial-alveolar lavage	-	Italy	Teramo	2023	IZSAM
+2023.TE.12804.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.12795.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.12798.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.12797.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.12799.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.12805.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.12801.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.12807.1.2	Ciprofloxacin	R	>	2	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.12808.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bledder catheter	-	Italy	Teramo	2023	IZSAM
+2023.TE.12809.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Abscess fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.12810.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.12811.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.12817.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Skin swab	-	Italy	Teramo	2023	IZSAM
+2023.TE.12820.1.2	Ciprofloxacin	I	==	0.5	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.14470.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.14471.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound	-	Italy	Teramo	2023	IZSAM
+2023.TE.14473.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.14474.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.14475.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.14476.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchoaspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.14478.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.14480.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.14482.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.14485.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bedsore tissue	-	Italy	Teramo	2023	IZSAM
+2023.TE.14487.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial-alveolar lavage	-	Italy	Teramo	2023	IZSAM
+2023.TE.14489.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.14490.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.14605.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchoaspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.14606.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.14608.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.14610.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.16927.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16928.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16930.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.16931.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16932.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.16933.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16934.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16935.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Sputum	-	Italy	Teramo	2023	IZSAM
+2023.TE.16936.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Abscitic fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.16937.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16938.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16939.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16940.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.16941.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16942.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound	-	Italy	Teramo	2023	IZSAM
+2023.TE.16943.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16944.1.2	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16945.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.16991.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.16993.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial-alveolar lavage	-	Italy	Teramo	2023	IZSAM
+2023.TE.16995.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.16996.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.16998.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.16999.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.17000.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.17001.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tracheal aspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.17004.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.17005.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.17006.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.17007.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.17008.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bledder catheter	-	Italy	Teramo	2023	IZSAM
+2023.TE.17009.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.17011.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.17012.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.17015.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.18287.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.18291.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.18283.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.18281.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Sputum	-	Italy	Teramo	2023	IZSAM
+2023.TE.18292.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bledder catheter	-	Italy	Teramo	2023	IZSAM
+2023.TE.18285.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tracheal aspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.18286.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.18289.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.23042.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tracheal aspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.23061.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bledder catheter	-	Italy	Teramo	2023	IZSAM
+2023.TE.23060.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.23059.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.23055.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial-alveolar lavage	-	Italy	Teramo	2023	IZSAM
+2023.TE.23053.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Abscess fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.23051.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.23027.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.23029.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tracheal aspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.23033.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.23034.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.23035.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2023.TE.23036.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.23037.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2023	IZSAM
+2023.TE.23039.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2023	IZSAM
+2023.TE.23041.1.2	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound	-	Italy	Teramo	2023	IZSAM
+2023.TE.26371.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.26372.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.26374.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.26375.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tissue	-	Italy	Teramo	2023	IZSAM
+2023.TE.26377.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchoaspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.26378.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tracheal aspirate	-	Italy	Teramo	2023	IZSAM
+2023.TE.26380.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.26381.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.26382.1.2	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound	-	Italy	Teramo	2023	IZSAM
+2023.TE.26384.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.26384.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2023	IZSAM
+2023.TE.26386.1.2	Ciprofloxacin	I	==	0.5	mg/L	MIC (broth dilution)	EUCAST	2023	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2023	IZSAM
+2024.TE.492.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.493.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.494.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.495.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.449.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.508.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Nephrostomy drainage fluid	-	Italy	Teramo	2024	IZSAM
+2024.TE.491.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.451.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.450.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.496.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.506.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial lavage	-	Italy	Teramo	2024	IZSAM
+2024.TE.498.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.501.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.504.1.2	Ciprofloxacin	I	==	0.5	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.502.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.497.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.499.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.500.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.618.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.3744.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchoaspirate	-	Italy	Teramo	2024	IZSAM
+2024.TE.3748.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.3750.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound swab	-	Italy	Teramo	2024	IZSAM
+2024.TE.3751.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.3765.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.3768.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound swab	-	Italy	Teramo	2024	IZSAM
+2024.TE.3770.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.3771.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.3780.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bladder catheter	-	Italy	Teramo	2024	IZSAM
+2024.TE.3753.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.3783.1.2	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tissue culture	-	Italy	Teramo	2024	IZSAM
+2024.TE.5908.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.5923.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.5920.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.5918.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.5917.1.2	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.5916.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.5915.1.2	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Peritoneal fluid	-	Italy	Teramo	2024	IZSAM
+2024.TE.5914.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.5911.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.5909.1.2	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Biliary drainage fluid	-	Italy	Teramo	2024	IZSAM
+2024.TE.5925.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.5912.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7568.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tissue culture	-	Italy	Teramo	2024	IZSAM
+2024.TE.7570.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial lavage	-	Italy	Teramo	2024	IZSAM
+2024.TE.7572.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7574.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Sacral ulcer Tissue culture	-	Italy	Teramo	2024	IZSAM
+2024.TE.7579.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7582.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.7586.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7592.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7578.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7581.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7580.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.7584.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7588.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.7591.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7594.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7912.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bile	-	Italy	Teramo	2024	IZSAM
+2024.TE.7911.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid 	-	Italy	Teramo	2024	IZSAM
+2024.TE.7913.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Sputum	-	Italy	Teramo	2024	IZSAM
+2024.TE.7920.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound swab	-	Italy	Teramo	2024	IZSAM
+2024.TE.7919.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.7917.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11475.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Sputum	-	Italy	Teramo	2024	IZSAM
+2024.TE.11476.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11479.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchoaspirate	-	Italy	Teramo	2024	IZSAM
+2024.TE.11480.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11484.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11486.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11487.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Liquor	-	Italy	Teramo	2024	IZSAM
+2024.TE.11493.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11495.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11498.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Sputum	-	Italy	Teramo	2024	IZSAM
+2024.TE.11499.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bladder catheter	-	Italy	Teramo	2024	IZSAM
+2024.TE.11501.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Sputum	-	Italy	Teramo	2024	IZSAM
+2024.TE.11503.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11505.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11507.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11508.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11511.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11514.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bronchial lavage	-	Italy	Teramo	2024	IZSAM
+2024.TE.11515.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11516.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11518.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Wound swab	-	Italy	Teramo	2024	IZSAM
+2024.TE.11520.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11523.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11524.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11527.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11528.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11529.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11530.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11531.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2024	IZSAM
+2024.TE.11532.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11533.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11534.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11535.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11536.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11537.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11538.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11540.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.11541.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.11544.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.13110.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.13111.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.13122.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.13114.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.13118.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Bedsore Swab	-	Italy	Teramo	2024	IZSAM
+2024.TE.13887.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.13890.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Drainage fluid	-	Italy	Teramo	2024	IZSAM
+2024.TE.13869.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.13868.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.13871.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.13863.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.13867.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.13865.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Blood	-	Italy	Teramo	2024	IZSAM
+2024.TE.13864.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.19655.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Tracheal aspirate	-	Italy	Teramo	2024	IZSAM
+2024.TE.22725.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.28791.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine	-	Italy	Teramo	2024	IZSAM
+2024.TE.31731.1.2	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Urine 	-	Italy	Teramo	2024	IZSAM
+2024.TE.31762.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Coltura bile	-	Italy	Teramo	2024	IZSAM
+2024.TE.31684.1.2	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	2024	Microscan	Other	96-Well Plate	-	SPAdes v3.11.1	-	-	-	Alessandra Cornacchia	Human	Human	Peritoneal fluid 	-	Italy	Teramo	2024	IZSAM
+14750878	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294272	SPAdes v4.0.0	SAMEA117666355	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+14986832	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294273	SPAdes v4.0.0	SAMEA117666356	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+15044948	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294274	SPAdes v4.0.0	SAMEA117666357	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+15127577	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294275	SPAdes v4.0.0	SAMEA117666358	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+15223781	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294279	SPAdes v4.0.0	SAMEA117666362	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+58159696	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294287	SPAdes v4.0.0	SAMEA117666371	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2019	HULP
+58167524	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294288	SPAdes v4.0.0	SAMEA117666372	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Rectal swab	-	Spain	-	2019	HULP
+60559220	Ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294295	SPAdes v4.0.0	SAMEA117666379	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bronchial aspirate	-	Spain	-	2022	HULP
+60559284	Ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294296	SPAdes v4.0.0	SAMEA117666380	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bronchial aspirate	-	Spain	-	2022	HULP
+60569366	Ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294297	SPAdes v4.0.0	SAMEA117666381	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	CSF	-	Spain	-	2022	HULP
+61369834	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294299	SPAdes v4.0.0	SAMEA117666383	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2022	HULP
+61612016	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294303	SPAdes v4.0.0	SAMEA117666387	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2022	HULP
+61619146	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294304	SPAdes v4.0.0	SAMEA117666388	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Tracheal aspirate	-	Spain	-	2022	HULP
+61770513	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294310	SPAdes v4.0.0	SAMEA117666394	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Surgical wound	-	Spain	-	2022	HULP
+61903540	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294312	SPAdes v4.0.0	SAMEA117666396	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Rectal swab	-	Spain	-	2023	HULP
+61956262	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294314	SPAdes v4.0.0	SAMEA117666398	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+61977711	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294316	SPAdes v4.0.0	SAMEA117666400	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Rectal swab	-	Spain	-	2023	HULP
+61992332	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294318	SPAdes v4.0.0	SAMEA117666402	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Rectal swab	-	Spain	-	2023	HULP
+62033477	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294319	SPAdes v4.0.0	SAMEA117666403	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62189392	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294326	SPAdes v4.0.0	SAMEA117666410	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62253102	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294330	SPAdes v4.0.0	SAMEA117666414	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62269532	Ciprofloxacin	S	<=	0.06	mg/L	MIC (E-test gradient diffusion)	EUCAST	-	-	-	-	ERR14294331	SPAdes v4.0.0	SAMEA117666415	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62368742	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294334	SPAdes v4.0.0	SAMEA117666418	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bronchial aspirate	-	Spain	-	2023	HULP
+62375226	Ciprofloxacin	S	<=	0.06	mg/L	MIC (E-test gradient diffusion)	EUCAST	-	-	-	-	ERR14294337	SPAdes v4.0.0	SAMEA117666421	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62401783	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294342	SPAdes v4.0.0	SAMEA117666426	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62426777	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294343	SPAdes v4.0.0	SAMEA117666427	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62441541	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294345	SPAdes v4.0.0	SAMEA117666429	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62450981	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294348	SPAdes v4.0.0	SAMEA117666432	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62461401	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294350	SPAdes v4.0.0	SAMEA117666434	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62510259	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294356	SPAdes v4.0.0	SAMEA117666440	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bronchial aspirate	-	Spain	-	2023	HULP
+62514501	Ciprofloxacin	R	=	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294357	SPAdes v4.0.0	SAMEA117666441	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62516359	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294360	SPAdes v4.0.0	SAMEA117666444	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62555922	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294364	SPAdes v4.0.0	SAMEA117666448	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62564691	Ciprofloxacin	S	=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294368	SPAdes v4.0.0	SAMEA117666452	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62606342	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294380	SPAdes v4.0.0	SAMEA117666464	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62609971	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294381	SPAdes v4.0.0	SAMEA117666465	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bile	-	Spain	-	2023	HULP
+62612255	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294383	SPAdes v4.0.0	SAMEA117666467	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62617152	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294384	SPAdes v4.0.0	SAMEA117666468	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62633353	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294386	SPAdes v4.0.0	SAMEA117666470	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62635934	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294389	SPAdes v4.0.0	SAMEA117666473	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2023	HULP
+62646572	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294392	SPAdes v4.0.0	SAMEA117666476	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Abscess	-	Spain	-	2023	HULP
+62648604	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294394	SPAdes v4.0.0	SAMEA117666478	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Ascitic liquid	-	Spain	-	2023	HULP
+62648644	Ciprofloxacin	S	=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294395	SPAdes v4.0.0	SAMEA117666479	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62659573	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294396	SPAdes v4.0.0	SAMEA117666480	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62661376	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294397	SPAdes v4.0.0	SAMEA117666481	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62662949	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294398	SPAdes v4.0.0	SAMEA117666482	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62662951	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294399	SPAdes v4.0.0	SAMEA117666483	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62666649	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294401	SPAdes v4.0.0	SAMEA117666485	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2023	HULP
+62682692	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294403	SPAdes v4.0.0	SAMEA117666487	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2023	HULP
+62689612	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294409	SPAdes v4.0.0	SAMEA117666493	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2023	HULP
+62693945	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294410	SPAdes v4.0.0	SAMEA117666494	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2023	HULP
+62720287	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294413	SPAdes v4.0.0	SAMEA117666497	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62722457	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294414	SPAdes v4.0.0	SAMEA117666498	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62729213	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294417	SPAdes v4.0.0	SAMEA117666501	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+62737222	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294419	SPAdes v4.0.0	SAMEA117666503	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62739778	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294420	SPAdes v4.0.0	SAMEA117666504	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Abscess	-	Spain	-	2024	HULP
+62750744	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294425	SPAdes v4.0.0	SAMEA117666509	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62755454	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294427	SPAdes v4.0.0	SAMEA117666511	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62755844	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294428	SPAdes v4.0.0	SAMEA117666512	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Ascitic liquid	-	Spain	-	2024	HULP
+62758590	Ciprofloxacin	R	=	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294429	SPAdes v4.0.0	SAMEA117666513	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62758727	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294431	SPAdes v4.0.0	SAMEA117666515	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62775203	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294432	SPAdes v4.0.0	SAMEA117666516	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2024	HULP
+62780405	Ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294436	SPAdes v4.0.0	SAMEA117666520	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Surgical wound	-	Spain	-	2024	HULP
+62791189	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294439	SPAdes v4.0.0	SAMEA117666523	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62792157	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294440	SPAdes v4.0.0	SAMEA117666524	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+62802333	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294441	SPAdes v4.0.0	SAMEA117666525	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62808259	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294442	SPAdes v4.0.0	SAMEA117666526	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62810612	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294444	SPAdes v4.0.0	SAMEA117666528	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62834402	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294449	SPAdes v4.0.0	SAMEA117666533	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Skin ulcer	-	Spain	-	2024	HULP
+62846426	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294452	SPAdes v4.0.0	SAMEA117666536	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62847691	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294453	SPAdes v4.0.0	SAMEA117666537	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2024	HULP
+62851543	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294454	SPAdes v4.0.0	SAMEA117666538	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bronchial aspirate	-	Spain	-	2024	HULP
+62856124	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294458	SPAdes v4.0.0	SAMEA117666542	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+62859410	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294460	SPAdes v4.0.0	SAMEA117666544	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Abscess	-	Spain	-	2024	HULP
+72478873	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294463	SPAdes v4.0.0	SAMEA117666547	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72479668	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294464	SPAdes v4.0.0	SAMEA117666548	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+72484471	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294466	SPAdes v4.0.0	SAMEA117666550	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72485141	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294467	SPAdes v4.0.0	SAMEA117666551	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+72487409	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294469	SPAdes v4.0.0	SAMEA117666553	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72490094	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294470	SPAdes v4.0.0	SAMEA117666554	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72498540	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294472	SPAdes v4.0.0	SAMEA117666556	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72502685	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294473	SPAdes v4.0.0	SAMEA117666557	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+72503085	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294474	SPAdes v4.0.0	SAMEA117666558	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+72504771	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294475	SPAdes v4.0.0	SAMEA117666559	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72513601	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294477	SPAdes v4.0.0	SAMEA117666561	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+72520807	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294479	SPAdes v4.0.0	SAMEA117666563	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2024	HULP
+72521462	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294480	SPAdes v4.0.0	SAMEA117666564	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2024	HULP
+72527213	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294482	SPAdes v4.0.0	SAMEA117666566	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72539679	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294483	SPAdes v4.0.0	SAMEA117666567	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72543347	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294484	SPAdes v4.0.0	SAMEA117666568	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72550999	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294486	SPAdes v4.0.0	SAMEA117666570	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72555919	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294488	SPAdes v4.0.0	SAMEA117666572	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72570487	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294491	SPAdes v4.0.0	SAMEA117666575	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72571773	Ciprofloxacin	S	<=	0.06	mg/L	MIC (E-test gradient diffusion)	EUCAST	-	-	-	-	ERR14294492	SPAdes v4.0.0	SAMEA117666576	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+72575058	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294493	SPAdes v4.0.0	SAMEA117666577	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72611835	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294495	SPAdes v4.0.0	SAMEA117666579	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72612166	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294496	SPAdes v4.0.0	SAMEA117666580	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72613651	Ciprofloxacin	S	<=	0.06	mg/L	MIC (E-test gradient diffusion)	EUCAST	-	-	-	-	ERR14294497	SPAdes v4.0.0	SAMEA117666581	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Pericatheter insertion swab	-	Spain	-	2024	HULP
+72617049	Ciprofloxacin	R	>=	4	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294498	SPAdes v4.0.0	SAMEA117666582	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+72619624	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294499	SPAdes v4.0.0	SAMEA117666583	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72622582	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294501	SPAdes v4.0.0	SAMEA117666585	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72633039	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294502	SPAdes v4.0.0	SAMEA117666586	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72634783	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294503	SPAdes v4.0.0	SAMEA117666587	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72638605	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294504	SPAdes v4.0.0	SAMEA117666588	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Surgical wound	-	Spain	-	2024	HULP
+72644514	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294505	SPAdes v4.0.0	SAMEA117666589	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72645549	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294506	SPAdes v4.0.0	SAMEA117666590	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2024	HULP
+72666297	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294508	SPAdes v4.0.0	SAMEA117666592	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72669355	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294509	SPAdes v4.0.0	SAMEA117666593	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72672442	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294511	SPAdes v4.0.0	SAMEA117666595	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+72675552	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294512	SPAdes v4.0.0	SAMEA117666596	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+90032659	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294513	SPAdes v4.0.0	SAMEA117666597	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bronchial aspirate	-	Spain	-	2024	HULP
+90033636	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294514	SPAdes v4.0.0	SAMEA117666598	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Skin ulcer	-	Spain	-	2024	HULP
+200005012	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294516	SPAdes v4.0.0	SAMEA117666600	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+200007209	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294519	SPAdes v4.0.0	SAMEA117666603	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Bronchial aspirate	-	Spain	-	2024	HULP
+200023006	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294523	SPAdes v4.0.0	SAMEA117666607	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200046269	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294526	SPAdes v4.0.0	SAMEA117666610	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200049228	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294527	SPAdes v4.0.0	SAMEA117666611	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200056344	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294530	SPAdes v4.0.0	SAMEA117666614	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200061080	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294531	SPAdes v4.0.0	SAMEA117666615	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200064400	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294532	SPAdes v4.0.0	SAMEA117666616	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200085555	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294533	SPAdes v4.0.0	SAMEA117666617	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200086084	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294534	SPAdes v4.0.0	SAMEA117666618	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200088834	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294536	SPAdes v4.0.0	SAMEA117666620	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200090698	Ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294537	SPAdes v4.0.0	SAMEA117666621	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+200091607	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294538	SPAdes v4.0.0	SAMEA117666622	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Tissue	-	Spain	-	2024	HULP
+200106309	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294540	SPAdes v4.0.0	SAMEA117666624	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200126817	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294543	SPAdes v4.0.0	SAMEA117666627	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Rectal swab	-	Spain	-	2024	HULP
+200127703	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294544	SPAdes v4.0.0	SAMEA117666628	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Catheter	-	Spain	-	2024	HULP
+200139083	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294545	SPAdes v4.0.0	SAMEA117666629	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200145937	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294547	SPAdes v4.0.0	SAMEA117666631	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200146349	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294548	SPAdes v4.0.0	SAMEA117666632	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+200147767	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294549	SPAdes v4.0.0	SAMEA117666633	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+200164325	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294554	SPAdes v4.0.0	SAMEA117666638	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200176090	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294557	SPAdes v4.0.0	SAMEA117666641	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200182500	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294558	SPAdes v4.0.0	SAMEA117666642	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200191573	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294560	SPAdes v4.0.0	SAMEA117666644	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200207893	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294564	SPAdes v4.0.0	SAMEA117666648	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200221983	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294567	SPAdes v4.0.0	SAMEA117666651	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200225748	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294568	SPAdes v4.0.0	SAMEA117666652	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Sputum	-	Spain	-	2024	HULP
+200231259	Ciprofloxacin	I	=	0.5	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294569	SPAdes v4.0.0	SAMEA117666653	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200246075	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294571	SPAdes v4.0.0	SAMEA117666655	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200252069	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294572	SPAdes v4.0.0	SAMEA117666656	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200256916	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294573	SPAdes v4.0.0	SAMEA117666657	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200257579	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294574	SPAdes v4.0.0	SAMEA117666658	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200261289	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294575	SPAdes v4.0.0	SAMEA117666659	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
+200273819	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294578	SPAdes v4.0.0	SAMEA117666662	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Skin ulcer	-	Spain	-	2024	HULP
+200279898	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294579	SPAdes v4.0.0	SAMEA117666663	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Blood	-	Spain	-	2024	HULP
+200285418	Ciprofloxacin	R	>	1	mg/L	MIC (broth dilution)	EUCAST	-	-	-	-	ERR14294580	SPAdes v4.0.0	SAMEA117666664	PRJEB83276	-	Fernando L‡zaro / Iv‡n Bloise	Human	Human	Urine	-	Spain	-	2024	HULP
