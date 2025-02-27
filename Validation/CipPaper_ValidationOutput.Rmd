@@ -1215,3 +1215,69 @@ ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_5.pd
 
 
 ```
+
+
+
+# numbers for summary
+
+```{r load_data_summary}
+
+validation_phenotypes <- read_delim("../tables/TableS4_phenotype_metadata_validation.tsv")
+validation_genotypes <- read_delim("../tables/TableS3_genotypes_validation.tsv")
+summary <- read_delim("../tables/Table3_extValidation_evalMetrics.csv")
+
+```
+
+```{r summary_genotypes_phenotypes}
+
+# Have to add EUSCAPE + SAN RAF data 
+# EUSCAPE = 2133 Kpn
+# IRCCS Ospedale San Raffaele = 198 Kpn 
+validation_genotypes %>% count(species)
+
+# EUSCAPE = 2133 MIC
+# IRCCS Ospedale San Raffaele = 198 MIC
+validation_phenotypes %>% count(Laboratory.Typing.Method)
+
+```
+
+```{r summary_validation}
+summary[] <- lapply(summary, gsub, pattern='%', replacement='')
+
+summary %>% group_by(Prediction) %>% 
+  summarise(avg_CA = mean(as.numeric(`Categorical agreement`), na.rm = T)) 
+summary %>% group_by(Prediction) %>%
+  summarise(min_CA = min(as.numeric(`Categorical agreement`), na.rm = T)) 
+  summary %>% group_by(Prediction) %>%
+  summarise(max_CA = max(as.numeric(`Categorical agreement`), na.rm = T))
+  
+summary %>% group_by(Prediction) %>% 
+  summarise(avg_sens = mean(as.numeric(Sensitivity), na.rm = T))
+summary %>% group_by(Prediction) %>%
+  summarise(min_CA = min(as.numeric(Sensitivity), na.rm = T)) 
+  summary %>% group_by(Prediction) %>%
+  summarise(max_CA = max(as.numeric(Sensitivity), na.rm = T))
+
+summary %>% group_by(Prediction) %>% 
+  summarise(avg_spec = mean(as.numeric(Specificity), na.rm = T)) 
+summary %>% group_by(Prediction) %>%
+  summarise(min_CA = min(as.numeric(Specificity), na.rm = T)) 
+  summary %>% group_by(Prediction) %>%
+  summarise(max_CA = max(as.numeric(Specificity), na.rm = T))
+  
+  
+summary %>% group_by(Prediction) %>% 
+  summarise(avg_ME = mean(as.numeric(ME), na.rm = T))
+summary %>% group_by(Prediction) %>%
+  summarise(min_CA = min(as.numeric(ME), na.rm = T)) 
+  summary %>% group_by(Prediction) %>%
+  summarise(max_CA = max(as.numeric(ME), na.rm = T))
+  
+  
+summary %>% group_by(Prediction) %>% 
+  summarise(avg_VME = mean(as.numeric(VME), na.rm = T)) 
+summary %>% group_by(Prediction) %>%
+  summarise(min_CA = min(as.numeric(VME), na.rm = T)) 
+  summary %>% group_by(Prediction) %>%
+  summarise(max_CA = max(as.numeric(VME), na.rm = T))
+```
