@@ -156,10 +156,10 @@ aac6_all <- cipro_antibiogram %>%
 ppv_all <- aac6_all %>% bind_rows(qrdr_all) %>% bind_rows(pmqr_all)
 ```
 
-# write out Table S5 - solo stats, overall stats
+# write out Table S6 - solo stats, overall stats
 ``` {r}
 # title columns for table
 solo_ppv %>% full_join(solo_ppv_aac6, by="Determinant", suffix=c(".solo", ".soloAac6")) %>% 
   full_join(ppv_all, by="Determinant") %>%
-  write_csv(file="tables/TableS5_determinantStats.csv")
+  write_csv(file="tables/TableS6_determinantStats.csv")
 ```

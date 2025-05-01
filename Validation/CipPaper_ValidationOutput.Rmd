@@ -1178,17 +1178,26 @@ PachecoBrazil_NWT_prediction_summary<-metrics(PachecoBrazil_NWT_prediction)
 
 ```{r pooledR}
 pooled_R <- 
-bind_rows(EUSCAPE_EURECA_SIR, KayamaJapan_SIR, IndiaGHRU_SIR, AGAR_SIR,
-Oxfordshire_Kpn_SIR, 
-IZSAM_Italy_SIR, 
-MBIRA_Kpn_SIR, 
-HowdenGorrie_SIR, 
-Milan_SIR,
-HRYC_Spain_SIR,
-LaPaz_Lazaro_SIR,
-MBIRA_Kvv_SIR, 
-HarrisMERINO_SIR,
-PachecoBrazil_SIR) %>%
+bind_rows(MBIRA_Kpn_SIR,
+          MBIRA_Kvv_SIR, 
+          HowdenGorrie_SIR,
+          AGAR_SIR,
+          Milan_SIR,
+          HailuEthiopia_SIR,
+          KayamaJapan_SIR,
+          FeaseyMalawi_SIR, 
+          EUSCAPE_EURECA_SIR,
+          EgliSwitzerland_SIR,
+          HRYC_Spain_SIR,
+          IndiaGHRU_SIR,
+          NeumannGermany_SIR,
+          Whitelaw_CHAMPS_SIR,
+          Oxfordshire_Kpn_SIR,
+          Oxfordshire_Kvv_SIR,
+          IZSAM_Italy_SIR, 
+          LaPaz_Lazaro_SIR,
+          HarrisMERINO_SIR,
+          PachecoBrazil_SIR) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
@@ -1222,6 +1231,10 @@ AGAR_genotype <- AGAR %>%
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
 
 Oxfordshire_Kpn_genotype <-Oxfordshire_Kpn %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+Oxfordshire_Kvv_genotype <-Oxfordshire_Kpn %>% 
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
 
@@ -1260,23 +1273,53 @@ IZSAM_Italy_genotype <- IZSAM_Italy %>%
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
 
+HailuEthiopia_genotype <- HailuEthiopia %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+FeaseyMalawi_genotype <- FeaseyMalawi %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+
+EgliSwitzerland_genotype <- EgliSwitzerland %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+
+NeumannGermany_genotype <- NeumannGermany %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+Whitelaw_CHAMPS_genotype <- Whitelaw_CHAMPS %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+
 
 #bind_rows(LaPaz_Lazaro_genotype, IZSAM_Italy_genotype) %>%
 #    group_by(Group) %>%
 #   summarise_all(funs(sum(., na.rm = TRUE)))
   
 pooled_genotype <- 
-bind_rows(EUSCAPE_EURECA_genotype, KayamaJapan_genotype, IndiaGHRU_genotype, AGAR_genotype,
-Oxfordshire_Kpn_genotype, 
-IZSAM_Italy_genotype, 
-MBIRA_Kpn_genotype, 
-HowdenGorrie_genotype, 
-Milan_genotype,
-HRYC_Spain_genotype,
-LaPaz_Lazaro_genotype,
-MBIRA_Kvv_genotype,
-HarrisMERINO_genotype,
-PachecoBrazil_genotype) %>%
+bind_rows(MBIRA_Kpn_genotype,
+          MBIRA_Kvv_genotype, 
+          HowdenGorrie_genotype,
+          AGAR_genotype,
+          Milan_genotype,
+          HailuEthiopia_genotype,
+          KayamaJapan_genotype,
+          FeaseyMalawi_genotype, 
+          EUSCAPE_EURECA_genotype,
+          EgliSwitzerland_genotype,
+          HRYC_Spain_genotype,
+          IndiaGHRU_genotype,
+          NeumannGermany_genotype,
+          Whitelaw_CHAMPS_genotype,
+          Oxfordshire_Kpn_genotype,
+          Oxfordshire_Kvv_genotype,
+          IZSAM_Italy_genotype, 
+          LaPaz_Lazaro_genotype,
+          HarrisMERINO_genotype,
+          PachecoBrazil_genotype) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
@@ -1285,17 +1328,26 @@ PachecoBrazil_genotype) %>%
 
 ```{r}
 pooled_NWT <- 
-bind_rows(EUSCAPE_EURECA_SIR, KayamaJapan_SIR, IndiaGHRU_SIR, AGAR_SIR,
-Oxfordshire_Kpn_SIR, 
-IZSAM_Italy_SIR, 
-MBIRA_Kpn_SIR, 
-HowdenGorrie_SIR, 
-Milan_SIR,
-HRYC_Spain_SIR,
-LaPaz_Lazaro_SIR,
-MBIRA_Kvv_SIR,
-HarrisMERINO_SIR,
-PachecoBrazil_SIR) %>%
+bind_rows(MBIRA_Kpn_SIR,
+          MBIRA_Kvv_SIR, 
+          HowdenGorrie_SIR,
+          AGAR_SIR,
+          Milan_SIR,
+          HailuEthiopia_SIR,
+          KayamaJapan_SIR,
+          FeaseyMalawi_SIR, 
+          EUSCAPE_EURECA_SIR,
+          EgliSwitzerland_SIR,
+          HRYC_Spain_SIR,
+          IndiaGHRU_SIR,
+          NeumannGermany_SIR,
+          Whitelaw_CHAMPS_SIR,
+          Oxfordshire_Kpn_SIR,
+          Oxfordshire_Kvv_SIR,
+          IZSAM_Italy_SIR, 
+          LaPaz_Lazaro_SIR,
+          HarrisMERINO_SIR,
+          PachecoBrazil_SIR) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
@@ -1446,39 +1498,26 @@ validation_summary_table <- as_tibble(validation_summary) %>%
 # Validaion sets - removing I
 ```{r MBIRA_Kpn_excludeI}
 
-MBIRA_Kpn_excludeI <- MBIRA_Kpn %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-MBIRA_Kpn_excludeI_prediction <- matrix(c(subset(MBIRA_Kpn_excludeI, Group == "pred_S")$S, 
-                subset(MBIRA_Kpn_excludeI, Group == "pred_S")$R,
-                subset(MBIRA_Kpn_excludeI, Group == "pred_R")$S,
-                subset(MBIRA_Kpn_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+MBIRA_Kpn_excludeI_prediction <- matrix(c(subset(MBIRA_Kpn_SIR, Group == "pred_S_I")$S, 
+                subset(MBIRA_Kpn_SIR, Group == "pred_S_I")$R,
+                subset(MBIRA_Kpn_SIR, Group == "pred_R")$S,
+                subset(MBIRA_Kpn_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(MBIRA_Kpn_excludeI_prediction) <- c('S','R')
-rownames(MBIRA_Kpn_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(MBIRA_Kpn_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 MBIRA_Kpn_excludeI_prediction_summary<-metrics(MBIRA_Kpn_excludeI_prediction)
 
 ```
 
 ```{r MBIRA_Kvv_excludeI}
-
-MBIRA_Kvv_excludeI <- MBIRA_Kvv %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-MBIRA_Kvv_excludeI_prediction <- matrix(c(subset(MBIRA_Kvv_excludeI, Group == "pred_S")$S, 
-                subset(MBIRA_Kvv_excludeI, Group == "pred_S")$R,
-                subset(MBIRA_Kvv_excludeI, Group == "pred_R")$S,
-                subset(MBIRA_Kvv_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+MBIRA_Kvv_excludeI_prediction <- matrix(c(subset(MBIRA_Kvv_SIR, Group == "pred_S_I")$S, 
+                subset(MBIRA_Kvv_SIR, Group == "pred_S_I")$R,
+                subset(MBIRA_Kvv_SIR, Group == "pred_R")$S,
+                subset(MBIRA_Kvv_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(MBIRA_Kvv_excludeI_prediction) <- c('S','R')
-rownames(MBIRA_Kvv_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(MBIRA_Kvv_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 MBIRA_Kvv_excludeI_prediction_summary<-metrics(MBIRA_Kvv_excludeI_prediction)
 
@@ -1487,119 +1526,76 @@ MBIRA_Kvv_excludeI_prediction_summary<-metrics(MBIRA_Kvv_excludeI_prediction)
 
 ```{r HowdenGorrie_excludeI}
 
-HowdenGorrie_excludeI <- HowdenGorrie %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-HowdenGorrie_excludeI_prediction <- matrix(c(subset(HowdenGorrie_excludeI, Group == "pred_S")$S, 
-                subset(HowdenGorrie_excludeI, Group == "pred_S")$R,
-                subset(HowdenGorrie_excludeI, Group == "pred_R")$S,
-                subset(HowdenGorrie_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+HowdenGorrie_excludeI_prediction <- matrix(c(subset(HowdenGorrie_SIR, Group == "pred_S_I")$S, 
+                subset(HowdenGorrie_SIR, Group == "pred_S_I")$R,
+                subset(HowdenGorrie_SIR, Group == "pred_R")$S,
+                subset(HowdenGorrie_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(HowdenGorrie_excludeI_prediction) <- c('S','R')
-rownames(HowdenGorrie_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(HowdenGorrie_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 HowdenGorrie_excludeI_prediction_summary<-metrics(HowdenGorrie_excludeI_prediction)
-
 ```
 
 ```{r AGAR_excludeI}
 
-AGAR_excludeI <- AGAR %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-AGAR_excludeI_prediction <- matrix(c(subset(AGAR_excludeI, Group == "pred_S")$S, 
-                subset(AGAR_excludeI, Group == "pred_S")$R,
-                subset(AGAR_excludeI, Group == "pred_R")$S,
-                subset(AGAR_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+AGAR_excludeI_prediction <- matrix(c(subset(AGAR_SIR, Group == "pred_S_I")$S, 
+                subset(AGAR_SIR, Group == "pred_S_I")$R,
+                subset(AGAR_SIR, Group == "pred_R")$S,
+                subset(AGAR_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(AGAR_excludeI_prediction) <- c('S','R')
-rownames(AGAR_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(AGAR_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 AGAR_excludeI_prediction_summary<-metrics(AGAR_excludeI_prediction)
 
 ```
 
 ```{r Milan_excludeI}
-
-Milan_excludeI <- Milan %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-Milan_excludeI_prediction <- matrix(c(subset(Milan_excludeI, Group == "pred_S")$S, 
-                subset(Milan_excludeI, Group == "pred_S")$R,
-                subset(Milan_excludeI, Group == "pred_R")$S,
-                subset(Milan_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+Milan_excludeI_prediction <- matrix(c(subset(Milan_SIR, Group == "pred_S_I")$S, 
+                subset(Milan_SIR, Group == "pred_S_I")$R,
+                subset(Milan_SIR, Group == "pred_R")$S,
+                subset(Milan_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(Milan_excludeI_prediction) <- c('S','R')
-rownames(Milan_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(Milan_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 Milan_excludeI_prediction_summary<-metrics(Milan_excludeI_prediction)
-
 ```
 
 ```{r HailuEthiopia_excludeI}
-
-HailuEthiopia_excludeI <- HailuEthiopia %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-HailuEthiopia_excludeI_prediction <- matrix(c(subset(HailuEthiopia_excludeI, Group == "pred_S")$S, 
-                subset(HailuEthiopia_excludeI, Group == "pred_S")$R,
-                subset(HailuEthiopia_excludeI, Group == "pred_R")$S,
-                subset(HailuEthiopia_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+HailuEthiopia_excludeI_prediction <- matrix(c(subset(HailuEthiopia_SIR, Group == "pred_S_I")$S, 
+                subset(HailuEthiopia_SIR, Group == "pred_S_I")$R,
+                subset(HailuEthiopia_SIR, Group == "pred_R")$S,
+                subset(HailuEthiopia_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(HailuEthiopia_excludeI_prediction) <- c('S','R')
-rownames(HailuEthiopia_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(HailuEthiopia_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 HailuEthiopia_excludeI_prediction_summary<-metrics(HailuEthiopia_excludeI_prediction)
-
 ```
 
 ```{r KayamaJapan_excludeI}
-
-KayamaJapan_excludeI <- KayamaJapan %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-KayamaJapan_excludeI_prediction <- matrix(c(subset(KayamaJapan_excludeI, Group == "pred_S")$S, 
-                subset(KayamaJapan_excludeI, Group == "pred_S")$R,
-                subset(KayamaJapan_excludeI, Group == "pred_R")$S,
-                subset(KayamaJapan_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+KayamaJapan_excludeI_prediction <- matrix(c(subset(KayamaJapan_SIR, Group == "pred_S_I")$S, 
+                subset(KayamaJapan_SIR, Group == "pred_S_I")$R,
+                subset(KayamaJapan_SIR, Group == "pred_R")$S,
+                subset(KayamaJapan_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(KayamaJapan_excludeI_prediction) <- c('S','R')
-rownames(KayamaJapan_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(KayamaJapan_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 KayamaJapan_excludeI_prediction_summary<-metrics(KayamaJapan_excludeI_prediction)
 
 ```
 
 ```{r FeaseyMalawi_excludeI}
-
-FeaseyMalawi_excludeI <- FeaseyMalawi %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-FeaseyMalawi_excludeI_prediction <- matrix(c(subset(FeaseyMalawi_excludeI, Group == "pred_S")$S, 
-                subset(FeaseyMalawi_excludeI, Group == "pred_S")$R,
-                subset(FeaseyMalawi_excludeI, Group == "pred_R")$S,
-                subset(FeaseyMalawi_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+FeaseyMalawi_excludeI_prediction <- matrix(c(subset(FeaseyMalawi_SIR, Group == "pred_S_I")$S, 
+                subset(FeaseyMalawi_SIR, Group == "pred_S_I")$R,
+                subset(FeaseyMalawi_SIR, Group == "pred_R")$S,
+                subset(FeaseyMalawi_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(FeaseyMalawi_excludeI_prediction) <- c('S','R')
-rownames(FeaseyMalawi_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(FeaseyMalawi_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 FeaseyMalawi_excludeI_prediction_summary<-metrics(FeaseyMalawi_excludeI_prediction)
 
@@ -1607,19 +1603,13 @@ FeaseyMalawi_excludeI_prediction_summary<-metrics(FeaseyMalawi_excludeI_predicti
 
 ```{r EUSCAPE_EURECA_excludeI}
 
-EUSCAPE_EURECA_excludeI <- EUSCAPE_EURECA %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-EUSCAPE_EURECA_excludeI_prediction <- matrix(c(subset(EUSCAPE_EURECA_excludeI, Group == "pred_S")$S, 
-                subset(EUSCAPE_EURECA_excludeI, Group == "pred_S")$R,
-                subset(EUSCAPE_EURECA_excludeI, Group == "pred_R")$S,
-                subset(EUSCAPE_EURECA_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+EUSCAPE_EURECA_excludeI_prediction <- matrix(c(subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$S, 
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$R,
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$S,
+                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(EUSCAPE_EURECA_excludeI_prediction) <- c('S','R')
-rownames(EUSCAPE_EURECA_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(EUSCAPE_EURECA_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 EUSCAPE_EURECA_excludeI_prediction_summary<-metrics(EUSCAPE_EURECA_excludeI_prediction)
 
@@ -1627,39 +1617,26 @@ EUSCAPE_EURECA_excludeI_prediction_summary<-metrics(EUSCAPE_EURECA_excludeI_pred
 
 ```{r EgliSwitzerland_excludeI}
 
-EgliSwitzerland_excludeI <- EgliSwitzerland %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-EgliSwitzerland_excludeI_prediction <- matrix(c(subset(EgliSwitzerland_excludeI, Group == "pred_S")$S, 
-                subset(EgliSwitzerland_excludeI, Group == "pred_S")$R,
-                subset(EgliSwitzerland_excludeI, Group == "pred_R")$S,
-                subset(EgliSwitzerland_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+EgliSwitzerland_excludeI_prediction <- matrix(c(subset(EgliSwitzerland_SIR, Group == "pred_S_I")$S, 
+                subset(EgliSwitzerland_SIR, Group == "pred_S_I")$R,
+                subset(EgliSwitzerland_SIR, Group == "pred_R")$S,
+                subset(EgliSwitzerland_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(EgliSwitzerland_excludeI_prediction) <- c('S','R')
-rownames(EgliSwitzerland_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(EgliSwitzerland_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 EgliSwitzerland_excludeI_prediction_summary<-metrics(EgliSwitzerland_excludeI_prediction)
 
 ```
 
 ```{r HRYC_Spain_excludeI}
-
-HRYC_Spain_excludeI <- HRYC_Spain %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-HRYC_Spain_excludeI_prediction <- matrix(c(subset(HRYC_Spain_excludeI, Group == "pred_S")$S, 
-                subset(HRYC_Spain_excludeI, Group == "pred_S")$R,
-                subset(HRYC_Spain_excludeI, Group == "pred_R")$S,
-                subset(HRYC_Spain_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+HRYC_Spain_excludeI_prediction <- matrix(c(subset(HRYC_Spain_SIR, Group == "pred_S_I")$S, 
+                subset(HRYC_Spain_SIR, Group == "pred_S_I")$R,
+                subset(HRYC_Spain_SIR, Group == "pred_R")$S,
+                subset(HRYC_Spain_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(HRYC_Spain_excludeI_prediction) <- c('S','R')
-rownames(HRYC_Spain_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(HRYC_Spain_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 HRYC_Spain_excludeI_prediction_summary<-metrics(HRYC_Spain_excludeI_prediction)
 
@@ -1667,179 +1644,116 @@ HRYC_Spain_excludeI_prediction_summary<-metrics(HRYC_Spain_excludeI_prediction)
 
 
 ```{r IndiaGHRU_excludeI}
-
-IndiaGHRU_excludeI <- IndiaGHRU %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-IndiaGHRU_excludeI_prediction <- matrix(c(subset(IndiaGHRU_excludeI, Group == "pred_S")$S, 
-                subset(IndiaGHRU_excludeI, Group == "pred_S")$R,
-                subset(IndiaGHRU_excludeI, Group == "pred_R")$S,
-                subset(IndiaGHRU_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+IndiaGHRU_excludeI_prediction <- matrix(c(subset(IndiaGHRU_SIR, Group == "pred_S_I")$S, 
+                subset(IndiaGHRU_SIR, Group == "pred_S_I")$R,
+                subset(IndiaGHRU_SIR, Group == "pred_R")$S,
+                subset(IndiaGHRU_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(IndiaGHRU_excludeI_prediction) <- c('S','R')
-rownames(IndiaGHRU_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(IndiaGHRU_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 IndiaGHRU_excludeI_prediction_summary<-metrics(IndiaGHRU_excludeI_prediction)
 
 ```
 
 ```{r NeumannGermany_excludeI}
-
-NeumannGermany_excludeI <- NeumannGermany %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-NeumannGermany_excludeI_prediction <- matrix(c(subset(NeumannGermany_excludeI, Group == "pred_S")$S, 
-                subset(NeumannGermany_excludeI, Group == "pred_S")$R,
-                subset(NeumannGermany_excludeI, Group == "pred_R")$S,
-                subset(NeumannGermany_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+NeumannGermany_excludeI_prediction <- matrix(c(subset(NeumannGermany_SIR, Group == "pred_S_I")$S, 
+                subset(NeumannGermany_SIR, Group == "pred_S_I")$R,
+                subset(NeumannGermany_SIR, Group == "pred_R")$S,
+                subset(NeumannGermany_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(NeumannGermany_excludeI_prediction) <- c('S','R')
-rownames(NeumannGermany_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(NeumannGermany_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 NeumannGermany_excludeI_prediction_summary<-metrics(NeumannGermany_excludeI_prediction)
 
 ```
 
 ```{r Whitelaw_CHAMPS_excludeI}
-
-Whitelaw_CHAMPS_excludeI <- Whitelaw_CHAMPS %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-Whitelaw_CHAMPS_excludeI_prediction <- matrix(c(subset(Whitelaw_CHAMPS_excludeI, Group == "pred_S")$S, 
-                subset(Whitelaw_CHAMPS_excludeI, Group == "pred_S")$R,
-                subset(Whitelaw_CHAMPS_excludeI, Group == "pred_R")$S,
-                subset(Whitelaw_CHAMPS_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+Whitelaw_CHAMPS_excludeI_prediction <- matrix(c(subset(Whitelaw_CHAMPS_SIR, Group == "pred_S_I")$S, 
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_S_I")$R,
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_R")$S,
+                subset(Whitelaw_CHAMPS_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(Whitelaw_CHAMPS_excludeI_prediction) <- c('S','R')
-rownames(Whitelaw_CHAMPS_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(Whitelaw_CHAMPS_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 Whitelaw_CHAMPS_excludeI_prediction_summary<-metrics(Whitelaw_CHAMPS_excludeI_prediction)
-
 ```
 
 ```{r Oxfordshire_Kpn_excludeI}
-
-Oxfordshire_Kpn_excludeI <- Oxfordshire_Kpn %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-Oxfordshire_Kpn_excludeI_prediction <- matrix(c(subset(Oxfordshire_Kpn_excludeI, Group == "pred_S")$S, 
-                subset(Oxfordshire_Kpn_excludeI, Group == "pred_S")$R,
-                subset(Oxfordshire_Kpn_excludeI, Group == "pred_R")$S,
-                subset(Oxfordshire_Kpn_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+Oxfordshire_Kpn_excludeI_prediction <- matrix(c(subset(Oxfordshire_Kpn_SIR, Group == "pred_S_I")$S, 
+                subset(Oxfordshire_Kpn_SIR, Group == "pred_S_I")$R,
+                subset(Oxfordshire_Kpn_SIR, Group == "pred_R")$S,
+                subset(Oxfordshire_Kpn_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(Oxfordshire_Kpn_excludeI_prediction) <- c('S','R')
-rownames(Oxfordshire_Kpn_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(Oxfordshire_Kpn_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 Oxfordshire_Kpn_excludeI_prediction_summary<-metrics(Oxfordshire_Kpn_excludeI_prediction)
 
 ```
 
 ```{r Oxfordshire_Kvv_excludeI}
-
-Oxfordshire_Kvv_excludeI <- Oxfordshire_Kvv %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-Oxfordshire_Kvv_excludeI_prediction <- matrix(c(subset(Oxfordshire_Kvv_excludeI, Group == "pred_S")$S, 
-                subset(Oxfordshire_Kvv_excludeI, Group == "pred_S")$R,
-                subset(Oxfordshire_Kvv_excludeI, Group == "pred_R")$S,
-                subset(Oxfordshire_Kvv_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+Oxfordshire_Kvv_excludeI_prediction <- matrix(c(subset(Oxfordshire_Kvv_SIR, Group == "pred_S_I")$S, 
+                subset(Oxfordshire_Kvv_SIR, Group == "pred_S_I")$R,
+                subset(Oxfordshire_Kvv_SIR, Group == "pred_R")$S,
+                subset(Oxfordshire_Kvv_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(Oxfordshire_Kvv_excludeI_prediction) <- c('S','R')
-rownames(Oxfordshire_Kvv_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(Oxfordshire_Kvv_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 Oxfordshire_Kvv_excludeI_prediction_summary<-metrics(Oxfordshire_Kvv_excludeI_prediction)
 
 ```
 
 ```{r IZSAM_Italy_excludeI}
-
-IZSAM_Italy_excludeI <- IZSAM_Italy %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-IZSAM_Italy_excludeI_prediction <- matrix(c(subset(IZSAM_Italy_excludeI, Group == "pred_S")$S, 
-                subset(IZSAM_Italy_excludeI, Group == "pred_S")$R,
-                subset(IZSAM_Italy_excludeI, Group == "pred_R")$S,
-                subset(IZSAM_Italy_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+IZSAM_Italy_excludeI_prediction <- matrix(c(subset(IZSAM_Italy_SIR, Group == "pred_S_I")$S, 
+                subset(IZSAM_Italy_SIR, Group == "pred_S_I")$R,
+                subset(IZSAM_Italy_SIR, Group == "pred_R")$S,
+                subset(IZSAM_Italy_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(IZSAM_Italy_excludeI_prediction) <- c('S','R')
-rownames(IZSAM_Italy_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(IZSAM_Italy_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 IZSAM_Italy_excludeI_prediction_summary<-metrics(IZSAM_Italy_excludeI_prediction)
 
 ```
 
 ```{r LaPaz_Lazaro_excludeI}
-
-LaPaz_Lazaro_excludeI <- LaPaz_Lazaro %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-LaPaz_Lazaro_excludeI_prediction <- matrix(c(subset(LaPaz_Lazaro_excludeI, Group == "pred_S")$S, 
-                subset(LaPaz_Lazaro_excludeI, Group == "pred_S")$R,
-                subset(LaPaz_Lazaro_excludeI, Group == "pred_R")$S,
-                subset(LaPaz_Lazaro_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+LaPaz_Lazaro_excludeI_prediction <- matrix(c(subset(LaPaz_Lazaro_SIR, Group == "pred_S_I")$S, 
+                subset(LaPaz_Lazaro_SIR, Group == "pred_S_I")$R,
+                subset(LaPaz_Lazaro_SIR, Group == "pred_R")$S,
+                subset(LaPaz_Lazaro_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(LaPaz_Lazaro_excludeI_prediction) <- c('S','R')
-rownames(LaPaz_Lazaro_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(LaPaz_Lazaro_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 LaPaz_Lazaro_excludeI_prediction_summary<-metrics(LaPaz_Lazaro_excludeI_prediction)
 
 ```
 
 ```{r HarrisMERINO_excludeI}
-
-HarrisMERINO_excludeI <- HarrisMERINO %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-HarrisMERINO_excludeI_prediction <- matrix(c(subset(HarrisMERINO_excludeI, Group == "pred_S")$S, 
-                subset(HarrisMERINO_excludeI, Group == "pred_S")$R,
-                subset(HarrisMERINO_excludeI, Group == "pred_R")$S,
-                subset(HarrisMERINO_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+HarrisMERINO_excludeI_prediction <- matrix(c(subset(HarrisMERINO_SIR, Group == "pred_S_I")$S, 
+                subset(HarrisMERINO_SIR, Group == "pred_S_I")$R,
+                subset(HarrisMERINO_SIR, Group == "pred_R")$S,
+                subset(HarrisMERINO_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(HarrisMERINO_excludeI_prediction) <- c('S','R')
-rownames(HarrisMERINO_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(HarrisMERINO_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 HarrisMERINO_excludeI_prediction_summary<-metrics(HarrisMERINO_excludeI_prediction)
 
 ```
+
 ```{r PachecoBrazil_excludeI}
-
-PachecoBrazil_excludeI <- PachecoBrazil %>% 
-  rename(Group=...1) %>% 
-  filter(Group=="pred_S" | Group=="pred_R") %>%
-  rowwise()%>%
-  select(-c(I)) 
-
-PachecoBrazil_excludeI_prediction <- matrix(c(subset(PachecoBrazil_excludeI, Group == "pred_S")$S, 
-                subset(PachecoBrazil_excludeI, Group == "pred_S")$R,
-                subset(PachecoBrazil_excludeI, Group == "pred_R")$S,
-                subset(PachecoBrazil_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+PachecoBrazil_excludeI_prediction <- matrix(c(subset(PachecoBrazil_SIR, Group == "pred_S_I")$S, 
+                subset(PachecoBrazil_SIR, Group == "pred_S_I")$R,
+                subset(PachecoBrazil_SIR, Group == "pred_R")$S,
+                subset(PachecoBrazil_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(PachecoBrazil_excludeI_prediction) <- c('S','R')
-rownames(PachecoBrazil_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(PachecoBrazil_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 PachecoBrazil_excludeI_prediction_summary<-metrics(PachecoBrazil_excludeI_prediction)
 
@@ -1848,28 +1762,37 @@ PachecoBrazil_excludeI_prediction_summary<-metrics(PachecoBrazil_excludeI_predic
 
 
 ```{r pooled_excludeI}
-pooled_excludeI <- 
-bind_rows(EUSCAPE_EURECA_excludeI, KayamaJapan_excludeI, IndiaGHRU_excludeI, AGAR_excludeI,
-Oxfordshire_Kpn_excludeI, 
-IZSAM_Italy_excludeI, 
-MBIRA_Kpn_excludeI, 
-HowdenGorrie_excludeI, 
-Milan_excludeI,
-HRYC_Spain_excludeI,
-LaPaz_Lazaro_excludeI,
-MBIRA_Kvv_excludeI, 
-HarrisMERINO_excludeI,
-PachecoBrazil_excludeI) %>%
+pooled_exclude_I <- 
+bind_rows(MBIRA_Kpn_SIR,
+          MBIRA_Kvv_SIR, 
+          HowdenGorrie_SIR,
+          AGAR_SIR,
+          Milan_SIR,
+          HailuEthiopia_SIR,
+          KayamaJapan_SIR,
+          FeaseyMalawi_SIR, 
+          EUSCAPE_EURECA_SIR,
+          EgliSwitzerland_SIR,
+          HRYC_Spain_SIR,
+          IndiaGHRU_SIR,
+          NeumannGermany_SIR,
+          Whitelaw_CHAMPS_SIR,
+          Oxfordshire_Kpn_SIR,
+          Oxfordshire_Kvv_SIR,
+          IZSAM_Italy_SIR, 
+          LaPaz_Lazaro_SIR,
+          HarrisMERINO_SIR,
+          PachecoBrazil_SIR) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
-pooled_excludeI_prediction <- matrix(c(subset(pooled_excludeI, Group == "pred_S")$S, 
-                subset(pooled_excludeI, Group == "pred_S")$R,
-                subset(pooled_excludeI, Group == "pred_R")$S,
-                subset(pooled_excludeI, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+pooled_excludeI_prediction <- matrix(c(subset(pooled_exclude_I, Group == "pred_S_I")$S, 
+                subset(pooled_exclude_I, Group == "pred_S_I")$R,
+                subset(pooled_exclude_I, Group == "pred_R")$S,
+                subset(pooled_exclude_I, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
 colnames(pooled_excludeI_prediction) <- c('S','R')
-rownames(pooled_excludeI_prediction) <- c('pred_S','pred_R')
+rownames(pooled_excludeI_prediction) <- c('pred_S_I','pred_R')
 
 pooled_excludeI_summary<-metrics(pooled_excludeI_prediction)
 ```
@@ -2058,8 +1981,8 @@ rbind(validation_summary_table, validation_summary_table_excludeI) %>%
   mutate(`Specificity_conf_int_lower_bound`=paste0(round(as.numeric(spec_lb)*100,2),"%")) %>%
   mutate(`Specificity_conf_int_upper_bound`=paste0(round(as.numeric(spec_ub)*100,2),"%"))
 
-
-all_datasets_metrics <- all_datasets_metrics[, c("Dataset", "N", "Prediction", "%R", "Categorical agreement", "Categorical_agreement_conf_int_lower_bound", "Categorical_agreement_conf_int_upper_bound", "ME", "ME_conf_int_lower_bound", "ME_conf_int_upper_bound", "VME", "VME_conf_int_lower_bound", "VME_conf_int_upper_bound", "Sensitivity", "Sensitivity_conf_int_lower_bound", "Sensitivity_conf_int_upper_bound", "Specificity", "Specificity_conf_int_lower_bound", "Specificity_conf_int_upper_bound")]
+all_datasets_metrics <- full_join(all_datasets_metrics, SIR_table) %>% select (-c(IR_total, N_total))
+all_datasets_metrics <- all_datasets_metrics[, c("Dataset", "N","S_total", "I_total", "R_total", "Prediction", "%R", "Categorical agreement", "Categorical_agreement_conf_int_lower_bound", "Categorical_agreement_conf_int_upper_bound", "ME", "ME_conf_int_lower_bound", "ME_conf_int_upper_bound", "VME", "VME_conf_int_lower_bound", "VME_conf_int_upper_bound", "Sensitivity", "Sensitivity_conf_int_lower_bound", "Sensitivity_conf_int_upper_bound", "Specificity", "Specificity_conf_int_lower_bound", "Specificity_conf_int_upper_bound")]
 
 all_datasets_metrics<- all_datasets_metrics %>% 
   mutate(Dataset = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset)))%>%
@@ -2081,7 +2004,8 @@ all_datasets_metrics<- all_datasets_metrics %>%
   mutate(Dataset = (gsub("CHAMPS", "M* (CLSI)", Dataset)))
 
 
-write_tsv(all_datasets_metrics, "../tables/TableS9_extValidation_evalMetrics.tsv", na="-")
+write_tsv(all_datasets_metrics, "../tables/TableS10_extValidation_evalMetrics.tsv", na="-")
+
 ```
 
 
@@ -2393,9 +2317,13 @@ ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.p
 
 ```{r load_data_summary, eval=FALSE}
 
-validation_phenotypes <- read_delim("../tables/TableS4_phenotype_metadata_validation.tsv")
-validation_genotypes <- read_delim("../tables/TableS3_genotypes_validation.tsv")
-summary <- read_delim("../tables/Table3_extValidation_evalMetrics.csv")
+validation_phenotypes <- read_delim("../tables/TableS5_phenotype_metadata_validation.tsv")
+validation_genotypes <- read_delim("../tables/TableS4_genotypes_validation.tsv")
+
+validation_phenotypes_summary_table <- validation_phenotypes %>% group_by(Dataset, Dataset_alias, `Assembly method`, Laboratory.Typing.Method, Testing.standard, Laboratory.Typing.Platform) %>% count()
+
+#Create foundation for the table
+#write_tsv(validation_phenotypes_summary_table, "../tables/TableS3_validation_summary.tsv", na="-")
 
 ```
 
@@ -2412,43 +2340,3 @@ validation_phenotypes %>% count(Laboratory.Typing.Method)
 
 ```
 
-```{r summary_validation, eval=FALSE}
-summary[] <- lapply(summary, gsub, pattern='%', replacement='')
-
-summary %>% group_by(Prediction) %>% 
-  summarise(avg_CA = mean(as.numeric(`Categorical agreement`), na.rm = T)) 
-summary %>% group_by(Prediction) %>%
-  summarise(min_CA = min(as.numeric(`Categorical agreement`), na.rm = T)) 
-  summary %>% group_by(Prediction) %>%
-  summarise(max_CA = max(as.numeric(`Categorical agreement`), na.rm = T))
-  
-summary %>% group_by(Prediction) %>% 
-  summarise(avg_sens = mean(as.numeric(Sensitivity), na.rm = T))
-summary %>% group_by(Prediction) %>%
-  summarise(min_CA = min(as.numeric(Sensitivity), na.rm = T)) 
-  summary %>% group_by(Prediction) %>%
-  summarise(max_CA = max(as.numeric(Sensitivity), na.rm = T))
-
-summary %>% group_by(Prediction) %>% 
-  summarise(avg_spec = mean(as.numeric(Specificity), na.rm = T)) 
-summary %>% group_by(Prediction) %>%
-  summarise(min_CA = min(as.numeric(Specificity), na.rm = T)) 
-  summary %>% group_by(Prediction) %>%
-  summarise(max_CA = max(as.numeric(Specificity), na.rm = T))
-  
-  
-summary %>% group_by(Prediction) %>% 
-  summarise(avg_ME = mean(as.numeric(ME), na.rm = T))
-summary %>% group_by(Prediction) %>%
-  summarise(min_CA = min(as.numeric(ME), na.rm = T)) 
-  summary %>% group_by(Prediction) %>%
-  summarise(max_CA = max(as.numeric(ME), na.rm = T))
-  
-  
-summary %>% group_by(Prediction) %>% 
-  summarise(avg_VME = mean(as.numeric(VME), na.rm = T)) 
-summary %>% group_by(Prediction) %>%
-  summarise(min_CA = min(as.numeric(VME), na.rm = T)) 
-  summary %>% group_by(Prediction) %>%
-  summarise(max_CA = max(as.numeric(VME), na.rm = T))
-```

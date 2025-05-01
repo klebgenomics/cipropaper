@@ -271,22 +271,22 @@ log_reg_NWT_plot
 ```
 
 
-## TableS6 - write out logistic regression coefficients
+## TableS8 - write out logistic regression coefficients
 
-``` {r table6}
+``` {r table7}
 multiVariable_vs_singleVariable <- logreg_model1a %>% select(-c(interaction, model)) %>%
   setNames(paste0('R Model1a.', names(.))) %>% rename(Term='R Model1a.Determinant') %>% 
   full_join(logreg_model1b %>% select(-c(Determinant, interaction, model)) %>% setNames(paste0('R Model1b.', names(.)))%>% rename(Term='R Model1b.Term'), by="Term") %>% 
   full_join(logreg_model3a %>% select(-c(interaction, model)) %>% setNames(paste0('NWT Model1a.', names(.))) %>% rename(Term='NWT Model1a.Determinant'), by="Term") %>% 
   full_join(logreg_model3b %>% select(-c(Determinant, interaction, model)) %>% setNames(paste0('NWT Model1b.', names(.)))%>% rename(Term='NWT Model1b.Term'), by="Term")
 
-write_csv(multiVariable_vs_singleVariable, file="tables/TableS6_LogRegCoef.csv")
+write_csv(multiVariable_vs_singleVariable, file="tables/TableS7_LogRegCoef.csv")
 ```
 
 
 ## read in Table 1, solo PPVs
 ``` {r solo_ppv}
-ppv_solo <- read_csv("tables/TableS5_determinantStats.csv") %>% filter(!is.na(N.solo)) %>% select(Determinant, ends_with(".solo"))
+ppv_solo <- read_csv("tables/TableS6_determinantStats.csv") %>% filter(!is.na(N.solo)) %>% select(Determinant, ends_with(".solo"))
 
 ppvR <- ppv_solo %>% mutate(p=R.solo/N.solo, se=sqrt(p*(1-p)/N.solo), ci.lower=p-1.96*se, ci.upper=p+1.96*se) %>% select(Determinant, p, ci.lower, ci.upper) %>% mutate(category="R") 
 
@@ -367,7 +367,7 @@ count_model_summary <- logreg_details(model_R_groups) %>% mutate(Model="2a", res
   bind_rows(logreg_details(model_NWT_groups) %>% mutate(Model="2a", response="NWT")) %>%
   bind_rows(logreg_details(model_NWT_groups_selectInteract) %>% mutate(Model="2b", response="NWT")) %>%
   relocate(Model, .before=Determinant) %>% relocate(response, .before=Model) %>%
-  write_csv(file="tables/TableS7_CountLogRegCoef.csv")
+  write_csv(file="tables/TableS8_CountLogRegCoef.csv")
 
 
 ```
@@ -848,8 +848,9 @@ platform_R
 Combined_R <- bind_rows(ST_R, Country_R, SourceType_R, InfectionStatus_R, platform_R)
 
 Combined_R <- Combined_R %>%
-  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) %>%
-  write_csv("tables/TableSX_ModelSummary_Combined.csv", na="-")
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) 
+#%>%
+#  write_csv("tables/TableSX_ModelSummary_Combined.csv", na="-")
 
 #filter for categories: susceptible genomes >10, more than 25 genomes, more than 2 datasets
 Combined_R_100 <- Combined_R %>% 
@@ -1455,7 +1456,7 @@ MIC_pred
 ```
 
 ``` {r}
-write_tsv(MIC_pred, file="tables/TableSX_classifier_MICpred.tsv")
+#write_tsv(MIC_pred, file="tables/TableSX_classifier_MICpred.tsv")
 ```
 
 

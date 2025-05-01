@@ -2039,7 +2039,7 @@ display: none;
 
 <h1 class="title toc-ignore">Mutation frequencies</h1>
 <h4 class="author">Kara Tsang, Kat Holt</h4>
-<h4 class="date">Last compiled on 30/10/24</h4>
+<h4 class="date">Last compiled on 30/04/25</h4>
 
 </div>
 
@@ -2193,12 +2193,12 @@ margin-right: auto;
 <span id="cb12-28"><a href="#cb12-28" tabindex="-1"></a></span>
 <span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a>ppv_all <span class="ot">&lt;-</span> aac6_all <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(qrdr_all) <span class="sc">%&gt;%</span> <span class="fu">bind_rows</span>(pmqr_all)</span></code></pre></div>
 </div>
-<div id="write-out-table-s5---solo-stats-overall-stats" class="section level1">
-<h1>write out Table S5 - solo stats, overall stats</h1>
+<div id="write-out-table-s6---solo-stats-overall-stats" class="section level1">
+<h1>write out Table S6 - solo stats, overall stats</h1>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># title columns for table</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>solo_ppv <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(solo_ppv_aac6, <span class="at">by=</span><span class="st">&quot;Determinant&quot;</span>, <span class="at">suffix=</span><span class="fu">c</span>(<span class="st">&quot;.solo&quot;</span>, <span class="st">&quot;.soloAac6&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">full_join</span>(ppv_all, <span class="at">by=</span><span class="st">&quot;Determinant&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="at">file=</span><span class="st">&quot;tables/TableS5_determinantStats.csv&quot;</span>)</span></code></pre></div>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="at">file=</span><span class="st">&quot;tables/TableS6_determinantStats.csv&quot;</span>)</span></code></pre></div>
 </div>
 
 
