@@ -1373,12 +1373,12 @@ lin_reg_DD_plot <- linreg_DD_model1a %>% bind_rows(linreg_DD_model1b) %>%
 lin_reg_DD_plot
 ```
 
-``` {r fig_mic_dd_regression_plots}
+``` {r fig_mic_dd_regression_plots, eval=FALSE}
 
 lin_reg_MIC_plot + ggtitle("MIC model") + lin_reg_DD_plot + ggtitle("Disk diffusion zone model") + plot_layout(axes="collect", guides="collect")
 
-ggsave(width=8, height=5, file="figs/FigX_regressionMIC_DD_Models.pdf")
-ggsave(width=8, height=5, file="figs/FigX_regressionMIC_DD_Models.png")
+#ggsave(width=8, height=5, file="figs/FigX_regressionMIC_DD_Models.pdf")
+#ggsave(width=8, height=5, file="figs/FigX_regressionMIC_DD_Models.png")
 
 ```
 
