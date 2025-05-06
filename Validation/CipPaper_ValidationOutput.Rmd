@@ -1265,6 +1265,7 @@ pooled_R_summary<-metrics(pooled_R_prediction)
 EUSCAPE_EURECA_Kpn_genotype <- EUSCAPE_EURECA_Kpn %>% 
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
 EUSCAPE_EURECA_Kvv_genotype <- EUSCAPE_EURECA_Kvv %>% 
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R")
@@ -1285,7 +1286,7 @@ Oxfordshire_Kpn_genotype <-Oxfordshire_Kpn %>%
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
 
-Oxfordshire_Kvv_genotype <-Oxfordshire_Kpn %>% 
+Oxfordshire_Kvv_genotype <-Oxfordshire_Kvv %>% 
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
 
@@ -1370,7 +1371,6 @@ bind_rows(MBIRA_Kpn_genotype,
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
-
 ```
 
 ```{r}
@@ -1411,27 +1411,27 @@ pooled_NWT_summary<-metrics(pooled_NWT_prediction)
 
 # TOTAL SIR counts per dataset
 ```{r}
-SIR_counts_table <- bind_rows(lst(EUSCAPE_EURECA_Kpn_SIR,
-                            KayamaJapan_SIR, 
-                            IndiaGHRU_SIR,
-                            AGAR_SIR,
-                          Oxfordshire_Kpn_SIR, 
-                            IZSAM_Italy_SIR, 
-                            MBIRA_Kpn_SIR, 
-                            HowdenGorrie_SIR, 
-                            Milan_SIR,
-                            HRYC_Spain_SIR,
-                            LaPaz_Lazaro_SIR,
-                            MBIRA_Kvv_SIR, 
-                            Oxfordshire_Kvv_SIR, 
-                            NeumannGermany_SIR,
-                          EUSCAPE_EURECA_Kvv_SIR,
-                          PachecoBrazil_SIR,
-                          HarrisMERINO_SIR,
-                            FeaseyMalawi_SIR,
-                            EgliSwitzerland_SIR,
-                            HailuEthiopia_SIR, 
-                            Whitelaw_CHAMPS_SIR), .id = 'Dataset') %>%
+SIR_counts_table <- bind_rows(lst(MBIRA_Kpn_SIR,
+          MBIRA_Kvv_SIR, 
+          HowdenGorrie_SIR,
+          AGAR_SIR,
+          Milan_SIR,
+          HailuEthiopia_SIR,
+          KayamaJapan_SIR,
+          FeaseyMalawi_SIR, 
+          EUSCAPE_EURECA_Kpn_SIR,
+          EUSCAPE_EURECA_Kvv_SIR,
+          EgliSwitzerland_SIR,
+          HRYC_Spain_SIR,
+          IndiaGHRU_SIR,
+          NeumannGermany_SIR,
+          Whitelaw_CHAMPS_SIR,
+          Oxfordshire_Kpn_SIR,
+          Oxfordshire_Kvv_SIR,
+          IZSAM_Italy_SIR, 
+          LaPaz_Lazaro_SIR,
+          HarrisMERINO_SIR,
+          PachecoBrazil_SIR), .id = 'Dataset') %>%
   filter(Group!="pred_S_I" & Group!="pred_I_R")
 
 SIR_counts_table$Dataset <- gsub("_SIR",'',SIR_counts_table$Dataset)
@@ -1454,6 +1454,7 @@ IR_counts_table <-
   summarise(IR_total = sum(I_R))
 
 SR_table<- full_join(S_counts_table, R_counts_table) 
+
 SIR_table<- full_join(SR_table, IR_counts_table)  %>% 
   mutate(I_total=IR_total-R_total) %>% 
   mutate(N_total=S_total+IR_total)
@@ -2075,8 +2076,8 @@ all_datasets_metrics<- all_datasets_metrics %>%
 
 all_datasets_metrics <- all_datasets_metrics %>% 
   mutate_all(funs(str_replace(., "NaN%", "-")))
-
-write_tsv(all_datasets_metrics, "../tables/TableS10_extValidation_evalMetrics.tsv", na="-")
+#foundation for table S10 - some edits made
+#write_tsv(all_datasets_metrics, "../tables/TableS10_extValidation_evalMetrics.tsv", na="-")
 
 ```
 
@@ -2132,6 +2133,7 @@ MIC_pred_excludeI_pooled <- MIC_pred_excludeI_pooled %>% rename(Group=cipro_pred
 
 
 MIC_pred_excludeI <- rbind(MIC_pred_excludeI, MIC_pred_excludeI_pooled)
+
 
 
 #MIC median - all included
@@ -2234,8 +2236,8 @@ pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'pooled'] <- 'Pooled'
 
-geno_MIC <- merge(pooled_dataset_genotype, MIC_pred, by=c("Dataset","Group"))
-geno_MIC <- merge(geno_MIC, MIC_pred_excludeI, by=c("Dataset","Group"))
+geno_MIC <- left_join(pooled_dataset_genotype, MIC_pred, by=c("Dataset","Group"))
+geno_MIC <- left_join(geno_MIC, MIC_pred_excludeI, by=c("Dataset","Group"))
 
 geno_MIC<- geno_MIC %>% 
   mutate(Dataset = (gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset)))%>%
@@ -2567,8 +2569,8 @@ ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.p
 
 
 
-ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.png")
-ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.pdf")
+ggsave(height=5, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.png")
+ggsave(height=5, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.pdf")
 
 
 
