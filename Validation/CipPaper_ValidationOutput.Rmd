@@ -1960,80 +1960,15 @@ ggsave(width=7, height=4, file="../figs/Fig7_extValidation_summary.pdf")
 ggsave(width=7, height=4, file="../figs/Fig7_extValidation_summary.png")
 ```
 
-# TableS10 with all metrics and datasets
+
+# TableS10 - eval metrics 
 ```{r, TableS10}
-pooled_dataset_genotype <- 
-bind_rows(lst(MBIRA_Kpn_genotype,
-          MBIRA_Kvv_genotype, 
-          HowdenGorrie_genotype,
-          AGAR_genotype,
-          Milan_genotype,
-          HailuEthiopia_genotype,
-          KayamaJapan_genotype,
-          FeaseyMalawi_genotype, 
-          EUSCAPE_EURECA_genotype,
-          EgliSwitzerland_genotype,
-          HRYC_Spain_genotype,
-          IndiaGHRU_genotype,
-          NeumannGermany_genotype,
-          Whitelaw_CHAMPS_genotype,
-          Oxfordshire_Kpn_genotype,
-          Oxfordshire_Kvv_genotype,
-          IZSAM_Italy_genotype, 
-          LaPaz_Lazaro_genotype,
-          HarrisMERINO_genotype,
-          PachecoBrazil_genotype, 
-          pooled_genotype), .id ="Dataset") %>%
-  mutate(Dataset = (gsub("_genotype", "", Dataset))) %>%
-  mutate(N=S+I+R) %>%
-  mutate(R_PPV = paste0(R,"/",(S+R), " (", round(R/(S+R)*100, 2), "%)")) %>%
-  select (-c(S,I,R,N))
-
-pooled_dataset_genotype$R_PPV[pooled_dataset_genotype$R_PPV == '0/0 (NaN%)'] <- '-'
-
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '0^ QRDR, 0 PMQR, 0 aac6'] <- '0^ QRDR, 0 PMQR, 0 aac6 (R/(S+R) (PPV%), WT S prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '0 QRDR, 0 PMQR, 1 aac6'] <- '0 QRDR, 0 PMQR, 1 aac6 (R/(S+R) (PPV%), WT S prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '0 QRDR, qnrB1, 0 aac6'] <- '0 QRDR, qnrB1, 0 aac6 (R/(S+R) (PPV%), NWT I prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '1 QRDR, 0 PMQR, 0 aac6'] <- '1 QRDR, 0 PMQR, 0 aac6 (R/(S+R) (PPV%), NWT R prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '1 QRDR, 0 PMQR, 1 aac6'] <- '1 QRDR, 0 PMQR, 1 aac6 (R/(S+R) (PPV%), NWT R prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '>1 QRDR, 0 PMQR, * aac6'] <- '>1 QRDR, 0 PMQR, * aac6 (R/(S+R) (PPV%), NWT R prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '0 QRDR, 1^ PMQR, 0 aac6'] <- '0 QRDR, 1^ PMQR, 0 aac6 (R/(S+R) (PPV%), NWT R prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '0 QRDR, 1 PMQR, 1 aac6'] <- '0 QRDR, 1 PMQR, 1 aac6 (R/(S+R) (PPV%), NWT R prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '0 QRDR, >1 PMQR, * aac6'] <- '0 QRDR, >1 PMQR, * aac6 (R/(S+R) (PPV%), NWT R prediction)'
-pooled_dataset_genotype$Group[pooled_dataset_genotype$Group == '>0 QRDR, >0 PMQR, * aac6'] <- '>0 QRDR, >0 PMQR, * aac6 (R/(S+R) (PPV%), NWT R prediction)'
-
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'AGAR'] <- 'AGAR GnSOP'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EUSCAPE_EURECA'] <- 'EUSCAPE & EURECA'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EgliSwitzerland'] <- 'University of Zurich'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'FeaseyMalawi'] <- 'Queen Elizabeth Central Hospital'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HRYC_Spain'] <- 'HURYC & CIBERINFEC'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HailuEthiopia'] <- 'Addis Ababa University*'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HowdenGorrie'] <- 'Controlling Superbugs study & Victorian CPE program'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'IZSAM_Italy'] <- 'IZSAM'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'IndiaGHRU'] <- 'India GHRU'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'KayamaJapan'] <- 'JARBS-GNR'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'MBIRA_Kpn'] <- 'MBIRA'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'MBIRA_Kvv'] <- 'MBIRA*'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Milan'] <- 'IRCCS Ospedale San Raffaele'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'NeumannGermany'] <- 'SCHARKI'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kpn'] <- 'Oxfordshire'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kvv'] <- 'Oxfordshire*'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'pooled'] <- 'Pooled'
-
-pooled_dataset_genotype_wide<-spread(pooled_dataset_genotype, key = Group, value = R_PPV)
-
-
-pooled_dataset_genotype_wide <- pooled_dataset_genotype_wide[, c("Dataset","0^ QRDR, 0 PMQR, 0 aac6 (R/(S+R) (PPV%), WT S prediction)","0 QRDR, 0 PMQR, 1 aac6 (R/(S+R) (PPV%), WT S prediction)","0 QRDR, qnrB1, 0 aac6 (R/(S+R) (PPV%), NWT I prediction)","1 QRDR, 0 PMQR, 0 aac6 (R/(S+R) (PPV%), NWT R prediction)","1 QRDR, 0 PMQR, 1 aac6 (R/(S+R) (PPV%), NWT R prediction)",">1 QRDR, 0 PMQR, * aac6 (R/(S+R) (PPV%), NWT R prediction)","0 QRDR, 1^ PMQR, 0 aac6 (R/(S+R) (PPV%), NWT R prediction)","0 QRDR, 1 PMQR, 1 aac6 (R/(S+R) (PPV%), NWT R prediction)","0 QRDR, >1 PMQR, * aac6 (R/(S+R) (PPV%), NWT R prediction)",">0 QRDR, >0 PMQR, * aac6 (R/(S+R) (PPV%), NWT R prediction)")]
-
 
 all_datasets_metrics <-
 #Below includes NWT + R (including I) + R (excluding I)
-  #rbind(validation_summary_table, validation_summary_table_excludeI) %>%
+  rbind(validation_summary_table, validation_summary_table_excludeI) %>%
   #Below includes only R (excluding I)
-  rbind(validation_summary_table_excludeI) %>%
+  #rbind(validation_summary_table_excludeI) %>%
   mutate(`Categorical_agreement_conf_int_lower_bound`=paste0(round(as.numeric(cat_lb)*100,2),"%")) %>%
   mutate(`Categorical_agreement_conf_int_upper_bound`=paste0(round(as.numeric(cat_ub)*100,2),"%")) %>%
   mutate(`ME_conf_int_lower_bound`=paste0(round(as.numeric(me_lb)*100,2),"%")) %>%
@@ -2052,7 +1987,6 @@ all_datasets_metrics <- full_join(all_datasets_metrics, SIR_table) %>% select (-
 
 all_datasets_metrics <- all_datasets_metrics[, c("Dataset", "N","Susceptible", "Intermediate", "Resistant", "Prediction", "%R", "Categorical agreement", "Categorical_agreement_conf_int_lower_bound", "Categorical_agreement_conf_int_upper_bound", "ME", "ME_conf_int_lower_bound", "ME_conf_int_upper_bound", "VME", "VME_conf_int_lower_bound", "VME_conf_int_upper_bound", "Sensitivity", "Sensitivity_conf_int_lower_bound", "Sensitivity_conf_int_upper_bound", "Specificity", "Specificity_conf_int_lower_bound", "Specificity_conf_int_upper_bound")]
 
-all_datasets_metrics <- full_join(all_datasets_metrics, pooled_dataset_genotype_wide)
 
 all_datasets_metrics<- all_datasets_metrics %>% 
   mutate(Dataset = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset)))%>%
@@ -2078,6 +2012,186 @@ all_datasets_metrics <- all_datasets_metrics %>%
 
 write_tsv(all_datasets_metrics, "../tables/TableS10_extValidation_evalMetrics.tsv", na="-")
 
+```
+
+#Table S11 - genotype profiles vs. PPVs and median MICs
+
+# MIC prediction 
+
+```{r, mic_prediction}
+discrete_quantile <- function(x, p) {
+
+  if (length(x)>5){
+    sort(x)[length(x)*p]
+  } else return(0)}
+
+validation_geno <- read_delim("../tables/TableS4_genotypes_validation.tsv")
+validation_pheno <- read_delim("../tables/TableS5_phenotype_metadata_validation.tsv")
+
+validation <- full_join(validation_geno, validation_pheno)
+
+#MIC median - with I excluded
+MIC_pred_excludeI <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  filter(Resistance.phenotype!="I") %>%
+  group_by(Dataset,cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR_excludeI=paste0(median, " [", lower25, "-", upper25, "]"))
+ 
+MIC_pred_excludeI[grep("0-0", MIC_pred_excludeI$IQR_excludeI), "IQR_excludeI"] <- "-"
+
+MIC_pred_excludeI$lower25[MIC_pred_excludeI$lower25==0] <- "-"
+MIC_pred_excludeI$lower25[MIC_pred_excludeI$upper25==0] <- "-"
+
+MIC_pred_excludeI <- MIC_pred_excludeI %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25))
+
+MIC_pred_excludeI_pooled <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  filter(Resistance.phenotype!="I") %>%
+  group_by(cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR_excludeI=paste0(median, " [", lower25, "-", upper25, "]")) %>%
+  mutate(Dataset=c("Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled"))
+
+MIC_pred_excludeI_pooled[grep("0-0", MIC_pred_excludeI_pooled$IQR_excludeI), "IQR_excludeI"] <- "-"
+
+MIC_pred_excludeI_pooled$lower25[MIC_pred_excludeI_pooled$lower25==0] <- "-"
+MIC_pred_excludeI_pooled$lower25[MIC_pred_excludeI_pooled$upper25==0] <- "-"
+
+MIC_pred_excludeI_pooled <- MIC_pred_excludeI_pooled %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25))
+
+
+MIC_pred_excludeI <- rbind(MIC_pred_excludeI, MIC_pred_excludeI_pooled)
+
+
+#MIC median - all included
+MIC_pred <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  group_by(Dataset,cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR=paste0(median, " [", lower25, "-", upper25, "]"))
+ 
+MIC_pred[grep("0-0", MIC_pred$IQR), "IQR"] <- "-"
+
+MIC_pred$lower25[MIC_pred$lower25==0] <- "-"
+MIC_pred$lower25[MIC_pred$upper25==0] <- "-"
+
+MIC_pred <- MIC_pred %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25)) 
+
+MIC_pred_SIR_pooled <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  group_by(cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR=paste0(median, " [", lower25, "-", upper25, "]")) %>%
+  mutate(Dataset=c("Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled"))
+
+MIC_pred_SIR_pooled[grep("0-0", MIC_pred_SIR_pooled$IQR), "IQR"] <- "-"
+
+MIC_pred_SIR_pooled$lower25[MIC_pred_SIR_pooled$lower25==0] <- "-"
+MIC_pred_SIR_pooled$lower25[MIC_pred_SIR_pooled$upper25==0] <- "-"
+
+MIC_pred_SIR_pooled <- MIC_pred_SIR_pooled %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25))
+
+MIC_pred <- rbind(MIC_pred, MIC_pred_SIR_pooled)
+
+```
+
+
+```{r}
+
+#genotype profiles
+pooled_dataset_genotype <- 
+bind_rows(lst(MBIRA_Kpn_genotype,
+          MBIRA_Kvv_genotype, 
+          HowdenGorrie_genotype,
+          AGAR_genotype,
+          Milan_genotype,
+          HailuEthiopia_genotype,
+          KayamaJapan_genotype,
+          FeaseyMalawi_genotype, 
+          EUSCAPE_EURECA_genotype,
+          EgliSwitzerland_genotype,
+          HRYC_Spain_genotype,
+          IndiaGHRU_genotype,
+          NeumannGermany_genotype,
+          Whitelaw_CHAMPS_genotype,
+          Oxfordshire_Kpn_genotype,
+          Oxfordshire_Kvv_genotype,
+          IZSAM_Italy_genotype, 
+          LaPaz_Lazaro_genotype,
+          HarrisMERINO_genotype,
+          PachecoBrazil_genotype, 
+          pooled_genotype), .id ="Dataset") %>%
+  mutate(Dataset = (gsub("_genotype", "", Dataset))) %>%
+  mutate(N=S+I+R) %>%
+  mutate(RexcludeI_PPV = paste0(R,"/",(S+R), " (", round(R/(S+R)*100, 2), "%)")) %>%
+  mutate(R_PPV = paste0(R,"/",(S+I+R), " (", round(R/(S+I+R)*100, 2), "%)")) %>%
+  mutate(NWT_PPV = paste0((R+I),"/",(S+I+R), " (", round((R+I)/(S+I+R)*100, 2), "%)")) %>%
+
+  select (-c(S,I,R,N))
+
+
+pooled_dataset_genotype$RexcludeI_PPV[pooled_dataset_genotype$RexcludeI_PPV == '0/0 (NaN%)'] <- '-'
+pooled_dataset_genotype$R_PPV[pooled_dataset_genotype$R_PPV == '0/0 (NaN%)'] <- '-'
+pooled_dataset_genotype$NWT_PPV[pooled_dataset_genotype$NWT_PPV == '0/0 (NaN%)'] <- '-'
+
+
+
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'AGAR'] <- 'AGAR GnSOP'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EUSCAPE_EURECA'] <- 'EUSCAPE & EURECA'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EgliSwitzerland'] <- 'University of Zurich'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'FeaseyMalawi'] <- 'Queen Elizabeth Central Hospital'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HRYC_Spain'] <- 'HURYC & CIBERINFEC'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HailuEthiopia'] <- 'Addis Ababa University*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HowdenGorrie'] <- 'Controlling Superbugs study & Victorian CPE program'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'IZSAM_Italy'] <- 'IZSAM'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'IndiaGHRU'] <- 'India GHRU'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'KayamaJapan'] <- 'JARBS-GNR'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'MBIRA_Kpn'] <- 'MBIRA'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'MBIRA_Kvv'] <- 'MBIRA*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Milan'] <- 'IRCCS Ospedale San Raffaele'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'NeumannGermany'] <- 'SCHARKI'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kpn'] <- 'Oxfordshire'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kvv'] <- 'Oxfordshire*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'pooled'] <- 'Pooled'
+
+geno_MIC <- merge(pooled_dataset_genotype, MIC_pred, by=c("Dataset","Group"))
+geno_MIC <- merge(geno_MIC, MIC_pred_excludeI, by=c("Dataset","Group"))
+
+geno_MIC<- geno_MIC %>% 
+  mutate(Dataset = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("India GHRU", "B (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("AGAR GnSOP", "C (EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Oxfordshire\\*", "XXXXXXX", Dataset)))%>% 
+  mutate(Dataset = (gsub("Oxfordshire", "D (EUCAST)", Dataset)))%>% 
+      mutate(Dataset = (gsub("XXXXXXX", "Oxfordshire (Kvv, EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("HURYC & CIBERINFEC", "E (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("HULP", "F (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("JARBS-GNR", "G (CLSI)", Dataset)))%>% 
+      mutate(Dataset = (gsub("MBIRA\\*", "YYYYYYYY", Dataset)))%>% 
+  mutate(Dataset = (gsub("MBIRA", "H (CLSI)", Dataset)))%>%
+        mutate(Dataset = (gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset)))%>% 
+  mutate(Dataset = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI)", Dataset)))%>% 
+   mutate(Dataset = (gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Addis Ababa University\\*", "K* (Kvv, CLSI)", Dataset)))%>%
+  mutate(Dataset = (gsub("University of Zurich", "L* (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("CHAMPS", "M* (CLSI)", Dataset)))
+
+geno_MIC <- geno_MIC %>%
+  rename("MIC median [IQR] (exclude I)"=IQR_excludeI) %>%
+  rename("MIC median [IQR]"=IQR)
+write_tsv(geno_MIC, "../tables/TableS11_extValidation_genotypeProfiles.tsv", na="-")
 ```
 
 
