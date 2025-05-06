@@ -1,6 +1,6 @@
 Dataset	Dataset_alias	Assembly method	Laboratory.Typing.Method	Testing.standard	Laboratory.Typing.Platform	N	Internal (Performed in-house)	External (Performed by dataset owners)
 EuSCAPE/EURECA	A (EUCAST)	Prokka	MIC (broth dilution)	EUCAST	Various	2133	-	"Assembly, Kleborate, Comparison"
-IRCCS Ospedale San Raffaele	IRCCS Ospedale San Raffaele		MIC (broth dilution)	EUCAST		198	-	"Assembly, Kleborate, Comparison"
+IRCCS Ospedale San Raffaele	IRCCS Ospedale San Raffaele	Unicycler v0.5.0	MIC (broth dilution)	EUCAST	Vitek	198	-	"Assembly, Kleborate, Comparison"
 AGAR GnSOP	C (EUCAST)	SKESA	MIC (broth dilution)	EUCAST	Phoenix	53	Comparison	"Assembly, Kleborate"
 AGAR GnSOP	C (EUCAST)	SKESA	MIC (broth dilution)	EUCAST	Vitek	432	Comparison	"Assembly, Kleborate"
 Addis Ababa University*	"K* (Kvv, CLSI)"	Unicycler v0.4.8	Disk diffusion	CLSI	Manual	70	"Assembly, Kleborate, Comparison"	-
