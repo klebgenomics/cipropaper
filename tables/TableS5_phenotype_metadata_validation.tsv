@@ -4381,41 +4381,41 @@ MER-236	Ciprofloxacin	R	==	8	mg/L	MIC (broth dilution)	EUCAST	v9.0	-	Custom made
 MER-235	Ciprofloxacin	S	==	0.03	mg/L	MIC (broth dilution)	EUCAST	v9.0	-	Custom made sensititer plates sourced from Thermo Fisher Scientific	-	SRR7828788	Unicycler v0.4.8	SAMN10058933	PRJNA398288	33106863	Patrick Harris	Human	Human	Blood	Infection	New Zealand	-	2015	MERINO trial	HarrisMERINO
 MER-117	Ciprofloxacin	S	==	0.12	mg/L	MIC (broth dilution)	EUCAST	v9.0	-	Custom made sensititer plates sourced from Thermo Fisher Scientific	-	SRR7828802	Unicycler v0.4.8	SAMN10058850	PRJNA398288	33106863	Patrick Harris	Human	Human	Blood	Infection	Turkey	-	2015	MERINO trial	HarrisMERINO
 MER-32	Ciprofloxacin	R	==	8	mg/L	MIC (broth dilution)	EUCAST	v9.0	-	Custom made sensititer plates sourced from Thermo Fisher Scientific	-	SRR7828847	Unicycler v0.4.8	SAMN10058840	PRJNA398288	33106863	Patrick Harris	Human	Human	Blood	Infection	Singapore	-	2015	MERINO trial	HarrisMERINO
-OBAC898	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-OBAC840	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-OBAC908	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-OBAC950	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP103	Ciprofloxacin	S	==	0.023	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-ITUC436	Ciprofloxacin	S	==	0.023	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-ITUC449	Ciprofloxacin	S	==	0.032	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP083	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP058	Ciprofloxacin	S	==	0.016	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP187	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP496	Ciprofloxacin	S	==	0.032	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP510	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP044	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP068	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP070	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP410	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP045	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP68	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP128	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP203	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP329	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP343	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP692	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-KP779	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-015_S17	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-014_S15	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-012_S05	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-011_S44	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-010_S43	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-009_S33	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-008_S21	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-007_S09	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-006_S07	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-005_S06	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-004_S10	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-003_S08	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-002_S03	Ciprofloxacin	R	==	1	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
-OBAC799	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	-	-	Brazil	-	-	BrazilPacheco	iberoAMRica study
+OBAC898	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cerebrospinal fluid	Infection	Brazil	Salvador	2012	BrazilPacheco	iberoAMRica study
+OBAC840	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cerebrospinal fluid	Infection	Brazil	Salvador	2011	BrazilPacheco	iberoAMRica study
+OBAC908	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cerebrospinal fluid	Infection	Brazil	Salvador	2013	BrazilPacheco	iberoAMRica study
+OBAC950	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cerebrospinal fluid	Infection	Brazil	Salvador	2022	BrazilPacheco	iberoAMRica study
+KP103	Ciprofloxacin	S	==	0.023	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2017	BrazilPacheco	iberoAMRica study
+ITUC436	Ciprofloxacin	S	==	0.023	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Urine	Infection	Brazil	Salvador	2022	BrazilPacheco	iberoAMRica study
+ITUC449	Ciprofloxacin	S	==	0.032	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Urine	Infection	Brazil	Salvador	2022	BrazilPacheco	iberoAMRica study
+KP083	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2017	BrazilPacheco	iberoAMRica study
+KP058	Ciprofloxacin	S	==	0.016	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2015	BrazilPacheco	iberoAMRica study
+KP187	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2016	BrazilPacheco	iberoAMRica study
+KP496	Ciprofloxacin	S	==	0.032	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2019	BrazilPacheco	iberoAMRica study
+KP510	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2019	BrazilPacheco	iberoAMRica study
+KP044	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2017	BrazilPacheco	iberoAMRica study
+KP068	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2017	BrazilPacheco	iberoAMRica study
+KP070	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2017	BrazilPacheco	iberoAMRica study
+KP410	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2018	BrazilPacheco	iberoAMRica study
+KP045	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2019	BrazilPacheco	iberoAMRica study
+KP68	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2019	BrazilPacheco	iberoAMRica study
+KP128	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2020	BrazilPacheco	iberoAMRica study
+KP203	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2020	BrazilPacheco	iberoAMRica study
+KP329	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2021	BrazilPacheco	iberoAMRica study
+KP343	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2021	BrazilPacheco	iberoAMRica study
+KP692	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2022	BrazilPacheco	iberoAMRica study
+KP779	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	2022	BrazilPacheco	iberoAMRica study
+015_S17	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+014_S15	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Anal swab		Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+012_S05	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Anal swab		Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+011_S44	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+010_S43	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Tracheal secretion	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+009_S33	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Pleural	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+008_S21	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+007_S09	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+006_S07	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+005_S06	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Rectal swab		Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+004_S10	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+003_S08	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cateter		Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+002_S03	Ciprofloxacin	R	==	1	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
+OBAC799	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cerebrospinal fluid	Infection	Brazil	Salvador	2010	BrazilPacheco	iberoAMRica study
