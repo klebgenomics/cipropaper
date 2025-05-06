@@ -1,5 +1,6 @@
 Dataset	Dataset_alias	Assembly method	Laboratory.Typing.Method	Testing.standard	Laboratory.Typing.Platform	N	Internal (Performed in-house)	External (Performed by dataset owners)
 EuSCAPE/EURECA	A (EUCAST)	Prokka	MIC (broth dilution)	EUCAST	Various	2133	-	"Assembly, Kleborate, Comparison"
+EuSCAPE/EURECA (Kvv)	EuSCAPE/EURECA (Kvv)	Prokka	MIC (broth dilution)	EUCAST	Various	41	-	"Assembly, Kleborate, Comparison"
 IRCCS Ospedale San Raffaele	IRCCS Ospedale San Raffaele	Unicycler v0.5.0	MIC (broth dilution)	EUCAST	Vitek	198	-	"Assembly, Kleborate, Comparison"
 AGAR GnSOP	C (EUCAST)	SKESA	MIC (broth dilution)	EUCAST	Phoenix	53	Comparison	"Assembly, Kleborate"
 AGAR GnSOP	C (EUCAST)	SKESA	MIC (broth dilution)	EUCAST	Vitek	432	Comparison	"Assembly, Kleborate"
@@ -19,9 +20,9 @@ IZSAM	IZSAM	SPAdes v3.11.1	MIC (broth dilution)	EUCAST	Microscan	283	Comparison	
 India GHRU	B (EUCAST)	Unicycler v0.4.8	MIC (broth dilution)	EUCAST	Vitek	536	"Assembly, Kleborate, Comparison"	-
 JARBS-GNR	G (CLSI)	Unicycler v0.4.8	MIC (broth dilution)	CLSI	MicroScan WalkAway	834	"Assembly, Kleborate, Comparison"	-
 MBIRA	H (CLSI)	Unicycler v0.4.8	MIC (E-test gradient diffusion)	CLSI	Manual 	13	Comparison	"Assembly, Kleborate"
-MBIRA	H (CLSI)	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Vitek	243	Comparison	"Assembly, Kleborate"
+MBIRA	H (CLSI)	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Vitek	238	Comparison	"Assembly, Kleborate"
 "MBIRA (Kvv, CLSI)"	"MBIRA (Kvv, CLSI)"	Unicycler v0.4.8	MIC (E-test gradient diffusion)	CLSI	Manual 	2	Comparison	"Assembly, Kleborate"
-"MBIRA (Kvv, CLSI)"	"MBIRA (Kvv, CLSI)"	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Vitek	89	Comparison	"Assembly, Kleborate"
+"MBIRA (Kvv, CLSI)"	"MBIRA (Kvv, CLSI)"	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Vitek	88	Comparison	"Assembly, Kleborate"
 MERINO trial	HarrisMERINO	Unicycler v0.4.8	MIC (broth dilution)	EUCAST	Custom made sensititer plates sourced from Thermo Fisher Scientific	36	"Assembly, Kleborate, Comparison"	-
 Oxfordshire	D (EUCAST)	Shovill v1.0.4	MIC (broth dilution)	EUCAST	Phoenix	295	Comparison	"Assembly, Kleborate"
 "Oxfordshire (Kvv, EUCAST)"	"Oxfordshire (Kvv, EUCAST)"	Shovill v1.0.4	MIC (broth dilution)	EUCAST	Phoenix	66	Comparison	"Assembly, Kleborate"

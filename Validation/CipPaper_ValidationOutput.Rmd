@@ -50,7 +50,8 @@ Milan <- read_delim("MilanSanRafaelle_ValidationOutput/Prediction_Pheno_summary.
 HailuEthiopia <- read_delim("HailuEthiopia_ValidationOutput/Prediction_Pheno_summary.csv")
 FeaseyMalawi <- read_delim("FeaseyMalawi_ValidationOutput/Prediction_Pheno_summary.csv")
 KayamaJapan <- read_delim("KayamaJapan_ValidationOutput/Prediction_Pheno_summary.csv")
-EUSCAPE_EURECA <- read_delim("EURECA_EUSCAPE_ValidationOutput/Prediction_Pheno_summary.csv")
+EUSCAPE_EURECA_Kpn <- read_delim("EURECA_EUSCAPE_ValidationOutput/Prediction_Pheno_summary_Kpn.csv")
+EUSCAPE_EURECA_Kvv <- read_delim("EURECA_EUSCAPE_ValidationOutput/Prediction_Pheno_summary_Kvv.csv")
 EgliSwitzerland <- read_delim("EgliSwitzerland_2025_ValidationOutput/Prediction_Pheno_summary.csv")
 HRYC_Spain <- read_delim("HRYC_Spain_ValidationOutput/Prediction_Pheno_summary.csv")
 IndiaGHRU <- read_delim("IndiaGHRU_2025_ValidationOutput/Prediction_Pheno_summary.csv")
@@ -625,9 +626,9 @@ rownames(FeaseyMalawi_NWT_prediction) <- c('pred_S','pred_I_R')
 FeaseyMalawi_NWT_prediction_summary<-metrics(FeaseyMalawi_NWT_prediction)
 ```
 
-```{r EUSCAPE_EURECA}
+```{r EUSCAPE_EURECA_Kpn}
 
-EUSCAPE_EURECA_SI <- EUSCAPE_EURECA %>% 
+EUSCAPE_EURECA_Kpn_SI <- EUSCAPE_EURECA_Kpn %>% 
   rename(Group=...1) %>% 
   filter(Group=="pred_S" | Group=="pred_I") %>%
   rowwise()%>%
@@ -638,7 +639,7 @@ EUSCAPE_EURECA_SI <- EUSCAPE_EURECA %>%
   mutate(Group = gsub("Total", "pred_S_I", Group)) 
 
 
-EUSCAPE_EURECA_R <- EUSCAPE_EURECA %>% 
+EUSCAPE_EURECA_Kpn_R <- EUSCAPE_EURECA_Kpn %>% 
   rename(Group=...1) %>% 
   filter(Group=="pred_R" | Group=="pred_I") %>%
   rowwise()%>%
@@ -648,27 +649,73 @@ EUSCAPE_EURECA_R <- EUSCAPE_EURECA %>%
   adorn_totals("row") %>%
   mutate(Group = gsub("Total", "pred_I_R", Group)) 
 
-EUSCAPE_EURECA_SIR <- rbind(EUSCAPE_EURECA_SI, EUSCAPE_EURECA_R) %>% distinct()
+EUSCAPE_EURECA_Kpn_SIR <- rbind(EUSCAPE_EURECA_Kpn_SI, EUSCAPE_EURECA_Kpn_R) %>% distinct()
 
-subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$S_I
-table(EUSCAPE_EURECA_SIR$S_I)
+subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_S_I")$S_I
+table(EUSCAPE_EURECA_Kpn_SIR$S_I)
 
-EUSCAPE_EURECA_R_prediction <- matrix(c(subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$S_I, 
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$R,
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$S_I,
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+EUSCAPE_EURECA_Kpn_R_prediction <- matrix(c(subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_S_I")$S_I, 
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_S_I")$R,
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_R")$S_I,
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
-colnames(EUSCAPE_EURECA_R_prediction) <- c('S_I','R')
-rownames(EUSCAPE_EURECA_R_prediction) <- c('pred_S_I','pred_R')
-EUSCAPE_EURECA_R_prediction_summary<-metrics(EUSCAPE_EURECA_R_prediction)
+colnames(EUSCAPE_EURECA_Kpn_R_prediction) <- c('S_I','R')
+rownames(EUSCAPE_EURECA_Kpn_R_prediction) <- c('pred_S_I','pred_R')
+EUSCAPE_EURECA_Kpn_R_prediction_summary<-metrics(EUSCAPE_EURECA_Kpn_R_prediction)
 
-EUSCAPE_EURECA_NWT_prediction <- matrix(c(subset(EUSCAPE_EURECA_SIR, Group == "pred_S")$S, 
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_S")$I_R,
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_I_R")$S,
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
-colnames(EUSCAPE_EURECA_NWT_prediction) <- c('S','I_R')
-rownames(EUSCAPE_EURECA_NWT_prediction) <- c('pred_S','pred_I_R')
-EUSCAPE_EURECA_NWT_prediction_summary<-metrics(EUSCAPE_EURECA_NWT_prediction)
+EUSCAPE_EURECA_Kpn_NWT_prediction <- matrix(c(subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_S")$S, 
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_S")$I_R,
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_I_R")$S,
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(EUSCAPE_EURECA_Kpn_NWT_prediction) <- c('S','I_R')
+rownames(EUSCAPE_EURECA_Kpn_NWT_prediction) <- c('pred_S','pred_I_R')
+EUSCAPE_EURECA_Kpn_NWT_prediction_summary<-metrics(EUSCAPE_EURECA_Kpn_NWT_prediction)
+```
+
+```{r EUSCAPE_EURECA_Kvv}
+
+EUSCAPE_EURECA_Kvv_SI <- EUSCAPE_EURECA_Kvv %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+
+EUSCAPE_EURECA_Kvv_R <- EUSCAPE_EURECA_Kvv %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+EUSCAPE_EURECA_Kvv_SIR <- rbind(EUSCAPE_EURECA_Kvv_SI, EUSCAPE_EURECA_Kvv_R) %>% distinct()
+
+subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_S_I")$S_I
+table(EUSCAPE_EURECA_Kvv_SIR$S_I)
+
+EUSCAPE_EURECA_Kvv_R_prediction <- matrix(c(subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_S_I")$S_I, 
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_S_I")$R,
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_R")$S_I,
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(EUSCAPE_EURECA_Kvv_R_prediction) <- c('S_I','R')
+rownames(EUSCAPE_EURECA_Kvv_R_prediction) <- c('pred_S_I','pred_R')
+EUSCAPE_EURECA_Kvv_R_prediction_summary<-metrics(EUSCAPE_EURECA_Kvv_R_prediction)
+
+EUSCAPE_EURECA_Kvv_NWT_prediction <- matrix(c(subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_S")$S, 
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_S")$I_R,
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_I_R")$S,
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(EUSCAPE_EURECA_Kvv_NWT_prediction) <- c('S','I_R')
+rownames(EUSCAPE_EURECA_Kvv_NWT_prediction) <- c('pred_S','pred_I_R')
+EUSCAPE_EURECA_Kvv_NWT_prediction_summary<-metrics(EUSCAPE_EURECA_Kvv_NWT_prediction)
 ```
 
 ```{r EgliSwitzerland}
@@ -1186,7 +1233,8 @@ bind_rows(MBIRA_Kpn_SIR,
           HailuEthiopia_SIR,
           KayamaJapan_SIR,
           FeaseyMalawi_SIR, 
-          EUSCAPE_EURECA_SIR,
+          EUSCAPE_EURECA_Kpn_SIR,
+          EUSCAPE_EURECA_Kvv_SIR,
           EgliSwitzerland_SIR,
           HRYC_Spain_SIR,
           IndiaGHRU_SIR,
@@ -1214,9 +1262,12 @@ pooled_R_summary<-metrics(pooled_R_prediction)
 
 # summary of pooled genotypes vs. SIR
 ```{r genotypes_SIR}
-EUSCAPE_EURECA_genotype <- EUSCAPE_EURECA %>% 
+EUSCAPE_EURECA_Kpn_genotype <- EUSCAPE_EURECA_Kpn %>% 
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+EUSCAPE_EURECA_Kvv_genotype <- EUSCAPE_EURECA_Kvv %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R")
 
 KayamaJapan_genotype <- KayamaJapan %>% 
   rename(Group=...1) %>% 
@@ -1303,7 +1354,8 @@ bind_rows(MBIRA_Kpn_genotype,
           HailuEthiopia_genotype,
           KayamaJapan_genotype,
           FeaseyMalawi_genotype, 
-          EUSCAPE_EURECA_genotype,
+          EUSCAPE_EURECA_Kpn_genotype,
+          EUSCAPE_EURECA_Kvv_genotype,
           EgliSwitzerland_genotype,
           HRYC_Spain_genotype,
           IndiaGHRU_genotype,
@@ -1331,7 +1383,8 @@ bind_rows(MBIRA_Kpn_SIR,
           HailuEthiopia_SIR,
           KayamaJapan_SIR,
           FeaseyMalawi_SIR, 
-          EUSCAPE_EURECA_SIR,
+          EUSCAPE_EURECA_Kpn_SIR,
+          EUSCAPE_EURECA_Kvv_SIR,
           EgliSwitzerland_SIR,
           HRYC_Spain_SIR,
           IndiaGHRU_SIR,
@@ -1358,7 +1411,7 @@ pooled_NWT_summary<-metrics(pooled_NWT_prediction)
 
 # TOTAL SIR counts per dataset
 ```{r}
-SIR_counts_table <- bind_rows(lst(EUSCAPE_EURECA_SIR,
+SIR_counts_table <- bind_rows(lst(EUSCAPE_EURECA_Kpn_SIR,
                             KayamaJapan_SIR, 
                             IndiaGHRU_SIR,
                             AGAR_SIR,
@@ -1372,6 +1425,7 @@ SIR_counts_table <- bind_rows(lst(EUSCAPE_EURECA_SIR,
                             MBIRA_Kvv_SIR, 
                             Oxfordshire_Kvv_SIR, 
                             NeumannGermany_SIR,
+                          EUSCAPE_EURECA_Kvv_SIR,
                           PachecoBrazil_SIR,
                           HarrisMERINO_SIR,
                             FeaseyMalawi_SIR,
@@ -1405,7 +1459,8 @@ SIR_table<- full_join(SR_table, IR_counts_table)  %>%
   mutate(N_total=S_total+IR_total)
 
 SIR_table$Dataset[SIR_table$Dataset == 'AGAR'] <- 'AGAR GnSOP'
-SIR_table$Dataset[SIR_table$Dataset == 'EUSCAPE_EURECA'] <- 'EUSCAPE & EURECA'
+SIR_table$Dataset[SIR_table$Dataset == 'EUSCAPE_EURECA_Kpn'] <- 'EUSCAPE & EURECA'
+SIR_table$Dataset[SIR_table$Dataset == 'EUSCAPE_EURECA_Kvv'] <- 'EUSCAPE & EURECA*'
 SIR_table$Dataset[SIR_table$Dataset == 'EgliSwitzerland'] <- 'University of Zurich'
 SIR_table$Dataset[SIR_table$Dataset == 'FeaseyMalawi'] <- 'Queen Elizabeth Central Hospital'
 SIR_table$Dataset[SIR_table$Dataset == 'HRYC_Spain'] <- 'HURYC & CIBERINFEC'
@@ -1428,8 +1483,8 @@ SIR_table$Dataset[SIR_table$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
 
 # Combining validation sets R and NWT
 ```{r combineR_NWT}
-validation_summary <- rbind(EUSCAPE_EURECA_R_prediction_summary$summary,
-                            EUSCAPE_EURECA_NWT_prediction_summary$summary,
+validation_summary <- rbind(EUSCAPE_EURECA_Kpn_R_prediction_summary$summary,
+                            EUSCAPE_EURECA_Kpn_NWT_prediction_summary$summary,
                             KayamaJapan_R_prediction_summary$summary, 
                             KayamaJapan_NWT_prediction_summary$summary, 
                             IndiaGHRU_R_prediction_summary$summary,
@@ -1456,6 +1511,8 @@ validation_summary <- rbind(EUSCAPE_EURECA_R_prediction_summary$summary,
                             Oxfordshire_Kvv_NWT_prediction_summary$summary, 
                             NeumannGermany_R_prediction_summary$summary,
                             NeumannGermany_NWT_prediction_summary$summary,
+                            EUSCAPE_EURECA_Kvv_R_prediction_summary$summary,
+                            EUSCAPE_EURECA_Kvv_R_prediction_summary$summary,
                             PachecoBrazil_R_prediction_summary$summary,
                             PachecoBrazil_NWT_prediction_summary$summary,
                             HarrisMERINO_R_prediction_summary$summary,
@@ -1473,9 +1530,9 @@ validation_summary <- rbind(EUSCAPE_EURECA_R_prediction_summary$summary,
 
 
 validation_summary_table <- as_tibble(validation_summary) %>%
-  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT","R", "NWT"))%>%
-  mutate(Dataset=c("EUSCAPE & EURECA", "EUSCAPE & EURECA","JARBS-GNR", "JARBS-GNR", "India GHRU", "India GHRU", "AGAR GnSOP", "AGAR GnSOP","Oxfordshire","Oxfordshire","IZSAM","IZSAM", "MBIRA", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "Controlling Superbugs study & Victorian CPE program",  "IRCCS Ospedale San Raffaele", "IRCCS Ospedale San Raffaele",  "HURYC & CIBERINFEC", "HURYC & CIBERINFEC", "HULP", "HULP", "MBIRA*", "MBIRA*","Oxfordshire*","Oxfordshire*", "SCHARKI", "SCHARKI", "PachecoBrazil", "PachecoBrazil","HarrisMERINO","HarrisMERINO","Queen Elizabeth Central Hospital", "Queen Elizabeth Central Hospital","University of Zurich", "University of Zurich", "Addis Ababa University*", "Addis Ababa University*", "CHAMPS", "CHAMPS", "Pooled", "Pooled")) %>%
-    mutate(Country=c("Various European countries", "Various European countries","Japan", "Japan", "India", "India", "Australia", "Australia","United Kingdom","United Kingdom","Italy","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Australia",  "Italy", "Italy",  "Spain, Portugal", "Spain, Portugal","Spain", "Spain", "Ethiopia, South Africa, Tanzania", "Ethiopia, South Africa, Tanzania","United Kingdom", "United Kingdom", "Germany", "Germany","Brazil", "Brazil", "Various countries", "Various countries", "Malawi", "Malawi","Switzerland", "Switzerland", "Ethiopia", "Ethiopia", "South Africa", "South Africa", "", "")) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT","R", "NWT","R", "NWT"))%>%
+  mutate(Dataset=c("EUSCAPE & EURECA", "EUSCAPE & EURECA","JARBS-GNR", "JARBS-GNR", "India GHRU", "India GHRU", "AGAR GnSOP", "AGAR GnSOP","Oxfordshire","Oxfordshire","IZSAM","IZSAM", "MBIRA", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "Controlling Superbugs study & Victorian CPE program",  "IRCCS Ospedale San Raffaele", "IRCCS Ospedale San Raffaele",  "HURYC & CIBERINFEC", "HURYC & CIBERINFEC", "HULP", "HULP", "MBIRA*", "MBIRA*","Oxfordshire*","Oxfordshire*", "SCHARKI", "SCHARKI", "EUSCAPE & EURECA*", "EUSCAPE & EURECA*", "PachecoBrazil", "PachecoBrazil","HarrisMERINO","HarrisMERINO","Queen Elizabeth Central Hospital", "Queen Elizabeth Central Hospital","University of Zurich", "University of Zurich", "Addis Ababa University*", "Addis Ababa University*", "CHAMPS", "CHAMPS", "Pooled", "Pooled")) %>%
+    mutate(Country=c("Various European countries", "Various European countries","Japan", "Japan", "India", "India", "Australia", "Australia","United Kingdom","United Kingdom","Italy","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Australia",  "Italy", "Italy",  "Spain, Portugal", "Spain, Portugal","Spain", "Spain", "Ethiopia, South Africa, Tanzania", "Ethiopia, South Africa, Tanzania","United Kingdom", "United Kingdom", "Germany", "Germany","Various European countries","Various European countries","Brazil", "Brazil", "Various countries", "Various countries", "Malawi", "Malawi","Switzerland", "Switzerland", "Ethiopia", "Ethiopia", "South Africa", "South Africa", "", "")) %>%
     rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, `%R`=perc_R, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
@@ -1596,19 +1653,32 @@ FeaseyMalawi_excludeI_prediction_summary<-metrics(FeaseyMalawi_excludeI_predicti
 
 ```
 
-```{r EUSCAPE_EURECA_excludeI}
+```{r EUSCAPE_EURECA_Kpn_excludeI}
 
-EUSCAPE_EURECA_excludeI_prediction <- matrix(c(subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$S, 
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_S_I")$R,
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$S,
-                subset(EUSCAPE_EURECA_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+EUSCAPE_EURECA_Kpn_excludeI_prediction <- matrix(c(subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_S_I")$S, 
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_S_I")$R,
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_R")$S,
+                subset(EUSCAPE_EURECA_Kpn_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
 
-colnames(EUSCAPE_EURECA_excludeI_prediction) <- c('S','R')
-rownames(EUSCAPE_EURECA_excludeI_prediction) <- c('pred_S_I','pred_R')
+colnames(EUSCAPE_EURECA_Kpn_excludeI_prediction) <- c('S','R')
+rownames(EUSCAPE_EURECA_Kpn_excludeI_prediction) <- c('pred_S_I','pred_R')
 
-EUSCAPE_EURECA_excludeI_prediction_summary<-metrics(EUSCAPE_EURECA_excludeI_prediction)
-
+EUSCAPE_EURECA_Kpn_excludeI_prediction_summary<-metrics(EUSCAPE_EURECA_Kpn_excludeI_prediction)
 ```
+
+```{r EUSCAPE_EURECA_Kvv_excludeI}
+
+EUSCAPE_EURECA_Kvv_excludeI_prediction <- matrix(c(subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_S_I")$S, 
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_S_I")$R,
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_R")$S,
+                subset(EUSCAPE_EURECA_Kvv_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(EUSCAPE_EURECA_Kvv_excludeI_prediction) <- c('S','R')
+rownames(EUSCAPE_EURECA_Kvv_excludeI_prediction) <- c('pred_S_I','pred_R')
+
+EUSCAPE_EURECA_Kvv_excludeI_prediction_summary<-metrics(EUSCAPE_EURECA_Kvv_excludeI_prediction)
+```
+
 
 ```{r EgliSwitzerland_excludeI}
 
@@ -1766,7 +1836,8 @@ bind_rows(MBIRA_Kpn_SIR,
           HailuEthiopia_SIR,
           KayamaJapan_SIR,
           FeaseyMalawi_SIR, 
-          EUSCAPE_EURECA_SIR,
+          EUSCAPE_EURECA_Kpn_SIR,
+          EUSCAPE_EURECA_Kvv_SIR,
           EgliSwitzerland_SIR,
           HRYC_Spain_SIR,
           IndiaGHRU_SIR,
@@ -1795,7 +1866,7 @@ pooled_excludeI_summary<-metrics(pooled_excludeI_prediction)
 # Combining validation sets - excluding I
 ```{r combine_ExcludeI}
 validation_summary <- rbind(
-                            EUSCAPE_EURECA_excludeI_prediction_summary$summary,
+                            EUSCAPE_EURECA_Kpn_excludeI_prediction_summary$summary,
                             KayamaJapan_excludeI_prediction_summary$summary, 
                             IndiaGHRU_excludeI_prediction_summary$summary,
                             AGAR_excludeI_prediction_summary$summary,
@@ -1809,6 +1880,7 @@ validation_summary <- rbind(
                             MBIRA_Kvv_excludeI_prediction_summary$summary, 
                             Oxfordshire_Kvv_excludeI_prediction_summary$summary, 
                             NeumannGermany_excludeI_prediction_summary$summary,
+                          EUSCAPE_EURECA_Kvv_excludeI_prediction_summary$summary,
                           PachecoBrazil_excludeI_prediction_summary$summary,
 HarrisMERINO_excludeI_prediction_summary$summary,
                             FeaseyMalawi_excludeI_prediction_summary$summary,
@@ -1819,9 +1891,9 @@ HarrisMERINO_excludeI_prediction_summary$summary,
 
 
 validation_summary_table_excludeI <- as_tibble(validation_summary) %>% 
-  mutate(Prediction=c("R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI"))%>%
-  mutate(Dataset=c("EUSCAPE & EURECA","JARBS-GNR", "India GHRU", "AGAR GnSOP","Oxfordshire","IZSAM", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "IRCCS Ospedale San Raffaele", "HURYC & CIBERINFEC", "HULP", "MBIRA*","Oxfordshire*", "SCHARKI","PachecoBrazil","HarrisMERINO", "Queen Elizabeth Central Hospital", "University of Zurich", "Addis Ababa University*", "CHAMPS", "Pooled")) %>%
-    mutate(Country=c("Various European countries","Japan", "India", "Australia","United Kingdom","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Italy","Spain, Portugal", "Spain", "Ethiopia, South Africa, Tanzania" ,"United Kingdom", "Germany", "Brazil", "Various countries", "Malawi","Switzerland", "Ethiopia", "South Africa", "")) %>%
+  mutate(Prediction=c("R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI"))%>%
+  mutate(Dataset=c("EUSCAPE & EURECA","JARBS-GNR", "India GHRU", "AGAR GnSOP","Oxfordshire","IZSAM", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "IRCCS Ospedale San Raffaele", "HURYC & CIBERINFEC", "HULP", "MBIRA*","Oxfordshire*", "SCHARKI","EUSCAPE & EURECA*", "PachecoBrazil","HarrisMERINO", "Queen Elizabeth Central Hospital", "University of Zurich", "Addis Ababa University*", "CHAMPS", "Pooled")) %>%
+    mutate(Country=c("Various European countries","Japan", "India", "Australia","United Kingdom","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Italy","Spain, Portugal", "Spain", "Ethiopia, South Africa, Tanzania" ,"United Kingdom", "Germany","Various European countries", "Brazil", "Various countries", "Malawi","Switzerland", "Ethiopia", "South Africa", "")) %>%
     rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, `%R`=perc_R, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
@@ -1862,20 +1934,8 @@ validation_summary_table_long_ci %>%
 
 validation_summary_table_long_ci$`Evaluation metric` = factor(validation_summary_table_long_ci$`Evaluation metric`, levels=c("Categorical agreement","ME", 'VME'))
 
-#validation_summary_table_median<-
-#validation_summary_table_long_ci %>% group_by(`Evaluation metric`) %>% 
-#  summarise(metric_value = median(as.numeric(metric_value), na.rm = T)) %>%
-#  mutate(Dataset="Overall median") %>%
-#  mutate(var="") %>%
-#  mutate(ub="") %>%
-#  mutate(lb="") %>%
-#  mutate(Country="") %>%
-#  mutate(N="") %>%
-#  mutate(`%R`="") %>%
-#  mutate(`Prediction`="")
 
-#validation_summary_table_total <-
-#rbind(validation_summary_table_long_ci)
+
 
 validation_summary_table_total <- full_join(validation_summary_table_long_ci, SIR_table) %>% 
   mutate(Dataset = (gsub("Pooled", "All datasets combined", Dataset)))%>%
@@ -1885,11 +1945,14 @@ validation_summary_table_total <- full_join(validation_summary_table_long_ci, SI
 
 # Get totals to explicitly write in label
 colSums(SIR_table[,-1])
-validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, R=NA)'] <- "All datasets combined (S=1665, R=4462)"
+validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, R=NA)'] <- "All datasets combined (S=1695, R=4464)"
 
 
 validation_summary_table_total<- validation_summary_table_total %>% 
+  mutate(Dataset_label = (gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset_label)))%>%
   mutate(Dataset_label = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset_label)))%>%
+  mutate(Dataset_label = (gsub("PPPPPPPP", "EUSCAPE & EURECA (Kvv, EUCAST)", Dataset_label)))%>% 
+  
   mutate(Dataset_label = (gsub("India GHRU", "B (EUCAST)", Dataset_label)))%>% 
   mutate(Dataset_label = (gsub("AGAR GnSOP", "C (EUCAST)", Dataset_label)))%>% 
     mutate(Dataset_label = (gsub("Oxfordshire\\*", "XXXXXXX", Dataset_label)))%>% 
@@ -1907,7 +1970,8 @@ validation_summary_table_total<- validation_summary_table_total %>%
   mutate(Dataset_label = (gsub("University of Zurich", "L* (EUCAST)", Dataset_label)))%>%
   mutate(Dataset_label = (gsub("CHAMPS", "M* (CLSI)", Dataset_label)))
 
-validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c("A (EUCAST) (S=291, R=1687)", "B (EUCAST) (S=84, R=441)","C (EUCAST) (S=168, R=255)", "D (EUCAST) (S=242, R=37)", "E (EUCAST) (S=20, R=146)", "F (EUCAST) (S=11, R=136)", "G (CLSI) (S=222, R=449)","H (CLSI) (S=113, R=129)", "I (CLSI) (S=18, R=153)", "J* (EUCAST/BSAC) (S=196, R=411)","K* (Kvv, CLSI) (S=37, R=28)","L* (EUCAST) (S=11, R=53)", "M* (CLSI) (S=18, R=21)", "IZSAM (S=7, R=273)",  "IRCCS Ospedale San Raffaele (S=9, R=187)", "MBIRA (Kvv, CLSI) (S=86, R=5)",  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", "SCHARKI (S=51, R=2)", "PachecoBrazil (S=10, R=28)", "HarrisMERINO (S=7, R=21)","All datasets combined (S=1665, R=4462)", "Overall median"))
+
+validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c("A (EUCAST) (S=291, R=1687)", "B (EUCAST) (S=84, R=441)","C (EUCAST) (S=168, R=255)", "D (EUCAST) (S=242, R=37)", "E (EUCAST) (S=20, R=146)", "F (EUCAST) (S=11, R=136)", "G (CLSI) (S=222, R=449)","H (CLSI) (S=109, R=128)", "I (CLSI) (S=18, R=153)", "J* (EUCAST/BSAC) (S=196, R=411)","K* (Kvv, CLSI) (S=37, R=28)","L* (EUCAST) (S=11, R=53)", "M* (CLSI) (S=18, R=21)", "IZSAM (S=7, R=273)",  "IRCCS Ospedale San Raffaele (S=9, R=187)", "MBIRA (Kvv, CLSI) (S=85, R=5)",  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", "SCHARKI (S=51, R=2)","EUSCAPE & EURECA (Kvv, EUCAST) (S=35, R=3)", "PachecoBrazil (S=10, R=28)", "HarrisMERINO (S=7, R=21)","All datasets combined (S=1695, R=4464)", "Overall median"))
 
 
 
@@ -1989,7 +2053,9 @@ all_datasets_metrics <- all_datasets_metrics[, c("Dataset", "N","Susceptible", "
 
 
 all_datasets_metrics<- all_datasets_metrics %>% 
+  mutate(Dataset = (gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset)))%>%
   mutate(Dataset = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("PPPPPPPP", "EUSCAPE & EURECA (Kvv, EUCAST)", Dataset)))%>% 
   mutate(Dataset = (gsub("India GHRU", "B (EUCAST)", Dataset)))%>% 
   mutate(Dataset = (gsub("AGAR GnSOP", "C (EUCAST)", Dataset)))%>% 
     mutate(Dataset = (gsub("Oxfordshire\\*", "XXXXXXX", Dataset)))%>% 
@@ -2117,7 +2183,8 @@ bind_rows(lst(MBIRA_Kpn_genotype,
           HailuEthiopia_genotype,
           KayamaJapan_genotype,
           FeaseyMalawi_genotype, 
-          EUSCAPE_EURECA_genotype,
+          EUSCAPE_EURECA_Kpn_genotype,
+          EUSCAPE_EURECA_Kvv_genotype,
           EgliSwitzerland_genotype,
           HRYC_Spain_genotype,
           IndiaGHRU_genotype,
@@ -2146,7 +2213,8 @@ pooled_dataset_genotype$NWT_PPV[pooled_dataset_genotype$NWT_PPV == '0/0 (NaN%)']
 
 
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'AGAR'] <- 'AGAR GnSOP'
-pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EUSCAPE_EURECA'] <- 'EUSCAPE & EURECA'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EUSCAPE_EURECA_Kpn'] <- 'EUSCAPE & EURECA'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EUSCAPE_EURECA_Kvv'] <- 'EUSCAPE & EURECA*'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EgliSwitzerland'] <- 'University of Zurich'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'FeaseyMalawi'] <- 'Queen Elizabeth Central Hospital'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HRYC_Spain'] <- 'HURYC & CIBERINFEC'
@@ -2170,7 +2238,9 @@ geno_MIC <- merge(pooled_dataset_genotype, MIC_pred, by=c("Dataset","Group"))
 geno_MIC <- merge(geno_MIC, MIC_pred_excludeI, by=c("Dataset","Group"))
 
 geno_MIC<- geno_MIC %>% 
+  mutate(Dataset = (gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset)))%>%
   mutate(Dataset = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("PPPPPPPP", "EUSCAPE & EURECA (Kvv, EUCAST)", Dataset)))%>% 
   mutate(Dataset = (gsub("India GHRU", "B (EUCAST)", Dataset)))%>% 
   mutate(Dataset = (gsub("AGAR GnSOP", "C (EUCAST)", Dataset)))%>% 
     mutate(Dataset = (gsub("Oxfordshire\\*", "XXXXXXX", Dataset)))%>% 
@@ -2196,7 +2266,7 @@ write_tsv(geno_MIC, "../tables/TableS11_extValidation_genotypeProfiles.tsv", na=
 
 
 
-#showing R, NWT, R_excludeI
+#plot - showing R, NWT, R_excludeI
 ```{r, eval=FALSE}
 
 validation_summary_table_combined<-rbind(validation_summary_table, validation_summary_table_excludeI)
@@ -2275,7 +2345,7 @@ Milan_MIC <- readPNG("MilanSanRafaelle_ValidationOutput/MIC_PredRIS.png", native
 HailuEthiopia_DD <- readPNG("HailuEthiopia_ValidationOutput/DD_PredRIS.png", native=TRUE)
 KayamaJapan_MIC <- readPNG("KayamaJapan_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 FeaseyMalawi_DD <- readPNG("FeaseyMalawi_ValidationOutput/DD_PredRIS.png", native=TRUE)
-EUSCAPE_EURECA_MIC <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+EUSCAPE_EURECA_MIC <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredRIS_Kpn.png", native=TRUE)
 
 
 EgliSwitzerland_DD <- readPNG("EgliSwitzerland_2025_ValidationOutput/DD_PredRIS.png", native=TRUE)
@@ -2372,8 +2442,11 @@ Kayama_profile <- readPNG("KayamaJapan_ValidationOutput/StackedBar_PredGroup_SIR
 Feasey_dist <- readPNG("FeaseyMalawi_ValidationOutput/DD_PredGroup.png", native=TRUE)
 Feasey_profile <- readPNG("FeaseyMalawi_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
          
-EUSCAPE_EURECA_dist <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredGroup.png", native=TRUE)
-EUSCAPE_EURECA_profile <- readPNG("EURECA_EUSCAPE_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)     
+EUSCAPE_EURECA_dist <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredGroup_Kpn.png", native=TRUE)
+EUSCAPE_EURECA_profile <- readPNG("EURECA_EUSCAPE_ValidationOutput/StackedBar_PredGroup_SIR_Kpn.png", native=TRUE)    
+
+EUSCAPE_EURECA_Kvv_dist <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredGroup_Kvv.png", native=TRUE)
+EUSCAPE_EURECA_Kvv_profile <- readPNG("EURECA_EUSCAPE_ValidationOutput/StackedBar_PredGroup_SIR_Kvv.png", native=TRUE)    
 
 EgliSwitzerland_dist <- readPNG("EgliSwitzerland_2025_ValidationOutput/DD_PredGroup.png", native=TRUE)
 EgliSwitzerland_profile <- readPNG("EgliSwitzerland_2025_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)           
@@ -2481,14 +2554,21 @@ ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.pn
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.pdf")
 
 
-(wrap_elements(Feasey_dist) +ggtitle("xxxvii) Universidade Federal da Bahia (n=38) \n - MIC distribution vs. genotype profile") + wrap_elements(Feasey_profile) + ggtitle("xxxviii) Universidade Federal da Bahia (n=38) \n - observed phenotype vs. genotype profile")) /
-  
-  (wrap_elements(EgliSwitzerland_dist) +ggtitle("xxxix) MERINO trial (n=36) \n - DD distribution vs. genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("xl) MERINO trial (n=36) \n - observed phenotype vs. genotype profile")) 
+(wrap_elements(EUSCAPE_EURECA_Kvv_dist) +ggtitle("xxxix) EUSCAPE/EURECA Kvv (n=41) \n - MIC distribution vs. genotype profile") + wrap_elements(EUSCAPE_EURECA_Kvv_profile) + ggtitle("xxxviii) EUSCAPE/EURECA Kvv (n=41) \n - observed phenotype vs. genotype profile"))/
 
+(wrap_elements(Pacheco_Brazil_dist) +ggtitle("xxxix) iberoAMRica study (n=38) \n - MIC distribution vs. genotype profile") + wrap_elements(Pacheco_Brazil_profile) + ggtitle("xl) iberoAMRica study (n=38) \n - observed phenotype vs. genotype profile")) 
 
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.pdf")
+
+  
+  (wrap_elements(Harris_MERINO_dist) +ggtitle("xli) MERINO trial (n=36) \n - DD distribution vs. genotype profile") + wrap_elements(Harris_MERINO_dist) + ggtitle("xlii) MERINO trial (n=36) \n - observed phenotype vs. genotype profile")) 
+
+
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.pdf")
 
 
 
