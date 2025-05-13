@@ -201,7 +201,7 @@ log_reg_R_plot <- logreg_model1a %>% bind_rows(logreg_model1b) %>%
   ggplot(aes(y=Determinant)) + 
   geom_vline(xintercept=0) + 
   geom_linerange(aes(xmin=ci.lower, xmax=ci.upper, group=model, col=model, linetype=interaction), position=pd) +
-  geom_point(aes(x=est, group=model, col=model), position=pd) + 
+  geom_point(aes(x=est, group=model, col=model), position=pd, alpha=0.4) + 
   scale_colour_manual(values=c(a="#f1933b", b="#bd1515")) +
   theme_bw() + labs(x="Regression coefficient", col="R Model", linetype="Interaction")
 
@@ -262,7 +262,7 @@ log_reg_NWT_plot <- logreg_model3a %>% bind_rows(logreg_model3b) %>%
   ggplot(aes(y=Determinant)) + 
   geom_vline(xintercept=0) + 
   geom_linerange(aes(xmin=ci.lower, xmax=ci.upper, group=model, col=model, linetype=interaction), position=pd) +
-  geom_point(aes(x=est, group=model, col=model), position=pd) + 
+  geom_point(aes(x=est, group=model, col=model), position=pd, alpha=0.4) + 
   scale_colour_manual(values=c(a="#70bfef", b="#2c15ae")) +
   theme_bw() + labs(x="Regression coefficient", col="NWT Model", linetype="Interaction", y="") + 
   scale_y_discrete(labels=paste0("n=",marker_count[marker_count_order]), position="right")
