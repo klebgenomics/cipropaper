@@ -900,6 +900,9 @@ upset_aac6_simple_DD <- cipro_antibiogram %>%
   upset(
       intersect=c("aac6","acquired_genes", "QRDR_mutations"),# counts are converted to binary
       sort_sets=FALSE,
+      set_sizes=(
+        upset_set_size()
+        + theme(axis.text.x=element_text(angle=45))),
       intersections=list(
         'Outside of known sets',
         "aac6",
@@ -935,7 +938,7 @@ upset_aac6_simple_DD <- cipro_antibiogram %>%
               scale_color_manual(values = res_colours)+
               guides(size = "none") +
               labs(linetype = "CLSI/EUCAST", colour = "Phenotype") +
-              ggtitle("Disk diffusion data") +
+              ggtitle("b) Disk diffusion data") +
               ylim(5,50)
         )
       )
@@ -952,6 +955,9 @@ upset_aac6_simple_MIC <- cipro_antibiogram %>%
   upset(
       intersect=c("aac6","acquired_genes", "QRDR_mutations"),# counts are converted to binary
       sort_sets=FALSE,
+      set_sizes=(
+        upset_set_size()
+        + theme(axis.text.x=element_text(angle=45))),
       intersections=list(
         'Outside of known sets',
         "aac6",
@@ -988,7 +994,7 @@ upset_aac6_simple_MIC <- cipro_antibiogram %>%
               scale_y_continuous(trans = log2_trans(), breaks = 2^(-5:6), labels = function(x) round(as.numeric(x), digits = 3), limits=c(2^-5,2^6)) +
               labs(colour = "Phenotype") +
               theme(legend.position="none") + 
-              ggtitle("MIC data")
+              ggtitle("a) MIC data")
         )
 
       )
