@@ -1047,7 +1047,7 @@ rules_MIC_distributionRS <- cipro_antibiogram %>%
   mutate(predSIR_label=case_when(predSIR=="S" ~ "WT S", predSIR=="R" ~ "NWT R", TRUE ~ "NWT I")) %>%
   mutate(predSIR_label=factor(predSIR_label, levels=c("WT S", "NWT I", "NWT R"))) %>%
   ggplot(aes(as.factor(round(as.numeric(Measurement), digits=2)), fill = predSIR_label)) + geom_bar() + 
-  labs(title = "A) MIC, by classifer prediction", y = "Number of genomes", x="MIC (mg/L)", 
+  labs(title = "A) MIC, by classifer prediction", y = "Number of genomes", x="MIC measurement mg/L)", 
        linetype = "MIC breakpoints", fill="Classifier prediction") +
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
@@ -1069,7 +1069,7 @@ rules_DD_distributionRS <- cipro_antibiogram %>%
   mutate(predSIR_label=case_when(predSIR=="S" ~ "WT S", predSIR=="R" ~ "NWT R", TRUE ~ "NWT I")) %>%
   mutate(predSIR_label=factor(predSIR_label, levels=c("WT S", "NWT I", "NWT R"))) %>%
   ggplot(aes(as.numeric(Measurement), fill = predSIR_label)) + geom_bar() + 
-  labs(title = "B) Disk zones, by classifer prediction", y = "Number of genomes", x ="Disk zone (mm)",
+  labs(title = "B) Disk diffusion, by classifer prediction", y = "Number of genomes", x ="Disk diffusion zone diameter (mm)",
        linetype = "Disk diffusion \nbreakpoints") +
         scale_fill_manual(values = res_colours3)+
   geom_vline(aes(xintercept = 21.5), color = "black") +
@@ -1406,7 +1406,7 @@ rules_MIC_distribution_separate <- cipro_antibiogram %>%
   ggplot(aes(x = as.factor(round(as.numeric(Measurement), digits=2)), 
              fill = profiles)) + 
   geom_bar() + 
-  labs(x = "MIC (mg/L)", y = "Number of genomes") +
+  labs(x = "MIC measurement (mg/L)", y = "Number of genomes") +
   scale_fill_manual(values=unname(profile_colours))+
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +
@@ -1481,7 +1481,7 @@ rules_MIC_distribution_separate <- cipro_antibiogram %>%
              fill = profiles)) + 
   geom_bar() + 
   #geom_text(aes(label=IQR, y=y), x=as.factor("256"), check_overlap = T, size=3) +
-  labs(x = "MIC (mg/L)", y = "Number of genomes") +
+  labs(x = "MIC measurement (mg/L)", y = "Number of genomes") +
   scale_fill_manual(values=c("LightBlue", "LightBlue", "#78638a", rep("IndianRed", 7)))+
   # round off x-axis labels to 2dp
   scale_x_discrete(labels = function(x) round(as.numeric(x), digits = 2)) +

@@ -1972,7 +1972,7 @@ validation_summary_table_total<- validation_summary_table_total %>%
   mutate(Dataset_label = (gsub("CHAMPS", "M* (CLSI)", Dataset_label)))
 
 
-validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c("A (EUCAST) (S=291, R=1687)", "B (EUCAST) (S=84, R=441)","C (EUCAST) (S=168, R=255)", "D (EUCAST) (S=242, R=37)", "E (EUCAST) (S=20, R=146)", "F (EUCAST) (S=11, R=136)", "G (CLSI) (S=222, R=449)","H (CLSI) (S=109, R=128)", "I (CLSI) (S=18, R=153)", "J* (EUCAST/BSAC) (S=196, R=411)","K* (Kvv, CLSI) (S=37, R=28)","L* (EUCAST) (S=11, R=53)", "M* (CLSI) (S=18, R=21)", "IZSAM (S=7, R=273)",  "IRCCS Ospedale San Raffaele (S=9, R=187)", "MBIRA (Kvv, CLSI) (S=85, R=5)",  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", "SCHARKI (S=51, R=2)","EUSCAPE & EURECA (Kvv, EUCAST) (S=35, R=3)", "PachecoBrazil (S=10, R=28)", "HarrisMERINO (S=7, R=21)","All datasets combined (S=1695, R=4464)", "Overall median"))
+validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c("A (EUCAST) (S=291, R=1687)", "B (EUCAST) (S=84, R=441)","C (EUCAST) (S=168, R=255)", "D (EUCAST) (S=242, R=37)", "E (EUCAST) (S=20, R=146)", "F (EUCAST) (S=11, R=136)", "G (CLSI) (S=222, R=449)","H (CLSI) (S=109, R=128)", "I (CLSI) (S=18, R=153)", "J* (EUCAST/BSAC) (S=196, R=411)","K* (Kvv, CLSI) (S=37, R=28)","L* (EUCAST) (S=11, R=53)", "M* (CLSI) (S=18, R=21)", "IZSAM (S=7, R=273)",  "IRCCS Ospedale San Raffaele (S=9, R=187)", "MBIRA (Kvv, CLSI) (S=85, R=5)",  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", "SCHARKI (S=51, R=2)","EUSCAPE & EURECA (Kvv, EUCAST) (S=35, R=3)", "PachecoBrazil (S=10, R=28)", "HarrisMERINO (S=7, R=21)", "Overall median (datasets A-M)", "All datasets combined (S=1695, R=4464)"))
 
 
 
@@ -1987,7 +1987,7 @@ validation_summary_table_total %>%
 validation_summary_table_median<-
 validation_summary_table_total_exclude %>% group_by(`Evaluation metric`) %>% 
   summarise(metric_value = median(as.numeric(metric_value), na.rm = T)) %>%
-  mutate(Dataset="Overall median") %>%
+  mutate(Dataset="Overall median (datasets A-M)") %>%
   mutate(var="") %>%
   mutate(ub="") %>%
   mutate(lb="") %>%
@@ -2000,7 +2000,7 @@ validation_summary_table_total_exclude %>% group_by(`Evaluation metric`) %>%
   mutate(`IR_total`="")%>%
   mutate(`R_total`="")%>%
   mutate(`N_total`="")%>%
-  mutate(`Dataset_label`="Overall median")
+  mutate(`Dataset_label`="Overall median (datasets A-M)")
 
 validation_summary_table_total_exclude <-
 rbind(validation_summary_table_total_exclude, validation_summary_table_median)
@@ -2294,13 +2294,13 @@ validation_summary_table_total <- full_join(validation_summary_table_total, SIR_
   mutate(Dataset = (gsub("Pooled", "All datasets combined", Dataset)))%>%
   mutate(Dataset_label=paste(Dataset, " (S=", S_total, ", I=", I_total, ", R=",R_total, ")", sep = ""))
 
-validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'Overall median (S=NA, I=NA, R=NA)'] <- 'Overall median'
+validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'Overall median (S=NA, I=NA, R=NA)'] <- 'Overall median (datasets A-M)'
 
 # Get totals to explicitly write in label
 colSums(SIR_table[,-1])
 validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, I=NA, R=NA)'] <- "All datasets combined (S=1648, I=624, R=4413)"
 
-validation_summary_table_total$Dataset_label <- factor(validation_summary_table_total$Dataset_label, levels = c("EUSCAPE & EURECA (S=291, I=155, R=1687)", "JARBS-GNR (S=222, I=163, R=449)", "Queen Elizabeth Central Hospital (S=196, I=130, R=411)", "India GHRU (S=84, I=11, R=441)", "AGAR GnSOP (S=168, I=62, R=255)", "Oxfordshire (S=242, I=16, R=37)", "IZSAM (S=7, I=3, R=273)", "MBIRA (S=113, I=14, R=129)", "Controlling Superbugs study & Victorian CPE program (S=18, I=41, R=153)", "IRCCS Ospedale San Raffaele (S=9, I=2, R=187)", "HURYC & CIBERINFEC (S=20, I=7, R=146)", "HULP (S=11, I=1, R=136)", "MBIRA* (S=86, I=0, R=5)", "University of Zurich (S=11, I=8, R=53)", "Addis Ababa University* (S=37, I=5, R=28)", "Oxfordshire* (S=64, I=2, R=0)", "SCHARKI (S=51, I=3, R=2)", "CHAMPS (S=18, I=1, R=21)","All datasets combined (S=1648, I=624, R=4413)", "Overall median"))
+validation_summary_table_total$Dataset_label <- factor(validation_summary_table_total$Dataset_label, levels = c("EUSCAPE & EURECA (S=291, I=155, R=1687)", "JARBS-GNR (S=222, I=163, R=449)", "Queen Elizabeth Central Hospital (S=196, I=130, R=411)", "India GHRU (S=84, I=11, R=441)", "AGAR GnSOP (S=168, I=62, R=255)", "Oxfordshire (S=242, I=16, R=37)", "IZSAM (S=7, I=3, R=273)", "MBIRA (S=113, I=14, R=129)", "Controlling Superbugs study & Victorian CPE program (S=18, I=41, R=153)", "IRCCS Ospedale San Raffaele (S=9, I=2, R=187)", "HURYC & CIBERINFEC (S=20, I=7, R=146)", "HULP (S=11, I=1, R=136)", "MBIRA* (S=86, I=0, R=5)", "University of Zurich (S=11, I=8, R=53)", "Addis Ababa University* (S=37, I=5, R=28)", "Oxfordshire* (S=64, I=2, R=0)", "SCHARKI (S=51, I=3, R=2)", "CHAMPS (S=18, I=1, R=21)", "Overall median (datasets A-M)","All datasets combined (S=1648, I=624, R=4413)"))
 
 validation_summary_table_plot <-ggplot(validation_summary_table_total, aes(as.numeric(value),fct_inorder(as.factor(Dataset_label)))) +
   geom_point(aes(shape = `Prediction`, size=`Prediction`, colour=`Prediction`), alpha=0.5) +
