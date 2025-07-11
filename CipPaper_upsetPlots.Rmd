@@ -247,7 +247,7 @@ QRDR_DD_noGenes <- cipro_antibiogram %>%
     facet_wrap(vars(aac6_label)) +
     scale_colour_manual(values = res_colours) + 
     theme_light() + 
-    labs(y="Disk zone (mm)", x="", col="Phenotype",
+    labs(y="Disk diffusion\n zone diameter (mm)", x="", col="Phenotype",
          title="No. QRDR mutations vs phenotype",
          subtitle="(in absence of PMQR genes)")
 
@@ -403,7 +403,7 @@ upset_QRDR_noAac6_DD <- cipro_antibiogram %>%
         )
       ), 
       annotations= list( # add violin plot with disk diffusion data
-        'Zone diameter (mm)'=(
+        'Disk diffusion zone diameter (mm)'=(
             ggplot(mapping=aes(y=as.numeric(Measurement))) +
               geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
               geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
@@ -453,7 +453,7 @@ upset_QRDR_aac6_DD <- cipro_antibiogram %>%
         )
       ), 
       annotations= list( # add violin plot with disk diffusion data
-        'Zone diameter (mm)'=(
+        'Disk diffusion zone diameter (mm)'=(
             ggplot(mapping=aes(y=as.numeric(Measurement))) +
               geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
               geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
@@ -647,7 +647,7 @@ upset_qnr_noAac6_DD <- cipro_antibiogram %>%
         )
       ), 
       annotations= list( # add violin plot with disk diffusion data
-        'Zone diameter (mm)'=(
+        'Disk diffusion zone diameter (mm)'=(
             ggplot(mapping=aes(y=as.numeric(Measurement))) +
               geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
               geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
@@ -701,7 +701,7 @@ upset_qnr_aac6_DD <- cipro_antibiogram %>%
         )
       ), 
       annotations= list( # add violin plot with disk diffusion data
-        'Zone diameter (mm)'=(
+        'Disk diffusion zone diameter (mm)'=(
             ggplot(mapping=aes(y=as.numeric(Measurement))) +
               geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
               geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
@@ -865,7 +865,7 @@ qnr_DD_noGenes <- cipro_antibiogram %>%
     facet_wrap(vars(aac6_label)) +
       scale_color_manual(values = res_colours) + 
     theme_light() + 
-    labs(y="Disk zone (mm)", x="", col="Phenotype",
+    labs(y="Disk diffusion\n zone diameter (mm)", x="", col="Phenotype",
          title="No. PMQR genes vs phenotype",
          subtitle="(in absence of QRDR mutations)")
 
@@ -929,7 +929,7 @@ upset_aac6_simple_DD <- cipro_antibiogram %>%
         )
       ), 
       annotations= list( # add violin plot with disk diffusion data
-        'Zone diameter (mm)'=(
+        'Disk diffusion zone diameter (mm)'=(
             ggplot(mapping=aes(y=as.numeric(Measurement))) +
               geom_hline(aes(yintercept = 21.0), linetype = 1, alpha = 0.6, color = "black") +
               geom_hline(aes(yintercept = 25.0), linetype = 2, alpha = 0.6, color = "black") +
