@@ -2480,31 +2480,31 @@ Harris_MERINO_profile <- readPNG("HarrisMERINO_ValidationOutput/StackedBar_PredG
 Pacheco_Brazil_dist <- readPNG("PachecoBrazil_ValidationOutput/MIC_PredGroup.png", native=TRUE)
 Pacheco_Brazil_profile <- readPNG("PachecoBrazil_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)   
 
-  (wrap_elements(EUSCAPE_EURECA_dist) +ggtitle("i) A (EUCAST) / \n EURECA & EUSCAPE (n=2133) - MIC distribution vs.\n genotype profile") + wrap_elements(EUSCAPE_EURECA_profile) + ggtitle("ii) A (EUCAST) / \n EURECA & EUSCAPE (n=2133) - observed phenotype vs.\n genotype profile"))/
+  (wrap_elements(EUSCAPE_EURECA_dist) +ggtitle("1) A (EUCAST) / \n EURECA & EUSCAPE (n=2133) - MIC distribution vs.\n genotype profile") + wrap_elements(EUSCAPE_EURECA_profile) + ggtitle("2) A (EUCAST) / \n EURECA & EUSCAPE (n=2133) - observed phenotype vs.\n genotype profile"))/
   
-    (wrap_elements(IndiaGHRU_dist) +ggtitle("iii) B (EUCAST) / \nIndia GHRU (n=536) - MIC distribution vs.\n genotype profile") + wrap_elements(IndiaGHRU_profile) + ggtitle("iv) B (EUCAST) / \nIndia GHRU (n=536) - observed phenotype vs.\n genotype profile")) 
+    (wrap_elements(IndiaGHRU_dist) +ggtitle("3) B (EUCAST) / \nIndia GHRU (n=536) - MIC distribution vs.\n genotype profile") + wrap_elements(IndiaGHRU_profile) + ggtitle("4) B (EUCAST) / \nIndia GHRU (n=536) - observed phenotype vs.\n genotype profile")) 
   
 
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_1.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_1.pdf")
 
-  (wrap_elements(AGAR_dist) +ggtitle("v) C (EUCAST) / \n AGAR GnSOP (n=485) - MIC distribution vs.\n genotype profile") + wrap_elements(AGAR_profile) + ggtitle("vi) C (EUCAST) / \n AGAR GnSOP (n=485) - observed phenotype vs.\n genotype profile")) / 
-  (wrap_elements(Oxfordshire_Kpn_dist) +ggtitle("vii) D (EUCAST) / \n Oxfordshire (n=295) - MIC distribution vs.\n genotype profile") + wrap_elements(Oxfordshire_Kpn_profile) + ggtitle("viii) D (EUCAST) / \n Oxfordshire (n=295) - observed phenotype vs.\n genotype profile")) 
+  (wrap_elements(AGAR_dist) +ggtitle("5) C (EUCAST) / \n AGAR GnSOP (n=485) - MIC distribution vs.\n genotype profile") + wrap_elements(AGAR_profile) + ggtitle("6) C (EUCAST) / \n AGAR GnSOP (n=485) - observed phenotype vs.\n genotype profile")) / 
+  (wrap_elements(Oxfordshire_Kpn_dist) +ggtitle("7) D (EUCAST) / \n Oxfordshire (n=295) - MIC distribution vs.\n genotype profile") + wrap_elements(Oxfordshire_Kpn_profile) + ggtitle("8) D (EUCAST) / \n Oxfordshire (n=295) - observed phenotype vs.\n genotype profile")) 
   
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_2.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_2.pdf")
 
-  (wrap_elements(HRYC_Spain_dist) +ggtitle("ix) E (EUCAST) / \n HURYC & CIBERINFEC (n=173) - MIC distribution vs.\n genotype profile") + wrap_elements(HRYC_Spain_profile) + ggtitle("x) E (EUCAST) \ \n HURYC & CIBERINFEC (n=173) \n - observed phenotype vs. genotype profile"))  / 
-      (wrap_elements(LaPaz_Lazaro_dist) +ggtitle("xi) F (EUCAST) / \n HULP (n=148) - MIC distribution vs.\n genotype profile") + wrap_elements(LaPaz_Lazaro_profile) + ggtitle("xii) F (EUCAST) \ \n HULP (n=148) \n - observed phenotype vs. genotype profile")) 
+  (wrap_elements(HRYC_Spain_dist) +ggtitle("9) E (EUCAST) / \n HURYC & CIBERINFEC (n=173) - MIC distribution vs.\n genotype profile") + wrap_elements(HRYC_Spain_profile) + ggtitle("10) E (EUCAST) \ \n HURYC & CIBERINFEC (n=173) \n - observed phenotype vs. genotype profile"))  / 
+      (wrap_elements(LaPaz_Lazaro_dist) +ggtitle("11) F (EUCAST) / \n HULP (n=148) - MIC distribution vs.\n genotype profile") + wrap_elements(LaPaz_Lazaro_profile) + ggtitle("12) F (EUCAST) \ \n HULP (n=148) \n - observed phenotype vs. genotype profile")) 
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_3.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_3.pdf")
 
-(wrap_elements(Kayama_dist) +ggtitle("xiii) G (CLSI) / \n JARBS-GNR Japan (n=834) - MIC distribution vs.\n genotype profile") + wrap_elements(Kayama_profile) + ggtitle("xiv)  G (CLSI) / \n JARBS-GNR Japan (n=834) - observed phenotype vs.\n genotype profile")) /
+(wrap_elements(Kayama_dist) +ggtitle("13) G (CLSI) / \n JARBS-GNR Japan (n=834) - MIC distribution vs.\n genotype profile") + wrap_elements(Kayama_profile) + ggtitle("14)  G (CLSI) / \n JARBS-GNR Japan (n=834) - observed phenotype vs.\n genotype profile")) /
   
-(wrap_elements(MBIRA_Kpn_dist) +ggtitle("xv) H (CLSI) / \n MBIRA (n=263) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kpn_profile) + ggtitle("xvi) H (CLSI) / \n MBIRA (n=263) - observed phenotype vs.\n genotype profile")) 
+(wrap_elements(MBIRA_Kpn_dist) +ggtitle("15) H (CLSI) / \n MBIRA (n=263) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kpn_profile) + ggtitle("16) H (CLSI) / \n MBIRA (n=263) - observed phenotype vs.\n genotype profile")) 
 
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_4.png")
@@ -2513,8 +2513,8 @@ ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_4.pd
 
 
 
-(wrap_elements(HowdenGorrie_dist) +ggtitle("xvii)  I (CLSI) / \n Controlling Superbugs study & \nVictorian CPE program (n=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("xviii)  I (CLSI) / \n Controlling Superbugs study & \nVictorian CPE program (n=212) - observed phenotype vs.\n genotype profile"))  /
-(wrap_elements(Feasey_dist) +ggtitle("xix) J* (EUCAST/BSAC) / \n Queen Elizabeth Central Hospital Malawi (n=737) \n - DD distribution vs. genotype profile") + wrap_elements(Feasey_profile) + ggtitle("xx) J* (EUCAST/BSAC) / \n Queen Elizabeth Central Hospital Malawi (n=737) \n - observed phenotype vs. genotype profile")) 
+(wrap_elements(HowdenGorrie_dist) +ggtitle("17)  I (CLSI) / \n Controlling Superbugs study & \nVictorian CPE program (n=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("18)  I (CLSI) / \n Controlling Superbugs study & \nVictorian CPE program (n=212) - observed phenotype vs.\n genotype profile"))  /
+(wrap_elements(Feasey_dist) +ggtitle("19) J* (EUCAST/BSAC) / \n Queen Elizabeth Central Hospital Malawi (n=737) \n - DD distribution vs. genotype profile") + wrap_elements(Feasey_profile) + ggtitle("20) J* (EUCAST/BSAC) / \n Queen Elizabeth Central Hospital Malawi (n=737) \n - observed phenotype vs. genotype profile")) 
   
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_5.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_5.pdf")
@@ -2523,49 +2523,49 @@ ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_5.pd
 
 
   
-(wrap_elements(Hailu_dist) +ggtitle("xxi) K* (Kvv, CLSI) / \n Addis Ababa University* (n=70) .\n - DD distribution vs. genotype profile") + wrap_elements(Hailu_profile) + ggtitle("xxii) K* (Kvv, CLSI) / \n Addis Ababa University* (n=70) \n - observed phenotype vs. genotype profile")) /
+(wrap_elements(Hailu_dist) +ggtitle("21) K* (Kvv, CLSI) / \n Addis Ababa University* (n=70) .\n - DD distribution vs. genotype profile") + wrap_elements(Hailu_profile) + ggtitle("22) K* (Kvv, CLSI) / \n Addis Ababa University* (n=70) \n - observed phenotype vs. genotype profile")) /
 
-    (wrap_elements(EgliSwitzerland_dist) +ggtitle("xxiii) L* (EUCAST) / \n University of Zurich (n=72) - \n DD distribution vs. genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("xxiv) L* (EUCAST) / \n University of Zurich (n=72) \n - observed phenotype vs. genotype profile")) 
+    (wrap_elements(EgliSwitzerland_dist) +ggtitle("23) L* (EUCAST) / \n University of Zurich (n=72) - \n DD distribution vs. genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("24) L* (EUCAST) / \n University of Zurich (n=72) \n - observed phenotype vs. genotype profile")) 
 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_6.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_6.pdf")
 
-(wrap_elements(WhitelawCHAMPS_dist) +ggtitle("xxv) M* (CLSI) / \n CHAMPS (n=40) - DD distribution vs.\n genotype profile") + wrap_elements(WhitelawCHAMPS_profile) + ggtitle("xxvi) M* (CLSI) / \n CHAMPS (n=40) - observed phenotype vs.\n genotype profile")) /
+(wrap_elements(WhitelawCHAMPS_dist) +ggtitle("25) M* (CLSI) / \n CHAMPS (n=40) - DD distribution vs.\n genotype profile") + wrap_elements(WhitelawCHAMPS_profile) + ggtitle("26) M* (CLSI) / \n CHAMPS (n=40) - observed phenotype vs.\n genotype profile")) /
   
-  (wrap_elements(IZSAM_Italy_dist) +ggtitle("xxvii) IZSAM (n=283) - MIC distribution vs.\n genotype profile") + wrap_elements(IZSAM_Italy_profile) + ggtitle("xxviii) IZSAM (n=283) - observed phenotype vs.\n genotype profile")) 
+  (wrap_elements(IZSAM_Italy_dist) +ggtitle("27) IZSAM (n=283) - MIC distribution vs.\n genotype profile") + wrap_elements(IZSAM_Italy_profile) + ggtitle("28) IZSAM (n=283) - observed phenotype vs.\n genotype profile")) 
 
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_7.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_7.pdf")
 
 
-(wrap_elements(Milan_dist) +ggtitle("xxix) IRCCS Ospedale San Raffaele (n=198) -\n MIC distribution vs. genotype profile") + wrap_elements(Milan_profile) + ggtitle("xxx) IRCCS Ospedale San Raffaele (n=198) \n - observed phenotype vs. genotype profile")) /
+(wrap_elements(Milan_dist) +ggtitle("29) IRCCS Ospedale San Raffaele (n=198) -\n MIC distribution vs. genotype profile") + wrap_elements(Milan_profile) + ggtitle("30) IRCCS Ospedale San Raffaele (n=198) \n - observed phenotype vs. genotype profile")) /
 
-(wrap_elements(MBIRA_Kvv_dist) +ggtitle("xxxi) MBIRA (Kvv, CLSI) (n=92) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kvv_profile) + ggtitle("xxxii) MBIRA (Kvv, CLSI) (n=92) - observed phenotype vs.\n genotype profile")) 
+(wrap_elements(MBIRA_Kvv_dist) +ggtitle("31) MBIRA (Kvv, CLSI) (n=92) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kvv_profile) + ggtitle("32) MBIRA (Kvv, CLSI) (n=92) - observed phenotype vs.\n genotype profile")) 
 
 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_8.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_8.pdf")
 
 
-(wrap_elements(Oxfordshire_Kvv_dist) +ggtitle("xxxiii) Oxfordshire (Kvv, EUCAST) (n=66) \n - MIC distribution vs. genotype profile") + wrap_elements(Oxfordshire_Kvv_profile) + ggtitle("xxxiv) Oxfordshire (Kvv, EUCAST) (n=66) \n - observed phenotype vs. genotype profile")) /
+(wrap_elements(Oxfordshire_Kvv_dist) +ggtitle("33) Oxfordshire (Kvv, EUCAST) (n=66) \n - MIC distribution vs. genotype profile") + wrap_elements(Oxfordshire_Kvv_profile) + ggtitle("34) Oxfordshire (Kvv, EUCAST) (n=66) \n - observed phenotype vs. genotype profile")) /
 
-(wrap_elements(NeumannGermany_dist) +ggtitle("xxxv) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("xxxvi) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) 
+(wrap_elements(NeumannGermany_dist) +ggtitle("35) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("36) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) 
 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.pdf")
 
 
-(wrap_elements(EUSCAPE_EURECA_Kvv_dist) +ggtitle("xxxix) EUSCAPE/EURECA Kvv (n=41) \n - MIC distribution vs. genotype profile") + wrap_elements(EUSCAPE_EURECA_Kvv_profile) + ggtitle("xxxviii) EUSCAPE/EURECA Kvv (n=41) \n - observed phenotype vs. genotype profile"))/
+(wrap_elements(EUSCAPE_EURECA_Kvv_dist) +ggtitle("37) EUSCAPE/EURECA Kvv (n=41) \n - MIC distribution vs. genotype profile") + wrap_elements(EUSCAPE_EURECA_Kvv_profile) + ggtitle("38) EUSCAPE/EURECA Kvv (n=41) \n - observed phenotype vs. genotype profile"))/
 
-(wrap_elements(Pacheco_Brazil_dist) +ggtitle("xxxix) iberoAMRica study (n=38) \n - MIC distribution vs. genotype profile") + wrap_elements(Pacheco_Brazil_profile) + ggtitle("xl) iberoAMRica study (n=38) \n - observed phenotype vs. genotype profile")) 
+(wrap_elements(Pacheco_Brazil_dist) +ggtitle("39) iberoAMRica study (n=38) \n - MIC distribution vs. genotype profile") + wrap_elements(Pacheco_Brazil_profile) + ggtitle("40) iberoAMRica study (n=38) \n - observed phenotype vs. genotype profile")) 
 
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.pdf")
 
   
-  (wrap_elements(Harris_MERINO_dist) +ggtitle("xli) MERINO trial (n=36) \n - DD distribution vs. genotype profile") + wrap_elements(Harris_MERINO_dist) + ggtitle("xlii) MERINO trial (n=36) \n - observed phenotype vs. genotype profile")) 
+  (wrap_elements(Harris_MERINO_dist) +ggtitle("41) MERINO trial (n=36) \n - DD distribution vs. genotype profile") + wrap_elements(Harris_MERINO_dist) + ggtitle("42) MERINO trial (n=36) \n - observed phenotype vs. genotype profile")) 
 
 
 
