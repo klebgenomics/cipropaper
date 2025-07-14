@@ -39,8 +39,8 @@ library(dplyr)
 
 # load data
 ``` {r}
-geno <- read_delim("tables/TableS1_genotypes.tsv")
-pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+geno <- read_delim("tables/TableS2_genotypes.tsv")
+pheno <- read_delim("tables/TableS3_phenotypes_metadata.tsv")
 cipro_antibiogram <- full_join(geno,pheno)
 
 ```
@@ -156,10 +156,10 @@ aac6_all <- cipro_antibiogram %>%
 ppv_all <- aac6_all %>% bind_rows(qrdr_all) %>% bind_rows(pmqr_all)
 ```
 
-# write out Table S6 - solo stats, overall stats
+# write out Table S7 - solo stats, overall stats
 ``` {r}
 # title columns for table
 solo_ppv %>% full_join(solo_ppv_aac6, by="Determinant", suffix=c(".solo", ".soloAac6")) %>% 
   full_join(ppv_all, by="Determinant") %>%
-  write_csv(file="tables/TableS6_determinantStats.csv")
+  write_csv(file="tables/TableS7_determinantStats.csv")
 ```

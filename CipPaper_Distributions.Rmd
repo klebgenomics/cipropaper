@@ -39,8 +39,8 @@ library(dplyr)
 
 # load data
 ``` {r}
-geno <- read_delim("tables/TableS1_genotypes.tsv")
-pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+geno <- read_delim("tables/TableS2_genotypes.tsv")
+pheno <- read_delim("tables/TableS3_phenotypes_metadata.tsv")
 cipro_antibiogram <- full_join(geno,pheno)
 
 ```

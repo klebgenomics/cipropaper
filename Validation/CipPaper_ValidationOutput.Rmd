@@ -2026,8 +2026,8 @@ ggsave(width=7, height=4, file="../figs/Fig7_extValidation_summary.png")
 ```
 
 
-# TableS10 - eval metrics 
-```{r, TableS10}
+# TableS11 - eval metrics 
+```{r, TableS11}
 
 all_datasets_metrics <-
 #Below includes NWT + R (including I) + R (excluding I)
@@ -2076,8 +2076,8 @@ all_datasets_metrics<- all_datasets_metrics %>%
 
 all_datasets_metrics <- all_datasets_metrics %>% 
   mutate_all(funs(str_replace(., "NaN%", "-")))
-#foundation for table S10 - some edits made
-#write_tsv(all_datasets_metrics, "../tables/TableS10_extValidation_evalMetrics.tsv", na="-")
+#foundation for table S11 - some manual edits made to the table
+#write_tsv(all_datasets_metrics, "../tables/TableS11_extValidation_evalMetrics.tsv", na="-")
 
 ```
 
@@ -2092,8 +2092,8 @@ discrete_quantile <- function(x, p) {
     sort(x)[length(x)*p]
   } else return(0)}
 
-validation_geno <- read_delim("../tables/TableS4_genotypes_validation.tsv")
-validation_pheno <- read_delim("../tables/TableS5_phenotype_metadata_validation.tsv")
+validation_geno <- read_delim("../tables/TableS5_genotypes_validation.tsv")
+validation_pheno <- read_delim("../tables/TableS6_phenotype_metadata_validation.tsv")
 
 validation <- full_join(validation_geno, validation_pheno)
 
@@ -2172,7 +2172,7 @@ MIC_pred <- rbind(MIC_pred, MIC_pred_SIR_pooled)
 
 ```
 
-
+# Table S12 - external validation by genotype profile
 ```{r}
 
 #genotype profiles
@@ -2263,7 +2263,7 @@ geno_MIC<- geno_MIC %>%
 geno_MIC <- geno_MIC %>%
   rename("MIC median [IQR] (exclude I)"=IQR_excludeI) %>%
   rename("MIC median [IQR]"=IQR)
-write_tsv(geno_MIC, "../tables/TableS11_extValidation_genotypeProfiles.tsv", na="-")
+write_tsv(geno_MIC, "../tables/TableS12_extValidation_genotypeProfiles.tsv", na="-")
 ```
 
 

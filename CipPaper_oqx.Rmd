@@ -43,8 +43,8 @@ library(scales)
 
 # load data
 ``` {r}
-geno <- read_delim("tables/TableS1_genotypes.tsv")
-pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+geno <- read_delim("tables/TableS2_genotypes.tsv")
+pheno <- read_delim("tables/TableS3_phenotypes_metadata.tsv")
 oqxA_coverage <- read_delim("tables/oqxAB_operon_defects/oqxA_coverage.tsv")
 oqxB_coverage <- read_delim("tables/oqxAB_operon_defects/oqxB_coverage.tsv")
 oqxR_coverage <- read_delim("tables/oqxAB_operon_defects/oqxR_coverage.tsv")
@@ -643,16 +643,16 @@ prop.test(table(noResDet$oqxB_2,noResDet$resistant)[2:1,2:1])
 
 ```
 
-#Table S9
+#Table S10
 ```{r}
-# Table S9- Contribution of solo truncations/mutations
+# Table S10- Contribution of solo truncations/mutations
 
 oqxAB_operon_truncation_solo <- 
 rbind(oqxR_truncation_solo, norB_truncation_solo, rarA_truncation_solo, rob_truncation_solo, oqxR_D95E_solo, oqxR_V113I_solo, oqxA_copy_solo, oqxB_copy_solo, oqxA_loss_solo, oqxB_loss_solo)
 
 oqxAB_operon_truncation_solo
 
-write.table(oqxAB_operon_truncation_solo, "tables/TableS9_oqxAB_contribution_PPV.tsv", row.names=FALSE, sep="\t")
+write.table(oqxAB_operon_truncation_solo, "tables/TableS10_oqxAB_contribution_PPV.tsv", row.names=FALSE, sep="\t")
 ```
 
 

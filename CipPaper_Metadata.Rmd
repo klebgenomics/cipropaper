@@ -36,11 +36,12 @@ knitr::opts_knit$set(root.dir = getwd())
 library(tidyverse)
 library(dplyr)
 library(patchwork)
+library(maps)
 ```
 
 # load data
 ``` {r}
-pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+pheno <- read_delim("tables/TableS3_phenotypes_metadata.tsv")
 pheno[pheno == "-"] <- NA
 ```
 
@@ -268,4 +269,16 @@ country_plot/ year_plot /source_type_plot / (human_plot + animal_plot) /
 ggsave("figs/FigS1_metadata.png", height = 12, width = 8, units = "in", dpi = 300)
 ggsave("figs/FigS1_metadata.pdf", height = 12, width = 8, units = "in", dpi = 300)
 
+```
+
+# Table S1 - summary of discovery datasets
+```{r}
+geno <- read_delim("tables/TableS2_genotypes.tsv")
+pheno <- read_delim("tables/TableS3_phenotypes_metadata.tsv")
+cipro_antibiogram <- full_join(geno,pheno)
+
+tableS1_disc_dataset_summary <-cipro_antibiogram %>% group_by(index, Laboratory.Typing.Method,Testing.standard, Laboratory.Typing.Platform) %>% count()
+
+#write_tsv(tableS1_disc_dataset_summary, file="tables/TableS1_discovery_dataset_summary.tsv")
+```
 ```

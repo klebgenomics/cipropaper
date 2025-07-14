@@ -46,8 +46,8 @@ library(ggtext)
 
 # load data
 ``` {r load_data}
-geno <- read_delim("tables/TableS1_genotypes.tsv")
-pheno <- read_delim("tables/TableS2_phenotypes_metadata.tsv")
+geno <- read_delim("tables/TableS2_genotypes.tsv")
+pheno <- read_delim("tables/TableS3_phenotypes_metadata.tsv")
 cipro_antibiogram <- full_join(geno,pheno)
 
 ```
@@ -273,20 +273,20 @@ log_reg_NWT_plot
 
 ## TableS8 - write out logistic regression coefficients
 
-``` {r table7}
+``` {r tableS8}
 multiVariable_vs_singleVariable <- logreg_model1a %>% select(-c(interaction, model)) %>%
   setNames(paste0('R Model1a.', names(.))) %>% rename(Term='R Model1a.Determinant') %>% 
   full_join(logreg_model1b %>% select(-c(Determinant, interaction, model)) %>% setNames(paste0('R Model1b.', names(.)))%>% rename(Term='R Model1b.Term'), by="Term") %>% 
   full_join(logreg_model3a %>% select(-c(interaction, model)) %>% setNames(paste0('NWT Model1a.', names(.))) %>% rename(Term='NWT Model1a.Determinant'), by="Term") %>% 
   full_join(logreg_model3b %>% select(-c(Determinant, interaction, model)) %>% setNames(paste0('NWT Model1b.', names(.)))%>% rename(Term='NWT Model1b.Term'), by="Term")
 
-write_csv(multiVariable_vs_singleVariable, file="tables/TableS7_LogRegCoef.csv")
+write_csv(multiVariable_vs_singleVariable, file="tables/TableS8_LogRegCoef.csv")
 ```
 
 
 ## read in Table 1, solo PPVs
 ``` {r solo_ppv}
-ppv_solo <- read_csv("tables/TableS6_determinantStats.csv") %>% filter(!is.na(N.solo)) %>% select(Determinant, ends_with(".solo"))
+ppv_solo <- read_csv("tables/TableS7_determinantStats.csv") %>% filter(!is.na(N.solo)) %>% select(Determinant, ends_with(".solo"))
 
 ppvR <- ppv_solo %>% mutate(p=R.solo/N.solo, se=sqrt(p*(1-p)/N.solo), ci.lower=p-1.96*se, ci.upper=p+1.96*se) %>% select(Determinant, p, ci.lower, ci.upper) %>% mutate(category="R") 
 
@@ -367,7 +367,7 @@ count_model_summary <- logreg_details(model_R_groups) %>% mutate(Model="2a", res
   bind_rows(logreg_details(model_NWT_groups) %>% mutate(Model="2a", response="NWT")) %>%
   bind_rows(logreg_details(model_NWT_groups_selectInteract) %>% mutate(Model="2b", response="NWT")) %>%
   relocate(Model, .before=Determinant) %>% relocate(response, .before=Model) %>%
-  write_csv(file="tables/TableS8_CountLogRegCoef.csv")
+  write_csv(file="tables/TableS9_CountLogRegCoef.csv")
 
 
 ```
@@ -1103,22 +1103,52 @@ rules_category_SIR_plot <- cipro_antibiogram %>%
   ggplot(aes(x=as.factor(rules_category), fill=factor(Resistance.phenotype, levels = c("S", "I", "R")))) + 
   geom_bar(position = "fill") + coord_flip() +
   scale_y_continuous(labels = scales::percent)+
-  labs(title="C) Observed phenotype distribution, per genotype profile", x="Genotype profile", y="Proportion (%)", fill="Observed phenotype") +
+  labs(x="", y="Proportion (%)", fill="Observed phenotype") +
   scale_fill_manual(values = res_colours)+
   scale_x_discrete(limits=rev, labels=profile_labels) +
-  geom_text_repel(aes(label = after_stat(count)), stat = "count", size=3, direction="x", position=position_fill(0.4)) +
-  theme_minimal()
+  geom_text_repel(aes(label = after_stat(count)), stat = "count", size=3, direction="x", position=position_fill(0.4), angle = 45) +
+  theme_minimal() +
+  theme(plot.margin = margin(0, 0, 0, 0, "pt"),axis.ticks.length.y = unit(0, "pt"),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.title.y = element_blank())
   rules_category_SIR_plot
+  
+  
+table_label_df <- data.frame(label = c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0", "0", "0", "qnrB1", "0", "0", "0", "1^", "1", ">1", ">0", "0", "1", "0", "0", "1", "*", "0", "1", "*", "*"),
+                             layer=c("QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr"),
+                             profile_labels=c("0^ QRDR, 0 PMQR, aac6-", "0 QRDR, 0 PMQR, aac6+", "0 QRDR, qnrB1, aac6-", "1 QRDR, 0 PMQR, aac6-", "1 QRDR, 0 PMQR, aac6+",">1 QRDR, 0 PMQR ", "0 QRDR, 1 PMQR^, aac6-","0 QRDR, 1 PMQR, aac6+", "0 QRDR, >1 PMQR ",">0 QRDR, >0 PMQR ","0^ QRDR, 0 PMQR, aac6-", "0 QRDR, 0 PMQR, aac6+", "0 QRDR, qnrB1, aac6-", "1 QRDR, 0 PMQR, aac6-", "1 QRDR, 0 PMQR, aac6+",">1 QRDR, 0 PMQR ", "0 QRDR, 1 PMQR^, aac6-","0 QRDR, 1 PMQR, aac6+", "0 QRDR, >1 PMQR ",">0 QRDR, >0 PMQR ","0^ QRDR, 0 PMQR, aac6-", "0 QRDR, 0 PMQR, aac6+", "0 QRDR, qnrB1, aac6-", "1 QRDR, 0 PMQR, aac6-", "1 QRDR, 0 PMQR, aac6+",">1 QRDR, 0 PMQR ", "0 QRDR, 1 PMQR^, aac6-","0 QRDR, 1 PMQR, aac6+", "0 QRDR, >1 PMQR ",">0 QRDR, >0 PMQR "))
+
+table_label_df %>% ggplot(aes(y = profile_labels, x = layer)) +
+  geom_tile(fill = "blue", alpha = .4, color = "black")+
+  geom_text(aes(label = label)) 
+
+table_label_plot <-
+table_label_df %>% ggplot(aes(x = factor(layer, c("QRDR", "PMQR", "aac(6`)-Ib-cr")))) +
+  geom_text(aes(y = factor(profile_labels, c(">0 QRDR, >0 PMQR ", "0 QRDR, >1 PMQR ",  "0 QRDR, 1 PMQR, aac6+", "0 QRDR, 1 PMQR^, aac6-",  ">1 QRDR, 0 PMQR ", "1 QRDR, 0 PMQR, aac6+", "1 QRDR, 0 PMQR, aac6-","0 QRDR, qnrB1, aac6-", "0 QRDR, 0 PMQR, aac6+", "0^ QRDR, 0 PMQR, aac6-" )), label = label, fontface = "bold", size=5)) +
+  labs(y = "", x = NULL, title="C) Observed phenotype distribution, per genotype profile",) +
+  theme_minimal() +
+  theme(axis.ticks = element_blank(), axis.text.y = element_blank(),
+         strip.text = element_blank(),
+        axis.text.x = element_text(size = 10),
+        plot.margin = margin(0, 0, 0, 0, "pt")) +
+  scale_x_discrete(position = "top") +
+  labs(y="Genotype profile") + 
+  theme(legend.position="none")
+table_label_plot
+
+
 ```
 
 # Figure 4 - classifier predictions vs measurements
 
 ``` {r fig4}
-rules_MIC_distributionRS / rules_DD_distributionRS /rules_category_SIR_plot
+rules_MIC_distributionRS / rules_DD_distributionRS / (table_label_plot|rules_category_SIR_plot)
 
-ggsave(height=10, width=8, file="figs/Fig4_classifierPred_MIC_DD_distribution.png")
+ggsave(height=10, width=10, file="figs/Fig4_classifierPred_MIC_DD_distribution.png")
 
-ggsave(height=10, width=8, file="figs/Fig4_classifierPred_MIC_DD_distribution.pdf")
+ggsave(height=10, width=10, file="figs/Fig4_classifierPred_MIC_DD_distribution.pdf")
  
 ```
 
