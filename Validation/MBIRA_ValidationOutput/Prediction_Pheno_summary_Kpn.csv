@@ -1,7 +1,7 @@
-"","S","I","R"
-"pred_S",57,0,6
-"pred_I",5,6,7
-"pred_R",47,8,115
+,S,I,R
+pred_S,57,0,6
+pred_I,5,6,7
+pred_R,47,8,115
 "0^ QRDR, 0 PMQR, 0 aac6",49,0,3
 "0 QRDR, 0 PMQR, 1 aac6",8,0,3
 "0 QRDR, qnrB1, 0 aac6",5,6,7

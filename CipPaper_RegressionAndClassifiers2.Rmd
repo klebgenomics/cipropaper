@@ -247,8 +247,8 @@ logreg_model3b$Determinant[logreg_model3b$Determinant == "aac(6')-Ib-cr"] <- "aa
 
 # get count per marker to label on the right
 marker_count <- cipro_antibiogram %>% 
-  rename(`aac(6')-Ib-cr`=aac6) %>%
-  select(`GyrA-83F`:`qnrVC6`, `aac(6')-Ib-cr`) %>%
+  rename("aac(6`)-Ib-cr"=aac6) %>%
+  select(`GyrA-83F`:`qnrVC6`, "aac(6`)-Ib-cr") %>%
   colSums()
 
 marker_count_order <- logreg_model3a %>% bind_rows(logreg_model3b) %>%

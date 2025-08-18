@@ -45,7 +45,7 @@ library(pheatmap)
 # load data
 ``` {r}
 
-#Pathogenwatch data downloaded Feb 3, 2025
+#Pathogenwatch data downloaded Aug 11, 2025
 
 Kp <- read.delim(file = "Klebsiella pneumoniae__kleborate.csv.gz", header = TRUE, sep = ",")
 Kp <- read.delim(file = "Klebsiella pneumoniae__metadata.csv.gz", header = TRUE, sep = ",") %>% 
@@ -73,11 +73,11 @@ Kv <- read.delim(file = "Klebsiella variicola__metadata.csv.gz", header = TRUE, 
   rename(`Genome.ID`="id") %>% full_join(Kv,by="Genome.ID")
 Kv <- read.delim(file = "Klebsiella variicola__klebsiella-lincodes.csv.gz", header = TRUE, sep = ",") %>%  full_join(Kv,by="Genome.ID")
 
-pathogenwatch <- bind_rows(Kp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
-                Ka %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
-                Kqv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
-                Kv %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code),
-                Kqp %>% select(Flq_acquired, Flq_mutations, AGly_acquired, year, Country, ST, species, Study.accession, LIN.code))
+pathogenwatch <- bind_rows(Kp %>% select(Flq_acquired, Flq_mutations, Ciprofloxacin_profile, Ciprofloxacin_MIC_prediction,  year, Country, ST, species, Study.accession, LIN.code),
+                Ka %>% select(Flq_acquired, Flq_mutations, year, Country, Ciprofloxacin_profile, Ciprofloxacin_MIC_prediction, ST, species, Study.accession, LIN.code),
+                Kqv %>% select(Flq_acquired, Flq_mutations, year, Country, Ciprofloxacin_profile, Ciprofloxacin_MIC_prediction, ST, species, Study.accession, LIN.code),
+                Kv %>% select(Flq_acquired, Flq_mutations, year, Country, Ciprofloxacin_profile, Ciprofloxacin_MIC_prediction, ST, species, Study.accession, LIN.code),
+                Kqp %>% select(Flq_acquired, Flq_mutations, year, Country, Ciprofloxacin_profile, Ciprofloxacin_MIC_prediction, ST, species, Study.accession, LIN.code))
 
 ```
 
@@ -92,7 +92,16 @@ profile_labels <- paste(
 )
 names(profile_labels)<-0:9
 
-profile_colours <- c("0" = "#9DDFFE", "1"="#1A83B6", "2"="#98d3a4", "3"="#fbe8a5", "4"="#ecb16f", "5"="#f17c1b", "6"="#fdc0c0", "7"="#e88f8f", "8"="#b92020", "9"="#59124b")
+profile_colours <- c("0" ="#9DDFFE", 
+                     "1" ="#1A83B6", 
+                     "2" ="#98d3a4", 
+                     "3" ="#fbe8a5", 
+                     "4" ="#ecb16f", 
+                     "5" ="#f17c1b", 
+                     "6" ="#fdc0c0", 
+                     "7" ="#e88f8f", 
+                     "8" ="#b92020", 
+                     "9" ="#59124b")
 ```
 ## count mutations and genes
 ``` {r}
@@ -105,14 +114,14 @@ pathogenwatch <- pathogenwatch %>%
   mutate(Country = gsub("UK", "United Kingdom", Country)) %>%
   mutate(Country = gsub("KSA", "Saudi Arabia", Country)) %>%
   mutate(Country = if_else(grepl("United Kingdom", Country), "United Kingdom", Country)) %>%
-  mutate(aac6 = ifelse(grepl("aac\\(6\\'\\)-Ib-cr", AGly_acquired, ignore.case = T), 1, 0)) %>%
-  mutate(`GyrA-83` = str_count(Flq_mutations, "GyrA-83")) %>%
-  mutate(`GyrA-87` = str_count(Flq_mutations, "GyrA-87")) %>%
-  mutate(`ParC-80` = str_count(Flq_mutations, "ParC-80")) %>% 
-  mutate(`ParC-84` = str_count(Flq_mutations, "ParC-84")) %>%
+  mutate(`GyrA-83` = str_count(Flq_mutations, "GyrA:p.Asp83")) %>%
+  mutate(`GyrA-87` = str_count(Flq_mutations, "GyrA:p.Asp87")) %>%
+  mutate(`ParC-80` = str_count(Flq_mutations, "ParC:p.Ser80")) %>% 
+  mutate(`ParC-84` = str_count(Flq_mutations, "ParC:p.Ser84")) %>%
   mutate(QRDR_mutations = `GyrA-83`+`GyrA-87`+`ParC-80`+`ParC-84`) %>%
   mutate(qnr = str_count(Flq_acquired, "qnr")) %>%
   mutate(qep = str_count(Flq_acquired, "qep")) %>%
+ mutate(aac6 = str_count(Flq_acquired, "aac")) %>%
   mutate(acquired_genes = qnr+qep)
 
 ```
@@ -124,20 +133,19 @@ pathogenwatch <- pathogenwatch %>%
 
 
 pathogenwatch <- pathogenwatch %>% 
-  mutate(QRDR_mutations_exclude = str_count(Flq_mutations, "GyrA-87G") + str_count(Flq_mutations, "GyrA-87H")) %>% 
+  mutate(QRDR_mutations_exclude = str_count(Flq_mutations, "GyrA:p.Asp87Gly") + str_count(Flq_mutations, "GyrA:p.Asp87His")) %>% 
   mutate(PMQR_exclude = str_count(Flq_acquired, "qnrB1.v")) %>%
   mutate(rules_category = case_when(
-    QRDR_mutations==0 & acquired_genes==0 & aac6==0 ~ 0, # no determinants -> WT S
-    QRDR_mutations==1 & acquired_genes==0 & aac6==0 & QRDR_mutations_exclude==1 ~ 0, # non-associated QRDR solo -> WT S
-    QRDR_mutations==0 & acquired_genes==0 & aac6==1 ~ 1, # aac6 solo -> WT S
-    QRDR_mutations==0 & acquired_genes==1 & aac6==0 & PMQR_exclude==1 ~ 2, # non-associated PMQR solo -> NWT I
-    QRDR_mutations==1 & acquired_genes==0 & aac6==0 & QRDR_mutations_exclude==0 ~ 3, # 1 QRDR, except those not associated -> NWT R
-    QRDR_mutations==1 & acquired_genes==0 & aac6==1 ~ 4, # 1 QRDR + aac6 -> NWT R
-    QRDR_mutations>=2 & acquired_genes==0 ~ 5, # ≥2 QRDR -> NWT R
-    QRDR_mutations==0 & acquired_genes==1 & aac6==0 & PMQR_exclude==0 ~ 6, # 1 PMQR, except those not associated -> NWT R
-    QRDR_mutations==0 & acquired_genes==1 & aac6==1 ~ 7, # 1 PMQR + aac6
-    QRDR_mutations==0 & acquired_genes>=2 ~ 8, # ≥2 PMQR -> NWT R
-    QRDR_mutations>=1 & acquired_genes>=1 ~ 9, # QRDR + PMQR -> NWT R
+    Ciprofloxacin_profile=="0^ QRDR, 0 PMQR, 0 aac(6`)-Ib-cr" ~ 0, # no determinants -> WT S
+    Ciprofloxacin_profile=="0 QRDR, 0 PMQR, 1 aac(6`)-Ib-cr" ~ 1, # aac6 solo -> WT S
+    Ciprofloxacin_profile=="0 QRDR, qnrB1, 0 aac(6`)-Ib-cr" ~ 2, # non-associated PMQR solo -> NWT I
+    Ciprofloxacin_profile=="1 QRDR, 0 PMQR, 0 aac(6`)-Ib-cr" ~ 3, # 1 QRDR, except those not associated -> NWT R
+    Ciprofloxacin_profile=="1 QRDR, 0 PMQR, 1 aac(6`)-Ib-cr" ~ 4, # 1 QRDR + aac6 -> NWT R
+    Ciprofloxacin_profile==">1 QRDR, 0 PMQR, * aac(6`)-Ib-cr" ~ 5, # ≥2 QRDR -> NWT R
+    Ciprofloxacin_profile=="0 QRDR, 1^ PMQR, 0 aac(6`)-Ib-cr" ~ 6, # 1 PMQR, except those not associated -> NWT R
+    Ciprofloxacin_profile=="0 QRDR, 1 PMQR, 1 aac(6`)-Ib-cr" ~ 7, # 1 PMQR + aac6
+    Ciprofloxacin_profile=="0 QRDR, >1 PMQR, * aac(6`)-Ib-cr" ~ 8, # ≥2 PMQR -> NWT R
+    Ciprofloxacin_profile==">0 QRDR, >0 PMQR, * aac(6`)-Ib-cr" ~ 9, # QRDR + PMQR -> NWT R
     TRUE ~ NA
   )) %>%
   mutate(predR = if_else(rules_category<=2, "S", "R")) %>%
@@ -145,6 +153,9 @@ pathogenwatch <- pathogenwatch %>%
   mutate(predNWT = if_else(rules_category<2, "WT", "NWT")) %>%
   mutate(predNWT = factor(predNWT, levels=c("WT", "NWT")))
   
+
+
+
 
 
 ```
@@ -218,8 +229,6 @@ PW %>% group_by(ST, species, rules_category) %>% count() %>% right_join(ST_freq)
 
 PW %>% filter(ST=="ST347") %>% group_by(rules_category) %>% count()
 
-
-
 PW %>% filter(species=="Klebsiella variicola subsp. variicola") %>% group_by(ST) %>% count(sort=TRUE) 
 
 PW %>% filter(ST=="ST641"|ST=="ST355"|ST=="ST697"|ST=="ST1562"|ST=="ST197"|ST=="ST919") %>% group_by(ST, rules_category) %>% count()
@@ -268,9 +277,9 @@ QRDR_freq_kp <- PW %>%
 
 PW_dat_variant_kp <- PW %>% 
   filter(species=="Klebsiella pneumoniae") %>%
-  mutate(Flq_acquired_mut=paste(Flq_acquired, Flq_mutations, sep = ";")) %>%
-  mutate(aac6_label=if_else(aac6==1, "aac6", "")) %>%
-  mutate(variant=paste(Flq_acquired_mut, aac6_label, sep = ";")) %>%
+  mutate(variant=paste(Flq_acquired, Flq_mutations, sep = ";")) %>%
+  #mutate(aac6_label=if_else(aac6==1, "aac6", "")) %>%
+  #mutate(variant=paste(Flq_acquired_mut, aac6_label, sep = ";")) %>%
   filter(!is.na(ST)) %>%
   mutate(variant = gsub(' ', '', variant)) %>%
   select(ST, variant) %>%
@@ -278,7 +287,7 @@ PW_dat_variant_kp <- PW %>%
   filter(variant!="-") %>%
   filter(variant!="")
 
-PW_dat_variant_kp$variant[PW_dat_variant_kp$variant == 'aac6'] <- 'aac(6`)-Ib-cr'
+
 PW_dat_variant_kp$variant[PW_dat_variant_kp$variant == 'QnrB76'] <- 'qnrB76'
 PW_dat_variant_kp$variant[PW_dat_variant_kp$variant == 'QnrB77'] <- 'qnrB77'
 
@@ -294,7 +303,7 @@ PW_dat_kp <- PW_dat_variant_kp %>%
   mutate(pc=n/N)
 
 # order of variants
-variant_order_kp <- c('aac(6`)-Ib-cr', 
+variant_order_kp <- c(
                    PMQR_freq_kp$Flq_acquired[PMQR_freq_kp$Flq_acquired %in% PW_dat_kp$variant],
                    QRDR_freq_kp$Flq_mutations[QRDR_freq_kp$Flq_mutations %in% PW_dat_kp$variant]
                   )
@@ -380,9 +389,9 @@ ST_predR_plot_kp <- ST_pred %>%
     (ST_predR_plot_kp + plot_spacer() + plot_layout(widths=c(6,1))) /
     (ST_cat_plot_kp + plot_spacer() + plot_layout(widths=c(6,1))) + plot_layout(heights=c(1,8,1,1))
 
-ggsave(height=9, width=7, file="../figs/FigureS12_PW_geneSTheatmapKp.png")
+ggsave(height=9, width=8, file="../figs/FigureS12_PW_geneSTheatmapKp.png")
 
-ggsave(height=9, width=7, file="../figs/FigureS12_PW_geneSTheatmapKp.pdf")
+ggsave(height=9, width=8, file="../figs/FigureS12_PW_geneSTheatmapKp.pdf")
  
 ```
 
@@ -413,9 +422,7 @@ QRDR_freq_nkp <- PW %>%
 
 PW_dat_variant_nkp <- PW %>% 
   filter(species!="Klebsiella pneumoniae") %>%
-  mutate(Flq_acquired_mut=paste(Flq_acquired, Flq_mutations, sep = ";")) %>%
-  mutate(aac6_label=if_else(aac6==1, "aac6", "")) %>%
-  mutate(variant=paste(Flq_acquired_mut, aac6_label, sep = ";")) %>%
+  mutate(variant=paste(Flq_acquired, Flq_mutations, sep = ";")) %>%
   filter(!is.na(ST)) %>%
   mutate(variant = gsub(' ', '', variant)) %>%
   select(ST, variant) %>%
@@ -424,7 +431,7 @@ PW_dat_variant_nkp <- PW %>%
   filter(variant!="")
 
 
-PW_dat_variant_nkp$variant[PW_dat_variant_nkp$variant == 'aac6'] <- 'aac(6`)-Ib-cr'
+#PW_dat_variant_nkp$variant[PW_dat_variant_nkp$variant == 'aac6'] <- 'aac(6`)-Ib-cr'
 
 PW_dat_variant_nkp$ST <- gsub("ST", "", PW_dat_variant_nkp$ST)
 
@@ -437,7 +444,7 @@ PW_dat_nkp <- PW_dat_variant_nkp %>%
 
 
 # order of variants
-variant_order_nkp <- c('aac(6`)-Ib-cr', 
+variant_order_nkp <- c(
                    PMQR_freq_nkp$Flq_acquired[PMQR_freq_nkp$Flq_acquired %in% PW_dat_nkp$variant],
                    QRDR_freq_nkp$Flq_mutations[QRDR_freq_nkp$Flq_mutations %in% PW_dat_nkp$variant]
                   )
@@ -569,30 +576,16 @@ annual_multires_plot <- annual_multires %>%
 # MIC prediction vs. year
 ```{r MIC_year}
 
-MIC_profile_colours <- c("<=0.25 [0.25-0.25] mg/L" = "#add8e6", "0.25 [0.25-0.5] mg/L"="#72bcd4", "0.5 [0.5-1] mg/L"="#78638a", "1 [1-2] mg/L"="#fadbd8", "2 [1-2] mg/L"="#f1948a", "2 [2-4] mg/L"="#C64343", ">=4 [4-4] mg/L"="#4A0404")
-
-MIC_pathogenwatch <- PW %>% mutate(MIC_prediction=case_when(rules_category==0 ~ "<=0.25 [0.25-0.25] mg/L",
-                                  rules_category==1 ~ "0.25 [0.25-0.5] mg/L",
-                                  rules_category==2 ~ "0.5 [0.5-1] mg/L",
-                                  rules_category==3 ~ "1 [1-2] mg/L",
-                                  rules_category==4 ~ "2 [1-2] mg/L",
-                                  rules_category==5 ~ "2 [2-4] mg/L",
-                                  rules_category==6 ~ "1 [1-2] mg/L",
-                                  rules_category==7 ~ "2 [1-2] mg/L",
-                                  rules_category==8 ~ "2 [2-4] mg/L",
-                                  rules_category==9 ~ ">=4 [4-4] mg/L",
-                                  TRUE ~ NA
-                                  ))
+MIC_profile_colours <- c("0.25 mg/L [0.25-0.25]" = "#add8e6", "0.25 mg/L [0.25-0.5]"="#72bcd4", "0.5 mg/L [0.5-1]"="#78638a", "1 mg/L [1-2]"="#fadbd8", "2 mg/L [1-2]"="#f1948a", "2 mg/L [2-4]"="#C64343", "4 mg/L [4-4]"="#4A0404")
 
 
+PW$Ciprofloxacin_MIC_prediction <- factor(PW$Ciprofloxacin_MIC_prediction, levels=c("0.25 mg/L [0.25-0.25]", "0.25 mg/L [0.25-0.5]", "0.5 mg/L [0.5-1]", "1 mg/L [1-2]", "2 mg/L [1-2]", "2 mg/L [2-4]","4 mg/L [4-4]"))
 
-MIC_pathogenwatch$MIC_prediction <- factor(MIC_pathogenwatch$MIC_prediction, levels=c("<=0.25 [0.25-0.25] mg/L", "0.25 [0.25-0.5] mg/L", "0.5 [0.5-1] mg/L", "1 [1-2] mg/L", "2 [1-2] mg/L", "2 [2-4] mg/L",">=4 [4-4] mg/L"))
 
-
-MIC_year_pathogenwatch_plot <- MIC_pathogenwatch  %>% 
+MIC_year_pathogenwatch_plot <- PW  %>% 
   filter(species=="Klebsiella pneumoniae")  %>% 
-   group_by(year, MIC_prediction) %>% count() %>%
-  ggplot(aes(fill=as.factor(MIC_prediction), y=n, x=year)) + 
+   group_by(year, Ciprofloxacin_MIC_prediction) %>% count() %>%
+  ggplot(aes(fill=as.factor(Ciprofloxacin_MIC_prediction), y=n, x=year)) + 
     geom_bar(position="fill", stat="identity")+
     scale_fill_manual(values=MIC_profile_colours)+
     theme_minimal()+
