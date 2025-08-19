@@ -3032,188 +3032,188 @@ CNS1L0	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	2020	-	Oxoid	-	ERR12058948
 CNS1L3	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	2020	-	Oxoid	-	ERR12058949	Unicycler v0.4.8	SAMEA10330139	PRJEB42462	38711148	Nicholas Feasey	Human	Human	Blood	Infection	Malawi	Blantyre	2020	Queen Elizabeth Central Hospital	J* (EUCAST/BSAC)
 CNS1LG	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	2020	-	Oxoid	-	ERR12058959	Unicycler v0.4.8	SAMEA10330202	PRJEB42462	38711148	Nicholas Feasey	Human	Human	Blood	Infection	Malawi	Blantyre	2020	Queen Elizabeth Central Hospital	J* (EUCAST/BSAC)
 CNS1N2	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	2020	-	Oxoid	-	ERR12058961	Unicycler v0.4.8	SAMEA10330203	PRJEB42462	38711148	Nicholas Feasey	Human	Human	Blood	Infection	Malawi	Blantyre	2020	Queen Elizabeth Central Hospital	J* (EUCAST/BSAC)
-2022187430	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2022	University of Zurich	L* (EUCAST)
-2022187442	Ciprofloxacin	S	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2022	University of Zurich	L* (EUCAST)
-2023187210	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187228	Ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187258	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187264	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187443	Ciprofloxacin	S	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187475	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187609	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187617	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187618	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187652	Ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187664	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187693	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187700	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187701	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187808	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023187956	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023188006	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023188020	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023188109	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023188179	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2023188183	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	L* (EUCAST)
-2024187005	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187109	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187145	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187149	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187204	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187226	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187276	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187310	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187338	Ciprofloxacin	R	==	7	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187346	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187391	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187392	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187393	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187446	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187456	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187492	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187494	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187630	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187633	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187667	Ciprofloxacin	R	==	8	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187704	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187733	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187734	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187740	Ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187763	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187884	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187957	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024187958	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188098	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188099	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188101	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188211	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188219	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188245	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188266	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188268	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188306	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188323	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188326	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188341	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188417	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188424	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188452	Ciprofloxacin	R	==	12	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188524	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188594	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188597	Ciprofloxacin	S	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188598	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188608	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-2024188672	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	L* (EUCAST)
-SRR17179136	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179136	Unicycler v0.4.8	SAMN23768744	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179137	Ciprofloxacin	R	==	14	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179137	Unicycler v0.4.8	SAMN23768743	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179138	Ciprofloxacin	R	==	14	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179138	Unicycler v0.4.8	SAMN23768742	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179139	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179139	Unicycler v0.4.8	SAMN23768741	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179140	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179140	Unicycler v0.4.8	SAMN23768740	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179141	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179141	Unicycler v0.4.8	SAMN23768739	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179142	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179142	Unicycler v0.4.8	SAMN23768738	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179145	Ciprofloxacin	R	==	14	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179145	Unicycler v0.4.8	SAMN23768736	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179146	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179146	Unicycler v0.4.8	SAMN23768735	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179149	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179149	Unicycler v0.4.8	SAMN23768732	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179150	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179150	Unicycler v0.4.8	SAMN23768698	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179151	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179151	Unicycler v0.4.8	SAMN23768731	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179152	Ciprofloxacin	R	==	12	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179152	Unicycler v0.4.8	SAMN23768730	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179153	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179153	Unicycler v0.4.8	SAMN23768729	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179155	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179155	Unicycler v0.4.8	SAMN23768728	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179156	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179156	Unicycler v0.4.8	SAMN23768727	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179157	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179157	Unicycler v0.4.8	SAMN23768652	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179159	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179159	Unicycler v0.4.8	SAMN23768650	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179160	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179160	Unicycler v0.4.8	SAMN23768649	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179161	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179161	Unicycler v0.4.8	SAMN23768648	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179167	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179167	Unicycler v0.4.8	SAMN23768642	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179186	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179186	Unicycler v0.4.8	SAMN23768879	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179189	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179189	Unicycler v0.4.8	SAMN23768640	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179207	Ciprofloxacin	S	==	29	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179207	Unicycler v0.4.8	SAMN23768847	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179211	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179211	Unicycler v0.4.8	SAMN23768845	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179212	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179212	Unicycler v0.4.8	SAMN23768844	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179213	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179213	Unicycler v0.4.8	SAMN23768843	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179214	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179214	Unicycler v0.4.8	SAMN23768842	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179215	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179215	Unicycler v0.4.8	SAMN23768717	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179216	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179216	Unicycler v0.4.8	SAMN23768841	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179217	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179217	Unicycler v0.4.8	SAMN23768840	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179218	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179218	Unicycler v0.4.8	SAMN23768839	PRJNA787063	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179223	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179223	Unicycler v0.4.8	SAMN23768836	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179224	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179224	Unicycler v0.4.8	SAMN23768835	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179226	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179226	Unicycler v0.4.8	SAMN23768833	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179230	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179230	Unicycler v0.4.8	SAMN23768829	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179231	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179231	Unicycler v0.4.8	SAMN23768828	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179235	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179235	Unicycler v0.4.8	SAMN23768875	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179236	Ciprofloxacin	S	==	29	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179236	Unicycler v0.4.8	SAMN23768874	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179237	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179237	Unicycler v0.4.8	SAMN23768873	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179241	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179241	Unicycler v0.4.8	SAMN23768639	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179244	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179244	Unicycler v0.4.8	SAMN23768869	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179246	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179246	Unicycler v0.4.8	SAMN23768867	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179250	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179250	Unicycler v0.4.8	SAMN23768864	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179251	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179251	Unicycler v0.4.8	SAMN23768863	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179253	Ciprofloxacin	S	==	27	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179253	Unicycler v0.4.8	SAMN23768862	PRJNA787063	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179254	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179254	Unicycler v0.4.8	SAMN23768861	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179255	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179255	Unicycler v0.4.8	SAMN23768860	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179256	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179256	Unicycler v0.4.8	SAMN23768859	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179258	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179258	Unicycler v0.4.8	SAMN23768718	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179259	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179259	Unicycler v0.4.8	SAMN23768858	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179261	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179261	Unicycler v0.4.8	SAMN23768856	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179263	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179263	Unicycler v0.4.8	SAMN23768637	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179264	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179264	Unicycler v0.4.8	SAMN23768854	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179265	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179265	Unicycler v0.4.8	SAMN23768853	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179266	Ciprofloxacin	S	==	32	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179266	Unicycler v0.4.8	SAMN23768852	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179267	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179267	Unicycler v0.4.8	SAMN23768825	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179272	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179272	Unicycler v0.4.8	SAMN23768820	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179273	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179273	Unicycler v0.4.8	SAMN23768819	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179274	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179274	Unicycler v0.4.8	SAMN23768818	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179275	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179275	Unicycler v0.4.8	SAMN23768817	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179277	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179277	Unicycler v0.4.8	SAMN23768816	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179281	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179281	Unicycler v0.4.8	SAMN23768813	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179284	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179284	Unicycler v0.4.8	SAMN23768810	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179303	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179303	Unicycler v0.4.8	SAMN23768621	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179314	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179314	Unicycler v0.4.8	SAMN23768644	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179343	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179343	Unicycler v0.4.8	SAMN23768792	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179352	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179352	Unicycler v0.4.8	SAMN23768629	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179361	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179361	Unicycler v0.4.8	SAMN23768786	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-SRR17179374	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179374	Unicycler v0.4.8	SAMN23768726	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"K* (Kvv, CLSI)"
-K1	Ciprofloxacin	R	==	8	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2017	CHAMPS	M* (CLSI)
-K3	Ciprofloxacin	R	==	17	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K4	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K5	Ciprofloxacin	R	==	20	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K6	Ciprofloxacin	I	==	24	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K7	Ciprofloxacin	R	==	20	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K8	Ciprofloxacin	S	==	25	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K9	Ciprofloxacin	S	==	25	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K10	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K11	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K12	Ciprofloxacin	S	==	27	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K14	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K16	Ciprofloxacin	S	==	27	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-KBL1	Ciprofloxacin	S	==	35	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-KBL3	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-KBL4	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-KBL5	Ciprofloxacin	S	==	32	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-KBL7	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-KBL13	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-KBL15	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-KBL16	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-KBL17	Ciprofloxacin	S	==	33	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-KBL20	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-KBL21	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-KBL22	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K16.1	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K16.2	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K16.3	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K16.10	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K16.14	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K16.17	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K24.1	Ciprofloxacin	S	==	35	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K24.5	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K24.8	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K24.9	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K48.1	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	M* (CLSI)
-K48.3	Ciprofloxacin	S	==	33	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K48.5	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K48.6	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
-K48.7	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	M* (CLSI)
+2022187430	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2022	University of Zurich	M* (EUCAST)
+2022187442	Ciprofloxacin	S	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2022	University of Zurich	M* (EUCAST)
+2023187210	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187228	Ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187258	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187264	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187443	Ciprofloxacin	S	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187475	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187609	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187617	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187618	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187652	Ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187664	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187693	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187700	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187701	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187808	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023187956	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023188006	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023188020	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023188109	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023188179	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2023188183	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2023	University of Zurich	M* (EUCAST)
+2024187005	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187109	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187145	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187149	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187204	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187226	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187276	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187310	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187338	Ciprofloxacin	R	==	7	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187346	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187391	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187392	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187393	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187446	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187456	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187492	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187494	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187630	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187633	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187667	Ciprofloxacin	R	==	8	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187704	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187733	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187734	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187740	Ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187763	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187884	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187957	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024187958	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188098	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188099	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188101	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188211	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188219	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188245	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188266	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188268	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188306	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188323	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188326	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188341	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188417	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188424	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188452	Ciprofloxacin	R	==	12	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188524	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188594	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188597	Ciprofloxacin	S	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188598	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188608	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+2024188672	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	Unicycler v0.4.8	-	-	-	Adrian Egli	Human	Human	-	-	Zurich	Switzerland	2024	University of Zurich	M* (EUCAST)
+SRR17179136	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179136	Unicycler v0.4.8	SAMN23768744	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179137	Ciprofloxacin	R	==	14	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179137	Unicycler v0.4.8	SAMN23768743	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179138	Ciprofloxacin	R	==	14	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179138	Unicycler v0.4.8	SAMN23768742	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179139	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179139	Unicycler v0.4.8	SAMN23768741	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179140	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179140	Unicycler v0.4.8	SAMN23768740	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179141	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179141	Unicycler v0.4.8	SAMN23768739	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179142	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179142	Unicycler v0.4.8	SAMN23768738	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179145	Ciprofloxacin	R	==	14	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179145	Unicycler v0.4.8	SAMN23768736	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179146	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179146	Unicycler v0.4.8	SAMN23768735	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179149	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179149	Unicycler v0.4.8	SAMN23768732	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179150	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179150	Unicycler v0.4.8	SAMN23768698	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179151	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179151	Unicycler v0.4.8	SAMN23768731	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179152	Ciprofloxacin	R	==	12	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179152	Unicycler v0.4.8	SAMN23768730	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179153	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179153	Unicycler v0.4.8	SAMN23768729	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179155	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179155	Unicycler v0.4.8	SAMN23768728	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179156	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179156	Unicycler v0.4.8	SAMN23768727	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179157	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179157	Unicycler v0.4.8	SAMN23768652	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179159	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179159	Unicycler v0.4.8	SAMN23768650	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179160	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179160	Unicycler v0.4.8	SAMN23768649	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179161	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179161	Unicycler v0.4.8	SAMN23768648	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179167	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179167	Unicycler v0.4.8	SAMN23768642	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179186	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179186	Unicycler v0.4.8	SAMN23768879	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179189	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179189	Unicycler v0.4.8	SAMN23768640	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179207	Ciprofloxacin	S	==	29	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179207	Unicycler v0.4.8	SAMN23768847	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179211	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179211	Unicycler v0.4.8	SAMN23768845	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179212	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179212	Unicycler v0.4.8	SAMN23768844	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179213	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179213	Unicycler v0.4.8	SAMN23768843	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179214	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179214	Unicycler v0.4.8	SAMN23768842	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179215	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179215	Unicycler v0.4.8	SAMN23768717	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179216	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179216	Unicycler v0.4.8	SAMN23768841	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179217	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179217	Unicycler v0.4.8	SAMN23768840	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179218	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179218	Unicycler v0.4.8	SAMN23768839	PRJNA787063	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179223	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179223	Unicycler v0.4.8	SAMN23768836	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179224	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179224	Unicycler v0.4.8	SAMN23768835	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179226	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179226	Unicycler v0.4.8	SAMN23768833	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179230	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179230	Unicycler v0.4.8	SAMN23768829	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179231	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179231	Unicycler v0.4.8	SAMN23768828	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179235	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179235	Unicycler v0.4.8	SAMN23768875	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179236	Ciprofloxacin	S	==	29	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179236	Unicycler v0.4.8	SAMN23768874	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179237	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179237	Unicycler v0.4.8	SAMN23768873	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179241	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179241	Unicycler v0.4.8	SAMN23768639	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179244	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179244	Unicycler v0.4.8	SAMN23768869	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179246	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179246	Unicycler v0.4.8	SAMN23768867	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179250	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179250	Unicycler v0.4.8	SAMN23768864	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179251	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179251	Unicycler v0.4.8	SAMN23768863	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179253	Ciprofloxacin	S	==	27	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179253	Unicycler v0.4.8	SAMN23768862	PRJNA787063	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179254	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179254	Unicycler v0.4.8	SAMN23768861	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179255	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179255	Unicycler v0.4.8	SAMN23768860	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179256	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179256	Unicycler v0.4.8	SAMN23768859	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179258	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179258	Unicycler v0.4.8	SAMN23768718	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179259	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179259	Unicycler v0.4.8	SAMN23768858	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179261	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179261	Unicycler v0.4.8	SAMN23768856	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179263	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179263	Unicycler v0.4.8	SAMN23768637	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179264	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179264	Unicycler v0.4.8	SAMN23768854	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179265	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179265	Unicycler v0.4.8	SAMN23768853	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179266	Ciprofloxacin	S	==	32	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179266	Unicycler v0.4.8	SAMN23768852	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179267	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179267	Unicycler v0.4.8	SAMN23768825	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179272	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179272	Unicycler v0.4.8	SAMN23768820	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179273	Ciprofloxacin	I	==	25	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179273	Unicycler v0.4.8	SAMN23768819	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179274	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179274	Unicycler v0.4.8	SAMN23768818	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179275	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179275	Unicycler v0.4.8	SAMN23768817	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179277	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179277	Unicycler v0.4.8	SAMN23768816	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179281	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179281	Unicycler v0.4.8	SAMN23768813	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179284	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179284	Unicycler v0.4.8	SAMN23768810	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179303	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179303	Unicycler v0.4.8	SAMN23768621	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179314	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179314	Unicycler v0.4.8	SAMN23768644	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179343	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179343	Unicycler v0.4.8	SAMN23768792	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Dessie	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179352	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179352	Unicycler v0.4.8	SAMN23768629	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179361	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179361	Unicycler v0.4.8	SAMN23768786	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+SRR17179374	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2020	Manual	Other	-	SRR17179374	Unicycler v0.4.8	SAMN23768726	PRJNA787062	-	Melese Hailu Legese	Human	Human	Blood	Infection	Ethiopia	Hawassa	2019-2020	Addis Ababa University*	"L* (Kvv, CLSI)"
+K1	Ciprofloxacin	R	==	8	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2017	CHAMPS	N* (CLSI)
+K3	Ciprofloxacin	R	==	17	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K4	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K5	Ciprofloxacin	R	==	20	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K6	Ciprofloxacin	I	==	24	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K7	Ciprofloxacin	R	==	20	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K8	Ciprofloxacin	S	==	25	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K9	Ciprofloxacin	S	==	25	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K10	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K11	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K12	Ciprofloxacin	S	==	27	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K14	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K16	Ciprofloxacin	S	==	27	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+KBL1	Ciprofloxacin	S	==	35	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+KBL3	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+KBL4	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+KBL5	Ciprofloxacin	S	==	32	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+KBL7	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+KBL13	Ciprofloxacin	S	==	30	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+KBL15	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+KBL16	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+KBL17	Ciprofloxacin	S	==	33	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+KBL20	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+KBL21	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+KBL22	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K16.1	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K16.2	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K16.3	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K16.10	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K16.14	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K16.17	Ciprofloxacin	S	==	26	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K24.1	Ciprofloxacin	S	==	35	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K24.5	Ciprofloxacin	R	==	18	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K24.8	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K24.9	Ciprofloxacin	R	==	0	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K48.1	Ciprofloxacin	S	==	28	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2018	CHAMPS	N* (CLSI)
+K48.3	Ciprofloxacin	S	==	33	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K48.5	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K48.6	Ciprofloxacin	R	==	16	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
+K48.7	Ciprofloxacin	R	==	15	mm	Disk diffusion	CLSI	2019	Manual 	Biomérieux	GM-NEG	-	Unicycler v0.4.8	-	-	-	Andrew Whitelaw	Human	Human	Stool	Colonisation	South Africa	Cape Town	2019	CHAMPS	N* (CLSI)
 53355396-b398-42d5-b4a0-ee1c5ed0759a	Ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	Phoenix	Becton Dickinson	-	ERR5464459	Shovill v1.0.4	SAMEA8202939	PRJNA604975	34479643	Nicole Stoesser	Human	Human	Urinary Tract	Infection	United Kingdom	Oxfordshire	2008-2018	Oxfordshire	D (EUCAST)
 2c516bed-72ee-455b-95ce-6ff51571957b	Ciprofloxacin	S	<=	0.125	mg/L	MIC (broth dilution)	EUCAST	-	Phoenix	Becton Dickinson	-	ERR5464308	Shovill v1.0.4	SAMEA8202788	PRJNA604975	34479643	Nicole Stoesser	Human	Human	-	Infection	United Kingdom	Oxfordshire	2008-2018	Oxfordshire	D (EUCAST)
 2f2268dd-b1c6-4de6-957c-38b5e7986788	Ciprofloxacin	S	<=	0.25	mg/L	MIC (broth dilution)	EUCAST	-	Phoenix	Becton Dickinson	-	ERR5464317	Shovill v1.0.4	SAMEA8202797	PRJNA604975	34479643	Nicole Stoesser	Human	Human	Urinary Tract	Infection	United Kingdom	Oxfordshire	2008-2018	Oxfordshire	D (EUCAST)
@@ -4419,3 +4419,239 @@ KP779	Ciprofloxacin	R	>	32	mg/L	MIC (E-test gradient diffusion)	CLSI	-	Manual	-	
 003_S08	Ciprofloxacin	R	≥	4	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cateter		Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
 002_S03	Ciprofloxacin	R	==	1	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Blood	Infection	Brazil	Salvador	-	BrazilPacheco	iberoAMRica study
 OBAC799	Ciprofloxacin	S	<=	0.06	mg/L	MIC (broth dilution)	CLSI	-	Vitek	Biomérieux	-	-	Uniclycer v0.4.8	-	-	-	Luis Pacheco	Human	Human	Cerebrospinal fluid	Infection	Brazil	Salvador	2010	BrazilPacheco	iberoAMRica study
+E1350	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+E1544	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+E1730	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+E2477	Ciprofloxacin	I	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+E729	Ciprofloxacin	I	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+E811	Ciprofloxacin	S	==	35	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+H1016	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+H162	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+H487	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+H508	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+H694	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+H709	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+H834	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+10808-18	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+11268-18	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+11299-18	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+11410-18	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+11419-18	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+11420-18	Ciprofloxacin	S	==	33	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+11498-18	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+12128-18	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+12863-18	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+12897-18	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+12898-18	Ciprofloxacin	S	==	38	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+13010-18	Ciprofloxacin	S	==	35	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+13062-18	Ciprofloxacin	S	==	36	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+13077-18	Ciprofloxacin	S	==	34	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+13105-18	Ciprofloxacin	S	==	35	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+13136-18	Ciprofloxacin	S	==	32	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+14351-18	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+14369-18	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+14481-18	Ciprofloxacin	S	==	33	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+16126-18	Ciprofloxacin	S	==	40	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+16611-18	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+16926-18	Ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+23451-18	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+23712-18	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+24455-18	Ciprofloxacin	I	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+24948-18	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+25311-18	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+26382-18	Ciprofloxacin	S	==	32	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+26724-18	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+27306-18	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+27680-18	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+27763-18	Ciprofloxacin	S	==	35	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+27769-18	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+28421-18	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2018	TunisiaSmaoui	K* (EUCAST)
+10239	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+1047	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+1049	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+10546	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+11173	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+11174	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+11503	Ciprofloxacin	I	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+1156-19	Ciprofloxacin	R	==	14	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+11578	Ciprofloxacin	R	==	14	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+11772	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+12422	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+12734	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+13519	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+13850_A4	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+1400	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+14059	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+1454	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+14550	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+14559	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+14993	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+15124	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+15134	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+15234	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+15592	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+1775-19	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+201912778	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+201912867	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+201913781	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+201913932	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+3075G	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+5263	Ciprofloxacin	S	==	36	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+587-19	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+7286	Ciprofloxacin	S	==	31	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+8130	Ciprofloxacin	S	==	35	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+8397	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+E2565	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+E2790	Ciprofloxacin	S	==	35	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+H29	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+H3272	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+H36006	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2019	TunisiaSmaoui	K* (EUCAST)
+10811	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+11486	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+11722	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+11787	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+1208	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+12281	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+12323	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+12339	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+12575	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+1592	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202016100	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202016977	Ciprofloxacin	S	==	32	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202017366	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202018910	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202018910-4	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+202019734	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202021787	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202022185	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+202022929	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+20204381	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+20204859	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+20205890	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+2020628	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+20207417	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+20207686	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+20208338	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+20209029	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+206492	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+2540	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+2567	Ciprofloxacin	R	==	9	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+315942	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+6068	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+6248	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+6326	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+7245	Ciprofloxacin	R	==	8	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+7468	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+7879	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+8158	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+8442	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+8482	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+8841	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+9502	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+9829	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	-	Infection	Tunisia	Tunis	-	TunisiaSmaoui	K* (EUCAST)
+E434	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+E544	Ciprofloxacin	R	==	8	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+E546	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+E842	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+E939	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+H642	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+H822	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+H862	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+H924	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+H999	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2020	TunisiaSmaoui	K* (EUCAST)
+10335	Ciprofloxacin	R	==	8	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+1072	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+124278	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+12437	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+132387	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+13480_A2	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+1371	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+138	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+1512	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+153301	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+158	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+1626	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+178320	Ciprofloxacin	R	==	16	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+179168	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+1814	Ciprofloxacin	R	==	14	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+181697	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+2009	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202114751	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202114897	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202115196	Ciprofloxacin	S	==	31	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202116739	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202120479	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202121364	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202122098	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202122188	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202122335	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+20212331	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202123432	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202123931	Ciprofloxacin	R	==	14	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202124159	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202125193	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202126190	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202126592	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202126693	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202127286	Ciprofloxacin	R	==	18	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202127769	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202128246	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202128575	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202128602	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202128659	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202128919	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+20212926	Ciprofloxacin	I	==	25	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+2021308	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+20213303	Ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+20213333	Ciprofloxacin	R	==	13	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+20213356	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+20214444	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+20215075	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+2044	Ciprofloxacin	R	==	19	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+214139	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+2192	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+2220	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+2230	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+2978	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+311	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+3471	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+4000	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+414	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+5025	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+5179	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+6769	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+73678	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+8159	Ciprofloxacin	R	==	20	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+818	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+875	Ciprofloxacin	R	==	10	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+960	Ciprofloxacin	I	==	23	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+984	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+984-2	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+CTGB-E1640	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+E1113	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+E261	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+H107_A1	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+H109	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+H202	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+H335	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+H75	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2021	TunisiaSmaoui	K* (EUCAST)
+202211584	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202213785	Ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202217136	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+20221880	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202222577	Ciprofloxacin	S	==	35	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202228334	Ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202228687	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202228741	Ciprofloxacin	R	==	21	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202229096	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202231325	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+202231485	Ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+20224523	Ciprofloxacin	S	==	37	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+20225020	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+E1582	Ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+E1627	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+E1627-1	Ciprofloxacin	R	==	17	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+E1628	Ciprofloxacin	R	==	15	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+E2056	Ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+E30	Ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Urine	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)
+H2995	Ciprofloxacin	R	==	14	mm	Disk diffusion	EUCAST	-	-	-	-	-	SPAdes v1.3.1	-	-	-	Hanen Smaoui	Human	Human	Blood	Infection	Tunisia	Tunis	2022	TunisiaSmaoui	K* (EUCAST)

@@ -49,16 +49,16 @@ IRCCS Ospedale San Raffaele	0 QRDR, 1^ PMQR, 0 aac6	12/12 (100%)	12/12 (100%)	12
 IRCCS Ospedale San Raffaele	0 QRDR, 1 PMQR, 1 aac6	2/2 (100%)	2/3 (66.67%)	3/3 (100%)	-	-
 IRCCS Ospedale San Raffaele	0 QRDR, >1 PMQR, * aac6	2/2 (100%)	2/2 (100%)	2/2 (100%)	-	-
 IRCCS Ospedale San Raffaele	>0 QRDR, >0 PMQR, * aac6	90/90 (100%)	90/90 (100%)	90/90 (100%)	-	-
-K* (Kvv, CLSI)	0^ QRDR, 0 PMQR, 0 aac6	0/37 (0%)	0/42 (0%)	5/42 (11.9%)	-	-
-K* (Kvv, CLSI)	0 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
-K* (Kvv, CLSI)	0 QRDR, qnrB1, 0 aac6	-	-	-	-	-
-K* (Kvv, CLSI)	1 QRDR, 0 PMQR, 0 aac6	-	-	-	-	-
-K* (Kvv, CLSI)	1 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
-K* (Kvv, CLSI)	>1 QRDR, 0 PMQR, * aac6	-	-	-	-	-
-K* (Kvv, CLSI)	0 QRDR, 1^ PMQR, 0 aac6	-	-	-	-	-
-K* (Kvv, CLSI)	0 QRDR, 1 PMQR, 1 aac6	26/26 (100%)	26/26 (100%)	26/26 (100%)	-	-
-K* (Kvv, CLSI)	0 QRDR, >1 PMQR, * aac6	2/2 (100%)	2/2 (100%)	2/2 (100%)	-	-
-K* (Kvv, CLSI)	>0 QRDR, >0 PMQR, * aac6	-	-	-	-	-
+L* (Kvv, CLSI)	0^ QRDR, 0 PMQR, 0 aac6	0/37 (0%)	0/42 (0%)	5/42 (11.9%)	-	-
+L* (Kvv, CLSI)	0 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
+L* (Kvv, CLSI)	0 QRDR, qnrB1, 0 aac6	-	-	-	-	-
+L* (Kvv, CLSI)	1 QRDR, 0 PMQR, 0 aac6	-	-	-	-	-
+L* (Kvv, CLSI)	1 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
+L* (Kvv, CLSI)	>1 QRDR, 0 PMQR, * aac6	-	-	-	-	-
+L* (Kvv, CLSI)	0 QRDR, 1^ PMQR, 0 aac6	-	-	-	-	-
+L* (Kvv, CLSI)	0 QRDR, 1 PMQR, 1 aac6	26/26 (100%)	26/26 (100%)	26/26 (100%)	-	-
+L* (Kvv, CLSI)	0 QRDR, >1 PMQR, * aac6	2/2 (100%)	2/2 (100%)	2/2 (100%)	-	-
+L* (Kvv, CLSI)	>0 QRDR, >0 PMQR, * aac6	-	-	-	-	-
 G (CLSI)	0^ QRDR, 0 PMQR, 0 aac6	9/196 (4.59%)	9/209 (4.31%)	22/209 (10.53%)	0.25 [0.25-0.25]	0.25 [0.25-0.25]
 G (CLSI)	0 QRDR, 0 PMQR, 1 aac6	1/13 (7.69%)	1/13 (7.69%)	1/13 (7.69%)	0.25 [0.25-0.25]	0.25 [0.25-0.25]
 G (CLSI)	0 QRDR, qnrB1, 0 aac6	13/15 (86.67%)	13/30 (43.33%)	28/30 (93.33%)	0.5 [0.5-1]	1 [1-2]
@@ -99,16 +99,16 @@ EUSCAPE & EURECA (Kvv, EUCAST)	0 QRDR, 1^ PMQR, 0 aac6	-	-	-	-	-
 EUSCAPE & EURECA (Kvv, EUCAST)	0 QRDR, 1 PMQR, 1 aac6	1/1 (100%)	1/1 (100%)	1/1 (100%)	-	-
 EUSCAPE & EURECA (Kvv, EUCAST)	0 QRDR, >1 PMQR, * aac6	-	-	-	-	-
 EUSCAPE & EURECA (Kvv, EUCAST)	>0 QRDR, >0 PMQR, * aac6	-	-	-	-	-
-L* (EUCAST)	0^ QRDR, 0 PMQR, 0 aac6	0/9 (0%)	0/12 (0%)	3/12 (25%)	-	-
-L* (EUCAST)	0 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
-L* (EUCAST)	0 QRDR, qnrB1, 0 aac6	-	0/1 (0%)	1/1 (100%)	-	-
-L* (EUCAST)	1 QRDR, 0 PMQR, 0 aac6	-	0/1 (0%)	1/1 (100%)	-	-
-L* (EUCAST)	1 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
-L* (EUCAST)	>1 QRDR, 0 PMQR, * aac6	16/16 (100%)	16/16 (100%)	16/16 (100%)	-	-
-L* (EUCAST)	0 QRDR, 1^ PMQR, 0 aac6	7/9 (77.78%)	7/12 (58.33%)	10/12 (83.33%)	-	-
-L* (EUCAST)	0 QRDR, 1 PMQR, 1 aac6	2/2 (100%)	2/2 (100%)	2/2 (100%)	-	-
-L* (EUCAST)	0 QRDR, >1 PMQR, * aac6	1/1 (100%)	1/1 (100%)	1/1 (100%)	-	-
-L* (EUCAST)	>0 QRDR, >0 PMQR, * aac6	27/27 (100%)	27/27 (100%)	27/27 (100%)	-	-
+M* (EUCAST)	0^ QRDR, 0 PMQR, 0 aac6	0/9 (0%)	0/12 (0%)	3/12 (25%)	-	-
+M* (EUCAST)	0 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
+M* (EUCAST)	0 QRDR, qnrB1, 0 aac6	-	0/1 (0%)	1/1 (100%)	-	-
+M* (EUCAST)	1 QRDR, 0 PMQR, 0 aac6	-	0/1 (0%)	1/1 (100%)	-	-
+M* (EUCAST)	1 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
+M* (EUCAST)	>1 QRDR, 0 PMQR, * aac6	16/16 (100%)	16/16 (100%)	16/16 (100%)	-	-
+M* (EUCAST)	0 QRDR, 1^ PMQR, 0 aac6	7/9 (77.78%)	7/12 (58.33%)	10/12 (83.33%)	-	-
+M* (EUCAST)	0 QRDR, 1 PMQR, 1 aac6	2/2 (100%)	2/2 (100%)	2/2 (100%)	-	-
+M* (EUCAST)	0 QRDR, >1 PMQR, * aac6	1/1 (100%)	1/1 (100%)	1/1 (100%)	-	-
+M* (EUCAST)	>0 QRDR, >0 PMQR, * aac6	27/27 (100%)	27/27 (100%)	27/27 (100%)	-	-
 E (EUCAST)	0^ QRDR, 0 PMQR, 0 aac6	10/17 (58.82%)	10/19 (52.63%)	12/19 (63.16%)	1 [0.12-2]	1 [0.12-2]
 E (EUCAST)	0 QRDR, 0 PMQR, 1 aac6	1/2 (50%)	1/3 (33.33%)	2/3 (66.67%)	-	-
 E (EUCAST)	0 QRDR, qnrB1, 0 aac6	4/4 (100%)	4/4 (100%)	4/4 (100%)	-	-
@@ -139,16 +139,16 @@ SCHARKI	0 QRDR, 1^ PMQR, 0 aac6	2/3 (66.67%)	2/3 (66.67%)	2/3 (66.67%)	-	-
 SCHARKI	0 QRDR, 1 PMQR, 1 aac6	0/1 (0%)	0/1 (0%)	0/1 (0%)	-	-
 SCHARKI	0 QRDR, >1 PMQR, * aac6	-	-	-	-	-
 SCHARKI	>0 QRDR, >0 PMQR, * aac6	-	-	-	-	-
-M* (CLSI)	0^ QRDR, 0 PMQR, 0 aac6	1/14 (7.14%)	1/14 (7.14%)	1/14 (7.14%)	-	-
-M* (CLSI)	0 QRDR, 0 PMQR, 1 aac6	0/4 (0%)	0/5 (0%)	1/5 (20%)	-	-
-M* (CLSI)	0 QRDR, qnrB1, 0 aac6	2/2 (100%)	2/2 (100%)	2/2 (100%)	-	-
-M* (CLSI)	1 QRDR, 0 PMQR, 0 aac6	-	-	-	-	-
-M* (CLSI)	1 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
-M* (CLSI)	>1 QRDR, 0 PMQR, * aac6	-	-	-	-	-
-M* (CLSI)	0 QRDR, 1^ PMQR, 0 aac6	-	-	-	-	-
-M* (CLSI)	0 QRDR, 1 PMQR, 1 aac6	8/8 (100%)	8/8 (100%)	8/8 (100%)	-	-
-M* (CLSI)	0 QRDR, >1 PMQR, * aac6	-	-	-	-	-
-M* (CLSI)	>0 QRDR, >0 PMQR, * aac6	10/11 (90.91%)	10/11 (90.91%)	10/11 (90.91%)	-	-
+N* (CLSI)	0^ QRDR, 0 PMQR, 0 aac6	1/14 (7.14%)	1/14 (7.14%)	1/14 (7.14%)	-	-
+N* (CLSI)	0 QRDR, 0 PMQR, 1 aac6	0/4 (0%)	0/5 (0%)	1/5 (20%)	-	-
+N* (CLSI)	0 QRDR, qnrB1, 0 aac6	2/2 (100%)	2/2 (100%)	2/2 (100%)	-	-
+N* (CLSI)	1 QRDR, 0 PMQR, 0 aac6	-	-	-	-	-
+N* (CLSI)	1 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
+N* (CLSI)	>1 QRDR, 0 PMQR, * aac6	-	-	-	-	-
+N* (CLSI)	0 QRDR, 1^ PMQR, 0 aac6	-	-	-	-	-
+N* (CLSI)	0 QRDR, 1 PMQR, 1 aac6	8/8 (100%)	8/8 (100%)	8/8 (100%)	-	-
+N* (CLSI)	0 QRDR, >1 PMQR, * aac6	-	-	-	-	-
+N* (CLSI)	>0 QRDR, >0 PMQR, * aac6	10/11 (90.91%)	10/11 (90.91%)	10/11 (90.91%)	-	-
 D (EUCAST)	0^ QRDR, 0 PMQR, 0 aac6	6/244 (2.46%)	6/251 (2.39%)	13/251 (5.18%)	0.25 [0.125-0.25]	0.25 [0.125-0.25]
 D (EUCAST)	0 QRDR, 0 PMQR, 1 aac6	0/1 (0%)	0/1 (0%)	0/1 (0%)	-	-
 D (EUCAST)	0 QRDR, qnrB1, 0 aac6	2/4 (50%)	2/8 (25%)	6/8 (75%)	0.5 [0.25-0.5]	-
@@ -209,13 +209,23 @@ PachecoBrazil	0 QRDR, 1^ PMQR, 0 aac6	-	-	-	-	-
 PachecoBrazil	0 QRDR, 1 PMQR, 1 aac6	1/1 (100%)	1/1 (100%)	1/1 (100%)	-	-
 PachecoBrazil	0 QRDR, >1 PMQR, * aac6	-	-	-	-	-
 PachecoBrazil	>0 QRDR, >0 PMQR, * aac6	11/11 (100%)	11/11 (100%)	11/11 (100%)	-	-
-Pooled	0 QRDR, 0 PMQR, 1 aac6	51/120 (42.5%)	51/211 (24.17%)	142/211 (67.3%)	0.25 [0.25-0.25]	0.25 [0.25-0.25]
-Pooled	0 QRDR, 1 PMQR, 1 aac6	601/611 (98.36%)	601/623 (96.47%)	613/623 (98.39%)	2 [1-4]	2 [1-4]
-Pooled	0 QRDR, 1^ PMQR, 0 aac6	439/535 (82.06%)	439/735 (59.73%)	639/735 (86.94%)	1 [0.5-1]	1 [1-2]
-Pooled	0 QRDR, >1 PMQR, * aac6	35/37 (94.59%)	35/38 (92.11%)	36/38 (94.74%)	2 [1-4]	2 [1-4]
-Pooled	0 QRDR, qnrB1, 0 aac6	90/105 (85.71%)	90/161 (55.9%)	146/161 (90.68%)	0.5 [0.5-1]	1 [0.25-2]
-Pooled	0^ QRDR, 0 PMQR, 0 aac6	120/1592 (7.54%)	120/1844 (6.51%)	372/1844 (20.17%)	0.25 [0.25-0.25]	0.25 [0.25-0.25]
+K* (EUCAST)	0^ QRDR, 0 PMQR, 0 aac6	17/58 (29.31%)	17/61 (27.87%)	20/61 (32.79%)	-	-
+K* (EUCAST)	0 QRDR, 0 PMQR, 1 aac6	1/7 (14.29%)	1/8 (12.5%)	2/8 (25%)	-	-
+K* (EUCAST)	0 QRDR, qnrB1, 0 aac6	7/9 (77.78%)	7/17 (41.18%)	15/17 (88.24%)	-	-
+K* (EUCAST)	1 QRDR, 0 PMQR, 0 aac6	-	-	-	-	-
+K* (EUCAST)	1 QRDR, 0 PMQR, 1 aac6	-	-	-	-	-
+K* (EUCAST)	>1 QRDR, 0 PMQR, * aac6	44/46 (95.65%)	44/47 (93.62%)	45/47 (95.74%)	-	-
+K* (EUCAST)	0 QRDR, 1^ PMQR, 0 aac6	25/34 (73.53%)	25/47 (53.19%)	38/47 (80.85%)	-	-
+K* (EUCAST)	0 QRDR, 1 PMQR, 1 aac6	31/33 (93.94%)	31/33 (93.94%)	31/33 (93.94%)	-	-
+K* (EUCAST)	0 QRDR, >1 PMQR, * aac6	3/3 (100%)	3/5 (60%)	5/5 (100%)	-	-
+K* (EUCAST)	>0 QRDR, >0 PMQR, * aac6	18/18 (100%)	18/18 (100%)	18/18 (100%)	-	-
+Pooled	0 QRDR, 0 PMQR, 1 aac6	52/127 (40.94%)	52/219 (23.74%)	144/219 (65.75%)	0.25 [0.25-0.25]	0.25 [0.25-0.25]
+Pooled	0 QRDR, 1 PMQR, 1 aac6	632/644 (98.14%)	632/656 (96.34%)	644/656 (98.17%)	2 [1-4]	2 [1-4]
+Pooled	0 QRDR, 1^ PMQR, 0 aac6	464/569 (81.55%)	464/782 (59.34%)	677/782 (86.57%)	1 [0.5-1]	1 [1-2]
+Pooled	0 QRDR, >1 PMQR, * aac6	38/40 (95%)	38/43 (88.37%)	41/43 (95.35%)	2 [1-4]	2 [1-4]
+Pooled	0 QRDR, qnrB1, 0 aac6	97/114 (85.09%)	97/178 (54.49%)	161/178 (90.45%)	0.5 [0.5-1]	1 [0.25-2]
+Pooled	0^ QRDR, 0 PMQR, 0 aac6	137/1650 (8.3%)	137/1905 (7.19%)	392/1905 (20.58%)	0.25 [0.25-0.25]	0.25 [0.25-0.25]
 Pooled	1 QRDR, 0 PMQR, 0 aac6	45/49 (91.84%)	45/64 (70.31%)	60/64 (93.75%)	1 [0.5-2]	2 [1-2]
 Pooled	1 QRDR, 0 PMQR, 1 aac6	26/29 (89.66%)	26/31 (83.87%)	28/31 (90.32%)	1 [1-2]	1 [1-2]
-Pooled	>0 QRDR, >0 PMQR, * aac6	1313/1330 (98.72%)	1313/1333 (98.5%)	1316/1333 (98.72%)	4 [1-4]	4 [1-4]
-Pooled	>1 QRDR, 0 PMQR, * aac6	1744/1751 (99.6%)	1744/1754 (99.43%)	1747/1754 (99.6%)	2 [1-4]	2 [1-4]
+Pooled	>0 QRDR, >0 PMQR, * aac6	1331/1348 (98.74%)	1331/1351 (98.52%)	1334/1351 (98.74%)	4 [1-4]	4 [1-4]
+Pooled	>1 QRDR, 0 PMQR, * aac6	1788/1797 (99.5%)	1788/1801 (99.28%)	1792/1801 (99.5%)	2 [1-4]	2 [1-4]

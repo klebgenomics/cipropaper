@@ -63,7 +63,7 @@ IZSAM_Italy <- read_delim("IZSAM_Italy_ValidationOutput/Prediction_Pheno_summary
 LaPaz_Lazaro <- read_delim("LaPaz_Lazaro_ValidationOutput/Prediction_Pheno_summary.csv")
 HarrisMERINO <- read_delim("HarrisMERINO_ValidationOutput/Prediction_Pheno_summary.csv")
 PachecoBrazil <- read_delim("PachecoBrazil_ValidationOutput/Prediction_Pheno_summary.csv")
-
+SmaouiTunisia <- read_delim("SmaouiTunisia_ValidationOutput/Prediction_Pheno_summary.csv")
 ```
 
 ## set colours
@@ -1176,6 +1176,7 @@ colnames(HarrisMERINO_NWT_prediction) <- c('S','I_R')
 rownames(HarrisMERINO_NWT_prediction) <- c('pred_S','pred_I_R')
 HarrisMERINO_NWT_prediction_summary<-metrics(HarrisMERINO_NWT_prediction)
 ```
+
 ```{r PachecoBrazil}
 
 PachecoBrazil_SI <- PachecoBrazil %>% 
@@ -1222,6 +1223,51 @@ rownames(PachecoBrazil_NWT_prediction) <- c('pred_S','pred_I_R')
 PachecoBrazil_NWT_prediction_summary<-metrics(PachecoBrazil_NWT_prediction)
 ```
 
+```{r SmaouiTunisia}
+
+SmaouiTunisia_SI <- SmaouiTunisia %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_S" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_S_I", Group)) 
+
+SmaouiTunisia_R <- SmaouiTunisia %>% 
+  rename(Group=...1) %>% 
+  filter(Group=="pred_R" | Group=="pred_I") %>%
+  rowwise()%>%
+  mutate(S_I = sum(S, I)) %>%
+  mutate(I_R = sum(I, R)) %>%
+  select(-c(I)) %>%
+  adorn_totals("row") %>%
+  mutate(Group = gsub("Total", "pred_I_R", Group)) 
+
+SmaouiTunisia_SIR <- rbind(SmaouiTunisia_SI, SmaouiTunisia_R) %>% distinct()
+
+subset(SmaouiTunisia_SIR, Group == "pred_S_I")$S_I
+table(SmaouiTunisia_SIR$S_I)
+
+SmaouiTunisia_R_prediction <- matrix(c(subset(SmaouiTunisia_SIR, Group == "pred_S_I")$S_I, 
+                subset(SmaouiTunisia_SIR, Group == "pred_S_I")$R,
+                subset(SmaouiTunisia_SIR, Group == "pred_R")$S_I,
+                subset(SmaouiTunisia_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(SmaouiTunisia_R_prediction) <- c('S_I','R')
+rownames(SmaouiTunisia_R_prediction) <- c('pred_S_I','pred_R')
+SmaouiTunisia_R_prediction_summary<-metrics(SmaouiTunisia_R_prediction)
+
+SmaouiTunisia_NWT_prediction <- matrix(c(subset(SmaouiTunisia_SIR, Group == "pred_S")$S, 
+                subset(SmaouiTunisia_SIR, Group == "pred_S")$I_R,
+                subset(SmaouiTunisia_SIR, Group == "pred_I_R")$S,
+                subset(SmaouiTunisia_SIR, Group == "pred_I_R")$I_R), ncol=2, byrow=TRUE)
+colnames(SmaouiTunisia_NWT_prediction) <- c('S','I_R')
+rownames(SmaouiTunisia_NWT_prediction) <- c('pred_S','pred_I_R')
+SmaouiTunisia_NWT_prediction_summary<-metrics(SmaouiTunisia_NWT_prediction)
+```
+
 
 ```{r pooledR}
 pooled_R <- 
@@ -1245,7 +1291,8 @@ bind_rows(MBIRA_Kpn_SIR,
           IZSAM_Italy_SIR, 
           LaPaz_Lazaro_SIR,
           HarrisMERINO_SIR,
-          PachecoBrazil_SIR) %>%
+          PachecoBrazil_SIR,
+          SmaouiTunisia_SIR) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
@@ -1345,6 +1392,10 @@ Whitelaw_CHAMPS_genotype <- Whitelaw_CHAMPS %>%
   rename(Group=...1) %>% 
   filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
 
+SmaouiTunisia_genotype <- SmaouiTunisia %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
 
 pooled_genotype <- 
 bind_rows(MBIRA_Kpn_genotype,
@@ -1367,7 +1418,8 @@ bind_rows(MBIRA_Kpn_genotype,
           IZSAM_Italy_genotype, 
           LaPaz_Lazaro_genotype,
           HarrisMERINO_genotype,
-          PachecoBrazil_genotype) %>%
+          PachecoBrazil_genotype,
+          SmaouiTunisia_genotype) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
@@ -1395,7 +1447,8 @@ bind_rows(MBIRA_Kpn_SIR,
           IZSAM_Italy_SIR, 
           LaPaz_Lazaro_SIR,
           HarrisMERINO_SIR,
-          PachecoBrazil_SIR) %>%
+          PachecoBrazil_SIR,
+          SmaouiTunisia_SIR) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
@@ -1431,7 +1484,8 @@ SIR_counts_table <- bind_rows(lst(MBIRA_Kpn_SIR,
           IZSAM_Italy_SIR, 
           LaPaz_Lazaro_SIR,
           HarrisMERINO_SIR,
-          PachecoBrazil_SIR), .id = 'Dataset') %>%
+          PachecoBrazil_SIR,
+          SmaouiTunisia_SIR), .id = 'Dataset') %>%
   filter(Group!="pred_S_I" & Group!="pred_I_R")
 
 SIR_counts_table$Dataset <- gsub("_SIR",'',SIR_counts_table$Dataset)
@@ -1479,6 +1533,7 @@ SIR_table$Dataset[SIR_table$Dataset == 'NeumannGermany'] <- 'SCHARKI'
 SIR_table$Dataset[SIR_table$Dataset == 'Oxfordshire_Kpn'] <- 'Oxfordshire'
 SIR_table$Dataset[SIR_table$Dataset == 'Oxfordshire_Kvv'] <- 'Oxfordshire*'
 SIR_table$Dataset[SIR_table$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
+SIR_table$Dataset[SIR_table$Dataset == 'SmaouiTunisia'] <- 'SmaouiTunisia*'
 
 ```
 
@@ -1520,6 +1575,8 @@ validation_summary <- rbind(EUSCAPE_EURECA_Kpn_R_prediction_summary$summary,
                             HarrisMERINO_NWT_prediction_summary$summary,
                             FeaseyMalawi_R_prediction_summary$summary, 
                             FeaseyMalawi_NWT_prediction_summary$summary,
+                            SmaouiTunisia_R_prediction_summary$summary, 
+                            SmaouiTunisia_NWT_prediction_summary$summary,                            
                             EgliSwitzerland_R_prediction_summary$summary,
                             EgliSwitzerland_NWT_prediction_summary$summary,
                             HailuEthiopia_R_prediction_summary$summary, 
@@ -1531,9 +1588,9 @@ validation_summary <- rbind(EUSCAPE_EURECA_Kpn_R_prediction_summary$summary,
 
 
 validation_summary_table <- as_tibble(validation_summary) %>%
-  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT","R", "NWT","R", "NWT"))%>%
-  mutate(Dataset=c("EUSCAPE & EURECA", "EUSCAPE & EURECA","JARBS-GNR", "JARBS-GNR", "India GHRU", "India GHRU", "AGAR GnSOP", "AGAR GnSOP","Oxfordshire","Oxfordshire","IZSAM","IZSAM", "MBIRA", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "Controlling Superbugs study & Victorian CPE program",  "IRCCS Ospedale San Raffaele", "IRCCS Ospedale San Raffaele",  "HURYC & CIBERINFEC", "HURYC & CIBERINFEC", "HULP", "HULP", "MBIRA*", "MBIRA*","Oxfordshire*","Oxfordshire*", "SCHARKI", "SCHARKI", "EUSCAPE & EURECA*", "EUSCAPE & EURECA*", "PachecoBrazil", "PachecoBrazil","HarrisMERINO","HarrisMERINO","Queen Elizabeth Central Hospital", "Queen Elizabeth Central Hospital","University of Zurich", "University of Zurich", "Addis Ababa University*", "Addis Ababa University*", "CHAMPS", "CHAMPS", "Pooled", "Pooled")) %>%
-    mutate(Country=c("Various European countries", "Various European countries","Japan", "Japan", "India", "India", "Australia", "Australia","United Kingdom","United Kingdom","Italy","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Australia",  "Italy", "Italy",  "Spain, Portugal", "Spain, Portugal","Spain", "Spain", "Ethiopia, South Africa, Tanzania", "Ethiopia, South Africa, Tanzania","United Kingdom", "United Kingdom", "Germany", "Germany","Various European countries","Various European countries","Brazil", "Brazil", "Various countries", "Various countries", "Malawi", "Malawi","Switzerland", "Switzerland", "Ethiopia", "Ethiopia", "South Africa", "South Africa", "", "")) %>%
+  mutate(Prediction=c("R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT", "R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT","R", "NWT", "R", "NWT","R", "NWT","R", "NWT","R", "NWT"))%>%
+  mutate(Dataset=c("EUSCAPE & EURECA", "EUSCAPE & EURECA","JARBS-GNR", "JARBS-GNR", "India GHRU", "India GHRU", "AGAR GnSOP", "AGAR GnSOP","Oxfordshire","Oxfordshire","IZSAM","IZSAM", "MBIRA", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "Controlling Superbugs study & Victorian CPE program",  "IRCCS Ospedale San Raffaele", "IRCCS Ospedale San Raffaele",  "HURYC & CIBERINFEC", "HURYC & CIBERINFEC", "HULP", "HULP", "MBIRA*", "MBIRA*","Oxfordshire*","Oxfordshire*", "SCHARKI", "SCHARKI", "EUSCAPE & EURECA*", "EUSCAPE & EURECA*", "PachecoBrazil", "PachecoBrazil","HarrisMERINO","HarrisMERINO","Queen Elizabeth Central Hospital", "Queen Elizabeth Central Hospital","SmaouiTunisia*", "SmaouiTunisia*", "University of Zurich", "University of Zurich", "Addis Ababa University*", "Addis Ababa University*", "CHAMPS", "CHAMPS", "Pooled", "Pooled")) %>%
+    mutate(Country=c("Various European countries", "Various European countries","Japan", "Japan", "India", "India", "Australia", "Australia","United Kingdom","United Kingdom","Italy","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Australia",  "Italy", "Italy",  "Spain, Portugal", "Spain, Portugal","Spain", "Spain", "Ethiopia, South Africa, Tanzania", "Ethiopia, South Africa, Tanzania","United Kingdom", "United Kingdom", "Germany", "Germany","Various European countries","Various European countries","Brazil", "Brazil", "Various countries", "Various countries", "Malawi", "Malawi", "Tunisia", "Tunisia" , "Switzerland", "Switzerland", "Ethiopia", "Ethiopia", "South Africa", "South Africa", "", "")) %>%
     rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, `%R`=perc_R, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
@@ -1826,6 +1883,18 @@ PachecoBrazil_excludeI_prediction_summary<-metrics(PachecoBrazil_excludeI_predic
 ```
 
 
+```{r SmaouiTunisia_excludeI}
+SmaouiTunisia_excludeI_prediction <- matrix(c(subset(SmaouiTunisia_SIR, Group == "pred_S_I")$S, 
+                subset(SmaouiTunisia_SIR, Group == "pred_S_I")$R,
+                subset(SmaouiTunisia_SIR, Group == "pred_R")$S,
+                subset(SmaouiTunisia_SIR, Group == "pred_R")$R), ncol=2, byrow=TRUE)
+
+colnames(SmaouiTunisia_excludeI_prediction) <- c('S','R')
+rownames(SmaouiTunisia_excludeI_prediction) <- c('pred_S_I','pred_R')
+
+SmaouiTunisia_excludeI_prediction_summary<-metrics(SmaouiTunisia_excludeI_prediction)
+
+```
 
 ```{r pooled_excludeI}
 pooled_exclude_I <- 
@@ -1849,7 +1918,8 @@ bind_rows(MBIRA_Kpn_SIR,
           IZSAM_Italy_SIR, 
           LaPaz_Lazaro_SIR,
           HarrisMERINO_SIR,
-          PachecoBrazil_SIR) %>%
+          PachecoBrazil_SIR,
+          SmaouiTunisia_SIR) %>%
     group_by(Group) %>%
     summarise_all(funs(sum(., na.rm = TRUE)))
 
@@ -1883,18 +1953,19 @@ validation_summary <- rbind(
                             NeumannGermany_excludeI_prediction_summary$summary,
                           EUSCAPE_EURECA_Kvv_excludeI_prediction_summary$summary,
                           PachecoBrazil_excludeI_prediction_summary$summary,
-HarrisMERINO_excludeI_prediction_summary$summary,
+                          HarrisMERINO_excludeI_prediction_summary$summary,
                             FeaseyMalawi_excludeI_prediction_summary$summary,
+                           SmaouiTunisia_excludeI_prediction_summary$summary,
                             EgliSwitzerland_excludeI_prediction_summary$summary,
                             HailuEthiopia_excludeI_prediction_summary$summary, 
-                            Whitelaw_CHAMPS_excludeI_prediction_summary$summary, 
+                            Whitelaw_CHAMPS_excludeI_prediction_summary$summary,
                           pooled_excludeI_summary$summary)
 
 
 validation_summary_table_excludeI <- as_tibble(validation_summary) %>% 
-  mutate(Prediction=c("R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI"))%>%
-  mutate(Dataset=c("EUSCAPE & EURECA","JARBS-GNR", "India GHRU", "AGAR GnSOP","Oxfordshire","IZSAM", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "IRCCS Ospedale San Raffaele", "HURYC & CIBERINFEC", "HULP", "MBIRA*","Oxfordshire*", "SCHARKI","EUSCAPE & EURECA*", "PachecoBrazil","HarrisMERINO", "Queen Elizabeth Central Hospital", "University of Zurich", "Addis Ababa University*", "CHAMPS", "Pooled")) %>%
-    mutate(Country=c("Various European countries","Japan", "India", "Australia","United Kingdom","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Italy","Spain, Portugal", "Spain", "Ethiopia, South Africa, Tanzania" ,"United Kingdom", "Germany","Various European countries", "Brazil", "Various countries", "Malawi","Switzerland", "Ethiopia", "South Africa", "")) %>%
+  mutate(Prediction=c("R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI","R_excludeI", "R_excludeI", "R_excludeI","R_excludeI"))%>%
+  mutate(Dataset=c("EUSCAPE & EURECA","JARBS-GNR", "India GHRU", "AGAR GnSOP","Oxfordshire","IZSAM", "MBIRA", "Controlling Superbugs study & Victorian CPE program", "IRCCS Ospedale San Raffaele", "HURYC & CIBERINFEC", "HULP", "MBIRA*","Oxfordshire*", "SCHARKI","EUSCAPE & EURECA*", "PachecoBrazil","HarrisMERINO", "Queen Elizabeth Central Hospital","SmaouiTunisia*", "University of Zurich", "Addis Ababa University*", "CHAMPS", "Pooled")) %>%
+    mutate(Country=c("Various European countries","Japan", "India", "Australia","United Kingdom","Italy","Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa", "Australia", "Italy","Spain, Portugal", "Spain", "Ethiopia, South Africa, Tanzania" ,"United Kingdom", "Germany","Various European countries", "Brazil", "Various countries", "Malawi","Tunisia", "Switzerland", "Ethiopia", "South Africa", "")) %>%
     rename(Sensitivity=sens, Specificity=spec, `ME`=me, `VME`=vme, `Categorical agreement`=cat, `%R`=perc_R, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
@@ -1946,7 +2017,7 @@ validation_summary_table_total <- full_join(validation_summary_table_long_ci, SI
 
 # Get totals to explicitly write in label
 colSums(SIR_table[,-1])
-validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, R=NA)'] <- "All datasets combined (S=1695, R=4464)"
+validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, R=NA)'] <- "All datasets combined (S=1757, R=4610)"
 
 
 validation_summary_table_total<- validation_summary_table_total %>% 
@@ -1967,12 +2038,13 @@ validation_summary_table_total<- validation_summary_table_total %>%
         mutate(Dataset_label = (gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset_label)))%>% 
   mutate(Dataset_label = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI)", Dataset_label)))%>% 
    mutate(Dataset_label = (gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset_label)))%>% 
-    mutate(Dataset_label = (gsub("Addis Ababa University\\*", "K* (Kvv, CLSI)", Dataset_label)))%>%
-  mutate(Dataset_label = (gsub("University of Zurich", "L* (EUCAST)", Dataset_label)))%>%
-  mutate(Dataset_label = (gsub("CHAMPS", "M* (CLSI)", Dataset_label)))
+  mutate(Dataset_label = (gsub("SmaouiTunisia\\*", "K* (EUCAST)", Dataset_label)))%>% 
+    mutate(Dataset_label = (gsub("Addis Ababa University\\*", "L* (Kvv, CLSI)", Dataset_label)))%>%
+  mutate(Dataset_label = (gsub("University of Zurich", "M* (EUCAST)", Dataset_label)))%>%
+  mutate(Dataset_label = (gsub("CHAMPS", "N* (CLSI)", Dataset_label)))
 
 
-validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c("A (EUCAST) (S=291, R=1687)", "B (EUCAST) (S=84, R=441)","C (EUCAST) (S=168, R=255)", "D (EUCAST) (S=242, R=37)", "E (EUCAST) (S=20, R=146)", "F (EUCAST) (S=11, R=136)", "G (CLSI) (S=222, R=449)","H (CLSI) (S=109, R=128)", "I (CLSI) (S=18, R=153)", "J* (EUCAST/BSAC) (S=196, R=411)","K* (Kvv, CLSI) (S=37, R=28)","L* (EUCAST) (S=11, R=53)", "M* (CLSI) (S=18, R=21)", "IZSAM (S=7, R=273)",  "IRCCS Ospedale San Raffaele (S=9, R=187)", "MBIRA (Kvv, CLSI) (S=85, R=5)",  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", "SCHARKI (S=51, R=2)","EUSCAPE & EURECA (Kvv, EUCAST) (S=35, R=3)", "PachecoBrazil (S=10, R=28)", "HarrisMERINO (S=7, R=21)", "Overall median (datasets A-M)", "All datasets combined (S=1695, R=4464)"))
+validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c("A (EUCAST) (S=291, R=1687)", "B (EUCAST) (S=84, R=441)","C (EUCAST) (S=168, R=255)", "D (EUCAST) (S=242, R=37)", "E (EUCAST) (S=20, R=146)", "F (EUCAST) (S=11, R=136)", "G (CLSI) (S=222, R=449)","H (CLSI) (S=109, R=128)", "I (CLSI) (S=18, R=153)", "J* (EUCAST/BSAC) (S=196, R=411)", "K* (EUCAST) (S=62, R=146)", "L* (Kvv, CLSI) (S=37, R=28)","M* (EUCAST) (S=11, R=53)", "N* (CLSI) (S=18, R=21)", "IZSAM (S=7, R=273)",  "IRCCS Ospedale San Raffaele (S=9, R=187)", "MBIRA (Kvv, CLSI) (S=85, R=5)",  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", "SCHARKI (S=51, R=2)","EUSCAPE & EURECA (Kvv, EUCAST) (S=35, R=3)", "PachecoBrazil (S=10, R=28)", "HarrisMERINO (S=7, R=21)", "Overall median (datasets A-N)", "All datasets combined (S=1757, R=4610)"))
 
 
 
@@ -1987,7 +2059,7 @@ validation_summary_table_total %>%
 validation_summary_table_median<-
 validation_summary_table_total_exclude %>% group_by(`Evaluation metric`) %>% 
   summarise(metric_value = median(as.numeric(metric_value), na.rm = T)) %>%
-  mutate(Dataset="Overall median (datasets A-M)") %>%
+  mutate(Dataset="Overall median (datasets A-N)") %>%
   mutate(var="") %>%
   mutate(ub="") %>%
   mutate(lb="") %>%
@@ -2000,7 +2072,7 @@ validation_summary_table_total_exclude %>% group_by(`Evaluation metric`) %>%
   mutate(`IR_total`="")%>%
   mutate(`R_total`="")%>%
   mutate(`N_total`="")%>%
-  mutate(`Dataset_label`="Overall median (datasets A-M)")
+  mutate(`Dataset_label`="Overall median (datasets A-N)")
 
 validation_summary_table_total_exclude <-
 rbind(validation_summary_table_total_exclude, validation_summary_table_median)
@@ -2070,14 +2142,15 @@ all_datasets_metrics<- all_datasets_metrics %>%
         mutate(Dataset = (gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset)))%>% 
   mutate(Dataset = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI)", Dataset)))%>% 
    mutate(Dataset = (gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset)))%>% 
-    mutate(Dataset = (gsub("Addis Ababa University\\*", "K* (Kvv, CLSI)", Dataset)))%>%
-  mutate(Dataset = (gsub("University of Zurich", "L* (EUCAST)", Dataset)))%>%
-  mutate(Dataset = (gsub("CHAMPS", "M* (CLSI)", Dataset)))
+  mutate(Dataset = (gsub("SmaouiTunisia\\*", "K* (EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Addis Ababa University\\*", "L* (Kvv, CLSI)", Dataset)))%>%
+  mutate(Dataset = (gsub("University of Zurich", "M* (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("CHAMPS", "N* (CLSI)", Dataset)))
 
 all_datasets_metrics <- all_datasets_metrics %>% 
   mutate_all(funs(str_replace(., "NaN%", "-")))
 #foundation for table S11 - some manual edits made to the table
-#write_tsv(all_datasets_metrics, "../tables/TableS11_extValidation_evalMetrics.tsv", na="-")
+#write_tsv(all_datasets_metrics, "../tables/TableSX_extValidation_evalMetrics.tsv", na="-")
 
 ```
 
@@ -2198,6 +2271,7 @@ bind_rows(lst(MBIRA_Kpn_genotype,
           LaPaz_Lazaro_genotype,
           HarrisMERINO_genotype,
           PachecoBrazil_genotype, 
+          SmaouiTunisia_genotype, 
           pooled_genotype), .id ="Dataset") %>%
   mutate(Dataset = (gsub("_genotype", "", Dataset))) %>%
   mutate(N=S+I+R) %>%
@@ -2233,6 +2307,7 @@ pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Milan'] <- '
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'NeumannGermany'] <- 'SCHARKI'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kpn'] <- 'Oxfordshire'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kvv'] <- 'Oxfordshire*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'SmaouiTunisia'] <- 'SmaouiTunisia'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
 pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'pooled'] <- 'Pooled'
 
@@ -2256,9 +2331,10 @@ geno_MIC<- geno_MIC %>%
         mutate(Dataset = (gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset)))%>% 
   mutate(Dataset = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI)", Dataset)))%>% 
    mutate(Dataset = (gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset)))%>% 
-    mutate(Dataset = (gsub("Addis Ababa University\\*", "K* (Kvv, CLSI)", Dataset)))%>%
-  mutate(Dataset = (gsub("University of Zurich", "L* (EUCAST)", Dataset)))%>%
-  mutate(Dataset = (gsub("CHAMPS", "M* (CLSI)", Dataset)))
+  mutate(Dataset = (gsub("SmaouiTunisia", "K* (EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Addis Ababa University\\*", "L* (Kvv, CLSI)", Dataset)))%>%
+  mutate(Dataset = (gsub("University of Zurich", "M* (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("CHAMPS", "N* (CLSI)", Dataset)))
 
 geno_MIC <- geno_MIC %>%
   rename("MIC median [IQR] (exclude I)"=IQR_excludeI) %>%
@@ -2294,13 +2370,13 @@ validation_summary_table_total <- full_join(validation_summary_table_total, SIR_
   mutate(Dataset = (gsub("Pooled", "All datasets combined", Dataset)))%>%
   mutate(Dataset_label=paste(Dataset, " (S=", S_total, ", I=", I_total, ", R=",R_total, ")", sep = ""))
 
-validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'Overall median (S=NA, I=NA, R=NA)'] <- 'Overall median (datasets A-M)'
+validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'Overall median (S=NA, I=NA, R=NA)'] <- 'Overall median (datasets A-N)'
 
 # Get totals to explicitly write in label
 colSums(SIR_table[,-1])
-validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, I=NA, R=NA)'] <- "All datasets combined (S=1648, I=624, R=4413)"
+validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, I=NA, R=NA)'] <- "All datasets combined (S=1757, I=652, R=4610)"
 
-validation_summary_table_total$Dataset_label <- factor(validation_summary_table_total$Dataset_label, levels = c("EUSCAPE & EURECA (S=291, I=155, R=1687)", "JARBS-GNR (S=222, I=163, R=449)", "Queen Elizabeth Central Hospital (S=196, I=130, R=411)", "India GHRU (S=84, I=11, R=441)", "AGAR GnSOP (S=168, I=62, R=255)", "Oxfordshire (S=242, I=16, R=37)", "IZSAM (S=7, I=3, R=273)", "MBIRA (S=113, I=14, R=129)", "Controlling Superbugs study & Victorian CPE program (S=18, I=41, R=153)", "IRCCS Ospedale San Raffaele (S=9, I=2, R=187)", "HURYC & CIBERINFEC (S=20, I=7, R=146)", "HULP (S=11, I=1, R=136)", "MBIRA* (S=86, I=0, R=5)", "University of Zurich (S=11, I=8, R=53)", "Addis Ababa University* (S=37, I=5, R=28)", "Oxfordshire* (S=64, I=2, R=0)", "SCHARKI (S=51, I=3, R=2)", "CHAMPS (S=18, I=1, R=21)", "Overall median (datasets A-M)","All datasets combined (S=1648, I=624, R=4413)"))
+validation_summary_table_total$Dataset_label <- factor(validation_summary_table_total$Dataset_label, levels = c("EUSCAPE & EURECA (S=291, I=155, R=1687)", "JARBS-GNR (S=222, I=163, R=449)", "Queen Elizabeth Central Hospital (S=196, I=130, R=411)", "India GHRU (S=84, I=11, R=441)", "AGAR GnSOP (S=168, I=62, R=255)", "Oxfordshire (S=242, I=16, R=37)", "IZSAM (S=7, I=3, R=273)", "MBIRA (S=113, I=14, R=129)","SmaouiTunisia (S=62, I=28, R=146)",  "Controlling Superbugs study & Victorian CPE program (S=18, I=41, R=153)", "IRCCS Ospedale San Raffaele (S=9, I=2, R=187)", "HURYC & CIBERINFEC (S=20, I=7, R=146)", "HULP (S=11, I=1, R=136)", "MBIRA* (S=86, I=0, R=5)", "University of Zurich (S=11, I=8, R=53)", "Addis Ababa University* (S=37, I=5, R=28)", "Oxfordshire* (S=64, I=2, R=0)", "SCHARKI (S=51, I=3, R=2)", "CHAMPS (S=18, I=1, R=21)", "Overall median (datasets A-N)","All datasets combined (S=1757, I=652, R=4610)"))
 
 validation_summary_table_plot <-ggplot(validation_summary_table_total, aes(as.numeric(value),fct_inorder(as.factor(Dataset_label)))) +
   geom_point(aes(shape = `Prediction`, size=`Prediction`, colour=`Prediction`), alpha=0.5) +
@@ -2337,7 +2413,7 @@ ggsave(width=10, height=14, file="../figs/FigX_extValidation_exclude.pdf")
 
 ```
 
-# Figure 7 - external validation
+# Figure - external validation
 ```{r}
 HowdenGorrie_MIC <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 MBIRA_MIC_Kpn <- readPNG("MBIRA_ValidationOutput/MIC_PredRIS_Kpn.png", native=TRUE)
@@ -2366,6 +2442,9 @@ HarrisMERINO_MIC <- readPNG("HarrisMERINO_ValidationOutput/MIC_PredRIS.png", nat
 
 PachecoBrazil_MIC <- readPNG("PachecoBrazil_ValidationOutput/MIC_PredRIS.png", native=TRUE)
 
+TunisiaSmaoui_DD <- readPNG("SmaouiTunisia_ValidationOutput/DD_PredRIS.png", native=TRUE)
+
+
 patch <- (wrap_elements(EUSCAPE_EURECA_MIC) +
             ggtitle("A) EUSCAPE & EURECA MIC (n=2133)")  +
             wrap_elements(KayamaJapan_MIC) +
@@ -2379,7 +2458,7 @@ patch <- (wrap_elements(EUSCAPE_EURECA_MIC) +
             wrap_elements(IZSAM_Italy_MIC) +
             ggtitle("F) IZSAM MIC (n=263)")+            
             wrap_elements(MBIRA_MIC_Kpn) + 
-            ggtitle("G) MBIRA MIC (n=263)")+     
+            ggtitle("G) MBIRA MIC (n=263)")+ 
             wrap_elements(HowdenGorrie_MIC) +
             ggtitle("H) Controlling Superbugs study & \nVictorian CPE program MIC (n=212)") +
             wrap_elements(Milan_MIC) +
@@ -2401,17 +2480,19 @@ patch <- (wrap_elements(EUSCAPE_EURECA_MIC) +
             
             wrap_elements(FeaseyMalawi_DD) +
             ggtitle("Q) Queen Elizabeth Central Hospital \n(Malawi) DD (n=737)") +
+            wrap_elements(TunisiaSmaoui_DD) +
+            ggtitle("R) Tunisia Smaoui DD (n=236)")+            
             wrap_elements(EgliSwitzerland_DD) +
-            ggtitle("R) University of Zurich DD (n=72)")+
+            ggtitle("S) University of Zurich DD (n=72)")+
             wrap_elements(HailuEthiopia_DD) +
-            ggtitle("S) Addis Ababa University* \n(Ethiopia) DD (n=70)")+
+            ggtitle("T) Addis Ababa University* \n(Ethiopia) DD (n=70)")+
             wrap_elements(Whitelaw_CHAMPS_DD) +
-            ggtitle("T) CHAMPS DD (n=40)")
+            ggtitle("U) CHAMPS DD (n=40)")
           )+
   plot_layout(ncol = 3)
 
-#ggsave(height=13, width=13, file="../figs/Fig7_extValidation.png")
-#ggsave(height=13, width=13, file="../figs/Fig7_extValidation.pdf")
+#ggsave(height=13, width=13, file="../figs/FigX_extValidation.png")
+#ggsave(height=13, width=13, file="../figs/FigX_extValidation.pdf")
 
 ```
 
@@ -2480,6 +2561,9 @@ Harris_MERINO_profile <- readPNG("HarrisMERINO_ValidationOutput/StackedBar_PredG
 Pacheco_Brazil_dist <- readPNG("PachecoBrazil_ValidationOutput/MIC_PredGroup.png", native=TRUE)
 Pacheco_Brazil_profile <- readPNG("PachecoBrazil_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)   
 
+TunisiaSmaoui_dist <- readPNG("SmaouiTunisia_ValidationOutput/DD_PredGroup.png", native=TRUE)
+TunisiaSmaoui_profile <- readPNG("SmaouiTunisia_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)   
+
   (wrap_elements(EUSCAPE_EURECA_dist) +ggtitle("1) A (EUCAST) / \n EURECA & EUSCAPE (n=2133) - MIC distribution vs.\n genotype profile") + wrap_elements(EUSCAPE_EURECA_profile) + ggtitle("2) A (EUCAST) / \n EURECA & EUSCAPE (n=2133) - observed phenotype vs.\n genotype profile"))/
   
     (wrap_elements(IndiaGHRU_dist) +ggtitle("3) B (EUCAST) / \nIndia GHRU (n=536) - MIC distribution vs.\n genotype profile") + wrap_elements(IndiaGHRU_profile) + ggtitle("4) B (EUCAST) / \nIndia GHRU (n=536) - observed phenotype vs.\n genotype profile")) 
@@ -2520,57 +2604,50 @@ ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_5.pn
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_5.pdf")
 
 
+(wrap_elements(TunisiaSmaoui_dist) +ggtitle("21) K* (EUCAST) / \n Tunisia Smaoui* (n=236) .\n - DD distribution vs. genotype profile") + wrap_elements(TunisiaSmaoui_profile) + ggtitle("22) K* (EUCAST) / \n Tunisia Smaoui* (n=236) \n - observed phenotype vs. genotype profile")) /
 
-
-  
-(wrap_elements(Hailu_dist) +ggtitle("21) K* (Kvv, CLSI) / \n Addis Ababa University* (n=70) .\n - DD distribution vs. genotype profile") + wrap_elements(Hailu_profile) + ggtitle("22) K* (Kvv, CLSI) / \n Addis Ababa University* (n=70) \n - observed phenotype vs. genotype profile")) /
-
-    (wrap_elements(EgliSwitzerland_dist) +ggtitle("23) L* (EUCAST) / \n University of Zurich (n=72) - \n DD distribution vs. genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("24) L* (EUCAST) / \n University of Zurich (n=72) \n - observed phenotype vs. genotype profile")) 
+(wrap_elements(Hailu_dist) +ggtitle("23) L* (Kvv, CLSI) / \n Addis Ababa University* (n=70) .\n - DD distribution vs. genotype profile") + wrap_elements(Hailu_profile) + ggtitle("24) L* (Kvv, CLSI) / \n Addis Ababa University* (n=70) \n - observed phenotype vs. genotype profile")) 
 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_6.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_6.pdf")
 
-(wrap_elements(WhitelawCHAMPS_dist) +ggtitle("25) M* (CLSI) / \n CHAMPS (n=40) - DD distribution vs.\n genotype profile") + wrap_elements(WhitelawCHAMPS_profile) + ggtitle("26) M* (CLSI) / \n CHAMPS (n=40) - observed phenotype vs.\n genotype profile")) /
-  
-  (wrap_elements(IZSAM_Italy_dist) +ggtitle("27) IZSAM (n=283) - MIC distribution vs.\n genotype profile") + wrap_elements(IZSAM_Italy_profile) + ggtitle("28) IZSAM (n=283) - observed phenotype vs.\n genotype profile")) 
+    (wrap_elements(EgliSwitzerland_dist) +ggtitle("25) M* (EUCAST) / \n University of Zurich (n=72) - \n DD distribution vs. genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("26) M* (EUCAST) / \n University of Zurich (n=72) \n - observed phenotype vs. genotype profile")) /
 
+(wrap_elements(WhitelawCHAMPS_dist) +ggtitle("27) N* (CLSI) / \n CHAMPS (n=40) - DD distribution vs.\n genotype profile") + wrap_elements(WhitelawCHAMPS_profile) + ggtitle("28) N* (CLSI) / \n CHAMPS (n=40) - observed phenotype vs.\n genotype profile")) 
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_7.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_7.pdf")
+  
+  (wrap_elements(IZSAM_Italy_dist) +ggtitle("29) IZSAM (n=283) - MIC distribution vs.\n genotype profile") + wrap_elements(IZSAM_Italy_profile) + ggtitle("30) IZSAM (n=283) - observed phenotype vs.\n genotype profile")) /
 
-
-(wrap_elements(Milan_dist) +ggtitle("29) IRCCS Ospedale San Raffaele (n=198) -\n MIC distribution vs. genotype profile") + wrap_elements(Milan_profile) + ggtitle("30) IRCCS Ospedale San Raffaele (n=198) \n - observed phenotype vs. genotype profile")) /
-
-(wrap_elements(MBIRA_Kvv_dist) +ggtitle("31) MBIRA (Kvv, CLSI) (n=92) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kvv_profile) + ggtitle("32) MBIRA (Kvv, CLSI) (n=92) - observed phenotype vs.\n genotype profile")) 
-
+(wrap_elements(Milan_dist) +ggtitle("31) IRCCS Ospedale San Raffaele (n=198) -\n MIC distribution vs. genotype profile") + wrap_elements(Milan_profile) + ggtitle("32) IRCCS Ospedale San Raffaele (n=198) \n - observed phenotype vs. genotype profile")) 
 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_8.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_8.pdf")
 
+(wrap_elements(MBIRA_Kvv_dist) +ggtitle("33) MBIRA (Kvv, CLSI) (n=92) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kvv_profile) + ggtitle("34) MBIRA (Kvv, CLSI) (n=92) - observed phenotype vs.\n genotype profile")) /
 
-(wrap_elements(Oxfordshire_Kvv_dist) +ggtitle("33) Oxfordshire (Kvv, EUCAST) (n=66) \n - MIC distribution vs. genotype profile") + wrap_elements(Oxfordshire_Kvv_profile) + ggtitle("34) Oxfordshire (Kvv, EUCAST) (n=66) \n - observed phenotype vs. genotype profile")) /
-
-(wrap_elements(NeumannGermany_dist) +ggtitle("35) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("36) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) 
+(wrap_elements(Oxfordshire_Kvv_dist) +ggtitle("35) Oxfordshire (Kvv, EUCAST) (n=66) \n - MIC distribution vs. genotype profile") + wrap_elements(Oxfordshire_Kvv_profile) + ggtitle("36) Oxfordshire (Kvv, EUCAST) (n=66) \n - observed phenotype vs. genotype profile")) 
 
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.png")
 ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.pdf")
 
+(wrap_elements(NeumannGermany_dist) +ggtitle("37) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("38) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) /
 
-(wrap_elements(EUSCAPE_EURECA_Kvv_dist) +ggtitle("37) EUSCAPE/EURECA Kvv (n=41) \n - MIC distribution vs. genotype profile") + wrap_elements(EUSCAPE_EURECA_Kvv_profile) + ggtitle("38) EUSCAPE/EURECA Kvv (n=41) \n - observed phenotype vs. genotype profile"))/
-
-(wrap_elements(Pacheco_Brazil_dist) +ggtitle("39) iberoAMRica study (n=38) \n - MIC distribution vs. genotype profile") + wrap_elements(Pacheco_Brazil_profile) + ggtitle("40) iberoAMRica study (n=38) \n - observed phenotype vs. genotype profile")) 
-
+(wrap_elements(EUSCAPE_EURECA_Kvv_dist) +ggtitle("39) EUSCAPE/EURECA Kvv (n=41) \n - MIC distribution vs. genotype profile") + wrap_elements(EUSCAPE_EURECA_Kvv_profile) + ggtitle("40) EUSCAPE/EURECA Kvv (n=41) \n - observed phenotype vs. genotype profile"))
 
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.png")
 ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.pdf")
 
+
+(wrap_elements(Pacheco_Brazil_dist) +ggtitle("41) iberoAMRica study (n=38) \n - MIC distribution vs. genotype profile") + wrap_elements(Pacheco_Brazil_profile) + ggtitle("42) iberoAMRica study (n=38) \n - observed phenotype vs. genotype profile")) /
   
-  (wrap_elements(Harris_MERINO_dist) +ggtitle("41) MERINO trial (n=36) \n - DD distribution vs. genotype profile") + wrap_elements(Harris_MERINO_dist) + ggtitle("42) MERINO trial (n=36) \n - observed phenotype vs. genotype profile")) 
+  (wrap_elements(Harris_MERINO_dist) +ggtitle("43) MERINO trial (n=36) \n - DD distribution vs. genotype profile") + wrap_elements(Harris_MERINO_dist) + ggtitle("44) MERINO trial (n=36) \n - observed phenotype vs. genotype profile")) 
 
 
 
-ggsave(height=5, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.png")
-ggsave(height=5, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.pdf")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.pdf")
 
 
 
@@ -2585,8 +2662,8 @@ ggsave(height=5, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.pd
 
 ```{r load_data_summary, eval=FALSE}
 
-validation_phenotypes <- read_delim("../tables/TableS5_phenotype_metadata_validation.tsv")
-validation_genotypes <- read_delim("../tables/TableS4_genotypes_validation.tsv")
+validation_phenotypes <- read_delim("../tables/TableS6_phenotype_metadata_validation.tsv")
+validation_genotypes <- read_delim("../tables/TableS5_genotypes_validation.tsv")
 
 validation_phenotypes_summary_table <- validation_phenotypes %>% group_by(Dataset, Dataset_alias, `Assembly method`, Laboratory.Typing.Method, Testing.standard, Laboratory.Typing.Platform) %>% count()
 

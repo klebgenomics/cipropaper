@@ -4,10 +4,10 @@ EuSCAPE/EURECA (Kvv)	EuSCAPE/EURECA (Kvv)	Prokka	MIC (broth dilution)	EUCAST	Var
 IRCCS Ospedale San Raffaele	IRCCS Ospedale San Raffaele	Unicycler v0.5.0	MIC (broth dilution)	EUCAST	Vitek	198	-	"Assembly, Kleborate, Comparison"
 AGAR GnSOP	C (EUCAST)	SKESA	MIC (broth dilution)	EUCAST	Phoenix	53	Comparison	"Assembly, Kleborate"
 AGAR GnSOP	C (EUCAST)	SKESA	MIC (broth dilution)	EUCAST	Vitek	432	Comparison	"Assembly, Kleborate"
-Addis Ababa University*	"K* (Kvv, CLSI)"	Unicycler v0.4.8	Disk diffusion	CLSI	Manual	70	"Assembly, Kleborate, Comparison"	-
+Addis Ababa University*	"L* (Kvv, CLSI)"	Unicycler v0.4.8	Disk diffusion	CLSI	Manual	70	"Assembly, Kleborate, Comparison"	-
 BrazilPacheco	iberoAMRica study	Uniclycer v0.4.8	MIC (E-test gradient diffusion)	CLSI	Manual	20	"Assembly, Kleborate, Comparison"	-
 BrazilPacheco	iberoAMRica study	Uniclycer v0.4.8	MIC (broth dilution)	CLSI	Vitek	18	"Assembly, Kleborate, Comparison"	-
-CHAMPS	M* (CLSI)	Unicycler v0.4.8	Disk diffusion	CLSI	Manual 	40	"Assembly, Kleborate, Comparison"	-
+CHAMPS	N* (CLSI)	Unicycler v0.4.8	Disk diffusion	CLSI	Manual 	40	"Assembly, Kleborate, Comparison"	-
 Controlling Superbugs study & Victorian CPE program	I (CLSI)	Unicycler v0.4.8	MIC (E-test gradient diffusion)	CLSI	Manual	1	"Assembly, Kleborate, Comparison"	-
 Controlling Superbugs study & Victorian CPE program	I (CLSI)	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Sensititre BMD	99	"Assembly, Kleborate, Comparison"	-
 Controlling Superbugs study & Victorian CPE program	I (CLSI)	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Vitek	112	"Assembly, Kleborate, Comparison"	-
@@ -29,4 +29,5 @@ Oxfordshire	D (EUCAST)	Shovill v1.0.4	MIC (broth dilution)	EUCAST	Phoenix	295	Co
 Queen Elizabeth Central Hospital	J* (EUCAST/BSAC)	Unicycler v0.4.8	Disk diffusion	BSAC	-	471	"Assembly, Kleborate, Comparison"	-
 Queen Elizabeth Central Hospital	J* (EUCAST/BSAC)	Unicycler v0.4.8	Disk diffusion	EUCAST	-	266	"Assembly, Kleborate, Comparison"	-
 SCHARKI	SCHARKI	Unicycler v0.4.8	MIC (broth dilution)	EUCAST	Vitek	56	"Assembly, Kleborate, Comparison"	-
-University of Zurich	L* (EUCAST)	Unicycler v0.4.8	Disk diffusion	EUCAST	-	72	"Kleborate, Comparison"	Assembly
+TunisiaSmaoui	K (EUCAST)	SPAdes v1.3.1	Disk diffusion	EUCAST	-	236	"Kleborate, Comparison"	Assembly
+University of Zurich	M* (EUCAST)	Unicycler v0.4.8	Disk diffusion	EUCAST	-	72	"Kleborate, Comparison"	Assembly
