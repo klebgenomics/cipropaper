@@ -12,7 +12,7 @@ Controlling Superbugs study & Victorian CPE program	I (CLSI)	Unicycler v0.4.8	MI
 Controlling Superbugs study & Victorian CPE program	I (CLSI)	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Sensititre BMD	99	"Assembly, Kleborate, Comparison"	-
 Controlling Superbugs study & Victorian CPE program	I (CLSI)	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Vitek	112	"Assembly, Kleborate, Comparison"	-
 HULP	F (EUCAST)	SPAdes v4.0.0	MIC (E-test gradient diffusion)	EUCAST	-	4	"Assembly, Kleborate, Comparison"	-
-HULP	F (EUCAST)	SPAdes v4.0.0	MIC (broth dilution)	EUCAST	-	144	"Assembly, Kleborate, Comparison"	-
+HULP	F (EUCAST)	SPAdes v4.0.0	MIC (broth dilution)	EUCAST	MicroScan WalkAway	144	"Assembly, Kleborate, Comparison"	-
 HURYC & CIBERINFEC	E (EUCAST)	SPAdes 3.11.1	MIC (broth dilution)	EUCAST	Sensititre	2	"Kleborate, Comparison"	Assembly
 HURYC & CIBERINFEC	E (EUCAST)	Unicycler v0.4.8	MIC (broth dilution)	EUCAST	Microscan	20	"Assembly, Kleborate, Comparison"	-
 HURYC & CIBERINFEC	E (EUCAST)	Unicycler v0.4.8	MIC (broth dilution)	EUCAST	Sensititre	151	"Assembly, Kleborate, Comparison"	-

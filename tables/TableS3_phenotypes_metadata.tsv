@@ -2773,257 +2773,257 @@ Kp_1_HUC	ciprofloxacin	R	-	6	mm	Disk diffusion	EUCAST	v11.0 	Manual	-	-	ERR10031
 2999	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	v11.0 	Manual	-	-	ERR10030888	SAMEA110371453	PRJEB38289	33753763	Taane Clark	Human	Human	Unknown	Infection	Portugal	Lisbon	2011-2016
 2955	ciprofloxacin	S	-	25	mm	Disk diffusion	EUCAST	v11.0 	Manual	-	-	ERR10030882	SAMEA110371447	PRJEB38289	33753763	Taane Clark	Human	Human	Unknown	Infection	Portugal	Lisbon	2011-2016
 2954	ciprofloxacin	R	-	21	mm	Disk diffusion	EUCAST	v11.0 	Manual	-	-	ERR10030881	SAMEA110371446	PRJEB38289	33753763	Taane Clark	Human	Human	Unknown	Infection	Portugal	Lisbon	2011-2016
-BC-BB1047-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229736 	SAMEA7472041 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BC-BB1138-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229742 	SAMEA7472047 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BC-BB1210-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229750 	SAMEA7472055 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BC-BB1228-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229751 	SAMEA7472056 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BC-BB1283-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229755 	SAMEA7472060 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BC-BB1717-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229774 	SAMEA7472079 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BC-BB296-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229802 	SAMEA7472107 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB411-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229818 	SAMEA7472123 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB495-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229832 	SAMEA7472137 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB667-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229856 	SAMEA7472161 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB698-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229860 	SAMEA7472165 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB742-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229864 	SAMEA7472169 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB775-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229870 	SAMEA7472175 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB79-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229874 	SAMEA7472179 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB809-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229876 	SAMEA7472181 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
-BC-BB897-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229886 	SAMEA7472191 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BC-BB980-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229897 	SAMEA7472202 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
-BK-BB363-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229902 	SAMEA7472207 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	-	2016
-BK-BB473-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229903 	SAMEA7472208 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	-	2016
-ESI-BB0050a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229912 	SAMEA7472217 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB0616-I2	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229913 	SAMEA7472218 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB0725-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229914 	SAMEA7472219 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB0800-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229915 	SAMEA7472220 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB0983-I2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229918 	SAMEA7472223 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1044b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229920 	SAMEA7472225 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1076-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229921 	SAMEA7472226 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1268-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229922 	SAMEA7472227 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1317a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229923 	SAMEA7472228 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1341a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229924 	SAMEA7472229 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1344b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229926 	SAMEA7472231 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1384a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229927 	SAMEA7472232 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1401-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229929 	SAMEA7472234 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1437a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229930 	SAMEA7472235 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1439-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229931 	SAMEA7472236 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1441b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229932 	SAMEA7472237 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1464-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229933 	SAMEA7472238 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1502-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229934 	SAMEA7472239 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1509-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229935 	SAMEA7472240 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1540-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229936 	SAMEA7472241 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1542-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229937 	SAMEA7472242 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1551-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229938 	SAMEA7472243 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1683-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229939 	SAMEA7472244 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1691-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229940 	SAMEA7472245 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1715-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229941 	SAMEA7472246 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1843a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229942 	SAMEA7472247 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1942a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229943 	SAMEA7472248 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESI-BB1942b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229944 	SAMEA7472249 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB0135-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229945 	SAMEA7472250 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1049b-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229947 	SAMEA7472252 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1409-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229949 	SAMEA7472254 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1561-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229951 	SAMEA7472256 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1812-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229952 	SAMEA7472257 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1839a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229953 	SAMEA7472258 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1839b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229954 	SAMEA7472259 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1869-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229955 	SAMEA7472260 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1890-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229956 	SAMEA7472261 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB1948-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229957 	SAMEA7472262 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB2005-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229958 	SAMEA7472263 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESO-BB2023b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229959 	SAMEA7472264 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0025-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229960 	SAMEA7472265 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0059b-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229962 	SAMEA7472267 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0062-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229963 	SAMEA7472268 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0071-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229965 	SAMEA7472270 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0112b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229968 	SAMEA7472273 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0119-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229971 	SAMEA7472276 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0134-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229972 	SAMEA7472277 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0135r-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229973 	SAMEA7472278 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0139-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229974 	SAMEA7472279 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0249-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229980 	SAMEA7472285 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0254-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229981 	SAMEA7472286 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0259-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229982 	SAMEA7472287 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0272-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229983 	SAMEA7472288 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0280-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229984 	SAMEA7472289 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0304a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229987 	SAMEA7472292 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0311-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229988 	SAMEA7472293 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0315-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229989 	SAMEA7472294 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0371-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229990 	SAMEA7472295 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0373-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229991 	SAMEA7472296 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0374b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229992 	SAMEA7472297 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0383-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229995 	SAMEA7472300 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0400-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229996 	SAMEA7472301 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0405-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229997 	SAMEA7472302 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0408-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229998 	SAMEA7472303 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0418-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5229999 	SAMEA7472304 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0419-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230000 	SAMEA7472305 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0422-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230001 	SAMEA7472306 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0424-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230002 	SAMEA7472307 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0425-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230003 	SAMEA7472308 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0428-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230005 	SAMEA7472310 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0434-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230007 	SAMEA7472312 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0437-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230008 	SAMEA7472313 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0439-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230009 	SAMEA7472314 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0442-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230011 	SAMEA7472316 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0444-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230012 	SAMEA7472317 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0445-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230013 	SAMEA7472318 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0456-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230014 	SAMEA7472319 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0460b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230015 	SAMEA7472320 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0463-I2	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230016 	SAMEA7472321 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0469-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230017 	SAMEA7472322 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0482a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230018 	SAMEA7472323 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0490-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230020 	SAMEA7472325 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0490-I2	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230021 	SAMEA7472326 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0496-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230022 	SAMEA7472327 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0501-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230023 	SAMEA7472328 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0515a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230024 	SAMEA7472329 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0519b-2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230025 	SAMEA7472330 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0523a-2-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230026 	SAMEA7472331 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0531a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230027 	SAMEA7472332 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0539-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230028 	SAMEA7472333 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0547a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230029 	SAMEA7472334 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0556-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230030 	SAMEA7472335 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0557-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230031 	SAMEA7472336 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0567-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230032 	SAMEA7472337 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-ESS-BB0577-2-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230033 	SAMEA7472338 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
-IN-BB15-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230037 	SAMEA7472342 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
-IN-BB43-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230040 	SAMEA7472345 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
-IN-BB434-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230043 	SAMEA7472348 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
-IN-BB598-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230045 	SAMEA7472350 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
-IN-BB599-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230046 	SAMEA7472351 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
-NK-BB0235a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230047 	SAMEA7472352 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB0627-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230050 	SAMEA7472355 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1127-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230063 	SAMEA7472368 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1137-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230066 	SAMEA7472371 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1145-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230067 	SAMEA7472372 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1354-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230075 	SAMEA7472380 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1455-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230084 	SAMEA7472389 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1465-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230085 	SAMEA7472390 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1495-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230088 	SAMEA7472393 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1596-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230093 	SAMEA7472398 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1759-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230100 	SAMEA7472405 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1887-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230104 	SAMEA7472409 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB1919-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230106 	SAMEA7472411 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB6114-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230111 	SAMEA7472416 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NK-BB7051-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230116 	SAMEA7472421 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
-NN-BB130-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230124 	SAMEA7472429 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB135-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230126 	SAMEA7472431 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB146-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230128 	SAMEA7472433 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB153-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230129 	SAMEA7472434 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB1542r1-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230132 	SAMEA7472437 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB1545-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230133 	SAMEA7472438 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB1548-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230135 	SAMEA7472440 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB1560-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230137 	SAMEA7472442 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB1569-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230141 	SAMEA7472446 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB1613-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230148 	SAMEA7472453 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB163-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230153 	SAMEA7472458 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB1647-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230157 	SAMEA7472462 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB1662-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230160 	SAMEA7472465 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB167b-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230163 	SAMEA7472468 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB169-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230165 	SAMEA7472470 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB1690r2-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230166 	SAMEA7472471 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB170-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230168 	SAMEA7472473 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB171-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230169 	SAMEA7472474 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB1721-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230172 	SAMEA7472477 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB1733r1-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230173 	SAMEA7472478 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB1794-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230176 	SAMEA7472481 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NN-BB196-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230182 	SAMEA7472487 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB314-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230184 	SAMEA7472489 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB402a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230185 	SAMEA7472490 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB407-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230186 	SAMEA7472491 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB409-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230187 	SAMEA7472492 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB418-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230188 	SAMEA7472493 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB455-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230193 	SAMEA7472498 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB492-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230197 	SAMEA7472502 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB492r1-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230198 	SAMEA7472503 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB552-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230200 	SAMEA7472505 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB648-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230201 	SAMEA7472506 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB753-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230202 	SAMEA7472507 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB787-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230203 	SAMEA7472508 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NN-BB915a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230204 	SAMEA7472509 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
-NW-BB1240-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230206 	SAMEA7472511 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NW-BB182ar1-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230210 	SAMEA7472515 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-NW-BB750-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230212 	SAMEA7472517 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
-PC-BB31-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230217 	SAMEA7472522 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PC-BB456-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230223 	SAMEA7472528 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB1096-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230233 	SAMEA7472538 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1282-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230237 	SAMEA7472542 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1599-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230253 	SAMEA7472558 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1617-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230256 	SAMEA7472561 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1626-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230257 	SAMEA7472562 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1729-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230265 	SAMEA7472570 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1807-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230267 	SAMEA7472572 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1873-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230273 	SAMEA7472578 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1935-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230279 	SAMEA7472584 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB1936-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230280 	SAMEA7472585 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2003-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230284 	SAMEA7472589 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2093-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230293 	SAMEA7472598 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2126-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230294 	SAMEA7472599 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2254-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230304 	SAMEA7472609 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB226-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230306 	SAMEA7472611 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2269-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230307 	SAMEA7472612 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2292-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230308 	SAMEA7472613 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2847-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230326 	SAMEA7472631 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB2859-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230327 	SAMEA7472632 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB3057-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230330 	SAMEA7472635 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB3180-I2	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230341 	SAMEA7472646 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB3196-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230342 	SAMEA7472647 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB3318-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230350 	SAMEA7472655 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB3445-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230354 	SAMEA7472659 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB4154-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230367 	SAMEA7472673 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB4172-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230368 	SAMEA7472674 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB4815-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230383 	SAMEA7472689 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB5302-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230407 	SAMEA7472713 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB5730-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230422 	SAMEA7472728 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB5741-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230423 	SAMEA7472729 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB5838-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230430 	SAMEA7472736 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB6026-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230436 	SAMEA7472742 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB62-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230442 	SAMEA7472748 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
-PP-BB6222-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230445 	SAMEA7472751 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB6586-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230453 	SAMEA7472759 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB6930-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230476 	SAMEA7472782 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB7127-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230487 	SAMEA7472793 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB7164-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230492 	SAMEA7472798 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB7510a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230507 	SAMEA7472813 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-PP-BB8144-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230528 	SAMEA7472834 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
-RK-BB1216-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230539 	SAMEA7472845 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
-RK-BB1813-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230548 	SAMEA7472854 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
-RK-BB472-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230558 	SAMEA7472864 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB488-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230559 	SAMEA7472865 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB5-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230560 	SAMEA7472866 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB50-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230561 	SAMEA7472867 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB584-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230563 	SAMEA7472869 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB589-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230564 	SAMEA7472870 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB600-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230565 	SAMEA7472871 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB615-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230566 	SAMEA7472872 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB721b-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230573 	SAMEA7472879 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RK-BB840-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230580 	SAMEA7472886 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
-RK-BB866-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230582 	SAMEA7472888 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
-RK-BB92-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230585 	SAMEA7472891 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
-RU-BB124-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230590 	SAMEA7472896 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
-RU-BB187-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230591 	SAMEA7472897 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
-RU-BB193-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230592 	SAMEA7472898 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
-RU-BB284-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230596 	SAMEA7472902 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
-RU-BB487-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230602 	SAMEA7472908 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2017
-RU-BB59-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230604 	SAMEA7472910 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
-RU-BB83-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230606 	SAMEA7472912 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB102-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230608 	SAMEA7472914 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB1197-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230612 	SAMEA7472918 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
-ZAT-BB1197-I2	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230613 	SAMEA7472919 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
-ZAT-BB1262-I4	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230615 	SAMEA7472921 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
-ZAT-BB14-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230617 	SAMEA7472923 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB175-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230621 	SAMEA7472927 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB175-I2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230622 	SAMEA7472928 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB1830-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230624 	SAMEA7472930 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
-ZAT-BB1851-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230625 	SAMEA7472931 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
-ZAT-BB237-I2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230628 	SAMEA7472934 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB245-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230629 	SAMEA7472935 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB2708-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230633 	SAMEA7472939 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
-ZAT-BB2711-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230634 	SAMEA7472940 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
-ZAT-BB330-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230639 	SAMEA7472945 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB514b-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230641 	SAMEA7472947 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
-ZAT-BB643-I3	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	-	-	-	ERS5230643 	SAMEA7472949 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+BC-BB1047-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229736 	SAMEA7472041 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BC-BB1138-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229742 	SAMEA7472047 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BC-BB1210-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229750 	SAMEA7472055 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BC-BB1228-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229751 	SAMEA7472056 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BC-BB1283-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229755 	SAMEA7472060 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BC-BB1717-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229774 	SAMEA7472079 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BC-BB296-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229802 	SAMEA7472107 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB411-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229818 	SAMEA7472123 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB495-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229832 	SAMEA7472137 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB667-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229856 	SAMEA7472161 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB698-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229860 	SAMEA7472165 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB742-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229864 	SAMEA7472169 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB775-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229870 	SAMEA7472175 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB79-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229874 	SAMEA7472179 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB809-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229876 	SAMEA7472181 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2016
+BC-BB897-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229886 	SAMEA7472191 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BC-BB980-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229897 	SAMEA7472202 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	Chattogram	2017
+BK-BB363-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229902 	SAMEA7472207 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	-	2016
+BK-BB473-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229903 	SAMEA7472208 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Bangladesh	-	2016
+ESI-BB0050a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229912 	SAMEA7472217 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB0616-I2	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229913 	SAMEA7472218 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB0725-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229914 	SAMEA7472219 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB0800-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229915 	SAMEA7472220 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB0983-I2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229918 	SAMEA7472223 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1044b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229920 	SAMEA7472225 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1076-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229921 	SAMEA7472226 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1268-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229922 	SAMEA7472227 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1317a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229923 	SAMEA7472228 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1341a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229924 	SAMEA7472229 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1344b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229926 	SAMEA7472231 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1384a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229927 	SAMEA7472232 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1401-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229929 	SAMEA7472234 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1437a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229930 	SAMEA7472235 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1439-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229931 	SAMEA7472236 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1441b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229932 	SAMEA7472237 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1464-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229933 	SAMEA7472238 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1502-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229934 	SAMEA7472239 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1509-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229935 	SAMEA7472240 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1540-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229936 	SAMEA7472241 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1542-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229937 	SAMEA7472242 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1551-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229938 	SAMEA7472243 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1683-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229939 	SAMEA7472244 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1691-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229940 	SAMEA7472245 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1715-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229941 	SAMEA7472246 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1843a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229942 	SAMEA7472247 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1942a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229943 	SAMEA7472248 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESI-BB1942b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229944 	SAMEA7472249 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB0135-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229945 	SAMEA7472250 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1049b-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229947 	SAMEA7472252 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1409-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229949 	SAMEA7472254 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1561-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229951 	SAMEA7472256 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1812-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229952 	SAMEA7472257 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1839a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229953 	SAMEA7472258 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1839b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229954 	SAMEA7472259 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1869-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229955 	SAMEA7472260 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1890-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229956 	SAMEA7472261 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB1948-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229957 	SAMEA7472262 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB2005-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229958 	SAMEA7472263 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESO-BB2023b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229959 	SAMEA7472264 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0025-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229960 	SAMEA7472265 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0059b-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229962 	SAMEA7472267 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0062-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229963 	SAMEA7472268 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0071-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229965 	SAMEA7472270 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0112b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229968 	SAMEA7472273 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0119-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229971 	SAMEA7472276 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0134-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229972 	SAMEA7472277 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0135r-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229973 	SAMEA7472278 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0139-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229974 	SAMEA7472279 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0249-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229980 	SAMEA7472285 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0254-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229981 	SAMEA7472286 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0259-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229982 	SAMEA7472287 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0272-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229983 	SAMEA7472288 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0280-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229984 	SAMEA7472289 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0304a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229987 	SAMEA7472292 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0311-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229988 	SAMEA7472293 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0315-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229989 	SAMEA7472294 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0371-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229990 	SAMEA7472295 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0373-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229991 	SAMEA7472296 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0374b-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229992 	SAMEA7472297 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0383-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229995 	SAMEA7472300 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0400-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229996 	SAMEA7472301 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0405-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229997 	SAMEA7472302 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0408-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229998 	SAMEA7472303 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0418-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5229999 	SAMEA7472304 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0419-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230000 	SAMEA7472305 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0422-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230001 	SAMEA7472306 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0424-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230002 	SAMEA7472307 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0425-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230003 	SAMEA7472308 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0428-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230005 	SAMEA7472310 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0434-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230007 	SAMEA7472312 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0437-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230008 	SAMEA7472313 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0439-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230009 	SAMEA7472314 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0442-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230011 	SAMEA7472316 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0444-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230012 	SAMEA7472317 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0445-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230013 	SAMEA7472318 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0456-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230014 	SAMEA7472319 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0460b-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230015 	SAMEA7472320 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0463-I2	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230016 	SAMEA7472321 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0469-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230017 	SAMEA7472322 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0482a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230018 	SAMEA7472323 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0490-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230020 	SAMEA7472325 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0490-I2	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230021 	SAMEA7472326 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0496-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230022 	SAMEA7472327 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0501-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230023 	SAMEA7472328 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0515a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230024 	SAMEA7472329 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0519b-2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230025 	SAMEA7472330 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0523a-2-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230026 	SAMEA7472331 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0531a-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230027 	SAMEA7472332 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0539-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230028 	SAMEA7472333 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0547a-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230029 	SAMEA7472334 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0556-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230030 	SAMEA7472335 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0557-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230031 	SAMEA7472336 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0567-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230032 	SAMEA7472337 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+ESS-BB0577-2-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230033 	SAMEA7472338 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Ethiopia	Addis Ababa	2017
+IN-BB15-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230037 	SAMEA7472342 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
+IN-BB43-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230040 	SAMEA7472345 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
+IN-BB434-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230043 	SAMEA7472348 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
+IN-BB598-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230045 	SAMEA7472350 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
+IN-BB599-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230046 	SAMEA7472351 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	India	Kolkata	2017
+NK-BB0235a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230047 	SAMEA7472352 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB0627-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230050 	SAMEA7472355 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1127-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230063 	SAMEA7472368 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1137-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230066 	SAMEA7472371 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1145-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230067 	SAMEA7472372 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1354-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230075 	SAMEA7472380 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1455-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230084 	SAMEA7472389 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1465-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230085 	SAMEA7472390 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1495-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230088 	SAMEA7472393 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1596-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230093 	SAMEA7472398 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1759-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230100 	SAMEA7472405 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1887-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230104 	SAMEA7472409 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB1919-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230106 	SAMEA7472411 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB6114-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230111 	SAMEA7472416 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NK-BB7051-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230116 	SAMEA7472421 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Kano	2017
+NN-BB130-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230124 	SAMEA7472429 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB135-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230126 	SAMEA7472431 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB146-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230128 	SAMEA7472433 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB153-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230129 	SAMEA7472434 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB1542r1-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230132 	SAMEA7472437 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB1545-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230133 	SAMEA7472438 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB1548-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230135 	SAMEA7472440 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB1560-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230137 	SAMEA7472442 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB1569-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230141 	SAMEA7472446 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB1613-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230148 	SAMEA7472453 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB163-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230153 	SAMEA7472458 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB1647-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230157 	SAMEA7472462 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB1662-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230160 	SAMEA7472465 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB167b-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230163 	SAMEA7472468 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB169-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230165 	SAMEA7472470 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB1690r2-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230166 	SAMEA7472471 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB170-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230168 	SAMEA7472473 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB171-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230169 	SAMEA7472474 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB1721-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230172 	SAMEA7472477 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB1733r1-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230173 	SAMEA7472478 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB1794-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230176 	SAMEA7472481 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NN-BB196-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230182 	SAMEA7472487 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB314-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230184 	SAMEA7472489 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB402a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230185 	SAMEA7472490 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB407-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230186 	SAMEA7472491 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB409-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230187 	SAMEA7472492 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB418-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230188 	SAMEA7472493 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB455-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230193 	SAMEA7472498 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB492-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230197 	SAMEA7472502 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB492r1-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230198 	SAMEA7472503 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB552-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230200 	SAMEA7472505 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB648-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230201 	SAMEA7472506 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB753-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230202 	SAMEA7472507 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB787-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230203 	SAMEA7472508 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NN-BB915a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230204 	SAMEA7472509 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2016
+NW-BB1240-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230206 	SAMEA7472511 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NW-BB182ar1-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230210 	SAMEA7472515 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+NW-BB750-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230212 	SAMEA7472517 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Nigeria	Abuja	2017
+PC-BB31-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230217 	SAMEA7472522 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PC-BB456-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230223 	SAMEA7472528 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB1096-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230233 	SAMEA7472538 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1282-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230237 	SAMEA7472542 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1599-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230253 	SAMEA7472558 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1617-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230256 	SAMEA7472561 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1626-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230257 	SAMEA7472562 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1729-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230265 	SAMEA7472570 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1807-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230267 	SAMEA7472572 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1873-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230273 	SAMEA7472578 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1935-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230279 	SAMEA7472584 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB1936-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230280 	SAMEA7472585 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2003-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230284 	SAMEA7472589 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2093-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230293 	SAMEA7472598 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2126-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230294 	SAMEA7472599 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2254-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230304 	SAMEA7472609 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB226-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230306 	SAMEA7472611 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2269-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230307 	SAMEA7472612 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2292-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230308 	SAMEA7472613 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2847-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230326 	SAMEA7472631 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB2859-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230327 	SAMEA7472632 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB3057-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230330 	SAMEA7472635 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB3180-I2	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230341 	SAMEA7472646 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB3196-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230342 	SAMEA7472647 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB3318-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230350 	SAMEA7472655 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB3445-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230354 	SAMEA7472659 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB4154-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230367 	SAMEA7472673 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB4172-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230368 	SAMEA7472674 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB4815-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230383 	SAMEA7472689 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB5302-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230407 	SAMEA7472713 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB5730-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230422 	SAMEA7472728 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB5741-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230423 	SAMEA7472729 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB5838-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230430 	SAMEA7472736 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB6026-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230436 	SAMEA7472742 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB62-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230442 	SAMEA7472748 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2016
+PP-BB6222-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230445 	SAMEA7472751 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB6586-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230453 	SAMEA7472759 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB6930-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230476 	SAMEA7472782 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB7127-I	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230487 	SAMEA7472793 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB7164-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230492 	SAMEA7472798 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB7510a-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230507 	SAMEA7472813 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+PP-BB8144-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230528 	SAMEA7472834 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Pakistan	Islamabad	2017
+RK-BB1216-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230539 	SAMEA7472845 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
+RK-BB1813-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230548 	SAMEA7472854 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
+RK-BB472-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230558 	SAMEA7472864 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB488-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230559 	SAMEA7472865 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB5-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230560 	SAMEA7472866 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB50-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230561 	SAMEA7472867 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB584-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230563 	SAMEA7472869 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB589-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230564 	SAMEA7472870 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB600-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230565 	SAMEA7472871 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB615-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230566 	SAMEA7472872 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB721b-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230573 	SAMEA7472879 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RK-BB840-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230580 	SAMEA7472886 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
+RK-BB866-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230582 	SAMEA7472888 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2017
+RK-BB92-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230585 	SAMEA7472891 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kabgayi	2016
+RU-BB124-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230590 	SAMEA7472896 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
+RU-BB187-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230591 	SAMEA7472897 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
+RU-BB193-I	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230592 	SAMEA7472898 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
+RU-BB284-I	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230596 	SAMEA7472902 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
+RU-BB487-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230602 	SAMEA7472908 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2017
+RU-BB59-I	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230604 	SAMEA7472910 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	Rwanda	Kigali	2016
+RU-BB83-I	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230606 	SAMEA7472912 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB102-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230608 	SAMEA7472914 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB1197-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230612 	SAMEA7472918 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
+ZAT-BB1197-I2	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230613 	SAMEA7472919 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
+ZAT-BB1262-I4	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230615 	SAMEA7472921 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
+ZAT-BB14-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230617 	SAMEA7472923 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB175-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230621 	SAMEA7472927 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB175-I2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230622 	SAMEA7472928 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB1830-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230624 	SAMEA7472930 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
+ZAT-BB1851-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230625 	SAMEA7472931 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
+ZAT-BB237-I2	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230628 	SAMEA7472934 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB245-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230629 	SAMEA7472935 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB2708-I1	ciprofloxacin	R	==	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230633 	SAMEA7472939 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
+ZAT-BB2711-I1	ciprofloxacin	S	==	0.25	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230634 	SAMEA7472940 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2017
+ZAT-BB330-I1	ciprofloxacin	I	==	0.5	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230639 	SAMEA7472945 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB514b-I1	ciprofloxacin	R	>	2	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230641 	SAMEA7472947 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
+ZAT-BB643-I3	ciprofloxacin	R	==	1	mg/L	MIC (agar dilution)	EUCAST	v9.0	Manual	-	-	ERS5230643 	SAMEA7472949 	PRJEB33565	33782558	Kirsty Sands	Human	Human	Blood	Infection	South Africa	Cape Town	2016
 1UM1	ciprofloxacin	R	-	4	mg/L	MIC (broth dilution)	EUCAST	-	Vitek	Biomerieux	-	ERR4367470	SAMEA7077141	PRJEB38540	33829268	Marianne Sunde	Human	Human	Feces	Colonisation	Thailand	Khon Kaen	2018
 1UP2	ciprofloxacin	S	-	0.03	mg/L	MIC (broth dilution)	EUCAST	-	Vitek	Biomerieux	-	ERR4367471	SAMEA7077142	PRJEB38540	33829268	Marianne Sunde	Human	Human	Feces	Colonisation	Thailand	Khon Kaen	2018
 10PM1	ciprofloxacin	R	-	1	mg/L	MIC (broth dilution)	EUCAST	-	Vitek	Biomerieux	-	ERR4367487	SAMEA7077158	PRJEB38540	33829268	Marianne Sunde	Animal	Pig	Feces	Colonisation	Thailand	Khon Kaen	2018
@@ -11227,7 +11227,7 @@ NK_H1_104	ciprofloxacin	I	==	22	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	E
 NK_H1_110	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578106	SAMEA113605056	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H1_112	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578108	SAMEA113605058	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H1_113	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578109	SAMEA113605059	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
-NK_H1_114	ciprofloxacin	S	==	0.064	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	-	-	-	ERR11578110	SAMEA113605060	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
+NK_H1_114	ciprofloxacin	S	==	0.064	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	Manual	-	-	ERR11578110	SAMEA113605060	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H1_117	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578112	SAMEA113605062	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H1_118	ciprofloxacin	S	==	25	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578113	SAMEA113605063	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H1_119	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578114	SAMEA113605064	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
@@ -11577,7 +11577,7 @@ NK_H18_058	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	
 NK_H18_059	ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578490	SAMEA113605733	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H18_061	ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578492	SAMEA113605735	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H18_062	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578493	SAMEA113605736	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
-NK_H18_063	ciprofloxacin	I	==	0.5	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	-	-	-	ERR11578494	SAMEA113605737	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
+NK_H18_063	ciprofloxacin	I	==	0.5	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	Manual	-	-	ERR11578494	SAMEA113605737	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H18_064	ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578495	SAMEA113605738	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H18_065	ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578496	SAMEA113605739	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H18_066	ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578497	SAMEA113605740	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
@@ -11879,7 +11879,7 @@ NK_H24_054	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	
 NK_H24_055	ciprofloxacin	S	==	26	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578809	SAMEA113606022	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H24_056	ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578810	SAMEA113606023	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2018
 NK_H25_001	ciprofloxacin	R	==	6	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578811	SAMEA113606024	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
-NK_H25_002	ciprofloxacin	S	==	0.125	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	-	-	-	ERR11578812	SAMEA113606025	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
+NK_H25_002	ciprofloxacin	S	==	0.125	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	Manual	-	-	ERR11578812	SAMEA113606025	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H25_003	ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578813	SAMEA113606026	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H25_004	ciprofloxacin	S	==	27	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578814	SAMEA113606027	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H25_005	ciprofloxacin	S	==	31	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578815	SAMEA113606028	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
@@ -12019,7 +12019,7 @@ NK_H8_003	ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	E
 NK_H8_004	ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578966	SAMEA113605225	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H8_005	ciprofloxacin	I	==	24	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578967	SAMEA113605226	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H8_006	ciprofloxacin	S	==	28	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578968	SAMEA113605227	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
-NK_H8_007	ciprofloxacin	S	==	0.032	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	-	-	-	ERR11578969	SAMEA113605228	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
+NK_H8_007	ciprofloxacin	S	==	0.032	mg/L	MIC (E-test gradient diffusion)	EUCAST	2023 v13.0	Manual	-	-	ERR11578969	SAMEA113605228	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H8_008	ciprofloxacin	S	==	31	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578970	SAMEA113605229	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H8_009	ciprofloxacin	S	==	30	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578971	SAMEA113605230	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017
 NK_H8_010	ciprofloxacin	S	==	29	mm	Disk diffusion	EUCAST	2023 v13.0	Manual	-	-	ERR11578972	SAMEA113605231	PRJEB48268	38574775	Iren HÃÂ¸yland LÃÂ¶hr	Human	human	Blood	Infection	Norway	-	2017

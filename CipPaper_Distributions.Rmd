@@ -65,6 +65,7 @@ c25 <- c(
 )
 ```
 
+# Relabel MIC datasets
 ```{r}
 cipro_antibiogram_MIC <- cipro_antibiogram
 
@@ -150,6 +151,8 @@ ggsave(width=9, height=4, file="figs/FigS2_MIC_distribution.pdf")
 ggsave(width=9, height=4, file="figs/FigS2_MIC_distribution.png")
 
 ```
+
+# Relabel DD datasets
 ```{r}
 cipro_antibiogram_DD <- cipro_antibiogram
 

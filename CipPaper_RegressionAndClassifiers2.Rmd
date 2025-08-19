@@ -814,12 +814,15 @@ InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>%
 
 cipro_antibiogram <- cipro_antibiogram %>%
   mutate(platform_type=case_when(
-    Laboratory.Typing.Platform=="Sensititre" ~ "Auto",
-    Laboratory.Typing.Platform=="Phoenix" ~ "Auto",
-    Laboratory.Typing.Platform=="Vitek" ~ "Auto",
-    Laboratory.Typing.Platform=="Manual" ~ "Manual",
+    Laboratory.Typing.Platform=="Sensititre" ~ "Sensititre",
+    Laboratory.Typing.Platform=="Phoenix" ~ "Phoenix",
+    Laboratory.Typing.Platform=="Vitek" ~ "Vitek",
+    Laboratory.Typing.Method=="MIC (agar dilution)" ~ "Agar dilution",
+    Laboratory.Typing.Method=="MIC (E-test gradient diffusion)" ~ "E-test",
+    Laboratory.Typing.Method=="Disk diffusion" ~ "Disk diffusion",
     TRUE ~ "Unknown"
   ))
+
 
 platform_R <- cipro_antibiogram %>% 
   group_by(platform_type) %>% 
