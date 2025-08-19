@@ -65,9 +65,65 @@ c25 <- c(
 )
 ```
 
+```{r}
+cipro_antibiogram_MIC <- cipro_antibiogram
+
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "KASPAH" ] <- "KASPAH (V=1172)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "KLEBGAP" ] <- "KLEBGAP (V=92, E=4)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "India_GHRU" ] <- "India_GHRU (V=831)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Leangapichart_2021" ] <- "Leangapichart_2021 (V=38)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Philippines" ] <- "Philippines (V=227)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Torok_2020" ] <- "Torok_2020 (V=1296)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Egli" ] <- "Egli (V=127)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Long" ] <- "Long (P=1595)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Denmark_MedVetKlebs" ] <- "Denmark_MedVetKlebs (S=49)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Mathers" ] <- "Mathers (S=27)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Italy_MVK_MIC" ] <- "Italy_MVK_MIC (S=85)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "BSAC" ] <- "BSAC (A=247)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Milan_2019" ] <- "Milan_2019 (S=98)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Wright" ] <- "Wright (V=80)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Colombia_GHRU" ] <- "Colombia_GHRU (V=394)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "BARNARDS" ] <- "BARNARDS (A=251)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "SPARK" ] <- "SPARK (P=1956)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Ellington" ] <- "Ellington (V=70)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Nigeria_GHRU" ] <- "Nigeria_GHRU (V=108)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Stoesser_2013" ] <- "Stoesser_2013 (P=69)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Heinz_2019" ] <- "Heinz_2019 (V=178)"
+cipro_antibiogram_MIC$index[cipro_antibiogram_MIC$index == "Bachman_2022" ] <- "Bachman_2022 (S=85)"
+
+
+
+cipro_antibiogram_MIC$index <- factor(cipro_antibiogram_MIC$index, levels = c(
+  "Torok_2020 (V=1296)",
+  "KASPAH (V=1172)",
+  "India_GHRU (V=831)",
+  "Colombia_GHRU (V=394)",
+  "Philippines (V=227)",
+  "Heinz_2019 (V=178)",
+  "Egli (V=127)",
+  "Nigeria_GHRU (V=108)",
+  "KLEBGAP (V=92, E=4)",
+  "Wright (V=80)",
+  "Ellington (V=70)",
+  "Leangapichart_2021 (V=38)",
+  "SPARK (P=1956)", 
+  "Long (P=1595)",
+  "Stoesser_2013 (P=69)",
+  "Milan_2019 (S=98)",
+  "Bachman_2022 (S=85)",
+  "Italy_MVK_MIC (S=85)",
+  "Denmark_MedVetKlebs (S=49)",
+  "Mathers (S=27)",
+  "BARNARDS (A=251)",
+  "BSAC (A=247)"
+ ))
+
+```
+
+
 # MIC
 ``` {r}
-MIC_dist <- cipro_antibiogram %>%
+MIC_dist <- cipro_antibiogram_MIC %>%
   filter(Laboratory.Typing.Method!="Disk diffusion") %>%
   mutate(Measurement=replace(Measurement, Measurement==0.032, 0.03)) %>%
   mutate(Measurement=replace(Measurement, Measurement==0.064, 0.06)) %>%
@@ -94,12 +150,32 @@ ggsave(width=9, height=4, file="figs/FigS2_MIC_distribution.pdf")
 ggsave(width=9, height=4, file="figs/FigS2_MIC_distribution.png")
 
 ```
+```{r}
+cipro_antibiogram_DD <- cipro_antibiogram
 
+cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "Huynh_2020" ] <- "Huynh_2020 (N=262)"
+cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "KLEBGAP" ] <- "KLEBGAP (N=2379)"
+cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "Philippines_DD" ] <- "Philippines_DD (N=28)"
+cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "Potter_2018" ] <- "Potter_2018 (V=52)"
+cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "perdigao_2022" ] <- "perdigao_2022 (N=334)"
+cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "sands2021_arthropods_DD" ] <- "sands2021_arthropods_DD (N=18)"
+
+cipro_antibiogram_DD$index <- factor(cipro_antibiogram_DD$index, levels = c(
+  "KLEBGAP (N=2379)",
+  "perdigao_2022 (N=334)",
+  "Huynh_2020 (N=262)",
+  "Potter_2018 (V=52)",
+  "Philippines_DD (N=28)",
+  "sands2021_arthropods_DD (N=18)"
+
+ ))
+
+```
 
 
 # Disk diffusion
 ``` {r}
-DD_dist <- cipro_antibiogram %>%
+DD_dist <- cipro_antibiogram_DD %>%
   filter(Laboratory.Typing.Method=="Disk diffusion") %>%
   group_by(Measurement, index) %>% count() %>%
   ggplot(aes(x=factor(Measurement), y=n, fill=index)) + 
