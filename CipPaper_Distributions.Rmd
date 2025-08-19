@@ -159,7 +159,7 @@ cipro_antibiogram_DD <- cipro_antibiogram
 cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "Huynh_2020" ] <- "Huynh_2020 (N=262)"
 cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "KLEBGAP" ] <- "KLEBGAP (N=2379)"
 cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "Philippines_DD" ] <- "Philippines_DD (N=28)"
-cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "Potter_2018" ] <- "Potter_2018 (V=52)"
+cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "Potter_2018" ] <- "Potter_2018 (N=52)"
 cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "perdigao_2022" ] <- "perdigao_2022 (N=334)"
 cipro_antibiogram_DD$index[cipro_antibiogram_DD$index == "sands2021_arthropods_DD" ] <- "sands2021_arthropods_DD (N=18)"
 
@@ -167,7 +167,7 @@ cipro_antibiogram_DD$index <- factor(cipro_antibiogram_DD$index, levels = c(
   "KLEBGAP (N=2379)",
   "perdigao_2022 (N=334)",
   "Huynh_2020 (N=262)",
-  "Potter_2018 (V=52)",
+  "Potter_2018 (N=52)",
   "Philippines_DD (N=28)",
   "sands2021_arthropods_DD (N=18)"
 

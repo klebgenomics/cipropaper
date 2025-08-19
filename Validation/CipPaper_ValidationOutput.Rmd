@@ -2413,7 +2413,7 @@ validation_summary_table_plot <-ggplot(validation_summary_table_total, aes(as.nu
   theme_bw()+
   theme(legend.title=element_blank())
 
-ggsave(width=10, height=14, file="../figs/FigX_extValidation.pdf")
+#ggsave(width=10, height=14, file="../figs/FigX_extValidation.pdf")
 
 # Only include datasets with at least 10 S genomes and 10 R genomes, >25 genomes in total, <100% S/R genomes
 validation_summary_table_total_exclude <- 
@@ -2433,7 +2433,7 @@ validation_summary_table_plot_exclude <-ggplot(validation_summary_table_total_ex
   theme_bw()+
   theme(legend.title=element_blank())
 
-ggsave(width=10, height=14, file="../figs/FigX_extValidation_exclude.pdf")
+#ggsave(width=10, height=14, file="../figs/FigX_extValidation_exclude.pdf")
 
 ```
 

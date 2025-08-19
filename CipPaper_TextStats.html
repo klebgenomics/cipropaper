@@ -2040,7 +2040,7 @@ display: none;
 <h1 class="title toc-ignore">Ciprofloxacin resistance in Klebsiella
 pneumoniae</h1>
 <h4 class="author">Iana Amke, Kara Tsang, Kat Holt</h4>
-<h4 class="date">Last compiled on 13/07/25</h4>
+<h4 class="date">Last compiled on 19/08/25</h4>
 
 </div>
 
@@ -2098,12 +2098,12 @@ margin-right: auto;
 ## 25.25684 74.74316</code></pre>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Platform)</span></code></pre></div>
 <pre><code>## 
-##          -     Manual    Phoenix Sensititre      Vitek 
-##        935       3320       3551        234       4127</code></pre>
+##     Manual    Phoenix Sensititre      Vitek 
+##       3575       3620        332       4640</code></pre>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="fu">table</span>(cipro_antibiogram<span class="sc">$</span>Laboratory.Typing.Platform<span class="sc">!=</span><span class="st">&quot;Manual&quot;</span>)</span></code></pre></div>
 <pre><code>## 
 ## FALSE  TRUE 
-##  3320  8847</code></pre>
+##  3575  8592</code></pre>
 <div id="test-effect-of-qrdr-in-absence-of-any-acquired-genes" class="section level2">
 <h2>test effect of QRDR, in absence of any acquired genes</h2>
 <div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>mic <span class="ot">&lt;-</span> cipro_antibiogram <span class="sc">%&gt;%</span></span>

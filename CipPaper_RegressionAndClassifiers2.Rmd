@@ -105,10 +105,6 @@ npv <- function(pred,truth) {
   return(xtabs[1,1]/sum(xtabs[1,]))
 }
 
-#sens <- function(pred,truth) {
-#  xtabs <- table(pred,truth)
-#  return(xtabs[2,2]/(sum(xtabs[,2])))
-#}
 
 sens <- function(pred,truth) {
   xtabs <- table(pred,factor(truth, levels = 0:1))
@@ -902,69 +898,6 @@ Study_R <- cipro_antibiogram %>% group_by(index) %>%
   rename(category_name=index)
 ```
 
-# performance by MIC platform
-``` {r platform_performance_MIC}
-
-platform_R <- cipro_antibiogram %>% 
-  filter(Laboratory.Typing.Method!="Disk diffusion") %>%
-  group_by(Laboratory.Typing.Platform) %>% 
-  summarise(sens=sens(predR, resistant)*100, 
-            spec=spec(predR, resistant)*100, 
-            cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
-            n=n(),
-            percent_R=(sum(resistant))/n*100) %>%
-  mutate(out="R") %>% 
-  mutate(category="Laboratory.Typing.Platform") %>% 
-  relocate(out, category, .before=Laboratory.Typing.Platform)%>%
-  rename(category_name=Laboratory.Typing.Platform)
-
-platform_R
-
-cipro_antibiogram %>% 
-  filter(Laboratory.Typing.Method!="Disk diffusion") %>%
-  group_by(Laboratory.Typing.Platform) %>% summarise(studies=length(unique(index)))
-
-
-platform_disk <- cipro_antibiogram %>% 
-  filter(Laboratory.Typing.Method=="Disk diffusion") %>%
-  group_by(Laboratory.Typing.Platform) %>% 
-  summarise(sens=sens(predR, resistant)*100, 
-            spec=spec(predR, resistant)*100, 
-            cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
-            n=n(),
-            percent_R=(sum(resistant))/n*100) %>%
-  mutate(out="R") %>% 
-  mutate(category="Laboratory.Typing.Platform") %>% 
-  relocate(out, category, .before=Laboratory.Typing.Platform)%>%
-  rename(category_name=Laboratory.Typing.Platform)
-
-cipro_antibiogram %>% 
-  filter(Laboratory.Typing.Method=="Disk diffusion") %>%
-  group_by(Laboratory.Typing.Platform) %>% summarise(studies=length(unique(index)))
-
-```
-
-# performance for DD
-``` {r platform_performance_DD}
-
-method_R <- cipro_antibiogram %>% 
-  group_by(Laboratory.Typing.Method) %>% 
-  summarise(sens=sens(predR, resistant)*100, 
-            spec=spec(predR, resistant)*100, 
-            cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
-            n=n(),
-            percent_R=(sum(resistant))/n*100) %>%
-  mutate(out="R") %>% 
-  mutate(category="Laboratory.Typing.Method") %>% 
-  relocate(out, category, .before=Laboratory.Typing.Method)%>%
-  rename(category_name=Laboratory.Typing.Method)
-```
 
 ``` {r}
 cipro_antibiogram <- cipro_antibiogram %>% 
