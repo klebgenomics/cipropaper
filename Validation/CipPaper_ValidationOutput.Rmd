@@ -2022,21 +2022,21 @@ validation_summary_table_total$Dataset_label[validation_summary_table_total$Data
 
 validation_summary_table_total<- validation_summary_table_total %>% 
   mutate(Dataset_label = (gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset_label)))%>%
-  mutate(Dataset_label = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset_label)))%>%
+  mutate(Dataset_label = (gsub("EUSCAPE & EURECA", "A (EUCAST, Various)", Dataset_label)))%>%
   mutate(Dataset_label = (gsub("PPPPPPPP", "EUSCAPE & EURECA (Kvv, EUCAST)", Dataset_label)))%>% 
   
-  mutate(Dataset_label = (gsub("India GHRU", "B (EUCAST)", Dataset_label)))%>% 
-  mutate(Dataset_label = (gsub("AGAR GnSOP", "C (EUCAST)", Dataset_label)))%>% 
+  mutate(Dataset_label = (gsub("India GHRU", "B (EUCAST, V)", Dataset_label)))%>% 
+  mutate(Dataset_label = (gsub("AGAR GnSOP", "C (EUCAST, V/P)", Dataset_label)))%>% 
     mutate(Dataset_label = (gsub("Oxfordshire\\*", "XXXXXXX", Dataset_label)))%>% 
-  mutate(Dataset_label = (gsub("Oxfordshire", "D (EUCAST)", Dataset_label)))%>% 
+  mutate(Dataset_label = (gsub("Oxfordshire", "D (EUCAST, P)", Dataset_label)))%>% 
       mutate(Dataset_label = (gsub("XXXXXXX", "Oxfordshire (Kvv, EUCAST)", Dataset_label)))%>% 
-    mutate(Dataset_label = (gsub("HURYC & CIBERINFEC", "E (EUCAST)", Dataset_label)))%>% 
-  mutate(Dataset_label = (gsub("HULP", "F (EUCAST)", Dataset_label)))%>% 
-  mutate(Dataset_label = (gsub("JARBS-GNR", "G (CLSI)", Dataset_label)))%>% 
+    mutate(Dataset_label = (gsub("HURYC & CIBERINFEC", "E (EUCAST, S/M)", Dataset_label)))%>% 
+  mutate(Dataset_label = (gsub("HULP", "F (EUCAST, MW/E)", Dataset_label)))%>% 
+  mutate(Dataset_label = (gsub("JARBS-GNR", "G (CLSI, MW)", Dataset_label)))%>% 
       mutate(Dataset_label = (gsub("MBIRA\\*", "YYYYYYYY", Dataset_label)))%>% 
-  mutate(Dataset_label = (gsub("MBIRA", "H (CLSI)", Dataset_label)))%>%
+  mutate(Dataset_label = (gsub("MBIRA", "H (CLSI, V/E)", Dataset_label)))%>%
         mutate(Dataset_label = (gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset_label)))%>% 
-  mutate(Dataset_label = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI)", Dataset_label)))%>% 
+  mutate(Dataset_label = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI, V/S)", Dataset_label)))%>% 
    mutate(Dataset_label = (gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset_label)))%>% 
   mutate(Dataset_label = (gsub("SmaouiTunisia\\*", "K* (EUCAST)", Dataset_label)))%>% 
     mutate(Dataset_label = (gsub("Addis Ababa University\\*", "L* (Kvv, CLSI)", Dataset_label)))%>%
@@ -2044,7 +2044,31 @@ validation_summary_table_total<- validation_summary_table_total %>%
   mutate(Dataset_label = (gsub("CHAMPS", "N* (CLSI)", Dataset_label)))
 
 
-validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c("A (EUCAST) (S=291, R=1687)", "B (EUCAST) (S=84, R=441)","C (EUCAST) (S=168, R=255)", "D (EUCAST) (S=242, R=37)", "E (EUCAST) (S=20, R=146)", "F (EUCAST) (S=11, R=136)", "G (CLSI) (S=222, R=449)","H (CLSI) (S=109, R=128)", "I (CLSI) (S=18, R=153)", "J* (EUCAST/BSAC) (S=196, R=411)", "K* (EUCAST) (S=62, R=146)", "L* (Kvv, CLSI) (S=37, R=28)","M* (EUCAST) (S=11, R=53)", "N* (CLSI) (S=18, R=21)", "IZSAM (S=7, R=273)",  "IRCCS Ospedale San Raffaele (S=9, R=187)", "MBIRA (Kvv, CLSI) (S=85, R=5)",  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", "SCHARKI (S=51, R=2)","EUSCAPE & EURECA (Kvv, EUCAST) (S=35, R=3)", "PachecoBrazil (S=10, R=28)", "HarrisMERINO (S=7, R=21)", "Overall median (datasets A-N)", "All datasets combined (S=1757, R=4610)"))
+validation_summary_table_total$Dataset_label <- factor(as.character(validation_summary_table_total$Dataset_label), levels = c(
+  "A (EUCAST, Various) (S=291, R=1687)", 
+  "B (EUCAST, V) (S=84, R=441)",
+  "C (EUCAST, V/P) (S=168, R=255)", 
+  "D (EUCAST, P) (S=242, R=37)", 
+  "E (EUCAST, S/M) (S=20, R=146)", 
+  "F (EUCAST, MW/E) (S=11, R=136)", 
+  "G (CLSI, MW) (S=222, R=449)",
+  "H (CLSI, V/E) (S=109, R=128)", 
+  "I (CLSI, V/S) (S=18, R=153)", 
+  "J* (EUCAST/BSAC) (S=196, R=411)", 
+  "K* (EUCAST) (S=62, R=146)", 
+  "L* (Kvv, CLSI) (S=37, R=28)",
+  "M* (EUCAST) (S=11, R=53)", 
+  "N* (CLSI) (S=18, R=21)", 
+  "IZSAM (S=7, R=273)",  
+  "IRCCS Ospedale San Raffaele (S=9, R=187)", 
+  "MBIRA (Kvv, CLSI) (S=85, R=5)",  
+  "Oxfordshire (Kvv, EUCAST) (S=64, R=0)", 
+  "SCHARKI (S=51, R=2)",
+  "EUSCAPE & EURECA (Kvv, EUCAST) (S=35, R=3)", 
+  "PachecoBrazil (S=10, R=28)", 
+  "HarrisMERINO (S=7, R=21)", 
+  "Overall median (datasets A-N)", 
+  "All datasets combined (S=1757, R=4610)"))
 
 
 
