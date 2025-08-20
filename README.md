@@ -8,6 +8,15 @@ Each `.Rmd` file contains R code that uses these data files to generate figures,
 
 Public data downloaded from [Pathogenwatch](https://pathogen.watch/) via [this site](https://cgps.gitbook.io/pathogenwatch/public-data-downloads), and corresponding code, is in the `Pathogenwatch/` directory. Output figures are written to the main `figures/` directory.
 
+## Kleborate and Pathogenwatch
+
+The ciprofloxacin resistance predictor can be used via: 
+
+- [Kleborate v3.2.4](https://github.com/klebgenomics/Kleborate) (command line tool) 
+- [Pathogenwatch v23.4.4](https://pathogen.watch/) (web-based tool)
+
+Information about the four columns used to report ciprofloxacin resistance prediction results can be found [here.](https://kleborate.readthedocs.io/en/latest/kpsc_modules.html#ciprofloxacin-resistance-prediction)
+
 ## Citations
 If you use the code, please cite this repository and its DOI.
 
