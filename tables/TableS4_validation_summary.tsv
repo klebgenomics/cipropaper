@@ -18,7 +18,7 @@ HURYC & CIBERINFEC	"E (EUCAST, S/M)"	Unicycler v0.4.8	MIC (broth dilution)	EUCAS
 HURYC & CIBERINFEC	"E (EUCAST, S/M)"	Unicycler v0.4.8	MIC (broth dilution)	EUCAST	Sensititre	151	"Assembly, Kleborate, Comparison"	-
 IZSAM	IZSAM	SPAdes v3.11.1	MIC (broth dilution)	EUCAST	Microscan	283	Comparison	"Assembly, Kleborate"
 India GHRU	"B (EUCAST, V)"	Unicycler v0.4.8	MIC (broth dilution)	EUCAST	Vitek	536	"Assembly, Kleborate, Comparison"	-
-JARBS-GNR	"G (CLSI, MW)"	Unicycler v0.4.8	MIC (broth dilution)	CLSI	MicroScan WalkAway	834	"Assembly, Kleborate, Comparison"	-
+JARBS-GNR (Japan)	"G (CLSI, MW)"	Unicycler v0.4.8	MIC (broth dilution)	CLSI	MicroScan WalkAway	834	"Assembly, Kleborate, Comparison"	-
 MBIRA	"H (CLSI, V/E)"	Unicycler v0.4.8	MIC (E-test gradient diffusion)	CLSI	Manual 	13	Comparison	"Assembly, Kleborate"
 MBIRA	"H (CLSI, V/E)"	Unicycler v0.4.8	MIC (broth dilution)	CLSI	Vitek	238	Comparison	"Assembly, Kleborate"
 "MBIRA (Kvv, CLSI)"	"MBIRA (Kvv, CLSI)"	Unicycler v0.4.8	MIC (E-test gradient diffusion)	CLSI	Manual 	2	Comparison	"Assembly, Kleborate"

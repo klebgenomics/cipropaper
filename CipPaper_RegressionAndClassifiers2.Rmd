@@ -177,7 +177,7 @@ model_R_indiv_aac6Interaction <- logistf(resistant ~ .*`aac(6')-Ib-cr`, data=R_v
 logreg_model1a <- logreg_details(model_R_indiv) %>% mutate(interaction=NA) %>% mutate(model="a") %>% relocate(interaction, .after=Determinant) %>%
     mutate(Determinant=gsub("`","",Determinant)) 
 
-logreg_model1a$Determinant[logreg_model1a$Determinant == "aac(6')-Ib-cr"] <- "aac(6`)-Ib-cr"
+logreg_model1a$Determinant[logreg_model1a$Determinant == "aac(6')-Ib-cr"] <- "aac(6ʹ)-Ib-cr"
 
 logreg_model1b <- logreg_details(model_R_indiv_aac6Interaction) %>% 
   rename(Term=Determinant) %>%
@@ -187,7 +187,7 @@ logreg_model1b <- logreg_details(model_R_indiv_aac6Interaction) %>%
   mutate(Term=gsub("`","",Term))  %>%
   mutate(interaction=gsub("`","",interaction)) 
 
-logreg_model1b$Determinant[logreg_model1b$Determinant == "aac(6')-Ib-cr"] <- "aac(6`)-Ib-cr"
+logreg_model1b$Determinant[logreg_model1b$Determinant == "aac(6')-Ib-cr"] <- "aac(6ʹ)-Ib-cr"
 
 # all individual determinants, plus significant positive interactions
 log_reg_R_plot <- logreg_model1a %>% bind_rows(logreg_model1b) %>%
@@ -230,7 +230,7 @@ model_NWT_indiv_aac6Interaction <- logistf(nonWT_binary ~ .*`aac(6')-Ib-cr`, dat
 # summarise model output
 logreg_model3a <- logreg_details(model_NWT_indiv) %>% mutate(interaction=NA) %>% mutate(model="a") %>% relocate(interaction, .after=Determinant) %>%
     mutate(Determinant=gsub("`","",Determinant)) 
-logreg_model3a$Determinant[logreg_model3a$Determinant == "aac(6')-Ib-cr"] <- "aac(6`)-Ib-cr"
+logreg_model3a$Determinant[logreg_model3a$Determinant == "aac(6')-Ib-cr"] <- "aac(6ʹ)-Ib-cr"
 
 logreg_model3b <- logreg_details(model_NWT_indiv_aac6Interaction) %>% 
   rename(Term=Determinant) %>%
@@ -239,12 +239,12 @@ logreg_model3b <- logreg_details(model_NWT_indiv_aac6Interaction) %>%
   mutate(Determinant=gsub("`","",Determinant))  %>%
   mutate(Term=gsub("`","",Term))  %>%
   mutate(interaction=gsub("`","",interaction)) 
-logreg_model3b$Determinant[logreg_model3b$Determinant == "aac(6')-Ib-cr"] <- "aac(6`)-Ib-cr"
+logreg_model3b$Determinant[logreg_model3b$Determinant == "aac(6')-Ib-cr"] <- "aac(6ʹ)-Ib-cr"
 
 # get count per marker to label on the right
 marker_count <- cipro_antibiogram %>% 
-  rename("aac(6`)-Ib-cr"=aac6) %>%
-  select(`GyrA-83F`:`qnrVC6`, "aac(6`)-Ib-cr") %>%
+  rename("aac(6ʹ)-Ib-cr"=aac6) %>%
+  select(`GyrA-83F`:`qnrVC6`, "aac(6ʹ)-Ib-cr") %>%
   colSums()
 
 marker_count_order <- logreg_model3a %>% bind_rows(logreg_model3b) %>%
@@ -288,8 +288,8 @@ ppvR <- ppv_solo %>% mutate(p=R.solo/N.solo, se=sqrt(p*(1-p)/N.solo), ci.lower=p
 
 ppvNWT <- ppv_solo %>% mutate(p=NWT.solo/N.solo, se=sqrt(p*(1-p)/N.solo), ci.lower=p-1.96*se, ci.upper=p+1.96*se) %>% select(Determinant, p, ci.lower, ci.upper, N.solo) %>% mutate(category="NWT")
 
-ppvR$Determinant[ppvR$Determinant == "aac(6')-Ib-cr.v2"] <- "aac(6`)-Ib-cr.v2"
-ppvR$Determinant[ppvR$Determinant == "aac(6')-Ib-cr.v2*"] <- "aac(6`)-Ib-cr.v2*"
+ppvR$Determinant[ppvR$Determinant == "aac(6')-Ib-cr.v2"] <- "aac(6ʹ)-Ib-cr.v2"
+ppvR$Determinant[ppvR$Determinant == "aac(6')-Ib-cr.v2*"] <- "aac(6ʹ)-Ib-cr.v2*"
 
 ppvR_plot <- ppvR %>% 
   ggplot(aes(y=Determinant)) +
@@ -298,8 +298,8 @@ ppvR_plot <- ppvR %>%
   geom_point(aes(x=p*100, group=category), col="#bd1515", position=pd) + 
   theme_bw() + labs(x="PPV (%)")
 
-ppvNWT$Determinant[ppvNWT$Determinant == "aac(6')-Ib-cr.v2"] <- "aac(6`)-Ib-cr.v2"
-ppvNWT$Determinant[ppvNWT$Determinant == "aac(6')-Ib-cr.v2*"] <- "aac(6`)-Ib-cr.v2*"
+ppvNWT$Determinant[ppvNWT$Determinant == "aac(6')-Ib-cr.v2"] <- "aac(6ʹ)-Ib-cr.v2"
+ppvNWT$Determinant[ppvNWT$Determinant == "aac(6')-Ib-cr.v2*"] <- "aac(6ʹ)-Ib-cr.v2*"
 
 ppvNWT_plot <- ppvNWT %>% 
   ggplot(aes(y=Determinant)) +
@@ -1053,7 +1053,7 @@ rules_category_SIR_plot <- cipro_antibiogram %>%
   
   
 table_label_df <- data.frame(label = c("0^", "0", "0", "1", "1", ">1", "0", "0", "0", ">0", "0", "0", "qnrB1", "0", "0", "0", "1^", "1", ">1", ">0", "0", "1", "0", "0", "1", "*", "0", "1", "*", "*"),
-                             layer=c("QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr","aac(6`)-Ib-cr"),
+                             layer=c("QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","QRDR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","PMQR","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr","aac(6ʹ)-Ib-cr"),
                              profile_labels=c("0^ QRDR, 0 PMQR, aac6-", "0 QRDR, 0 PMQR, aac6+", "0 QRDR, qnrB1, aac6-", "1 QRDR, 0 PMQR, aac6-", "1 QRDR, 0 PMQR, aac6+",">1 QRDR, 0 PMQR ", "0 QRDR, 1 PMQR^, aac6-","0 QRDR, 1 PMQR, aac6+", "0 QRDR, >1 PMQR ",">0 QRDR, >0 PMQR ","0^ QRDR, 0 PMQR, aac6-", "0 QRDR, 0 PMQR, aac6+", "0 QRDR, qnrB1, aac6-", "1 QRDR, 0 PMQR, aac6-", "1 QRDR, 0 PMQR, aac6+",">1 QRDR, 0 PMQR ", "0 QRDR, 1 PMQR^, aac6-","0 QRDR, 1 PMQR, aac6+", "0 QRDR, >1 PMQR ",">0 QRDR, >0 PMQR ","0^ QRDR, 0 PMQR, aac6-", "0 QRDR, 0 PMQR, aac6+", "0 QRDR, qnrB1, aac6-", "1 QRDR, 0 PMQR, aac6-", "1 QRDR, 0 PMQR, aac6+",">1 QRDR, 0 PMQR ", "0 QRDR, 1 PMQR^, aac6-","0 QRDR, 1 PMQR, aac6+", "0 QRDR, >1 PMQR ",">0 QRDR, >0 PMQR "))
 
 table_label_df %>% ggplot(aes(y = profile_labels, x = layer)) +
@@ -1061,7 +1061,7 @@ table_label_df %>% ggplot(aes(y = profile_labels, x = layer)) +
   geom_text(aes(label = label)) 
 
 table_label_plot <-
-table_label_df %>% ggplot(aes(x = factor(layer, c("QRDR", "PMQR", "aac(6`)-Ib-cr")))) +
+table_label_df %>% ggplot(aes(x = factor(layer, c("QRDR", "PMQR", "aac(6ʹ)-Ib-cr")))) +
   geom_text(aes(y = factor(profile_labels, c(">0 QRDR, >0 PMQR ", "0 QRDR, >1 PMQR ",  "0 QRDR, 1 PMQR, aac6+", "0 QRDR, 1 PMQR^, aac6-",  ">1 QRDR, 0 PMQR ", "1 QRDR, 0 PMQR, aac6+", "1 QRDR, 0 PMQR, aac6-","0 QRDR, qnrB1, aac6-", "0 QRDR, 0 PMQR, aac6+", "0^ QRDR, 0 PMQR, aac6-" )), label = label, fontface = "bold", size=5)) +
   labs(y = "", x = NULL, title="C) Observed phenotype distribution, per genotype profile",) +
   theme_minimal() +
