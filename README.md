@@ -18,6 +18,8 @@ The ciprofloxacin resistance predictor can be used via:
 Information about the four columns used to report ciprofloxacin resistance prediction results can be found [here.](https://kleborate.readthedocs.io/en/latest/kpsc_modules.html#ciprofloxacin-resistance-prediction)
 
 ## Citations
-If you use the code, please cite this repository and its DOI.
+If you use the code, please cite this repository and its DOI: (Tsang et al, 2025. "Ciprofloxacin resistance in _Klebsiella pneumoniae_", https://github.com/klebgenomics/cipropaper, DOI:10.5281/zenodo.17193872).
 
 If you use any data, figures or tables from this repository, please cite the paper.
+
+[![DOI](https://zenodo.org/badge/860325627.svg)](https://doi.org/10.5281/zenodo.17193872)
