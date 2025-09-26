@@ -18,10 +18,10 @@ The ciprofloxacin resistance predictor can be used via:
 Information about the four columns used to report ciprofloxacin resistance prediction results can be found [here.](https://kleborate.readthedocs.io/en/latest/kpsc_modules.html#ciprofloxacin-resistance-prediction)
 
 ## Citations
-If you use the code in this repository, please cite this repository and its DOI: Tsang et al, 2025. "Ciprofloxacin resistance in _Klebsiella pneumoniae_", https://github.com/klebgenomics/cipropaper (DOI:10.5281/zenodo.17193872).
+If you use the code in this repository, please cite this repository and its DOI: Tsang et al. "Ciprofloxacin resistance in _Klebsiella pneumoniae_". https://github.com/klebgenomics/cipropaper (2025). [https://doi.org/10.5281/zenodo.17193872](https://doi.org/10.5281/zenodo.17193872).
 
-If you use any data, figures or tables from this repository, please cite the paper: "Ciprofloxacin resistance in Klebsiella pneumoniae: phenotype prediction from genotype and global distribution of resistance determinants", BioRxiv 2025 (DOI: [10.1101/2025.09.24.678318](https://doi.org/10.1101/2025.09.24.678318)).
+If you use any data, figures or tables from this repository, please cite the paper: Tsang et al. "Ciprofloxacin resistance in _Klebsiella pneumoniae_: phenotype prediction from genotype and global distribution of resistance determinants". BioRxiv (2025). [https://doi.org/10.1101/2025.09.24.678318](https://doi.org/10.1101/2025.09.24.678318).
 
-If you use Kleborate to analyse your own data and report the ciprofloxacin predictions, please cite the paper: Tsang et al, "Ciprofloxacin resistance in Klebsiella pneumoniae: phenotype prediction from genotype and global distribution of resistance determinants", BioRxiv 2025 (DOI: [10.1101/2025.09.24.678318](https://doi.org/10.1101/2025.09.24.678318)) as well as the [primary Kleborate paper](https://www.nature.com/articles/s41467-021-24448-3).
+If you use Kleborate to analyse your own data and report the ciprofloxacin predictions, please cite the paper: Tsang et al. "Ciprofloxacin resistance in _Klebsiella pneumoniae_: phenotype prediction from genotype and global distribution of resistance determinants". BioRxiv (2025). [https://doi.org/10.1101/2025.09.24.678318](https://doi.org/10.1101/2025.09.24.678318) as well as the [primary Kleborate paper](https://www.nature.com/articles/s41467-021-24448-3).
 
 [![DOI](https://zenodo.org/badge/860325627.svg)](https://doi.org/10.5281/zenodo.17193872)
