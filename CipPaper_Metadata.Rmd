@@ -277,7 +277,27 @@ geno <- read_delim("tables/TableS2_genotypes.tsv")
 pheno <- read_delim("tables/TableS3_phenotypes_metadata.tsv")
 cipro_antibiogram <- full_join(geno,pheno)
 
-tableS1_disc_dataset_summary <-cipro_antibiogram %>% group_by(index, Laboratory.Typing.Method,Testing.standard, Laboratory.Typing.Platform) %>% count()
+tableS1_disc_dataset_summary <- cipro_antibiogram %>%
+  group_by(index, Laboratory.Typing.Method, Testing.standard, Laboratory.Typing.Platform) %>%
+  count() %>%
+  left_join(
+    cipro_antibiogram %>%
+      group_by(index, Laboratory.Typing.Method, Testing.standard, Laboratory.Typing.Platform) %>%
+      summarise(
+        min_measurement = paste0(
+          ifelse(Measurement.sign[which.min(Measurement)] == "-", "",
+                 Measurement.sign[which.min(Measurement)]),
+          min(Measurement, na.rm = TRUE)
+        ),
+        max_measurement = paste0(
+          ifelse(Measurement.sign[which.max(Measurement)] == "-", "",
+                 Measurement.sign[which.max(Measurement)]),
+          max(Measurement, na.rm = TRUE)
+        ),
+        .groups = "drop"
+      ),
+    by = c("index", "Laboratory.Typing.Method", "Testing.standard", "Laboratory.Typing.Platform")
+  )
 
 #write_tsv(tableS1_disc_dataset_summary, file="tables/TableS1_discovery_dataset_summary.tsv")
 ```
