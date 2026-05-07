@@ -1,0 +1,32 @@
+﻿Dataset,Laboratory.Typing.Method,Testing.standard,Laboratory.Typing.Platform,n,Minimum.Measurement,Maximum.Measurement
+BARNARDS,MIC (agar dilution),EUCAST,Manual,251,==0.25,>2
+BSAC,MIC (agar dilution),EUCAST,Manual,247,0.03,512
+Bachman_2022,MIC (broth dilution),CLSI,Sensititre,85,<=0.06,>2
+Colombia_GHRU,MIC (broth dilution),EUCAST,Vitek,394,<=0.25,>=4
+Denmark_MedVetKlebs,MIC (broth dilution),EUCAST,Sensititre,49,0.03,>8
+Egli,MIC (broth dilution),EUCAST,Vitek,127,<=0.25,>=4
+Ellington,MIC (broth dilution),EUCAST,Vitek,70,<=0.25,>=4
+Heinz_2019,MIC (broth dilution),EUCAST,Vitek,178,<=0.25,>=4
+Huynh_2020,Disk diffusion,EUCAST,Manual,262,6,38
+India_GHRU,MIC (broth dilution),CLSI,Vitek,831,<=0.25,>=64
+Italy_MVK_MIC,MIC (broth dilution),EUCAST,Sensititre,85,0.03,0.5
+KASPAH,MIC (broth dilution),CLSI,Vitek,170,<=0.25,>=4
+KASPAH,MIC (broth dilution),EUCAST,Vitek,1002,<0.125,>=4
+KLEBGAP,Disk diffusion,EUCAST,Manual,2379,==6,==44
+KLEBGAP,MIC (E-test gradient diffusion),EUCAST,Manual,4,==0.032,==0.5
+KLEBGAP,MIC (broth dilution),EUCAST,Vitek,92,<=0.25,>=4
+Leangapichart_2021,MIC (broth dilution),EUCAST,Vitek,38,0.03,>8
+Long,MIC (broth dilution),CLSI,Phoenix,1595,<=0.5,>2
+Mathers,MIC (broth dilution),CLSI,Sensititre,15,<=0.25,>=4
+Mathers,MIC (broth dilution),CLSI,Vitek,27,<=0.25,>=4
+Milan_2019,MIC (broth dilution),EUCAST,Sensititre,98,<=0.06,>32
+Nigeria_GHRU,MIC (broth dilution),EUCAST,Vitek,108,<=0.25,2
+Philippines,MIC (broth dilution),CLSI,Vitek,227,<=0.25,8
+Philippines_DD,Disk diffusion,CLSI,Manual,28,6,26
+Potter_2018,Disk diffusion,CLSI,Manual,52,24,40
+SPARK,MIC (broth dilution),EUCAST,Phoenix,1956,<=0.25,>1
+Stoesser_2013,MIC (broth dilution),EUCAST,Phoenix,69,<=0.125,>1
+Torok_2020,MIC (broth dilution),EUCAST,Vitek,1296,>=4,>=4
+Wright,MIC (broth dilution),CLSI,Vitek,80,<=0.25,>=4
+perdigao_2022,Disk diffusion,EUCAST,Manual,334,6,30
+sands2021_arthropods_DD,Disk diffusion,EUCAST,Manual,18,==7,==30
