@@ -299,3 +299,57 @@ fisher.test(table(aac6_noGenes_dat$nonWT_binary, aac6_noGenes_dat$aac6))
 fisher.test(table(aac6_noGenes_dat$resistant, aac6_noGenes_dat$aac6))
 
 ```
+
+
+```{r venndiagram}
+cipro_antibiogram$Flq_acquired <- gsub("\\^", "", cipro_antibiogram$Flq_acquired)
+cipro_antibiogram$Flq_acquired <- gsub(".v1", "", cipro_antibiogram$Flq_acquired)
+cipro_antibiogram$Flq_acquired <- gsub(".v2", "", cipro_antibiogram$Flq_acquired)
+
+cipro_antibiogram$Flq_mutations <- gsub("F", "", cipro_antibiogram$Flq_mutations)
+cipro_antibiogram$Flq_mutations <- gsub("I", "", cipro_antibiogram$Flq_mutations)
+cipro_antibiogram$Flq_mutations <- gsub("Y", "", cipro_antibiogram$Flq_mutations)
+cipro_antibiogram$Flq_mutations <- gsub("G", "", cipro_antibiogram$Flq_mutations)
+cipro_antibiogram$Flq_mutations <- gsub("N", "", cipro_antibiogram$Flq_mutations)
+
+# QRDR
+cipro_antibiogram %>% filter(QRDR_mutations!=0, acquired_genes==0, aac6==0) %>% nrow() 
+
+cipro_antibiogram %>% filter(QRDR_mutations==1, acquired_genes==0, aac6==0) %>% count(Flq_mutations)
+
+cipro_antibiogram %>% filter(QRDR_mutations==2, acquired_genes==0, aac6==0) %>% count(Flq_mutations)
+cipro_antibiogram %>% filter(QRDR_mutations==3, acquired_genes==0, aac6==0) %>% count(Flq_mutations)
+cipro_antibiogram %>% filter(QRDR_mutations==4, acquired_genes==0, aac6==0) %>% count(Flq_mutations)
+
+# QRDR + PMQR
+
+cipro_antibiogram %>% filter(QRDR_mutations>0, acquired_genes>0, aac6==0) %>% nrow()
+
+cipro_antibiogram %>% filter(QRDR_mutations==1, acquired_genes==1, aac6==0) %>% count(Flq_mutations, Flq_acquired)
+cipro_antibiogram %>% filter(QRDR_mutations==1, acquired_genes>1, aac6==0) %>% count(Flq_mutations, Flq_acquired)
+cipro_antibiogram %>% filter(QRDR_mutations>2, acquired_genes==1, aac6==0) %>% count(Flq_mutations, Flq_acquired)
+
+# aac6 only
+cipro_antibiogram %>% filter(QRDR_mutations==0, acquired_genes==0, aac6==1) %>% count(aac6)
+
+# no qrdr + aac6
+cipro_antibiogram %>% filter(QRDR_mutations>0, acquired_genes==0, aac6==1) %>% nrow()
+
+
+# pmqr only
+cipro_antibiogram %>% filter(QRDR_mutations==0, acquired_genes==1, aac6==0) %>% count(Flq_acquired)
+# 2 pmqr 
+cipro_antibiogram %>% filter(QRDR_mutations==0, acquired_genes==2, aac6==0) %>% count(Flq_acquired)
+
+# PMQR + AAC
+cipro_antibiogram %>% filter(QRDR_mutations==0, acquired_genes==1, aac6==1) %>% count(Flq_acquired)
+cipro_antibiogram %>% filter(QRDR_mutations==0, acquired_genes>1, aac6==1) %>% count(Flq_acquired)
+
+#All three
+
+# all three one each
+cipro_antibiogram %>% filter(QRDR_mutations==1, acquired_genes==1, aac6==1) %>% count(Flq_mutations, Flq_acquired)
+
+# all three
+cipro_antibiogram %>% filter(QRDR_mutations>1, acquired_genes>1, aac6==1) %>% count(Flq_mutations, Flq_acquired)
+```
