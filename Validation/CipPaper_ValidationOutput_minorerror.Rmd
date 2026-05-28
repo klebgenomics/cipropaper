@@ -1,0 +1,1791 @@
+---
+title: "Validation"
+author: "Kara Tsang, Kat Holt"
+date: "Last compiled on `r format(Sys.time(), '%d/%m/%y')`"
+output: 
+  html_document: 
+    df_print: paged
+    fig_width: 9
+    fig_height: 8
+    mode: selfcontained
+    highlight: pygments
+    theme: 
+      bootswatch: flatly
+      code_font:
+        google: "JetBrains Mono"
+editor_options: 
+  chunk_output_type: inline
+---
+
+```{=html}
+<style type="text/css">
+.main-container {
+  max-width: 1600px !important;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(dev = 'png', echo = TRUE, message = FALSE, warning = FALSE,
+                      cache = FALSE, fig.align = 'center')
+knitr::opts_knit$set(root.dir = getwd())
+
+# Data wrangling
+library(tidyverse)
+library(dplyr)
+library(janitor)
+library(png)
+library(patchwork)
+```
+
+# load data
+``` {r load_data}
+MBIRA_Kpn <- read_delim("MBIRA_ValidationOutput/Prediction_Pheno_summary_Kpn.csv")
+MBIRA_Kvv <- read_delim("MBIRA_ValidationOutput/Prediction_Pheno_summary_Kvv.csv")
+HowdenGorrie <- read_delim("HowdenGorrie_ValidationOutput/Prediction_Pheno_summary.csv")
+AGAR <- read_delim("AGAR_ValidationOutput/Prediction_Pheno_summary.csv")
+Milan <- read_delim("MilanSanRafaelle_ValidationOutput/Prediction_Pheno_summary.csv")
+HailuEthiopia <- read_delim("HailuEthiopia_ValidationOutput/Prediction_Pheno_summary.csv")
+FeaseyMalawi <- read_delim("FeaseyMalawi_ValidationOutput/Prediction_Pheno_summary.csv")
+KayamaJapan <- read_delim("KayamaJapan_ValidationOutput/Prediction_Pheno_summary.csv")
+EUSCAPE_EURECA_Kpn <- read_delim("EURECA_EUSCAPE_ValidationOutput/Prediction_Pheno_summary_Kpn.csv")
+EUSCAPE_EURECA_Kvv <- read_delim("EURECA_EUSCAPE_ValidationOutput/Prediction_Pheno_summary_Kvv.csv")
+EgliSwitzerland <- read_delim("EgliSwitzerland_2025_ValidationOutput/Prediction_Pheno_summary.csv")
+HRYC_Spain <- read_delim("HRYC_Spain_ValidationOutput/Prediction_Pheno_summary.csv")
+IndiaGHRU <- read_delim("IndiaGHRU_2025_ValidationOutput/Prediction_Pheno_summary.csv")
+NeumannGermany <- read_delim("NeumannGermany_ValidationOutput/Prediction_Pheno_summary.csv")
+Whitelaw_CHAMPS <- read_delim("Whitelaw_Stellenbosch_ValidationOutput/Prediction_Pheno_summary_DD.csv")
+Oxfordshire_Kpn <- read_delim("Oxfordshire_ValidationOutput/Prediction_Pheno_summary_Kpn.csv")
+Oxfordshire_Kvv <- read_delim("Oxfordshire_ValidationOutput/Prediction_Pheno_summary_Kvv.csv")
+IZSAM_Italy <- read_delim("IZSAM_Italy_ValidationOutput/Prediction_Pheno_summary.csv")
+LaPaz_Lazaro <- read_delim("LaPaz_Lazaro_ValidationOutput/Prediction_Pheno_summary.csv")
+HarrisMERINO <- read_delim("HarrisMERINO_ValidationOutput/Prediction_Pheno_summary.csv")
+PachecoBrazil <- read_delim("PachecoBrazil_ValidationOutput/Prediction_Pheno_summary.csv")
+SmaouiTunisia <- read_delim("SmaouiTunisia_ValidationOutput/Prediction_Pheno_summary.csv")
+```
+
+## set colours
+``` {r set_colours}
+wt_colours <- c(`non-wt (I/R)`="IndianRed", `wt (S)`= "LightBlue")
+res_colours <- c("I"="grey", "R"="IndianRed", "S"="LightBlue", "NWT"="grey")
+res_colours2 <- c("I"="black", "R"="IndianRed", "S"="LightBlue", "NWT"="black")
+res_colours3 <- c("NWT I"="#78638a", "NWT R"="IndianRed", "WT S"="LightBlue")
+```
+
+``` {r}
+# position dodge for coefficient plots
+pd <- position_dodge(width=0.8)
+```
+
+```{r metrics}
+## functions to calculate PPV and categorical agreement from models
+
+prop <- function(x, n) {
+  if (n == 0) return(NA_real_)
+  x / n
+}
+
+prop_ci <- function(p, n, z = 1.96) {
+  if (n == 0 || is.na(p)) {
+    return(c(lower = NA_real_, upper = NA_real_))
+  }
+
+  se <- sqrt((p * (1 - p)) / n)
+
+  c(
+    lower = p - z * se,
+    upper = p + z * se
+  )
+}
+
+get_cells <- function(xtabs) {
+
+  stopifnot(all(dim(xtabs) == c(2,2)))
+
+  list(
+    TN = xtabs[1,1],
+    FN = xtabs[1,2],
+    FP = xtabs[2,1],
+    TP = xtabs[2,2]
+  )
+}
+
+# ---- minor error from 3x3 S/I/R table ----
+
+minor_error_I <- function(xtabs3) {
+
+  xt3 <- as.data.frame(xtabs3)
+
+  # detect row-name column from imported tables
+  idx_col <- which(
+    names(xt3) %in% c("...1", "..1") |
+      grepl("^\\.\\.", names(xt3))
+  )
+
+  # if row labels stored in first column, move to rownames
+  if (length(idx_col) > 0) {
+
+    row_ids <- as.character(xt3[[idx_col[1]]])
+
+    xt3 <- xt3[, -idx_col, drop = FALSE]
+
+    rownames(xt3) <- row_ids
+  }
+
+  # ensure required rows/columns exist
+  required_rows <- c("pred_S", "pred_I", "pred_R")
+  required_cols <- c("S", "I", "R")
+
+  missing_rows <- setdiff(required_rows, rownames(xt3))
+  missing_cols <- setdiff(required_cols, colnames(xt3))
+
+  if (length(missing_rows) > 0) {
+    stop(
+      paste("Missing rows in xtabs3:",
+            paste(missing_rows, collapse = ", "))
+    )
+  }
+
+  if (length(missing_cols) > 0) {
+    stop(
+      paste("Missing columns in xtabs3:",
+            paste(missing_cols, collapse = ", "))
+    )
+  }
+
+  # reorder safely
+  xt3 <- xt3[required_rows, required_cols, drop = FALSE]
+
+  xt3 <- as.matrix(xt3)
+  storage.mode(xt3) <- "numeric"
+
+  N <- sum(xt3, na.rm = TRUE)
+
+  me_count <-
+    xt3["pred_I", "S"] +
+    xt3["pred_I", "R"] +
+    xt3["pred_S", "I"] +
+    xt3["pred_R", "I"]
+
+  p <- ifelse(N == 0, NA_real_, me_count / N)
+
+  ci <- prop_ci(p, N)
+
+  list(
+    me_I_total = p,
+    me_I_total_lb = unname(ci["lower"]),
+    me_I_total_ub = unname(ci["upper"])
+  )
+}
+
+# ---- main metrics function ----
+
+metrics <- function(xtabs, xtabs3 = NULL) {
+
+  x <- get_cells(xtabs)
+
+  n <- sum(xtabs)
+
+  # core metrics
+  cat  <- prop(x$TN + x$TP, n)
+  sens <- prop(x$TP, x$TP + x$FN)
+  spec <- prop(x$TN, x$TN + x$FP)
+  ppv  <- prop(x$TP, x$TP + x$FP)
+  npv  <- prop(x$TN, x$TN + x$FN)
+  me   <- prop(x$FP, x$TN + x$FP)
+  vme  <- prop(x$FN, x$TP + x$FN)
+
+  perc_R <- prop(x$TP + x$FN, n)
+
+  # confidence intervals
+  cat_ci  <- prop_ci(cat, n)
+  sens_ci <- prop_ci(sens, x$TP + x$FN)
+  spec_ci <- prop_ci(spec, x$TN + x$FP)
+  ppv_ci  <- prop_ci(ppv, x$TP + x$FP)
+  npv_ci  <- prop_ci(npv, x$TN + x$FN)
+  me_ci   <- prop_ci(me, x$TN + x$FP)
+  vme_ci  <- prop_ci(vme, x$TP + x$FN)
+
+  ci_low  <- function(ci) unname(ci["lower"])
+  ci_high <- function(ci) unname(ci["upper"])
+
+  # ---- minor error ----
+
+  if (!is.null(xtabs3)) {
+
+    me_I <- minor_error_I(xtabs3)
+
+    me_I_total <- me_I$me_I_total
+
+    me_I_total_ci <- c(
+      lower = me_I$me_I_total_lb,
+      upper = me_I$me_I_total_ub
+    )
+
+  } else {
+
+    me_I_total <- NA_real_
+
+    me_I_total_ci <- c(
+      lower = NA_real_,
+      upper = NA_real_
+    )
+  }
+
+  summary <- c(
+
+    cat = cat,
+    sens = sens,
+    spec = spec,
+    me = me,
+    vme = vme,
+
+    cat_lb = ci_low(cat_ci),
+    cat_ub = ci_high(cat_ci),
+
+    sens_lb = ci_low(sens_ci),
+    sens_ub = ci_high(sens_ci),
+
+    spec_lb = ci_low(spec_ci),
+    spec_ub = ci_high(spec_ci),
+
+    me_lb = ci_low(me_ci),
+    me_ub = ci_high(me_ci),
+
+    vme_lb = ci_low(vme_ci),
+    vme_ub = ci_high(vme_ci),
+
+    perc_R = perc_R,
+
+    me_I_total = me_I_total,
+    me_I_total_lb = ci_low(me_I_total_ci),
+    me_I_total_ub = ci_high(me_I_total_ci),
+
+    n = n
+  )
+
+  list(
+
+    cat = cat,
+    cat_lb = ci_low(cat_ci),
+    cat_ub = ci_high(cat_ci),
+
+    ppv = ppv,
+    ppv_lb = ci_low(ppv_ci),
+    ppv_ub = ci_high(ppv_ci),
+
+    npv = npv,
+    npv_lb = ci_low(npv_ci),
+    npv_ub = ci_high(npv_ci),
+
+    sens = sens,
+    sens_lb = ci_low(sens_ci),
+    sens_ub = ci_high(sens_ci),
+
+    spec = spec,
+    spec_lb = ci_low(spec_ci),
+    spec_ub = ci_high(spec_ci),
+
+    me = me,
+    me_lb = ci_low(me_ci),
+    me_ub = ci_high(me_ci),
+
+    vme = vme,
+    vme_lb = ci_low(vme_ci),
+    vme_ub = ci_high(vme_ci),
+
+    perc_R = perc_R,
+
+    me_I_total = me_I_total,
+    me_I_total_lb = ci_low(me_I_total_ci),
+    me_I_total_ub = ci_high(me_I_total_ci),
+
+    n = n
+  )
+}
+```
+
+```{r process_prediction}
+process_prediction <- function(dat) {
+  
+  dat_SI <- dat %>% 
+    rename(Group = ...1) %>% 
+    filter(Group %in% c("pred_S", "pred_I")) %>%
+    rowwise() %>%
+    mutate(
+      S_I = sum(S, I),
+      I_R = sum(I, R)
+    ) %>%
+    select(-I) %>%
+    adorn_totals("row") %>%
+    mutate(Group = gsub("Total", "pred_S_I", Group))
+  
+  dat_R <- dat %>% 
+    rename(Group = ...1) %>% 
+    filter(Group %in% c("pred_R", "pred_I")) %>%
+    rowwise() %>%
+    mutate(
+      S_I = sum(S, I),
+      I_R = sum(I, R)
+    ) %>%
+    select(-I) %>%
+    adorn_totals("row") %>%
+    mutate(Group = gsub("Total", "pred_I_R", Group))
+  
+  dat_SIR <- rbind(dat_SI, dat_R) %>% distinct()
+  
+dat_3 <- dat[1:3, 1:4]
+
+# remove first column and convert to matrix
+dat_3_matrix <- as.matrix(dat_3[, 2:4])
+
+storage.mode(dat_3_matrix) <- "numeric"
+
+# explicitly assign row/column names
+rownames(dat_3_matrix) <- c("pred_S", "pred_I", "pred_R")
+colnames(dat_3_matrix) <- c("S", "I", "R")
+
+dat_3 <- dat_3_matrix
+  
+  minor_error_I(dat_3)
+  
+  subset(dat_SIR, Group == "pred_S_I")$S_I
+  table(dat_SIR$S_I)
+  
+  R_prediction <- matrix(
+    c(
+      subset(dat_SIR, Group == "pred_S_I")$S_I,
+      subset(dat_SIR, Group == "pred_S_I")$R,
+      subset(dat_SIR, Group == "pred_R")$S_I,
+      subset(dat_SIR, Group == "pred_R")$R
+    ),
+    ncol = 2,
+    byrow = TRUE
+  )
+  
+  colnames(R_prediction) <- c("S_I", "R")
+  rownames(R_prediction) <- c("pred_S_I", "pred_R")
+  
+  R_prediction_summary <- metrics(R_prediction)
+  R_prediction_summary <- metrics(R_prediction, dat_3)
+  
+  NWT_prediction <- matrix(
+    c(
+      subset(dat_SIR, Group == "pred_S")$S,
+      subset(dat_SIR, Group == "pred_S")$I_R,
+      subset(dat_SIR, Group == "pred_I_R")$S,
+      subset(dat_SIR, Group == "pred_I_R")$I_R
+    ),
+    ncol = 2,
+    byrow = TRUE
+  )
+  
+  colnames(NWT_prediction) <- c("S", "I_R")
+  rownames(NWT_prediction) <- c("pred_S", "pred_I_R")
+  
+  NWT_prediction_summary <- metrics(NWT_prediction, dat_3)
+  
+  list(
+    SIR = dat_SIR,
+    dat_3 = dat_3,
+    R_prediction = R_prediction,
+    R_prediction_summary = R_prediction_summary,
+    NWT_prediction = NWT_prediction,
+    NWT_prediction_summary = NWT_prediction_summary
+  )
+}
+
+```
+
+```{r process_results}
+
+MBIRA_Kpn_results <- process_prediction(MBIRA_Kpn)
+MBIRA_Kvv_results <- process_prediction(MBIRA_Kvv)
+HowdenGorrie_results <- process_prediction(HowdenGorrie)
+AGAR_results <- process_prediction(AGAR)
+Milan_results <- process_prediction(Milan)
+HailuEthiopia_results <- process_prediction(HailuEthiopia)
+KayamaJapan_results <- process_prediction(KayamaJapan)
+FeaseyMalawi_results <- process_prediction(FeaseyMalawi)
+EUSCAPE_EURECA_Kpn_results <- process_prediction(EUSCAPE_EURECA_Kpn)
+EUSCAPE_EURECA_Kvv_results <- process_prediction(EUSCAPE_EURECA_Kvv)
+EgliSwitzerland_results <- process_prediction(EgliSwitzerland)
+HRYC_Spain_results <- process_prediction(HRYC_Spain)
+IndiaGHRU_results <- process_prediction(IndiaGHRU)
+NeumannGermany_results <- process_prediction(NeumannGermany)
+Whitelaw_CHAMPS_results <- process_prediction(Whitelaw_CHAMPS)
+Oxfordshire_Kpn_results <- process_prediction(Oxfordshire_Kpn)
+Oxfordshire_Kvv_results <- process_prediction(Oxfordshire_Kvv)
+IZSAM_Italy_results <- process_prediction(IZSAM_Italy)
+LaPaz_Lazaro_results <- process_prediction(LaPaz_Lazaro)
+HarrisMERINO_results <- process_prediction(HarrisMERINO)
+PachecoBrazil_results <- process_prediction(PachecoBrazil)
+SmaouiTunisia_results <- process_prediction(SmaouiTunisia)
+```
+
+
+```{r pooledR}
+pooled_R <- 
+  bind_rows(
+    MBIRA_Kpn_results$SIR,
+    MBIRA_Kvv_results$SIR, 
+    HowdenGorrie_results$SIR,
+    AGAR_results$SIR,
+    Milan_results$SIR,
+    HailuEthiopia_results$SIR,
+    KayamaJapan_results$SIR,
+    FeaseyMalawi_results$SIR, 
+    EUSCAPE_EURECA_Kpn_results$SIR,
+    EUSCAPE_EURECA_Kvv_results$SIR,
+    EgliSwitzerland_results$SIR,
+    HRYC_Spain_results$SIR,
+    IndiaGHRU_results$SIR,
+    NeumannGermany_results$SIR,
+    Whitelaw_CHAMPS_results$SIR,
+    Oxfordshire_Kpn_results$SIR,
+    Oxfordshire_Kvv_results$SIR,
+    IZSAM_Italy_results$SIR, 
+    LaPaz_Lazaro_results$SIR,
+    HarrisMERINO_results$SIR,
+    PachecoBrazil_results$SIR,
+    SmaouiTunisia_results$SIR
+  ) %>%
+  group_by(Group) %>%
+  summarise_all(~sum(., na.rm = TRUE))
+
+pooled_R_prediction <- matrix(
+  c(
+    subset(pooled_R, Group == "pred_S_I")$S_I, 
+    subset(pooled_R, Group == "pred_S_I")$R,
+    subset(pooled_R, Group == "pred_R")$S_I,
+    subset(pooled_R, Group == "pred_R")$R
+  ),
+  ncol = 2,
+  byrow = TRUE
+)
+
+colnames(pooled_R_prediction) <- c("S_I", "R")
+rownames(pooled_R_prediction) <- c("pred_S_I", "pred_R")
+
+pooled_3 <- Reduce(
+  "+",
+  list(
+    MBIRA_Kpn_results$dat_3,
+    MBIRA_Kvv_results$dat_3,
+    HowdenGorrie_results$dat_3,
+    AGAR_results$dat_3,
+    Milan_results$dat_3,
+    HailuEthiopia_results$dat_3,
+    KayamaJapan_results$dat_3,
+    FeaseyMalawi_results$dat_3,
+    EUSCAPE_EURECA_Kpn_results$dat_3,
+    EUSCAPE_EURECA_Kvv_results$dat_3,
+    EgliSwitzerland_results$dat_3,
+    HRYC_Spain_results$dat_3,
+    IndiaGHRU_results$dat_3,
+    NeumannGermany_results$dat_3,
+    Whitelaw_CHAMPS_results$dat_3,
+    Oxfordshire_Kpn_results$dat_3,
+    Oxfordshire_Kvv_results$dat_3,
+    IZSAM_Italy_results$dat_3,
+    LaPaz_Lazaro_results$dat_3,
+    HarrisMERINO_results$dat_3,
+    PachecoBrazil_results$dat_3,
+    SmaouiTunisia_results$dat_3
+  )
+)
+
+pooled_R_summary <- metrics(pooled_R_prediction, pooled_3)
+```
+
+# summary of pooled genotypes vs. SIR
+```{r genotypes_SIR}
+EUSCAPE_EURECA_Kpn_genotype <- EUSCAPE_EURECA_Kpn %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+EUSCAPE_EURECA_Kvv_genotype <- EUSCAPE_EURECA_Kvv %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R")
+
+KayamaJapan_genotype <- KayamaJapan %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R")
+
+IndiaGHRU_genotype <- IndiaGHRU %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+AGAR_genotype <- AGAR %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+Oxfordshire_Kpn_genotype <-Oxfordshire_Kpn %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+Oxfordshire_Kvv_genotype <-Oxfordshire_Kvv %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+MBIRA_Kpn_genotype <- MBIRA_Kpn %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+HowdenGorrie_genotype <- HowdenGorrie %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+Milan_genotype <- Milan %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+HRYC_Spain_genotype <- HRYC_Spain %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+LaPaz_Lazaro_genotype <- LaPaz_Lazaro %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R")
+
+MBIRA_Kvv_genotype <- MBIRA_Kvv %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+HarrisMERINO_genotype <- HarrisMERINO %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+PachecoBrazil_genotype <- PachecoBrazil %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+IZSAM_Italy_genotype <- IZSAM_Italy %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+HailuEthiopia_genotype <- HailuEthiopia %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+FeaseyMalawi_genotype <- FeaseyMalawi %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+
+EgliSwitzerland_genotype <- EgliSwitzerland %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+
+NeumannGermany_genotype <- NeumannGermany %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+Whitelaw_CHAMPS_genotype <- Whitelaw_CHAMPS %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+SmaouiTunisia_genotype <- SmaouiTunisia %>% 
+  rename(Group=...1) %>% 
+  filter(Group!="pred_S" & Group!="pred_I"& Group!="pred_R") 
+
+
+pooled_genotype <- 
+bind_rows(MBIRA_Kpn_genotype,
+          MBIRA_Kvv_genotype, 
+          HowdenGorrie_genotype,
+          AGAR_genotype,
+          Milan_genotype,
+          HailuEthiopia_genotype,
+          KayamaJapan_genotype,
+          FeaseyMalawi_genotype, 
+          EUSCAPE_EURECA_Kpn_genotype,
+          EUSCAPE_EURECA_Kvv_genotype,
+          EgliSwitzerland_genotype,
+          HRYC_Spain_genotype,
+          IndiaGHRU_genotype,
+          NeumannGermany_genotype,
+          Whitelaw_CHAMPS_genotype,
+          Oxfordshire_Kpn_genotype,
+          Oxfordshire_Kvv_genotype,
+          IZSAM_Italy_genotype, 
+          LaPaz_Lazaro_genotype,
+          HarrisMERINO_genotype,
+          PachecoBrazil_genotype,
+          SmaouiTunisia_genotype) %>%
+    group_by(Group) %>%
+    summarise_all(funs(sum(., na.rm = TRUE)))
+
+```
+
+```{r}
+pooled_NWT <- 
+  bind_rows(
+    MBIRA_Kpn_results$SIR,
+    MBIRA_Kvv_results$SIR, 
+    HowdenGorrie_results$SIR,
+    AGAR_results$SIR,
+    Milan_results$SIR,
+    HailuEthiopia_results$SIR,
+    KayamaJapan_results$SIR,
+    FeaseyMalawi_results$SIR, 
+    EUSCAPE_EURECA_Kpn_results$SIR,
+    EUSCAPE_EURECA_Kvv_results$SIR,
+    EgliSwitzerland_results$SIR,
+    HRYC_Spain_results$SIR,
+    IndiaGHRU_results$SIR,
+    NeumannGermany_results$SIR,
+    Whitelaw_CHAMPS_results$SIR,
+    Oxfordshire_Kpn_results$SIR,
+    Oxfordshire_Kvv_results$SIR,
+    IZSAM_Italy_results$SIR, 
+    LaPaz_Lazaro_results$SIR,
+    HarrisMERINO_results$SIR,
+    PachecoBrazil_results$SIR,
+    SmaouiTunisia_results$SIR
+  ) %>%
+  group_by(Group) %>%
+  summarise_all(~sum(., na.rm = TRUE))
+
+pooled_NWT_prediction <- matrix(
+  c(
+    subset(pooled_NWT, Group == "pred_S")$S, 
+    subset(pooled_NWT, Group == "pred_S")$I_R,
+    subset(pooled_NWT, Group == "pred_I_R")$S,
+    subset(pooled_NWT, Group == "pred_I_R")$I_R
+  ),
+  ncol = 2,
+  byrow = TRUE
+)
+
+colnames(pooled_NWT_prediction) <- c("S", "I_R")
+rownames(pooled_NWT_prediction) <- c("pred_S", "pred_I_R")
+
+pooled_3 <-  Reduce(
+  "+",
+  list(
+  MBIRA_Kpn_results$dat_3,
+  MBIRA_Kvv_results$dat_3,
+  HowdenGorrie_results$dat_3,
+  AGAR_results$dat_3,
+  Milan_results$dat_3,
+  HailuEthiopia_results$dat_3,
+  KayamaJapan_results$dat_3,
+  FeaseyMalawi_results$dat_3,
+  EUSCAPE_EURECA_Kpn_results$dat_3,
+  EUSCAPE_EURECA_Kvv_results$dat_3,
+  EgliSwitzerland_results$dat_3,
+  HRYC_Spain_results$dat_3,
+  IndiaGHRU_results$dat_3,
+  NeumannGermany_results$dat_3,
+  Whitelaw_CHAMPS_results$dat_3,
+  Oxfordshire_Kpn_results$dat_3,
+  Oxfordshire_Kvv_results$dat_3,
+  IZSAM_Italy_results$dat_3,
+  LaPaz_Lazaro_results$dat_3,
+  HarrisMERINO_results$dat_3,
+  PachecoBrazil_results$dat_3,
+  SmaouiTunisia_results$dat_3
+))
+
+pooled_NWT_summary <- metrics(pooled_NWT_prediction, pooled_3)
+```
+
+# TOTAL SIR counts per dataset
+```{r}
+SIR_counts_table <- bind_rows(lst(MBIRA_Kpn_results$SIR,
+    MBIRA_Kvv_results$SIR, 
+    HowdenGorrie_results$SIR,
+    AGAR_results$SIR,
+    Milan_results$SIR,
+    HailuEthiopia_results$SIR,
+    KayamaJapan_results$SIR,
+    FeaseyMalawi_results$SIR, 
+    EUSCAPE_EURECA_Kpn_results$SIR,
+    EUSCAPE_EURECA_Kvv_results$SIR,
+    EgliSwitzerland_results$SIR,
+    HRYC_Spain_results$SIR,
+    IndiaGHRU_results$SIR,
+    NeumannGermany_results$SIR,
+    Whitelaw_CHAMPS_results$SIR,
+    Oxfordshire_Kpn_results$SIR,
+    Oxfordshire_Kvv_results$SIR,
+    IZSAM_Italy_results$SIR, 
+    LaPaz_Lazaro_results$SIR,
+    HarrisMERINO_results$SIR,
+    PachecoBrazil_results$SIR,
+    SmaouiTunisia_results$SIR), .id = 'Dataset') %>%
+  filter(Group!="pred_S_I" & Group!="pred_I_R")
+
+SIR_counts_table$Dataset <- gsub("\\_results\\$SIR",'',SIR_counts_table$Dataset)
+
+SIR_counts_table<-SIR_counts_table %>% select(-Group, -S_I)
+
+S_counts_table <-
+SIR_counts_table %>% 
+  group_by(Dataset) %>% 
+  summarise(S_total = sum(S))
+
+R_counts_table <-
+SIR_counts_table %>% 
+  group_by(Dataset) %>% 
+  summarise(R_total = sum(R))
+
+IR_counts_table <-
+  SIR_counts_table %>%
+  group_by(Dataset) %>% 
+  summarise(IR_total = sum(I_R))
+
+SR_table<- full_join(S_counts_table, R_counts_table) 
+
+SIR_table<- full_join(SR_table, IR_counts_table)  %>% 
+  mutate(I_total=IR_total-R_total) %>% 
+  mutate(N_total=S_total+IR_total)
+
+SIR_table$Dataset[SIR_table$Dataset == 'AGAR'] <- 'AGAR GnSOP'
+SIR_table$Dataset[SIR_table$Dataset == 'EUSCAPE_EURECA_Kpn'] <- 'EUSCAPE & EURECA'
+SIR_table$Dataset[SIR_table$Dataset == 'EUSCAPE_EURECA_Kvv'] <- 'EUSCAPE & EURECA*'
+SIR_table$Dataset[SIR_table$Dataset == 'EgliSwitzerland'] <- 'University of Zurich'
+SIR_table$Dataset[SIR_table$Dataset == 'FeaseyMalawi'] <- 'Queen Elizabeth Central Hospital'
+SIR_table$Dataset[SIR_table$Dataset == 'HRYC_Spain'] <- 'HURYC & CIBERINFEC'
+SIR_table$Dataset[SIR_table$Dataset == 'HailuEthiopia'] <- 'Addis Ababa University*'
+SIR_table$Dataset[SIR_table$Dataset == 'HowdenGorrie'] <- 'Controlling Superbugs study & Victorian CPE program'
+SIR_table$Dataset[SIR_table$Dataset == 'IZSAM_Italy'] <- 'IZSAM'
+SIR_table$Dataset[SIR_table$Dataset == 'IndiaGHRU'] <- 'India GHRU'
+SIR_table$Dataset[SIR_table$Dataset == 'KayamaJapan'] <- 'JARBS-GNR'
+SIR_table$Dataset[SIR_table$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
+SIR_table$Dataset[SIR_table$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
+SIR_table$Dataset[SIR_table$Dataset == 'MBIRA_Kpn'] <- 'MBIRA'
+SIR_table$Dataset[SIR_table$Dataset == 'MBIRA_Kvv'] <- 'MBIRA*'
+SIR_table$Dataset[SIR_table$Dataset == 'Milan'] <- 'IRCCS Ospedale San Raffaele'
+SIR_table$Dataset[SIR_table$Dataset == 'NeumannGermany'] <- 'SCHARKI'
+SIR_table$Dataset[SIR_table$Dataset == 'Oxfordshire_Kpn'] <- 'Oxfordshire'
+SIR_table$Dataset[SIR_table$Dataset == 'Oxfordshire_Kvv'] <- 'Oxfordshire*'
+SIR_table$Dataset[SIR_table$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
+SIR_table$Dataset[SIR_table$Dataset == 'SmaouiTunisia'] <- 'SmaouiTunisia*'
+
+```
+
+
+```{r}
+validation_summary <- rbind(
+  EUSCAPE_EURECA_Kpn_results$R_prediction_summary,
+  EUSCAPE_EURECA_Kpn_results$NWT_prediction_summary,
+  
+  KayamaJapan_results$R_prediction_summary,
+  KayamaJapan_results$NWT_prediction_summary,
+  
+  IndiaGHRU_results$R_prediction_summary,
+  IndiaGHRU_results$NWT_prediction_summary,
+  
+  AGAR_results$R_prediction_summary,
+  AGAR_results$NWT_prediction_summary,
+  
+  Oxfordshire_Kpn_results$R_prediction_summary,
+  Oxfordshire_Kpn_results$NWT_prediction_summary,
+  
+  IZSAM_Italy_results$R_prediction_summary,
+  IZSAM_Italy_results$NWT_prediction_summary,
+  
+  MBIRA_Kpn_results$R_prediction_summary,
+  MBIRA_Kpn_results$NWT_prediction_summary,
+  
+  HowdenGorrie_results$R_prediction_summary,
+  HowdenGorrie_results$NWT_prediction_summary,
+  
+  Milan_results$R_prediction_summary,
+  Milan_results$NWT_prediction_summary,
+  
+  HRYC_Spain_results$R_prediction_summary,
+  HRYC_Spain_results$NWT_prediction_summary,
+  
+  LaPaz_Lazaro_results$R_prediction_summary,
+  LaPaz_Lazaro_results$NWT_prediction_summary,
+  
+  MBIRA_Kvv_results$R_prediction_summary,
+  MBIRA_Kvv_results$NWT_prediction_summary,
+  
+  Oxfordshire_Kvv_results$R_prediction_summary,
+  Oxfordshire_Kvv_results$NWT_prediction_summary,
+  
+  NeumannGermany_results$R_prediction_summary,
+  NeumannGermany_results$NWT_prediction_summary,
+  
+  EUSCAPE_EURECA_Kvv_results$R_prediction_summary,
+  EUSCAPE_EURECA_Kvv_results$NWT_prediction_summary,
+  
+  PachecoBrazil_results$R_prediction_summary,
+  PachecoBrazil_results$NWT_prediction_summary,
+  
+  HarrisMERINO_results$R_prediction_summary,
+  HarrisMERINO_results$NWT_prediction_summary,
+  
+  FeaseyMalawi_results$R_prediction_summary,
+  FeaseyMalawi_results$NWT_prediction_summary,
+  
+  SmaouiTunisia_results$R_prediction_summary,
+  SmaouiTunisia_results$NWT_prediction_summary,
+  
+  EgliSwitzerland_results$R_prediction_summary,
+  EgliSwitzerland_results$NWT_prediction_summary,
+  
+  HailuEthiopia_results$R_prediction_summary,
+  HailuEthiopia_results$NWT_prediction_summary,
+  
+  Whitelaw_CHAMPS_results$R_prediction_summary,
+  Whitelaw_CHAMPS_results$NWT_prediction_summary,
+  
+  pooled_R_summary,
+  pooled_NWT_summary
+)
+
+
+validation_summary_table <- as_tibble(validation_summary) %>%
+  
+  mutate(
+    Prediction = c(
+      "R", "NWT","R", "NWT","R", "NWT","R", "NWT",
+      "R", "NWT","R", "NWT","R", "NWT","R", "NWT",
+      "R", "NWT","R", "NWT","R", "NWT","R", "NWT",
+      "R", "NWT","R", "NWT","R", "NWT","R", "NWT",
+      "R", "NWT","R", "NWT","R", "NWT","R", "NWT",
+      "R", "NWT","R", "NWT","R", "NWT"
+    )
+  ) %>%
+  
+  mutate(
+    Dataset = c(
+      "EUSCAPE & EURECA", "EUSCAPE & EURECA",
+      "JARBS-GNR", "JARBS-GNR",
+      "India GHRU", "India GHRU",
+      "AGAR GnSOP", "AGAR GnSOP",
+      "Oxfordshire", "Oxfordshire",
+      "IZSAM", "IZSAM",
+      "MBIRA", "MBIRA",
+      "Controlling Superbugs study & Victorian CPE program",
+      "Controlling Superbugs study & Victorian CPE program",
+      "IRCCS Ospedale San Raffaele",
+      "IRCCS Ospedale San Raffaele",
+      "HURYC & CIBERINFEC",
+      "HURYC & CIBERINFEC",
+      "HULP", "HULP",
+      "MBIRA*", "MBIRA*",
+      "Oxfordshire*", "Oxfordshire*",
+      "SCHARKI", "SCHARKI",
+      "EUSCAPE & EURECA*", "EUSCAPE & EURECA*",
+      "PachecoBrazil", "PachecoBrazil",
+      "HarrisMERINO", "HarrisMERINO",
+      "Queen Elizabeth Central Hospital",
+      "Queen Elizabeth Central Hospital",
+      "SmaouiTunisia*", "SmaouiTunisia*",
+      "University of Zurich", "University of Zurich",
+      "Addis Ababa University*", "Addis Ababa University*",
+      "CHAMPS", "CHAMPS",
+      "Pooled", "Pooled"
+    )
+  ) %>%
+  
+  mutate(
+    Country = c(
+      "Various European countries", "Various European countries",
+      "Japan", "Japan",
+      "India", "India",
+      "Australia", "Australia",
+      "United Kingdom", "United Kingdom",
+      "Italy", "Italy",
+      "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",
+      "Tanzania, Ethiopia, Malawi, Zambia, Ghana, Nigeria, South Africa",
+      "Australia", "Australia",
+      "Italy", "Italy",
+      "Spain, Portugal", "Spain, Portugal",
+      "Spain", "Spain",
+      "Ethiopia, South Africa, Tanzania",
+      "Ethiopia, South Africa, Tanzania",
+      "United Kingdom", "United Kingdom",
+      "Germany", "Germany",
+      "Various European countries", "Various European countries",
+      "Brazil", "Brazil",
+      "Various countries", "Various countries",
+      "Malawi", "Malawi",
+      "Tunisia", "Tunisia",
+      "Switzerland", "Switzerland",
+      "Ethiopia", "Ethiopia",
+      "South Africa", "South Africa",
+      "", ""
+    )
+  ) %>%
+  
+  rename(
+    Sensitivity = sens,
+    Specificity = spec,
+    `ME` = me,
+    `VME` = vme,
+    `Minor error` = me_I_total,
+    `Minerror_lb` = me_I_total_lb,
+    `Minerror_ub` = me_I_total_ub,
+    `Categorical agreement` = cat,
+    `%R` = perc_R,
+    N = n
+  ) %>%
+  
+  mutate(
+    Sensitivity = paste0(round(as.numeric(Sensitivity) * 100, 2), "%"),
+    Specificity = paste0(round(as.numeric(Specificity) * 100, 2), "%"),
+    ME = paste0(round(as.numeric(ME) * 100, 2), "%"),
+    VME = paste0(round(as.numeric(VME) * 100, 2), "%"),
+    `Minor error` = paste0(round(as.numeric(`Minor error`) * 100, 2), "%"),
+    `Categorical agreement` = paste0(round(as.numeric(`Categorical agreement`) * 100, 2), "%"),
+    `%R` = paste0(round(as.numeric(`%R`) * 100, 2), "%")
+  )
+
+#write_csv(validation_summary_table, "../tables/Table3_extValidation_evalMetrics.csv", na="-")
+
+```
+
+
+
+# Plotting validation sets (only R_excludeI)
+
+```{r plot}
+
+
+validation_summary_table_plot <- validation_summary_table %>% 
+  filter(Prediction =="R") %>%
+  relocate(Dataset, Prediction, `Categorical agreement`, `Sensitivity`, `Specificity`, `ME`, `VME`, `Minor error`)
+
+validation_summary_table_long <- gather(
+  validation_summary_table_plot,
+  `Evaluation metric`,
+  value,
+  `Categorical agreement`:`Minor error`
+)
+
+validation_summary_table_long <- 
+  validation_summary_table_long %>%
+  mutate(value = as.numeric(gsub("%", "", value))) %>%
+  rename(metric_value = value)
+
+validation_summary_table_long_ci <-
+  validation_summary_table_long %>% 
+  gather(v, ci_value, cat_lb:Minerror_ub) %>% 
+  separate(v, c("var", "col")) %>% 
+  arrange(Dataset) %>% 
+  pivot_wider(
+    names_from = col,
+    values_from = ci_value
+  )
+
+validation_summary_table_long_ci <- 
+  validation_summary_table_long_ci %>% 
+  filter(
+    `Evaluation metric` == "Categorical agreement" & var == "cat" |
+    `Evaluation metric` == "ME" & var == "me" |
+    `Evaluation metric` == "Minor error" & var == "Minerror" |
+    `Evaluation metric` == "VME" & var == "vme"
+  )
+
+
+validation_summary_table_total <- 
+  full_join(validation_summary_table_long_ci, SIR_table) %>% 
+  mutate(Dataset = gsub("Pooled", "All datasets combined", Dataset)) %>%
+  mutate(
+    Dataset_label = paste(
+      Dataset,
+      " (S=",
+      S_total,
+      ", I=",
+      I_total,
+      ", R=",
+      R_total,
+      ")",
+      sep = ""
+    )
+  ) %>% select(-`NA`, -`R`)
+
+colSums(SIR_table[, -1])
+
+validation_summary_table_total$Dataset_label[
+  validation_summary_table_total$Dataset_label ==
+    'All datasets combined (S=NA, I=NA, R=NA)'
+] <- "All datasets combined (S=1757, I=356, R=4610)"
+
+validation_summary_table_total <- 
+  validation_summary_table_total %>% 
+  mutate(Dataset_label = gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset_label)) %>%
+  mutate(Dataset_label = gsub("EUSCAPE & EURECA", "A (EUCAST, Various)", Dataset_label)) %>%
+  mutate(Dataset_label = gsub("PPPPPPPP", "EUSCAPE & EURECA (Kvv, EUCAST)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("India GHRU", "B (EUCAST, V)", Dataset_label)) %>% 
+  mutate(Dataset_label = gsub("AGAR GnSOP", "C (EUCAST, V/P)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("Oxfordshire\\*", "XXXXXXX", Dataset_label)) %>% 
+  mutate(Dataset_label = gsub("Oxfordshire", "D (EUCAST, P)", Dataset_label)) %>% 
+  mutate(Dataset_label = gsub("XXXXXXX", "Oxfordshire (Kvv, EUCAST)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("HURYC & CIBERINFEC", "E (EUCAST, S/M)", Dataset_label)) %>% 
+  mutate(Dataset_label = gsub("HULP", "F (EUCAST, MW/E)", Dataset_label)) %>% 
+  mutate(Dataset_label = gsub("JARBS-GNR", "G (CLSI, MW)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("MBIRA\\*", "YYYYYYYY", Dataset_label)) %>% 
+  mutate(Dataset_label = gsub("MBIRA", "H (CLSI, V/E)", Dataset_label)) %>%
+  mutate(Dataset_label = gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI, V/S)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("SmaouiTunisia\\*", "K* (EUCAST)", Dataset_label)) %>% 
+  
+  mutate(Dataset_label = gsub("Addis Ababa University\\*", "L* (Kvv, CLSI)", Dataset_label)) %>%
+  
+  mutate(Dataset_label = gsub("University of Zurich", "M* (EUCAST)", Dataset_label)) %>%
+  
+  mutate(Dataset_label = gsub("CHAMPS", "N* (CLSI)", Dataset_label))
+
+validation_summary_table_total$Dataset_label <- factor(
+  as.character(validation_summary_table_total$Dataset_label),
+  levels = c(
+    "A (EUCAST, Various) (S=291, I=155, R=1687)", 
+    "B (EUCAST, V) (S=84, I=11, R=441)",
+    "C (EUCAST, V/P) (S=168, I=62, R=255)", 
+    "D (EUCAST, P) (S=242, I=16, R=37)", 
+    "E (EUCAST, S/M) (S=20, I=7, R=146)", 
+    "F (EUCAST, MW/E) (S=11, I=1, R=136)", 
+    "G (CLSI, MW) (S=222, I=163, R=449)",
+    "H (CLSI, V/E) (S=109, I=14, R=128)", 
+    "I (CLSI, V/S) (S=18, I=41, R=153)", 
+    "J* (EUCAST/BSAC) (S=196, I=130, R=411)", 
+    "K* (EUCAST) (S=62, I=28, R=146)", 
+    "L* (Kvv, CLSI) (S=37, I=5, R=28)",
+    "M* (EUCAST) (S=11, I=8, R=53)", 
+    "N* (CLSI) (S=18, I=1, R=21)", 
+    "IZSAM (S=7, I=3, R=273)",  
+    "IRCCS Ospedale San Raffaele (S=9, I=2, R=187)", 
+    "MBIRA (Kvv, CLSI) (S=85, I=0, R=5)",  
+    "Oxfordshire (Kvv, EUCAST) (S=64, I=2, R=0)", 
+    "SCHARKI (S=51, I=3, R=2)",
+    "EUSCAPE & EURECA (Kvv, EUCAST) (S=35, I=3, R=3)", 
+    "PachecoBrazil (S=10, I=0, R=28)", 
+    "HarrisMERINO (S=7, I=8, R=21)", 
+    "Overall median (datasets A-N)", 
+    "All datasets combined (S=1757, I=356, R=4610)"
+  )
+)
+
+validation_summary_table_total_exclude <- 
+  validation_summary_table_total %>%
+  filter(S_total > 10 | is.na(S_total)) %>%
+  filter(R_total > 10 | is.na(R_total)) %>%
+  filter(N_total > 25 | is.na(N_total))
+
+validation_summary_table_median <-
+  validation_summary_table_total_exclude %>% 
+  group_by(`Evaluation metric`) %>% 
+  summarise(metric_value = median(as.numeric(metric_value), na.rm = TRUE)) %>%
+  mutate(Dataset = "Overall median (datasets A-N)") %>%
+  mutate(var = "") %>%
+  mutate(ub = "") %>%
+  mutate(lb = "") %>%
+  mutate(Country = "") %>%
+  mutate(Prediction = "") %>%
+  mutate(S_total = "") %>%
+  mutate(I_total = "") %>%
+  mutate(IR_total = "") %>%
+  mutate(R_total = "") %>%
+  mutate(N_total = "") %>%
+  mutate(N = "") %>%
+  mutate(Dataset_label = "Overall median (datasets A-N)")
+
+validation_summary_table_total_exclude <-
+  rbind(
+    validation_summary_table_total_exclude,
+    validation_summary_table_median
+  )
+
+validation_summary_table_total_exclude$lb[
+  validation_summary_table_total_exclude$lb < 0
+] <- 0
+
+validation_summary_table_total_exclude <- 
+  validation_summary_table_total_exclude %>%
+  mutate(
+    `Evaluation metric` = recode(
+      `Evaluation metric`,
+      "ME" = "Major error"
+    )
+  )
+
+validation_summary_table_long_ci$`Evaluation metric` <- factor(
+  validation_summary_table_long_ci$`Evaluation metric`,
+  levels = c(
+    "Categorical agreement",
+    "Major error",
+    "VME",
+    "Minor error"
+  )
+)
+
+
+
+validation_summary_table_plot <- validation_summary_table_total_exclude %>% 
+  ggplot(aes(as.numeric(metric_value), Dataset_label)) +
+  
+  geom_point(alpha = 0.5, col = "#9f98e9", size = 2) +
+  
+  geom_linerange(
+    aes(
+      xmin = as.numeric(lb) * 100,
+      xmax = as.numeric(ub) * 100
+    ),
+    col = "#887feb",
+    position = pd,
+    size = 0.5
+  ) +
+  
+  scale_y_discrete(limits = rev) +
+  scale_x_continuous(breaks = seq(0, 100, 20)) +
+  
+  facet_grid(
+    . ~ `Evaluation metric`,
+    scales = "free_x",
+    space = "free_x"
+  ) +
+  
+  labs(y = "", x = "%") +
+  
+  theme_bw() +
+  theme(
+    legend.title = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust = 1)
+  ) +
+  
+  geom_vline(
+    data = filter(
+      validation_summary_table_total_exclude,
+      `Evaluation metric` == "Categorical agreement"
+    ),
+    aes(xintercept = 90),
+    colour = "#fb9472"
+  ) +
+  
+  geom_vline(
+    data = filter(
+      validation_summary_table_total_exclude,
+      `Evaluation metric` == "Major error"
+    ),
+    aes(xintercept = 3),
+    colour = "#fb9472"
+  ) +
+  
+  geom_vline(
+    data = filter(
+      validation_summary_table_total_exclude,
+      `Evaluation metric` == "VME"
+    ),
+    aes(xintercept = 1.5),
+    colour = "#fb9472"
+  ) +
+
+  ggh4x::force_panelsizes(
+  cols = c(
+    `Categorical agreement` = 1,
+    `Major error` = 1,
+    `VME` = 1,
+    `Minor error` = 1
+  )
+)
+
+
+ggsave(width=10, height=4, file="../figs/Fig7_extValidation_summary.pdf")
+ggsave(width=10, height=4, file="../figs/Fig7_extValidation_summary.png")
+```
+
+
+# TableS11 - eval metrics 
+```{r, TableS11}
+
+all_datasets_metrics <-
+  validation_summary_table %>%
+
+  mutate(`Categorical_agreement_conf_int_lower_bound`=paste0(round(as.numeric(cat_lb)*100,2),"%")) %>%
+  mutate(`Categorical_agreement_conf_int_upper_bound`=paste0(round(as.numeric(cat_ub)*100,2),"%")) %>%
+  mutate(`ME_conf_int_lower_bound`=paste0(round(as.numeric(me_lb)*100,2),"%")) %>%
+  mutate(`ME_conf_int_upper_bound`=paste0(round(as.numeric(me_ub)*100,2),"%")) %>%
+  mutate(`VME_conf_int_lower_bound`=paste0(round(as.numeric(vme_lb)*100,2),"%")) %>%
+  mutate(`VME_conf_int_upper_bound`=paste0(round(as.numeric(vme_ub)*100,2),"%")) %>%
+  mutate(`Sensitivity_conf_int_lower_bound`=paste0(round(as.numeric(sens_lb)*100,2),"%")) %>%
+  mutate(`Sensitivity_conf_int_upper_bound`=paste0(round(as.numeric(sens_ub)*100,2),"%")) %>%
+  mutate(`Specificity_conf_int_lower_bound`=paste0(round(as.numeric(spec_lb)*100,2),"%")) %>%
+  mutate(`Specificity_conf_int_upper_bound`=paste0(round(as.numeric(spec_ub)*100,2),"%")) %>%
+  mutate(`Minor_error_conf_int_lower_bound`=paste0(round(as.numeric(Minerror_lb)*100,2),"%")) %>%
+  mutate(`Minor_error_conf_int_upper_bound`=paste0(round(as.numeric(Minerror_ub)*100,2),"%"))
+
+all_datasets_metrics <- full_join(all_datasets_metrics, SIR_table) %>% select (-c(IR_total, N_total)) %>%
+  rename(Susceptible=S_total)%>%
+  rename(Intermediate=I_total)%>%
+  rename(Resistant=R_total)
+
+all_datasets_metrics <- all_datasets_metrics[, c("Dataset", "N","Susceptible", "Intermediate", "Resistant", "Prediction", "%R", "Categorical agreement", "Categorical_agreement_conf_int_lower_bound", "Categorical_agreement_conf_int_upper_bound", "ME", "ME_conf_int_lower_bound", "ME_conf_int_upper_bound", "VME", "VME_conf_int_lower_bound", "VME_conf_int_upper_bound", "Sensitivity", "Sensitivity_conf_int_lower_bound", "Sensitivity_conf_int_upper_bound", "Specificity", "Specificity_conf_int_lower_bound", "Specificity_conf_int_upper_bound", "Minor error", "Minor_error_conf_int_lower_bound", "Minor_error_conf_int_upper_bound")]
+
+
+all_datasets_metrics<- all_datasets_metrics %>% 
+  mutate(Dataset = (gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset)))%>%
+  mutate(Dataset = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("PPPPPPPP", "EUSCAPE & EURECA (Kvv, EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("India GHRU", "B (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("AGAR GnSOP", "C (EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Oxfordshire\\*", "XXXXXXX", Dataset)))%>% 
+  mutate(Dataset = (gsub("Oxfordshire", "D (EUCAST)", Dataset)))%>% 
+      mutate(Dataset = (gsub("XXXXXXX", "Oxfordshire (Kvv, EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("HURYC & CIBERINFEC", "E (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("HULP", "F (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("JARBS-GNR", "G (CLSI)", Dataset)))%>% 
+      mutate(Dataset = (gsub("MBIRA\\*", "YYYYYYYY", Dataset)))%>% 
+  mutate(Dataset = (gsub("MBIRA", "H (CLSI)", Dataset)))%>%
+        mutate(Dataset = (gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset)))%>% 
+  mutate(Dataset = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI)", Dataset)))%>% 
+   mutate(Dataset = (gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset)))%>% 
+  mutate(Dataset = (gsub("SmaouiTunisia\\*", "K* (EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Addis Ababa University\\*", "L* (Kvv, CLSI)", Dataset)))%>%
+  mutate(Dataset = (gsub("University of Zurich", "M* (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("CHAMPS", "N* (CLSI)", Dataset)))
+
+all_datasets_metrics <- all_datasets_metrics %>% 
+  mutate_all(funs(str_replace(., "NA%", "-")))
+#foundation for table S11 - some manual edits made to the table
+write_tsv(all_datasets_metrics, "../tables/TableSX_extValidation_evalMetrics.tsv", na="-")
+write_csv(all_datasets_metrics, "../tables/TableSX_extValidation_evalMetrics.csv", na="-")
+
+```
+
+#Table S11 - genotype profiles vs. PPVs and median MICs
+
+# MIC prediction 
+
+```{r, mic_prediction}
+discrete_quantile <- function(x, p) {
+
+  if (length(x)>5){
+    sort(x)[length(x)*p]
+  } else return(0)}
+
+validation_geno <- read_delim("../tables/TableS5_genotypes_validation.tsv")
+validation_pheno <- read_delim("../tables/TableS6_phenotype_metadata_validation.tsv")
+
+validation <- full_join(validation_geno, validation_pheno)
+
+#MIC median - with I excluded
+MIC_pred_excludeI <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  filter(Resistance.phenotype!="I") %>%
+  group_by(Dataset,cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR_excludeI=paste0(median, " [", lower25, "-", upper25, "]"))
+ 
+MIC_pred_excludeI[grep("0-0", MIC_pred_excludeI$IQR_excludeI), "IQR_excludeI"] <- "-"
+
+MIC_pred_excludeI$lower25[MIC_pred_excludeI$lower25==0] <- "-"
+MIC_pred_excludeI$lower25[MIC_pred_excludeI$upper25==0] <- "-"
+
+MIC_pred_excludeI <- MIC_pred_excludeI %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25))
+
+MIC_pred_excludeI_pooled <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  filter(Resistance.phenotype!="I") %>%
+  group_by(cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR_excludeI=paste0(median, " [", lower25, "-", upper25, "]")) %>%
+  mutate(Dataset=c("Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled"))
+
+MIC_pred_excludeI_pooled[grep("0-0", MIC_pred_excludeI_pooled$IQR_excludeI), "IQR_excludeI"] <- "-"
+
+MIC_pred_excludeI_pooled$lower25[MIC_pred_excludeI_pooled$lower25==0] <- "-"
+MIC_pred_excludeI_pooled$lower25[MIC_pred_excludeI_pooled$upper25==0] <- "-"
+
+MIC_pred_excludeI_pooled <- MIC_pred_excludeI_pooled %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25))
+
+
+MIC_pred_excludeI <- rbind(MIC_pred_excludeI, MIC_pred_excludeI_pooled)
+
+
+
+#MIC median - all included
+MIC_pred <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  group_by(Dataset,cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR=paste0(median, " [", lower25, "-", upper25, "]"))
+ 
+MIC_pred[grep("0-0", MIC_pred$IQR), "IQR"] <- "-"
+
+MIC_pred$lower25[MIC_pred$lower25==0] <- "-"
+MIC_pred$lower25[MIC_pred$upper25==0] <- "-"
+
+MIC_pred <- MIC_pred %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25)) 
+
+MIC_pred_SIR_pooled <- validation%>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>% 
+  group_by(cipro_prediction_group) %>%
+  summarise(median=median(Measurement),  
+            lower25=discrete_quantile(as.numeric(Measurement), p=0.25), 
+            upper25=discrete_quantile(as.numeric(Measurement), p=0.75)) %>% mutate(IQR=paste0(median, " [", lower25, "-", upper25, "]")) %>%
+  mutate(Dataset=c("Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled","Pooled", "Pooled"))
+
+MIC_pred_SIR_pooled[grep("0-0", MIC_pred_SIR_pooled$IQR), "IQR"] <- "-"
+
+MIC_pred_SIR_pooled$lower25[MIC_pred_SIR_pooled$lower25==0] <- "-"
+MIC_pred_SIR_pooled$lower25[MIC_pred_SIR_pooled$upper25==0] <- "-"
+
+MIC_pred_SIR_pooled <- MIC_pred_SIR_pooled %>% rename(Group=cipro_prediction_group) %>%
+    select (-c(median,lower25,upper25))
+
+MIC_pred <- rbind(MIC_pred, MIC_pred_SIR_pooled)
+
+```
+
+# Table S12 - external validation by genotype profile
+```{r}
+
+#genotype profiles
+pooled_dataset_genotype <- 
+bind_rows(lst(MBIRA_Kpn_genotype,
+          MBIRA_Kvv_genotype, 
+          HowdenGorrie_genotype,
+          AGAR_genotype,
+          Milan_genotype,
+          HailuEthiopia_genotype,
+          KayamaJapan_genotype,
+          FeaseyMalawi_genotype, 
+          EUSCAPE_EURECA_Kpn_genotype,
+          EUSCAPE_EURECA_Kvv_genotype,
+          EgliSwitzerland_genotype,
+          HRYC_Spain_genotype,
+          IndiaGHRU_genotype,
+          NeumannGermany_genotype,
+          Whitelaw_CHAMPS_genotype,
+          Oxfordshire_Kpn_genotype,
+          Oxfordshire_Kvv_genotype,
+          IZSAM_Italy_genotype, 
+          LaPaz_Lazaro_genotype,
+          HarrisMERINO_genotype,
+          PachecoBrazil_genotype, 
+          SmaouiTunisia_genotype, 
+          pooled_genotype), .id ="Dataset") %>%
+  mutate(Dataset = (gsub("_genotype", "", Dataset))) %>%
+  mutate(N=S+I+R) %>%
+  mutate(RexcludeI_PPV = paste0(R,"/",(S+R), " (", round(R/(S+R)*100, 2), "%)")) %>%
+  mutate(R_PPV = paste0(R,"/",(S+I+R), " (", round(R/(S+I+R)*100, 2), "%)")) %>%
+  mutate(NWT_PPV = paste0((R+I),"/",(S+I+R), " (", round((R+I)/(S+I+R)*100, 2), "%)")) %>%
+
+  select (-c(S,I,R,N))
+
+
+pooled_dataset_genotype$RexcludeI_PPV[pooled_dataset_genotype$RexcludeI_PPV == '0/0 (NaN%)'] <- '-'
+pooled_dataset_genotype$R_PPV[pooled_dataset_genotype$R_PPV == '0/0 (NaN%)'] <- '-'
+pooled_dataset_genotype$NWT_PPV[pooled_dataset_genotype$NWT_PPV == '0/0 (NaN%)'] <- '-'
+
+
+
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'AGAR'] <- 'AGAR GnSOP'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EUSCAPE_EURECA_Kpn'] <- 'EUSCAPE & EURECA'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EUSCAPE_EURECA_Kvv'] <- 'EUSCAPE & EURECA*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'EgliSwitzerland'] <- 'University of Zurich'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'FeaseyMalawi'] <- 'Queen Elizabeth Central Hospital'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HRYC_Spain'] <- 'HURYC & CIBERINFEC'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HailuEthiopia'] <- 'Addis Ababa University*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'HowdenGorrie'] <- 'Controlling Superbugs study & Victorian CPE program'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'IZSAM_Italy'] <- 'IZSAM'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'IndiaGHRU'] <- 'India GHRU'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'KayamaJapan'] <- 'JARBS-GNR'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'LaPaz_Lazaro'] <- 'HULP'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'MBIRA_Kpn'] <- 'MBIRA'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'MBIRA_Kvv'] <- 'MBIRA*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Milan'] <- 'IRCCS Ospedale San Raffaele'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'NeumannGermany'] <- 'SCHARKI'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kpn'] <- 'Oxfordshire'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Oxfordshire_Kvv'] <- 'Oxfordshire*'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'SmaouiTunisia'] <- 'SmaouiTunisia'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'Whitelaw_CHAMPS'] <- 'CHAMPS'
+pooled_dataset_genotype$Dataset[pooled_dataset_genotype$Dataset == 'pooled'] <- 'Pooled'
+
+geno_MIC <- left_join(pooled_dataset_genotype, MIC_pred, by=c("Dataset","Group"))
+geno_MIC <- left_join(geno_MIC, MIC_pred_excludeI, by=c("Dataset","Group"))
+
+geno_MIC<- geno_MIC %>% 
+  mutate(Dataset = (gsub("EUSCAPE & EURECA\\*", "PPPPPPPP", Dataset)))%>%
+  mutate(Dataset = (gsub("EUSCAPE & EURECA", "A (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("PPPPPPPP", "EUSCAPE & EURECA (Kvv, EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("India GHRU", "B (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("AGAR GnSOP", "C (EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Oxfordshire\\*", "XXXXXXX", Dataset)))%>% 
+  mutate(Dataset = (gsub("Oxfordshire", "D (EUCAST)", Dataset)))%>% 
+      mutate(Dataset = (gsub("XXXXXXX", "Oxfordshire (Kvv, EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("HURYC & CIBERINFEC", "E (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("HULP", "F (EUCAST)", Dataset)))%>% 
+  mutate(Dataset = (gsub("JARBS-GNR", "G (CLSI)", Dataset)))%>% 
+      mutate(Dataset = (gsub("MBIRA\\*", "YYYYYYYY", Dataset)))%>% 
+  mutate(Dataset = (gsub("MBIRA", "H (CLSI)", Dataset)))%>%
+        mutate(Dataset = (gsub("YYYYYYYY", "MBIRA (Kvv, CLSI)", Dataset)))%>% 
+  mutate(Dataset = (gsub("Controlling Superbugs study & Victorian CPE program", "I (CLSI)", Dataset)))%>% 
+   mutate(Dataset = (gsub("Queen Elizabeth Central Hospital", "J* (EUCAST/BSAC)", Dataset)))%>% 
+  mutate(Dataset = (gsub("SmaouiTunisia", "K* (EUCAST)", Dataset)))%>% 
+    mutate(Dataset = (gsub("Addis Ababa University\\*", "L* (Kvv, CLSI)", Dataset)))%>%
+  mutate(Dataset = (gsub("University of Zurich", "M* (EUCAST)", Dataset)))%>%
+  mutate(Dataset = (gsub("CHAMPS", "N* (CLSI)", Dataset)))
+
+geno_MIC <- geno_MIC %>%
+  rename("MIC median [IQR] (exclude I)"=IQR_excludeI) %>%
+  rename("MIC median [IQR]"=IQR)
+write_tsv(geno_MIC, "../tables/TableS12_extValidation_genotypeProfiles.tsv", na="-")
+```
+
+
+
+#plot - showing R, NWT, R_excludeI
+```{r, eval=FALSE}
+
+validation_summary_table_combined<-rbind(validation_summary_table, validation_summary_table_excludeI)
+
+validation_summary_table_combined_long<-gather(validation_summary_table_combined, `Evaluation metric`, value, `Categorical agreement`:`%R`)
+
+validation_summary_table_combined_long<- validation_summary_table_combined_long %>% mutate(value = as.numeric(gsub("%", "", value))) %>%
+  mutate(`Evaluation metric` = (gsub("%R", "%R/NWT", `Evaluation metric`)))
+
+validation_summary_table_combined_long$`Evaluation metric` = factor(validation_summary_table_combined_long$`Evaluation metric`, levels=c("Categorical agreement",'Sensitivity','Specificity',"ME", 'VME', "%R/NWT"))
+
+validation_summary_table_median<-
+validation_summary_table_combined_long %>% group_by(Prediction, `Evaluation metric`) %>% 
+  summarise(value = median(as.numeric(value), na.rm = T)) %>%
+  mutate(Dataset="Overall median") %>%
+  mutate(Country="") %>%
+  mutate(N="")
+
+validation_summary_table_total <-
+rbind(validation_summary_table_combined_long, validation_summary_table_median)
+
+validation_summary_table_total <- full_join(validation_summary_table_total, SIR_table) %>% 
+  mutate(Dataset = (gsub("Pooled", "All datasets combined", Dataset)))%>%
+  mutate(Dataset_label=paste(Dataset, " (S=", S_total, ", I=", I_total, ", R=",R_total, ")", sep = ""))
+
+validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'Overall median (S=NA, I=NA, R=NA)'] <- 'Overall median (datasets A-N)'
+
+# Get totals to explicitly write in label
+colSums(SIR_table[,-1])
+validation_summary_table_total$Dataset_label[validation_summary_table_total$Dataset_label == 'All datasets combined (S=NA, I=NA, R=NA)'] <- "All datasets combined (S=1757, I=652, R=4610)"
+
+validation_summary_table_total$Dataset_label <- factor(validation_summary_table_total$Dataset_label, levels = c("EUSCAPE & EURECA (S=291, I=155, R=1687)", "JARBS-GNR (S=222, I=163, R=449)", "Queen Elizabeth Central Hospital (S=196, I=130, R=411)", "India GHRU (S=84, I=11, R=441)", "AGAR GnSOP (S=168, I=62, R=255)", "Oxfordshire (S=242, I=16, R=37)", "IZSAM (S=7, I=3, R=273)", "MBIRA (S=113, I=14, R=129)","SmaouiTunisia (S=62, I=28, R=146)",  "Controlling Superbugs study & Victorian CPE program (S=18, I=41, R=153)", "IRCCS Ospedale San Raffaele (S=9, I=2, R=187)", "HURYC & CIBERINFEC (S=20, I=7, R=146)", "HULP (S=11, I=1, R=136)", "MBIRA* (S=86, I=0, R=5)", "University of Zurich (S=11, I=8, R=53)", "Addis Ababa University* (S=37, I=5, R=28)", "Oxfordshire* (S=64, I=2, R=0)", "SCHARKI (S=51, I=3, R=2)", "CHAMPS (S=18, I=1, R=21)", "Overall median (datasets A-N)","All datasets combined (S=1757, I=652, R=4610)"))
+
+validation_summary_table_plot <-ggplot(validation_summary_table_total, aes(as.numeric(value),fct_inorder(as.factor(Dataset_label)))) +
+  geom_point(aes(shape = `Prediction`, size=`Prediction`, colour=`Prediction`), alpha=0.5) +
+  scale_shape_manual(values = c(R=15, NWT=18, R_excludeI=20)) +
+  scale_size_manual(values = c(R=3, NWT=3, R_excludeI=3)) +
+  scale_colour_manual(values=c(R="#bd1515", NWT="#2c15ae", R_excludeI="#339966")) +
+  scale_y_discrete(limits=rev)+
+  facet_grid(`Evaluation metric`~., scales = "free", space='free')+ 
+  labs(y="", x = "%") + 
+  theme_bw()+
+  theme(legend.title=element_blank())
+
+#ggsave(width=10, height=14, file="../figs/FigX_extValidation.pdf")
+
+# Only include datasets with at least 10 S genomes and 10 R genomes, >25 genomes in total, <100% S/R genomes
+validation_summary_table_total_exclude <- 
+validation_summary_table_total %>%
+  filter(S_total>10 | is.na(S_total)) %>%
+  filter(R_total>10 | is.na(R_total)) %>%
+  filter(N>25 | is.na(R_total)) 
+
+validation_summary_table_plot_exclude <-ggplot(validation_summary_table_total_exclude, aes(as.numeric(value),fct_inorder(as.factor(Dataset_label)))) +
+  geom_point(aes(shape = `Prediction`, size=`Prediction`, colour=`Prediction`), alpha=0.5) +
+  scale_shape_manual(values = c(R=15, NWT=18, R_excludeI=20)) +
+  scale_size_manual(values = c(R=3, NWT=3, R_excludeI=3)) +
+  scale_colour_manual(values=c(R="#bd1515", NWT="#2c15ae", R_excludeI="#339966")) +
+  scale_y_discrete(limits=rev)+
+  facet_grid(`Evaluation metric`~., scales = "free", space='free')+ 
+  labs(y="", x = "%") + 
+  theme_bw()+
+  theme(legend.title=element_blank())
+
+#ggsave(width=10, height=14, file="../figs/FigX_extValidation_exclude.pdf")
+
+```
+
+# Figure - external validation
+```{r}
+HowdenGorrie_MIC <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+MBIRA_MIC_Kpn <- readPNG("MBIRA_ValidationOutput/MIC_PredRIS_Kpn.png", native=TRUE)
+MBIRA_MIC_Kvv <- readPNG("MBIRA_ValidationOutput/MIC_PredRIS_Kvv.png", native=TRUE)
+AGAR_MIC <- readPNG("AGAR_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+Milan_MIC <- readPNG("MilanSanRafaelle_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+HailuEthiopia_DD <- readPNG("HailuEthiopia_ValidationOutput/DD_PredRIS.png", native=TRUE)
+KayamaJapan_MIC <- readPNG("KayamaJapan_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+FeaseyMalawi_DD <- readPNG("FeaseyMalawi_ValidationOutput/DD_PredRIS.png", native=TRUE)
+EUSCAPE_EURECA_MIC <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredRIS_Kpn.png", native=TRUE)
+
+
+EgliSwitzerland_DD <- readPNG("EgliSwitzerland_2025_ValidationOutput/DD_PredRIS.png", native=TRUE)
+HRYC_Spain_MIC <- readPNG("HRYC_Spain_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+IndiaGHRU_MIC <- readPNG("IndiaGHRU_2025_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+NeumannGermany_MIC <- readPNG("NeumannGermany_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+
+Whitelaw_CHAMPS_DD <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/DD_PredRIS.png", native=TRUE)
+
+Oxfordshire_Kpn_MIC <- readPNG("Oxfordshire_ValidationOutput/MIC_PredRIS_Kpn.png", native=TRUE)
+Oxfordshire_Kvv_MIC <- readPNG("Oxfordshire_ValidationOutput/MIC_PredRIS_Kvv.png", native=TRUE)
+IZSAM_Italy_MIC <- readPNG("IZSAM_Italy_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+LaPaz_Lazaro_MIC <- readPNG("IZSAM_Italy_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+
+HarrisMERINO_MIC <- readPNG("HarrisMERINO_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+
+PachecoBrazil_MIC <- readPNG("PachecoBrazil_ValidationOutput/MIC_PredRIS.png", native=TRUE)
+
+TunisiaSmaoui_DD <- readPNG("SmaouiTunisia_ValidationOutput/DD_PredRIS.png", native=TRUE)
+
+
+patch <- (wrap_elements(EUSCAPE_EURECA_MIC) +
+            ggtitle("A) EUSCAPE & EURECA MIC (n=2133)")  +
+            wrap_elements(KayamaJapan_MIC) +
+            ggtitle("B) JARBS-GNR Japan MIC (n=834)")+
+            wrap_elements(IndiaGHRU_MIC) +
+            ggtitle("C) India GHRU MIC (n=536)")+
+            wrap_elements(AGAR_MIC) + 
+            ggtitle("D) AGAR GnSOP MIC (n=485)") +
+            wrap_elements(Oxfordshire_Kpn_MIC) + 
+            ggtitle("E) Oxfordshire MIC (n=295)") + 
+            wrap_elements(IZSAM_Italy_MIC) +
+            ggtitle("F) IZSAM MIC (n=263)")+            
+            wrap_elements(MBIRA_MIC_Kpn) + 
+            ggtitle("G) MBIRA MIC (n=263)")+ 
+            wrap_elements(HowdenGorrie_MIC) +
+            ggtitle("H) Controlling Superbugs study & \nVictorian CPE program MIC (n=212)") +
+            wrap_elements(Milan_MIC) +
+            ggtitle("I) IRCCS Ospedale San Raffaele MIC (n=198)")+
+            wrap_elements(HRYC_Spain_MIC) +
+            ggtitle("J) HURYC & CIBERINFEC MIC (n=173)")+
+            wrap_elements(LaPaz_Lazaro_MIC) +
+            ggtitle("K) HULP MIC (n=148)")+
+            wrap_elements(MBIRA_MIC_Kvv) + 
+            ggtitle("L) MBIRA* MIC (n=92)")+
+            wrap_elements(Oxfordshire_Kvv_MIC) +
+            ggtitle("M) Oxfordshire* MIC (n=66)")+
+            wrap_elements(NeumannGermany_MIC) +
+            ggtitle("N) SCHARKI MIC (n=56)")+  
+            wrap_elements(PachecoBrazil_MIC) +
+            ggtitle("O) Universidade Federal da \nBahia MIC (n=38)")+
+            wrap_elements(HarrisMERINO_MIC) +
+            ggtitle("P) MERINO Trial MIC (n=36)")+            
+            
+            wrap_elements(FeaseyMalawi_DD) +
+            ggtitle("Q) Queen Elizabeth Central Hospital \n(Malawi) DD (n=737)") +
+            wrap_elements(TunisiaSmaoui_DD) +
+            ggtitle("R) Tunisia Smaoui DD (n=236)")+            
+            wrap_elements(EgliSwitzerland_DD) +
+            ggtitle("S) University of Zurich DD (n=72)")+
+            wrap_elements(HailuEthiopia_DD) +
+            ggtitle("T) Addis Ababa University* \n(Ethiopia) DD (n=70)")+
+            wrap_elements(Whitelaw_CHAMPS_DD) +
+            ggtitle("U) CHAMPS DD (n=40)")
+          )+
+  plot_layout(ncol = 3)
+
+#ggsave(height=13, width=13, file="../figs/FigX_extValidation.png")
+#ggsave(height=13, width=13, file="../figs/FigX_extValidation.pdf")
+
+```
+
+
+
+
+# Figure S11 - external validation (supplementary - distribution vs. genotype profile and phenotype vs. genotype profile)
+```{r}
+HowdenGorrie_dist <- readPNG("HowdenGorrie_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+HowdenGorrie_profile <- readPNG("HowdenGorrie_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+MBIRA_Kpn_dist <- readPNG("MBIRA_ValidationOutput/MIC_PredGroup_Kpn.png", native=TRUE)
+MBIRA_Kpn_profile <- readPNG("MBIRA_ValidationOutput/StackedBar_PredGroup_SIR_Kpn.png", native=TRUE)
+
+MBIRA_Kvv_dist <- readPNG("MBIRA_ValidationOutput/MIC_PredGroup_Kvv.png", native=TRUE)
+MBIRA_Kvv_profile <- readPNG("MBIRA_ValidationOutput/StackedBar_PredGroup_SIR_Kvv.png", native=TRUE)
+
+AGAR_dist <- readPNG("AGAR_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+AGAR_profile <- readPNG("AGAR_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+Milan_dist <- readPNG("MilanSanRafaelle_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+Milan_profile <- readPNG("MilanSanRafaelle_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+Hailu_dist <- readPNG("HailuEthiopia_ValidationOutput/DD_PredGroup.png", native=TRUE)
+Hailu_profile <- readPNG("HailuEthiopia_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+Kayama_dist <- readPNG("KayamaJapan_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+Kayama_profile <- readPNG("KayamaJapan_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+
+Feasey_dist <- readPNG("FeaseyMalawi_ValidationOutput/DD_PredGroup.png", native=TRUE)
+Feasey_profile <- readPNG("FeaseyMalawi_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)
+         
+EUSCAPE_EURECA_dist <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredGroup_Kpn.png", native=TRUE)
+EUSCAPE_EURECA_profile <- readPNG("EURECA_EUSCAPE_ValidationOutput/StackedBar_PredGroup_SIR_Kpn.png", native=TRUE)    
+
+EUSCAPE_EURECA_Kvv_dist <- readPNG("EURECA_EUSCAPE_ValidationOutput/MIC_PredGroup_Kvv.png", native=TRUE)
+EUSCAPE_EURECA_Kvv_profile <- readPNG("EURECA_EUSCAPE_ValidationOutput/StackedBar_PredGroup_SIR_Kvv.png", native=TRUE)    
+
+EgliSwitzerland_dist <- readPNG("EgliSwitzerland_2025_ValidationOutput/DD_PredGroup.png", native=TRUE)
+EgliSwitzerland_profile <- readPNG("EgliSwitzerland_2025_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)           
+
+HRYC_Spain_dist <- readPNG("HRYC_Spain_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+HRYC_Spain_profile <- readPNG("HRYC_Spain_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)           
+IndiaGHRU_dist <- readPNG("IndiaGHRU_2025_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+IndiaGHRU_profile <- readPNG("IndiaGHRU_2025_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)           
+NeumannGermany_dist <- readPNG("NeumannGermany_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+NeumannGermany_profile <- readPNG("NeumannGermany_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)           
+
+WhitelawCHAMPS_dist <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/DD_PredGroup.png", native=TRUE)
+WhitelawCHAMPS_profile <- readPNG("Whitelaw_Stellenbosch_ValidationOutput/StackedBar_PredGroup_SIR_DD.png", native=TRUE)    
+
+Oxfordshire_Kpn_dist <- readPNG("Oxfordshire_ValidationOutput/MIC_PredGroup_Kpn.png", native=TRUE)
+Oxfordshire_Kpn_profile <- readPNG("Oxfordshire_ValidationOutput/StackedBar_PredGroup_SIR_Kpn.png", native=TRUE)    
+
+Oxfordshire_Kvv_dist <- readPNG("Oxfordshire_ValidationOutput/MIC_PredGroup_Kvv.png", native=TRUE)
+Oxfordshire_Kvv_profile <- readPNG("Oxfordshire_ValidationOutput/StackedBar_PredGroup_SIR_Kvv.png", native=TRUE)    
+
+IZSAM_Italy_dist <- readPNG("IZSAM_Italy_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+IZSAM_Italy_profile <- readPNG("IZSAM_Italy_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)    
+LaPaz_Lazaro_dist <- readPNG("LaPaz_Lazaro_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+LaPaz_Lazaro_profile <- readPNG("LaPaz_Lazaro_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)    
+
+Harris_MERINO_dist <- readPNG("HarrisMERINO_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+Harris_MERINO_profile <- readPNG("HarrisMERINO_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)   
+
+Pacheco_Brazil_dist <- readPNG("PachecoBrazil_ValidationOutput/MIC_PredGroup.png", native=TRUE)
+Pacheco_Brazil_profile <- readPNG("PachecoBrazil_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)   
+
+TunisiaSmaoui_dist <- readPNG("SmaouiTunisia_ValidationOutput/DD_PredGroup.png", native=TRUE)
+TunisiaSmaoui_profile <- readPNG("SmaouiTunisia_ValidationOutput/StackedBar_PredGroup_SIR.png", native=TRUE)   
+
+  (wrap_elements(EUSCAPE_EURECA_dist) +ggtitle("1) A (EUCAST, Various) / \n EURECA & EUSCAPE (n=2133) - MIC distribution vs.\n genotype profile") + wrap_elements(EUSCAPE_EURECA_profile) + ggtitle("2) A (EUCAST, Various) / \n EURECA & EUSCAPE (n=2133) - observed phenotype vs.\n genotype profile"))/
+  
+    (wrap_elements(IndiaGHRU_dist) +ggtitle("3) B (EUCAST, V) / \nIndia GHRU (n=536) - MIC distribution vs.\n genotype profile") + wrap_elements(IndiaGHRU_profile) + ggtitle("4) B (EUCAST, V) / \nIndia GHRU (n=536) - observed phenotype vs.\n genotype profile")) 
+  
+
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_1.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_1.pdf")
+
+  (wrap_elements(AGAR_dist) +ggtitle("5) C (EUCAST, V/P) / \n AGAR GnSOP (n=485) - MIC distribution vs.\n genotype profile") + wrap_elements(AGAR_profile) + ggtitle("6) C (EUCAST, V/P) / \n AGAR GnSOP (n=485) - observed phenotype vs.\n genotype profile")) / 
+  (wrap_elements(Oxfordshire_Kpn_dist) +ggtitle("7) D (EUCAST, P) / \n Oxfordshire (n=295) - MIC distribution vs.\n genotype profile") + wrap_elements(Oxfordshire_Kpn_profile) + ggtitle("8) D (EUCAST, P) / \n Oxfordshire (n=295) - observed phenotype vs.\n genotype profile")) 
+  
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_2.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_2.pdf")
+
+  (wrap_elements(HRYC_Spain_dist) +ggtitle("9) E (EUCAST, S/M) / \n HURYC & CIBERINFEC (n=173) - MIC distribution vs.\n genotype profile") + wrap_elements(HRYC_Spain_profile) + ggtitle("10) E (EUCAST, S/M) \ \n HURYC & CIBERINFEC (n=173) \n - observed phenotype vs. genotype profile"))  / 
+      (wrap_elements(LaPaz_Lazaro_dist) +ggtitle("11) F (EUCAST MW/E) / \n HULP (n=148) - MIC distribution vs.\n genotype profile") + wrap_elements(LaPaz_Lazaro_profile) + ggtitle("12) F (EUCAST, MW/E) \ \n HULP (n=148) \n - observed phenotype vs. genotype profile")) 
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_3.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_3.pdf")
+
+(wrap_elements(Kayama_dist) +ggtitle("13) G (CLSI, MW) / \n JARBS-GNR Japan (n=834) - MIC distribution vs.\n genotype profile") + wrap_elements(Kayama_profile) + ggtitle("14)  G (CLSI, MW) / \n JARBS-GNR Japan (n=834) - observed phenotype vs.\n genotype profile")) /
+  
+(wrap_elements(MBIRA_Kpn_dist) +ggtitle("15) H (CLSI, V/E) / \n MBIRA (n=263) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kpn_profile) + ggtitle("16) H (CLSI, V/E) / \n MBIRA (n=263) - observed phenotype vs.\n genotype profile")) 
+
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_4.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_4.pdf")
+
+
+
+
+(wrap_elements(HowdenGorrie_dist) +ggtitle("17)  I (CLSI, V/E) / \n Controlling Superbugs study & \nVictorian CPE program (n=212) - MIC distribution vs.\n genotype profile") + wrap_elements(HowdenGorrie_profile) + ggtitle("18)  I (CLSI, V/E) / \n Controlling Superbugs study & \nVictorian CPE program (n=212) - observed phenotype vs.\n genotype profile"))  /
+(wrap_elements(Feasey_dist) +ggtitle("19) J* (EUCAST/BSAC) / \n Queen Elizabeth Central Hospital Malawi (n=737) \n - DD distribution vs. genotype profile") + wrap_elements(Feasey_profile) + ggtitle("20) J* (EUCAST/BSAC) / \n Queen Elizabeth Central Hospital Malawi (n=737) \n - observed phenotype vs. genotype profile")) 
+  
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_5.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_5.pdf")
+
+
+(wrap_elements(TunisiaSmaoui_dist) +ggtitle("21) K* (EUCAST) / \n Tunisia Smaoui* (n=236) .\n - DD distribution vs. genotype profile") + wrap_elements(TunisiaSmaoui_profile) + ggtitle("22) K* (EUCAST) / \n Tunisia Smaoui* (n=236) \n - observed phenotype vs. genotype profile")) /
+
+(wrap_elements(Hailu_dist) +ggtitle("23) L* (Kvv, CLSI) / \n Addis Ababa University* (n=70) .\n - DD distribution vs. genotype profile") + wrap_elements(Hailu_profile) + ggtitle("24) L* (Kvv, CLSI) / \n Addis Ababa University* (n=70) \n - observed phenotype vs. genotype profile")) 
+
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_6.png")
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_6.pdf")
+
+    (wrap_elements(EgliSwitzerland_dist) +ggtitle("25) M* (EUCAST) / \n University of Zurich (n=72) - \n DD distribution vs. genotype profile") + wrap_elements(EgliSwitzerland_profile) + ggtitle("26) M* (EUCAST) / \n University of Zurich (n=72) \n - observed phenotype vs. genotype profile")) /
+
+(wrap_elements(WhitelawCHAMPS_dist) +ggtitle("27) N* (CLSI) / \n CHAMPS (n=40) - DD distribution vs.\n genotype profile") + wrap_elements(WhitelawCHAMPS_profile) + ggtitle("28) N* (CLSI) / \n CHAMPS (n=40) - observed phenotype vs.\n genotype profile")) 
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_7.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_7.pdf")
+  
+  (wrap_elements(IZSAM_Italy_dist) +ggtitle("29) IZSAM (n=283) - MIC distribution vs.\n genotype profile") + wrap_elements(IZSAM_Italy_profile) + ggtitle("30) IZSAM (n=283) - observed phenotype vs.\n genotype profile")) /
+
+(wrap_elements(Milan_dist) +ggtitle("31) IRCCS Ospedale San Raffaele (n=198) -\n MIC distribution vs. genotype profile") + wrap_elements(Milan_profile) + ggtitle("32) IRCCS Ospedale San Raffaele (n=198) \n - observed phenotype vs. genotype profile")) 
+
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_8.png")
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_8.pdf")
+
+(wrap_elements(MBIRA_Kvv_dist) +ggtitle("33) MBIRA (Kvv, CLSI) (n=92) - MIC distribution vs.\n genotype profile") + wrap_elements(MBIRA_Kvv_profile) + ggtitle("34) MBIRA (Kvv, CLSI) (n=92) - observed phenotype vs.\n genotype profile")) /
+
+(wrap_elements(Oxfordshire_Kvv_dist) +ggtitle("35) Oxfordshire (Kvv, EUCAST) (n=66) \n - MIC distribution vs. genotype profile") + wrap_elements(Oxfordshire_Kvv_profile) + ggtitle("36) Oxfordshire (Kvv, EUCAST) (n=66) \n - observed phenotype vs. genotype profile")) 
+
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.png")
+ggsave(height=13, width=10, file="../figs/FigS11_extValidation_genoprofiles_9.pdf")
+
+(wrap_elements(NeumannGermany_dist) +ggtitle("37) SCHARKI (n=56) - MIC distribution vs.\n genotype profile") + wrap_elements(NeumannGermany_profile) + ggtitle("38) SCHARKI (n=56) - observed phenotype vs.\n genotype profile")) /
+
+(wrap_elements(EUSCAPE_EURECA_Kvv_dist) +ggtitle("39) EUSCAPE/EURECA Kvv (n=41) \n - MIC distribution vs. genotype profile") + wrap_elements(EUSCAPE_EURECA_Kvv_profile) + ggtitle("40) EUSCAPE/EURECA Kvv (n=41) \n - observed phenotype vs. genotype profile"))
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_10.pdf")
+
+
+(wrap_elements(Pacheco_Brazil_dist) +ggtitle("41) iberoAMRica study (n=38) \n - MIC distribution vs. genotype profile") + wrap_elements(Pacheco_Brazil_profile) + ggtitle("42) iberoAMRica study (n=38) \n - observed phenotype vs. genotype profile")) /
+  
+  (wrap_elements(Harris_MERINO_dist) +ggtitle("43) MERINO trial (n=36) \n - DD distribution vs. genotype profile") + wrap_elements(Harris_MERINO_dist) + ggtitle("44) MERINO trial (n=36) \n - observed phenotype vs. genotype profile")) 
+
+
+
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.png")
+ggsave(height=13, width=11, file="../figs/FigS11_extValidation_genoprofiles_11.pdf")
+
+
+
+```
+
+
+
+
+
+
+# numbers for summary
+
+```{r load_data_summary, eval=FALSE}
+
+validation_phenotypes <- read_delim("../tables/TableS6_phenotype_metadata_validation.tsv")
+validation_genotypes <- read_delim("../tables/TableS5_genotypes_validation.tsv")
+
+validation_phenotypes_summary_table <- validation_phenotypes %>% group_by(Dataset, Dataset_alias, `Assembly method`, Laboratory.Typing.Method, Testing.standard, Laboratory.Typing.Platform) %>% count()
+
+#Create foundation for the table
+#write_tsv(validation_phenotypes_summary_table, "../tables/TableS3_validation_summary.tsv", na="-")
+
+```
+
+```{r summary_genotypes_phenotypes, eval=FALSE}
+
+# Have to add EUSCAPE + SAN RAF data 
+# EUSCAPE = 2133 Kpn
+# IRCCS Ospedale San Raffaele = 198 Kpn 
+validation_genotypes %>% count(species)
+
+# EUSCAPE = 2133 MIC
+# IRCCS Ospedale San Raffaele = 198 MIC
+validation_phenotypes %>% count(Laboratory.Typing.Method)
+
+```
+

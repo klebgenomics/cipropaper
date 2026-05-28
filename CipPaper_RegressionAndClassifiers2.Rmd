@@ -126,25 +126,45 @@ vme <- function(pred,truth) {
   return(xtabs[1,2]/sum(xtabs[,2]))
 }
 
-metrics <- function(pred,truth) {
-  xtabs <- table(pred,truth)
-  return(list(cat=cat_agree(pred,truth),
-              ppv=ppv(pred,truth),
-              npv=npv(pred,truth),
-              sens=sens(pred,truth),
-              spec=spec(pred,truth),
-              me=me(pred,truth),
-              vme=vme(pred,truth),
-              n=sum(xtabs), 
-              summary=c("cat"=cat_agree(pred,truth),
-                    "sens"=sens(pred,truth),
-                    "spec"=spec(pred,truth),
-                    "me"=me(pred,truth),
-                    "vme"=vme(pred,truth),
-                    "n"=sum(xtabs)
-              )
-          )
+minor_error <- function(pred, truth) {
+  xtabs <- table(factor(pred, levels = c("S","I","R")),
+                 factor(truth, levels = c("S","I","R")))
+  
+  minor_n <- 
+    xtabs["I","S"] +
+    xtabs["I","R"] +
+    xtabs["S","I"] +
+    xtabs["R","I"]
+  
+  minor_n / sum(xtabs)
+}
+
+metrics <- function(pred, truth) {
+  xtabs <- table(pred, truth)
+  
+  return(
+    list(
+      cat   = cat_agree(pred, truth),
+      ppv   = ppv(pred, truth),
+      npv   = npv(pred, truth),
+      sens  = sens(pred, truth),
+      spec  = spec(pred, truth),
+      me    = me(pred, truth),
+      vme   = vme(pred, truth),
+      minor = minor_error(pred, truth),
+      n     = sum(xtabs), 
+      
+      summary = c(
+        "cat"   = cat_agree(pred, truth),
+        "sens"  = sens(pred, truth),
+        "spec"  = spec(pred, truth),
+        "me"    = me(pred, truth),
+        "vme"   = vme(pred, truth),
+        "minor" = minor_error(pred, truth),
+        "n"     = sum(xtabs)
+      )
     )
+  )
 }
 
 ``` 
@@ -528,6 +548,7 @@ species_R <- cipro_antibiogram %>% group_by(species) %>%
             spec=spec(predR, resistant), 
             me=me(predR, resistant), 
             vme=vme(predR, resistant),
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n())%>%
   mutate(out=rep("R", 4)) %>% 
   relocate(out, .before=species)
@@ -541,26 +562,48 @@ species_NWT <- cipro_antibiogram %>% group_by(species) %>%
             spec=spec(predNWT, nonWT_binary), 
             me=me(predNWT, nonWT_binary), 
             vme=vme(predNWT, nonWT_binary),
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n()) %>%
   mutate(out=rep("NWT", 4)) %>% 
   relocate(out, .before=species)
 
+kpsc_R <- cipro_antibiogram %>% 
+  summarise(cat=cat_agree(predR, resistant), 
+            sens=sens(predR, resistant), 
+            spec=spec(predR, resistant), 
+            me=me(predR, resistant), 
+            vme=vme(predR, resistant),
+            minor=minor_error(predSIR, Resistance.phenotype),
+            n=n())%>%
+  mutate(out=rep("R", 1))%>%
+  mutate(species=rep("Klebsiella pneumoniae species complex", 1))
+
+kpsc_NWT <-  cipro_antibiogram %>% 
+  summarise(cat=cat_agree(predNWT, nonWT_binary), 
+            sens=sens(predNWT, nonWT_binary), 
+            spec=spec(predNWT, nonWT_binary), 
+            me=me(predNWT, nonWT_binary), 
+            vme=vme(predNWT, nonWT_binary),
+            minor=minor_error(predSIR, Resistance.phenotype),
+            n=n()) %>%
+  mutate(out=rep("NWT", 1))%>%
+  mutate(species=rep("Klebsiella pneumoniae species complex", 1))
+
+
+
 species_summary_table <- 
-bind_rows(c("out"="R","species"="Klebsiella pneumoniae species complex", 
-            metrics(cipro_antibiogram$predR, cipro_antibiogram$resistant)$summary), 
-          c("out"="NWT","species"="Klebsiella pneumoniae species complex",
-            metrics(cipro_antibiogram$predNWT, cipro_antibiogram$nonWT_binary)$summary)
-          ) %>%
-  mutate_at(c("cat","sens","spec","me","vme", "n"), as.double) %>%
+bind_rows(kpsc_R,kpsc_NWT)%>%
+  mutate_at(c("cat","sens","spec","me","vme","minor", "n"), as.double) %>%
   bind_rows(species_R) %>%
   bind_rows(species_NWT) %>%
-  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n) %>%
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, minor=minor, `Categorical agreement`=cat, N=n) %>%
   mutate(Sensitivity=paste0(round(as.numeric(Sensitivity)*100,2),"%")) %>%
   mutate(Specificity=paste0(round(as.numeric(Specificity)*100,2),"%")) %>%
   mutate(ME=paste0(round(as.numeric(ME)*100,2),"%")) %>%
   mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
+  mutate(MinE=paste0(round(as.numeric(minor)*100,2),"%")) %>%
   mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%
-  select(out, species, `Categorical agreement`, Sensitivity, Specificity, ME, VME, N)
+  select(out, species, `Categorical agreement`, Sensitivity, Specificity, ME, VME, MinE, N)
   
 
 write_csv(species_summary_table, "tables/Table1b_ModelSummary.csv", na="-")
@@ -754,6 +797,7 @@ Country_R <- cipro_antibiogram %>% group_by(Country) %>%
             cat=cat_agree(predR, resistant)*100, 
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
@@ -772,7 +816,8 @@ SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>%
             spec=spec(predR, resistant)*100, 
             cat=cat_agree(predR, resistant)*100, 
             me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
+            vme=vme(predR, resistant)*100,
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
@@ -795,6 +840,7 @@ InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>%
             cat=cat_agree(predR, resistant)*100, 
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
@@ -827,6 +873,7 @@ platform_R <- cipro_antibiogram %>%
             cat=cat_agree(predR, resistant)*100, 
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
@@ -847,7 +894,7 @@ platform_R
 Combined_R <- bind_rows(ST_R, Country_R, SourceType_R, InfectionStatus_R, platform_R)
 
 Combined_R <- Combined_R %>%
-  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) 
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Minoe error`=minor, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) 
 #%>%
 #  write_csv("tables/TableSX_ModelSummary_Combined.csv", na="-")
 
