@@ -435,7 +435,8 @@ model_summary_tab %>%
   mutate(VME=paste0(round(as.numeric(VME)*100,2),"%")) %>%
   mutate(`Categorical agreement`=paste0(round(as.numeric(`Categorical agreement`)*100,2),"%")) %>%
   select(response, ModelName, predictors, `Categorical agreement`, Sensitivity, Specificity, ME, VME, AIC, `model fit (aac6 interaction)`) %>%
-  write_csv("tables/Table1a_ModelSummary.csv", na="-")
+  write_csv("tables/Table1a_ModelSummary.csv", na="-") %>%
+  write_tsv("tables/Table1a_ModelSummary.tsv", na="-")
   
 ```
 
@@ -607,7 +608,7 @@ bind_rows(kpsc_R,kpsc_NWT)%>%
   
 
 write_csv(species_summary_table, "tables/Table1b_ModelSummary.csv", na="-")
-  
+write_tsv(species_summary_table, "tables/Table1b_ModelSummary.tsv", na="-")
 ```
 # NOT USED - rules-based classifier species summary - facet plot
 ```{r, eval=FALSE}
@@ -778,6 +779,7 @@ ST_R <- cipro_antibiogram %>% group_by(ST) %>%
             cat=cat_agree(predR, resistant)*100, 
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
             susceptible=n-sum(resistant),
@@ -894,7 +896,7 @@ platform_R
 Combined_R <- bind_rows(ST_R, Country_R, SourceType_R, InfectionStatus_R, platform_R)
 
 Combined_R <- Combined_R %>%
-  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Minoe error`=minor, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) 
+  rename(Sensitivity=sens, Specificity=spec, ME=me, VME=vme, `Minor error`=minor, `Categorical agreement`=cat, N=n, `Resistant`=percent_R, Category=category, Prediction=out, `Category Name`=category_name) 
 #%>%
 #  write_csv("tables/TableSX_ModelSummary_Combined.csv", na="-")
 
@@ -937,6 +939,7 @@ Study_R <- cipro_antibiogram %>% group_by(index) %>%
             cat=cat_agree(predR, resistant)*100, 
             me=me(predR, resistant)*100, 
             vme=vme(predR, resistant)*100, 
+            minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
   mutate(out="R") %>% 
@@ -1014,9 +1017,11 @@ category_phenotype_table %>%
               `R PPV`=paste0(round(predR_summary[2, "PPV"]*100,2),"% (N=", predR_summary[2,"R"], "/", predR_summary[2,"N"],")"),
               `NWT PPV`=paste0(round(predNWT_summary[2, "PPV"]*100,2),"% (N=", predNWT_summary[2,"non-wt (I/R)"], "/", predNWT_summary[2,"N"],")")
               )) %>%
-  write_csv(file="tables/Table2_Classifier.csv")
+  write_csv(file="tables/Table2_Classifier.csv") %>%
+  write_tsv(file="tables/Table2_Classifier.tsv")
 
 write(x="\n^=GyrA-87G and GyrA-87H are not included in QRDR count; qnrB1 is excluded from the single-PMQR count. *aac6 presence is not considered", file="tables/Table2_Classifier.csv", append=T)
+write(x="\n^=GyrA-87G and GyrA-87H are not included in QRDR count; qnrB1 is excluded from the single-PMQR count. *aac6 presence is not considered", file="tables/Table2_Classifier.tsv", append=T)
 ```
 
 
