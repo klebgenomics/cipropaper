@@ -920,7 +920,7 @@ validation_summary_table <- as_tibble(validation_summary) %>%
     Specificity = spec,
     `ME` = me,
     `VME` = vme,
-    `Minor error` = me_I_total,
+    `Minor errors` = me_I_total,
     `Minerror_lb` = me_I_total_lb,
     `Minerror_ub` = me_I_total_ub,
     `Categorical agreement` = cat,
@@ -933,7 +933,7 @@ validation_summary_table <- as_tibble(validation_summary) %>%
     Specificity = paste0(round(as.numeric(Specificity) * 100, 2), "%"),
     ME = paste0(round(as.numeric(ME) * 100, 2), "%"),
     VME = paste0(round(as.numeric(VME) * 100, 2), "%"),
-    `Minor error` = paste0(round(as.numeric(`Minor error`) * 100, 2), "%"),
+    `Minor errors` = paste0(round(as.numeric(`Minor errors`) * 100, 2), "%"),
     `Categorical agreement` = paste0(round(as.numeric(`Categorical agreement`) * 100, 2), "%"),
     `%R` = paste0(round(as.numeric(`%R`) * 100, 2), "%")
   )
@@ -951,13 +951,13 @@ validation_summary_table <- as_tibble(validation_summary) %>%
 
 validation_summary_table_plot <- validation_summary_table %>% 
   filter(Prediction =="R") %>%
-  relocate(Dataset, Prediction, `Categorical agreement`, `Sensitivity`, `Specificity`, `ME`, `VME`, `Minor error`)
+  relocate(Dataset, Prediction, `Categorical agreement`, `Sensitivity`, `Specificity`, `ME`, `VME`, `Minor errors`)
 
 validation_summary_table_long <- gather(
   validation_summary_table_plot,
   `Evaluation metric`,
   value,
-  `Categorical agreement`:`Minor error`
+  `Categorical agreement`:`Minor errors`
 )
 
 validation_summary_table_long <- 
@@ -980,7 +980,7 @@ validation_summary_table_long_ci <-
   filter(
     `Evaluation metric` == "Categorical agreement" & var == "cat" |
     `Evaluation metric` == "ME" & var == "me" |
-    `Evaluation metric` == "Minor error" & var == "Minerror" |
+    `Evaluation metric` == "Minor errors" & var == "Minerror" |
     `Evaluation metric` == "VME" & var == "vme"
   )
 
@@ -1111,7 +1111,13 @@ validation_summary_table_total_exclude <-
   mutate(
     `Evaluation metric` = recode(
       `Evaluation metric`,
-      "ME" = "Major error"
+      "ME" = "Major errors"
+    )
+  ) %>%
+  mutate(
+    `Evaluation metric` = recode(
+      `Evaluation metric`,
+      "VME" = "Very major errors"
     )
   )
 
@@ -1119,9 +1125,9 @@ validation_summary_table_long_ci$`Evaluation metric` <- factor(
   validation_summary_table_long_ci$`Evaluation metric`,
   levels = c(
     "Categorical agreement",
-    "Major error",
-    "VME",
-    "Minor error"
+    "Major errors",
+    "Very major errors",
+    "Minor errors"
   )
 )
 
@@ -1171,7 +1177,7 @@ validation_summary_table_plot <- validation_summary_table_total_exclude %>%
   geom_vline(
     data = filter(
       validation_summary_table_total_exclude,
-      `Evaluation metric` == "Major error"
+      `Evaluation metric` == "Major errors"
     ),
     aes(xintercept = 3),
     colour = "#fb9472"
@@ -1180,9 +1186,18 @@ validation_summary_table_plot <- validation_summary_table_total_exclude %>%
   geom_vline(
     data = filter(
       validation_summary_table_total_exclude,
-      `Evaluation metric` == "VME"
+      `Evaluation metric` == "Very major errors"
     ),
     aes(xintercept = 1.5),
+    colour = "#fb9472"
+  ) +
+  
+    geom_vline(
+    data = filter(
+      validation_summary_table_total_exclude,
+      `Evaluation metric` == "Minor errors"
+    ),
+    aes(xintercept = 10),
     colour = "#fb9472"
   ) +
 
@@ -1191,7 +1206,7 @@ validation_summary_table_plot <- validation_summary_table_total_exclude %>%
     `Categorical agreement` = 1,
     `Major error` = 1,
     `VME` = 1,
-    `Minor error` = 1
+    `Minor errors` = 1
   )
 )
 
@@ -1225,7 +1240,7 @@ all_datasets_metrics <- full_join(all_datasets_metrics, SIR_table) %>% select (-
   rename(Intermediate=I_total)%>%
   rename(Resistant=R_total)
 
-all_datasets_metrics <- all_datasets_metrics[, c("Dataset", "N","Susceptible", "Intermediate", "Resistant", "Prediction", "%R", "Categorical agreement", "Categorical_agreement_conf_int_lower_bound", "Categorical_agreement_conf_int_upper_bound", "ME", "ME_conf_int_lower_bound", "ME_conf_int_upper_bound", "VME", "VME_conf_int_lower_bound", "VME_conf_int_upper_bound", "Sensitivity", "Sensitivity_conf_int_lower_bound", "Sensitivity_conf_int_upper_bound", "Specificity", "Specificity_conf_int_lower_bound", "Specificity_conf_int_upper_bound", "Minor error", "Minor_error_conf_int_lower_bound", "Minor_error_conf_int_upper_bound")]
+all_datasets_metrics <- all_datasets_metrics[, c("Dataset", "N","Susceptible", "Intermediate", "Resistant", "Prediction", "%R", "Categorical agreement", "Categorical_agreement_conf_int_lower_bound", "Categorical_agreement_conf_int_upper_bound", "ME", "ME_conf_int_lower_bound", "ME_conf_int_upper_bound", "VME", "VME_conf_int_lower_bound", "VME_conf_int_upper_bound", "Sensitivity", "Sensitivity_conf_int_lower_bound", "Sensitivity_conf_int_upper_bound", "Specificity", "Specificity_conf_int_lower_bound", "Specificity_conf_int_upper_bound", "Minor errors", "Minor_error_conf_int_lower_bound", "Minor_error_conf_int_upper_bound")]
 
 
 all_datasets_metrics<- all_datasets_metrics %>% 

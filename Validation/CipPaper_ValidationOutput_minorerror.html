@@ -2039,7 +2039,7 @@ display: none;
 
 <h1 class="title toc-ignore">Validation</h1>
 <h4 class="author">Kara Tsang, Kat Holt</h4>
-<h4 class="date">Last compiled on 28/05/26</h4>
+<h4 class="date">Last compiled on 29/05/26</h4>
 
 </div>
 
@@ -2901,7 +2901,7 @@ margin-right: auto;
 <span id="cb11-150"><a href="#cb11-150" tabindex="-1"></a>    <span class="at">Specificity =</span> spec,</span>
 <span id="cb11-151"><a href="#cb11-151" tabindex="-1"></a>    <span class="st">`</span><span class="at">ME</span><span class="st">`</span> <span class="ot">=</span> me,</span>
 <span id="cb11-152"><a href="#cb11-152" tabindex="-1"></a>    <span class="st">`</span><span class="at">VME</span><span class="st">`</span> <span class="ot">=</span> vme,</span>
-<span id="cb11-153"><a href="#cb11-153" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minor error</span><span class="st">`</span> <span class="ot">=</span> me_I_total,</span>
+<span id="cb11-153"><a href="#cb11-153" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minor errors</span><span class="st">`</span> <span class="ot">=</span> me_I_total,</span>
 <span id="cb11-154"><a href="#cb11-154" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minerror_lb</span><span class="st">`</span> <span class="ot">=</span> me_I_total_lb,</span>
 <span id="cb11-155"><a href="#cb11-155" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minerror_ub</span><span class="st">`</span> <span class="ot">=</span> me_I_total_ub,</span>
 <span id="cb11-156"><a href="#cb11-156" tabindex="-1"></a>    <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span> <span class="ot">=</span> cat,</span>
@@ -2914,7 +2914,7 @@ margin-right: auto;
 <span id="cb11-163"><a href="#cb11-163" tabindex="-1"></a>    <span class="at">Specificity =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">as.numeric</span>(Specificity) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>),</span>
 <span id="cb11-164"><a href="#cb11-164" tabindex="-1"></a>    <span class="at">ME =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">as.numeric</span>(ME) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>),</span>
 <span id="cb11-165"><a href="#cb11-165" tabindex="-1"></a>    <span class="at">VME =</span> <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">as.numeric</span>(VME) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>),</span>
-<span id="cb11-166"><a href="#cb11-166" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minor error</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Minor error</span><span class="st">`</span>) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>),</span>
+<span id="cb11-166"><a href="#cb11-166" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minor errors</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Minor errors</span><span class="st">`</span>) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>),</span>
 <span id="cb11-167"><a href="#cb11-167" tabindex="-1"></a>    <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span>) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>),</span>
 <span id="cb11-168"><a href="#cb11-168" tabindex="-1"></a>    <span class="st">`</span><span class="at">%R</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">paste0</span>(<span class="fu">round</span>(<span class="fu">as.numeric</span>(<span class="st">`</span><span class="at">%R</span><span class="st">`</span>) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">2</span>), <span class="st">&quot;%&quot;</span>)</span>
 <span id="cb11-169"><a href="#cb11-169" tabindex="-1"></a>  )</span>
@@ -2925,13 +2925,13 @@ margin-right: auto;
 <h1>Plotting validation sets (only R_excludeI)</h1>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a>validation_summary_table_plot <span class="ot">&lt;-</span> validation_summary_table <span class="sc">%&gt;%</span> </span>
 <span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a>  <span class="fu">filter</span>(Prediction <span class="sc">==</span><span class="st">&quot;R&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">relocate</span>(Dataset, Prediction, <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sensitivity</span><span class="st">`</span>, <span class="st">`</span><span class="at">Specificity</span><span class="st">`</span>, <span class="st">`</span><span class="at">ME</span><span class="st">`</span>, <span class="st">`</span><span class="at">VME</span><span class="st">`</span>, <span class="st">`</span><span class="at">Minor error</span><span class="st">`</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a>  <span class="fu">relocate</span>(Dataset, Prediction, <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span>, <span class="st">`</span><span class="at">Sensitivity</span><span class="st">`</span>, <span class="st">`</span><span class="at">Specificity</span><span class="st">`</span>, <span class="st">`</span><span class="at">ME</span><span class="st">`</span>, <span class="st">`</span><span class="at">VME</span><span class="st">`</span>, <span class="st">`</span><span class="at">Minor errors</span><span class="st">`</span>)</span>
 <span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a></span>
 <span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a>validation_summary_table_long <span class="ot">&lt;-</span> <span class="fu">gather</span>(</span>
 <span id="cb12-6"><a href="#cb12-6" tabindex="-1"></a>  validation_summary_table_plot,</span>
 <span id="cb12-7"><a href="#cb12-7" tabindex="-1"></a>  <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span>,</span>
 <span id="cb12-8"><a href="#cb12-8" tabindex="-1"></a>  value,</span>
-<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Minor error</span><span class="st">`</span></span>
+<span id="cb12-9"><a href="#cb12-9" tabindex="-1"></a>  <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">Minor errors</span><span class="st">`</span></span>
 <span id="cb12-10"><a href="#cb12-10" tabindex="-1"></a>)</span>
 <span id="cb12-11"><a href="#cb12-11" tabindex="-1"></a></span>
 <span id="cb12-12"><a href="#cb12-12" tabindex="-1"></a>validation_summary_table_long <span class="ot">&lt;-</span> </span>
@@ -2954,7 +2954,7 @@ margin-right: auto;
 <span id="cb12-29"><a href="#cb12-29" tabindex="-1"></a>  <span class="fu">filter</span>(</span>
 <span id="cb12-30"><a href="#cb12-30" tabindex="-1"></a>    <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Categorical agreement&quot;</span> <span class="sc">&amp;</span> var <span class="sc">==</span> <span class="st">&quot;cat&quot;</span> <span class="sc">|</span></span>
 <span id="cb12-31"><a href="#cb12-31" tabindex="-1"></a>    <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;ME&quot;</span> <span class="sc">&amp;</span> var <span class="sc">==</span> <span class="st">&quot;me&quot;</span> <span class="sc">|</span></span>
-<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a>    <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Minor error&quot;</span> <span class="sc">&amp;</span> var <span class="sc">==</span> <span class="st">&quot;Minerror&quot;</span> <span class="sc">|</span></span>
+<span id="cb12-32"><a href="#cb12-32" tabindex="-1"></a>    <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Minor errors&quot;</span> <span class="sc">&amp;</span> var <span class="sc">==</span> <span class="st">&quot;Minerror&quot;</span> <span class="sc">|</span></span>
 <span id="cb12-33"><a href="#cb12-33" tabindex="-1"></a>    <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;VME&quot;</span> <span class="sc">&amp;</span> var <span class="sc">==</span> <span class="st">&quot;vme&quot;</span></span>
 <span id="cb12-34"><a href="#cb12-34" tabindex="-1"></a>  )</span>
 <span id="cb12-35"><a href="#cb12-35" tabindex="-1"></a></span>
@@ -3086,93 +3086,108 @@ margin-right: auto;
 <span id="cb14-105"><a href="#cb14-105" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
 <span id="cb14-106"><a href="#cb14-106" tabindex="-1"></a>    <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">recode</span>(</span>
 <span id="cb14-107"><a href="#cb14-107" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span>,</span>
-<span id="cb14-108"><a href="#cb14-108" tabindex="-1"></a>      <span class="st">&quot;ME&quot;</span> <span class="ot">=</span> <span class="st">&quot;Major error&quot;</span></span>
+<span id="cb14-108"><a href="#cb14-108" tabindex="-1"></a>      <span class="st">&quot;ME&quot;</span> <span class="ot">=</span> <span class="st">&quot;Major errors&quot;</span></span>
 <span id="cb14-109"><a href="#cb14-109" tabindex="-1"></a>    )</span>
-<span id="cb14-110"><a href="#cb14-110" tabindex="-1"></a>  )</span>
-<span id="cb14-111"><a href="#cb14-111" tabindex="-1"></a></span>
-<span id="cb14-112"><a href="#cb14-112" tabindex="-1"></a>validation_summary_table_long_ci<span class="sc">$</span><span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
-<span id="cb14-113"><a href="#cb14-113" tabindex="-1"></a>  validation_summary_table_long_ci<span class="sc">$</span><span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span>,</span>
-<span id="cb14-114"><a href="#cb14-114" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(</span>
-<span id="cb14-115"><a href="#cb14-115" tabindex="-1"></a>    <span class="st">&quot;Categorical agreement&quot;</span>,</span>
-<span id="cb14-116"><a href="#cb14-116" tabindex="-1"></a>    <span class="st">&quot;Major error&quot;</span>,</span>
-<span id="cb14-117"><a href="#cb14-117" tabindex="-1"></a>    <span class="st">&quot;VME&quot;</span>,</span>
-<span id="cb14-118"><a href="#cb14-118" tabindex="-1"></a>    <span class="st">&quot;Minor error&quot;</span></span>
-<span id="cb14-119"><a href="#cb14-119" tabindex="-1"></a>  )</span>
-<span id="cb14-120"><a href="#cb14-120" tabindex="-1"></a>)</span>
-<span id="cb14-121"><a href="#cb14-121" tabindex="-1"></a></span>
-<span id="cb14-122"><a href="#cb14-122" tabindex="-1"></a></span>
-<span id="cb14-123"><a href="#cb14-123" tabindex="-1"></a></span>
-<span id="cb14-124"><a href="#cb14-124" tabindex="-1"></a>validation_summary_table_plot <span class="ot">&lt;-</span> validation_summary_table_total_exclude <span class="sc">%&gt;%</span> </span>
-<span id="cb14-125"><a href="#cb14-125" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">as.numeric</span>(metric_value), Dataset_label)) <span class="sc">+</span></span>
-<span id="cb14-126"><a href="#cb14-126" tabindex="-1"></a>  </span>
-<span id="cb14-127"><a href="#cb14-127" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">&quot;#9f98e9&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb14-128"><a href="#cb14-128" tabindex="-1"></a>  </span>
-<span id="cb14-129"><a href="#cb14-129" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(</span>
-<span id="cb14-130"><a href="#cb14-130" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
-<span id="cb14-131"><a href="#cb14-131" tabindex="-1"></a>      <span class="at">xmin =</span> <span class="fu">as.numeric</span>(lb) <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb14-132"><a href="#cb14-132" tabindex="-1"></a>      <span class="at">xmax =</span> <span class="fu">as.numeric</span>(ub) <span class="sc">*</span> <span class="dv">100</span></span>
-<span id="cb14-133"><a href="#cb14-133" tabindex="-1"></a>    ),</span>
-<span id="cb14-134"><a href="#cb14-134" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;#887feb&quot;</span>,</span>
-<span id="cb14-135"><a href="#cb14-135" tabindex="-1"></a>    <span class="at">position =</span> pd,</span>
-<span id="cb14-136"><a href="#cb14-136" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">0.5</span></span>
-<span id="cb14-137"><a href="#cb14-137" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-138"><a href="#cb14-138" tabindex="-1"></a>  </span>
-<span id="cb14-139"><a href="#cb14-139" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">limits =</span> rev) <span class="sc">+</span></span>
-<span id="cb14-140"><a href="#cb14-140" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">20</span>)) <span class="sc">+</span></span>
-<span id="cb14-141"><a href="#cb14-141" tabindex="-1"></a>  </span>
-<span id="cb14-142"><a href="#cb14-142" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
-<span id="cb14-143"><a href="#cb14-143" tabindex="-1"></a>    . <span class="sc">~</span> <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span>,</span>
-<span id="cb14-144"><a href="#cb14-144" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>,</span>
-<span id="cb14-145"><a href="#cb14-145" tabindex="-1"></a>    <span class="at">space =</span> <span class="st">&quot;free_x&quot;</span></span>
-<span id="cb14-146"><a href="#cb14-146" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-110"><a href="#cb14-110" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-111"><a href="#cb14-111" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb14-112"><a href="#cb14-112" tabindex="-1"></a>    <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">recode</span>(</span>
+<span id="cb14-113"><a href="#cb14-113" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span>,</span>
+<span id="cb14-114"><a href="#cb14-114" tabindex="-1"></a>      <span class="st">&quot;VME&quot;</span> <span class="ot">=</span> <span class="st">&quot;Very major errors&quot;</span></span>
+<span id="cb14-115"><a href="#cb14-115" tabindex="-1"></a>    )</span>
+<span id="cb14-116"><a href="#cb14-116" tabindex="-1"></a>  )</span>
+<span id="cb14-117"><a href="#cb14-117" tabindex="-1"></a></span>
+<span id="cb14-118"><a href="#cb14-118" tabindex="-1"></a>validation_summary_table_long_ci<span class="sc">$</span><span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb14-119"><a href="#cb14-119" tabindex="-1"></a>  validation_summary_table_long_ci<span class="sc">$</span><span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span>,</span>
+<span id="cb14-120"><a href="#cb14-120" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(</span>
+<span id="cb14-121"><a href="#cb14-121" tabindex="-1"></a>    <span class="st">&quot;Categorical agreement&quot;</span>,</span>
+<span id="cb14-122"><a href="#cb14-122" tabindex="-1"></a>    <span class="st">&quot;Major errors&quot;</span>,</span>
+<span id="cb14-123"><a href="#cb14-123" tabindex="-1"></a>    <span class="st">&quot;Very major errors&quot;</span>,</span>
+<span id="cb14-124"><a href="#cb14-124" tabindex="-1"></a>    <span class="st">&quot;Minor errors&quot;</span></span>
+<span id="cb14-125"><a href="#cb14-125" tabindex="-1"></a>  )</span>
+<span id="cb14-126"><a href="#cb14-126" tabindex="-1"></a>)</span>
+<span id="cb14-127"><a href="#cb14-127" tabindex="-1"></a></span>
+<span id="cb14-128"><a href="#cb14-128" tabindex="-1"></a></span>
+<span id="cb14-129"><a href="#cb14-129" tabindex="-1"></a></span>
+<span id="cb14-130"><a href="#cb14-130" tabindex="-1"></a>validation_summary_table_plot <span class="ot">&lt;-</span> validation_summary_table_total_exclude <span class="sc">%&gt;%</span> </span>
+<span id="cb14-131"><a href="#cb14-131" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="fu">as.numeric</span>(metric_value), Dataset_label)) <span class="sc">+</span></span>
+<span id="cb14-132"><a href="#cb14-132" tabindex="-1"></a>  </span>
+<span id="cb14-133"><a href="#cb14-133" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">&quot;#9f98e9&quot;</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb14-134"><a href="#cb14-134" tabindex="-1"></a>  </span>
+<span id="cb14-135"><a href="#cb14-135" tabindex="-1"></a>  <span class="fu">geom_linerange</span>(</span>
+<span id="cb14-136"><a href="#cb14-136" tabindex="-1"></a>    <span class="fu">aes</span>(</span>
+<span id="cb14-137"><a href="#cb14-137" tabindex="-1"></a>      <span class="at">xmin =</span> <span class="fu">as.numeric</span>(lb) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb14-138"><a href="#cb14-138" tabindex="-1"></a>      <span class="at">xmax =</span> <span class="fu">as.numeric</span>(ub) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb14-139"><a href="#cb14-139" tabindex="-1"></a>    ),</span>
+<span id="cb14-140"><a href="#cb14-140" tabindex="-1"></a>    <span class="at">col =</span> <span class="st">&quot;#887feb&quot;</span>,</span>
+<span id="cb14-141"><a href="#cb14-141" tabindex="-1"></a>    <span class="at">position =</span> pd,</span>
+<span id="cb14-142"><a href="#cb14-142" tabindex="-1"></a>    <span class="at">size =</span> <span class="fl">0.5</span></span>
+<span id="cb14-143"><a href="#cb14-143" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-144"><a href="#cb14-144" tabindex="-1"></a>  </span>
+<span id="cb14-145"><a href="#cb14-145" tabindex="-1"></a>  <span class="fu">scale_y_discrete</span>(<span class="at">limits =</span> rev) <span class="sc">+</span></span>
+<span id="cb14-146"><a href="#cb14-146" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">20</span>)) <span class="sc">+</span></span>
 <span id="cb14-147"><a href="#cb14-147" tabindex="-1"></a>  </span>
-<span id="cb14-148"><a href="#cb14-148" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;%&quot;</span>) <span class="sc">+</span></span>
-<span id="cb14-149"><a href="#cb14-149" tabindex="-1"></a>  </span>
-<span id="cb14-150"><a href="#cb14-150" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
-<span id="cb14-151"><a href="#cb14-151" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb14-152"><a href="#cb14-152" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb14-153"><a href="#cb14-153" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
-<span id="cb14-154"><a href="#cb14-154" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-148"><a href="#cb14-148" tabindex="-1"></a>  <span class="fu">facet_grid</span>(</span>
+<span id="cb14-149"><a href="#cb14-149" tabindex="-1"></a>    . <span class="sc">~</span> <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span>,</span>
+<span id="cb14-150"><a href="#cb14-150" tabindex="-1"></a>    <span class="at">scales =</span> <span class="st">&quot;free_x&quot;</span>,</span>
+<span id="cb14-151"><a href="#cb14-151" tabindex="-1"></a>    <span class="at">space =</span> <span class="st">&quot;free_x&quot;</span></span>
+<span id="cb14-152"><a href="#cb14-152" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-153"><a href="#cb14-153" tabindex="-1"></a>  </span>
+<span id="cb14-154"><a href="#cb14-154" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">y =</span> <span class="st">&quot;&quot;</span>, <span class="at">x =</span> <span class="st">&quot;%&quot;</span>) <span class="sc">+</span></span>
 <span id="cb14-155"><a href="#cb14-155" tabindex="-1"></a>  </span>
-<span id="cb14-156"><a href="#cb14-156" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
-<span id="cb14-157"><a href="#cb14-157" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(</span>
-<span id="cb14-158"><a href="#cb14-158" tabindex="-1"></a>      validation_summary_table_total_exclude,</span>
-<span id="cb14-159"><a href="#cb14-159" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Categorical agreement&quot;</span></span>
-<span id="cb14-160"><a href="#cb14-160" tabindex="-1"></a>    ),</span>
-<span id="cb14-161"><a href="#cb14-161" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">90</span>),</span>
-<span id="cb14-162"><a href="#cb14-162" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;#fb9472&quot;</span></span>
-<span id="cb14-163"><a href="#cb14-163" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-164"><a href="#cb14-164" tabindex="-1"></a>  </span>
-<span id="cb14-165"><a href="#cb14-165" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
-<span id="cb14-166"><a href="#cb14-166" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(</span>
-<span id="cb14-167"><a href="#cb14-167" tabindex="-1"></a>      validation_summary_table_total_exclude,</span>
-<span id="cb14-168"><a href="#cb14-168" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Major error&quot;</span></span>
-<span id="cb14-169"><a href="#cb14-169" tabindex="-1"></a>    ),</span>
-<span id="cb14-170"><a href="#cb14-170" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">3</span>),</span>
-<span id="cb14-171"><a href="#cb14-171" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;#fb9472&quot;</span></span>
-<span id="cb14-172"><a href="#cb14-172" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-173"><a href="#cb14-173" tabindex="-1"></a>  </span>
-<span id="cb14-174"><a href="#cb14-174" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
-<span id="cb14-175"><a href="#cb14-175" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(</span>
-<span id="cb14-176"><a href="#cb14-176" tabindex="-1"></a>      validation_summary_table_total_exclude,</span>
-<span id="cb14-177"><a href="#cb14-177" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;VME&quot;</span></span>
-<span id="cb14-178"><a href="#cb14-178" tabindex="-1"></a>    ),</span>
-<span id="cb14-179"><a href="#cb14-179" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">1.5</span>),</span>
-<span id="cb14-180"><a href="#cb14-180" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;#fb9472&quot;</span></span>
-<span id="cb14-181"><a href="#cb14-181" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb14-182"><a href="#cb14-182" tabindex="-1"></a></span>
-<span id="cb14-183"><a href="#cb14-183" tabindex="-1"></a>  ggh4x<span class="sc">::</span><span class="fu">force_panelsizes</span>(</span>
-<span id="cb14-184"><a href="#cb14-184" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">c</span>(</span>
-<span id="cb14-185"><a href="#cb14-185" tabindex="-1"></a>    <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
-<span id="cb14-186"><a href="#cb14-186" tabindex="-1"></a>    <span class="st">`</span><span class="at">Major error</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
-<span id="cb14-187"><a href="#cb14-187" tabindex="-1"></a>    <span class="st">`</span><span class="at">VME</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
-<span id="cb14-188"><a href="#cb14-188" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minor error</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span></span>
-<span id="cb14-189"><a href="#cb14-189" tabindex="-1"></a>  )</span>
-<span id="cb14-190"><a href="#cb14-190" tabindex="-1"></a>)</span>
-<span id="cb14-191"><a href="#cb14-191" tabindex="-1"></a></span>
-<span id="cb14-192"><a href="#cb14-192" tabindex="-1"></a></span>
-<span id="cb14-193"><a href="#cb14-193" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">width=</span><span class="dv">10</span>, <span class="at">height=</span><span class="dv">4</span>, <span class="at">file=</span><span class="st">&quot;../figs/Fig7_extValidation_summary.pdf&quot;</span>)</span>
-<span id="cb14-194"><a href="#cb14-194" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">width=</span><span class="dv">10</span>, <span class="at">height=</span><span class="dv">4</span>, <span class="at">file=</span><span class="st">&quot;../figs/Fig7_extValidation_summary.png&quot;</span>)</span></code></pre></div>
+<span id="cb14-156"><a href="#cb14-156" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
+<span id="cb14-157"><a href="#cb14-157" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb14-158"><a href="#cb14-158" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-159"><a href="#cb14-159" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>)</span>
+<span id="cb14-160"><a href="#cb14-160" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-161"><a href="#cb14-161" tabindex="-1"></a>  </span>
+<span id="cb14-162"><a href="#cb14-162" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb14-163"><a href="#cb14-163" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(</span>
+<span id="cb14-164"><a href="#cb14-164" tabindex="-1"></a>      validation_summary_table_total_exclude,</span>
+<span id="cb14-165"><a href="#cb14-165" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Categorical agreement&quot;</span></span>
+<span id="cb14-166"><a href="#cb14-166" tabindex="-1"></a>    ),</span>
+<span id="cb14-167"><a href="#cb14-167" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">90</span>),</span>
+<span id="cb14-168"><a href="#cb14-168" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;#fb9472&quot;</span></span>
+<span id="cb14-169"><a href="#cb14-169" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-170"><a href="#cb14-170" tabindex="-1"></a>  </span>
+<span id="cb14-171"><a href="#cb14-171" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb14-172"><a href="#cb14-172" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(</span>
+<span id="cb14-173"><a href="#cb14-173" tabindex="-1"></a>      validation_summary_table_total_exclude,</span>
+<span id="cb14-174"><a href="#cb14-174" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Major errors&quot;</span></span>
+<span id="cb14-175"><a href="#cb14-175" tabindex="-1"></a>    ),</span>
+<span id="cb14-176"><a href="#cb14-176" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">3</span>),</span>
+<span id="cb14-177"><a href="#cb14-177" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;#fb9472&quot;</span></span>
+<span id="cb14-178"><a href="#cb14-178" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-179"><a href="#cb14-179" tabindex="-1"></a>  </span>
+<span id="cb14-180"><a href="#cb14-180" tabindex="-1"></a>  <span class="fu">geom_vline</span>(</span>
+<span id="cb14-181"><a href="#cb14-181" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(</span>
+<span id="cb14-182"><a href="#cb14-182" tabindex="-1"></a>      validation_summary_table_total_exclude,</span>
+<span id="cb14-183"><a href="#cb14-183" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Very major errors&quot;</span></span>
+<span id="cb14-184"><a href="#cb14-184" tabindex="-1"></a>    ),</span>
+<span id="cb14-185"><a href="#cb14-185" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="fl">1.5</span>),</span>
+<span id="cb14-186"><a href="#cb14-186" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;#fb9472&quot;</span></span>
+<span id="cb14-187"><a href="#cb14-187" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-188"><a href="#cb14-188" tabindex="-1"></a>  </span>
+<span id="cb14-189"><a href="#cb14-189" tabindex="-1"></a>    <span class="fu">geom_vline</span>(</span>
+<span id="cb14-190"><a href="#cb14-190" tabindex="-1"></a>    <span class="at">data =</span> <span class="fu">filter</span>(</span>
+<span id="cb14-191"><a href="#cb14-191" tabindex="-1"></a>      validation_summary_table_total_exclude,</span>
+<span id="cb14-192"><a href="#cb14-192" tabindex="-1"></a>      <span class="st">`</span><span class="at">Evaluation metric</span><span class="st">`</span> <span class="sc">==</span> <span class="st">&quot;Minor errors&quot;</span></span>
+<span id="cb14-193"><a href="#cb14-193" tabindex="-1"></a>    ),</span>
+<span id="cb14-194"><a href="#cb14-194" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">xintercept =</span> <span class="dv">10</span>),</span>
+<span id="cb14-195"><a href="#cb14-195" tabindex="-1"></a>    <span class="at">colour =</span> <span class="st">&quot;#fb9472&quot;</span></span>
+<span id="cb14-196"><a href="#cb14-196" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-197"><a href="#cb14-197" tabindex="-1"></a></span>
+<span id="cb14-198"><a href="#cb14-198" tabindex="-1"></a>  ggh4x<span class="sc">::</span><span class="fu">force_panelsizes</span>(</span>
+<span id="cb14-199"><a href="#cb14-199" tabindex="-1"></a>  <span class="at">cols =</span> <span class="fu">c</span>(</span>
+<span id="cb14-200"><a href="#cb14-200" tabindex="-1"></a>    <span class="st">`</span><span class="at">Categorical agreement</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
+<span id="cb14-201"><a href="#cb14-201" tabindex="-1"></a>    <span class="st">`</span><span class="at">Major error</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
+<span id="cb14-202"><a href="#cb14-202" tabindex="-1"></a>    <span class="st">`</span><span class="at">VME</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span>,</span>
+<span id="cb14-203"><a href="#cb14-203" tabindex="-1"></a>    <span class="st">`</span><span class="at">Minor errors</span><span class="st">`</span> <span class="ot">=</span> <span class="dv">1</span></span>
+<span id="cb14-204"><a href="#cb14-204" tabindex="-1"></a>  )</span>
+<span id="cb14-205"><a href="#cb14-205" tabindex="-1"></a>)</span>
+<span id="cb14-206"><a href="#cb14-206" tabindex="-1"></a></span>
+<span id="cb14-207"><a href="#cb14-207" tabindex="-1"></a></span>
+<span id="cb14-208"><a href="#cb14-208" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">width=</span><span class="dv">10</span>, <span class="at">height=</span><span class="dv">4</span>, <span class="at">file=</span><span class="st">&quot;../figs/Fig7_extValidation_summary.pdf&quot;</span>)</span>
+<span id="cb14-209"><a href="#cb14-209" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="at">width=</span><span class="dv">10</span>, <span class="at">height=</span><span class="dv">4</span>, <span class="at">file=</span><span class="st">&quot;../figs/Fig7_extValidation_summary.png&quot;</span>)</span></code></pre></div>
 </div>
 <div id="tables11---eval-metrics" class="section level1">
 <h1>TableS11 - eval metrics</h1>
@@ -3197,7 +3212,7 @@ margin-right: auto;
 <span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Intermediate=</span>I_total)<span class="sc">%&gt;%</span></span>
 <span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">Resistant=</span>R_total)</span>
 <span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a></span>
-<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a>all_datasets_metrics <span class="ot">&lt;-</span> all_datasets_metrics[, <span class="fu">c</span>(<span class="st">&quot;Dataset&quot;</span>, <span class="st">&quot;N&quot;</span>,<span class="st">&quot;Susceptible&quot;</span>, <span class="st">&quot;Intermediate&quot;</span>, <span class="st">&quot;Resistant&quot;</span>, <span class="st">&quot;Prediction&quot;</span>, <span class="st">&quot;%R&quot;</span>, <span class="st">&quot;Categorical agreement&quot;</span>, <span class="st">&quot;Categorical_agreement_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Categorical_agreement_conf_int_upper_bound&quot;</span>, <span class="st">&quot;ME&quot;</span>, <span class="st">&quot;ME_conf_int_lower_bound&quot;</span>, <span class="st">&quot;ME_conf_int_upper_bound&quot;</span>, <span class="st">&quot;VME&quot;</span>, <span class="st">&quot;VME_conf_int_lower_bound&quot;</span>, <span class="st">&quot;VME_conf_int_upper_bound&quot;</span>, <span class="st">&quot;Sensitivity&quot;</span>, <span class="st">&quot;Sensitivity_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Sensitivity_conf_int_upper_bound&quot;</span>, <span class="st">&quot;Specificity&quot;</span>, <span class="st">&quot;Specificity_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Specificity_conf_int_upper_bound&quot;</span>, <span class="st">&quot;Minor error&quot;</span>, <span class="st">&quot;Minor_error_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Minor_error_conf_int_upper_bound&quot;</span>)]</span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a>all_datasets_metrics <span class="ot">&lt;-</span> all_datasets_metrics[, <span class="fu">c</span>(<span class="st">&quot;Dataset&quot;</span>, <span class="st">&quot;N&quot;</span>,<span class="st">&quot;Susceptible&quot;</span>, <span class="st">&quot;Intermediate&quot;</span>, <span class="st">&quot;Resistant&quot;</span>, <span class="st">&quot;Prediction&quot;</span>, <span class="st">&quot;%R&quot;</span>, <span class="st">&quot;Categorical agreement&quot;</span>, <span class="st">&quot;Categorical_agreement_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Categorical_agreement_conf_int_upper_bound&quot;</span>, <span class="st">&quot;ME&quot;</span>, <span class="st">&quot;ME_conf_int_lower_bound&quot;</span>, <span class="st">&quot;ME_conf_int_upper_bound&quot;</span>, <span class="st">&quot;VME&quot;</span>, <span class="st">&quot;VME_conf_int_lower_bound&quot;</span>, <span class="st">&quot;VME_conf_int_upper_bound&quot;</span>, <span class="st">&quot;Sensitivity&quot;</span>, <span class="st">&quot;Sensitivity_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Sensitivity_conf_int_upper_bound&quot;</span>, <span class="st">&quot;Specificity&quot;</span>, <span class="st">&quot;Specificity_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Specificity_conf_int_upper_bound&quot;</span>, <span class="st">&quot;Minor errors&quot;</span>, <span class="st">&quot;Minor_error_conf_int_lower_bound&quot;</span>, <span class="st">&quot;Minor_error_conf_int_upper_bound&quot;</span>)]</span>
 <span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a></span>
 <span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a></span>
 <span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a>all_datasets_metrics<span class="ot">&lt;-</span> all_datasets_metrics <span class="sc">%&gt;%</span> </span>
