@@ -2039,7 +2039,7 @@ display: none;
 
 <h1 class="title toc-ignore">Mutation frequencies</h1>
 <h4 class="author">Kara Tsang, Kat Holt</h4>
-<h4 class="date">Last compiled on 19/08/25</h4>
+<h4 class="date">Last compiled on 28/05/26</h4>
 
 </div>
 
@@ -2198,7 +2198,8 @@ margin-right: auto;
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="co"># title columns for table</span></span>
 <span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a>solo_ppv <span class="sc">%&gt;%</span> <span class="fu">full_join</span>(solo_ppv_aac6, <span class="at">by=</span><span class="st">&quot;Determinant&quot;</span>, <span class="at">suffix=</span><span class="fu">c</span>(<span class="st">&quot;.solo&quot;</span>, <span class="st">&quot;.soloAac6&quot;</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a>  <span class="fu">full_join</span>(ppv_all, <span class="at">by=</span><span class="st">&quot;Determinant&quot;</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="at">file=</span><span class="st">&quot;tables/TableS7_determinantStats.csv&quot;</span>)</span></code></pre></div>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a>  <span class="fu">write_csv</span>(<span class="at">file=</span><span class="st">&quot;tables/TableS7_determinantStats.csv&quot;</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a>  <span class="fu">write_tsv</span>(<span class="at">file=</span><span class="st">&quot;tables/TableS7_determinantStats.tsv&quot;</span>)</span></code></pre></div>
 </div>
 
 

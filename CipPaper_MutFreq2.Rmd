@@ -161,5 +161,6 @@ ppv_all <- aac6_all %>% bind_rows(qrdr_all) %>% bind_rows(pmqr_all)
 # title columns for table
 solo_ppv %>% full_join(solo_ppv_aac6, by="Determinant", suffix=c(".solo", ".soloAac6")) %>% 
   full_join(ppv_all, by="Determinant") %>%
-  write_csv(file="tables/TableS7_determinantStats.csv")
+  write_csv(file="tables/TableS7_determinantStats.csv") %>%
+  write_tsv(file="tables/TableS7_determinantStats.tsv")
 ```

@@ -297,6 +297,7 @@ multiVariable_vs_singleVariable <- logreg_model1a %>% select(-c(interaction, mod
   full_join(logreg_model3b %>% select(-c(Determinant, interaction, model)) %>% setNames(paste0('NWT Model1b.', names(.)))%>% rename(Term='NWT Model1b.Term'), by="Term")
 
 write_csv(multiVariable_vs_singleVariable, file="tables/TableS8_LogRegCoef.csv")
+write_tsv(multiVariable_vs_singleVariable, file="tables/TableS8_LogRegCoef.tsv")
 ```
 
 
@@ -383,7 +384,8 @@ count_model_summary <- logreg_details(model_R_groups) %>% mutate(Model="2a", res
   bind_rows(logreg_details(model_NWT_groups) %>% mutate(Model="2a", response="NWT")) %>%
   bind_rows(logreg_details(model_NWT_groups_selectInteract) %>% mutate(Model="2b", response="NWT")) %>%
   relocate(Model, .before=Determinant) %>% relocate(response, .before=Model) %>%
-  write_csv(file="tables/TableS9_CountLogRegCoef.csv")
+  write_csv(file="tables/TableS9_CountLogRegCoef.csv") %>%
+  write_tsv(file="tables/TableS9_CountLogRegCoef.tsv")
 
 
 ```
