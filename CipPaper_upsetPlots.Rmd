@@ -39,6 +39,7 @@ library(reshape2)
 library(ComplexUpset)
 library(patchwork)
 library(scales)
+
 ```
 
 # load data
@@ -1053,5 +1054,73 @@ qnr_noGenes_dat <- cipro_antibiogram %>%
   select(Measurement, Resistance.phenotype, resistant, nonWT_binary, aac6)
 
 dim(qnr_noGenes_dat)
+
+```
+
+
+```{r, eval=FALSE}
+# NOT USED
+# Test figure for upset plot to include all determinants
+
+# all determinants
+qrdr_genes <- c(
+  "aac6",
+  "ParC-84",
+  "ParC-80",
+  "GyrA-87",
+  "GyrA-83",
+  "qnrA1",
+  "qnrB17",
+  "qnrB19",
+  "qnrB4",
+  "qnrB6",
+  "qnrS1"
+)
+
+
+upset_QRDR_prop <- cipro_antibiogram %>%
+  upset(
+    intersect = qrdr_genes,
+
+    sort_intersections = "descending",
+
+    min_size = 10,
+
+    width_ratio = 0.15,
+    height_ratio = 1.5,
+
+    set_sizes = (
+      upset_set_size() +
+        theme(
+          axis.text.x = element_text(
+            angle = 90,
+            hjust = 0.5,
+            vjust = 0.5
+          )
+        )
+    ),
+
+    base_annotations = list(
+      'Percent of genomes' = list(
+        aes = aes(x = intersection, fill = SRnwt),
+        geom = list(
+          geom_bar(stat = "count", position = "fill"),
+          scale_fill_manual(values = res_colours),
+          scale_y_continuous(labels = scales::percent_format()),
+          geom_text(
+            aes(label = after_stat(count)),
+            stat = "count",
+            position = position_fill(vjust = .5),
+            angle = 45,
+            size = 2
+          )
+        )
+      )
+    )
+  )
+upset_QRDR_prop 
+#ggsave("figs/FigSX_allcombo.png", width=10, height=6)
+
+
 
 ```

@@ -116,14 +116,26 @@ spec <- function(pred,truth) {
   return(xtabs[1,1]/(sum(xtabs[,1])))
 }
 
-me <- function(pred,truth) {
-  xtabs <- table(pred,truth)
-  return(xtabs[2,1]/sum(xtabs[,1]))
+me <- function(pred, truth) {
+  xtabs <- table(factor(pred, levels = c("S", "I", "R")),
+                 factor(truth, levels = c("S", "I", "R")))
+  
+  major_n <- xtabs["R", "S"]   # predicted R, true S
+  
+  susceptible_n <- sum(xtabs[, "S"])   # all reference S isolates
+  
+  major_n / susceptible_n
 }
 
-vme <- function(pred,truth) {
-  xtabs <- table(pred,factor(truth, levels = 0:1))
-  return(xtabs[1,2]/sum(xtabs[,2]))
+vme <- function(pred, truth) {
+  xtabs <- table(factor(pred, levels = c("S", "I", "R")),
+                 factor(truth, levels = c("S", "I", "R")))
+  
+  very_major_n <- xtabs["S", "R"]   # predicted S, true R
+  
+  resistant_n <- sum(xtabs[, "R"])  # all reference R isolates
+  
+  very_major_n / resistant_n
 }
 
 minor_error <- function(pred, truth) {
@@ -549,8 +561,8 @@ species_R <- cipro_antibiogram %>% group_by(species) %>%
   summarise(cat=cat_agree(predR, resistant), 
             sens=sens(predR, resistant), 
             spec=spec(predR, resistant), 
-            me=me(predR, resistant), 
-            vme=vme(predR, resistant),
+            me=me(predSIR, Resistance.phenotype), 
+            vme=vme(predSIR, Resistance.phenotype),
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n())%>%
   mutate(out=rep("R", 4)) %>% 
@@ -563,8 +575,8 @@ species_NWT <- cipro_antibiogram %>% group_by(species) %>%
   summarise(cat=cat_agree(predNWT, nonWT_binary), 
             sens=sens(predNWT, nonWT_binary), 
             spec=spec(predNWT, nonWT_binary), 
-            me=me(predNWT, nonWT_binary), 
-            vme=vme(predNWT, nonWT_binary),
+            me=me(predSIR, Resistance.phenotype), 
+            vme=vme(predSIR, Resistance.phenotype),
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n()) %>%
   mutate(out=rep("NWT", 4)) %>% 
@@ -574,8 +586,8 @@ kpsc_R <- cipro_antibiogram %>%
   summarise(cat=cat_agree(predR, resistant), 
             sens=sens(predR, resistant), 
             spec=spec(predR, resistant), 
-            me=me(predR, resistant), 
-            vme=vme(predR, resistant),
+            me=me(predSIR, Resistance.phenotype), 
+            vme=vme(predSIR, Resistance.phenotype),
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n())%>%
   mutate(out=rep("R", 1))%>%
@@ -585,8 +597,8 @@ kpsc_NWT <-  cipro_antibiogram %>%
   summarise(cat=cat_agree(predNWT, nonWT_binary), 
             sens=sens(predNWT, nonWT_binary), 
             spec=spec(predNWT, nonWT_binary), 
-            me=me(predNWT, nonWT_binary), 
-            vme=vme(predNWT, nonWT_binary),
+            me=me(predSIR, Resistance.phenotype), 
+            vme=vme(predSIR, Resistance.phenotype),
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n()) %>%
   mutate(out=rep("NWT", 1))%>%
@@ -779,8 +791,8 @@ ST_R <- cipro_antibiogram %>% group_by(ST) %>%
   summarise(sens=sens(predR, resistant)*100, 
             spec=spec(predR, resistant)*100, 
             cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
+            me=me(predSIR, Resistance.phenotype)*100, 
+            vme=vme(predSIR, Resistance.phenotype)*100, 
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
@@ -799,8 +811,8 @@ Country_R <- cipro_antibiogram %>% group_by(Country) %>%
   summarise(sens=sens(predR, resistant)*100, 
             spec=spec(predR, resistant)*100, 
             cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
+            me=me(predSIR, Resistance.phenotype)*100, 
+            vme=vme(predSIR, Resistance.phenotype)*100, 
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
@@ -819,8 +831,8 @@ SourceType_R <- cipro_antibiogram %>% group_by(Source.Type) %>%
   summarise(sens=sens(predR, resistant)*100, 
             spec=spec(predR, resistant)*100, 
             cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100,
+            me=me(predSIR, Resistance.phenotype)*100, 
+            vme=vme(predSIR, Resistance.phenotype)*100,
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
@@ -842,8 +854,8 @@ InfectionStatus_R <- cipro_antibiogram %>% group_by(Infection.status) %>%
   summarise(sens=sens(predR, resistant)*100, 
             spec=spec(predR, resistant)*100, 
             cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
+            me=me(predSIR, Resistance.phenotype)*100, 
+            vme=vme(predSIR, Resistance.phenotype)*100, 
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
@@ -875,8 +887,8 @@ platform_R <- cipro_antibiogram %>%
   summarise(sens=sens(predR, resistant)*100, 
             spec=spec(predR, resistant)*100, 
             cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
+            me=me(predSIR, Resistance.phenotype)*100, 
+            vme=vme(predSIR, Resistance.phenotype)*100, 
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             n_dataset=n_distinct(index),
@@ -939,8 +951,8 @@ Study_R <- cipro_antibiogram %>% group_by(index) %>%
   summarise(sens=sens(predR, resistant)*100, 
             spec=spec(predR, resistant)*100, 
             cat=cat_agree(predR, resistant)*100, 
-            me=me(predR, resistant)*100, 
-            vme=vme(predR, resistant)*100, 
+            me=me(predSIR, Resistance.phenotype)*100, 
+            vme=vme(predSIR, Resistance.phenotype)*100, 
             minor=minor_error(predSIR, Resistance.phenotype),
             n=n(),
             percent_R=(sum(resistant))/n*100) %>%
