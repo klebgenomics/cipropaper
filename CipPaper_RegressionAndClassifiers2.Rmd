@@ -122,7 +122,7 @@ me <- function(pred, truth) {
   
   major_n <- xtabs["R", "S"]   # predicted R, true S
   
-  susceptible_n <- sum(xtabs[, "S"])   # all reference S isolates
+  susceptible_n <- xtabs["S", "S"] + xtabs["R", "S"]   # all reference S isolates
   
   major_n / susceptible_n
 }
@@ -133,7 +133,7 @@ vme <- function(pred, truth) {
   
   very_major_n <- xtabs["S", "R"]   # predicted S, true R
   
-  resistant_n <- sum(xtabs[, "R"])  # all reference R isolates
+  resistant_n <- xtabs["S", "R"] + xtabs["R", "R"]  # all reference R isolates
   
   very_major_n / resistant_n
 }

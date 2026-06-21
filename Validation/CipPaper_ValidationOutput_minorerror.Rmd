@@ -179,6 +179,55 @@ minor_error_I <- function(xtabs3) {
     me_I_total_ub = unname(ci["upper"])
   )
 }
+major_error <- function(xtabs3) {
+
+  xt3 <- as.matrix(xtabs3)
+  storage.mode(xt3) <- "numeric"
+
+  major_n <- xt3["pred_R", "S"]
+
+  susceptible_n <-
+  xt3["pred_S", "S"] +
+  xt3["pred_R", "S"]
+
+  p <- ifelse(susceptible_n == 0,
+              NA_real_,
+              major_n / susceptible_n)
+
+  ci <- prop_ci(p, susceptible_n)
+
+  list(
+    me = p,
+    me_lb = unname(ci["lower"]),
+    me_ub = unname(ci["upper"])
+  )
+}
+
+very_major_error <- function(xtabs3) {
+
+  xt3 <- as.matrix(xtabs3)
+  storage.mode(xt3) <- "numeric"
+
+  vme_n <- xt3["pred_S", "R"]
+
+  resistant_n <-
+  xt3["pred_S", "R"] +
+  xt3["pred_R", "R"]
+
+  p <- ifelse(resistant_n == 0,
+              NA_real_,
+              vme_n / resistant_n)
+
+  ci <- prop_ci(p, resistant_n)
+
+  list(
+    vme = p,
+    vme_lb = unname(ci["lower"]),
+    vme_ub = unname(ci["upper"])
+  )
+}
+
+
 
 # ---- main metrics function ----
 
@@ -194,8 +243,6 @@ metrics <- function(xtabs, xtabs3 = NULL) {
   spec <- prop(x$TN, x$TN + x$FP)
   ppv  <- prop(x$TP, x$TP + x$FP)
   npv  <- prop(x$TN, x$TN + x$FN)
-  me   <- prop(x$FP, x$TN + x$FP)
-  vme  <- prop(x$FN, x$TP + x$FN)
 
   perc_R <- prop(x$TP + x$FN, n)
 
@@ -205,8 +252,6 @@ metrics <- function(xtabs, xtabs3 = NULL) {
   spec_ci <- prop_ci(spec, x$TN + x$FP)
   ppv_ci  <- prop_ci(ppv, x$TP + x$FP)
   npv_ci  <- prop_ci(npv, x$TN + x$FN)
-  me_ci   <- prop_ci(me, x$TN + x$FP)
-  vme_ci  <- prop_ci(vme, x$TP + x$FN)
 
   ci_low  <- function(ci) unname(ci["lower"])
   ci_high <- function(ci) unname(ci["upper"])
@@ -233,6 +278,35 @@ metrics <- function(xtabs, xtabs3 = NULL) {
       upper = NA_real_
     )
   }
+  
+    # ---- major / very major error ----
+  
+  if (!is.null(xtabs3)) {
+
+  me_out  <- major_error(xtabs3)
+  vme_out <- very_major_error(xtabs3)
+
+  me  <- me_out$me
+  vme <- vme_out$vme
+
+  me_ci <- c(
+    lower = me_out$me_lb,
+    upper = me_out$me_ub
+  )
+
+  vme_ci <- c(
+    lower = vme_out$vme_lb,
+    upper = vme_out$vme_ub
+  )
+
+} else {
+
+  me <- NA_real_
+  vme <- NA_real_
+
+  me_ci <- c(lower = NA_real_, upper = NA_real_)
+  vme_ci <- c(lower = NA_real_, upper = NA_real_)
+}
 
   summary <- c(
 
@@ -348,8 +422,6 @@ rownames(dat_3_matrix) <- c("pred_S", "pred_I", "pred_R")
 colnames(dat_3_matrix) <- c("S", "I", "R")
 
 dat_3 <- dat_3_matrix
-  
-  minor_error_I(dat_3)
   
   subset(dat_SIR, Group == "pred_S_I")$S_I
   table(dat_SIR$S_I)
