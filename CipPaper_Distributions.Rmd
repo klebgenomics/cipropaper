@@ -35,6 +35,7 @@ knitr::opts_knit$set(root.dir = getwd())
 # Data wrangling
 library(tidyverse)
 library(dplyr)
+library(patchwork)
 ```
 
 # load data
@@ -124,13 +125,15 @@ cipro_antibiogram_MIC$index <- factor(cipro_antibiogram_MIC$index, levels = c(
 
 # MIC
 ``` {r}
-
 MIC_dist <- cipro_antibiogram_MIC %>%
   filter(Laboratory.Typing.Method != "Disk diffusion") %>%
   mutate(
     Measurement = replace(Measurement, Measurement == 0.032, 0.03),
     Measurement = replace(Measurement, Measurement == 0.064, 0.06),
     Measurement = replace(Measurement, Measurement == 0.12, 0.125),
+
+    # Merge all 0.5 MIC values into one category
+    Measurement.sign = ifelse(Measurement == 0.5, "=", Measurement.sign),
 
     MIC_label = ifelse(
       Measurement.sign %in% c("-", "=", "=="),
@@ -175,18 +178,11 @@ MIC_dist <- cipro_antibiogram_MIC %>%
   ) +
   scale_fill_manual(values = c25[1:22]) +
   geom_vline(xintercept = 11.5, linetype = 2) +
-  geom_vline(xintercept = 14.5, linetype = 2) 
-```
+  geom_vline(xintercept = 14.5, linetype = 2)
 
-# Figure S2 - MIC distribution
-``` {r figs2}
-
-MIC_dist
-
-ggsave(width=9, height=10, file="figs/FigS2_MIC_distribution.pdf")
-ggsave(width=9, height=10, file="figs/FigS2_MIC_distribution.png")
 
 ```
+
 
 # Relabel DD datasets
 ```{r}
@@ -223,19 +219,955 @@ DD_dist <- cipro_antibiogram_DD %>%
   labs(x="Disk diffusion zone diameter (mm)", y="Number of genomes", fill="Dataset") +
   scale_fill_manual(values=c25[10:15]) +
   geom_vline(xintercept=16.5, linetype=2) +
-  annotate("text",x=16, y=400, label="R") +
+  #annotate("text",x=16, y=400, label="R") +
   geom_vline(xintercept=19.5, linetype=2) +
-  annotate("text",x=20, y=400, label="S") + 
+  #annotate("text",x=20, y=400, label="S") + 
   scale_x_discrete(breaks=seq(5,45,5))
 
 ```
 
-# Figure S3 - DD distribution
-``` {r figs3}
+# Figure S2 - MIC and disk distribution
+``` {r figs2}
 
+MIC_dist
 DD_dist
 
-ggsave(width=9, height=4, file="figs/FigS3_DD_distribution.pdf")
-ggsave(width=9, height=4, file="figs/FigS3_DD_distribution.png")
+(MIC_dist + ggtitle(label="a) Minimum inhibitory concentration distribution"))  / (DD_dist + ggtitle(label="b) Disk diffusion distribution"))
+
+
+ggsave(width=9, height=10, file="figs/FigS2_MIC_DD_distribution.pdf")
+ggsave(width=9, height=10, file="figs/FigS2_MIC_DD_distribution.png")
+
+```
+
+
+# Figure S3 - concordant and discordant plotting
+
+# Discordant phenotype - MIC test vs MIC retest
+```{r, discordant_mic_mic_1}
+
+# Create discordant MIC dataset
+cipro_antibiogram_MIC_discordant <- cipro_antibiogram_MIC %>%
+  filter(Laboratory.Typing.Method != "Disk diffusion") %>%
+  mutate(
+    Measurement = replace(Measurement, Measurement == 0.032, 0.03),
+    Measurement = replace(Measurement, Measurement == 0.064, 0.06),
+    Measurement = replace(Measurement, Measurement == 0.12, 0.125),
+
+    MIC_label = ifelse(
+      Measurement.sign %in% c("-", "=", "=="),
+      as.character(Measurement),
+      paste0(Measurement.sign, Measurement)
+    )
+  ) %>%
+  select(
+    strain,
+    MIC_label,
+    DiscordantRetesting_OriginalMeasurement
+  ) %>%
+  filter(!is.na(DiscordantRetesting_OriginalMeasurement)) %>%
+  rename(
+    Test = DiscordantRetesting_OriginalMeasurement,
+    `Re-test` = MIC_label
+  )
+
+
+# Convert to long format
+cipro_antibiogram_MIC_discordant_long <- 
+  cipro_antibiogram_MIC_discordant %>%
+  pivot_longer(
+    cols = c(Test, `Re-test`),
+    names_to = "Method",
+    values_to = "Measurement"
+  )
+
+
+# Get all MIC values from both Test and Re-test
+mic_labels <- unique(
+  c(
+    cipro_antibiogram_MIC_discordant$Test,
+    cipro_antibiogram_MIC_discordant$`Re-test`
+  )
+)
+
+
+# Extract numeric portion for ordering
+mic_order <- sapply(
+  mic_labels,
+  function(x) {
+    
+    value <- as.numeric(
+      gsub("[^0-9.]", "", x)
+    )
+    
+    if (grepl("^<", x)) {
+      value - 0.001
+    } else if (grepl("^>", x)) {
+      value + 0.001
+    } else {
+      value
+    }
+  }
+)
+
+
+# Order MIC labels numerically
+mic_levels <- mic_labels[order(mic_order)]
+
+
+# Make MIC a categorical variable
+cipro_antibiogram_MIC_discordant_long <- 
+  cipro_antibiogram_MIC_discordant_long %>%
+  mutate(
+    Measurement = factor(
+      Measurement,
+      levels = mic_levels,
+      ordered = TRUE
+    ),
+    
+    Method = factor(
+      Method,
+      levels = c("Test", "Re-test")
+    )
+  )
+# Aggregate to get count of strains per Test/Re-test combination
+cipro_antibiogram_MIC_discordant_wide <- 
+  cipro_antibiogram_MIC_discordant_long %>%
+  pivot_wider(
+    names_from = Method,
+    values_from = Measurement
+  ) %>%
+  count(Test, `Re-test`, name = "n_strains")
+
+# Helper: classify an MIC label based on clinical breakpoints
+# Resistant: >=1 mg/L
+# Intermediate: 0.5 mg/L
+# Susceptible: <0.5 mg/L
+classify_mic <- function(label) {
+
+  numeric_value <- as.numeric(
+    gsub("[^0-9.]", "", label)
+  )
+
+  ifelse(
+    numeric_value >= 1,
+    "R",
+    ifelse(
+      numeric_value == 0.5,
+      "I",
+      "S"
+    )
+  )
+}
+
+
+# Aggregate counts and add Test -> Re-test classification
+cipro_antibiogram_MIC_discordant_wide <- 
+  cipro_antibiogram_MIC_discordant_long %>%
+  pivot_wider(
+    names_from = Method,
+    values_from = Measurement
+  ) %>%
+  count(Test, `Re-test`, name = "n_strains") %>%
+  mutate(
+
+    # Classify Test and Re-test independently
+    Test_category   = classify_mic(as.character(Test)),
+    Retest_category = classify_mic(as.character(`Re-test`)),
+
+    # Label the direction of change
+    Transition = ifelse(
+      Test_category == Retest_category,
+      "No change",
+      paste(Test_category, "to", Retest_category)
+    )
+  )
+
+scale_colour_manual(
+  name = "Test → Re-test",
+  values = c(
+    "No change" = "#8EC476",
+    "S to I"    = "#E5C07B",
+    "S to R"    = "#D66D27",
+    "I to S"    = "#E5C07B",
+    "I to R"    = "#D66D27",
+    "R to S"    = "#D66D27",
+    "R to I"    = "#E5C07B"
+  )
+)
+
+# Scatter plot: Test vs Re-test, sized by strain count,
+# coloured by Test -> Re-test transition
+discordant_mic_mic_1 <-
+  ggplot(
+    cipro_antibiogram_MIC_discordant_wide,
+    aes(
+      x = Test,
+      y = `Re-test`,
+      size = n_strains,
+      colour = Transition
+    )
+  ) +
+  geom_point(
+    alpha = 0.7
+  ) +
+    scale_size_continuous(
+    labels = scales::number_format(accuracy = 1) # Forces integers/absolute numbers
+  )+
+  geom_vline(
+    xintercept = which(mic_levels == "1"),
+    linetype = "dashed"
+  ) +
+  geom_hline(
+    yintercept = which(mic_levels == "1"),
+    linetype = "dashed"
+  ) +
+    geom_vline(
+    xintercept = which(mic_levels == ">=0.25"),
+    linetype = "dashed"
+  ) +
+  geom_hline(
+    yintercept = which(mic_levels == ">=0.25"),
+    linetype = "dashed"
+  ) +
+  scale_x_discrete(drop = FALSE) +
+  scale_y_discrete(drop = FALSE) +
+  scale_size_continuous(
+    name = "Number of strains",
+    range = c(2, 10),
+    breaks = scales::pretty_breaks()
+  ) +
+scale_colour_manual(
+  name = "Phenotype change (Test → Re-test)",
+  values = c(
+    "No change" = "#8EC476",
+    "S to I"    = "#E5C07B",
+    "S to R"    = "#D66D27",
+    "I to S"    = "#E5C07B",
+    "I to R"    = "#D66D27",
+    "R to S"    = "#D66D27",
+    "R to I"    = "#E5C07B"
+  )
+) +
+  theme_classic() +
+  labs(
+    x = "Test MIC (mg/L)",
+    y = "Re-test MIC (mg/L)"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) # Rotates labels
+
+discordant_mic_mic_1
+
+
+```
+
+# Discordant phenotype - Disk test vs disk retest
+```{r, discordant_disk_disk_2}
+
+# Create discordant DD dataset
+cipro_antibiogram_DD_discordant <- cipro_antibiogram_DD %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  select(
+    strain,
+    Measurement,
+    DiscordantRetesting_OriginalMeasurement
+  ) %>%
+  filter(!is.na(DiscordantRetesting_OriginalMeasurement)) %>%
+  rename(
+    Test = DiscordantRetesting_OriginalMeasurement,
+    `Re-test` = Measurement
+  ) %>%
+  mutate(
+    Test = as.numeric(Test),
+    `Re-test` = as.numeric(`Re-test`)
+  ) %>%
+  # Remove MIC measurements
+  filter(Test > 2)
+
+
+# Convert to long format
+cipro_antibiogram_DD_discordant_long <-
+  cipro_antibiogram_DD_discordant %>%
+  pivot_longer(
+    cols = c(Test, `Re-test`),
+    names_to = "Method",
+    values_to = "Measurement"
+  )
+
+
+# Define the order of DD labels for both axes
+DD_labels <- sort(unique(
+  c(
+    cipro_antibiogram_DD_discordant$Test,
+    cipro_antibiogram_DD_discordant$`Re-test`
+  )
+))
+
+
+# Convert to ordered factors, aggregate, and classify
+cipro_antibiogram_DD_discordant_wide <-
+  cipro_antibiogram_DD_discordant_long %>%
+  mutate(
+    Measurement = factor(
+      Measurement,
+      levels = DD_labels,
+      ordered = TRUE
+    ),
+    Method = factor(
+      Method,
+      levels = c("Test", "Re-test")
+    )
+  ) %>%
+  pivot_wider(
+    names_from = Method,
+    values_from = Measurement
+  ) %>%
+  count(Test, `Re-test`, name = "n_strains") %>%
+  mutate(
+
+    # Classify Test and Re-test based on DD breakpoints
+    # Resistant: <=21 mm
+    # Intermediate: 22-24 mm
+    # Susceptible: >=25 mm
+
+    Test_category = case_when(
+      as.numeric(as.character(Test)) <= 21 ~ "R",
+      as.numeric(as.character(Test)) >= 22 &
+        as.numeric(as.character(Test)) <= 24 ~ "I",
+      as.numeric(as.character(Test)) >= 25 ~ "S"
+    ),
+
+    Retest_category = case_when(
+      as.numeric(as.character(`Re-test`)) <= 21 ~ "R",
+      as.numeric(as.character(`Re-test`)) >= 22 &
+        as.numeric(as.character(`Re-test`)) <= 24 ~ "I",
+      as.numeric(as.character(`Re-test`)) >= 25 ~ "S"
+    ),
+
+    # Label unchanged results as "No change"
+    # and changed results by direction
+    Transition = ifelse(
+      Test_category == Retest_category,
+      "No change",
+      paste(Test_category, "to", Retest_category)
+    )
+  )
+
+
+# Position of the 21 mm threshold on the discrete axes
+threshold_position <- which(DD_labels == 21)
+
+size_values <- sort(
+  unique(cipro_antibiogram_DD_discordant_wide$n_strains)
+)
+
+size_mapping <- setNames(
+  seq(
+    2,
+    10,
+    length.out = length(size_values)
+  ),
+  size_values
+)
+
+
+# Scatter plot: Test vs Re-test,
+# sized by strain count,
+# coloured by Test -> Re-test transition
+discordant_disk_disk_2 <-
+  ggplot(
+    cipro_antibiogram_DD_discordant_wide,
+    aes(
+      x = Test,
+      y = `Re-test`,
+      size = factor(n_strains),
+      colour = Transition
+    )
+  ) +
+  
+  geom_point(alpha = 0.7) +
+
+  # Resistant / Intermediate boundary
+  geom_vline(
+    xintercept = threshold_position + 0.5,
+    linetype = "dashed"
+  ) +
+  geom_hline(
+    yintercept = threshold_position + 0.5,
+    linetype = "dashed"
+  ) +
+
+  # Intermediate / Susceptible boundary (24 -> 25)
+  geom_vline(
+    xintercept = which(DD_labels == 24) + 0.5,
+    linetype = "dashed"
+  ) +
+  geom_hline(
+    yintercept = which(DD_labels == 24) + 0.5,
+    linetype = "dashed"
+  ) +
+
+  scale_x_discrete(
+    drop = FALSE
+  ) +
+  
+  scale_y_discrete(
+    drop = FALSE
+  ) +
+
+  # Discrete size scale:
+  # one unique circle size for each actual strain count
+  scale_size_manual(
+    name = "Number of strains",
+    values = size_mapping,
+    drop = FALSE
+  ) +
+
+  scale_colour_manual(
+    name = "Test → Re-test",
+    values = c(
+      "No change" = "#8EC476",
+      "R to I"    = "#E5C07B",
+      "I to R"    = "#E5C07B",
+      "I to S"    = "#E5C07B",
+      "S to I"    = "#E5C07B",
+      "R to S"    = "#D66D27",
+      "S to R"    = "#D66D27"
+    )
+  ) +
+
+  theme_classic() +
+
+  labs(
+    x = "Test disk diffusion (mm)",
+    y = "Re-test disk diffusion (mm)"
+  )
+
+
+discordant_disk_disk_2
+```
+
+# Discordant phenotype - MIC test vs disk retest
+```{r, eval=FALSE, discordant_mic_disk_3}
+# Create discordant MIC/disk diffusion dataset
+cipro_antibiogram_DD_discordant <- cipro_antibiogram_DD %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  select(
+    strain,
+    Measurement,
+    DiscordantRetesting_OriginalMeasurement
+  ) %>%
+  filter(!is.na(DiscordantRetesting_OriginalMeasurement)) %>%
+  rename(
+    Test = DiscordantRetesting_OriginalMeasurement,
+    `Re-test` = Measurement
+  ) %>%
+  mutate(
+    Test = as.numeric(Test),
+    `Re-test` = as.numeric(`Re-test`)
+  ) %>%
+  # Keep only MIC measurements for Test (<2 mg/L)
+  filter(Test < 2)
+
+# Build ordered factor levels numerically for both axes
+test_levels  <- sort(unique(cipro_antibiogram_DD_discordant$Test))
+retest_levels <- sort(unique(cipro_antibiogram_DD_discordant$`Re-test`))
+
+cipro_antibiogram_DD_discordant <- cipro_antibiogram_DD_discordant %>%
+  mutate(
+    Test = factor(Test, levels = test_levels, ordered = TRUE),
+    `Re-test` = factor(`Re-test`, levels = retest_levels, ordered = TRUE)
+  )
+
+# Aggregate counts directly — no pivot_longer needed
+cipro_antibiogram_DD_discordant_wide <- 
+  cipro_antibiogram_DD_discordant %>%
+  count(Test, `Re-test`, name = "n_strains")
+
+# MIC Test classification # Resistant: >=1 mg/L # Intermediate: 0.5 mg/L # Susceptible: <0.5 mg/L
+# Disk diffusion Re-test classification # Resistant: <=21 mm # Intermediate: 22-24 mm # Susceptible: >=25 mm 
+# Label unchanged results as "No change" # and changed results by direction 
+cipro_antibiogram_DD_discordant_wide <- 
+  cipro_antibiogram_DD_discordant_wide %>% mutate(
+  Test_category = case_when( as.numeric(as.character(Test)) >= 1 ~ "R", as.numeric(as.character(Test)) == 0.5 ~ "I", as.numeric(as.character(Test)) < 0.5 ~ "S" ),
+  Retest_category = case_when( as.numeric(as.character(`Re-test`)) <= 21 ~ "R", as.numeric(as.character(`Re-test`)) >= 22 & as.numeric(as.character(`Re-test`)) <= 24 ~ "I", as.numeric(as.character(`Re-test`)) >= 25 ~ "S" ),
+  Transition = ifelse( Test_category == Retest_category, "No change", paste(Test_category, "to", Retest_category) ) )
+  
+  
+
+# Scatter plot: Test MIC vs Re-test disk diffusion
+
+discordant_mic_disk_3 <- ggplot( cipro_antibiogram_DD_discordant_wide, aes( x = Test, y = `Re-test`, size = n_strains, colour = Transition ) ) + geom_point(alpha = 0.7) +
+    scale_size_continuous(
+    labels = scales::number_format(accuracy = 1) # Forces integers/absolute numbers
+  )+
+
+
+geom_vline( xintercept = which(test_levels == 0.5) - 0.5, linetype = "dashed" ) +
+
+
+geom_vline( xintercept = which(test_levels == 1), linetype = "dashed" ) +
+
+
+geom_hline( yintercept = which(retest_levels == 23) - 0.2, linetype = "dashed" ) +
+
+
+geom_hline( yintercept = which(retest_levels == 23) + 0.5, linetype = "dashed" ) +
+
+scale_size_continuous( name = "Number of strains", range = c(2, 10), breaks = scales::pretty_breaks() ) + scale_x_discrete(drop = FALSE) + scale_y_discrete(drop = FALSE) + scale_colour_manual( name = "Test → Re-test", values = c( "No change" = "#8EC476", "S to I" = "#E5C07B", "S to R" = "#D66D27", "I to S" = "#E5C07B", "I to R" = "#D66D27", "R to S" = "#D66D27", "R to I" = "#E5C07B" ) ) + theme_classic() + labs( x = "Test MIC (mg/L)", y = "Re-test disk diffusion (mm)" )
+
+discordant_mic_disk_3
+
+```
+
+# Concordant phenotype - disk test vs MIC retest
+```{r, concordant_disk_mic_4}
+cipro_antibiogram_MIC_concordant <- cipro_antibiogram_DD %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  filter(ConcordantRetesting_Method == "E-test (EUCAST 2026)") %>%
+  select(
+    strain,
+    Measurement,
+    ConcordantRetesting_Measurement
+  ) %>%
+  filter(!is.na(ConcordantRetesting_Measurement)) %>%
+  rename(
+    Test = Measurement,
+    `Re-test` = ConcordantRetesting_Measurement
+  ) %>%
+  mutate(
+    Test = as.character(Test),
+    `Re-test` = as.character(`Re-test`)
+  )
+
+
+# Helper: build numerically sorted ordered level vector
+build_sign_aware_levels <- function(labels) {
+  labels <- unique(labels)
+
+  order_key <- sapply(
+    labels,
+    function(x) {
+      value <- as.numeric(gsub("[^0-9.]", "", x))
+
+      if (grepl("^<", x)) {
+        value - 0.001
+      } else if (grepl("^>", x)) {
+        value + 0.001
+      } else {
+        value
+      }
+    }
+  )
+
+  labels[order(order_key)]
+}
+
+
+# Separate level vectors
+# Test = disk diffusion
+# Re-test = MIC
+
+disk_levels <- build_sign_aware_levels(
+  cipro_antibiogram_MIC_concordant$Test
+)
+
+mic_levels <- build_sign_aware_levels(
+  cipro_antibiogram_MIC_concordant$`Re-test`
+)
+
+
+cipro_antibiogram_MIC_concordant <- 
+  cipro_antibiogram_MIC_concordant %>%
+  mutate(
+    Test = factor(
+      Test,
+      levels = disk_levels,
+      ordered = TRUE
+    ),
+    `Re-test` = factor(
+      `Re-test`,
+      levels = mic_levels,
+      ordered = TRUE
+    )
+  )
+
+
+# Aggregate counts
+cipro_antibiogram_MIC_concordant_wide <- 
+  cipro_antibiogram_MIC_concordant %>%
+  count(
+    Test,
+    `Re-test`,
+    name = "n_strains"
+  )
+
+
+# Classify Test and Re-test
+#
+# Disk diffusion:
+# R = <=21 mm
+# I = 22-24 mm
+# S = >=25 mm
+#
+# MIC:
+# S = <0.5 mg/L
+# I = 0.5 to <1 mg/L
+# R = >=1 mg/L
+
+cipro_antibiogram_MIC_concordant_wide <- 
+  cipro_antibiogram_MIC_concordant_wide %>%
+  mutate(
+
+    # Disk diffusion Test classification
+    Test_category = case_when(
+      as.numeric(as.character(Test)) <= 21 ~ "R",
+      as.numeric(as.character(Test)) >= 22 &
+        as.numeric(as.character(Test)) <= 24 ~ "I",
+      as.numeric(as.character(Test)) >= 25 ~ "S"
+    ),
+
+    # MIC Re-test classification
+    Retest_numeric = as.numeric(
+      gsub("[^0-9.]", "", as.character(`Re-test`))
+    ),
+
+    Retest_category = case_when(
+      Retest_numeric < 0.5 ~ "S",
+      Retest_numeric >= 0.5 &
+        Retest_numeric < 1 ~ "I",
+      Retest_numeric >= 1 ~ "R"
+    ),
+
+    # Label unchanged results as "No change"
+    Transition = ifelse(
+      Test_category == Retest_category,
+      "No change",
+      paste(
+        Test_category,
+        "to",
+        Retest_category
+      )
+    )
+  )
+# Create size mapping specifically for the concordant disk-MIC dataset
+size_values_disk_mic_concordant <- sort(
+  unique(cipro_antibiogram_MIC_concordant_wide$n_strains)
+)
+
+size_mapping_disk_mic_concordant <- setNames(
+  seq(
+    2,
+    10,
+    length.out = length(size_values_disk_mic_concordant)
+  ),
+  size_values_disk_mic_concordant
+)
+
+
+# Concordant Disk diffusion vs MIC plot
+concordant_disk_mic_4 <-
+  ggplot(
+    cipro_antibiogram_MIC_concordant_wide,
+    aes(
+      x = Test,
+      y = `Re-test`,
+      size = factor(n_strains),
+      colour = Transition
+    )
+  ) +
+
+  geom_point(
+    alpha = 0.7
+  ) +
+
+  # -------------------------
+  # Disk diffusion boundaries
+  # -------------------------
+
+  # R/I boundary: 21 | 22 mm
+  geom_vline(
+    xintercept = which(disk_levels == "21") + 0.70,
+    linetype = "dashed"
+  ) +
+
+  # I/S boundary: 24 | 25 mm
+  geom_vline(
+    xintercept = which(disk_levels == "28") - 0.75,
+    linetype = "dashed"
+  ) +
+
+  # -------------------------
+  # MIC boundaries
+  # -------------------------
+
+  # S/I boundary: 1 mg/L
+  geom_hline(
+    yintercept = which(mic_levels == "1"),
+    linetype = "dashed"
+  ) +
+
+  # Additional MIC boundary: 0.38 mg/L
+  geom_hline(
+    yintercept = which(mic_levels == "0.38"),
+    linetype = "dashed"
+  ) +
+
+  scale_x_discrete(
+    drop = FALSE
+  ) +
+
+  scale_y_discrete(
+    drop = FALSE
+  ) +
+
+  # One unique circle size for each actual strain count
+  scale_size_manual(
+    name = "Number of strains",
+    values = size_mapping_disk_mic_concordant,
+    drop = FALSE
+  ) +
+
+  scale_colour_manual(
+    name = "Test → Re-test",
+    values = c(
+      "No change" = "#8EC476",
+
+      "R to I" = "#E5C07B",
+      "R to S" = "#D66D27",
+
+      "I to R" = "#E5C07B",
+      "I to S" = "#E5C07B",
+
+      "S to I" = "#E5C07B",
+      "S to R" = "#D66D27"
+    )
+  ) +
+
+  theme_classic() +
+
+  labs(
+    x = "Test disk diffusion (mm)",
+    y = "Re-test MIC (mg/L)"
+  )
+
+
+concordant_disk_mic_4
+```
+
+# Concordant phenotype - disk test vs disk retest
+
+
+```{r, concordant_disk_disk_5}
+
+# Create concordant DD dataset
+cipro_antibiogram_DD_concordant <- cipro_antibiogram_DD %>%
+  filter(Laboratory.Typing.Method == "Disk diffusion") %>%
+  filter(is.na(ConcordantRetesting_Method)) %>%
+  select(
+    strain,
+    Measurement,
+    ConcordantRetesting_Measurement
+  ) %>%
+  filter(!is.na(ConcordantRetesting_Measurement)) %>%
+  rename(
+    Test = Measurement,
+    `Re-test` = ConcordantRetesting_Measurement
+  ) %>%
+  mutate(
+    Test = as.numeric(Test),
+    `Re-test` = as.numeric(`Re-test`)
+  )
+
+
+# Build ONE shared level vector for both axes
+# Force 21, 22, 24, and 25 into the levels
+DD_levels <- sort(unique(c(
+  cipro_antibiogram_DD_concordant$Test,
+  cipro_antibiogram_DD_concordant$`Re-test`,
+  21, 22, 24, 25
+)))
+
+
+# Apply the SAME level vector to both Test and Re-test
+cipro_antibiogram_DD_concordant <- 
+  cipro_antibiogram_DD_concordant %>%
+  mutate(
+    Test = factor(
+      Test,
+      levels = DD_levels,
+      ordered = TRUE
+    ),
+    `Re-test` = factor(
+      `Re-test`,
+      levels = DD_levels,
+      ordered = TRUE
+    )
+  )
+
+
+# Aggregate counts
+cipro_antibiogram_DD_concordant_wide <- 
+  cipro_antibiogram_DD_concordant %>%
+  count(
+    Test,
+    `Re-test`,
+    name = "n_strains"
+  )
+
+
+# Classify DD measurements:
+# R = <=21 mm
+# I = 22-24 mm
+# S = >=25 mm
+
+classify_DD <- function(label) {
+
+  numeric_value <- as.numeric(
+    gsub("[^0-9.]", "", label)
+  )
+
+  case_when(
+    numeric_value <= 21 ~ "R",
+    numeric_value >= 22 & numeric_value <= 24 ~ "I",
+    numeric_value >= 25 ~ "S"
+  )
+}
+
+
+# Add Test/Re-test classification and transition
+cipro_antibiogram_DD_concordant_wide <- 
+  cipro_antibiogram_DD_concordant_wide %>%
+  mutate(
+
+    Test_category = classify_DD(
+      as.character(Test)
+    ),
+
+    Retest_category = classify_DD(
+      as.character(`Re-test`)
+    ),
+
+    Transition = ifelse(
+      Test_category == Retest_category,
+      "No change",
+      paste(
+        Test_category,
+        "to",
+        Retest_category
+      )
+    )
+  )
+
+
+# Scatter plot: Test vs Re-test
+# Sized by strain count and coloured by Test -> Re-test transition
+
+# Create size mapping specifically for the concordant dataset
+size_values_concordant <- sort(
+  unique(cipro_antibiogram_DD_concordant_wide$n_strains)
+)
+
+size_mapping_concordant <- setNames(
+  seq(
+    2,
+    10,
+    length.out = length(size_values_concordant)
+  ),
+  size_values_concordant
+)
+
+
+# Concordant Test vs Re-test scatter plot
+concordant_disk_disk_5 <-
+  ggplot(
+    cipro_antibiogram_DD_concordant_wide,
+    aes(
+      x = Test,
+      y = `Re-test`,
+      size = factor(n_strains),
+      colour = Transition
+    )
+  ) +
+
+  geom_point(
+    alpha = 0.7
+  ) +
+
+  # R/I boundary: 21 | 22 mm
+  geom_vline(
+    xintercept = which(DD_levels == 21) + 0.5,
+    linetype = "dashed"
+  ) +
+
+  geom_hline(
+    yintercept = which(DD_levels == 21) + 0.5,
+    linetype = "dashed"
+  ) +
+
+  # I/S boundary: 24 | 25 mm
+  geom_vline(
+    xintercept = which(DD_levels == 24) + 0.5,
+    linetype = "dashed"
+  ) +
+
+  geom_hline(
+    yintercept = which(DD_levels == 24) + 0.5,
+    linetype = "dashed"
+  ) +
+
+  scale_x_discrete(
+    drop = FALSE
+  ) +
+
+  scale_y_discrete(
+    drop = FALSE
+  ) +
+
+  # One unique circle size for each actual strain count
+  scale_size_manual(
+    name = "Number of strains",
+    values = size_mapping_concordant,
+    drop = FALSE
+  ) +
+
+  scale_colour_manual(
+    name = "Test → Re-test",
+    values = c(
+      "No change" = "#8EC476",
+
+      "R to I" = "#E5C07B",
+      "I to R" = "#E5C07B",
+
+      "I to S" = "#E5C07B",
+      "S to I" = "#E5C07B",
+
+      "R to S" = "#D66D27",
+      "S to R" = "#D66D27"
+    )
+  ) +
+
+  theme_classic() +
+
+  labs(
+    x = "Test disk diffusion (mm)",
+    y = "Re-test disk diffusion (mm)"
+  )
+
+
+concordant_disk_disk_5
+```
+
+
+# Figure S3 - MIC and disk distribution
+``` {r figs3}
+
+((discordant_mic_mic_1 + ggtitle(label="a) Re-testing discordant phenotypes", subtitle = "MIC test vs. MIC re-test")) | discordant_disk_disk_2 +ggtitle(label="", subtitle = "Disk test vs. Disk re-test")) /
+  (concordant_disk_disk_5 + ggtitle(label="b) Re-testing concordant phenotypes", subtitle = "Disk test vs. Disk re-test")|concordant_disk_mic_4 +ggtitle(label= "", subtitle = "Disk test vs. MIC re-test"))
+
+
+
+ggsave(width=19, height=10, file="figs/FigS3_retest_distribution.pdf")
+ggsave(width=19, height=10, file="figs/FigS3_retest_distribution.png")
 
 ```
